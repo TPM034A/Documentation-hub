@@ -1,0 +1,27 @@
+﻿shap.maskers.Composite
+======================
+
+.. currentmodule:: shap.maskers
+
+.. autoclass:: Composite
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Composite.__init__
+      ~Composite.data_transform
+      ~Composite.load
+      ~Composite.mask_shapes
+      ~Composite.save
+      ~Composite.shape
+   
+   
+
+   
+   
+   

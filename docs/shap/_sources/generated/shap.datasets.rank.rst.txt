@@ -1,0 +1,6 @@
+﻿shap.datasets.rank
+==================
+
+.. currentmodule:: shap.datasets
+
+.. autofunction:: rank

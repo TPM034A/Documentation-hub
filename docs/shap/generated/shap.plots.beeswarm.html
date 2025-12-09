@@ -1,0 +1,211 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shap.plots.beeswarm &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shap.plots.violin" href="shap.plots.violin.html" />
+    <link rel="prev" title="shap.plots.monitoring" href="shap.plots.monitoring.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explanation">Explanation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explainers">explainers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#plots">plots</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.bar.html">shap.plots.bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.waterfall.html">shap.plots.waterfall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.scatter.html">shap.plots.scatter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.heatmap.html">shap.plots.heatmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.force.html">shap.plots.force</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.text.html">shap.plots.text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.image.html">shap.plots.image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.partial_dependence.html">shap.plots.partial_dependence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.decision.html">shap.plots.decision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.embedding.html">shap.plots.embedding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.initjs.html">shap.plots.initjs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.group_difference.html">shap.plots.group_difference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.image_to_text.html">shap.plots.image_to_text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.monitoring.html">shap.plots.monitoring</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">shap.plots.beeswarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.violin.html">shap.plots.violin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#maskers">maskers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#models">models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#utils">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+      <li class="breadcrumb-item active">shap.plots.beeswarm</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/shap.plots.beeswarm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="shap-plots-beeswarm">
+<h1>shap.plots.beeswarm<a class="headerlink" href="#shap-plots-beeswarm" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="shap.plots.beeswarm">
+<span class="sig-prename descclassname"><span class="pre">shap.plots.</span></span><span class="sig-name descname"><span class="pre">beeswarm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shap_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="shap.Explanation.html#shap.Explanation" title="shap._explanation.Explanation"><span class="pre">Explanation</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_display</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">shap.Explanation.abs.mean(0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#333333'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'auto'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_bar_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Feature</span> <span class="pre">value'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_remaining_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.plots.beeswarm" title="Link to this definition"></a></dt>
+<dd><p>Create a SHAP beeswarm plot, colored by feature values when they are provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shap_values</strong><span class="classifier">Explanation</span></dt><dd><p>This is an <a class="reference internal" href="shap.Explanation.html#shap.Explanation" title="shap.Explanation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Explanation</span></code></a> object containing a matrix of SHAP values
+(# samples x # features).</p>
+</dd>
+<dt><strong>max_display</strong><span class="classifier">int</span></dt><dd><p>How many top features to include in the plot (default is 10, or 7 for
+interaction plots).</p>
+</dd>
+<dt><strong>ax: matplotlib Axes</strong></dt><dd><p>Axes object to draw the plot onto, otherwise uses the current Axes.</p>
+</dd>
+<dt><strong>show</strong><span class="classifier">bool</span></dt><dd><p>Whether <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.10.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.show()</span></code></a> is called before returning.
+Setting this to <code class="docutils literal notranslate"><span class="pre">False</span></code> allows the plot to be customized further
+after it has been created, returning the current axis via
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.gca.html#matplotlib.pyplot.gca" title="(in Matplotlib v3.10.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.gca()</span></code></a>.</p>
+</dd>
+<dt><strong>color_bar</strong><span class="classifier">bool</span></dt><dd><p>Whether to draw the color bar (legend).</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">float</span></dt><dd><p>What size to make the markers. For further information, see <code class="docutils literal notranslate"><span class="pre">s</span></code> in
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="(in Matplotlib v3.10.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.scatter()</span></code></a>.</p>
+</dd>
+<dt><strong>plot_size</strong><span class="classifier">“auto” (default), float, (float, float), or None</span></dt><dd><p>What size to make the plot. By default, the size is auto-scaled based on the
+number of features that are being displayed. Passing a single float will cause
+each row to be that many inches high. Passing a pair of floats will scale the
+plot by that number of inches. If <code class="docutils literal notranslate"><span class="pre">None</span></code> is passed, then the size of the
+current figure will be left unchanged. If <code class="docutils literal notranslate"><span class="pre">ax</span></code> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, then passing
+<code class="docutils literal notranslate"><span class="pre">plot_size</span></code> will raise a <code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+</dd>
+<dt><strong>group_remaining_features: bool</strong></dt><dd><p>If there are more features than <code class="docutils literal notranslate"><span class="pre">max_display</span></code>, then plot a row representing
+the sum of SHAP values of all remaining features. Default True.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ax: matplotlib Axes</dt><dd><p>Returns the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.10.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> object with the plot drawn onto it. Only
+returned if <code class="docutils literal notranslate"><span class="pre">show=False</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>See <a class="reference external" href="https://shap.readthedocs.io/en/latest/example_notebooks/api_examples/plots/beeswarm.html">beeswarm plot examples</a>.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="shap.plots.monitoring.html" class="btn btn-neutral float-left" title="shap.plots.monitoring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shap.plots.violin.html" class="btn btn-neutral float-right" title="shap.plots.violin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,770 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Version of Tree SHAP &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Scatter Density vs. Violin Plot" href="Scatter%20Density%20vs.%20Violin%20Plot%20Comparison.html" />
+    <link rel="prev" title="Speed comparison of gradient boosting libraries for shap values calculations" href="Perfomance%20Comparison.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../tabular_examples.html#tree-based-models">Tree-based models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Basic%20SHAP%20Interaction%20Value%20Example%20in%20XGBoost.html">Basic SHAP Interaction Value Example in XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Catboost%20tutorial.html">Catboost tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Census%20income%20classification%20with%20LightGBM.html">Census income classification with LightGBM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Census%20income%20classification%20with%20XGBoost.html">Census income classification with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Example%20of%20loading%20a%20custom%20tree%20model%20into%20SHAP.html">Example of loading a custom tree model into SHAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Explaining%20a%20simple%20OR%20function.html">Explaining a simple OR function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Explaining%20the%20Loss%20of%20a%20Model.html">Explaining the Loss of a Tree Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Fitting%20a%20Linear%20Simulation%20with%20XGBoost.html">Fitting a Linear Simulation with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Force%20Plot%20Colors.html">Force Plot Colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Front%20page%20example%20%28XGBoost%29.html">Front page example (XGBoost)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="League%20of%20Legends%20Win%20Prediction%20with%20XGBoost.html">League of Legends Win Prediction with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NHANES%20I%20Survival%20Model.html">NHANES I Survival Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Perfomance%20Comparison.html">Speed comparison of gradient boosting libraries for shap values calculations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Python Version of Tree SHAP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Load-California-dataset">Load California dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Train-sklearn-random-forest">Train sklearn random forest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Train-XGBoost-model">Train XGBoost model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Python-TreeExplainer">Python TreeExplainer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compare-runtime-of-XGBoost-Tree-SHAP...">Compare runtime of XGBoost Tree SHAP…</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Versus-the-Python-(numba)-Tree-SHAP...">Versus the Python (numba) Tree SHAP…</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#...about-a-hundred-times-slower-in-python,-even-with-numba">…about a hundred times slower in python, even with numba</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Scatter%20Density%20vs.%20Violin%20Plot%20Comparison.html">Scatter Density vs. Violin Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Understanding%20Tree%20SHAP%20for%20Simple%20Models.html">Understanding Tree SHAP for Simple Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#linear-models">Linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#neural-networks">Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#model-agnostic">Model agnostic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../tabular_examples.html">Tabular examples</a></li>
+      <li class="breadcrumb-item active">Python Version of Tree SHAP</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/tabular_examples/tree_based_models/Python Version of Tree SHAP.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Python-Version-of-Tree-SHAP">
+<h1>Python Version of Tree SHAP<a class="headerlink" href="#Python-Version-of-Tree-SHAP" title="Link to this heading"></a></h1>
+<p>This is a sample implementation of Tree SHAP written in Python for easy reading.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">numba</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sklearn.ensemble</span>
+<span class="kn">import</span> <span class="nn">xgboost</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+</pre></div>
+</div>
+</div>
+<section id="Load-California-dataset">
+<h2>Load California dataset<a class="headerlink" href="#Load-California-dataset" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">california</span><span class="p">(</span><span class="n">n_points</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1000, 8)
+</pre></div></div>
+</div>
+</section>
+<section id="Train-sklearn-random-forest">
+<h2>Train sklearn random forest<a class="headerlink" href="#Train-sklearn-random-forest" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">ensemble</span><span class="o">.</span><span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestRegressor(max_depth=4, n_estimators=1000)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestRegressor</label><div class="sk-toggleable__content"><pre>RandomForestRegressor(max_depth=4, n_estimators=1000)</pre></div></div></div></div></div></div>
+</div>
+</section>
+<section id="Train-XGBoost-model">
+<h2>Train XGBoost model<a class="headerlink" href="#Train-XGBoost-model" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bst</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">train</span><span class="p">({</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+</pre></div></div>
+</div>
+</section>
+<section id="Python-TreeExplainer">
+<h2>Python TreeExplainer<a class="headerlink" href="#Python-TreeExplainer" title="Link to this heading"></a></h2>
+<p>This uses numba to speed things up.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TreeExplainer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">))</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;sklearn.ensemble._forest.RandomForestRegressor&#39;&gt;&quot;</span><span class="p">):</span>
+            <span class="c1"># self.trees = [Tree(e.tree_) for e in model.estimators_]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trees</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">Tree</span><span class="p">(</span>
+                    <span class="n">children_left</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">children_left</span><span class="p">,</span>
+                    <span class="n">children_right</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">children_right</span><span class="p">,</span>
+                    <span class="n">children_default</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">children_right</span><span class="p">,</span>
+                    <span class="n">feature</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">feature</span><span class="p">,</span>
+                    <span class="n">threshold</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">threshold</span><span class="p">,</span>
+                    <span class="n">value</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">value</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="n">node_sample_weight</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">weighted_n_node_samples</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">estimators_</span>
+            <span class="p">]</span>
+
+        <span class="c1"># Preallocate space for the unique path data</span>
+        <span class="n">maxd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">max_depth</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="p">])</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">maxd</span> <span class="o">*</span> <span class="p">(</span><span class="n">maxd</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_indexes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zero_fractions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">one_fractions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pweights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">shap_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># convert dataframes</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;pandas.core.series.Series&#39;&gt;&quot;</span><span class="p">):</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">values</span>
+        <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;&#39;pandas.core.frame.DataFrame&#39;&gt;&quot;</span><span class="p">):</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;&#39;numpy.ndarray&#39;&gt;&quot;</span><span class="p">),</span> <span class="s2">&quot;Unknown instance type: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Instance must have 1 or 2 dimensions!&quot;</span>
+
+        <span class="c1"># single instance</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">x_missing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tree_shap</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">x_missing</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+            <span class="n">phi</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">x_missing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">tree_shap</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_missing</span><span class="p">,</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span>
+            <span class="n">phi</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">phi</span>
+
+    <span class="k">def</span> <span class="nf">tree_shap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_missing</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">condition_feature</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="c1"># update the bias term, which is the last index in phi</span>
+        <span class="c1"># (note the paper has this as phi_0 instead of phi_M)</span>
+        <span class="k">if</span> <span class="n">condition</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">phi</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">tree</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># start the recursive algorithm</span>
+        <span class="n">tree_shap_recursive</span><span class="p">(</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">children_left</span><span class="p">,</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">children_right</span><span class="p">,</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">children_default</span><span class="p">,</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">features</span><span class="p">,</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">thresholds</span><span class="p">,</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">node_sample_weight</span><span class="p">,</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">x_missing</span><span class="p">,</span>
+            <span class="n">phi</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feature_indexes</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">zero_fractions</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">one_fractions</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pweights</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">condition</span><span class="p">,</span>
+            <span class="n">condition_feature</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extend our decision path with a fraction of one and zero extensions</span>
+<span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span>
+    <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">void</span><span class="p">(</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">nogil</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">extend_path</span><span class="p">(</span>
+    <span class="n">feature_indexes</span><span class="p">,</span>
+    <span class="n">zero_fractions</span><span class="p">,</span>
+    <span class="n">one_fractions</span><span class="p">,</span>
+    <span class="n">pweights</span><span class="p">,</span>
+    <span class="n">unique_depth</span><span class="p">,</span>
+    <span class="n">zero_fraction</span><span class="p">,</span>
+    <span class="n">one_fraction</span><span class="p">,</span>
+    <span class="n">feature_index</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">feature_indexes</span><span class="p">[</span><span class="n">unique_depth</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature_index</span>
+    <span class="n">zero_fractions</span><span class="p">[</span><span class="n">unique_depth</span><span class="p">]</span> <span class="o">=</span> <span class="n">zero_fraction</span>
+    <span class="n">one_fractions</span><span class="p">[</span><span class="n">unique_depth</span><span class="p">]</span> <span class="o">=</span> <span class="n">one_fraction</span>
+    <span class="k">if</span> <span class="n">unique_depth</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pweights</span><span class="p">[</span><span class="n">unique_depth</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pweights</span><span class="p">[</span><span class="n">unique_depth</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">unique_depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">pweights</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">one_fraction</span> <span class="o">*</span> <span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">zero_fraction</span> <span class="o">*</span> <span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1"># undo a previous extension of the decision path</span>
+<span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span>
+    <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">void</span><span class="p">(</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">nogil</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">unwind_path</span><span class="p">(</span><span class="n">feature_indexes</span><span class="p">,</span> <span class="n">zero_fractions</span><span class="p">,</span> <span class="n">one_fractions</span><span class="p">,</span> <span class="n">pweights</span><span class="p">,</span> <span class="n">unique_depth</span><span class="p">,</span> <span class="n">path_index</span><span class="p">):</span>
+    <span class="n">one_fraction</span> <span class="o">=</span> <span class="n">one_fractions</span><span class="p">[</span><span class="n">path_index</span><span class="p">]</span>
+    <span class="n">zero_fraction</span> <span class="o">=</span> <span class="n">zero_fractions</span><span class="p">[</span><span class="n">path_index</span><span class="p">]</span>
+    <span class="n">next_one_portion</span> <span class="o">=</span> <span class="n">pweights</span><span class="p">[</span><span class="n">unique_depth</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">unique_depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">one_fraction</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_one_portion</span> <span class="o">*</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">one_fraction</span><span class="p">)</span>
+            <span class="n">next_one_portion</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">-</span> <span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">zero_fraction</span> <span class="o">*</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">zero_fraction</span> <span class="o">*</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">-</span> <span class="n">i</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">path_index</span><span class="p">,</span> <span class="n">unique_depth</span><span class="p">):</span>
+        <span class="n">feature_indexes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature_indexes</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">zero_fractions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">zero_fractions</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">one_fractions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">one_fractions</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+
+<span class="c1"># determine what the total permuation weight would be if</span>
+<span class="c1"># we unwound a previous extension in the decision path</span>
+<span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span>
+    <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">nogil</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">unwound_path_sum</span><span class="p">(</span><span class="n">feature_indexes</span><span class="p">,</span> <span class="n">zero_fractions</span><span class="p">,</span> <span class="n">one_fractions</span><span class="p">,</span> <span class="n">pweights</span><span class="p">,</span> <span class="n">unique_depth</span><span class="p">,</span> <span class="n">path_index</span><span class="p">):</span>
+    <span class="n">one_fraction</span> <span class="o">=</span> <span class="n">one_fractions</span><span class="p">[</span><span class="n">path_index</span><span class="p">]</span>
+    <span class="n">zero_fraction</span> <span class="o">=</span> <span class="n">zero_fractions</span><span class="p">[</span><span class="n">path_index</span><span class="p">]</span>
+    <span class="n">next_one_portion</span> <span class="o">=</span> <span class="n">pweights</span><span class="p">[</span><span class="n">unique_depth</span><span class="p">]</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">unique_depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">one_fraction</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">next_one_portion</span> <span class="o">*</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">one_fraction</span><span class="p">)</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">tmp</span>
+            <span class="n">next_one_portion</span> <span class="o">=</span> <span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">tmp</span> <span class="o">*</span> <span class="n">zero_fraction</span> <span class="o">*</span> <span class="p">((</span><span class="n">unique_depth</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="p">(</span><span class="n">pweights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">zero_fraction</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">unique_depth</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">total</span>
+
+
+<span class="k">class</span> <span class="nc">Tree</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">children_left</span><span class="p">,</span>
+        <span class="n">children_right</span><span class="p">,</span>
+        <span class="n">children_default</span><span class="p">,</span>
+        <span class="n">feature</span><span class="p">,</span>
+        <span class="n">threshold</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">,</span>
+        <span class="n">node_sample_weight</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children_left</span> <span class="o">=</span> <span class="n">children_left</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children_right</span> <span class="o">=</span> <span class="n">children_right</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children_default</span> <span class="o">=</span> <span class="n">children_default</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thresholds</span> <span class="o">=</span> <span class="n">threshold</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node_sample_weight</span> <span class="o">=</span> <span class="n">node_sample_weight</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">compute_expectations</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">children_left</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">children_right</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">node_sample_weight</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+<span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">compute_expectations</span><span class="p">(</span><span class="n">children_left</span><span class="p">,</span> <span class="n">children_right</span><span class="p">,</span> <span class="n">node_sample_weight</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">children_right</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">li</span> <span class="o">=</span> <span class="n">children_left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ri</span> <span class="o">=</span> <span class="n">children_right</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">depth_left</span> <span class="o">=</span> <span class="n">compute_expectations</span><span class="p">(</span><span class="n">children_left</span><span class="p">,</span> <span class="n">children_right</span><span class="p">,</span> <span class="n">node_sample_weight</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">li</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">depth_right</span> <span class="o">=</span> <span class="n">compute_expectations</span><span class="p">(</span><span class="n">children_left</span><span class="p">,</span> <span class="n">children_right</span><span class="p">,</span> <span class="n">node_sample_weight</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">ri</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">left_weight</span> <span class="o">=</span> <span class="n">node_sample_weight</span><span class="p">[</span><span class="n">li</span><span class="p">]</span>
+        <span class="n">right_weight</span> <span class="o">=</span> <span class="n">node_sample_weight</span><span class="p">[</span><span class="n">ri</span><span class="p">]</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">left_weight</span> <span class="o">*</span> <span class="n">values</span><span class="p">[</span><span class="n">li</span><span class="p">]</span> <span class="o">+</span> <span class="n">right_weight</span> <span class="o">*</span> <span class="n">values</span><span class="p">[</span><span class="n">ri</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">left_weight</span> <span class="o">+</span> <span class="n">right_weight</span><span class="p">)</span>
+        <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">depth_left</span><span class="p">,</span> <span class="n">depth_right</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="c1"># recursive computation of SHAP values for a decision tree</span>
+<span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span>
+    <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">void</span><span class="p">(</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">boolean</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int32</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">[:],</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+        <span class="n">numba</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">nogil</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">tree_shap_recursive</span><span class="p">(</span>
+    <span class="n">children_left</span><span class="p">,</span>
+    <span class="n">children_right</span><span class="p">,</span>
+    <span class="n">children_default</span><span class="p">,</span>
+    <span class="n">features</span><span class="p">,</span>
+    <span class="n">thresholds</span><span class="p">,</span>
+    <span class="n">values</span><span class="p">,</span>
+    <span class="n">node_sample_weight</span><span class="p">,</span>
+    <span class="n">x</span><span class="p">,</span>
+    <span class="n">x_missing</span><span class="p">,</span>
+    <span class="n">phi</span><span class="p">,</span>
+    <span class="n">node_index</span><span class="p">,</span>
+    <span class="n">unique_depth</span><span class="p">,</span>
+    <span class="n">parent_feature_indexes</span><span class="p">,</span>
+    <span class="n">parent_zero_fractions</span><span class="p">,</span>
+    <span class="n">parent_one_fractions</span><span class="p">,</span>
+    <span class="n">parent_pweights</span><span class="p">,</span>
+    <span class="n">parent_zero_fraction</span><span class="p">,</span>
+    <span class="n">parent_one_fraction</span><span class="p">,</span>
+    <span class="n">parent_feature_index</span><span class="p">,</span>
+    <span class="n">condition</span><span class="p">,</span>
+    <span class="n">condition_feature</span><span class="p">,</span>
+    <span class="n">condition_fraction</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="c1"># stop if we have no weight coming down to us</span>
+    <span class="k">if</span> <span class="n">condition_fraction</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="c1"># extend the unique path</span>
+    <span class="n">feature_indexes</span> <span class="o">=</span> <span class="n">parent_feature_indexes</span><span class="p">[</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+    <span class="n">feature_indexes</span><span class="p">[:</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent_feature_indexes</span><span class="p">[:</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">zero_fractions</span> <span class="o">=</span> <span class="n">parent_zero_fractions</span><span class="p">[</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+    <span class="n">zero_fractions</span><span class="p">[:</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent_zero_fractions</span><span class="p">[:</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">one_fractions</span> <span class="o">=</span> <span class="n">parent_one_fractions</span><span class="p">[</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+    <span class="n">one_fractions</span><span class="p">[:</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent_one_fractions</span><span class="p">[:</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">pweights</span> <span class="o">=</span> <span class="n">parent_pweights</span><span class="p">[</span><span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+    <span class="n">pweights</span><span class="p">[:</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent_pweights</span><span class="p">[:</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">condition</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">condition_feature</span> <span class="o">!=</span> <span class="n">parent_feature_index</span><span class="p">:</span>
+        <span class="n">extend_path</span><span class="p">(</span>
+            <span class="n">feature_indexes</span><span class="p">,</span>
+            <span class="n">zero_fractions</span><span class="p">,</span>
+            <span class="n">one_fractions</span><span class="p">,</span>
+            <span class="n">pweights</span><span class="p">,</span>
+            <span class="n">unique_depth</span><span class="p">,</span>
+            <span class="n">parent_zero_fraction</span><span class="p">,</span>
+            <span class="n">parent_one_fraction</span><span class="p">,</span>
+            <span class="n">parent_feature_index</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">split_index</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="n">node_index</span><span class="p">]</span>
+
+    <span class="c1"># leaf node</span>
+    <span class="k">if</span> <span class="n">children_right</span><span class="p">[</span><span class="n">node_index</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">unwound_path_sum</span><span class="p">(</span>
+                <span class="n">feature_indexes</span><span class="p">,</span>
+                <span class="n">zero_fractions</span><span class="p">,</span>
+                <span class="n">one_fractions</span><span class="p">,</span>
+                <span class="n">pweights</span><span class="p">,</span>
+                <span class="n">unique_depth</span><span class="p">,</span>
+                <span class="n">i</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">phi</span><span class="p">[</span><span class="n">feature_indexes</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="p">(</span>
+                <span class="n">w</span> <span class="o">*</span> <span class="p">(</span><span class="n">one_fractions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">zero_fractions</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">values</span><span class="p">[</span><span class="n">node_index</span><span class="p">]</span> <span class="o">*</span> <span class="n">condition_fraction</span>
+            <span class="p">)</span>
+
+    <span class="c1"># internal node</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># find which branch is &quot;hot&quot; (meaning x would follow it)</span>
+        <span class="n">hot_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">cleft</span> <span class="o">=</span> <span class="n">children_left</span><span class="p">[</span><span class="n">node_index</span><span class="p">]</span>
+        <span class="n">cright</span> <span class="o">=</span> <span class="n">children_right</span><span class="p">[</span><span class="n">node_index</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">x_missing</span><span class="p">[</span><span class="n">split_index</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">hot_index</span> <span class="o">=</span> <span class="n">children_default</span><span class="p">[</span><span class="n">node_index</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">x</span><span class="p">[</span><span class="n">split_index</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">node_index</span><span class="p">]:</span>
+            <span class="n">hot_index</span> <span class="o">=</span> <span class="n">cleft</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hot_index</span> <span class="o">=</span> <span class="n">cright</span>
+        <span class="n">cold_index</span> <span class="o">=</span> <span class="n">cright</span> <span class="k">if</span> <span class="n">hot_index</span> <span class="o">==</span> <span class="n">cleft</span> <span class="k">else</span> <span class="n">cleft</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">node_sample_weight</span><span class="p">[</span><span class="n">node_index</span><span class="p">]</span>
+        <span class="n">hot_zero_fraction</span> <span class="o">=</span> <span class="n">node_sample_weight</span><span class="p">[</span><span class="n">hot_index</span><span class="p">]</span> <span class="o">/</span> <span class="n">w</span>
+        <span class="n">cold_zero_fraction</span> <span class="o">=</span> <span class="n">node_sample_weight</span><span class="p">[</span><span class="n">cold_index</span><span class="p">]</span> <span class="o">/</span> <span class="n">w</span>
+        <span class="n">incoming_zero_fraction</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">incoming_one_fraction</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># see if we have already split on this feature,</span>
+        <span class="c1"># if so we undo that split so we can redo it for this node</span>
+        <span class="n">path_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">path_index</span> <span class="o">&lt;=</span> <span class="n">unique_depth</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">feature_indexes</span><span class="p">[</span><span class="n">path_index</span><span class="p">]</span> <span class="o">==</span> <span class="n">split_index</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">path_index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">path_index</span> <span class="o">!=</span> <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">incoming_zero_fraction</span> <span class="o">=</span> <span class="n">zero_fractions</span><span class="p">[</span><span class="n">path_index</span><span class="p">]</span>
+            <span class="n">incoming_one_fraction</span> <span class="o">=</span> <span class="n">one_fractions</span><span class="p">[</span><span class="n">path_index</span><span class="p">]</span>
+            <span class="n">unwind_path</span><span class="p">(</span>
+                <span class="n">feature_indexes</span><span class="p">,</span>
+                <span class="n">zero_fractions</span><span class="p">,</span>
+                <span class="n">one_fractions</span><span class="p">,</span>
+                <span class="n">pweights</span><span class="p">,</span>
+                <span class="n">unique_depth</span><span class="p">,</span>
+                <span class="n">path_index</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">unique_depth</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="c1"># divide up the condition_fraction among the recursive calls</span>
+        <span class="n">hot_condition_fraction</span> <span class="o">=</span> <span class="n">condition_fraction</span>
+        <span class="n">cold_condition_fraction</span> <span class="o">=</span> <span class="n">condition_fraction</span>
+        <span class="k">if</span> <span class="n">condition</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">split_index</span> <span class="o">==</span> <span class="n">condition_feature</span><span class="p">:</span>
+            <span class="n">cold_condition_fraction</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">unique_depth</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">condition</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">split_index</span> <span class="o">==</span> <span class="n">condition_feature</span><span class="p">:</span>
+            <span class="n">hot_condition_fraction</span> <span class="o">*=</span> <span class="n">hot_zero_fraction</span>
+            <span class="n">cold_condition_fraction</span> <span class="o">*=</span> <span class="n">cold_zero_fraction</span>
+            <span class="n">unique_depth</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="n">tree_shap_recursive</span><span class="p">(</span>
+            <span class="n">children_left</span><span class="p">,</span>
+            <span class="n">children_right</span><span class="p">,</span>
+            <span class="n">children_default</span><span class="p">,</span>
+            <span class="n">features</span><span class="p">,</span>
+            <span class="n">thresholds</span><span class="p">,</span>
+            <span class="n">values</span><span class="p">,</span>
+            <span class="n">node_sample_weight</span><span class="p">,</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">x_missing</span><span class="p">,</span>
+            <span class="n">phi</span><span class="p">,</span>
+            <span class="n">hot_index</span><span class="p">,</span>
+            <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">feature_indexes</span><span class="p">,</span>
+            <span class="n">zero_fractions</span><span class="p">,</span>
+            <span class="n">one_fractions</span><span class="p">,</span>
+            <span class="n">pweights</span><span class="p">,</span>
+            <span class="n">hot_zero_fraction</span> <span class="o">*</span> <span class="n">incoming_zero_fraction</span><span class="p">,</span>
+            <span class="n">incoming_one_fraction</span><span class="p">,</span>
+            <span class="n">split_index</span><span class="p">,</span>
+            <span class="n">condition</span><span class="p">,</span>
+            <span class="n">condition_feature</span><span class="p">,</span>
+            <span class="n">hot_condition_fraction</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">tree_shap_recursive</span><span class="p">(</span>
+            <span class="n">children_left</span><span class="p">,</span>
+            <span class="n">children_right</span><span class="p">,</span>
+            <span class="n">children_default</span><span class="p">,</span>
+            <span class="n">features</span><span class="p">,</span>
+            <span class="n">thresholds</span><span class="p">,</span>
+            <span class="n">values</span><span class="p">,</span>
+            <span class="n">node_sample_weight</span><span class="p">,</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">x_missing</span><span class="p">,</span>
+            <span class="n">phi</span><span class="p">,</span>
+            <span class="n">cold_index</span><span class="p">,</span>
+            <span class="n">unique_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">feature_indexes</span><span class="p">,</span>
+            <span class="n">zero_fractions</span><span class="p">,</span>
+            <span class="n">one_fractions</span><span class="p">,</span>
+            <span class="n">pweights</span><span class="p">,</span>
+            <span class="n">cold_zero_fraction</span> <span class="o">*</span> <span class="n">incoming_zero_fraction</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="n">split_index</span><span class="p">,</span>
+            <span class="n">condition</span><span class="p">,</span>
+            <span class="n">condition_feature</span><span class="p">,</span>
+            <span class="n">cold_condition_fraction</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Compare-runtime-of-XGBoost-Tree-SHAP...">
+<h2>Compare runtime of XGBoost Tree SHAP…<a class="headerlink" href="#Compare-runtime-of-XGBoost-Tree-SHAP..." title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">bst</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xgboost</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">pred_contribs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.1391134262084961
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+is_sparse is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.SparseDtype)` instead.
+is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+</pre></div></div>
+</div>
+</section>
+<section id="Versus-the-Python-(numba)-Tree-SHAP...">
+<h2>Versus the Python (numba) Tree SHAP…<a class="headerlink" href="#Versus-the-Python-(numba)-Tree-SHAP..." title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">TreeExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([-0.5140118 ,  0.07819144,  0.09588052, -0.01004643,  0.21487504,
+        0.37846563,  0.15740923, -0.04002657,  2.04526993])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">ex</span> <span class="o">=</span> <span class="n">TreeExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">ex</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.0075643062591552734
+10.171732664108276
+</pre></div></div>
+</div>
+</section>
+<section id="...about-a-hundred-times-slower-in-python,-even-with-numba">
+<h2>…about a hundred times slower in python, even with numba<a class="headerlink" href="#...about-a-hundred-times-slower-in-python,-even-with-numba" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Perfomance%20Comparison.html" class="btn btn-neutral float-left" title="Speed comparison of gradient boosting libraries for shap values calculations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Scatter%20Density%20vs.%20Violin%20Plot%20Comparison.html" class="btn btn-neutral float-right" title="Scatter Density vs. Violin Plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

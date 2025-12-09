@@ -1,0 +1,6 @@
+﻿shap.datasets.iris
+==================
+
+.. currentmodule:: shap.datasets
+
+.. autofunction:: iris

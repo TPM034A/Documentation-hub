@@ -1,0 +1,24 @@
+﻿shap.models.Model
+=================
+
+.. currentmodule:: shap.models
+
+.. autoclass:: Model
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Model.__init__
+      ~Model.load
+      ~Model.save
+   
+   
+
+   
+   
+   

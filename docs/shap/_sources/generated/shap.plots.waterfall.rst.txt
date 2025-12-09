@@ -1,0 +1,6 @@
+﻿shap.plots.waterfall
+====================
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: waterfall

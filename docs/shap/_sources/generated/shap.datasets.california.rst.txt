@@ -1,0 +1,6 @@
+﻿shap.datasets.california
+========================
+
+.. currentmodule:: shap.datasets
+
+.. autofunction:: california

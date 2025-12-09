@@ -1,0 +1,346 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>violin summary plot &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="waterfall plot" href="waterfall.html" />
+    <link rel="prev" title="text plot" href="text.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api_examples.html">API examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../migrating-to-new-api.html">Migrating to the new “Explanation” API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#explainers">explainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#maskers">maskers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#models">models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api_examples.html#plots">plots</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bar.html"><code class="docutils literal notranslate"><span class="pre">bar</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="beeswarm.html"><code class="docutils literal notranslate"><span class="pre">beeswarm</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="decision_plot.html"><code class="docutils literal notranslate"><span class="pre">decision</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="heatmap.html"><code class="docutils literal notranslate"><span class="pre">heatmap</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="image.html"><code class="docutils literal notranslate"><span class="pre">image</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scatter.html"><code class="docutils literal notranslate"><span class="pre">scatter</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text.html"><code class="docutils literal notranslate"><span class="pre">text</span></code> plot</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">violin</span></code> summary plot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#A-simple-violin-summary-plot">A simple violin summary plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#The-layered-Violin-Summary-Plot">The layered Violin Summary Plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Plot-Size">Plot Size</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="waterfall.html"><code class="docutils literal notranslate"><span class="pre">waterfall</span></code> plot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../api_examples.html">API Examples</a></li>
+      <li class="breadcrumb-item active"><code class="docutils literal notranslate"><span class="pre">violin</span></code> summary plot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/api_examples/plots/violin.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="violin-summary-plot">
+<h1><code class="docutils literal notranslate"><span class="pre">violin</span></code> summary plot<a class="headerlink" href="#violin-summary-plot" title="Link to this heading"></a></h1>
+<p>This notebook is designed to demonstrate (and so document) how to use the <code class="docutils literal notranslate"><span class="pre">shap.plots.violin</span></code> function.</p>
+<p>It uses an XGBoost model trained on the toy diabetes dataset provided by the scikit-learn library (source URL: <a class="reference external" href="https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html">https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html</a>).</p>
+<p>see for more info : <a class="reference external" href="https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset">https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xgboost</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+
+<span class="c1"># train xgboost model on diabetes data:</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">diabetes</span><span class="p">()</span>
+<span class="n">bst</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">train</span><span class="p">({</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">},</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># explain the model&#39;s prediction using SHAP values</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">bst</span><span class="p">)</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+numpy.ndarray
+</pre></div></div>
+</div>
+<section id="A-simple-violin-summary-plot">
+<h2>A simple violin summary plot<a class="headerlink" href="#A-simple-violin-summary-plot" title="Link to this heading"></a></h2>
+<p>The violin summary plot offers a compact representation of the distribution and variability of SHAP values for each feature. Individual violin plots are stacked by importance of the particular feature on model output (sum of the absolute values of the SHAP values per feature).</p>
+<p>Violin plots use “violin-shaped” figures to display the distribution and density of SHAP values for their respective feature. The violins can therefore provide insights into the range, variability, skewness, symmetry, and multimodality of the SHAP value distribution for a specific feature.</p>
+<p>The overall violin summary plot allow for comparisons in feature importance. Wider violins indicate higher density and more frequent values, thus providing insights into the relative importance of each feature with regard to the model output.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_violin_3_0.png" src="../../../_images/example_notebooks_api_examples_plots_violin_3_0.png" />
+</div>
+</div>
+<p>There are 10 features available in the diabetes dataset.</p>
+<p>By default the maximum number of features shown by <code class="docutils literal notranslate"><span class="pre">shap.plots.violin</span></code> is 20.</p>
+<p>The number of features displayed by the violin summary plot can be adjusted with the <code class="docutils literal notranslate"><span class="pre">max_display</span></code> parameter :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">max_display</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_violin_5_0.png" src="../../../_images/example_notebooks_api_examples_plots_violin_5_0.png" />
+</div>
+</div>
+<p>By default, the color for the standard violin summary plot is blue, but can be changed using the <code class="docutils literal notranslate"><span class="pre">color</span></code> parameter :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_violin_7_0.png" src="../../../_images/example_notebooks_api_examples_plots_violin_7_0.png" />
+</div>
+</div>
+<p>Providing the feature names as a list can help visualization and interpretation of the summary plot :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feat_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_violin_9_0.png" src="../../../_images/example_notebooks_api_examples_plots_violin_9_0.png" />
+</div>
+</div>
+</section>
+<section id="The-layered-Violin-Summary-Plot">
+<h2>The layered Violin Summary Plot<a class="headerlink" href="#The-layered-Violin-Summary-Plot" title="Link to this heading"></a></h2>
+<p>There are currently two supported violin plot types: ‘violin’ and ‘layered_violin’. You can control this via the <code class="docutils literal notranslate"><span class="pre">plot_type</span></code> parameter.</p>
+<p>The layered violin summary plot is identical to the violin one, except that outliers are not drawn as scatter points and it provides insights on the impact on the output of feature values (high/low) in the data.</p>
+<p>Let us take the diabetes example :</p>
+<p>We want to plot a layered violin summary plot based on our data (X) and the computed shap_values for our case.</p>
+<p>We pass as parameters: - our <code class="docutils literal notranslate"><span class="pre">shap_values</span></code> : shap_values - our <code class="docutils literal notranslate"><span class="pre">features</span></code> : X - the <code class="docutils literal notranslate"><span class="pre">feature_names</span></code> : feat_names (for readability) - and the <code class="docutils literal notranslate"><span class="pre">plot_type</span></code> of interest : “layered_violin”</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feat_names</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;layered_violin&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_violin_12_0.png" src="../../../_images/example_notebooks_api_examples_plots_violin_12_0.png" />
+</div>
+</div>
+<p>We can see in this case, similarly to the standard violin, that <code class="docutils literal notranslate"><span class="pre">s5</span></code> is the most important variable, and generally it causes either a large positive or negative change in the prediction.</p>
+<p>However, we can now also get get a sense of the direction of the impact from the data. Red represents large values of a variable, and blue represents small ones, for the considered feature.</p>
+<p>Therefore, it becomes visible that large values of <code class="docutils literal notranslate"><span class="pre">s5</span></code> for instance increase the prediction, and vice versa. We can also see that other features (like <code class="docutils literal notranslate"><span class="pre">s6</span></code>) are pretty evenly split, which indicates that while overall they’re still important, their interaction is dependent on other variables. (After all, the whole point of a tree model like xgboost is to capture these interactions, so we can’t expect to see everything in a single dimension!)</p>
+</section>
+<section id="Plot-Size">
+<h2>Plot Size<a class="headerlink" href="#Plot-Size" title="Link to this heading"></a></h2>
+<p>Finally, using the <code class="docutils literal notranslate"><span class="pre">plot_size</span></code> parameter, you can control the size of the summary plot. By default the size is auto-scaled based on the number of features that are being displayed.</p>
+<p>Passing a single float will cause each row to be that many inches high.</p>
+<p>Passing a pair of floats will scale the plot by that number of inches.</p>
+<p>If None is passed then the size of the current figure will be left unchanged.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># auto-scaled:</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feat_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_violin_15_0.png" src="../../../_images/example_notebooks_api_examples_plots_violin_15_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># each plot is 0.1 inches</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feat_names</span><span class="p">,</span> <span class="n">plot_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_violin_16_0.png" src="../../../_images/example_notebooks_api_examples_plots_violin_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scale: 1x3 inches</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feat_names</span><span class="p">,</span> <span class="n">plot_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_violin_17_0.png" src="../../../_images/example_notebooks_api_examples_plots_violin_17_0.png" />
+</div>
+</div>
+<hr><p>Have an idea for more helpful examples? Pull requests that add to this documentation notebook are encouraged!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="text.html" class="btn btn-neutral float-left" title="text plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="waterfall.html" class="btn btn-neutral float-right" title="waterfall plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

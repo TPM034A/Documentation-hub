@@ -1,0 +1,31 @@
+﻿shap.utils.MaskedModel
+======================
+
+.. currentmodule:: shap.utils
+
+.. autoclass:: MaskedModel
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MaskedModel.__init__
+      ~MaskedModel.main_effects
+      ~MaskedModel.varying_inputs
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~MaskedModel.delta_mask_noop_value
+      ~MaskedModel.mask_shapes
+   
+   

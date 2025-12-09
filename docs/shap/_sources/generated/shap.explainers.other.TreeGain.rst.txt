@@ -1,0 +1,27 @@
+﻿shap.explainers.other.TreeGain
+==============================
+
+.. currentmodule:: shap.explainers.other
+
+.. autoclass:: TreeGain
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TreeGain.__init__
+      ~TreeGain.attributions
+      ~TreeGain.explain_row
+      ~TreeGain.load
+      ~TreeGain.save
+      ~TreeGain.supports_model_with_masker
+   
+   
+
+   
+   
+   

@@ -1,0 +1,29 @@
+﻿shap.TreeExplainer
+==================
+
+.. currentmodule:: shap
+
+.. autoclass:: TreeExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TreeExplainer.__init__
+      ~TreeExplainer.assert_additivity
+      ~TreeExplainer.explain_row
+      ~TreeExplainer.load
+      ~TreeExplainer.save
+      ~TreeExplainer.shap_interaction_values
+      ~TreeExplainer.shap_values
+      ~TreeExplainer.supports_model_with_masker
+   
+   
+
+   
+   
+   

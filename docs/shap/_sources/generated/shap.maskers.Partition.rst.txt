@@ -1,0 +1,25 @@
+﻿shap.maskers.Partition
+======================
+
+.. currentmodule:: shap.maskers
+
+.. autoclass:: Partition
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Partition.__init__
+      ~Partition.invariants
+      ~Partition.load
+      ~Partition.save
+   
+   
+
+   
+   
+   

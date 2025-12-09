@@ -1,0 +1,376 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bar plot &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="beeswarm plot" href="beeswarm.html" />
+    <link rel="prev" title="Using a custom masker" href="../maskers/custom.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api_examples.html">API examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../migrating-to-new-api.html">Migrating to the new “Explanation” API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#explainers">explainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#maskers">maskers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#models">models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api_examples.html#plots">plots</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">bar</span></code> plot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Global-bar-plot">Global bar plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Local-bar-plot">Local bar plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Cohort-bar-plot">Cohort bar plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Using-feature-clustering">Using feature clustering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="beeswarm.html"><code class="docutils literal notranslate"><span class="pre">beeswarm</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="decision_plot.html"><code class="docutils literal notranslate"><span class="pre">decision</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="heatmap.html"><code class="docutils literal notranslate"><span class="pre">heatmap</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="image.html"><code class="docutils literal notranslate"><span class="pre">image</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scatter.html"><code class="docutils literal notranslate"><span class="pre">scatter</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text.html"><code class="docutils literal notranslate"><span class="pre">text</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="violin.html"><code class="docutils literal notranslate"><span class="pre">violin</span></code> summary plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="waterfall.html"><code class="docutils literal notranslate"><span class="pre">waterfall</span></code> plot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../api_examples.html">API Examples</a></li>
+      <li class="breadcrumb-item active"><code class="docutils literal notranslate"><span class="pre">bar</span></code> plot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/api_examples/plots/bar.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bar-plot">
+<h1><code class="docutils literal notranslate"><span class="pre">bar</span></code> plot<a class="headerlink" href="#bar-plot" title="Link to this heading"></a></h1>
+<p>This notebook is designed to demonstrate (and so document) how to use the <code class="docutils literal notranslate"><span class="pre">shap.plots.bar</span></code> function. It uses an XGBoost model trained on the classic UCI adult income dataset (which is classification task to predict if people made over 50k in the 90s).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xgboost</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+
+<span class="c1"># train XGBoost model</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">adult</span><span class="p">(</span><span class="n">n_points</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># compute SHAP values</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Global-bar-plot">
+<h2>Global bar plot<a class="headerlink" href="#Global-bar-plot" title="Link to this heading"></a></h2>
+<p>Passing a matrix of SHAP values to the bar plot function creates a global feature importance plot, where the global importance of each feature is taken to be the mean absolute value for that feature over all the given samples.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_3_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_3_0.png" />
+</div>
+</div>
+<p>By default the bar plot only shows a maximum of ten bars, but this can be controlled with the <code class="docutils literal notranslate"><span class="pre">max_display</span></code> parameter:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">max_display</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_5_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_5_0.png" />
+</div>
+</div>
+</section>
+<section id="Local-bar-plot">
+<h2>Local bar plot<a class="headerlink" href="#Local-bar-plot" title="Link to this heading"></a></h2>
+<p>Passing a row of SHAP values to the bar plot function creates a local feature importance plot, where the bars are the SHAP values for each feature. Note that the feature values are show in gray to the left of the feature names.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_7_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_7_0.png" />
+</div>
+</div>
+</section>
+<section id="Cohort-bar-plot">
+<h2>Cohort bar plot<a class="headerlink" href="#Cohort-bar-plot" title="Link to this heading"></a></h2>
+<p>Passing a dictionary of Explanation objects will create a multiple-bar plot with one bar type for each of the cohorts represented by the explanation objects. Below we use this to plot a global summary of feature importance seperately for men and women.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sex</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Women&quot;</span> <span class="k">if</span> <span class="n">shap_values</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;Men&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">shap_values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="o">.</span><span class="n">cohorts</span><span class="p">(</span><span class="n">sex</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_9_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_9_0.png" />
+</div>
+</div>
+<p>We can also use the auto-cohort feature of Explanation objects to create a set of cohorts using a decision tree. Calling <code class="docutils literal notranslate"><span class="pre">Explanation.cohorts(N)</span></code> will create N cohorts that optimally separate the SHAP values of the instances using a sklearn DecisionTreeRegressor. If we do this for the adult census data then we will see a clear separation between those with low vs. high captial gain. Note that the number in brackets is the number of instances in each cohort.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="o">.</span><span class="n">cohorts</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_11_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_11_0.png" />
+</div>
+</div>
+</section>
+<section id="Using-feature-clustering">
+<h2>Using feature clustering<a class="headerlink" href="#Using-feature-clustering" title="Link to this heading"></a></h2>
+<p>Often features in datasets are partially or fully redundant with each other. Where redudant means that a model could use either feature and still get same accuracy. To find these features practitioners will often compute correlation matrices among the features, or use some type of clustering method. When working with SHAP we recommend a more direct approach that measures feature redundancy through model loss comparisions. The <code class="docutils literal notranslate"><span class="pre">shap.utils.hclust</span></code> method can do this and build a hierarchical
+clustering of the feature by training XGBoost models to predict the outcome for each pair of input features. For typical tabular dataset this results in much more accurate measures of feature redundancy than you would get from unsupervised methods like correlation.</p>
+<p>Once we compute such a clustering we can then pass it to the bar plot so we can simultainously visualize both the feature redundancy structure and the feature importances. Note that by default we don’t show all of the clustering structure, but only the parts of the clustering with distance &lt; 0.5. Distance in the clustering is assumed to be scaled roughly between 0 and 1, where 0 distance means the features perfectly redundant and 1 means they are completely independent. In the plot below we see
+that only relationship and marital status have more that 50% redundany, so they are the only features grouped in the bar plot:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># by default this trains (X.shape[1] choose 2) 2-feature XGBoost models</span>
+<span class="n">clustering</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">hclust</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">clustering</span><span class="o">=</span><span class="n">clustering</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_13_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_13_0.png" />
+</div>
+</div>
+<p>If we want to see more of the clustering structure we can adjust the <code class="docutils literal notranslate"><span class="pre">clustering_cutoff</span></code> parameter from 0.5 to 0.9. Note that as we increase the threshold we constrain the ordering of the features to follow valid cluster leaf orderings. The bar plot sorts each cluster and sub-cluster feature importance values in that cluster in an attempt to put the most important features at the top.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">clustering</span><span class="o">=</span><span class="n">clustering</span><span class="p">,</span> <span class="n">clustering_cutoff</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_15_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_15_0.png" />
+</div>
+</div>
+<p>Note that some explainers use a clustering structure during the explanation process. They do this both to avoid perturbing features in unrealistic ways while explaining a model, and for the sake of computational performance. When you compute SHAP explanations using these methods they come with a clustering included in the Explanation object. When the bar plot find such a clustering it uses it without you needing to explicitly pass it through the <code class="docutils literal notranslate"><span class="pre">clustering</span></code> parameter:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># only model agnostic methods support shap.maskers.TabularPartitions right now so we wrap our model as a function</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">output_margin</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="c1"># define a partition masker that uses our clustering</span>
+<span class="n">masker</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">maskers</span><span class="o">.</span><span class="n">Partition</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">clustering</span><span class="o">=</span><span class="n">clustering</span><span class="p">)</span>
+
+<span class="c1"># explain the model again</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">masker</span><span class="p">)</span>
+<span class="n">shap_values_partition</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">100</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values_partition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_18_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_18_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values_partition</span><span class="p">,</span> <span class="n">clustering_cutoff</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_19_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_19_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values_partition</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">clustering_cutoff</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_bar_20_0.png" src="../../../_images/example_notebooks_api_examples_plots_bar_20_0.png" />
+</div>
+</div>
+<hr><p>Have an idea for more helpful examples? Pull requests that add to this documentation notebook are encouraged!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../maskers/custom.html" class="btn btn-neutral float-left" title="Using a custom masker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="beeswarm.html" class="btn btn-neutral float-right" title="beeswarm plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

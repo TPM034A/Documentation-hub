@@ -1,0 +1,27 @@
+﻿shap.LinearExplainer
+====================
+
+.. currentmodule:: shap
+
+.. autoclass:: LinearExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LinearExplainer.__init__
+      ~LinearExplainer.explain_row
+      ~LinearExplainer.load
+      ~LinearExplainer.save
+      ~LinearExplainer.shap_values
+      ~LinearExplainer.supports_model_with_masker
+   
+   
+
+   
+   
+   

@@ -1,0 +1,26 @@
+﻿shap.ExactExplainer
+===================
+
+.. currentmodule:: shap
+
+.. autoclass:: ExactExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ExactExplainer.__init__
+      ~ExactExplainer.explain_row
+      ~ExactExplainer.load
+      ~ExactExplainer.save
+      ~ExactExplainer.supports_model_with_masker
+   
+   
+
+   
+   
+   

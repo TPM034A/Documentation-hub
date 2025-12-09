@@ -1,0 +1,25 @@
+﻿shap.maskers.Fixed
+==================
+
+.. currentmodule:: shap.maskers
+
+.. autoclass:: Fixed
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Fixed.__init__
+      ~Fixed.load
+      ~Fixed.mask_shapes
+      ~Fixed.save
+   
+   
+
+   
+   
+   

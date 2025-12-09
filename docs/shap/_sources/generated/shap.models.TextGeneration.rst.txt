@@ -1,0 +1,27 @@
+﻿shap.models.TextGeneration
+==========================
+
+.. currentmodule:: shap.models
+
+.. autoclass:: TextGeneration
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TextGeneration.__init__
+      ~TextGeneration.get_inputs
+      ~TextGeneration.load
+      ~TextGeneration.model_generate
+      ~TextGeneration.parse_prefix_suffix_for_model_generate_output
+      ~TextGeneration.save
+   
+   
+
+   
+   
+   

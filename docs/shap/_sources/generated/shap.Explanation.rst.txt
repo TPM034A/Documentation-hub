@@ -1,0 +1,55 @@
+﻿shap.Explanation
+================
+
+.. currentmodule:: shap
+
+.. autoclass:: Explanation
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Explanation.__init__
+      ~Explanation.cohorts
+      ~Explanation.hstack
+      ~Explanation.percentile
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Explanation.abs
+      ~Explanation.argsort
+      ~Explanation.base_values
+      ~Explanation.clustering
+      ~Explanation.data
+      ~Explanation.display_data
+      ~Explanation.error_std
+      ~Explanation.feature_names
+      ~Explanation.flip
+      ~Explanation.hclust
+      ~Explanation.hierarchical_values
+      ~Explanation.identity
+      ~Explanation.instance_names
+      ~Explanation.lower_bounds
+      ~Explanation.main_effects
+      ~Explanation.max
+      ~Explanation.mean
+      ~Explanation.min
+      ~Explanation.output_indexes
+      ~Explanation.output_names
+      ~Explanation.sample
+      ~Explanation.shape
+      ~Explanation.sum
+      ~Explanation.upper_bounds
+      ~Explanation.values
+   
+   

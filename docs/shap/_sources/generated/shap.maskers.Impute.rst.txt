@@ -1,0 +1,24 @@
+﻿shap.maskers.Impute
+===================
+
+.. currentmodule:: shap.maskers
+
+.. autoclass:: Impute
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Impute.__init__
+      ~Impute.load
+      ~Impute.save
+   
+   
+
+   
+   
+   

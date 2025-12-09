@@ -1,0 +1,6 @@
+﻿shap.utils.shapley\_coefficients
+================================
+
+.. currentmodule:: shap.utils
+
+.. autofunction:: shapley_coefficients

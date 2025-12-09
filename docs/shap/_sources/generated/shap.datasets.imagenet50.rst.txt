@@ -1,0 +1,6 @@
+﻿shap.datasets.imagenet50
+========================
+
+.. currentmodule:: shap.datasets
+
+.. autofunction:: imagenet50

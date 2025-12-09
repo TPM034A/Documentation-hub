@@ -1,0 +1,6 @@
+﻿shap.utils.delta\_minimization\_order
+=====================================
+
+.. currentmodule:: shap.utils
+
+.. autofunction:: delta_minimization_order

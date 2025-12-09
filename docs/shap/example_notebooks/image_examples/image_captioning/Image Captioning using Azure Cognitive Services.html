@@ -1,0 +1,619 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explaining Image Captioning (Image to Text) using Azure Cognitive Services and Partition Explainer &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Explaining Image Captioning (Image to Text) using Open Source Image Captioning Model and Partition Explainer" href="Image%20Captioning%20using%20Open%20Source.html" />
+    <link rel="prev" title="PyTorch Deep Explainer MNIST example" href="../image_classification/PyTorch%20Deep%20Explainer%20MNIST%20example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../image_examples.html">Image examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../image_examples.html#image-classification">Image classification</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../image_examples.html#image-captioning">Image captioning</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Explaining Image Captioning (Image to Text) using Azure Cognitive Services and Partition Explainer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Limitations">Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#API-details">API details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Load-data">Load data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Note:-Replace-or-add-images-that-you-would-like-to-be-explained(tested)-in-the-'./test_images/'-folder.**">Note: Replace or add images that you would like to be explained(tested) in the ‘./test_images/’ folder.**</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Load-language-model-and-tokenizer">Load language model and tokenizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Create-an-explainer-object-using-wrapped-model-and-image-masker">Create an explainer object using wrapped model and image masker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#SHAP-explanation-for-test-images">SHAP explanation for test images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Image%20Captioning%20using%20Open%20Source.html">Explaining Image Captioning (Image to Text) using Open Source Image Captioning Model and Partition Explainer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../image_examples.html">Image examples</a></li>
+      <li class="breadcrumb-item active">Explaining Image Captioning (Image to Text) using Azure Cognitive Services and Partition Explainer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/image_examples/image_captioning/Image Captioning using Azure Cognitive Services.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Explaining-Image-Captioning-(Image-to-Text)-using-Azure-Cognitive-Services-and-Partition-Explainer">
+<h1>Explaining Image Captioning (Image to Text) using Azure Cognitive Services and Partition Explainer<a class="headerlink" href="#Explaining-Image-Captioning-(Image-to-Text)-using-Azure-Cognitive-Services-and-Partition-Explainer" title="Link to this heading"></a></h1>
+<p>This notebook demonstrates how to use SHAP for explaining output of image captioning models i.e. given an image, model outputs a caption for the image.</p>
+<p>Here, we are using Azure Cognitive Services Computer Vision (COGS CV) Image Understanding (Analyze Image) feature <a class="reference external" href="https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/#features">https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/#features</a> to get image captions.</p>
+<section id="Limitations">
+<h2>Limitations<a class="headerlink" href="#Limitations" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>To explain image captions, we are segmenting images along axes (i.e. super pixels/partitions of halves, quarters, eights…); An alternate approach/future improvement could be to semantically segment images instead of axis-aligned partitioning and produce SHAP explanations using segments, instead of super pixels. <a class="reference external" href="https://github.com/shap/shap/issues/1738">https://github.com/shap/shap/issues/1738</a></p></li>
+<li><p>We are using transformer language model (ex. distilbart) to do alignment scoring between given image and masked image captions, assuming an external model is a good surrogate for the original captioning model’s language head. By using the captioning model’s own language head, we could eliminate this assumption and remove the dependency. (ex. refer to text2text notebook examples). For more details, refer to the “Load language model and tokenizer” section below.
+<a class="reference external" href="https://github.com/shap/shap/issues/1739">https://github.com/shap/shap/issues/1739</a></p></li>
+<li><p>Azure Cognitive Service is being used here to get image captions. To get explanations faster, get the paid service as API calls will not be rate limited. Pricing details can be found here: <a class="reference external" href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/computer-vision/">https://azure.microsoft.com/en-us/pricing/details/cognitive-services/computer-vision/</a></p></li>
+<li><p>Azure Cognitive Service has certain size limitations for image size and file formats. API details can be found here: <a class="reference external" href="https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b">https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b</a>. Refer to “Load Data” section for more details.</p></li>
+<li><p>Large images slow the generation of SHAP explanations. Hence, images having either dimension greater than 500 pixels are being resized. Refer to “Load Data” section for more details.</p></li>
+<li><p>The more evaluations used to generate explanations, longer it takes for SHAP to run. But, increasing the number of evaluations increases the granularity of the explanations (300-500 evaluations often produce detailed maps, but fewer or more are also often reasonable). Refer to “Create an explainer object using wrapped model and image masker” section below for more details.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+<span class="kn">from</span> <span class="nn">shap.utils.image</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">add_sample_images</span><span class="p">,</span>
+    <span class="n">check_valid_image</span><span class="p">,</span>
+    <span class="n">display_grid_plot</span><span class="p">,</span>
+    <span class="n">is_empty</span><span class="p">,</span>
+    <span class="n">load_image</span><span class="p">,</span>
+    <span class="n">make_dir</span><span class="p">,</span>
+    <span class="n">resize_image</span><span class="p">,</span>
+    <span class="n">save_image</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="API-details">
+<h2>API details<a class="headerlink" href="#API-details" title="Link to this heading"></a></h2>
+<p><strong>To use Azure COGS CV and run this notebook, please get the API Key and Endpoint specific to your subscription of Azure COGS CV and replace in code below &lt;&gt;</strong>. It is recommended to get the paid service instead of the free service in order to not be rate limited for the API calls and get explanations quickly.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># place your Azure COGS CV subscription API Key and Endpoint below</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;&lt;your COGS API access key&gt;&quot;</span>
+<span class="n">ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;&lt;endpoint specific to your subscription&gt;&quot;</span>
+
+<span class="n">ANALYZE_URL</span> <span class="o">=</span> <span class="n">ENDPOINT</span> <span class="o">+</span> <span class="s2">&quot;/vision/v3.1/analyze&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_caption</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to get image caption when path to image file is given.</span>
+<span class="sd">    Note: API_KEY and ANALYZE_URL need to be defined before calling this function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path_to_image   : path of image file to be analyzed</span>
+
+<span class="sd">    Output</span>
+<span class="sd">    -------</span>
+<span class="sd">    image caption</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Ocp-Apim-Subscription-Key&quot;</span><span class="p">:</span> <span class="n">API_KEY</span><span class="p">,</span>
+        <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/octet-stream&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;visualFeatures&quot;</span><span class="p">:</span> <span class="s2">&quot;Description&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># get image caption using requests</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">ANALYZE_URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+    <span class="c1"># return the first caption&#39;s text in results description</span>
+    <span class="n">caption</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">][</span><span class="s2">&quot;captions&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">caption</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-data">
+<h2>Load data<a class="headerlink" href="#Load-data" title="Link to this heading"></a></h2>
+<p>‘./test_images/’ is the folder of images that will be explained. ‘./test_images/’ directory has been created for you and sample images needed to replicate examples shown in the notebook are already placed in the directory.</p>
+<section id="Azure-COGS-CV-image-requirements:">
+<h3>Azure COGS CV image requirements:<a class="headerlink" href="#Azure-COGS-CV-image-requirements:" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>To get explanations for image captions, place images to be explained in a folder called ‘test_images’ in the current notebook working directory.</p></li>
+<li><p>Azure COGS CV accepts images of the following file formats: JPEG (JPG), PNG, GIF, BMP, JFIF</p></li>
+<li><p>Azure COGS CV has size limit of &lt; 4MB and min size of 50x50 for images. Hence, large image files are being reshaped in code below to increase speed of SHAP explanations and run Azure COGS for image captions. If image (pixel_size, pixel_size) is greater than 500 for either of the dimensions, image is resized to have max. 500 pixel size for the dimension &gt; 500 and other dimension is resized retaining the original aspect ratio.</p>
+<p><strong>Note</strong>: Reshaped image caption may be different from the original image caption. If explanation for the original image is needed, please toggle the ‘reshape’ variable below to ‘False’. However, please note this might slow down the explanation process significantly or cause Azure COGS CV to not generate a caption (SHAP will not be able to generate explanation for this image.)</p>
+</li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># directory of images to be explained</span>
+<span class="n">DIR</span> <span class="o">=</span> <span class="s2">&quot;./test_images/&quot;</span>
+<span class="c1"># creates or empties directory if it already exists</span>
+<span class="n">make_dir</span><span class="p">(</span><span class="n">DIR</span><span class="p">)</span>
+<span class="n">add_sample_images</span><span class="p">(</span><span class="n">DIR</span><span class="p">)</span>
+
+<span class="c1"># directory for saving resized images</span>
+<span class="n">DIR_RESHAPED</span> <span class="o">=</span> <span class="s2">&quot;./reshaped_images/&quot;</span>
+<span class="n">make_dir</span><span class="p">(</span><span class="n">DIR_RESHAPED</span><span class="p">)</span>
+
+<span class="c1"># directory for saving masked images</span>
+<span class="n">DIR_MASKED</span> <span class="o">=</span> <span class="s2">&quot;./masked_images/&quot;</span>
+<span class="n">make_dir</span><span class="p">(</span><span class="n">DIR_MASKED</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="Note:-Replace-or-add-images-that-you-would-like-to-be-explained(tested)-in-the-'./test_images/'-folder.**">
+<h2>Note: Replace or add images that you would like to be explained(tested) in the ‘./test_images/’ folder.**<a class="headerlink" href="#Note:-Replace-or-add-images-that-you-would-like-to-be-explained(tested)-in-the-'./test_images/'-folder.**" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check if &#39;test_images&#39; folder exists and if it has any files</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">DIR</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">reshape</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">DIR</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR</span><span class="p">,</span> <span class="n">f</span><span class="p">))]</span>
+
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">path_to_image</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+        <span class="c1"># check if file has of any of the following acceptable extensions: JPEG (JPG), PNG, GIF, BMP, JFIF</span>
+        <span class="k">if</span> <span class="n">check_valid_image</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Loading image:&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Image caption:&quot;</span><span class="p">,</span> <span class="n">get_caption</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">))</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Image size:&quot;</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+            <span class="c1"># reshaping large image files</span>
+            <span class="k">if</span> <span class="n">reshape</span><span class="p">:</span>
+                <span class="n">image</span><span class="p">,</span> <span class="n">reshaped_file</span> <span class="o">=</span> <span class="n">resize_image</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">,</span> <span class="n">DIR_RESHAPED</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">reshaped_file</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reshaped image caption:&quot;</span><span class="p">,</span> <span class="n">get_caption</span><span class="p">(</span><span class="n">reshaped_file</span><span class="p">))</span>
+
+            <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Skipping image due to invalid file extension:&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Number of images in test dataset:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+
+<span class="c1"># delete DIR_RESHAPED if empty</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">DIR_RESHAPED</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">DIR_RESHAPED</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Loading image: 1.jpg
+Image caption: a woman wearing glasses
+Image size: (224, 224, 3)
+
+Loading image: 2.jpg
+Image caption: a bird on a branch
+Image size: (224, 224, 3)
+
+Loading image: 3.jpg
+Image caption: a group of horses standing on grass
+Image size: (224, 224, 3)
+
+Loading image: 4.jpg
+Image caption: a basketball player in a uniform
+Image size: (224, 224, 3)
+
+Number of images in test dataset: 4
+</pre></div></div>
+</div>
+</section>
+<section id="Load-language-model-and-tokenizer">
+<h2>Load language model and tokenizer<a class="headerlink" href="#Load-language-model-and-tokenizer" title="Link to this heading"></a></h2>
+<p>Transformer Language Model ‘distilbart’ and tokenizer are being used here to tokenize the image caption. This makes the image to text scenario similar to a multi-class problem. ‘distilbart’ is used to do alignment scoring between the original image caption and masked image captions being generated i.e. how does the probability of getting the original image caption change when the context of a masked image caption is given? (a.k.a. we are teacher forcing ‘distilbart’ to always produce the
+original image caption for the masked images and getting change in logits for each tokenized word in the caption as part of the process).</p>
+<p><strong>Note</strong>: We are using ‘distilbart’ here because during experimentation process we found it to give the most meaningful explanations for images. We have compared with other language models such as ‘openaigpt’ and ‘distilgpt2’. Please feel free to explore with other language models of your choice and compare the results.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load transformer language model and tokenizer</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;sshleifer/distilbart-xsum-12-6&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;sshleifer/distilbart-xsum-12-6&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Create-an-explainer-object-using-wrapped-model-and-image-masker">
+<h2>Create an explainer object using wrapped model and image masker<a class="headerlink" href="#Create-an-explainer-object-using-wrapped-model-and-image-masker" title="Link to this heading"></a></h2>
+<p>Various options for explainer object to experiment with:</p>
+<ol class="arabic simple">
+<li><p><strong>mask_value</strong> : Image masker uses an inpainting technique by default for masking (i.e. mask_value = “inpaint_ns”). There are alternate masking options available for blurring/inpainting such as “inpaint_telea” and “blur(kernel_xsize, kernel_xsize)”. Note: Different explanations can be generated by different masking options.</p></li>
+<li><p><strong>max_evals</strong> : Number of evaluations done of the underlying model to get SHAP values. Recommended number of evaluations is 300-500 to get explanations with meaningful granularity of super pixels. More the number of evaluations, more the granularity but also increases run-time. Default is set to 300 evals.</p></li>
+<li><p><strong>batch_size</strong> : Number of masked images to be evaluated at once. Default size is set to 50.</p></li>
+<li><p><strong>fixed_context</strong> : Masking technqiue used to build partition tree with options of ‘0’, ‘1’ or ‘None’. ‘fixed_context = None’ is the best option to generate meaningful results but it is relatively slower than fixed_context = 0 or 1 because it generates a full partition tree. Default option is set to ‘None’.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting values for logging/tracking variables</span>
+<span class="n">make_dir</span><span class="p">(</span><span class="n">DIR_MASKED</span><span class="p">)</span>
+<span class="n">image_counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">mask_counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">masked_captions</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="n">masked_files</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+
+<span class="c1"># define function f which takes input (masked image) and returns caption for it</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; &quot;</span>
+<span class="sd">    Function to return caption for masked image(x).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">mask_counter</span>
+
+    <span class="c1"># saving masked array of RGB values as an image in masked_images directory</span>
+    <span class="n">path_to_image</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR_MASKED</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">image_counter</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">mask_counter</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+    <span class="n">save_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">path_to_image</span><span class="p">)</span>
+
+    <span class="c1"># get caption for masked image</span>
+    <span class="n">caption</span> <span class="o">=</span> <span class="n">get_caption</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">)</span>
+    <span class="n">masked_captions</span><span class="p">[</span><span class="n">image_counter</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">caption</span><span class="p">)</span>
+    <span class="n">masked_files</span><span class="p">[</span><span class="n">image_counter</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">)</span>
+    <span class="n">mask_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">caption</span>
+
+
+<span class="c1"># function to take a list of images and parameters such as masking option, max evals etc. and return shap_values objects</span>
+<span class="k">def</span> <span class="nf">run_masker</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">mask_value</span><span class="o">=</span><span class="s2">&quot;inpaint_ns&quot;</span><span class="p">,</span>
+    <span class="n">max_evals</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">fixed_context</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">show_grid_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">limit_grid</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to take a list of images and parameters such max evals etc. and return shap explanations (shap_values) for test images(X).</span>
+<span class="sd">    Paramaters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X               : list of images which need to be explained</span>
+<span class="sd">    mask_value      : various masking options for blurring/inpainting such as &quot;inpaint_ns&quot;, &quot;inpaint_telea&quot; and &quot;blur(pixel_size, pixel_size)&quot;</span>
+<span class="sd">    max_evals       : number of evaluations done of the underlying model to get SHAP values</span>
+<span class="sd">    batch_size      : number of masked images to be evaluated at once</span>
+<span class="sd">    fixed_context   : masking technqiue used to build partition tree with options of &#39;0&#39;, &#39;1&#39; or &#39;None&#39;</span>
+<span class="sd">    show_grid_plot  : if set to True, shows grid plot of all masked images and their captions used to generate SHAP values (default: False)</span>
+<span class="sd">    limit_grid      : limit number of masked images shown (default:20). Change to &quot;all&quot; to show all masked_images.</span>
+<span class="sd">    Output</span>
+<span class="sd">    ------</span>
+<span class="sd">    shap_values_list: list of shap_values objects generated for the images</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">image_counter</span>
+    <span class="k">global</span> <span class="n">mask_counter</span>
+    <span class="n">shap_values_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
+        <span class="c1"># define a masker that is used to mask out partitions of the input image based on mask_value option</span>
+        <span class="n">masker</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">maskers</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">mask_value</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="c1"># wrap model with TeacherForcingLogits class</span>
+        <span class="n">wrapped_model</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">TeacherForcingLogits</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">similarity_model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">similarity_tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">)</span>
+
+        <span class="c1"># build a partition explainer with wrapped_model and image masker</span>
+        <span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">wrapped_model</span><span class="p">,</span> <span class="n">masker</span><span class="p">)</span>
+
+        <span class="c1"># compute SHAP values - here we use max_evals no. of evaluations of the underlying model to estimate SHAP values</span>
+        <span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">index</span> <span class="p">:</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]),</span>
+            <span class="n">max_evals</span><span class="o">=</span><span class="n">max_evals</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">fixed_context</span><span class="o">=</span><span class="n">fixed_context</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">shap_values_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+
+        <span class="c1"># output plot</span>
+        <span class="n">shap_values</span><span class="o">.</span><span class="n">output_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Ġ&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">shap_values</span><span class="o">.</span><span class="n">output_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">shap</span><span class="o">.</span><span class="n">image_plot</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+
+        <span class="c1"># show grid plot of masked images and their captions</span>
+        <span class="k">if</span> <span class="n">show_grid_plot</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">limit_grid</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+                <span class="n">display_grid_plot</span><span class="p">(</span><span class="n">masked_captions</span><span class="p">[</span><span class="n">image_counter</span><span class="p">],</span> <span class="n">masked_files</span><span class="p">[</span><span class="n">image_counter</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">limit_grid</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">limit_grid</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">masked_captions</span><span class="p">[</span><span class="n">image_counter</span><span class="p">]):</span>
+                <span class="n">display_grid_plot</span><span class="p">(</span>
+                    <span class="n">masked_captions</span><span class="p">[</span><span class="n">image_counter</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">limit_grid</span><span class="p">],</span>
+                    <span class="n">masked_files</span><span class="p">[</span><span class="n">image_counter</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">limit_grid</span><span class="p">],</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter a valid number for limit_grid parameter.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># setting values for next iterations</span>
+        <span class="n">mask_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">image_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">shap_values_list</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="SHAP-explanation-for-test-images">
+<h2>SHAP explanation for test images<a class="headerlink" href="#SHAP-explanation-for-test-images" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run masker with test images dataset (X) and get SHAP explanations for their captions</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">run_masker</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [03:40, 110.24s/it]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_15_1.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_15_1.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [02:56, 88.21s/it]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_15_3.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_15_3.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [03:22, 101.31s/it]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_15_5.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_15_5.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [03:18, 99.35s/it]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_15_7.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_15_7.svg" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SHAP explanation using alternate masking option for inpainting &quot;inpaint_telea&quot;</span>
+<span class="c1"># displays grid plot of masked images and their captions</span>
+<span class="c1"># change limit_grid = &quot;all&quot; to show all masked images instead of limiting to 24 masked images</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">run_masker</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">mask_value</span><span class="o">=</span><span class="s2">&quot;inpaint_telea&quot;</span><span class="p">,</span> <span class="n">show_grid_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">limit_grid</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [03:51, 115.99s/it]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_1.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_1.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_2.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_2.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_3.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_3.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_4.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_4.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_5.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_5.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_6.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_6.svg" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_7.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Azure_Cognitive_Services_16_7.svg" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../image_classification/PyTorch%20Deep%20Explainer%20MNIST%20example.html" class="btn btn-neutral float-left" title="PyTorch Deep Explainer MNIST example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Image%20Captioning%20using%20Open%20Source.html" class="btn btn-neutral float-right" title="Explaining Image Captioning (Image to Text) using Open Source Image Captioning Model and Partition Explainer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

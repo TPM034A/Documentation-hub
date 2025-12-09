@@ -1,0 +1,23 @@
+﻿shap.utils.OpChain
+==================
+
+.. currentmodule:: shap.utils
+
+.. autoclass:: OpChain
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~OpChain.__init__
+      ~OpChain.apply
+   
+   
+
+   
+   
+   

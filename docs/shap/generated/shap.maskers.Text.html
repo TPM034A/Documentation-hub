@@ -1,0 +1,278 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shap.maskers.Text &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shap.maskers.Image" href="shap.maskers.Image.html" />
+    <link rel="prev" title="shap.maskers.OutputComposite" href="shap.maskers.OutputComposite.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explanation">Explanation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explainers">explainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plots">plots</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#maskers">maskers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="shap.maskers.Masker.html">shap.maskers.Masker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.maskers.Independent.html">shap.maskers.Independent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.maskers.Partition.html">shap.maskers.Partition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.maskers.Impute.html">shap.maskers.Impute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.maskers.Fixed.html">shap.maskers.Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.maskers.Composite.html">shap.maskers.Composite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.maskers.FixedComposite.html">shap.maskers.FixedComposite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.maskers.OutputComposite.html">shap.maskers.OutputComposite</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">shap.maskers.Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.maskers.Image.html">shap.maskers.Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#models">models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#utils">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+      <li class="breadcrumb-item active">shap.maskers.Text</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/shap.maskers.Text.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="shap-maskers-text">
+<h1>shap.maskers.Text<a class="headerlink" href="#shap-maskers-text" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="shap.maskers.Text">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shap.maskers.</span></span><span class="sig-name descname"><span class="pre">Text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collapse_mask_token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'string'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text" title="Link to this definition"></a></dt>
+<dd><p>This masks out tokens according to the given tokenizer.</p>
+<p>The masked variables are</p>
+<p>output_type : “string” (default) or “token_ids”</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collapse_mask_token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'string'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.__init__" title="Link to this definition"></a></dt>
+<dd><p>Build a new Text masker given an optional passed tokenizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tokenizer</strong><span class="classifier">callable or None</span></dt><dd><p>The tokenizer used to break apart strings during masking. The passed tokenizer must support a minimal
+subset of the HuggingFace Transformers PreTrainedTokenizerBase API. This minimal subset means the
+tokenizer must return a dictionary with ‘input_ids’ and then either include
+an ‘offset_mapping’ entry in the same dictionary or provide a .convert_ids_to_tokens or .decode method.</p>
+</dd>
+<dt><strong>mask_token</strong><span class="classifier">string, int, or None</span></dt><dd><p>The sub-string or integer token id used to mask out portions of a string. If None it will use the
+tokenizer’s .mask_token attribute, if defined, or “…” if the tokenizer does not have a .mask_token
+attribute.</p>
+</dd>
+<dt><strong>collapse_mask_token</strong><span class="classifier">True, False, or “auto”</span></dt><dd><p>If True, when several consecutive tokens are masked only one mask token is used to replace the entire
+series of original tokens.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.maskers.Text.__init__" title="shap.maskers.Text.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([tokenizer, mask_token, ...])</p></td>
+<td><p>Build a new Text masker given an optional passed tokenizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.maskers.Text.clustering" title="shap.maskers.Text.clustering"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clustering</span></code></a>(s)</p></td>
+<td><p>Compute the clustering of tokens for the given string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.maskers.Text.data_transform" title="shap.maskers.Text.data_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_transform</span></code></a>(s)</p></td>
+<td><p>Called by explainers to allow us to convert data to better match masking (here this means tokenizing).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.maskers.Text.feature_names" title="shap.maskers.Text.feature_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature_names</span></code></a>(s)</p></td>
+<td><p>The names of the features for each mask position for the given input string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.maskers.Text.invariants" title="shap.maskers.Text.invariants"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invariants</span></code></a>(s)</p></td>
+<td><p>The names of the features for each mask position for the given input string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.maskers.Text.load" title="shap.maskers.Text.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(in_file[, instantiate])</p></td>
+<td><p>Load a Text masker from a file stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.maskers.Text.mask_shapes" title="shap.maskers.Text.mask_shapes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_shapes</span></code></a>(s)</p></td>
+<td><p>The shape of the masks we expect.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.maskers.Text.save" title="shap.maskers.Text.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(out_file)</p></td>
+<td><p>Save a Text masker to a file stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.maskers.Text.shape" title="shap.maskers.Text.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a>(s)</p></td>
+<td><p>The shape of what we return as a masker.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.maskers.Text.token_segments" title="shap.maskers.Text.token_segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">token_segments</span></code></a>(s)</p></td>
+<td><p>Returns the substrings associated with each token in the given string.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.clustering">
+<span class="sig-name descname"><span class="pre">clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.clustering" title="Link to this definition"></a></dt>
+<dd><p>Compute the clustering of tokens for the given string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.data_transform">
+<span class="sig-name descname"><span class="pre">data_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.data_transform" title="Link to this definition"></a></dt>
+<dd><p>Called by explainers to allow us to convert data to better match masking (here this means tokenizing).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.feature_names">
+<span class="sig-name descname"><span class="pre">feature_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.feature_names" title="Link to this definition"></a></dt>
+<dd><p>The names of the features for each mask position for the given input string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.invariants">
+<span class="sig-name descname"><span class="pre">invariants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.invariants" title="Link to this definition"></a></dt>
+<dd><p>The names of the features for each mask position for the given input string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instantiate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.load" title="Link to this definition"></a></dt>
+<dd><p>Load a Text masker from a file stream.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.mask_shapes">
+<span class="sig-name descname"><span class="pre">mask_shapes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.mask_shapes" title="Link to this definition"></a></dt>
+<dd><p>The shape of the masks we expect.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.save" title="Link to this definition"></a></dt>
+<dd><p>Save a Text masker to a file stream.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of what we return as a masker.</p>
+<p>Note we only return a single sample, so there is no expectation averaging.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.maskers.Text.token_segments">
+<span class="sig-name descname"><span class="pre">token_segments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.maskers.Text.token_segments" title="Link to this definition"></a></dt>
+<dd><p>Returns the substrings associated with each token in the given string.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="shap.maskers.OutputComposite.html" class="btn btn-neutral float-left" title="shap.maskers.OutputComposite" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shap.maskers.Image.html" class="btn btn-neutral float-right" title="shap.maskers.Image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

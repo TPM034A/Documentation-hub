@@ -1,0 +1,28 @@
+﻿shap.PartitionExplainer
+=======================
+
+.. currentmodule:: shap
+
+.. autoclass:: PartitionExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PartitionExplainer.__init__
+      ~PartitionExplainer.explain_row
+      ~PartitionExplainer.load
+      ~PartitionExplainer.owen
+      ~PartitionExplainer.owen3
+      ~PartitionExplainer.save
+      ~PartitionExplainer.supports_model_with_masker
+   
+   
+
+   
+   
+   

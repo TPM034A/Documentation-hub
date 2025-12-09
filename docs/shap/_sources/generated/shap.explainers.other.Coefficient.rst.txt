@@ -1,0 +1,27 @@
+﻿shap.explainers.other.Coefficient
+=================================
+
+.. currentmodule:: shap.explainers.other
+
+.. autoclass:: Coefficient
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Coefficient.__init__
+      ~Coefficient.attributions
+      ~Coefficient.explain_row
+      ~Coefficient.load
+      ~Coefficient.save
+      ~Coefficient.supports_model_with_masker
+   
+   
+
+   
+   
+   

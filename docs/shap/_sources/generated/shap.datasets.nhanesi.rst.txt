@@ -1,0 +1,6 @@
+﻿shap.datasets.nhanesi
+=====================
+
+.. currentmodule:: shap.datasets
+
+.. autofunction:: nhanesi

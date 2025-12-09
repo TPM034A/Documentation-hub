@@ -1,0 +1,277 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPUTree explainer &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Permutation explainer" href="Permutation.html" />
+    <link rel="prev" title="Exact explainer" href="Exact.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api_examples.html">API examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../migrating-to-new-api.html">Migrating to the new “Explanation” API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api_examples.html#explainers">explainers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Exact.html"><code class="docutils literal notranslate"><span class="pre">Exact</span></code> explainer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">GPUTree</span></code> explainer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Tabular-data-with-independent-(Shapley-value)-masking">Tabular data with independent (Shapley value) masking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Interaction-values">Interaction values</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Permutation.html"><code class="docutils literal notranslate"><span class="pre">Permutation</span></code> explainer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#maskers">maskers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#models">models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#plots">plots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../api_examples.html">API Examples</a></li>
+      <li class="breadcrumb-item active"><code class="docutils literal notranslate"><span class="pre">GPUTree</span></code> explainer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/api_examples/explainers/GPUTree.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="GPUTree-explainer">
+<h1><code class="docutils literal notranslate"><span class="pre">GPUTree</span></code> explainer<a class="headerlink" href="#GPUTree-explainer" title="Link to this heading"></a></h1>
+<p>This notebooks demonstrates how to use the GPUTree explainer on some simple datasets. Like the Tree explainer, the GPUTree explainer is specifically designed for tree-based machine learning models, but it is designed to accelerate the computations using NVIDA GPUs.</p>
+<p>Note that in order to use the GPUTree explainer you need to have an NVIDA GPU, and SHAP needs to have been compiled to support the current GPU libraries on your system. On a recent Ubuntu server the steps to make this happen would be:</p>
+<ol class="arabic simple">
+<li><p>Check to makes sure you have the NVIDA CUDA Toolkit installed by running the <code class="docutils literal notranslate"><span class="pre">nvcc</span></code> command (the CUDA compiler) from the terminal. If this command is not found then you need to install it with something like <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">nvidia-cuda-toolkit</span></code>.</p></li>
+<li><p>Once the NVIDA CUDA Toolkit is installed you need to set the CUDA_PATH environment variable. If <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">nvcc</span></code> produces <code class="docutils literal notranslate"><span class="pre">/usr/bin/nvcc</span></code> then you can run <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">CUDA_PATH=/usr</span></code>.</p></li>
+<li><p>Build SHAP with CUDA support by cloning the shap repo using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/shap/shap.git</span></code> then running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--user</span></code>.</p></li>
+</ol>
+<p>If you run into issues with the above instructions, make sure you don’t still have an old version of SHAP around by ensuring <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">shap</span></code> fails before you start the new install.</p>
+<p>Below we domonstrate how to use the GPUTree explainer on a simple adult income classification dataset and model.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xgboost</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+
+<span class="c1"># get a dataset on income prediction</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">adult</span><span class="p">()</span>
+
+<span class="c1"># train an XGBoost model (but any other model type would also work)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+XGBClassifier(base_score=0.5, booster=&#39;gbtree&#39;, colsample_bylevel=1,
+              colsample_bynode=1, colsample_bytree=1, gamma=0, gpu_id=-1,
+              importance_type=&#39;gain&#39;, interaction_constraints=&#39;&#39;,
+              learning_rate=0.300000012, max_delta_step=0, max_depth=6,
+              min_child_weight=1, missing=nan, monotone_constraints=&#39;()&#39;,
+              n_estimators=100, n_jobs=0, num_parallel_tree=1, random_state=0,
+              reg_alpha=0, reg_lambda=1, scale_pos_weight=1, subsample=1,
+              tree_method=&#39;exact&#39;, validate_parameters=1, verbosity=None)
+</pre></div></div>
+</div>
+<section id="Tabular-data-with-independent-(Shapley-value)-masking">
+<h2>Tabular data with independent (Shapley value) masking<a class="headerlink" href="#Tabular-data-with-independent-(Shapley-value)-masking" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># build a Permutation explainer and explain the model predictions on the given dataset</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">explainers</span><span class="o">.</span><span class="n">GPUTree</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># get just the explanations for the positive class</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">shap_values</span>
+</pre></div>
+</div>
+</div>
+<section id="Plot-a-global-summary">
+<h3>Plot a global summary<a class="headerlink" href="#Plot-a-global-summary" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_explainers_GPUTree_5_0.png" class="no-scaled-link" src="../../../_images/example_notebooks_api_examples_explainers_GPUTree_5_0.png" style="width: 623px; height: 402px;" />
+</div>
+</div>
+</section>
+<section id="Plot-a-single-instance">
+<h3>Plot a single instance<a class="headerlink" href="#Plot-a-single-instance" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">waterfall</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_explainers_GPUTree_7_0.png" class="no-scaled-link" src="../../../_images/example_notebooks_api_examples_explainers_GPUTree_7_0.png" style="width: 603px; height: 422px;" />
+</div>
+</div>
+</section>
+</section>
+<section id="Interaction-values">
+<h2>Interaction values<a class="headerlink" href="#Interaction-values" title="Link to this heading"></a></h2>
+<p>GPUTree support the Shapley taylor interaction values (an improvement over what the Tree explainer original provided).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">explainer2</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">explainers</span><span class="o">.</span><span class="n">GPUTree</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_perturbation</span><span class="o">=</span><span class="s2">&quot;tree_path_dependent&quot;</span><span class="p">)</span>
+<span class="n">interaction_shap_values</span> <span class="o">=</span> <span class="n">explainer2</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">interactions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">interaction_shap_values</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_explainers_GPUTree_10_0.png" class="no-scaled-link" src="../../../_images/example_notebooks_api_examples_explainers_GPUTree_10_0.png" style="width: 891px; height: 320px;" />
+</div>
+</div>
+<hr><p>Have an idea for more helpful examples? Pull requests that add to this documentation notebook are encouraged!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Exact.html" class="btn btn-neutral float-left" title="Exact explainer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Permutation.html" class="btn btn-neutral float-right" title="Permutation explainer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

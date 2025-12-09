@@ -1,0 +1,6 @@
+﻿shap.utils.make\_masks
+======================
+
+.. currentmodule:: shap.utils
+
+.. autofunction:: make_masks

@@ -1,0 +1,6 @@
+﻿shap.utils.show\_progress
+=========================
+
+.. currentmodule:: shap.utils
+
+.. autofunction:: show_progress

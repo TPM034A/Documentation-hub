@@ -1,0 +1,801 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-Input Text Explanation: Textual Entailment with Facebook BART &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Image examples" href="../../../image_examples.html" />
+    <link rel="prev" title="Text to Multiclass Explanation: Language Modeling Example" href="../language_modelling/Language%20Modeling%20Explanation%20Demo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../text_examples.html">Text examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../text_examples.html#sentiment-analysis">Sentiment analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../text_examples.html#translation">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../text_examples.html#text-generation">Text generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../text_examples.html#summarization">Summarization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../text_examples.html#question-answering">Question Answering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../text_examples.html#language-modelling">Language modelling</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../text_examples.html#text-entailment">Text entailment</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Multi-Input Text Explanation: Textual Entailment with Facebook BART</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Load-model-and-tokenizer">Load model and tokenizer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../text_examples.html">Text examples</a></li>
+      <li class="breadcrumb-item active">Multi-Input Text Explanation: Textual Entailment with Facebook BART</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/text_examples/text_entailment/Textual Entailment Explanation Demo.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Multi-Input-Text-Explanation:-Textual-Entailment-with-Facebook-BART">
+<h1>Multi-Input Text Explanation: Textual Entailment with Facebook BART<a class="headerlink" href="#Multi-Input-Text-Explanation:-Textual-Entailment-with-Facebook-BART" title="Link to this heading"></a></h1>
+<p>This notebook demonstrates how to get explanations for the output of the Facebook BART model trained on the mnli dataset and used for textual entailment. We use an example from the snli dataset due to mnli not being supported in the required environment for shap.</p>
+<p>BART: <a class="reference external" href="https://huggingface.co/facebook/bart-large-mnli">https://huggingface.co/facebook/bart-large-mnli</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForSequenceClassification</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+</pre></div>
+</div>
+</div>
+<section id="Load-model-and-tokenizer">
+<h2>Load model and tokenizer<a class="headerlink" href="#Load-model-and-tokenizer" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;facebook/bart-large-mnli&quot;</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;facebook/bart-large-mnli&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Some weights of the model checkpoint at facebook/bart-large-mnli were not used when initializing BartForSequenceClassification: [&#39;model.encoder.version&#39;, &#39;model.decoder.version&#39;]
+- This IS expected if you are initializing BartForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BartForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;snli&quot;</span><span class="p">)</span>
+<span class="n">snli_label_map</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;entailment&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;neutral&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;contradiction&quot;</span><span class="p">}</span>
+<span class="n">example_ind</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">premise</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="s2">&quot;premise&quot;</span><span class="p">][</span><span class="n">example_ind</span><span class="p">],</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="s2">&quot;hypothesis&quot;</span><span class="p">][</span><span class="n">example_ind</span><span class="p">],</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="s2">&quot;label&quot;</span><span class="p">][</span><span class="n">example_ind</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Premise: &quot;</span> <span class="o">+</span> <span class="n">premise</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hypothesis: &quot;</span> <span class="o">+</span> <span class="n">hypothesis</span><span class="p">)</span>
+<span class="n">true_label</span> <span class="o">=</span> <span class="n">snli_label_map</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The true label is: </span><span class="si">{</span><span class="n">true_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Reusing dataset snli (C:\Users\v-jocelinsu\.cache\huggingface\datasets\snli\plain_text\1.0.0\bb1102591c6230bd78813e229d5dd4c7fbf4fc478cec28f298761eb69e5b537c)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Premise: A boy is jumping on skateboard in the middle of a red bridge.
+Hypothesis: The boy skates down the sidewalk.
+The true label is: contradiction
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test model</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">premise</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">bart_label_map</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;contradiction&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;neutral&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;entailment&quot;</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">bart_label_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> probability: </span><span class="si">{</span><span class="n">probs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+contradiction probability: 99.95%
+neutral probability: 0.03%
+entailment probability: 0.02%
+</pre></div></div>
+</div>
+<section id="Run-shap-values">
+<h3>Run shap values<a class="headerlink" href="#Run-shap-values" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+
+<span class="c1"># wrapper function for model</span>
+<span class="c1"># takes in masked string which is in the form: premise &lt;separator token(s)&gt; hypothesis</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_x</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">_x</span><span class="p">)])</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">encoding</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">val</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct explainer</span>
+<span class="n">bart_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;contradiction&quot;</span><span class="p">,</span> <span class="s2">&quot;neutral&quot;</span><span class="p">,</span> <span class="s2">&quot;entailment&quot;</span><span class="p">]</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">output_names</span><span class="o">=</span><span class="n">bart_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+explainers.Partition is still in an alpha state, so use with caution...
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># encode then decode premise, hypothesis to get concatenated sentences</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">premise</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">)[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">][</span>
+    <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span>
+<span class="p">]</span>  <span class="c1"># ignore the start and end tokens, since tokenizer will naturally add them</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+A boy is jumping on skateboard in the middle of a red bridge.&lt;/s&gt;&lt;/s&gt;The boy skates down the sidewalk.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">([</span><span class="n">decoded</span><span class="p">])</span>  <span class="c1"># wrap input in list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [00:17, 18.00s/it]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+.values =
+array([[[-0.18482581,  0.11629296, -0.05710324],
+        [-0.18482581,  0.11629296, -0.05710324],
+        [-0.18482581,  0.11629296, -0.05710324],
+        [-0.18482581,  0.11629296, -0.05710324],
+        [-0.18482581,  0.11629296, -0.05710324],
+        [-0.18482581,  0.11629296, -0.05710324],
+        [-0.18482581,  0.11629296, -0.05710324],
+        [-0.18482581,  0.11629296, -0.05710324],
+        [ 0.49238822, -0.37113822, -0.48107536],
+        [ 0.49238822, -0.37113822, -0.48107536],
+        [ 0.49238822, -0.37113822, -0.48107536],
+        [ 0.49238822, -0.37113822, -0.48107536],
+        [ 0.65840166, -0.54717401, -0.45434223],
+        [ 0.65840166, -0.54717401, -0.45434223],
+        [ 0.65840166, -0.54717401, -0.45434223],
+        [ 0.65840166, -0.54717401, -0.45434223],
+        [ 0.        ,  0.        ,  0.        ],
+        [ 0.21500799, -0.29488914,  0.00956938],
+        [ 0.21500799, -0.29488914,  0.00956938],
+        [ 0.21500799, -0.29488914,  0.00956938],
+        [ 0.21500799, -0.29488914,  0.00956938],
+        [ 0.88112425, -0.62802847, -0.69218032],
+        [ 0.88112425, -0.62802847, -0.69218032],
+        [ 1.51606662, -1.12249615, -1.38898808],
+        [ 1.51606662, -1.12249615, -1.38898808],
+        [ 0.43230298, -0.19067168, -0.23281629],
+        [ 0.        ,  0.        ,  0.        ]]])
+
+.base_values =
+array([[-1.50853336, -0.49898115, -0.23684637]])
+
+.data =
+array([[&#39;&#39;, &#39;A &#39;, &#39;boy &#39;, &#39;is &#39;, &#39;jumping &#39;, &#39;on &#39;, &#39;skate&#39;, &#39;board &#39;,
+        &#39;in &#39;, &#39;the &#39;, &#39;middle &#39;, &#39;of &#39;, &#39;a &#39;, &#39;red &#39;, &#39;bridge&#39;, &#39;.&#39;,
+        &#39;&lt;/s&gt;&#39;, &#39;&lt;/s&gt;&#39;, &#39;The &#39;, &#39;boy &#39;, &#39;sk&#39;, &#39;ates &#39;, &#39;down &#39;, &#39;the &#39;,
+        &#39;sidewalk&#39;, &#39;.&#39;, &#39;&#39;]], dtype=&#39;&lt;U8&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+</section>
+<section id="Explanation-Visualization">
+<h3>Explanation Visualization<a class="headerlink" href="#Explanation-Visualization" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<br/><b>0th instance:</b><br/></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+    <script>
+        function selectVizType_nmbtewsihdtboerwlsju(selectObject) {
+
+          /* Hide all viz */
+
+            var elements = document.getElementsByClassName("nmbtewsihdtboerwlsju_viz_container")
+          for (var i = 0; i < elements.length; i++){
+              elements[i].style.display = 'none';
+          }
+
+          var value = selectObject.value;
+          if ( value === "saliency-plot" ){
+              document.getElementById('nmbtewsihdtboerwlsju_saliency_plot_container').style.display  = "block";
+          }
+          else if ( value === "heatmap" ) {
+              document.getElementById('nmbtewsihdtboerwlsju_heatmap_container').style.display  = "block";
+          }
+        }
+    </script>
+
+    <html>
+    <div id="nmbtewsihdtboerwlsju_viz_container">
+      <div id="nmbtewsihdtboerwlsju_viz_header" style="padding:15px;border-style:solid;margin:5px;font-family:sans-serif;font-weight:bold;">
+        Visualization Type:
+        <select name="viz_type" id="nmbtewsihdtboerwlsju_viz_type" onchange="selectVizType_nmbtewsihdtboerwlsju(this)">
+          <option value="heatmap" selected="selected">Input/Output - Heatmap</option>
+          <option value="saliency-plot">Saliency Plot</option>
+        </select>
+      </div>
+      <div id="nmbtewsihdtboerwlsju_content" style="padding:15px;border-style:solid;margin:5px;">
+          <div id = "nmbtewsihdtboerwlsju_saliency_plot_container" class="nmbtewsihdtboerwlsju_viz_container" style="display:none">
+
+        <div id="asrqkhtlyspgznzuxowz_saliency_plot" class="asrqkhtlyspgznzuxowz_viz_content">
+            <div style="margin:5px;font-family:sans-serif;font-weight:bold;">
+                <span style="font-size: 20px;"> Saliency Plot </span>
+                <br>
+                x-axis: Output Text
+                <br>
+                y-axis: Input Text
+            </div>
+            <table border = "1" cellpadding = "5" cellspacing = "5" style="overflow-x:scroll;display:block;"><tr><th></th><th>A boy is jumping on skateboard </th><th>in the middle of </th><th>a red bridge.</th><th>&lt;/s&gt;</th><th>&lt;/s&gt;The boy sk</th><th>ates down </th><th>the sidewalk</th><th>.</th><th></th></tr><tr><th>contradiction</th><th style="background:rgba(30.0, 136.0, 229.0, 0.4876213111507228)">-1.479</th><th style="background:rgba(255.0, 13.0, 87.0, 0.6531590413943356)">1.97</th><th style="background:rgba(255.0, 13.0, 87.0, 0.8738760150524857)">2.634</th><th style="background:rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)">0.0</th><th style="background:rgba(255.0, 13.0, 87.0, 0.2826698356110118)">0.86</th><th style="background:rgba(255.0, 13.0, 87.0, 0.5822142998613588)">1.762</th><th style="background:rgba(255.0, 13.0, 87.0, 1.0)">3.032</th><th style="background:rgba(255.0, 13.0, 87.0, 0.14078035254505847)">0.432</th><th style="background:rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)">0.0</th></tr><tr><th>neutral</th><th style="background:rgba(255.0, 13.0, 87.0, 0.306318082788671)">0.93</th><th style="background:rgba(30.0, 136.0, 229.0, 0.4876213111507228)">-1.485</th><th style="background:rgba(30.0, 136.0, 229.0, 0.7241037829273124)">-2.189</th><th style="background:rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)">0.0</th><th style="background:rgba(30.0, 136.0, 229.0, 0.3851455733808674)">-1.18</th><th style="background:rgba(30.0, 136.0, 229.0, 0.41667656961774613)">-1.256</th><th style="background:rgba(30.0, 136.0, 229.0, 0.7398692810457517)">-2.245</th><th style="background:rgba(30.0, 136.0, 229.0, 0.06195286195286191)">-0.191</th><th style="background:rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)">0.0</th></tr><tr><th>entailment</th><th style="background:rgba(30.0, 136.0, 229.0, 0.14866310160427798)">-0.457</th><th style="background:rgba(30.0, 136.0, 229.0, 0.6373935432758963)">-1.924</th><th style="background:rgba(30.0, 136.0, 229.0, 0.597979797979798)">-1.817</th><th style="background:rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)">0.0</th><th style="background:rgba(255.0, 13.0, 87.0, 0.00677361853832443)">0.038</th><th style="background:rgba(30.0, 136.0, 229.0, 0.4560903149138443)">-1.384</th><th style="background:rgba(30.0, 136.0, 229.0, 0.9211725094078036)">-2.778</th><th style="background:rgba(30.0, 136.0, 229.0, 0.06983561101208147)">-0.233</th><th style="background:rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)">0.0</th></tr></table>
+        </div>
+
+          </div>
+
+          <div id = "nmbtewsihdtboerwlsju_heatmap_container" class="nmbtewsihdtboerwlsju_viz_container">
+
+        <div id="wbanqvtvicltjcqgtboe_heatmap" class="wbanqvtvicltjcqgtboe_viz_content">
+          <div id="wbanqvtvicltjcqgtboe_heatmap_header" style="padding:15px;margin:5px;font-family:sans-serif;font-weight:bold;">
+            <div style="display:inline">
+              <span style="font-size: 20px;"> Input/Output - Heatmap </span>
+            </div>
+            <div style="display:inline;float:right">
+              Layout :
+              <select name="alignment" id="wbanqvtvicltjcqgtboe_alignment" onchange="selectAlignment_wbanqvtvicltjcqgtboe(this)">
+                <option value="left-right" selected="selected">Left/Right</option>
+                <option value="top-bottom">Top/Bottom</option>
+              </select>
+            </div>
+          </div>
+          <div id="wbanqvtvicltjcqgtboe_heatmap_content" style="display:flex;">
+            <div id="wbanqvtvicltjcqgtboe_input_container" style="padding:15px;border-style:solid;margin:5px;flex:1;">
+              <div id="wbanqvtvicltjcqgtboe_input_header" style="margin:5px;font-weight:bold;font-family:sans-serif;margin-bottom:10px">
+                Input Text
+              </div>
+              <div id="wbanqvtvicltjcqgtboe_input_content" style="margin:5px;font-family:sans-serif;">
+                  <div id="wbanqvtvicltjcqgtboe_input_node_52_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_52_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_52_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_51_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_51_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_51_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_49_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_49_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_49_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_46_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_46_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_46_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_39_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_39_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_39_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_27_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_27_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_27_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_0_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_0_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_0_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" ></div></div><div id="wbanqvtvicltjcqgtboe_input_node_1_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_1_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_1_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >A </div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_28_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_28_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_28_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_2_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_2_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_2_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >boy </div></div><div id="wbanqvtvicltjcqgtboe_input_node_3_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_3_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_3_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >is </div></div></div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_40_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_40_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_40_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_29_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_29_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_29_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_4_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_4_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_4_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >jumping </div></div><div id="wbanqvtvicltjcqgtboe_input_node_5_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_5_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_5_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >on </div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_30_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_30_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_30_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_6_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_6_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_6_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >skate</div></div><div id="wbanqvtvicltjcqgtboe_input_node_7_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_7_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_7_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >board </div></div></div></div></div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_47_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_47_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_47_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_41_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_41_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_41_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_31_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_31_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_31_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_8_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_8_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_8_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >in </div></div><div id="wbanqvtvicltjcqgtboe_input_node_9_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_9_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_9_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >the </div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_32_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_32_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_32_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_10_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_10_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_10_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >middle </div></div><div id="wbanqvtvicltjcqgtboe_input_node_11_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_11_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_11_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >of </div></div></div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_44_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_44_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_44_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_38_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_38_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_38_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_33_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_33_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_33_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_12_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_12_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_12_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >a </div></div><div id="wbanqvtvicltjcqgtboe_input_node_13_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_13_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_13_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >red </div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_14_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_14_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_14_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >bridge</div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_15_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_15_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_15_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >.</div></div></div></div></div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_16_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_16_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_16_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >&lt;/s&gt;</div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_50_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_50_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_50_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_48_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_48_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_48_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_42_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_42_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_42_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_34_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_34_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_34_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_17_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_17_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_17_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >&lt;/s&gt;</div></div><div id="wbanqvtvicltjcqgtboe_input_node_18_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_18_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_18_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >The </div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_35_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_35_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_35_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_19_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_19_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_19_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >boy </div></div><div id="wbanqvtvicltjcqgtboe_input_node_20_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_20_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_20_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >sk</div></div></div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_45_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_45_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_45_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_43_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_43_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_43_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_36_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_36_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_36_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_21_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_21_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_21_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >ates </div></div><div id="wbanqvtvicltjcqgtboe_input_node_22_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_22_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_22_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >down </div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_37_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_37_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_37_content" style="display:inline;"><div id="wbanqvtvicltjcqgtboe_input_node_23_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_23_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_23_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >the </div></div><div id="wbanqvtvicltjcqgtboe_input_node_24_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_24_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_24_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >sidewalk</div></div></div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_25_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_25_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_25_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >.</div></div></div></div></div></div><div id="wbanqvtvicltjcqgtboe_input_node_26_container" style="display:inline;text-align:center"><div id="wbanqvtvicltjcqgtboe_input_node_26_label" style="display:none; padding-top: 0px; font-size:12px;"></div><div id="wbanqvtvicltjcqgtboe_input_node_26_content"style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" ></div></div></div></div></div></div>
+              </div>
+            </div>
+            <div id="wbanqvtvicltjcqgtboe_output_container" style="padding:15px;border-style:solid;margin:5px;flex:1;">
+              <div id="wbanqvtvicltjcqgtboe_output_header" style="margin:5px;font-weight:bold;font-family:sans-serif;margin-bottom:10px">
+                Output Text
+              </div>
+              <div id="wbanqvtvicltjcqgtboe_output_content" style="margin:5px;font-family:sans-serif;">
+                  <div style='display:inline; text-align:center;'><div id='wbanqvtvicltjcqgtboe_output_flat_value_label_0'style='display:none;color: #999; padding-top: 0px; font-size:12px;'></div><div id='wbanqvtvicltjcqgtboe_output_flat_token_0'style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >contradiction </div></div><div style='display:inline; text-align:center;'><div id='wbanqvtvicltjcqgtboe_output_flat_value_label_1'style='display:none;color: #999; padding-top: 0px; font-size:12px;'></div><div id='wbanqvtvicltjcqgtboe_output_flat_token_1'style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >neutral </div></div><div style='display:inline; text-align:center;'><div id='wbanqvtvicltjcqgtboe_output_flat_value_label_2'style='display:none;color: #999; padding-top: 0px; font-size:12px;'></div><div id='wbanqvtvicltjcqgtboe_output_flat_token_2'style='display: inline; background:transparent; border-radius: 3px; padding: 0px;cursor: default;cursor: pointer;'onmouseover="onMouseHoverFlat_wbanqvtvicltjcqgtboe(this.id)" onmouseout="onMouseOutFlat_wbanqvtvicltjcqgtboe(this.id)" onclick="onMouseClickFlat_wbanqvtvicltjcqgtboe(this.id)" >entailment </div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+            function selectAlignment_wbanqvtvicltjcqgtboe(selectObject) {
+                var value = selectObject.value;
+                if ( value === "left-right" ){
+                  document.getElementById('wbanqvtvicltjcqgtboe_heatmap_content').style.display  = "flex";
+                }
+                else if ( value === "top-bottom" ) {
+                  document.getElementById('wbanqvtvicltjcqgtboe_heatmap_content').style.display  = "inline";
+                }
+            }
+
+            var wbanqvtvicltjcqgtboe_heatmap_flat_state = null;
+
+            function onMouseHoverFlat_wbanqvtvicltjcqgtboe(id) {
+                if (wbanqvtvicltjcqgtboe_heatmap_flat_state === null) {
+                    setBackgroundColors_wbanqvtvicltjcqgtboe(id);
+                    document.getElementById(id).style.backgroundColor  = "grey";
+                }
+
+                if (getIdSide_wbanqvtvicltjcqgtboe(id) === 'input' && getIdSide_wbanqvtvicltjcqgtboe(wbanqvtvicltjcqgtboe_heatmap_flat_state) === 'output'){
+
+                    label_content_id = token_id_to_node_id_mapping_wbanqvtvicltjcqgtboe[wbanqvtvicltjcqgtboe_heatmap_flat_state][id];
+
+                    if (document.getElementById(label_content_id).previousElementSibling.style.display == 'none'){
+                        document.getElementById(label_content_id).style.textShadow = "0px 0px 1px #000000";
+                    }
+
+                }
+
+            }
+
+            function onMouseOutFlat_wbanqvtvicltjcqgtboe(id) {
+                if (wbanqvtvicltjcqgtboe_heatmap_flat_state === null) {
+                    cleanValuesAndColors_wbanqvtvicltjcqgtboe(id);
+                    document.getElementById(id).style.backgroundColor  = "transparent";
+                }
+
+                if (getIdSide_wbanqvtvicltjcqgtboe(id) === 'input' && getIdSide_wbanqvtvicltjcqgtboe(wbanqvtvicltjcqgtboe_heatmap_flat_state) === 'output'){
+
+                    label_content_id = token_id_to_node_id_mapping_wbanqvtvicltjcqgtboe[wbanqvtvicltjcqgtboe_heatmap_flat_state][id];
+
+                    if (document.getElementById(label_content_id).previousElementSibling.style.display == 'none'){
+                        document.getElementById(label_content_id).style.textShadow = "inherit";
+                    }
+
+                }
+
+            }
+
+            function onMouseClickFlat_wbanqvtvicltjcqgtboe(id) {
+                if (wbanqvtvicltjcqgtboe_heatmap_flat_state === id) {
+
+                    // If the clicked token was already selected
+
+                    document.getElementById(id).style.backgroundColor  = "transparent";
+                    cleanValuesAndColors_wbanqvtvicltjcqgtboe(id);
+                    wbanqvtvicltjcqgtboe_heatmap_flat_state = null;
+                }
+                else {
+                    if (wbanqvtvicltjcqgtboe_heatmap_flat_state === null) {
+
+                        // No token previously selected, new token clicked on
+
+                        cleanValuesAndColors_wbanqvtvicltjcqgtboe(id)
+                        wbanqvtvicltjcqgtboe_heatmap_flat_state = id;
+                        document.getElementById(id).style.backgroundColor  = "grey";
+                        setLabelValues_wbanqvtvicltjcqgtboe(id);
+                        setBackgroundColors_wbanqvtvicltjcqgtboe(id);
+                    }
+                    else {
+                        if (getIdSide_wbanqvtvicltjcqgtboe(wbanqvtvicltjcqgtboe_heatmap_flat_state) === getIdSide_wbanqvtvicltjcqgtboe(id)) {
+
+                            // User clicked a token on the same side as the currently selected token
+
+                            cleanValuesAndColors_wbanqvtvicltjcqgtboe(wbanqvtvicltjcqgtboe_heatmap_flat_state)
+                            document.getElementById(wbanqvtvicltjcqgtboe_heatmap_flat_state).style.backgroundColor  = "transparent";
+                            wbanqvtvicltjcqgtboe_heatmap_flat_state = id;
+                            document.getElementById(id).style.backgroundColor  = "grey";
+                            setLabelValues_wbanqvtvicltjcqgtboe(id);
+                            setBackgroundColors_wbanqvtvicltjcqgtboe(id);
+                        }
+                        else{
+
+                            if (getIdSide_wbanqvtvicltjcqgtboe(id) === 'input') {
+                                label_content_id = token_id_to_node_id_mapping_wbanqvtvicltjcqgtboe[wbanqvtvicltjcqgtboe_heatmap_flat_state][id];
+
+                                if (document.getElementById(label_content_id).previousElementSibling.style.display == 'none') {
+                                    document.getElementById(label_content_id).previousElementSibling.style.display = 'block';
+                                    document.getElementById(label_content_id).parentNode.style.display = 'inline-block';
+                                    document.getElementById(label_content_id).style.textShadow = "0px 0px 1px #000000";
+                                  }
+                                else {
+                                    document.getElementById(label_content_id).previousElementSibling.style.display = 'none';
+                                    document.getElementById(label_content_id).parentNode.style.display = 'inline';
+                                    document.getElementById(label_content_id).style.textShadow  = "inherit";
+                                  }
+
+                            }
+                            else {
+                                if (document.getElementById(id).previousElementSibling.style.display == 'none') {
+                                    document.getElementById(id).previousElementSibling.style.display = 'block';
+                                    document.getElementById(id).parentNode.style.display = 'inline-block';
+                                  }
+                                else {
+                                    document.getElementById(id).previousElementSibling.style.display = 'none';
+                                    document.getElementById(id).parentNode.style.display = 'inline';
+                                  }
+                            }
+
+                        }
+                    }
+
+                }
+            }
+
+            function setLabelValues_wbanqvtvicltjcqgtboe(id) {
+                for(const token in shap_values_wbanqvtvicltjcqgtboe[id]){
+                    document.getElementById(token).innerHTML = shap_values_wbanqvtvicltjcqgtboe[id][token];
+                    document.getElementById(token).nextElementSibling.title = 'SHAP Value : ' + shap_values_wbanqvtvicltjcqgtboe[id][token];
+                }
+            }
+
+            function setBackgroundColors_wbanqvtvicltjcqgtboe(id) {
+                for(const token in colors_wbanqvtvicltjcqgtboe[id]){
+                    document.getElementById(token).style.backgroundColor  = colors_wbanqvtvicltjcqgtboe[id][token];
+                }
+            }
+
+            function cleanValuesAndColors_wbanqvtvicltjcqgtboe(id) {
+                for(const token in shap_values_wbanqvtvicltjcqgtboe[id]){
+                    document.getElementById(token).innerHTML = "";
+                    document.getElementById(token).nextElementSibling.title = "";
+                }
+                 for(const token in colors_wbanqvtvicltjcqgtboe[id]){
+                    document.getElementById(token).style.backgroundColor  = "transparent";
+                    document.getElementById(token).previousElementSibling.style.display = 'none';
+                    document.getElementById(token).parentNode.style.display = 'inline';
+                    document.getElementById(token).style.textShadow  = "inherit";
+                }
+            }
+
+            function getIdSide_wbanqvtvicltjcqgtboe(id) {
+                if (id === null) {
+                    return 'null'
+                }
+                return id.split("_")[1];
+            }
+        </script>
+    <script> colors_wbanqvtvicltjcqgtboe = {"wbanqvtvicltjcqgtboe_input_node_0_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(30.0, 136.0, 229.0, 0.05407011289364222)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(255.0, 13.0, 87.0, 0.030421865715983164)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.014656367597544028)"}, "wbanqvtvicltjcqgtboe_input_node_1_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(30.0, 136.0, 229.0, 0.05407011289364222)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(255.0, 13.0, 87.0, 0.030421865715983164)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.014656367597544028)"}, "wbanqvtvicltjcqgtboe_input_node_2_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(30.0, 136.0, 229.0, 0.05407011289364222)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(255.0, 13.0, 87.0, 0.030421865715983164)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.014656367597544028)"}, "wbanqvtvicltjcqgtboe_input_node_3_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(30.0, 136.0, 229.0, 0.05407011289364222)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(255.0, 13.0, 87.0, 0.030421865715983164)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.014656367597544028)"}, "wbanqvtvicltjcqgtboe_input_node_4_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(30.0, 136.0, 229.0, 0.05407011289364222)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(255.0, 13.0, 87.0, 0.030421865715983164)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.014656367597544028)"}, "wbanqvtvicltjcqgtboe_input_node_5_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(30.0, 136.0, 229.0, 0.05407011289364222)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(255.0, 13.0, 87.0, 0.030421865715983164)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.014656367597544028)"}, "wbanqvtvicltjcqgtboe_input_node_6_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(30.0, 136.0, 229.0, 0.05407011289364222)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(255.0, 13.0, 87.0, 0.030421865715983164)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.014656367597544028)"}, "wbanqvtvicltjcqgtboe_input_node_7_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(30.0, 136.0, 229.0, 0.05407011289364222)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(255.0, 13.0, 87.0, 0.030421865715983164)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.014656367597544028)"}, "wbanqvtvicltjcqgtboe_input_node_8_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.16442859972271742)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.11713210536739943)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.1565458506634977)"}, "wbanqvtvicltjcqgtboe_input_node_9_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.16442859972271742)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.11713210536739943)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.1565458506634977)"}, "wbanqvtvicltjcqgtboe_input_node_10_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.16442859972271742)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.11713210536739943)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.1565458506634977)"}, "wbanqvtvicltjcqgtboe_input_node_11_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.16442859972271742)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.11713210536739943)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.1565458506634977)"}, "wbanqvtvicltjcqgtboe_input_node_12_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.219607843137255)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.18019409784115656)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.14866310160427798)"}, "wbanqvtvicltjcqgtboe_input_node_13_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.219607843137255)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.18019409784115656)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.14866310160427798)"}, "wbanqvtvicltjcqgtboe_input_node_14_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.219607843137255)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.18019409784115656)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.14866310160427798)"}, "wbanqvtvicltjcqgtboe_input_node_15_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.219607843137255)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.18019409784115656)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.14866310160427798)"}, "wbanqvtvicltjcqgtboe_input_node_16_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)"}, "wbanqvtvicltjcqgtboe_input_node_17_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.06983561101208159)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.09348385818974048)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)"}, "wbanqvtvicltjcqgtboe_input_node_18_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.06983561101208159)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.09348385818974048)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)"}, "wbanqvtvicltjcqgtboe_input_node_19_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.06983561101208159)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.09348385818974048)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)"}, "wbanqvtvicltjcqgtboe_input_node_20_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.06983561101208159)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.09348385818974048)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)"}, "wbanqvtvicltjcqgtboe_input_node_21_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.29055258467023165)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.2038423450188156)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.22749059219647463)"}, "wbanqvtvicltjcqgtboe_input_node_22_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.29055258467023165)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.2038423450188156)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.22749059219647463)"}, "wbanqvtvicltjcqgtboe_input_node_23_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.5112695583283818)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.3772628243216478)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.46397306397306387)"}, "wbanqvtvicltjcqgtboe_input_node_24_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.5112695583283818)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.3772628243216478)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.46397306397306387)"}, "wbanqvtvicltjcqgtboe_input_node_25_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(255.0, 13.0, 87.0, 0.14078035254505847)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(30.0, 136.0, 229.0, 0.06195286195286191)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(30.0, 136.0, 229.0, 0.06983561101208147)"}, "wbanqvtvicltjcqgtboe_input_node_26_content": {"wbanqvtvicltjcqgtboe_output_flat_token_0": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)", "wbanqvtvicltjcqgtboe_output_flat_token_1": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)", "wbanqvtvicltjcqgtboe_output_flat_token_2": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)"}, "wbanqvtvicltjcqgtboe_output_flat_token_0": {"wbanqvtvicltjcqgtboe_input_node_46_content": "rgba(30.0, 136.0, 229.0, 0.4955040602099425)", "wbanqvtvicltjcqgtboe_input_node_41_content": "rgba(255.0, 13.0, 87.0, 0.6610417904535549)", "wbanqvtvicltjcqgtboe_input_node_44_content": "rgba(255.0, 13.0, 87.0, 0.8817587641117054)", "wbanqvtvicltjcqgtboe_input_node_16_content": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)", "wbanqvtvicltjcqgtboe_input_node_42_content": "rgba(255.0, 13.0, 87.0, 0.2826698356110118)", "wbanqvtvicltjcqgtboe_input_node_36_content": "rgba(255.0, 13.0, 87.0, 0.5743315508021392)", "wbanqvtvicltjcqgtboe_input_node_37_content": "rgba(255.0, 13.0, 87.0, 1.0)", "wbanqvtvicltjcqgtboe_input_node_25_content": "rgba(255.0, 13.0, 87.0, 0.17231134878193693)", "wbanqvtvicltjcqgtboe_input_node_26_content": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)"}, "wbanqvtvicltjcqgtboe_output_flat_token_1": {"wbanqvtvicltjcqgtboe_input_node_46_content": "rgba(255.0, 13.0, 87.0, 0.306318082788671)", "wbanqvtvicltjcqgtboe_input_node_41_content": "rgba(30.0, 136.0, 229.0, 0.4955040602099425)", "wbanqvtvicltjcqgtboe_input_node_44_content": "rgba(30.0, 136.0, 229.0, 0.731986531986532)", "wbanqvtvicltjcqgtboe_input_node_16_content": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)", "wbanqvtvicltjcqgtboe_input_node_42_content": "rgba(30.0, 136.0, 229.0, 0.39302832244008723)", "wbanqvtvicltjcqgtboe_input_node_36_content": "rgba(30.0, 136.0, 229.0, 0.4324420677361853)", "wbanqvtvicltjcqgtboe_input_node_37_content": "rgba(30.0, 136.0, 229.0, 0.7714002772826302)", "wbanqvtvicltjcqgtboe_input_node_25_content": "rgba(30.0, 136.0, 229.0, 0.03042186571598325)", "wbanqvtvicltjcqgtboe_input_node_26_content": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)"}, "wbanqvtvicltjcqgtboe_output_flat_token_2": {"wbanqvtvicltjcqgtboe_input_node_46_content": "rgba(30.0, 136.0, 229.0, 0.14866310160427798)", "wbanqvtvicltjcqgtboe_input_node_41_content": "rgba(30.0, 136.0, 229.0, 0.6452762923351159)", "wbanqvtvicltjcqgtboe_input_node_44_content": "rgba(30.0, 136.0, 229.0, 0.6058625470390175)", "wbanqvtvicltjcqgtboe_input_node_16_content": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)", "wbanqvtvicltjcqgtboe_input_node_42_content": "rgba(255.0, 13.0, 87.0, 0.00677361853832443)", "wbanqvtvicltjcqgtboe_input_node_36_content": "rgba(30.0, 136.0, 229.0, 0.42455931867696567)", "wbanqvtvicltjcqgtboe_input_node_37_content": "rgba(30.0, 136.0, 229.0, 0.8896415131709249)", "wbanqvtvicltjcqgtboe_input_node_25_content": "rgba(30.0, 136.0, 229.0, 0.1565458506634977)", "wbanqvtvicltjcqgtboe_input_node_26_content": "rgba(230.2941176470614, 26.505882352939775, 102.59215686274348, 0.0)"}}
+ shap_values_wbanqvtvicltjcqgtboe = {"wbanqvtvicltjcqgtboe_input_node_0_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": -0.185, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.116, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.057}, "wbanqvtvicltjcqgtboe_input_node_1_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": -0.185, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.116, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.057}, "wbanqvtvicltjcqgtboe_input_node_2_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": -0.185, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.116, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.057}, "wbanqvtvicltjcqgtboe_input_node_3_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": -0.185, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.116, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.057}, "wbanqvtvicltjcqgtboe_input_node_4_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": -0.185, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.116, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.057}, "wbanqvtvicltjcqgtboe_input_node_5_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": -0.185, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.116, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.057}, "wbanqvtvicltjcqgtboe_input_node_6_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": -0.185, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.116, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.057}, "wbanqvtvicltjcqgtboe_input_node_7_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": -0.185, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.116, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.057}, "wbanqvtvicltjcqgtboe_input_node_8_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.492, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.371, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.481}, "wbanqvtvicltjcqgtboe_input_node_9_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.492, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.371, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.481}, "wbanqvtvicltjcqgtboe_input_node_10_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.492, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.371, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.481}, "wbanqvtvicltjcqgtboe_input_node_11_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.492, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.371, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.481}, "wbanqvtvicltjcqgtboe_input_node_12_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.658, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.547, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.454}, "wbanqvtvicltjcqgtboe_input_node_13_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.658, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.547, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.454}, "wbanqvtvicltjcqgtboe_input_node_14_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.658, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.547, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.454}, "wbanqvtvicltjcqgtboe_input_node_15_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.658, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.547, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.454}, "wbanqvtvicltjcqgtboe_input_node_16_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.0, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.0, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": 0.0}, "wbanqvtvicltjcqgtboe_input_node_17_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.215, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.295, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": 0.01}, "wbanqvtvicltjcqgtboe_input_node_18_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.215, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.295, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": 0.01}, "wbanqvtvicltjcqgtboe_input_node_19_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.215, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.295, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": 0.01}, "wbanqvtvicltjcqgtboe_input_node_20_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.215, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.295, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": 0.01}, "wbanqvtvicltjcqgtboe_input_node_21_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.881, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.628, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.692}, "wbanqvtvicltjcqgtboe_input_node_22_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.881, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.628, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.692}, "wbanqvtvicltjcqgtboe_input_node_23_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 1.516, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -1.122, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -1.389}, "wbanqvtvicltjcqgtboe_input_node_24_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 1.516, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -1.122, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -1.389}, "wbanqvtvicltjcqgtboe_input_node_25_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.432, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": -0.191, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": -0.233}, "wbanqvtvicltjcqgtboe_input_node_26_content": {"wbanqvtvicltjcqgtboe_output_flat_value_label_0": 0.0, "wbanqvtvicltjcqgtboe_output_flat_value_label_1": 0.0, "wbanqvtvicltjcqgtboe_output_flat_value_label_2": 0.0}, "wbanqvtvicltjcqgtboe_output_flat_token_0": {"wbanqvtvicltjcqgtboe_input_node_46_label": "-1.479/8", "wbanqvtvicltjcqgtboe_input_node_41_label": "1.97/4", "wbanqvtvicltjcqgtboe_input_node_44_label": "2.634/4", "wbanqvtvicltjcqgtboe_input_node_16_label": "0.0", "wbanqvtvicltjcqgtboe_input_node_42_label": "0.86/4", "wbanqvtvicltjcqgtboe_input_node_36_label": "1.714/2", "wbanqvtvicltjcqgtboe_input_node_37_label": "2.984/2", "wbanqvtvicltjcqgtboe_input_node_25_label": "0.528", "wbanqvtvicltjcqgtboe_input_node_26_label": "0.0"}, "wbanqvtvicltjcqgtboe_output_flat_token_1": {"wbanqvtvicltjcqgtboe_input_node_46_label": "0.93/8", "wbanqvtvicltjcqgtboe_input_node_41_label": "-1.485/4", "wbanqvtvicltjcqgtboe_input_node_44_label": "-2.189/4", "wbanqvtvicltjcqgtboe_input_node_16_label": "0.0", "wbanqvtvicltjcqgtboe_input_node_42_label": "-1.18/4", "wbanqvtvicltjcqgtboe_input_node_36_label": "-1.301/2", "wbanqvtvicltjcqgtboe_input_node_37_label": "-2.29/2", "wbanqvtvicltjcqgtboe_input_node_25_label": "-0.102", "wbanqvtvicltjcqgtboe_input_node_26_label": "0.0"}, "wbanqvtvicltjcqgtboe_output_flat_token_2": {"wbanqvtvicltjcqgtboe_input_node_46_label": "-0.457/8", "wbanqvtvicltjcqgtboe_input_node_41_label": "-1.924/4", "wbanqvtvicltjcqgtboe_input_node_44_label": "-1.817/4", "wbanqvtvicltjcqgtboe_input_node_16_label": "0.0", "wbanqvtvicltjcqgtboe_input_node_42_label": "0.038/4", "wbanqvtvicltjcqgtboe_input_node_36_label": "-1.259/2", "wbanqvtvicltjcqgtboe_input_node_37_label": "-2.653/2", "wbanqvtvicltjcqgtboe_input_node_25_label": "-0.483", "wbanqvtvicltjcqgtboe_input_node_26_label": "0.0"}}
+ token_id_to_node_id_mapping_wbanqvtvicltjcqgtboe = {"wbanqvtvicltjcqgtboe_output_flat_token_0": {"wbanqvtvicltjcqgtboe_input_node_0_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_1_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_2_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_3_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_4_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_5_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_6_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_7_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_8_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_9_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_10_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_11_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_12_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_13_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_14_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_15_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_16_content": "wbanqvtvicltjcqgtboe_input_node_16_content", "wbanqvtvicltjcqgtboe_input_node_17_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_18_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_19_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_20_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_21_content": "wbanqvtvicltjcqgtboe_input_node_36_content", "wbanqvtvicltjcqgtboe_input_node_22_content": "wbanqvtvicltjcqgtboe_input_node_36_content", "wbanqvtvicltjcqgtboe_input_node_23_content": "wbanqvtvicltjcqgtboe_input_node_37_content", "wbanqvtvicltjcqgtboe_input_node_24_content": "wbanqvtvicltjcqgtboe_input_node_37_content", "wbanqvtvicltjcqgtboe_input_node_25_content": "wbanqvtvicltjcqgtboe_input_node_25_content", "wbanqvtvicltjcqgtboe_input_node_26_content": "wbanqvtvicltjcqgtboe_input_node_26_content"}, "wbanqvtvicltjcqgtboe_output_flat_token_1": {"wbanqvtvicltjcqgtboe_input_node_0_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_1_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_2_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_3_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_4_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_5_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_6_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_7_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_8_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_9_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_10_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_11_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_12_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_13_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_14_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_15_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_16_content": "wbanqvtvicltjcqgtboe_input_node_16_content", "wbanqvtvicltjcqgtboe_input_node_17_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_18_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_19_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_20_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_21_content": "wbanqvtvicltjcqgtboe_input_node_36_content", "wbanqvtvicltjcqgtboe_input_node_22_content": "wbanqvtvicltjcqgtboe_input_node_36_content", "wbanqvtvicltjcqgtboe_input_node_23_content": "wbanqvtvicltjcqgtboe_input_node_37_content", "wbanqvtvicltjcqgtboe_input_node_24_content": "wbanqvtvicltjcqgtboe_input_node_37_content", "wbanqvtvicltjcqgtboe_input_node_25_content": "wbanqvtvicltjcqgtboe_input_node_25_content", "wbanqvtvicltjcqgtboe_input_node_26_content": "wbanqvtvicltjcqgtboe_input_node_26_content"}, "wbanqvtvicltjcqgtboe_output_flat_token_2": {"wbanqvtvicltjcqgtboe_input_node_0_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_1_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_2_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_3_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_4_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_5_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_6_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_7_content": "wbanqvtvicltjcqgtboe_input_node_46_content", "wbanqvtvicltjcqgtboe_input_node_8_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_9_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_10_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_11_content": "wbanqvtvicltjcqgtboe_input_node_41_content", "wbanqvtvicltjcqgtboe_input_node_12_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_13_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_14_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_15_content": "wbanqvtvicltjcqgtboe_input_node_44_content", "wbanqvtvicltjcqgtboe_input_node_16_content": "wbanqvtvicltjcqgtboe_input_node_16_content", "wbanqvtvicltjcqgtboe_input_node_17_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_18_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_19_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_20_content": "wbanqvtvicltjcqgtboe_input_node_42_content", "wbanqvtvicltjcqgtboe_input_node_21_content": "wbanqvtvicltjcqgtboe_input_node_36_content", "wbanqvtvicltjcqgtboe_input_node_22_content": "wbanqvtvicltjcqgtboe_input_node_36_content", "wbanqvtvicltjcqgtboe_input_node_23_content": "wbanqvtvicltjcqgtboe_input_node_37_content", "wbanqvtvicltjcqgtboe_input_node_24_content": "wbanqvtvicltjcqgtboe_input_node_37_content", "wbanqvtvicltjcqgtboe_input_node_25_content": "wbanqvtvicltjcqgtboe_input_node_25_content", "wbanqvtvicltjcqgtboe_input_node_26_content": "wbanqvtvicltjcqgtboe_input_node_26_content"}}
+</script>
+
+          </div>
+      </div>
+    </div>
+    </html></div>
+</div>
+</section>
+<section id="Input-Partition-Tree---Dendrogram">
+<h3>Input Partition Tree - Dendrogram<a class="headerlink" href="#Input-Partition-Tree---Dendrogram" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">dendrogram</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="o">.</span><span class="n">clustering</span>
+<span class="n">Z</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10</span>  <span class="c1"># last row&#39;s distance is extremely large, so make it a more reasonable value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 0.  1. 12.  2.]
+ [ 2.  3. 12.  2.]
+ [ 4.  5. 12.  2.]
+ [ 6.  7. 12.  2.]
+ [ 8.  9. 12.  2.]
+ [10. 11. 12.  2.]
+ [12. 13. 12.  2.]
+ [17. 18. 12.  2.]
+ [19. 20. 12.  2.]
+ [21. 22. 12.  2.]
+ [23. 24. 12.  2.]
+ [33. 14. 13.  3.]
+ [27. 28. 14.  4.]
+ [29. 30. 14.  4.]
+ [31. 32. 14.  4.]
+ [34. 35. 14.  4.]
+ [36. 37. 14.  4.]
+ [38. 15. 15.  4.]
+ [43. 25. 16.  5.]
+ [39. 40. 18.  8.]
+ [41. 44. 18.  8.]
+ [42. 45. 19.  9.]
+ [46. 47. 26. 16.]
+ [48. 26. 40. 10.]
+ [49. 16. 47. 17.]
+ [51. 50. 57. 27.]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels_arr</span> <span class="o">=</span> <span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+
+<span class="c1"># # clean labels of unusal characters (only for slow tokenizer, if use_fast=False)</span>
+<span class="c1"># labels_arr = []</span>
+<span class="c1"># for token in shap_values[0].data:</span>
+<span class="c1">#     if token[0] == &#39;Ġ&#39;:</span>
+<span class="c1">#         labels_arr.append(token[1:])</span>
+<span class="c1">#     else:</span>
+<span class="c1">#         labels_arr.append(token)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">labels_arr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;&#39; &#39;A &#39; &#39;boy &#39; &#39;is &#39; &#39;jumping &#39; &#39;on &#39; &#39;skate&#39; &#39;board &#39; &#39;in &#39; &#39;the &#39;
+ &#39;middle &#39; &#39;of &#39; &#39;a &#39; &#39;red &#39; &#39;bridge&#39; &#39;.&#39; &#39;&lt;/s&gt;&#39; &#39;&lt;/s&gt;&#39; &#39;The &#39; &#39;boy &#39; &#39;sk&#39;
+ &#39;ates &#39; &#39;down &#39; &#39;the &#39; &#39;sidewalk&#39; &#39;.&#39; &#39;&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">dn</span> <span class="o">=</span> <span class="n">dendrogram</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels_arr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_text_examples_text_entailment_Textual_Entailment_Explanation_Demo_18_0.png" src="../../../_images/example_notebooks_text_examples_text_entailment_Textual_Entailment_Explanation_Demo_18_0.png" />
+</div>
+</div>
+</section>
+<section id="Benchmarking">
+<h3>Benchmarking<a class="headerlink" href="#Benchmarking" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sort_order</span> <span class="o">=</span> <span class="s2">&quot;positive&quot;</span>
+<span class="n">perturbation</span> <span class="o">=</span> <span class="s2">&quot;keep&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shap</span> <span class="kn">import</span> <span class="n">benchmark</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sper</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">perturbation</span><span class="o">.</span><span class="n">SequentialPerturbation</span><span class="p">(</span><span class="n">explainer</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">explainer</span><span class="o">.</span><span class="n">masker</span><span class="p">,</span> <span class="n">sort_order</span><span class="p">,</span> <span class="n">perturbation</span><span class="p">)</span>
+<span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">auc</span> <span class="o">=</span> <span class="n">sper</span><span class="o">.</span><span class="n">model_score</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="p">[</span><span class="n">decoded</span><span class="p">])</span>
+<span class="n">sper</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">auc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_text_examples_text_entailment_Textual_Entailment_Explanation_Demo_22_1.png" src="../../../_images/example_notebooks_text_examples_text_entailment_Textual_Entailment_Explanation_Demo_22_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../language_modelling/Language%20Modeling%20Explanation%20Demo.html" class="btn btn-neutral float-left" title="Text to Multiclass Explanation: Language Modeling Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../image_examples.html" class="btn btn-neutral float-right" title="Image examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shap.models.TeacherForcing &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shap.models.TextGeneration" href="shap.models.TextGeneration.html" />
+    <link rel="prev" title="shap.models.Model" href="shap.models.Model.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explanation">Explanation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explainers">explainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plots">plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#maskers">maskers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#models">models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="shap.models.Model.html">shap.models.Model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">shap.models.TeacherForcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.models.TextGeneration.html">shap.models.TextGeneration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.models.TopKLM.html">shap.models.TopKLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.models.TransformersPipeline.html">shap.models.TransformersPipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#utils">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+      <li class="breadcrumb-item active">shap.models.TeacherForcing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/shap.models.TeacherForcing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="shap-models-teacherforcing">
+<h1>shap.models.TeacherForcing<a class="headerlink" href="#shap-models-teacherforcing" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shap.models.</span></span><span class="sig-name descname"><span class="pre">TeacherForcing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">similarity_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">similarity_tokenizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing" title="Link to this definition"></a></dt>
+<dd><p>Generates scores (log odds) for output text explanation algorithms using Teacher Forcing technique.</p>
+<p>This class supports generation of log odds for transformer models as well as functions. In model agnostic
+cases (model is function) it expects a similarity_model and similarity_tokenizer to approximate log odd scores
+for target sentence generated by the model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">similarity_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">similarity_tokenizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.__init__" title="Link to this definition"></a></dt>
+<dd><p>Build a teacher forcing model from the given text generation model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model: object or function</strong></dt><dd><p>A object of any pretrained transformer model or function which is to be explained.</p>
+</dd>
+<dt><strong>tokenizer: object</strong></dt><dd><p>A tokenizer object(PreTrainedTokenizer/PreTrainedTokenizerFast) which is used to tokenize source and target sentence.</p>
+</dd>
+<dt><strong>similarity_model: object</strong></dt><dd><p>A pretrained transformer model object which is used in model agnostic scenario to approximate log odds.</p>
+</dd>
+<dt><strong>similarity_tokenizer: object</strong></dt><dd><p>A tokenizer object(PreTrainedTokenizer/PreTrainedTokenizerFast) which is used to tokenize sentence in model agnostic scenario.</p>
+</dd>
+<dt><strong>batch_size: int</strong></dt><dd><p>Batch size for model inferencing and computing logodds (default=128).</p>
+</dd>
+<dt><strong>device: str</strong></dt><dd><p>By default, it infers if system has a gpu and accordingly sets device. Should be ‘cpu’ or ‘cuda’ or pytorch models.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>The scores (log odds) of generating target sentence ids using the model.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.__init__" title="shap.models.TeacherForcing.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(model[, tokenizer, ...])</p></td>
+<td><p>Build a teacher forcing model from the given text generation model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.get_inputs" title="shap.models.TeacherForcing.get_inputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_inputs</span></code></a>(X[, padding_side])</p></td>
+<td><p>The function tokenizes source sentences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.get_logodds" title="shap.models.TeacherForcing.get_logodds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_logodds</span></code></a>(logits)</p></td>
+<td><p>Calculates log odds from logits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.get_output_names" title="shap.models.TeacherForcing.get_output_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_output_names</span></code></a>(output)</p></td>
+<td><p>Gets the output tokens by computing the output sentence ids and output names using the similarity_tokenizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.get_outputs" title="shap.models.TeacherForcing.get_outputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_outputs</span></code></a>(X)</p></td>
+<td><p>The function tokenizes output sentences and returns ids.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.get_teacher_forced_logits" title="shap.models.TeacherForcing.get_teacher_forced_logits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_teacher_forced_logits</span></code></a>(X, Y)</p></td>
+<td><p>The function generates logits for transformer models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.load" title="shap.models.TeacherForcing.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(in_file[, instantiate])</p></td>
+<td><p>This is meant to be overridden by subclasses and called with super.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.model_inference" title="shap.models.TeacherForcing.model_inference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">model_inference</span></code></a>(inputs, output_ids)</p></td>
+<td><p>This function performs model inference for tensorflow and pytorch models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.save" title="shap.models.TeacherForcing.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(out_file)</p></td>
+<td><p>Save the model to the given file stream.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.models.TeacherForcing.update_output_names" title="shap.models.TeacherForcing.update_output_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_output_names</span></code></a>(output)</p></td>
+<td><p>The function updates output tokens.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.get_inputs">
+<span class="sig-name descname"><span class="pre">get_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'right'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.get_inputs" title="Link to this definition"></a></dt>
+<dd><p>The function tokenizes source sentences.</p>
+<p>In model agnostic case, the function calls model(X) which is expected to
+return a batch of output sentences which is tokenized to compute inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X: numpy.ndarray</strong></dt><dd><p>X could be a batch of text or images(model agnostic case).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict</dt><dd><p>Dictionary of padded source sentence ids and attention mask as tensors(“pt” or “tf” based on similarity_model_type).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.get_logodds">
+<span class="sig-name descname"><span class="pre">get_logodds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.get_logodds" title="Link to this definition"></a></dt>
+<dd><p>Calculates log odds from logits.</p>
+<p>This function passes the logits through softmax and then computes log odds for the output(target sentence) ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>logits: numpy.ndarray</strong></dt><dd><p>An array of logits generated from the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>Computes log odds for corresponding output ids.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.get_output_names">
+<span class="sig-name descname"><span class="pre">get_output_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.get_output_names" title="Link to this definition"></a></dt>
+<dd><p>Gets the output tokens by computing the output sentence ids and output names using the similarity_tokenizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>output: numpy.ndarray</strong></dt><dd><p>Output(sentence/sentence ids) for an explanation row.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>list</dt><dd><p>A list of output tokens.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.get_outputs">
+<span class="sig-name descname"><span class="pre">get_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.get_outputs" title="Link to this definition"></a></dt>
+<dd><p>The function tokenizes output sentences and returns ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X: numpy.ndarray</strong></dt><dd><p>Output(sentence/sentence ids) for an explanation row.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>An array of output(target sentence) ids.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.get_teacher_forced_logits">
+<span class="sig-name descname"><span class="pre">get_teacher_forced_logits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.get_teacher_forced_logits" title="Link to this definition"></a></dt>
+<dd><p>The function generates logits for transformer models.</p>
+<p>It generates logits for encoder-decoder models as well as decoder only models by using the teacher forcing technique.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X: numpy.ndarray</strong></dt><dd><p>An array containing a list of masked inputs.</p>
+</dd>
+<dt><strong>Y: numpy.ndarray</strong></dt><dd><p>An array containing a list of target sentence/ids.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>Decoder output logits for output(target sentence) ids.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instantiate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.load" title="Link to this definition"></a></dt>
+<dd><p>This is meant to be overridden by subclasses and called with super.</p>
+<p>We return constructor argument values when not being instantiated. Since there are no
+constructor arguments for the Serializable class we just return an empty dictionary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.model_inference">
+<span class="sig-name descname"><span class="pre">model_inference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.model_inference" title="Link to this definition"></a></dt>
+<dd><p>This function performs model inference for tensorflow and pytorch models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inputs: dict</strong></dt><dd><p>Dictionary of padded source sentence ids and attention mask as tensors.</p>
+</dd>
+<dt><strong>output_ids: numpy.ndarray</strong></dt><dd><p>An array of decoder output ids.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>Returns output logits from the model.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.save" title="Link to this definition"></a></dt>
+<dd><p>Save the model to the given file stream.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.models.TeacherForcing.update_output_names">
+<span class="sig-name descname"><span class="pre">update_output_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.models.TeacherForcing.update_output_names" title="Link to this definition"></a></dt>
+<dd><p>The function updates output tokens.</p>
+<p>It mimics the caching mechanism to update the output tokens for every
+new row of explanation that are to be explained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>output: numpy.ndarray</strong></dt><dd><p>Output(sentence/sentence ids) for an explanation row.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="shap.models.Model.html" class="btn btn-neutral float-left" title="shap.models.Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shap.models.TextGeneration.html" class="btn btn-neutral float-right" title="shap.models.TextGeneration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

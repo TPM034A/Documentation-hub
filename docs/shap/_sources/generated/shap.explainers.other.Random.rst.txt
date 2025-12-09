@@ -1,0 +1,26 @@
+﻿shap.explainers.other.Random
+============================
+
+.. currentmodule:: shap.explainers.other
+
+.. autoclass:: Random
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Random.__init__
+      ~Random.explain_row
+      ~Random.load
+      ~Random.save
+      ~Random.supports_model_with_masker
+   
+   
+
+   
+   
+   

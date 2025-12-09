@@ -1,0 +1,27 @@
+﻿shap.PermutationExplainer
+=========================
+
+.. currentmodule:: shap
+
+.. autoclass:: PermutationExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PermutationExplainer.__init__
+      ~PermutationExplainer.explain_row
+      ~PermutationExplainer.load
+      ~PermutationExplainer.save
+      ~PermutationExplainer.shap_values
+      ~PermutationExplainer.supports_model_with_masker
+   
+   
+
+   
+   
+   

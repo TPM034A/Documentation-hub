@@ -1,0 +1,6 @@
+﻿shap.plots.beeswarm
+===================
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: beeswarm

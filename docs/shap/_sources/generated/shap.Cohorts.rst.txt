@@ -1,0 +1,28 @@
+﻿shap.Cohorts
+============
+
+.. currentmodule:: shap
+
+.. autoclass:: Cohorts
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Cohorts.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Cohorts.cohorts
+   
+   

@@ -1,0 +1,6 @@
+﻿shap.plots.partial\_dependence
+==============================
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: partial_dependence

@@ -1,0 +1,210 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shap.plots.heatmap &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shap.plots.force" href="shap.plots.force.html" />
+    <link rel="prev" title="shap.plots.scatter" href="shap.plots.scatter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explanation">Explanation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explainers">explainers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#plots">plots</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.bar.html">shap.plots.bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.waterfall.html">shap.plots.waterfall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.scatter.html">shap.plots.scatter</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">shap.plots.heatmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.force.html">shap.plots.force</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.text.html">shap.plots.text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.image.html">shap.plots.image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.partial_dependence.html">shap.plots.partial_dependence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.decision.html">shap.plots.decision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.embedding.html">shap.plots.embedding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.initjs.html">shap.plots.initjs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.group_difference.html">shap.plots.group_difference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.image_to_text.html">shap.plots.image_to_text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.monitoring.html">shap.plots.monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.beeswarm.html">shap.plots.beeswarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.plots.violin.html">shap.plots.violin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#maskers">maskers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#models">models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#utils">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+      <li class="breadcrumb-item active">shap.plots.heatmap</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/shap.plots.heatmap.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="shap-plots-heatmap">
+<h1>shap.plots.heatmap<a class="headerlink" href="#shap-plots-heatmap" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="shap.plots.heatmap">
+<span class="sig-prename descclassname"><span class="pre">shap.plots.</span></span><span class="sig-name descname"><span class="pre">heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shap_values:</span> <span class="pre">~shap._explanation.Explanation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance_order=shap.Explanation.hclust</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_values=shap.Explanation.abs.mean(0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_order=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_display=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap=&lt;matplotlib.colors.LinearSegmentedColormap</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_width=8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.plots.heatmap" title="Link to this definition"></a></dt>
+<dd><p>Create a heatmap plot of a set of SHAP values.</p>
+<p>This plot is designed to show the population substructure of a dataset using supervised
+clustering and a heatmap.
+Supervised clustering involves clustering data points not by their original
+feature values but by their explanations.
+By default, we cluster using <a class="reference internal" href="shap.utils.hclust_ordering.html#shap.utils.hclust_ordering" title="shap.utils.hclust_ordering"><code class="xref py py-func docutils literal notranslate"><span class="pre">shap.utils.hclust_ordering()</span></code></a>,
+but any clustering can be used to order the samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shap_values</strong><span class="classifier">shap.Explanation</span></dt><dd><p>A multi-row <a class="reference internal" href="shap.Explanation.html#shap.Explanation" title="shap.Explanation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Explanation</span></code></a> object that we want to visualize in a
+cluster ordering.</p>
+</dd>
+<dt><strong>instance_order</strong><span class="classifier">OpChain or numpy.ndarray</span></dt><dd><p>A function that returns a sort ordering given a matrix of SHAP values and an axis, or
+a direct sample ordering given as an <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>.</p>
+</dd>
+<dt><strong>feature_values</strong><span class="classifier">OpChain or numpy.ndarray</span></dt><dd><p>A function that returns a global summary value for each input feature, or an array of such values.</p>
+</dd>
+<dt><strong>feature_order</strong><span class="classifier">None, OpChain, or numpy.ndarray</span></dt><dd><p>A function that returns a sort ordering given a matrix of SHAP values and an axis, or
+a direct input feature ordering given as an <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then we use <code class="docutils literal notranslate"><span class="pre">feature_values.argsort</span></code>.</p>
+</dd>
+<dt><strong>max_display</strong><span class="classifier">int</span></dt><dd><p>The maximum number of features to display (default is 10).</p>
+</dd>
+<dt><strong>show</strong><span class="classifier">bool</span></dt><dd><p>Whether <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.10.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.pyplot.show()</span></code></a> is called before returning.
+Setting this to <code class="docutils literal notranslate"><span class="pre">False</span></code> allows the plot
+to be customized further after it has been created.</p>
+</dd>
+<dt><strong>plot_width</strong><span class="classifier">int, default 8</span></dt><dd><p>The width of the heatmap plot.</p>
+</dd>
+<dt><strong>ax</strong><span class="classifier">matplotlib Axes</span></dt><dd><p>Axes object to draw the plot onto, otherwise uses the current Axes.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ax: matplotlib Axes</dt><dd><p>Returns the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.10.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> object with the plot drawn onto it.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>See <a class="reference external" href="https://shap.readthedocs.io/en/latest/example_notebooks/api_examples/plots/heatmap.html">heatmap plot examples</a>.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="shap.plots.scatter.html" class="btn btn-neutral float-left" title="shap.plots.scatter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shap.plots.force.html" class="btn btn-neutral float-right" title="shap.plots.force" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+﻿shap.plots.group\_difference
+============================
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: group_difference

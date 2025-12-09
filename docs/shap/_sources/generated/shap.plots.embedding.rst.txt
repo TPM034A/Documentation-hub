@@ -1,0 +1,6 @@
+﻿shap.plots.embedding
+====================
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: embedding

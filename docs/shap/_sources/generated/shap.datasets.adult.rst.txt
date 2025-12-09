@@ -1,0 +1,6 @@
+﻿shap.datasets.adult
+===================
+
+.. currentmodule:: shap.datasets
+
+.. autofunction:: adult

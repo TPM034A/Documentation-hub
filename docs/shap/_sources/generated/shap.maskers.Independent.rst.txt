@@ -1,0 +1,25 @@
+﻿shap.maskers.Independent
+========================
+
+.. currentmodule:: shap.maskers
+
+.. autoclass:: Independent
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Independent.__init__
+      ~Independent.invariants
+      ~Independent.load
+      ~Independent.save
+   
+   
+
+   
+   
+   

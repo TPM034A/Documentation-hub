@@ -1,0 +1,6 @@
+﻿shap.utils.potential\_interactions
+==================================
+
+.. currentmodule:: shap.utils
+
+.. autofunction:: potential_interactions

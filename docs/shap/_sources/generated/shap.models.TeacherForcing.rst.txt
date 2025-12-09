@@ -1,0 +1,31 @@
+﻿shap.models.TeacherForcing
+==========================
+
+.. currentmodule:: shap.models
+
+.. autoclass:: TeacherForcing
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TeacherForcing.__init__
+      ~TeacherForcing.get_inputs
+      ~TeacherForcing.get_logodds
+      ~TeacherForcing.get_output_names
+      ~TeacherForcing.get_outputs
+      ~TeacherForcing.get_teacher_forced_logits
+      ~TeacherForcing.load
+      ~TeacherForcing.model_inference
+      ~TeacherForcing.save
+      ~TeacherForcing.update_output_names
+   
+   
+
+   
+   
+   

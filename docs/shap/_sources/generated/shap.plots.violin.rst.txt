@@ -1,0 +1,6 @@
+﻿shap.plots.violin
+=================
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: violin

@@ -1,0 +1,6 @@
+﻿shap.utils.hclust\_ordering
+===========================
+
+.. currentmodule:: shap.utils
+
+.. autofunction:: hclust_ordering

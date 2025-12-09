@@ -1,0 +1,234 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>waterfall plot &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Benchmarks" href="../../../benchmarks.html" />
+    <link rel="prev" title="violin summary plot" href="violin.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api_examples.html">API examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../migrating-to-new-api.html">Migrating to the new “Explanation” API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#explainers">explainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#maskers">maskers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#models">models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api_examples.html#plots">plots</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bar.html"><code class="docutils literal notranslate"><span class="pre">bar</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="beeswarm.html"><code class="docutils literal notranslate"><span class="pre">beeswarm</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="decision_plot.html"><code class="docutils literal notranslate"><span class="pre">decision</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="heatmap.html"><code class="docutils literal notranslate"><span class="pre">heatmap</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="image.html"><code class="docutils literal notranslate"><span class="pre">image</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scatter.html"><code class="docutils literal notranslate"><span class="pre">scatter</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text.html"><code class="docutils literal notranslate"><span class="pre">text</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="violin.html"><code class="docutils literal notranslate"><span class="pre">violin</span></code> summary plot</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">waterfall</span></code> plot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../api_examples.html">API Examples</a></li>
+      <li class="breadcrumb-item active"><code class="docutils literal notranslate"><span class="pre">waterfall</span></code> plot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/api_examples/plots/waterfall.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="waterfall-plot">
+<h1><code class="docutils literal notranslate"><span class="pre">waterfall</span></code> plot<a class="headerlink" href="#waterfall-plot" title="Link to this heading"></a></h1>
+<p>This notebook is designed to demonstrate (and so document) how to use the <code class="docutils literal notranslate"><span class="pre">shap.plots.waterfall</span></code> function. It uses an XGBoost model trained on the classic UCI adult income dataset (which is classification task to predict if people made over \$50k in the 90s).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xgboost</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+
+<span class="c1"># train XGBoost model</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">adult</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># compute SHAP values</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+ 99%|===================| 32335/32561 [00:58&lt;00:00]
+</pre></div></div>
+</div>
+<p>Waterfall plots are designed to display explanations for individual predictions, so they expect a single row of an Explanation object as input. The bottom of a waterfall plot starts as the expected value of the model output, and then each row shows how the positive (red) or negative (blue) contribution of each feature moves the value from the expected model output over the background dataset to the model output for this prediction.</p>
+<p>Below is an example that plots the first explanation. Note that by default SHAP explains XGBoost classifer models in terms of their margin output, before the logistic link function. That means the units on the x-axis are log-odds units, so negative values imply probabilies of less than 0.5 that the person makes over $50k annually. The gray text before the feature names shows the value of each feature for this sample.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">waterfall</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_waterfall_3_0.png" class="no-scaled-link" src="../../../_images/example_notebooks_api_examples_plots_waterfall_3_0.png" style="width: 603px; height: 422px;" />
+</div>
+</div>
+<p>Note that in the above explanation the three least impactful features have been collapsed into a single term so that we don’t show more than 10 rows in the plot. The default limit of 10 rows can be changed using the <code class="docutils literal notranslate"><span class="pre">max_display</span></code> argument:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">waterfall</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">max_display</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_waterfall_5_0.png" class="no-scaled-link" src="../../../_images/example_notebooks_api_examples_plots_waterfall_5_0.png" style="width: 605px; height: 476px;" />
+</div>
+</div>
+<p>It is interesting that having a capital gain of \$2,174 dramatically reduces this person’s predicted probability of making over \$50k annually. Since <code class="docutils literal notranslate"><span class="pre">waterfall</span></code> plots only show a single sample worth of data, we can’t see the impact of changing capital gain. To see this we can use a <code class="docutils literal notranslate"><span class="pre">scatter</span></code> plot, which shows how low values for captial gain are a more negative predictor of income that no captial gain at all. Why this happens would require a deeper dive into the data, and should also
+involve training a model more carefully and with bootstrap resamples to quantify any uncertainty in the model building process.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[:,</span> <span class="s2">&quot;Capital Gain&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_waterfall_7_0.png" class="no-scaled-link" src="../../../_images/example_notebooks_api_examples_plots_waterfall_7_0.png" style="width: 410px; height: 320px;" />
+</div>
+</div>
+<hr><p>Have an idea for more helpful examples? Pull requests that add to this documentation notebook are encouraged!</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="violin.html" class="btn btn-neutral float-left" title="violin summary plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../benchmarks.html" class="btn btn-neutral float-right" title="Benchmarks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,715 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NHANES I Survival Model &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Speed comparison of gradient boosting libraries for shap values calculations" href="Perfomance%20Comparison.html" />
+    <link rel="prev" title="League of Legends Win Prediction with XGBoost" href="League%20of%20Legends%20Win%20Prediction%20with%20XGBoost.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../tabular_examples.html#tree-based-models">Tree-based models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Basic%20SHAP%20Interaction%20Value%20Example%20in%20XGBoost.html">Basic SHAP Interaction Value Example in XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Catboost%20tutorial.html">Catboost tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Census%20income%20classification%20with%20LightGBM.html">Census income classification with LightGBM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Census%20income%20classification%20with%20XGBoost.html">Census income classification with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Example%20of%20loading%20a%20custom%20tree%20model%20into%20SHAP.html">Example of loading a custom tree model into SHAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Explaining%20a%20simple%20OR%20function.html">Explaining a simple OR function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Explaining%20the%20Loss%20of%20a%20Model.html">Explaining the Loss of a Tree Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Fitting%20a%20Linear%20Simulation%20with%20XGBoost.html">Fitting a Linear Simulation with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Force%20Plot%20Colors.html">Force Plot Colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Front%20page%20example%20%28XGBoost%29.html">Front page example (XGBoost)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="League%20of%20Legends%20Win%20Prediction%20with%20XGBoost.html">League of Legends Win Prediction with XGBoost</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">NHANES I Survival Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Create-XGBoost-data-objects">Create XGBoost data objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Train-XGBoost-model">Train XGBoost model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Check-Performance">Check Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Explain-the-model's-predictions-on-the-entire-dataset">Explain the model’s predictions on the entire dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compute-SHAP-Interaction-Values">Compute SHAP Interaction Values</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Perfomance%20Comparison.html">Speed comparison of gradient boosting libraries for shap values calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python%20Version%20of%20Tree%20SHAP.html">Python Version of Tree SHAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scatter%20Density%20vs.%20Violin%20Plot%20Comparison.html">Scatter Density vs. Violin Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Understanding%20Tree%20SHAP%20for%20Simple%20Models.html">Understanding Tree SHAP for Simple Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#linear-models">Linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#neural-networks">Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#model-agnostic">Model agnostic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../tabular_examples.html">Tabular examples</a></li>
+      <li class="breadcrumb-item active">NHANES I Survival Model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/tabular_examples/tree_based_models/NHANES I Survival Model.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="NHANES-I-Survival-Model">
+<h1>NHANES I Survival Model<a class="headerlink" href="#NHANES-I-Survival-Model" title="Link to this heading"></a></h1>
+<p>This is a cox proportional hazards model on data from NHANES I with followup mortality data from the NHANES I Epidemiologic Followup Study. It is designed to illustrate how SHAP values enable the interpretion of XGBoost models with a clarity traditionally only provided by linear models. We see interesting and non-linear patterns in the data, which suggest the potential of this approach. Keep in mind the data has not yet been checked by us for calibrations to current lab tests and so you should
+not consider the results as actionable medical insights, but rather a proof of concept.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xgboost</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+</pre></div>
+</div>
+</div>
+<section id="Create-XGBoost-data-objects">
+<h2>Create XGBoost data objects<a class="headerlink" href="#Create-XGBoost-data-objects" title="Link to this heading"></a></h2>
+<p>This uses a pre-processed subset of NHANES I data available in the SHAP datasets module.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">nhanesi</span><span class="p">()</span>
+
+<span class="c1"># human readable feature values</span>
+<span class="n">X_display</span><span class="p">,</span> <span class="n">y_display</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">nhanesi</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">xgb_full</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># create a train/test split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">xgb_train</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">xgb_test</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Train-XGBoost-model">
+<h2>Train XGBoost model<a class="headerlink" href="#Train-XGBoost-model" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;eta&quot;</span><span class="p">:</span> <span class="mf">0.002</span><span class="p">,</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;objective&quot;</span><span class="p">:</span> <span class="s2">&quot;survival:cox&quot;</span><span class="p">,</span> <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
+<span class="n">model_train</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">xgb_train</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">evals</span><span class="o">=</span><span class="p">[(</span><span class="n">xgb_test</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)],</span> <span class="n">verbose_eval</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0]     test-cox-nloglik:7.67918
+[1000]  test-cox-nloglik:7.02985
+[2000]  test-cox-nloglik:6.97516
+[3000]  test-cox-nloglik:6.96240
+[4000]  test-cox-nloglik:6.96217
+[5000]  test-cox-nloglik:6.96558
+[6000]  test-cox-nloglik:6.96995
+[7000]  test-cox-nloglik:6.97310
+[8000]  test-cox-nloglik:6.97721
+[9000]  test-cox-nloglik:6.98116
+[9999]  test-cox-nloglik:6.98511
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train final model on the full data set</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;eta&quot;</span><span class="p">:</span> <span class="mf">0.002</span><span class="p">,</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;objective&quot;</span><span class="p">:</span> <span class="s2">&quot;survival:cox&quot;</span><span class="p">,</span> <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">xgb_full</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="n">evals</span><span class="o">=</span><span class="p">[(</span><span class="n">xgb_full</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)],</span> <span class="n">verbose_eval</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0]     test-cox-nloglik:9.28404
+[1000]  test-cox-nloglik:8.60868
+[2000]  test-cox-nloglik:8.53134
+[3000]  test-cox-nloglik:8.49490
+[4000]  test-cox-nloglik:8.47122
+[4999]  test-cox-nloglik:8.45328
+</pre></div></div>
+</div>
+</section>
+<section id="Check-Performance">
+<h2>Check Performance<a class="headerlink" href="#Check-Performance" title="Link to this heading"></a></h2>
+<p>The C-statistic measures how well we can order people by their survival time (1.0 is a perfect ordering).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">c_statistic_harrell</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">matches</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">labels</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">pred</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pred</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="n">matches</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">matches</span> <span class="o">/</span> <span class="n">total</span>
+
+
+<span class="c1"># see how well we can order people by survival</span>
+<span class="n">c_statistic_harrell</span><span class="p">(</span><span class="n">model_train</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xgb_test</span><span class="p">),</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.817035332310394
+</pre></div></div>
+</div>
+</section>
+<section id="Explain-the-model's-predictions-on-the-entire-dataset">
+<h2>Explain the model’s predictions on the entire dataset<a class="headerlink" href="#Explain-the-model's-predictions-on-the-entire-dataset" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap_values</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="SHAP-Summary-Plot">
+<h3>SHAP Summary Plot<a class="headerlink" href="#SHAP-Summary-Plot" title="Link to this heading"></a></h3>
+<p>The SHAP values for XGBoost explain the margin output of the model, which is the change in log odds of dying for a Cox proportional hazards model. We can see below that the primary risk factor for death according to the model is being old. The next most powerful indicator of death risk is being a man.</p>
+<p>This summary plot replaces the typical bar chart of feature importance. It tells which features are most important, and also their range of effects over the dataset. The color allows us to visualize how changes in the value of a feature effect the change in risk (such that a high white blood cell count leads to a high risk of death).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_12_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_12_0.png" />
+</div>
+</div>
+</section>
+<section id="SHAP-Dependence-Plots">
+<h3>SHAP Dependence Plots<a class="headerlink" href="#SHAP-Dependence-Plots" title="Link to this heading"></a></h3>
+<p>While a SHAP summary plot gives a general overview of each feature, a SHAP dependence plot shows how the model output varies by feature value. Note that every dot is a person, and the vertical dispersion at a single feature value results from interaction effects in the model. The feature used for coloring is automatically chosen to highlight what might be driving these interactions. Later we will see how to check that the interaction is really in the model with SHAP interaction values. Note that
+the row of a SHAP summary plot results from projecting the points of a SHAP dependence plot onto the y-axis, then recoloring by the feature itself.</p>
+<p>Below we give the SHAP dependence plot for each of the NHANES I features, revealing interesting but expected trends. Keep in mind the calibration of some of these values can be different than a modern lab test so be careful drawing conclusions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we pass &quot;age&quot; instead of an index because dependence_plot() will find it in X&#39;s column names for us</span>
+<span class="c1"># Systolic BP was automatically chosen for coloring based on a potential interaction to check that</span>
+<span class="c1"># the interaction is really in the model see SHAP interaction values below</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_14_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_14_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we pass display_features so we get text display values for sex</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;sex_isFemale&quot;</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_15_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_15_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting show=False allows us to continue customizing the matplotlib plot before displaying it</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;systolic_blood_pressure&quot;</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">225</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_16_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;white_blood_cells&quot;</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_17_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_17_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;bmi&quot;</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_18_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_18_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;sedimentation_rate&quot;</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_19_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_19_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;serum_protein&quot;</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_20_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_20_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;pulse_pressure&quot;</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_21_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_21_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;red_blood_cells&quot;</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_22_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_22_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="Compute-SHAP-Interaction-Values">
+<h2>Compute SHAP Interaction Values<a class="headerlink" href="#Compute-SHAP-Interaction-Values" title="Link to this heading"></a></h2>
+<p>See the Tree SHAP paper for more details, but briefly, SHAP interaction values are a generalization of SHAP values to higher order interactions. Fast exact computation of pairwise interactions are implemented in the later versions of XGBoost (&gt;=1.0.0) with the pred_interactions flag. With this flag XGBoost returns a matrix for every prediction, where the main effects are on the diagonal and the interaction effects are off-diagonal.</p>
+<p>The main effects are similar to the SHAP values you would get for a linear model, and the interaction effects capture all the higher-order interactions and divide them up among the pairwise interaction terms. Note that the sum of the entire interaction matrix is the difference between the model’s current output and expected output, and so the interaction effects on the off-diagonal are split in half (since there are two of each).</p>
+<p>When plotting interaction effects the SHAP package automatically multiplies the off-diagonal values by two to get the full interaction effect.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we only take 300 people in order to run quicker</span>
+<span class="n">number_patients</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="n">shap_interaction_values</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">shap_interaction_values</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<section id="SHAP-Interaction-Value-Summary-Plot">
+<h3>SHAP Interaction Value Summary Plot<a class="headerlink" href="#SHAP-Interaction-Value-Summary-Plot" title="Link to this heading"></a></h3>
+<p>A summary plot of a SHAP interaction value matrix plots a matrix of summary plots with the main effects on the diagonal and the interaction effects off the diagonal.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">shap_interaction_values</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_26_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_26_0.png" />
+</div>
+</div>
+</section>
+<section id="SHAP-Interaction-Value-Dependence-Plots">
+<h3>SHAP Interaction Value Dependence Plots<a class="headerlink" href="#SHAP-Interaction-Value-Dependence-Plots" title="Link to this heading"></a></h3>
+<p>Running a dependence plot on the SHAP interaction values allows us to separately observe the main effects and the interaction effects.</p>
+<p>Below we plot the main effects for age and some of the interaction effects for age. It is informative to compare the main effects plot of age with the earlier SHAP value plot for age. The main effects plot has no vertical dispersion because the interaction effects are all captured in the off-diagonal terms.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">),</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+    <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_28_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_28_0.png" />
+</div>
+</div>
+<p>Now we plot the interaction effects involving age. These effects capture all of the vertical dispersion that was present in the original SHAP plot but is missing from the main effects plot above. The plot below involving age and sex shows that the sex-based death risk gap varies by age and peaks at age 60.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;sex_isFemale&quot;</span><span class="p">),</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+    <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_30_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_30_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;systolic_blood_pressure&quot;</span><span class="p">),</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+    <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_31_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_31_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;white_blood_cells&quot;</span><span class="p">),</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+    <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_32_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_32_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;bmi&quot;</span><span class="p">),</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+    <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_33_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_33_0.png" />
+</div>
+</div>
+<p>Now we show a couple examples with systolic blood pressure.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;systolic_blood_pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;systolic_blood_pressure&quot;</span><span class="p">),</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+    <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_35_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_35_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;systolic_blood_pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">),</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+    <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_36_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_36_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;systolic_blood_pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">),</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+    <span class="n">display_features</span><span class="o">=</span><span class="n">X_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">number_patients</span><span class="p">,</span> <span class="p">:],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_37_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_37_0.png" />
+</div>
+</div>
+<p>We sum up the interaction over all patients to plot a which features interact the most. Note that we do not analyze how the features interact (high feature A + low feature B leads to outcome C, etc.). Light colors show strong interaction effects</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interaction_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">shap_interaction_values</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">interaction_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">interaction_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">interaction_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">))[:</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">sorted_ia_matrix</span> <span class="o">=</span> <span class="n">interaction_matrix</span><span class="p">[</span><span class="n">inds</span><span class="p">,</span> <span class="p">:][:,</span> <span class="n">inds</span><span class="p">]</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sorted_ia_matrix</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span>
+    <span class="nb">range</span><span class="p">(</span><span class="n">sorted_ia_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">inds</span><span class="p">],</span>
+    <span class="n">rotation</span><span class="o">=</span><span class="mf">50.4</span><span class="p">,</span>
+    <span class="n">horizontalalignment</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span>
+    <span class="nb">range</span><span class="p">(</span><span class="n">sorted_ia_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">inds</span><span class="p">],</span>
+    <span class="n">rotation</span><span class="o">=</span><span class="mf">50.4</span><span class="p">,</span>
+    <span class="n">horizontalalignment</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_39_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_NHANES_I_Survival_Model_39_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="League%20of%20Legends%20Win%20Prediction%20with%20XGBoost.html" class="btn btn-neutral float-left" title="League of Legends Win Prediction with XGBoost" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Perfomance%20Comparison.html" class="btn btn-neutral float-right" title="Speed comparison of gradient boosting libraries for shap values calculations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

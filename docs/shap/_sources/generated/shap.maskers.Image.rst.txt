@@ -1,0 +1,26 @@
+﻿shap.maskers.Image
+==================
+
+.. currentmodule:: shap.maskers
+
+.. autoclass:: Image
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Image.__init__
+      ~Image.build_partition_tree
+      ~Image.inpaint
+      ~Image.load
+      ~Image.save
+   
+   
+
+   
+   
+   

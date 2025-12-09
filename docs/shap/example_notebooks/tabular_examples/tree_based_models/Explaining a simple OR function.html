@@ -1,0 +1,491 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explaining a simple OR function &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Explaining the Loss of a Tree Model" href="Explaining%20the%20Loss%20of%20a%20Model.html" />
+    <link rel="prev" title="Example of loading a custom tree model into SHAP" href="Example%20of%20loading%20a%20custom%20tree%20model%20into%20SHAP.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../tabular_examples.html#tree-based-models">Tree-based models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Basic%20SHAP%20Interaction%20Value%20Example%20in%20XGBoost.html">Basic SHAP Interaction Value Example in XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Catboost%20tutorial.html">Catboost tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Census%20income%20classification%20with%20LightGBM.html">Census income classification with LightGBM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Census%20income%20classification%20with%20XGBoost.html">Census income classification with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Example%20of%20loading%20a%20custom%20tree%20model%20into%20SHAP.html">Example of loading a custom tree model into SHAP</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Explaining a simple OR function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Create-a-dataset-following-an-OR-function">Create a dataset following an OR function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Train-an-XGBoost-model-to-mimic-this-OR-function">Train an XGBoost model to mimic this OR function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Explain-the-prediction-for-a-young-boy">Explain the prediction for a young boy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Explaining%20the%20Loss%20of%20a%20Model.html">Explaining the Loss of a Tree Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Fitting%20a%20Linear%20Simulation%20with%20XGBoost.html">Fitting a Linear Simulation with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Force%20Plot%20Colors.html">Force Plot Colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Front%20page%20example%20%28XGBoost%29.html">Front page example (XGBoost)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="League%20of%20Legends%20Win%20Prediction%20with%20XGBoost.html">League of Legends Win Prediction with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NHANES%20I%20Survival%20Model.html">NHANES I Survival Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Perfomance%20Comparison.html">Speed comparison of gradient boosting libraries for shap values calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python%20Version%20of%20Tree%20SHAP.html">Python Version of Tree SHAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scatter%20Density%20vs.%20Violin%20Plot%20Comparison.html">Scatter Density vs. Violin Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Understanding%20Tree%20SHAP%20for%20Simple%20Models.html">Understanding Tree SHAP for Simple Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#linear-models">Linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#neural-networks">Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#model-agnostic">Model agnostic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../tabular_examples.html">Tabular examples</a></li>
+      <li class="breadcrumb-item active">Explaining a simple OR function</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/tabular_examples/tree_based_models/Explaining a simple OR function.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Explaining-a-simple-OR-function">
+<h1>Explaining a simple OR function<a class="headerlink" href="#Explaining-a-simple-OR-function" title="Link to this heading"></a></h1>
+<p>This notebook examines what it looks like to explain an OR function using SHAP values. Through this example, we understand how changing the background distribution affects the explanations you obtain from your <a class="reference internal" href="../../../generated/shap.TreeExplainer.html#shap.TreeExplainer"><span class="std std-ref">TreeExplainer</span></a>.</p>
+<p>It is based on a simple example with two features <code class="docutils literal notranslate"><span class="pre">is_young</span></code> and <code class="docutils literal notranslate"><span class="pre">is_female</span></code>, roughly motivated by the Titanic survival dataset where women and children were given priority during the evacuation and so were more likely to survive. In this simulated example, this effect is taken to the extreme, where all children and women survive and no adult men survive.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">xgboost</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Create-a-dataset-following-an-OR-function">
+<h2>Create a dataset following an OR function<a class="headerlink" href="#Create-a-dataset-following-an-OR-function" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">40_000</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># randomly create binary features for `is_young` and `is_female`</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;is_young&quot;</span><span class="p">,</span> <span class="s2">&quot;is_female&quot;</span><span class="p">])</span>
+
+<span class="c1"># force the first sample to be a young boy</span>
+<span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># you survive (y=1) only if you are young or female</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;is_young&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;is_female&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>is_young</th>
+      <th>is_female</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="Train-an-XGBoost-model-to-mimic-this-OR-function">
+<h2>Train an XGBoost model to mimic this OR function<a class="headerlink" href="#Train-an-XGBoost-model-to-mimic-this-OR-function" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">XGBRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([9.9998671e-01, 9.9998671e-01, 1.3295135e-05, ..., 9.9998671e-01,
+       9.9998671e-01, 9.9998671e-01], dtype=float32)
+</pre></div></div>
+</div>
+</section>
+<section id="Explain-the-prediction-for-a-young-boy">
+<h2>Explain the prediction for a young boy<a class="headerlink" href="#Explain-the-prediction-for-a-young-boy" title="Link to this heading"></a></h2>
+<section id="Using-the-training-set-for-the-background-distribution">
+<h3>Using the training set for the background distribution<a class="headerlink" href="#Using-the-training-set-for-the-background-distribution" title="Link to this heading"></a></h3>
+<p>Note that in the example explanation below, <code class="docutils literal notranslate"><span class="pre">is_young</span> <span class="pre">=</span> <span class="pre">True</span></code> has a positive value (meaning it increases the model output, and hence the prediction of survival), while <code class="docutils literal notranslate"><span class="pre">is_female</span> <span class="pre">=</span> <span class="pre">False</span></code> has a negative value (meaning it decreases the model output). While one could argue that <code class="docutils literal notranslate"><span class="pre">is_female</span> <span class="pre">=</span> <span class="pre">False</span></code> should have no impact because we already know that the person is young, SHAP values account for the impact a feature has even when we don’t necessarily know the other features, which is why
+<code class="docutils literal notranslate"><span class="pre">is_female</span> <span class="pre">=</span> <span class="pre">False</span></code> still has a negative impact on the prediction.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">feature_perturbation</span><span class="o">=</span><span class="s2">&quot;interventional&quot;</span><span class="p">)</span>
+<span class="n">explanation</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:])</span>
+
+<span class="c1"># for the young boy:</span>
+<span class="n">expected_value</span> <span class="o">=</span> <span class="n">explanation</span><span class="o">.</span><span class="n">base_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explanation</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;explainer.expected_value: </span><span class="si">{</span><span class="n">expected_value</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SHAP values for (is_young = True, is_female = False): </span><span class="si">{</span><span class="n">shap_values</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model output:&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">expected_value</span> <span class="o">+</span> <span class="n">shap_values</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+explainer.expected_value: 0.7600
+SHAP values for (is_young = True, is_female = False): [ 0.385 -0.145]
+model output: 1.0
+</pre></div></div>
+</div>
+<p>The same information above, but visualized as a Waterfall plot:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># waterfall plot for the young boy (background distribution =&gt; training set)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">waterfall</span><span class="p">(</span><span class="n">explanation</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_Explaining_a_simple_OR_function_9_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_Explaining_a_simple_OR_function_9_0.png" />
+</div>
+</div>
+</section>
+<section id="Using-only-negative-examples-for-the-background-distribution">
+<h3>Using only negative examples for the background distribution<a class="headerlink" href="#Using-only-negative-examples-for-the-background-distribution" title="Link to this heading"></a></h3>
+<p>The point of this second explanation example is to demonstrate how using a different background distribution can change the allocation of credit among the input features. This happens because we are now comparing the importance of a feature as compared to being someone who died (an adult man). The only thing different about the young boy from someone who died is that the boy is young, so all the credit goes to the <code class="docutils literal notranslate"><span class="pre">is_young</span> <span class="pre">=</span> <span class="pre">True</span></code> feature.</p>
+<p>This highlights that often explanations are clearer when a well-defined background group is used. In this case, it changes the explanation from “how this sample is different than typical”, to “how this sample is different from those who died” (in other words, why did you live?).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:],</span>  <span class="c1"># background distribution =&gt; non-survival</span>
+    <span class="n">feature_perturbation</span><span class="o">=</span><span class="s2">&quot;interventional&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">explanation</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:])</span>
+
+<span class="c1"># for the young boy:</span>
+<span class="n">expected_value</span> <span class="o">=</span> <span class="n">explanation</span><span class="o">.</span><span class="n">base_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explanation</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;explainer.expected_value: </span><span class="si">{</span><span class="n">expected_value</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SHAP values for (is_young = True, is_female = False): </span><span class="si">{</span><span class="n">shap_values</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model output:&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">expected_value</span> <span class="o">+</span> <span class="n">shap_values</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+explainer.expected_value: 0.0000
+SHAP values for (is_young = True, is_female = False): [1. 0.]
+model output: 1.0
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># waterfall plot for the young boy (background distribution =&gt; non-survival)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">waterfall</span><span class="p">(</span><span class="n">explanation</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_Explaining_a_simple_OR_function_12_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_Explaining_a_simple_OR_function_12_0.png" />
+</div>
+</div>
+</section>
+<section id="Using-only-positive-examples-for-the-background-distribution">
+<h3>Using only positive examples for the background distribution<a class="headerlink" href="#Using-only-positive-examples-for-the-background-distribution" title="Link to this heading"></a></h3>
+<p>We could also use only positive examples for our background distribution, and since the difference between the expected output of the model (under our background distribution) and the current output for the young boy is zero, the sum of the SHAP values will be also be zero.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:],</span>  <span class="c1"># background distribution =&gt; survival</span>
+    <span class="n">feature_perturbation</span><span class="o">=</span><span class="s2">&quot;interventional&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">explanation</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:])</span>
+
+<span class="c1"># for the young boy:</span>
+<span class="n">expected_value</span> <span class="o">=</span> <span class="n">explanation</span><span class="o">.</span><span class="n">base_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explanation</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;explainer.expected_value: </span><span class="si">{</span><span class="n">expected_value</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SHAP values for (is_young = True, is_female = False): </span><span class="si">{</span><span class="n">shap_values</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model output:&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">expected_value</span> <span class="o">+</span> <span class="n">shap_values</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+explainer.expected_value: 1.0000
+SHAP values for (is_young = True, is_female = False): [ 0.14 -0.14]
+model output: 1.0
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># waterfall plot for the young boy (background distribution =&gt; survival)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">waterfall</span><span class="p">(</span><span class="n">explanation</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_tabular_examples_tree_based_models_Explaining_a_simple_OR_function_15_0.png" src="../../../_images/example_notebooks_tabular_examples_tree_based_models_Explaining_a_simple_OR_function_15_0.png" />
+</div>
+</div>
+</section>
+<section id="Using-young-women-for-the-background-distribution">
+<h3>Using young women for the background distribution<a class="headerlink" href="#Using-young-women-for-the-background-distribution" title="Link to this heading"></a></h3>
+<p>If we compare the sample to young women, then neither of the features matter except for adult men (<code class="docutils literal notranslate"><span class="pre">data=(0,</span> <span class="pre">0)</span></code>), in which both features are given equal credit for their death (as one might intuitively expect).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">M</span><span class="p">)),</span>  <span class="c1"># background distribution =&gt; all young women</span>
+    <span class="n">feature_perturbation</span><span class="o">=</span><span class="s2">&quot;interventional&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">explanation</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Feature data:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">explanation</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SHAP values:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">explanation</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Feature data:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[1, 0],
+       [1, 1],
+       [0, 0]])
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+SHAP values:
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[ 0. , -0. ],
+       [ 0. ,  0. ],
+       [-0.5, -0.5]])
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Example%20of%20loading%20a%20custom%20tree%20model%20into%20SHAP.html" class="btn btn-neutral float-left" title="Example of loading a custom tree model into SHAP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Explaining%20the%20Loss%20of%20a%20Model.html" class="btn btn-neutral float-right" title="Explaining the Loss of a Tree Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

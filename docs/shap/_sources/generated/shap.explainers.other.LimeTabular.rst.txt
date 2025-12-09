@@ -1,0 +1,27 @@
+﻿shap.explainers.other.LimeTabular
+=================================
+
+.. currentmodule:: shap.explainers.other
+
+.. autoclass:: LimeTabular
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LimeTabular.__init__
+      ~LimeTabular.attributions
+      ~LimeTabular.explain_row
+      ~LimeTabular.load
+      ~LimeTabular.save
+      ~LimeTabular.supports_model_with_masker
+   
+   
+
+   
+   
+   

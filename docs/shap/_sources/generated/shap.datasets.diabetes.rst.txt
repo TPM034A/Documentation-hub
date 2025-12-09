@@ -1,0 +1,6 @@
+﻿shap.datasets.diabetes
+======================
+
+.. currentmodule:: shap.datasets
+
+.. autofunction:: diabetes

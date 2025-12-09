@@ -1,0 +1,31 @@
+﻿shap.maskers.Text
+=================
+
+.. currentmodule:: shap.maskers
+
+.. autoclass:: Text
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Text.__init__
+      ~Text.clustering
+      ~Text.data_transform
+      ~Text.feature_names
+      ~Text.invariants
+      ~Text.load
+      ~Text.mask_shapes
+      ~Text.save
+      ~Text.shape
+      ~Text.token_segments
+   
+   
+
+   
+   
+   

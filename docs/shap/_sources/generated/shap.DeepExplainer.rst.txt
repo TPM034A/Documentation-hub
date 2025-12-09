@@ -1,0 +1,27 @@
+﻿shap.DeepExplainer
+==================
+
+.. currentmodule:: shap
+
+.. autoclass:: DeepExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DeepExplainer.__init__
+      ~DeepExplainer.explain_row
+      ~DeepExplainer.load
+      ~DeepExplainer.save
+      ~DeepExplainer.shap_values
+      ~DeepExplainer.supports_model_with_masker
+   
+   
+
+   
+   
+   

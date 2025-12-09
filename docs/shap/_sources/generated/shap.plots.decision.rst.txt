@@ -1,0 +1,6 @@
+﻿shap.plots.decision
+===================
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: decision

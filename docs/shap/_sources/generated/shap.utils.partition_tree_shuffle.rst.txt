@@ -1,0 +1,6 @@
+﻿shap.utils.partition\_tree\_shuffle
+===================================
+
+.. currentmodule:: shap.utils
+
+.. autofunction:: partition_tree_shuffle

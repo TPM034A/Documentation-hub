@@ -1,0 +1,1725 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explain ResNet50 ImageNet classification using Partition explainer &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Multi-class ResNet50 on ImageNet (TensorFlow)" href="Multi-class%20ResNet50%20on%20ImageNet%20%28TensorFlow%29.html" />
+    <link rel="prev" title="Front Page DeepExplainer MNIST Example" href="Front%20Page%20DeepExplainer%20MNIST%20Example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../image_examples.html">Image examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../image_examples.html#image-classification">Image classification</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Explain%20MobilenetV2%20using%20the%20Partition%20explainer%20%28PyTorch%29.html">Explain PyTorch MobileNetV2 using the <code class="docutils literal notranslate"><span class="pre">Partition</span></code> explainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Explain%20ResNet50%20using%20the%20Partition%20explainer.html">Explain ResNet50 using the <code class="docutils literal notranslate"><span class="pre">Partition</span></code> explainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Explain%20an%20Intermediate%20Layer%20of%20VGG16%20on%20ImageNet.html">Explain an Intermediate Layer of VGG16 on ImageNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Explain%20an%20Intermediate%20Layer%20of%20VGG16%20on%20ImageNet%20%28PyTorch%29.html">Explain an Intermediate Layer of VGG16 on ImageNet (PyTorch)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Front%20Page%20DeepExplainer%20MNIST%20Example.html">Front Page DeepExplainer MNIST Example</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Explain ResNet50 ImageNet classification using <code class="docutils literal notranslate"><span class="pre">Partition</span></code> explainer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Loading-Model-and-Data">Loading Model and Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#SHAP-ResNet50-model-explanation-for-images">SHAP ResNet50 model explanation for images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Visualizing-SHAP-values-output">Visualizing SHAP values output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Interpretation-of-SHAP-output-explanation:">Interpretation of SHAP output explanation:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Multi-class%20ResNet50%20on%20ImageNet%20%28TensorFlow%29.html">Multi-class ResNet50 on ImageNet (TensorFlow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Multi-class%20ResNet50%20on%20ImageNet%20%28TensorFlow%29-checkpoint.html">Multi-class ResNet50 on ImageNet (TensorFlow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Multi-input%20Gradient%20Explainer%20MNIST%20Example.html">Multi-input Gradient Explainer MNIST Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyTorch%20Deep%20Explainer%20MNIST%20example.html">PyTorch Deep Explainer MNIST example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../image_examples.html#image-captioning">Image captioning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../image_examples.html">Image examples</a></li>
+      <li class="breadcrumb-item active">Explain ResNet50 ImageNet classification using <code class="docutils literal notranslate"><span class="pre">Partition</span></code> explainer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/image_examples/image_classification/Image Multi Class.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Explain-ResNet50-ImageNet-classification-using-Partition-explainer">
+<h1>Explain ResNet50 ImageNet classification using <code class="docutils literal notranslate"><span class="pre">Partition</span></code> explainer<a class="headerlink" href="#Explain-ResNet50-ImageNet-classification-using-Partition-explainer" title="Link to this heading"></a></h1>
+<p>This notebook demonstrates how to use SHAP to explain image classification models. In this example we are explaining the output of ResNet50 model for classifying images into 1000 ImageNet classes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.applications.resnet50</span> <span class="kn">import</span> <span class="n">ResNet50</span><span class="p">,</span> <span class="n">preprocess_input</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+</pre></div>
+</div>
+</div>
+<section id="Loading-Model-and-Data">
+<h2>Loading Model and Data<a class="headerlink" href="#Loading-Model-and-Data" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load pre-trained model and data</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ResNet50</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;imagenet&quot;</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">imagenet50</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># getting ImageNet 1000 class names</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+<span class="c1"># print(&quot;Number of ImageNet classes:&quot;, len(class_names))</span>
+<span class="c1"># print(&quot;Class names:&quot;, class_names)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="SHAP-ResNet50-model-explanation-for-images">
+<h2>SHAP ResNet50 model explanation for images<a class="headerlink" href="#SHAP-ResNet50-model-explanation-for-images" title="Link to this heading"></a></h2>
+<p>Build a partition explainer with: - the model (a python function) - the masker (a python function) - output names (a list of names of the output classes)</p>
+<section id="A-quick-run-with-a-few-evaluations">
+<h3>A quick run with a few evaluations<a class="headerlink" href="#A-quick-run-with-a-few-evaluations" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># python function to get model output; replace this function with your own model function.</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">preprocess_input</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+
+<span class="c1"># define a masker that is used to mask out partitions of the input image.</span>
+<span class="n">masker</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">maskers</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;inpaint_telea&quot;</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># create an explainer with model and image masker</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">masker</span><span class="p">,</span> <span class="n">output_names</span><span class="o">=</span><span class="n">class_names</span><span class="p">)</span>
+
+<span class="c1"># here we explain two images using 500 evaluations of the underlying model to estimate the SHAP values</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">max_evals</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">shap</span><span class="o">.</span><span class="n">Explanation</span><span class="o">.</span><span class="n">argsort</span><span class="o">.</span><span class="n">flip</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap_values</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">shap_values</span><span class="o">.</span><span class="n">output_names</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;American_egret&#39;, &#39;crane&#39;, &#39;little_blue_heron&#39;, &#39;flamingo&#39;,
+       &#39;American_egret&#39;, &#39;crane&#39;, &#39;little_blue_heron&#39;, &#39;flamingo&#39;],
+      dtype=&#39;&lt;U17&#39;)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">shap_values</span><span class="o">.</span><span class="n">output_names</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap_values</span><span class="o">.</span><span class="n">output_dims</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(4,)
+</pre></div></div>
+</div>
+<section id="Explainer-options:">
+<h4>Explainer options:<a class="headerlink" href="#Explainer-options:" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p>Above image masker uses a blurring technique called “inpaint_telea”. There are alternate masking options available to experiment with such as “inpaint_ns” and “blur(kernel_xsize, kernel_xsize)”.</p></li>
+<li><p>Recommended number of evaluations is 300-500 to get explanations with sufficient granularity for the super pixels. More the number of evaluations, more the granularity but also increases run-time.</p>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">outputs=shap.Explanation.argsort.flip[:4]</span></code> has been used in the code above for getting SHAP values because we want to get the top 4 most probable classes for each image i.e. top 4 classes with decreasing probability. Hence, a flip argsort sliced by 4 has been used.</p>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="Visualizing-SHAP-values-output">
+<h2>Visualizing SHAP values output<a class="headerlink" href="#Visualizing-SHAP-values-output" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># output with shap values</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">image_plot</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_classification_Image_Multi_Class_14_0.png" class="no-scaled-link" src="../../../_images/example_notebooks_image_examples_image_classification_Image_Multi_Class_14_0.png" style="width: 851px; height: 417px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">base_values</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1000,)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">base_values</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([3.98265023e-04, 4.48955398e-05, 5.20897702e-05, 2.04479627e-04,
+       5.67642674e-05, 1.37821451e-04, 1.43101468e-04, 2.34555133e-04,
+       1.65241177e-03, 8.71808079e-05, 2.73833750e-04, 1.03291946e-04,
+       1.03254220e-04, 2.66912321e-05, 9.38569065e-05, 4.04711056e-04,
+       3.30887298e-04, 8.17410037e-05, 4.58840441e-05, 7.76972214e-04,
+       9.79037606e-04, 1.82875578e-04, 6.26673936e-05, 4.15584684e-04,
+       1.75147157e-04, 2.43703653e-05, 1.90513470e-04, 4.63949953e-04,
+       3.72401183e-03, 2.16879227e-04, 4.97241551e-03, 2.01521367e-01,
+       4.61910939e-04, 3.70553578e-04, 1.67468010e-04, 3.31375678e-03,
+       1.03218982e-03, 1.10009874e-04, 4.62198048e-04, 2.72900041e-04,
+       1.63967852e-04, 1.55510512e-04, 7.61000774e-05, 8.27621043e-05,
+       1.24086940e-03, 5.44384784e-05, 1.88978534e-04, 1.65600795e-03,
+       4.68490616e-04, 2.02517796e-04, 2.24879230e-04, 1.53284360e-04,
+       7.28016312e-04, 2.18322930e-05, 9.70595356e-05, 2.40055524e-04,
+       8.75858896e-05, 8.05352684e-05, 5.24058286e-03, 4.47012542e-04,
+       1.37802403e-04, 5.53620885e-05, 1.67022704e-03, 2.84969807e-04,
+       8.81938729e-04, 1.68564642e-04, 1.31366367e-04, 9.56201809e-04,
+       2.78153806e-04, 7.04826234e-05, 1.15577168e-04, 5.03735617e-04,
+       3.23968381e-03, 2.96114665e-03, 2.07320263e-04, 1.06132834e-03,
+       2.17621040e-04, 7.06988329e-04, 1.62530720e-04, 2.02930160e-03,
+       8.79141953e-05, 1.91258034e-03, 1.58560916e-03, 1.76169444e-03,
+       6.13501586e-04, 1.01693309e-04, 1.22117897e-04, 2.70858320e-04,
+       3.35622499e-05, 1.05499045e-03, 4.14801470e-05, 1.82900709e-04,
+       5.84131012e-05, 1.04882440e-03, 2.19639414e-03, 1.43847588e-04,
+       8.00978305e-05, 2.61449284e-04, 5.75504149e-04, 1.17039803e-04,
+       3.48173926e-04, 9.26456341e-05, 2.51709687e-04, 4.78086266e-04,
+       2.59803119e-03, 1.59291131e-03, 1.66199796e-04, 1.56387687e-04,
+       1.11853424e-03, 1.68977969e-03, 2.42620936e-05, 1.18718512e-04,
+       3.65030882e-03, 5.25807380e-04, 2.50643864e-03, 4.63505945e-04,
+       3.17113445e-05, 2.52411381e-04, 8.77027574e-04, 5.45950279e-05,
+       8.71916054e-05, 4.65254387e-04, 9.42074548e-05, 3.14210588e-03,
+       6.98393560e-05, 1.40927164e-04, 2.92200624e-04, 1.27284331e-02,
+       1.96964378e-04, 3.43363092e-04, 6.04275789e-04, 2.46494092e-05,
+       4.61999938e-04, 2.57244479e-04, 4.37212363e-03, 1.17149972e-03,
+       4.89713420e-05, 3.27316113e-04, 4.47746861e-04, 2.02462077e-04,
+       8.61583801e-04, 1.34167858e-04, 3.71429429e-04, 6.87520718e-04,
+       1.40331360e-03, 1.22133445e-03, 1.66886639e-05, 1.42857461e-04,
+       1.14866011e-02, 3.36653134e-03, 3.29846021e-04, 4.72038257e-04,
+       1.00409007e-03, 1.29732513e-03, 3.61699349e-04, 5.30289579e-03,
+       5.18341956e-04, 4.70881874e-04, 6.44493266e-05, 1.05675921e-04,
+       2.06455775e-03, 2.58339016e-04, 4.76116576e-04, 1.20431083e-04,
+       1.24215968e-02, 2.86966406e-05, 7.48898237e-05, 1.71770240e-04,
+       1.53026136e-04, 2.45231204e-04, 1.14865397e-04, 3.22352367e-04,
+       3.37602425e-04, 6.14294258e-04, 9.70410256e-05, 1.59063807e-03,
+       5.08750509e-03, 2.67939991e-04, 1.43872213e-03, 1.19161239e-04,
+       2.46804469e-04, 2.98232539e-04, 4.77343885e-04, 4.77507783e-05,
+       4.32613585e-03, 1.01641439e-04, 6.29403366e-05, 3.28598602e-04,
+       4.87449579e-03, 1.87227430e-04, 5.53444610e-04, 5.19249064e-04,
+       1.10896956e-03, 3.43542802e-03, 1.74651941e-04, 2.22513816e-04,
+       2.95794592e-03, 2.09766687e-04, 4.75166926e-05, 2.88550509e-04,
+       6.87570893e-04, 2.06802375e-04, 1.71519205e-04, 2.70951336e-04,
+       9.43710693e-05, 1.12773397e-03, 9.82338935e-03, 3.32266139e-03,
+       2.19096444e-04, 2.17689230e-05, 1.61327654e-04, 1.06600019e-04,
+       1.96517725e-03, 5.96507452e-04, 7.03871483e-04, 1.59394997e-03,
+       2.64894590e-03, 1.60959898e-04, 6.20000577e-03, 6.26118344e-05,
+       1.64568322e-04, 9.34288691e-05, 1.06487481e-04, 2.47626798e-04,
+       7.09660351e-03, 1.91016507e-03, 7.00892007e-04, 2.34331994e-04,
+       2.19726609e-03, 1.90845807e-04, 4.88849764e-04, 5.34049235e-03,
+       1.82612066e-03, 1.67027392e-04, 1.59819072e-04, 5.94002078e-04,
+       1.34168877e-04, 9.71634930e-04, 2.19330061e-04, 2.32918101e-04,
+       2.32211058e-03, 8.56369548e-03, 1.04254432e-04, 1.94690569e-04,
+       1.75361261e-02, 3.74004652e-04, 2.08059035e-04, 1.98756400e-02,
+       3.35199817e-04, 7.62398820e-04, 4.94323089e-04, 9.44103158e-05,
+       7.72377680e-05, 2.18191394e-03, 9.12886608e-05, 1.49337298e-04,
+       5.48757566e-03, 2.28227451e-04, 2.91966484e-04, 3.75757751e-04,
+       3.29240400e-04, 4.76886606e-04, 1.14875911e-04, 2.97170162e-04,
+       5.42078109e-04, 1.10409739e-04, 9.61581129e-04, 2.99977983e-05,
+       7.14230409e-04, 2.44811999e-05, 1.56077331e-05, 8.35507381e-05,
+       1.11137240e-04, 2.19001100e-04, 1.94354588e-03, 3.41678562e-04,
+       2.43427046e-03, 3.74987503e-05, 6.12538948e-04, 3.07665410e-04,
+       9.51292086e-03, 1.96635447e-04, 2.98951869e-03, 1.51283562e-03,
+       1.11732305e-04, 3.72940012e-05, 1.21334312e-03, 4.69207989e-05,
+       1.40990349e-04, 3.28055816e-04, 6.17932164e-05, 9.55878990e-04,
+       7.26847284e-05, 2.80747423e-04, 7.74153834e-03, 2.19893031e-04,
+       1.46946550e-04, 8.18398767e-05, 9.75400544e-05, 3.98906486e-05,
+       9.15985182e-03, 6.38652884e-04, 8.55517923e-04, 5.58320142e-04,
+       2.84550682e-04, 6.79018209e-04, 1.22444949e-03, 1.38428388e-02,
+       9.44111234e-05, 9.13376061e-05, 1.90601801e-04, 2.07817706e-04,
+       9.78715834e-04, 5.39315515e-04, 9.03732842e-04, 2.02737399e-04,
+       2.44897928e-05, 1.55207381e-04, 7.26549304e-04, 2.10206723e-04,
+       7.31480657e-04, 3.42042244e-04, 2.21371403e-04, 4.17837378e-04,
+       6.34400232e-04, 7.87110184e-05, 1.63991455e-04, 1.89242372e-03,
+       2.18088622e-03, 2.73842219e-04, 1.27485720e-04, 6.10379575e-05,
+       6.02986023e-04, 1.50342930e-05, 3.14068719e-04, 1.06195104e-03,
+       2.15661494e-04, 8.36609805e-04, 5.64410839e-05, 6.65351326e-05,
+       2.11620267e-04, 1.86994192e-04, 1.15989812e-03, 7.73980646e-05,
+       7.99473783e-05, 6.08985603e-04, 1.25390972e-04, 5.11682360e-03,
+       5.26337171e-05, 2.94670346e-04, 1.78296075e-04, 1.97027315e-04,
+       2.16452434e-04, 3.26410867e-04, 1.02113234e-04, 1.52413466e-03,
+       3.93337468e-05, 6.38024008e-04, 2.47433345e-04, 3.88692890e-04,
+       3.44268419e-03, 2.77661893e-05, 1.42515026e-04, 1.01953614e-04,
+       5.43837762e-03, 8.35901155e-05, 1.35738961e-03, 4.04788414e-04,
+       1.58322830e-04, 1.16253315e-04, 1.26562698e-03, 1.86057645e-04,
+       5.57620137e-04, 1.01343765e-04, 2.88358642e-05, 4.74227796e-04,
+       3.16448684e-04, 4.19742246e-05, 1.08359178e-04, 1.04418854e-04,
+       2.03641539e-04, 4.04073711e-04, 7.33445268e-05, 3.12642660e-03,
+       1.77940441e-04, 1.04366243e-03, 2.02374431e-04, 5.83104083e-05,
+       2.26815441e-03, 7.83597527e-04, 8.78596678e-04, 2.20475224e-04,
+       3.20527288e-05, 8.91639676e-04, 2.62770463e-05, 2.32063496e-04,
+       1.86159959e-04, 2.52828421e-03, 1.35955503e-04, 3.13804485e-05,
+       4.37561609e-03, 6.02974789e-04, 5.17095978e-05, 1.81379146e-04,
+       1.14109635e-03, 8.31345329e-04, 2.78152613e-04, 6.97735872e-04,
+       1.05109788e-03, 8.61559995e-04, 8.07119440e-03, 3.48262605e-04,
+       2.55202758e-05, 5.52419981e-04, 6.68813955e-05, 3.29635768e-05,
+       7.73706532e-04, 3.64235049e-04, 1.51698780e-03, 2.81690009e-04,
+       4.75254655e-03, 6.69377157e-04, 9.54573101e-04, 1.08042186e-04,
+       5.68635260e-05, 4.24618163e-04, 2.58263346e-04, 1.45405869e-03,
+       1.02591919e-04, 1.55952512e-04, 1.85346958e-04, 7.03747282e-05,
+       2.41437432e-04, 2.35192638e-04, 1.24183003e-04, 1.20975601e-04,
+       7.09347078e-05, 6.99766242e-05, 7.71764317e-05, 1.89607745e-04,
+       7.93690444e-04, 1.37692579e-04, 7.09580781e-05, 5.91546879e-04,
+       2.90565134e-04, 2.89046846e-04, 5.19869197e-03, 4.70197119e-04,
+       1.15571762e-04, 9.94998263e-04, 2.57296371e-04, 4.94676409e-03,
+       5.00711962e-04, 2.99575167e-05, 1.86757010e-04, 6.52849994e-05,
+       6.04235218e-04, 4.68017897e-05, 3.87711974e-04, 4.72599531e-05,
+       6.97334204e-03, 2.53278966e-04, 2.60601024e-04, 8.47871488e-05,
+       3.23877830e-05, 1.19668525e-03, 5.75865619e-03, 4.11593704e-04,
+       1.53028246e-04, 1.79754803e-04, 6.80635159e-04, 1.39376134e-04,
+       6.17261903e-05, 2.87276634e-04, 8.66111950e-05, 1.57140807e-04,
+       9.42889383e-05, 2.58421525e-04, 5.66013405e-05, 2.35475280e-04,
+       1.04127292e-04, 6.85896521e-05, 7.02898469e-05, 1.98832509e-04,
+       1.16414631e-04, 3.62440856e-04, 4.04755992e-04, 1.61688542e-04,
+       8.00234993e-05, 5.06251745e-05, 1.01898695e-04, 1.85255765e-03,
+       2.10804399e-03, 3.95909999e-04, 1.04698156e-04, 1.23862468e-04,
+       2.01316288e-04, 2.67114752e-04, 1.09853136e-04, 1.04562007e-02,
+       1.44658901e-04, 1.38847245e-04, 1.86406018e-04, 2.91111821e-04,
+       2.58459095e-05, 1.76549394e-04, 5.91578195e-04, 1.80155170e-04,
+       1.16277879e-04, 6.64511754e-05, 1.91455300e-04, 9.07513968e-05,
+       1.45928192e-04, 1.78181485e-03, 1.08011079e-03, 1.49311381e-04,
+       9.82756392e-05, 2.88707030e-04, 2.67076190e-04, 9.56205360e-04,
+       9.14820994e-05, 1.44630976e-04, 2.71266763e-04, 2.20545771e-04,
+       3.51296447e-04, 5.65011360e-05, 5.39898028e-05, 3.32881791e-05,
+       4.18267970e-04, 8.53816455e-04, 1.39340307e-04, 2.61821784e-04,
+       1.01256774e-04, 6.20011197e-05, 8.18510260e-03, 5.84557885e-04,
+       3.23629247e-05, 1.49878833e-04, 1.95337387e-04, 1.71919542e-04,
+       2.35342843e-04, 2.49581831e-03, 1.60848489e-04, 1.09985948e-03,
+       4.44245707e-05, 1.16778909e-04, 1.92636347e-04, 3.99644450e-05,
+       6.28446651e-05, 3.98166245e-03, 1.55952876e-04, 2.17046312e-04,
+       1.09251858e-04, 2.49226135e-03, 1.54479500e-03, 1.25159859e-04,
+       9.80652621e-05, 7.80950242e-04, 1.25729610e-04, 2.39668138e-04,
+       3.19829152e-04, 2.43557079e-04, 6.90597994e-03, 1.81299256e-04,
+       7.97690518e-05, 3.59173209e-05, 7.77634486e-05, 5.12411294e-04,
+       6.92587346e-04, 9.71015688e-05, 5.37150423e-04, 8.37979460e-05,
+       1.03847982e-04, 1.64556390e-04, 1.62095050e-04, 7.50828767e-05,
+       6.85978739e-04, 1.59797564e-04, 1.71349748e-04, 7.46525475e-05,
+       5.57506050e-04, 7.15658753e-05, 5.18313493e-04, 1.54518042e-04,
+       7.34301575e-04, 7.41808981e-05, 9.81214471e-05, 1.08507685e-02,
+       2.20979142e-04, 7.11828982e-03, 1.17054806e-05, 8.21940892e-04,
+       2.02488227e-05, 6.03395638e-05, 2.55094492e-04, 3.03323497e-04,
+       5.15690008e-05, 1.75295805e-04, 4.68559418e-04, 1.89823142e-04,
+       5.47616291e-05, 1.30891727e-04, 2.46041076e-04, 4.26332932e-04,
+       3.16890655e-04, 4.96258763e-05, 8.59340711e-04, 2.02530529e-04,
+       4.18328382e-05, 5.38278109e-05, 7.10692402e-05, 1.22153884e-04,
+       4.86796489e-04, 1.24314654e-04, 7.03770143e-04, 1.04051956e-03,
+       2.68163021e-05, 6.27119932e-03, 2.30516074e-03, 1.38077943e-04,
+       4.67849924e-04, 1.64890280e-05, 1.47823477e-04, 9.48119268e-05,
+       7.49706873e-04, 2.70575456e-05, 2.05066081e-05, 1.48544926e-03,
+       7.35011272e-05, 1.63713237e-03, 1.29237270e-03, 6.70079084e-04,
+       3.67125933e-04, 3.29222501e-04, 9.32080293e-05, 1.03922932e-04,
+       4.79535338e-05, 7.76475863e-05, 1.59768169e-04, 2.87516066e-03,
+       2.80911103e-03, 7.61366333e-04, 6.05647219e-04, 1.54264562e-04,
+       2.49425339e-05, 1.76321148e-04, 1.35979441e-03, 2.27449345e-04,
+       1.73271954e-04, 1.28269999e-03, 7.98516776e-05, 8.44012073e-04,
+       1.77738373e-04, 2.57999836e-05, 1.64547542e-04, 5.57913503e-04,
+       1.26685749e-03, 3.86202475e-04, 8.87230679e-04, 7.48189050e-04,
+       2.13030304e-04, 3.55858996e-04, 8.33153354e-06, 2.95320933e-04,
+       3.16009100e-05, 2.53893842e-04, 1.18534744e-03, 1.37425945e-04,
+       8.79636675e-04, 5.70305798e-04, 1.32686793e-04, 2.63076770e-04,
+       2.84897833e-04, 4.98322945e-04, 1.60985219e-05, 1.27237683e-04,
+       6.39092177e-04, 2.34655710e-03, 2.54381361e-04, 2.92099867e-05,
+       8.70297808e-05, 7.05914063e-05, 1.59767864e-04, 8.34528691e-05,
+       6.28060734e-05, 1.51177555e-05, 1.69857871e-04, 3.63609492e-04,
+       4.09535496e-05, 6.42370665e-04, 1.83896496e-04, 3.21555126e-05,
+       9.33920406e-03, 1.51379456e-04, 8.91392294e-04, 7.34808709e-05,
+       7.63745839e-03, 9.67634551e-05, 3.08589311e-03, 1.76709506e-03,
+       8.15805033e-05, 2.84980168e-04, 1.37901196e-04, 2.92042911e-04,
+       5.23895316e-04, 1.24685976e-04, 5.17050910e-04, 2.32969309e-04,
+       3.13187120e-05, 4.23460988e-05, 3.14876524e-04, 3.53547439e-05,
+       1.10661949e-03, 1.50967354e-03, 2.42085895e-04, 1.70345920e-05,
+       1.50748165e-04, 1.34549962e-04, 5.18803572e-05, 9.82871279e-04,
+       1.07740611e-03, 5.10502650e-05, 9.50180674e-06, 4.26059996e-05,
+       2.65619456e-04, 7.56132140e-05, 7.09234373e-05, 3.56290082e-04,
+       2.77788815e-04, 2.11004211e-04, 3.53443623e-03, 4.85317978e-05,
+       1.16430230e-04, 7.01543409e-04, 1.44020942e-05, 5.91689895e-04,
+       6.82438840e-05, 6.52912931e-05, 2.92932855e-05, 1.66858081e-04,
+       5.85521979e-04, 4.82931762e-04, 3.54350952e-04, 8.34171474e-03,
+       1.62974946e-04, 2.67933850e-04, 1.30400702e-04, 3.10731193e-05,
+       2.82113149e-04, 6.14081291e-05, 2.89048231e-03, 3.98092088e-04,
+       1.53062156e-05, 1.85977016e-03, 4.84216580e-04, 1.83015407e-04,
+       1.53889210e-04, 1.32637697e-05, 4.98024783e-05, 9.33829069e-05,
+       1.08729248e-04, 1.96910370e-03, 8.92132593e-05, 7.47793456e-05,
+       3.03913461e-04, 5.80130472e-05, 1.10250810e-04, 3.30982637e-03,
+       5.04739233e-04, 9.20615275e-05, 7.00237288e-04, 8.91018353e-05,
+       1.07366790e-03, 2.60756264e-04, 2.11966879e-04, 8.20988615e-04,
+       2.19961730e-04, 2.33830389e-04, 3.15418845e-04, 4.79362061e-05,
+       2.69673445e-04, 5.04744712e-05, 5.64143920e-05, 5.33246894e-05,
+       6.90017478e-05, 1.36698000e-04, 2.83982721e-04, 8.47348856e-05,
+       5.74015139e-05, 1.15665382e-04, 4.05571511e-04, 4.68011480e-04,
+       4.67822865e-05, 3.00760876e-04, 1.67407416e-04, 3.02288918e-05,
+       1.11583337e-04, 1.59645104e-04, 1.73546228e-04, 6.30670751e-04,
+       1.02046807e-03, 2.51042400e-03, 1.16524985e-04, 7.50074469e-05,
+       8.18201734e-05, 1.62838216e-04, 2.80639011e-04, 2.22368413e-04,
+       1.39261465e-04, 7.51803600e-05, 3.63202620e-04, 4.17022275e-05,
+       3.47620167e-04, 5.77659339e-05, 4.18579002e-05, 2.42096503e-05,
+       1.12250843e-03, 2.84655980e-04, 1.09178177e-03, 2.29647441e-04,
+       8.82061548e-04, 2.46612704e-04, 2.03358708e-04, 1.37021038e-04,
+       2.18374873e-04, 2.04092226e-04, 2.34132949e-05, 3.30167168e-05,
+       9.79309698e-05, 5.24312258e-04, 5.23222424e-03, 4.28866944e-04,
+       4.27278283e-04, 4.20961696e-05, 7.91574595e-04, 1.49085918e-05,
+       6.50748750e-03, 1.34461065e-04, 2.10423168e-04, 2.58454558e-04,
+       6.88945584e-05, 2.52605474e-04, 1.82618242e-05, 7.12760302e-05,
+       2.55153718e-04, 2.36239048e-05, 1.01488891e-04, 1.98719892e-04,
+       3.77983743e-05, 7.20363343e-04, 9.62147082e-04, 1.28874002e-04,
+       9.41858088e-05, 3.23168957e-03, 1.23727470e-04, 1.92188854e-05,
+       3.54324962e-04, 3.18146122e-05, 7.00732926e-04, 6.85932173e-05,
+       2.01224640e-04, 6.98182499e-03, 4.59520757e-04, 9.72801761e-04,
+       5.03679446e-04, 4.76087164e-03, 3.34953744e-04, 1.01442929e-04,
+       9.72617563e-05, 1.41746947e-04, 7.29511899e-04, 3.49429640e-04,
+       2.15930704e-05, 6.75361225e-05, 3.15851881e-04, 6.48199712e-05,
+       3.88102460e-04, 1.08534540e-03, 3.40335624e-04, 7.11025714e-05,
+       2.24293879e-04, 1.50417589e-04, 2.75202565e-05, 5.46244482e-05,
+       4.36935152e-05, 2.22663773e-04, 2.66235329e-05, 5.41452435e-04,
+       3.01329768e-03, 6.68641151e-05, 2.13318184e-04, 4.83280281e-04,
+       3.25042219e-03, 2.68050027e-03, 2.30311023e-04, 8.69394498e-05,
+       2.22041956e-04, 3.05501686e-04, 2.05413511e-04, 1.23969074e-02,
+       1.59675707e-04, 8.81001033e-05, 1.13639137e-04, 5.50219047e-05,
+       7.88093021e-05, 2.22792616e-04, 4.43840865e-04, 1.43152502e-04,
+       1.66197169e-05, 3.35655146e-04, 5.74437363e-05, 1.59689171e-05,
+       6.05816713e-05, 3.97622352e-04, 3.04213725e-03, 1.58328272e-04,
+       1.24343760e-05, 9.89821274e-04, 2.06074947e-05, 7.68100668e-04,
+       3.63771833e-04, 1.09289220e-04, 9.56191216e-05, 2.01528255e-05,
+       2.48080294e-04, 1.70826330e-04, 3.17801314e-05, 8.31752113e-05,
+       1.45166923e-04, 3.32538475e-05, 4.35978654e-05, 2.31716942e-04,
+       9.36048309e-05, 1.46375887e-05, 5.24211209e-05, 4.74207263e-05,
+       5.80011001e-05, 1.25948922e-04, 6.51396252e-03, 8.12801300e-04,
+       5.31415171e-05, 1.57267496e-03, 6.40222663e-03, 7.39321840e-05,
+       4.70565539e-03, 1.65742051e-04, 1.82069867e-04, 8.12231665e-05,
+       2.21989758e-05, 6.43523454e-05, 1.68223705e-04, 2.12641185e-04,
+       4.13967442e-04, 6.86593557e-05, 3.99616620e-05, 3.24723987e-05,
+       5.34793035e-05, 1.45994454e-05, 8.81493106e-05, 1.56545924e-04,
+       2.27955333e-03, 4.21397563e-04, 4.95772947e-05, 2.61580717e-04,
+       1.35582286e-05, 3.30929557e-04, 2.16315282e-04, 6.19240600e-05,
+       2.29309764e-04, 1.89436760e-05, 9.95220253e-05, 1.30594799e-05,
+       2.31584621e-04, 2.58677243e-03, 3.26315960e-04, 1.45622762e-04,
+       1.95064305e-04, 7.66519734e-05, 1.00914447e-03, 1.00372148e-04,
+       6.48575078e-05, 1.86936624e-04, 1.26099811e-04, 5.64772126e-05,
+       3.31675867e-04, 2.09970924e-04, 1.60944095e-04, 5.30265497e-05,
+       1.47023078e-04, 7.85566168e-04, 7.93441359e-05, 1.78703503e-03,
+       4.36751638e-04, 1.18882686e-04, 1.46988168e-04, 6.06477435e-04,
+       6.12383519e-05, 8.20263958e-05, 4.62990356e-05, 4.65407902e-05])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap_values</span><span class="o">.</span><span class="n">output_names</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;American_egret&#39;,
+ &#39;crane&#39;,
+ &#39;little_blue_heron&#39;,
+ &#39;flamingo&#39;,
+ &#39;peacock&#39;,
+ &#39;goose&#39;,
+ &#39;white_stork&#39;,
+ &#39;spoonbill&#39;,
+ &#39;black_stork&#39;,
+ &#39;pelican&#39;,
+ &#39;albatross&#39;,
+ &#39;limpkin&#39;,
+ &#39;bustard&#39;,
+ &#39;drake&#39;,
+ &#39;bittern&#39;,
+ &#39;king_penguin&#39;,
+ &#39;black_swan&#39;,
+ &#39;eel&#39;,
+ &#39;jay&#39;,
+ &#39;bee_eater&#39;,
+ &#39;weasel&#39;,
+ &#39;lakeside&#39;,
+ &#39;magpie&#39;,
+ &#39;red-breasted_merganser&#39;,
+ &#39;vulture&#39;,
+ &#39;crayfish&#39;,
+ &#39;ostrich&#39;,
+ &#39;water_ouzel&#39;,
+ &#39;hook&#39;,
+ &#39;Italian_greyhound&#39;,
+ &#39;vine_snake&#39;,
+ &#39;nematode&#39;,
+ &#39;paper_towel&#39;,
+ &#39;redshank&#39;,
+ &#39;gazelle&#39;,
+ &#39;balance_beam&#39;,
+ &#39;dragonfly&#39;,
+ &#39;dingo&#39;,
+ &#39;chambered_nautilus&#39;,
+ &#39;coil&#39;,
+ &#39;macaw&#39;,
+ &#39;dowitcher&#39;,
+ &#39;brain_coral&#39;,
+ &#39;ice_bear&#39;,
+ &#39;toilet_tissue&#39;,
+ &#39;mushroom&#39;,
+ &#39;European_gallinule&#39;,
+ &#39;damselfly&#39;,
+ &#39;bubble&#39;,
+ &#39;sea_snake&#39;,
+ &#39;hognose_snake&#39;,
+ &#39;oystercatcher&#39;,
+ &#39;fountain_pen&#39;,
+ &#39;coral_reef&#39;,
+ &#39;green_snake&#39;,
+ &#39;Siamese_cat&#39;,
+ &#39;sundial&#39;,
+ &#39;ruddy_turnstone&#39;,
+ &#39;paintbrush&#39;,
+ &#39;umbrella&#39;,
+ &#39;American_chameleon&#39;,
+ &#39;coral_fungus&#39;,
+ &#39;rubber_eraser&#39;,
+ &#39;gar&#39;,
+ &#39;ant&#39;,
+ &#39;American_coot&#39;,
+ &#39;fox_squirrel&#39;,
+ &#39;snail&#39;,
+ &#39;Ibizan_hound&#39;,
+ &#39;earthstar&#39;,
+ &#39;jacamar&#39;,
+ &#39;hummingbird&#39;,
+ &#39;quill&#39;,
+ &#39;chain&#39;,
+ &#39;red-backed_sandpiper&#39;,
+ &#39;pole&#39;,
+ &#39;sandbar&#39;,
+ &#39;goblet&#39;,
+ &#39;fountain&#39;,
+ &#39;knot&#39;,
+ &#39;bighorn&#39;,
+ &#39;Granny_Smith&#39;,
+ &#39;chime&#39;,
+ &#39;coffee_mug&#39;,
+ &#39;bald_eagle&#39;,
+ &#39;hen-of-the-woods&#39;,
+ &#39;barrow&#39;,
+ &#39;banana&#39;,
+ &#39;anemone_fish&#39;,
+ &#39;syringe&#39;,
+ &#39;indigo_bunting&#39;,
+ &#39;slug&#39;,
+ &#39;starfish&#39;,
+ &#39;nipple&#39;,
+ &#39;remote_control&#39;,
+ &#39;bathing_cap&#39;,
+ &#39;ram&#39;,
+ &#39;crossword_puzzle&#39;,
+ &#39;pencil_sharpener&#39;,
+ &#39;hornbill&#39;,
+ &#39;African_chameleon&#39;,
+ &#39;sea_urchin&#39;,
+ &#39;goldfinch&#39;,
+ &#39;thunder_snake&#39;,
+ &#39;monitor&#39;,
+ &#39;ping-pong_ball&#39;,
+ &#39;bath_towel&#39;,
+ &#39;sulphur-crested_cockatoo&#39;,
+ &#39;ringneck_snake&#39;,
+ &#39;horizontal_bar&#39;,
+ &#39;chainlink_fence&#39;,
+ &#39;Eskimo_dog&#39;,
+ &#39;rule&#39;,
+ &#39;cowboy_hat&#39;,
+ &#39;tick&#39;,
+ &#39;parallel_bars&#39;,
+ &#39;African_elephant&#39;,
+ &#39;whippet&#39;,
+ &#39;meerkat&#39;,
+ &#39;boa_constrictor&#39;,
+ &#39;lorikeet&#39;,
+ &#39;padlock&#39;,
+ &#39;impala&#39;,
+ &#39;thimble&#39;,
+ &#39;bonnet&#39;,
+ &#39;sea_slug&#39;,
+ &#39;sidewinder&#39;,
+ &#39;golf_ball&#39;,
+ &#39;park_bench&#39;,
+ &#39;bucket&#39;,
+ &#39;horned_viper&#39;,
+ &#39;quail&#39;,
+ &#39;bannister&#39;,
+ &#39;ballplayer&#39;,
+ &#39;loudspeaker&#39;,
+ &#39;Band_Aid&#39;,
+ &#39;Labrador_retriever&#39;,
+ &#39;Indian_elephant&#39;,
+ &#39;binoculars&#39;,
+ &#39;ptarmigan&#39;,
+ &#39;kite&#39;,
+ &#39;plastic_bag&#39;,
+ &#39;proboscis_monkey&#39;,
+ &#39;scorpion&#39;,
+ &#39;iPod&#39;,
+ &#39;lotion&#39;,
+ &#39;bolete&#39;,
+ &#39;ear&#39;,
+ &#39;dishwasher&#39;,
+ &#39;lampshade&#39;,
+ &#39;birdhouse&#39;,
+ &#39;flagpole&#39;,
+ &#39;ski&#39;,
+ &#39;sunscreen&#39;,
+ &#39;polecat&#39;,
+ &#39;letter_opener&#39;,
+ &#39;washbasin&#39;,
+ &#39;Egyptian_cat&#39;,
+ &#39;bee&#39;,
+ &#39;green_lizard&#39;,
+ &#39;cup&#39;,
+ &#39;handkerchief&#39;,
+ &#39;French_horn&#39;,
+ &#39;rapeseed&#39;,
+ &#39;bassoon&#39;,
+ &#39;grocery_store&#39;,
+ &#39;canoe&#39;,
+ &#39;bib&#39;,
+ &#39;toucan&#39;,
+ &#39;sea_lion&#39;,
+ &#39;swimming_trunks&#39;,
+ &#39;bell_pepper&#39;,
+ &#39;sombrero&#39;,
+ &#39;orange&#39;,
+ &#39;parking_meter&#39;,
+ &#39;lens_cap&#39;,
+ &#39;screw&#39;,
+ &#39;leatherback_turtle&#39;,
+ &#39;dumbbell&#39;,
+ &#39;barbell&#39;,
+ &#39;tub&#39;,
+ &#39;Weimaraner&#39;,
+ &#39;black-footed_ferret&#39;,
+ &#39;gibbon&#39;,
+ &#39;pick&#39;,
+ &#39;Saluki&#39;,
+ &#39;mailbox&#39;,
+ &#39;Petri_dish&#39;,
+ &#39;whistle&#39;,
+ &#39;macaque&#39;,
+ &#39;paddle&#39;,
+ &#39;gown&#39;,
+ &#39;bearskin&#39;,
+ &#39;ladle&#39;,
+ &#39;toy_terrier&#39;,
+ &#39;titi&#39;,
+ &#39;web_site&#39;,
+ &#39;orangutan&#39;,
+ &#39;worm_fence&#39;,
+ &#39;partridge&#39;,
+ &#39;sock&#39;,
+ &#39;dalmatian&#39;,
+ &#39;feather_boa&#39;,
+ &#39;Siberian_husky&#39;,
+ &#39;siamang&#39;,
+ &#39;velvet&#39;,
+ &#39;digital_clock&#39;,
+ &#39;hatchet&#39;,
+ &#39;measuring_cup&#39;,
+ &#39;stingray&#39;,
+ &#39;stinkhorn&#39;,
+ &#39;volleyball&#39;,
+ &#39;bow&#39;,
+ &#39;electric_fan&#39;,
+ &#39;notebook&#39;,
+ &#39;flute&#39;,
+ &#39;television&#39;,
+ &#39;butternut_squash&#39;,
+ &#39;banded_gecko&#39;,
+ &#39;sea_anemone&#39;,
+ &#39;maillot&#39;,
+ &#39;pretzel&#39;,
+ &#39;alligator_lizard&#39;,
+ &#39;agama&#39;,
+ &#39;tennis_ball&#39;,
+ &#39;trombone&#39;,
+ &#39;pitcher&#39;,
+ &#39;stage&#39;,
+ &#39;crutch&#39;,
+ &#39;soccer_ball&#39;,
+ &#39;hard_disc&#39;,
+ &#39;pedestal&#39;,
+ &#39;analog_clock&#39;,
+ &#39;golden_retriever&#39;,
+ &#39;wing&#39;,
+ &#39;honeycomb&#39;,
+ &#39;shopping_cart&#39;,
+ &#39;green_mamba&#39;,
+ &#39;basenji&#39;,
+ &#39;rugby_ball&#39;,
+ &#39;platypus&#39;,
+ &#39;can_opener&#39;,
+ &#34;yellow_lady&#39;s_slipper&#34;,
+ &#39;lab_coat&#39;,
+ &#39;oboe&#39;,
+ &#39;rock_python&#39;,
+ &#39;Bedlington_terrier&#39;,
+ &#39;matchstick&#39;,
+ &#39;mink&#39;,
+ &#39;crane&#39;,
+ &#39;wooden_spoon&#39;,
+ &#39;trimaran&#39;,
+ &#39;mongoose&#39;,
+ &#39;bolo_tie&#39;,
+ &#39;robin&#39;,
+ &#39;church&#39;,
+ &#39;table_lamp&#39;,
+ &#39;running_shoe&#39;,
+ &#39;African_grey&#39;,
+ &#39;seashore&#39;,
+ &#39;hand-held_computer&#39;,
+ &#39;mortarboard&#39;,
+ &#39;mixing_bowl&#39;,
+ &#39;conch&#39;,
+ &#39;lemon&#39;,
+ &#39;ruffed_grouse&#39;,
+ &#39;tripod&#39;,
+ &#39;ice_lolly&#39;,
+ &#39;drumstick&#39;,
+ &#39;butcher_shop&#39;,
+ &#39;toyshop&#39;,
+ &#39;chickadee&#39;,
+ &#39;borzoi&#39;,
+ &#39;boathouse&#39;,
+ &#39;strainer&#39;,
+ &#39;black_grouse&#39;,
+ &#39;loupe&#39;,
+ &#39;lynx&#39;,
+ &#39;pinwheel&#39;,
+ &#39;rocking_chair&#39;,
+ &#39;stopwatch&#39;,
+ &#39;Arctic_fox&#39;,
+ &#39;cellular_telephone&#39;,
+ &#39;neck_brace&#39;,
+ &#39;bagel&#39;,
+ &#39;stole&#39;,
+ &#39;brambling&#39;,
+ &#39;collie&#39;,
+ &#39;walking_stick&#39;,
+ &#39;hare&#39;,
+ &#39;hammerhead&#39;,
+ &#39;window_screen&#39;,
+ &#39;suspension_bridge&#39;,
+ &#39;schooner&#39;,
+ &#39;hair_slide&#39;,
+ &#39;doormat&#39;,
+ &#39;badger&#39;,
+ &#39;house_finch&#39;,
+ &#39;hog&#39;,
+ &#39;dock&#39;,
+ &#39;hair_spray&#39;,
+ &#39;racket&#39;,
+ &#39;Indian_cobra&#39;,
+ &#39;night_snake&#39;,
+ &#39;corn&#39;,
+ &#39;rain_barrel&#39;,
+ &#39;sunglass&#39;,
+ &#39;nail&#39;,
+ &#39;beagle&#39;,
+ &#39;vizsla&#39;,
+ &#39;beaver&#39;,
+ &#39;groenendael&#39;,
+ &#39;bloodhound&#39;,
+ &#39;electric_ray&#39;,
+ &#39;piggy_bank&#39;,
+ &#39;diaper&#39;,
+ &#39;maillot&#39;,
+ &#39;fiddler_crab&#39;,
+ &#39;fly&#39;,
+ &#39;otter&#39;,
+ &#39;mouse&#39;,
+ &#39;computer_keyboard&#39;,
+ &#39;printer&#39;,
+ &#39;Boston_bull&#39;,
+ &#39;desktop_computer&#39;,
+ &#39;typewriter_keyboard&#39;,
+ &#39;Doberman&#39;,
+ &#39;beaker&#39;,
+ &#39;mousetrap&#39;,
+ &#39;carton&#39;,
+ &#39;swing&#39;,
+ &#39;convertible&#39;,
+ &#39;red_fox&#39;,
+ &#39;breakwater&#39;,
+ &#39;mask&#39;,
+ &#39;beacon&#39;,
+ &#39;water_snake&#39;,
+ &#39;sunglasses&#39;,
+ &#39;barbershop&#39;,
+ &#39;dough&#39;,
+ &#39;English_foxhound&#39;,
+ &#39;coucal&#39;,
+ &#39;screen&#39;,
+ &#39;jeep&#39;,
+ &#39;ringlet&#39;,
+ &#39;reel&#39;,
+ &#39;squirrel_monkey&#39;,
+ &#39;water_bottle&#39;,
+ &#39;American_Staffordshire_terrier&#39;,
+ &#39;obelisk&#39;,
+ &#39;grasshopper&#39;,
+ &#39;wallaby&#39;,
+ &#39;airliner&#39;,
+ &#39;wig&#39;,
+ &#39;Irish_setter&#39;,
+ &#39;centipede&#39;,
+ &#39;boxer&#39;,
+ &#39;street_sign&#39;,
+ &#39;cash_machine&#39;,
+ &#39;jean&#39;,
+ &#39;plunger&#39;,
+ &#39;minivan&#39;,
+ &#39;mosque&#39;,
+ &#39;cabbage_butterfly&#39;,
+ &#39;microphone&#39;,
+ &#39;lion&#39;,
+ &#39;eggnog&#39;,
+ &#39;espresso&#39;,
+ &#39;car_mirror&#39;,
+ &#39;pineapple&#39;,
+ &#39;toilet_seat&#39;,
+ &#39;snorkel&#39;,
+ &#39;common_newt&#39;,
+ &#39;miniature_poodle&#39;,
+ &#39;flat-coated_retriever&#39;,
+ &#39;file&#39;,
+ &#39;spaghetti_squash&#39;,
+ &#39;standard_poodle&#39;,
+ &#39;beach_wagon&#39;,
+ &#39;junco&#39;,
+ &#39;fur_coat&#39;,
+ &#39;croquet_ball&#39;,
+ &#39;tricycle&#39;,
+ &#39;combination_lock&#39;,
+ &#39;mobile_home&#39;,
+ &#39;wall_clock&#39;,
+ &#39;Great_Dane&#39;,
+ &#39;zebra&#39;,
+ &#39;face_powder&#39;,
+ &#39;daisy&#39;,
+ &#39;balloon&#39;,
+ &#39;Cardigan&#39;,
+ &#39;pillow&#39;,
+ &#39;washer&#39;,
+ &#39;spindle&#39;,
+ &#39;schipperke&#39;,
+ &#39;redbone&#39;,
+ &#39;harmonica&#39;,
+ &#39;miniature_pinscher&#39;,
+ &#39;ice_cream&#39;,
+ &#39;revolver&#39;,
+ &#39;swab&#39;,
+ &#39;echidna&#39;,
+ &#39;seat_belt&#39;,
+ &#39;power_drill&#39;,
+ &#39;window_shade&#39;,
+ &#39;kuvasz&#39;,
+ &#39;bow_tie&#39;,
+ &#39;rock_beauty&#39;,
+ &#39;hammer&#39;,
+ &#39;screwdriver&#39;,
+ &#39;prayer_rug&#39;,
+ &#39;admiral&#39;,
+ &#39;water_jug&#39;,
+ &#39;cardigan&#39;,
+ &#39;hen&#39;,
+ &#39;strawberry&#39;,
+ &#39;warplane&#39;,
+ &#39;perfume&#39;,
+ &#39;buckeye&#39;,
+ &#39;spotlight&#39;,
+ &#39;gong&#39;,
+ &#39;wine_bottle&#39;,
+ &#39;guenon&#39;,
+ &#39;armadillo&#39;,
+ &#39;photocopier&#39;,
+ &#39;pickelhaube&#39;,
+ &#39;ski_mask&#39;,
+ &#39;bikini&#39;,
+ &#39;coyote&#39;,
+ &#39;bulbul&#39;,
+ &#39;jinrikisha&#39;,
+ &#39;langur&#39;,
+ &#39;chain_mail&#39;,
+ &#39;loggerhead&#39;,
+ &#39;shield&#39;,
+ &#39;gorilla&#39;,
+ &#39;hay&#39;,
+ &#39;Greater_Swiss_Mountain_dog&#39;,
+ &#39;Pomeranian&#39;,
+ &#39;torch&#39;,
+ &#39;puffer&#39;,
+ &#39;potpie&#39;,
+ &#39;flatworm&#39;,
+ &#39;tobacco_shop&#39;,
+ &#39;picket_fence&#39;,
+ &#39;digital_watch&#39;,
+ &#39;unicycle&#39;,
+ &#39;sarong&#39;,
+ &#39;dugong&#39;,
+ &#39;desk&#39;,
+ &#39;space_shuttle&#39;,
+ &#39;hoopskirt&#39;,
+ &#39;patio&#39;,
+ &#39;dhole&#39;,
+ &#39;tray&#39;,
+ &#39;speedboat&#39;,
+ &#39;Rottweiler&#39;,
+ &#39;triceratops&#39;,
+ &#39;Komodo_dragon&#39;,
+ &#39;punching_bag&#39;,
+ &#39;Chihuahua&#39;,
+ &#39;medicine_chest&#39;,
+ &#39;tabby&#39;,
+ &#39;wild_boar&#39;,
+ &#39;shoji&#39;,
+ &#39;corkscrew&#39;,
+ &#39;custard_apple&#39;,
+ &#39;llama&#39;,
+ &#39;hip&#39;,
+ &#39;marmoset&#39;,
+ &#39;sliding_door&#39;,
+ &#39;red_wolf&#39;,
+ &#39;cicada&#39;,
+ &#39;mashed_potato&#39;,
+ &#39;hermit_crab&#39;,
+ &#39;pier&#39;,
+ &#39;sweatshirt&#39;,
+ &#39;tusker&#39;,
+ &#39;Arabian_camel&#39;,
+ &#39;white_wolf&#39;,
+ &#39;plow&#39;,
+ &#39;soup_bowl&#39;,
+ &#39;kimono&#39;,
+ &#39;malinois&#39;,
+ &#39;maze&#39;,
+ &#39;hamper&#39;,
+ &#39;promontory&#39;,
+ &#39;bassinet&#39;,
+ &#39;cock&#39;,
+ &#39;diamondback&#39;,
+ &#39;knee_pad&#39;,
+ &#39;baseball&#39;,
+ &#39;oscilloscope&#39;,
+ &#39;crash_helmet&#39;,
+ &#39;trifle&#39;,
+ &#39;frilled_lizard&#39;,
+ &#39;space_bar&#39;,
+ &#39;golfcart&#39;,
+ &#39;lighter&#39;,
+ &#39;crib&#39;,
+ &#39;crate&#39;,
+ &#39;jellyfish&#39;,
+ &#39;cardoon&#39;,
+ &#39;agaric&#39;,
+ &#39;prairie_chicken&#39;,
+ &#39;beer_bottle&#39;,
+ &#39;lawn_mower&#39;,
+ &#39;cucumber&#39;,
+ &#39;Irish_terrier&#39;,
+ &#39;tiger_beetle&#39;,
+ &#39;plate&#39;,
+ &#39;football_helmet&#39;,
+ &#39;academic_gown&#39;,
+ &#39;radio&#39;,
+ &#39;wool&#39;,
+ &#39;German_shepherd&#39;,
+ &#39;quilt&#39;,
+ &#39;leafhopper&#39;,
+ &#39;violin&#39;,
+ &#34;carpenter&#39;s_kit&#34;,
+ &#39;ox&#39;,
+ &#39;Norfolk_terrier&#39;,
+ &#39;scuba_diver&#39;,
+ &#39;dome&#39;,
+ &#39;pickup&#39;,
+ &#39;cliff&#39;,
+ &#39;spiny_lobster&#39;,
+ &#39;shovel&#39;,
+ &#39;CD_player&#39;,
+ &#39;West_Highland_white_terrier&#39;,
+ &#39;military_uniform&#39;,
+ &#39;fireboat&#39;,
+ &#39;basset&#39;,
+ &#39;lipstick&#39;,
+ &#39;ashcan&#39;,
+ &#39;briard&#39;,
+ &#39;skunk&#39;,
+ &#39;purse&#39;,
+ &#39;Great_Pyrenees&#39;,
+ &#39;axolotl&#39;,
+ &#39;projectile&#39;,
+ &#39;vacuum&#39;,
+ &#39;ocarina&#39;,
+ &#39;groom&#39;,
+ &#39;shower_curtain&#39;,
+ &#39;whiptail&#39;,
+ &#39;lionfish&#39;,
+ &#39;spider_web&#39;,
+ &#39;binder&#39;,
+ &#39;Border_collie&#39;,
+ &#39;pot&#39;,
+ &#39;palace&#39;,
+ &#39;isopod&#39;,
+ &#39;sax&#39;,
+ &#39;sewing_machine&#39;,
+ &#39;teddy&#39;,
+ &#39;lycaenid&#39;,
+ &#39;capuchin&#39;,
+ &#39;brown_bear&#39;,
+ &#39;indri&#39;,
+ &#39;kelpie&#39;,
+ &#39;ballpoint&#39;,
+ &#39;shower_cap&#39;,
+ &#39;cab&#39;,
+ &#39;gas_pump&#39;,
+ &#39;artichoke&#39;,
+ &#39;book_jacket&#39;,
+ &#39;plane&#39;,
+ &#39;Madagascar_cat&#39;,
+ &#39;chimpanzee&#39;,
+ &#39;colobus&#39;,
+ &#39;Staffordshire_bullterrier&#39;,
+ &#39;Rhodesian_ridgeback&#39;,
+ &#39;pirate&#39;,
+ &#39;giant_panda&#39;,
+ &#39;ladybug&#39;,
+ &#39;great_grey_owl&#39;,
+ &#39;cradle&#39;,
+ &#39;malamute&#39;,
+ &#39;clumber&#39;,
+ &#39;head_cabbage&#39;,
+ &#39;necklace&#39;,
+ &#39;pay-phone&#39;,
+ &#39;switch&#39;,
+ &#39;broccoli&#39;,
+ &#39;wok&#39;,
+ &#39;spatula&#39;,
+ &#39;backpack&#39;,
+ &#39;soap_dispenser&#39;,
+ &#39;shoe_shop&#39;,
+ &#39;scoreboard&#39;,
+ &#39;recreational_vehicle&#39;,
+ &#39;cocker_spaniel&#39;,
+ &#39;upright&#39;,
+ &#39;totem_pole&#39;,
+ &#39;sturgeon&#39;,
+ &#39;papillon&#39;,
+ &#39;barrel&#39;,
+ &#39;terrapin&#39;,
+ &#39;dishrag&#39;,
+ &#39;cauliflower&#39;,
+ &#39;Samoyed&#39;,
+ &#39;geyser&#39;,
+ &#39;beer_glass&#39;,
+ &#39;grille&#39;,
+ &#39;patas&#39;,
+ &#39;bathtub&#39;,
+ &#39;dung_beetle&#39;,
+ &#39;Christmas_stocking&#39;,
+ &#39;sorrel&#39;,
+ &#39;grey_fox&#39;,
+ &#39;mountain_tent&#39;,
+ &#39;laptop&#39;,
+ &#39;missile&#39;,
+ &#39;parachute&#39;,
+ &#39;restaurant&#39;,
+ &#39;guillotine&#39;,
+ &#39;cloak&#39;,
+ &#39;planetarium&#39;,
+ &#39;hartebeest&#39;,
+ &#39;passenger_car&#39;,
+ &#39;Airedale&#39;,
+ &#39;kit_fox&#39;,
+ &#39;studio_couch&#39;,
+ &#39;Leonberg&#39;,
+ &#39;jackfruit&#39;,
+ &#39;cornet&#39;,
+ &#39;Australian_terrier&#39;,
+ &#39;rifle&#39;,
+ &#39;rhinoceros_beetle&#39;,
+ &#39;wolf_spider&#39;,
+ &#39;barracouta&#39;,
+ &#39;gondola&#39;,
+ &#39;Gordon_setter&#39;,
+ &#39;viaduct&#39;,
+ &#39;mitten&#39;,
+ &#39;Shih-Tzu&#39;,
+ &#39;shopping_basket&#39;,
+ &#39;panpipe&#39;,
+ &#39;packet&#39;,
+ &#39;Maltese_dog&#39;,
+ &#39;grand_piano&#39;,
+ &#39;Angora&#39;,
+ &#39;hamster&#39;,
+ &#39;ground_beetle&#39;,
+ &#39;wallet&#39;,
+ &#39;French_loaf&#39;,
+ &#39;sandal&#39;,
+ &#39;drum&#39;,
+ &#39;carbonara&#39;,
+ &#39;magnetic_compass&#39;,
+ &#39;Gila_monster&#39;,
+ &#39;greenhouse&#39;,
+ &#39;catamaran&#39;,
+ &#39;gasmask&#39;,
+ &#39;cricket&#39;,
+ &#39;odometer&#39;,
+ &#39;iron&#39;,
+ &#39;weevil&#39;,
+ &#39;espresso_maker&#39;,
+ &#39;mantis&#39;,
+ &#39;cairn&#39;,
+ &#39;stethoscope&#39;,
+ &#39;castle&#39;,
+ &#39;puck&#39;,
+ &#39;fire_screen&#39;,
+ &#39;monarch&#39;,
+ &#39;scale&#39;,
+ &#39;reflex_camera&#39;,
+ &#39;gyromitra&#39;,
+ &#39;spotted_salamander&#39;,
+ &#39;muzzle&#39;,
+ &#39;pop_bottle&#39;,
+ &#39;oxcart&#39;,
+ &#39;wood_rabbit&#39;,
+ &#39;bell_cote&#39;,
+ &#39;safety_pin&#39;,
+ &#39;chiton&#39;,
+ &#39;howler_monkey&#39;,
+ &#39;sulphur_butterfly&#39;,
+ &#39;miniskirt&#39;,
+ &#39;tailed_frog&#39;,
+ &#39;jaguar&#39;,
+ &#39;miniature_schnauzer&#39;,
+ &#39;bakery&#39;,
+ &#39;bicycle-built-for-two&#39;,
+ &#39;sloth_bear&#39;,
+ &#39;porcupine&#39;,
+ &#39;hand_blower&#39;,
+ &#39;abacus&#39;,
+ &#39;horse_cart&#39;,
+ &#39;abaya&#39;,
+ &#39;stupa&#39;,
+ &#39;lacewing&#39;,
+ &#39;pencil_box&#39;,
+ &#39;oil_filter&#39;,
+ &#39;Kerry_blue_terrier&#39;,
+ &#39;pill_bottle&#39;,
+ &#39;suit&#39;,
+ &#39;leopard&#39;,
+ &#39;solar_dish&#39;,
+ &#39;lesser_panda&#39;,
+ &#39;barber_chair&#39;,
+ &#39;safe&#39;,
+ &#39;pomegranate&#39;,
+ &#39;Walker_hound&#39;,
+ &#39;Dutch_oven&#39;,
+ &#39;garter_snake&#39;,
+ &#39;Pekinese&#39;,
+ &#39;volcano&#39;,
+ &#39;pajama&#39;,
+ &#39;folding_chair&#39;,
+ &#39;cello&#39;,
+ &#39;tiger_cat&#39;,
+ &#39;lumbermill&#39;,
+ &#39;vault&#39;,
+ &#39;chocolate_sauce&#39;,
+ &#39;soft-coated_wheaten_terrier&#39;,
+ &#39;chain_saw&#39;,
+ &#39;cockroach&#39;,
+ &#39;stone_wall&#39;,
+ &#39;trolleybus&#39;,
+ &#39;carousel&#39;,
+ &#39;alp&#39;,
+ &#39;moped&#39;,
+ &#39;comic_book&#39;,
+ &#39;tile_roof&#39;,
+ &#39;acorn&#39;,
+ &#39;water_tower&#39;,
+ &#39;cocktail_shaker&#39;,
+ &#39;mosquito_net&#39;,
+ &#39;English_setter&#39;,
+ &#39;prison&#39;,
+ &#39;library&#39;,
+ &#39;microwave&#39;,
+ &#39;three-toed_sloth&#39;,
+ &#39;maypole&#39;,
+ &#39;coho&#39;,
+ &#39;Afghan_hound&#39;,
+ &#39;bottlecap&#39;,
+ &#39;liner&#39;,
+ &#39;eft&#39;,
+ &#39;hourglass&#39;,
+ &#39;motor_scooter&#39;,
+ &#39;harp&#39;,
+ &#39;Yorkshire_terrier&#39;,
+ &#39;mountain_bike&#39;,
+ &#39;consomme&#39;,
+ &#39;cinema&#39;,
+ &#39;joystick&#39;,
+ &#34;jack-o&#39;-lantern&#34;,
+ &#39;bookshop&#39;,
+ &#39;space_heater&#39;,
+ &#39;accordion&#39;,
+ &#39;disk_brake&#39;,
+ &#39;toy_poodle&#39;,
+ &#39;sea_cucumber&#39;,
+ &#39;tarantula&#39;,
+ &#39;Saint_Bernard&#39;,
+ &#39;dial_telephone&#39;,
+ &#39;buckle&#39;,
+ &#39;basketball&#39;,
+ &#39;fire_engine&#39;,
+ &#39;teapot&#39;,
+ &#39;paddlewheel&#39;,
+ &#39;cougar&#39;,
+ &#39;vase&#39;,
+ &#39;Brabancon_griffon&#39;,
+ &#39;menu&#39;,
+ &#39;container_ship&#39;,
+ &#39;bookcase&#39;,
+ &#39;jersey&#39;,
+ &#39;triumphal_arch&#39;,
+ &#39;minibus&#39;,
+ &#39;long-horned_beetle&#39;,
+ &#39;marmot&#39;,
+ &#39;Irish_water_spaniel&#39;,
+ &#39;home_theater&#39;,
+ &#39;Norwich_terrier&#39;,
+ &#39;trailer_truck&#39;,
+ &#39;guacamole&#39;,
+ &#39;king_snake&#39;,
+ &#39;Norwegian_elkhound&#39;,
+ &#39;standard_schnauzer&#39;,
+ &#39;Appenzeller&#39;,
+ &#39;chiffonier&#39;,
+ &#39;go-kart&#39;,
+ &#39;Pembroke&#39;,
+ &#39;bull_mastiff&#39;,
+ &#39;bullet_train&#39;,
+ &#39;acoustic_guitar&#39;,
+ &#39;guinea_pig&#39;,
+ &#39;Sussex_spaniel&#39;,
+ &#39;wreck&#39;,
+ &#39;bluetick&#39;,
+ &#39;forklift&#39;,
+ &#39;Blenheim_spaniel&#39;,
+ &#39;killer_whale&#39;,
+ &#39;coffeepot&#39;,
+ &#39;pool_table&#39;,
+ &#39;airship&#39;,
+ &#39;vestment&#39;,
+ &#39;Chesapeake_Bay_retriever&#39;,
+ &#39;Scotch_terrier&#39;,
+ &#39;Mexican_hairless&#39;,
+ &#39;jigsaw_puzzle&#39;,
+ &#39;American_alligator&#39;,
+ &#39;tractor&#39;,
+ &#39;rock_crab&#39;,
+ &#39;Persian_cat&#39;,
+ &#39;French_bulldog&#39;,
+ &#39;black_widow&#39;,
+ &#39;school_bus&#39;,
+ &#39;African_crocodile&#39;,
+ &#39;bobsled&#39;,
+ &#39;radiator&#39;,
+ &#39;chest&#39;,
+ &#39;projector&#39;,
+ &#39;African_hunting_dog&#39;,
+ &#39;electric_guitar&#39;,
+ &#39;grey_whale&#39;,
+ &#39;Newfoundland&#39;,
+ &#39;tiger_shark&#39;,
+ &#39;steel_arch_bridge&#39;,
+ &#39;cowboy_boot&#39;,
+ &#39;zucchini&#39;,
+ &#39;Welsh_springer_spaniel&#39;,
+ &#39;barn&#39;,
+ &#39;traffic_light&#39;,
+ &#39;bulletproof_vest&#39;,
+ &#39;turnstile&#39;,
+ &#34;potter&#39;s_wheel&#34;,
+ &#39;spider_monkey&#39;,
+ &#39;goldfish&#39;,
+ &#39;confectionery&#39;,
+ &#39;whiskey_jug&#39;,
+ &#39;Brittany_spaniel&#39;,
+ &#39;burrito&#39;,
+ &#39;ibex&#39;,
+ &#39;trilobite&#39;,
+ &#39;steel_drum&#39;,
+ &#39;Border_terrier&#39;,
+ &#39;hotdog&#39;,
+ &#39;cheetah&#39;,
+ &#39;mud_turtle&#39;,
+ &#39;dining_table&#39;,
+ &#39;cannon&#39;,
+ &#39;electric_locomotive&#39;,
+ &#39;plate_rack&#39;,
+ &#39;toaster&#39;,
+ &#39;Scottish_deerhound&#39;,
+ &#39;megalith&#39;,
+ &#39;milk_can&#39;,
+ &#39;racer&#39;,
+ &#39;Shetland_sheepdog&#39;,
+ &#39;oxygen_mask&#39;,
+ &#39;dogsled&#39;,
+ &#39;cassette&#39;,
+ &#39;entertainment_center&#39;,
+ &#39;thresher&#39;,
+ &#39;candle&#39;,
+ &#39;saltshaker&#39;,
+ &#39;tape_player&#39;,
+ &#39;brassiere&#39;,
+ &#39;envelope&#39;,
+ &#39;fig&#39;,
+ &#39;EntleBucher&#39;,
+ &#39;harvestman&#39;,
+ &#39;Old_English_sheepdog&#39;,
+ &#39;Sealyham_terrier&#39;,
+ &#39;barometer&#39;,
+ &#39;thatch&#39;,
+ &#39;streetcar&#39;,
+ &#39;Crock_Pot&#39;,
+ &#39;ambulance&#39;,
+ &#39;submarine&#39;,
+ &#39;red_wine&#39;,
+ &#39;car_wheel&#39;,
+ &#39;common_iguana&#39;,
+ &#39;vending_machine&#39;,
+ &#39;pug&#39;,
+ &#39;acorn_squash&#39;,
+ &#39;water_buffalo&#39;,
+ &#39;baboon&#39;,
+ &#39;European_fire_salamander&#39;,
+ &#39;brass&#39;,
+ &#39;cuirass&#39;,
+ &#39;maraca&#39;,
+ &#39;waffle_iron&#39;,
+ &#39;black-and-tan_coonhound&#39;,
+ &#39;Loafer&#39;,
+ &#39;broom&#39;,
+ &#39;slide_rule&#39;,
+ &#39;hyena&#39;,
+ &#39;chow&#39;,
+ &#39;sleeping_bag&#39;,
+ &#39;mailbag&#39;,
+ &#39;banjo&#39;,
+ &#39;cleaver&#39;,
+ &#39;yawl&#39;,
+ &#39;aircraft_carrier&#39;,
+ &#39;tiger&#39;,
+ &#39;timber_wolf&#39;,
+ &#39;slot&#39;,
+ &#39;Polaroid_camera&#39;,
+ &#39;Japanese_spaniel&#39;,
+ &#39;snow_leopard&#39;,
+ &#39;box_turtle&#39;,
+ &#39;Dandie_Dinmont&#39;,
+ &#39;poncho&#39;,
+ &#39;giant_schnauzer&#39;,
+ &#39;English_springer&#39;,
+ &#39;rotisserie&#39;,
+ &#39;refrigerator&#39;,
+ &#39;Irish_wolfhound&#39;,
+ &#39;koala&#39;,
+ &#39;modem&#39;,
+ &#39;silky_terrier&#39;,
+ &#39;stove&#39;,
+ &#39;stretcher&#39;,
+ &#39;Tibetan_terrier&#39;,
+ &#39;cliff_dwelling&#39;,
+ &#39;Dungeness_crab&#39;,
+ &#39;leaf_beetle&#39;,
+ &#39;American_lobster&#39;,
+ &#39;steam_locomotive&#39;,
+ &#39;bullfrog&#39;,
+ &#39;cassette_player&#39;,
+ &#39;Model_T&#39;,
+ &#39;Tibetan_mastiff&#39;,
+ &#39;wardrobe&#39;,
+ &#39;sports_car&#39;,
+ &#39;apiary&#39;,
+ &#39;valley&#39;,
+ &#39;half_track&#39;,
+ &#39;great_white_shark&#39;,
+ &#39;black_and_gold_garden_spider&#39;,
+ &#39;theater_curtain&#39;,
+ &#39;tree_frog&#39;,
+ &#39;snowmobile&#39;,
+ &#39;Windsor_tie&#39;,
+ &#39;assault_rifle&#39;,
+ &#39;wombat&#39;,
+ &#39;frying_pan&#39;,
+ &#39;Bernese_mountain_dog&#39;,
+ &#39;Lhasa&#39;,
+ &#39;freight_car&#39;,
+ &#39;altar&#39;,
+ &#39;harvester&#39;,
+ &#39;garbage_truck&#39;,
+ &#39;Bouvier_des_Flandres&#39;,
+ &#39;throne&#39;,
+ &#39;yurt&#39;,
+ &#39;garden_spider&#39;,
+ &#39;four-poster&#39;,
+ &#39;tow_truck&#39;,
+ &#39;pizza&#39;,
+ &#39;meat_loaf&#39;,
+ &#39;china_cabinet&#39;,
+ &#39;scabbard&#39;,
+ &#39;marimba&#39;,
+ &#39;tank&#39;,
+ &#39;clog&#39;,
+ &#39;warthog&#39;,
+ &#39;wire-haired_fox_terrier&#39;,
+ &#39;tench&#39;,
+ &#39;organ&#39;,
+ &#39;curly-coated_retriever&#39;,
+ &#39;king_crab&#39;,
+ &#39;komondor&#39;,
+ &#39;police_van&#39;,
+ &#39;apron&#39;,
+ &#39;barn_spider&#39;,
+ &#39;radio_telescope&#39;,
+ &#39;hippopotamus&#39;,
+ &#39;Lakeland_terrier&#39;,
+ &#39;American_black_bear&#39;,
+ &#39;mortar&#39;,
+ &#39;hot_pot&#39;,
+ &#39;German_short-haired_pointer&#39;,
+ &#39;monastery&#39;,
+ &#39;otterhound&#39;,
+ &#39;dam&#39;,
+ &#39;overskirt&#39;,
+ &#39;trench_coat&#39;,
+ &#39;affenpinscher&#39;,
+ &#39;bison&#39;,
+ &#39;holster&#39;,
+ &#39;breastplate&#39;,
+ &#39;keeshond&#39;,
+ &#39;caldron&#39;,
+ &#39;limousine&#39;,
+ &#39;moving_van&#39;,
+ &#39;manhole_cover&#39;,
+ &#39;drilling_platform&#39;,
+ &#39;amphibian&#39;,
+ &#39;snowplow&#39;,
+ &#39;cheeseburger&#39;,
+ &#39;lifeboat&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># output with shap values</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">image_plot</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">Exception</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-20-b98c3ef2fd6b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># output with shap values</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>shap<span class="ansi-blue-fg">.</span>image_plot<span class="ansi-blue-fg">(</span>shap_values<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/projects/shap/shap/plots/_image.py</span> in <span class="ansi-cyan-fg">image</span><span class="ansi-blue-fg">(shap_values, pixel_values, labels, width, aspect, hspace, labelpad, show)</span>
+<span class="ansi-green-intense-fg ansi-bold">     57</span>             shap_values <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>shap_exp<span class="ansi-blue-fg">.</span>values<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">...</span><span class="ansi-blue-fg">,</span> i<span class="ansi-blue-fg">]</span> <span class="ansi-green-fg">for</span> i <span class="ansi-green-fg">in</span> range<span class="ansi-blue-fg">(</span>shap_exp<span class="ansi-blue-fg">.</span>values<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">     58</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 59</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> Exception<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Number of outputs needs to have support added!! (probably a simple fix)&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     60</span>         <span class="ansi-green-fg">if</span> pixel_values <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     61</span>             pixel_values <span class="ansi-blue-fg">=</span> shap_exp<span class="ansi-blue-fg">.</span>data
+
+<span class="ansi-red-fg">Exception</span>: Number of outputs needs to have support added!! (probably a simple fix)
+</pre></div></div>
+</div>
+</section>
+<section id="Interpretation-of-SHAP-output-explanation:">
+<h2>Interpretation of SHAP output explanation:<a class="headerlink" href="#Interpretation-of-SHAP-output-explanation:" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>In the first example, given bird image is classified as an American Egret with next probable classes being a Crane, Heron and Flamingo. It is the “bump” over the bird’s neck that causes it to be classified as an American Egret vs a Crane, Heron or a Flamingo. You can see the neck region of the bird appropriately highlighted in red super pixels.</p></li>
+<li><p>In the second example, it is the shape of the boat which causes it to be classified as a speedboat instead of a fountain, lifeboat or snowplow (appropriately highlighted in red super pixels).</p></li>
+</ol>
+<section id="A-longer-run-with-many-evaluations">
+<h3>A longer run with many evaluations<a class="headerlink" href="#A-longer-run-with-many-evaluations" title="Link to this heading"></a></h3>
+<p>By increasing the <code class="docutils literal notranslate"><span class="pre">max_evals</span></code> parameter we let SHAP execute the original model more times and so get a more finely detailed explaination. We also use the blur kernel here, both to demonstrate it, and because it is much faster than inpainting. Note that this will take a while if you are not using a modern GPU on your system.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># python function to get model output; replace this function with your own model function.</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">preprocess_input</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+
+<span class="c1"># define a masker that is used to mask out partitions of the input image.</span>
+<span class="n">masker_blur</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">maskers</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;blur(128,128)&quot;</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># create an explainer with model and image masker</span>
+<span class="n">explainer_blur</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">masker_blur</span><span class="p">,</span> <span class="n">output_names</span><span class="o">=</span><span class="n">class_names</span><span class="p">)</span>
+
+<span class="c1"># here we explain two images using 500 evaluations of the underlying model to estimate the SHAP values</span>
+<span class="n">shap_values_fine</span> <span class="o">=</span> <span class="n">explainer_blur</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">max_evals</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">shap</span><span class="o">.</span><span class="n">Explanation</span><span class="o">.</span><span class="n">argsort</span><span class="o">.</span><span class="n">flip</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 3it [00:17,  5.94s/it]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># output with shap values</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">image_plot</span><span class="p">(</span><span class="n">shap_values_fine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_classification_Image_Multi_Class_23_0.png" class="no-scaled-link" src="../../../_images/example_notebooks_image_examples_image_classification_Image_Multi_Class_23_0.png" style="width: 851px; height: 417px;" />
+</div>
+</div>
+<hr><p>Have an idea for more helpful examples? Pull requests that add to this documentation notebook are encouraged!</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Front%20Page%20DeepExplainer%20MNIST%20Example.html" class="btn btn-neutral float-left" title="Front Page DeepExplainer MNIST Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Multi-class%20ResNet50%20on%20ImageNet%20%28TensorFlow%29.html" class="btn btn-neutral float-right" title="Multi-class ResNet50 on ImageNet (TensorFlow)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

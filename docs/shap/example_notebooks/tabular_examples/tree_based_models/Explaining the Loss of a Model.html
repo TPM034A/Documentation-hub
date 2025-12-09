@@ -1,0 +1,233 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explaining the Loss of a Tree Model &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Fitting a Linear Simulation with XGBoost" href="Fitting%20a%20Linear%20Simulation%20with%20XGBoost.html" />
+    <link rel="prev" title="Explaining a simple OR function" href="Explaining%20a%20simple%20OR%20function.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../tabular_examples.html#tree-based-models">Tree-based models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Basic%20SHAP%20Interaction%20Value%20Example%20in%20XGBoost.html">Basic SHAP Interaction Value Example in XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Catboost%20tutorial.html">Catboost tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Census%20income%20classification%20with%20LightGBM.html">Census income classification with LightGBM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Census%20income%20classification%20with%20XGBoost.html">Census income classification with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Example%20of%20loading%20a%20custom%20tree%20model%20into%20SHAP.html">Example of loading a custom tree model into SHAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Explaining%20a%20simple%20OR%20function.html">Explaining a simple OR function</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Explaining the Loss of a Tree Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Train-an-XGBoost-Classifier">Train an XGBoost Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Explain-the-Log-Loss-of-the-Model-with-TreeExplainer">Explain the Log-Loss of the Model with TreeExplainer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Fitting%20a%20Linear%20Simulation%20with%20XGBoost.html">Fitting a Linear Simulation with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Force%20Plot%20Colors.html">Force Plot Colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Front%20page%20example%20%28XGBoost%29.html">Front page example (XGBoost)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="League%20of%20Legends%20Win%20Prediction%20with%20XGBoost.html">League of Legends Win Prediction with XGBoost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NHANES%20I%20Survival%20Model.html">NHANES I Survival Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Perfomance%20Comparison.html">Speed comparison of gradient boosting libraries for shap values calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Python%20Version%20of%20Tree%20SHAP.html">Python Version of Tree SHAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scatter%20Density%20vs.%20Violin%20Plot%20Comparison.html">Scatter Density vs. Violin Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Understanding%20Tree%20SHAP%20for%20Simple%20Models.html">Understanding Tree SHAP for Simple Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#linear-models">Linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#neural-networks">Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tabular_examples.html#model-agnostic">Model agnostic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../tabular_examples.html">Tabular examples</a></li>
+      <li class="breadcrumb-item active">Explaining the Loss of a Tree Model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/tabular_examples/tree_based_models/Explaining the Loss of a Model.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Explaining-the-Loss-of-a-Tree-Model">
+<h1>Explaining the Loss of a Tree Model<a class="headerlink" href="#Explaining-the-Loss-of-a-Tree-Model" title="Link to this heading"></a></h1>
+<p>Explaining the loss of a model can be very useful for debugging and model monitoring. This notebook gives a very simple example of how this works. Note that explaining the loss of a model requires passing the labels, and is only supported for the <code class="docutils literal notranslate"><span class="pre">feature_perturbation=&quot;independent&quot;</span></code> option of TreeExplainer.</p>
+<p>This notebook will be fleshed out once we post a full write-up of this method.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xgboost</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+</pre></div>
+</div>
+</div>
+<section id="Train-an-XGBoost-Classifier">
+<h2>Train an XGBoost Classifier<a class="headerlink" href="#Train-an-XGBoost-Classifier" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">adult</span><span class="p">()</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># compute the logistic log-loss</span>
+<span class="n">model_loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">model_loss</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([8.43880873e-04, 2.47898608e-01, 1.17997164e-02, 7.11527169e-02,
+       6.41849875e-01, 1.76084566e+00, 5.70287136e-03, 8.60033274e-01,
+       4.78262809e-04, 6.43801317e-03])
+</pre></div></div>
+</div>
+</section>
+<section id="Explain-the-Log-Loss-of-the-Model-with-TreeExplainer">
+<h2>Explain the Log-Loss of the Model with TreeExplainer<a class="headerlink" href="#Explain-the-Log-Loss-of-the-Model-with-TreeExplainer" title="Link to this heading"></a></h2>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">expected_value</span></code> of the model’s loss depends on the label and so it is now a function instead of a single number.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">feature_perturbation</span><span class="o">=</span><span class="s2">&quot;interventional&quot;</span><span class="p">,</span> <span class="n">model_output</span><span class="o">=</span><span class="s2">&quot;log_loss&quot;</span><span class="p">)</span>
+<span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">,</span> <span class="p">:],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">explainer</span><span class="o">.</span><span class="n">expected_value</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([8.43887488e-04, 2.47898585e-01, 1.17997435e-02, 7.11527711e-02,
+       6.41849874e-01, 1.76084475e+00, 5.70285151e-03, 8.60033255e-01,
+       4.78233521e-04, 6.43796897e-03])
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Explaining%20a%20simple%20OR%20function.html" class="btn btn-neutral float-left" title="Explaining a simple OR function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Fitting%20a%20Linear%20Simulation%20with%20XGBoost.html" class="btn btn-neutral float-right" title="Fitting a Linear Simulation with XGBoost" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

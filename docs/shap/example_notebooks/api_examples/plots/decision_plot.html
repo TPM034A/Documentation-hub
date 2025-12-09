@@ -1,0 +1,1149 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>decision plot &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="heatmap plot" href="heatmap.html" />
+    <link rel="prev" title="beeswarm plot" href="beeswarm.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api_examples.html">API examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../migrating-to-new-api.html">Migrating to the new “Explanation” API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#explainers">explainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#maskers">maskers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_examples.html#models">models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api_examples.html#plots">plots</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bar.html"><code class="docutils literal notranslate"><span class="pre">bar</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="beeswarm.html"><code class="docutils literal notranslate"><span class="pre">beeswarm</span></code> plot</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">decision</span></code> plot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#SHAP-Decision-Plots">SHAP Decision Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Basic-decision-plot-features">Basic decision plot features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#When-is-a-decision-plot-helpful?">When is a decision plot helpful?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compare-and-contrast-predictions-for-several-models">Compare and contrast predictions for several models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#SHAP-interaction-values">SHAP interaction values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Preserving-order-and-scale-between-plots">Preserving order and scale between plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Selecting-features-for-display">Selecting features for display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Changing-the-SHAP-base-value">Changing the SHAP base value</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heatmap.html"><code class="docutils literal notranslate"><span class="pre">heatmap</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="image.html"><code class="docutils literal notranslate"><span class="pre">image</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scatter.html"><code class="docutils literal notranslate"><span class="pre">scatter</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text.html"><code class="docutils literal notranslate"><span class="pre">text</span></code> plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="violin.html"><code class="docutils literal notranslate"><span class="pre">violin</span></code> summary plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="waterfall.html"><code class="docutils literal notranslate"><span class="pre">waterfall</span></code> plot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../api_examples.html">API Examples</a></li>
+      <li class="breadcrumb-item active"><code class="docutils literal notranslate"><span class="pre">decision</span></code> plot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/api_examples/plots/decision_plot.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="decision-plot">
+<h1><code class="docutils literal notranslate"><span class="pre">decision</span></code> plot<a class="headerlink" href="#decision-plot" title="Link to this heading"></a></h1>
+<h2><p>Table of Contents</p>
+</h2><div class="toc"><ul class="toc-item"><li><p>1  SHAP Decision Plots</p>
+<ul class="toc-item"><li><p>1.1  Load the dataset and train the model</p>
+</li><li><p>1.2  Calculate SHAP values</p>
+</li></ul></li><li><p>2  Basic decision plot features</p>
+</li><li><p>3  When is a decision plot helpful?</p>
+<ul class="toc-item"><li><p>3.1  Show a large number of feature effects clearly</p>
+</li><li><p>3.2  Visualize multioutput predictions</p>
+</li><li><p>3.3  Display the cumulative effect of interactions</p>
+</li><li><p>3.4  Explore feature effects for a range of feature values</p>
+</li><li><p>3.5  Identify outliers</p>
+</li><li><p>3.6  Identify typical prediction paths</p>
+</li><li><p>3.7  Compare and contrast predictions for several models</p>
+</li></ul></li><li><p>4  SHAP interaction values</p>
+</li><li><p>5  Preserving order and scale between plots</p>
+</li><li><p>6  Selecting features for display</p>
+</li><li><p>7  Changing the SHAP base value</p>
+</li></ul></div><section id="SHAP-Decision-Plots">
+<h2>SHAP Decision Plots<a class="headerlink" href="#SHAP-Decision-Plots" title="Link to this heading"></a></h2>
+<p>SHAP decision plots show how complex models arrive at their predictions (i.e., how models make decisions). This notebook illustrates decision plot features and use cases with simple examples. For a more descriptive narrative, <a class="reference external" href="https://medium.com/&#64;floidgilbert/introducing-shap-decision-plots-52ed3b4a1cba">click here</a>.</p>
+<section id="Load-the-dataset-and-train-the-model">
+<h3>Load the dataset and train the model<a class="headerlink" href="#Load-the-dataset-and-train-the-model" title="Link to this heading"></a></h3>
+<p>For most of the examples, we empoy a <a class="reference external" href="https://github.com/microsoft/LightGBM">LightGBM</a> model trained on the <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/adult">UCI Adult Income</a> data set. The objective: predict whether an individual makes over $50K per year.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">train_test_split</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">adult</span><span class="p">()</span>
+<span class="n">X_display</span><span class="p">,</span> <span class="n">y_display</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">adult</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># create a train/test split</span>
+<span class="n">random_state</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+<span class="n">d_train</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">d_test</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;max_bin&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="s2">&quot;boosting_type&quot;</span><span class="p">:</span> <span class="s2">&quot;gbdt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;objective&quot;</span><span class="p">:</span> <span class="s2">&quot;binary&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;metric&quot;</span><span class="p">:</span> <span class="s2">&quot;binary_logloss&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;num_leaves&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;min_data&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;boost_from_average&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="n">random_state</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+    <span class="n">params</span><span class="p">,</span>
+    <span class="n">d_train</span><span class="p">,</span>
+    <span class="mi">10000</span><span class="p">,</span>
+    <span class="n">valid_sets</span><span class="o">=</span><span class="p">[</span><span class="n">d_test</span><span class="p">],</span>
+    <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">verbose_eval</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Training until validation scores don&#39;t improve for 50 rounds.
+Early stopping, best iteration is:
+[683]   valid_0&#39;s binary_logloss: 0.277144
+</pre></div></div>
+</div>
+</section>
+<section id="Calculate-SHAP-values">
+<h3>Calculate SHAP values<a class="headerlink" href="#Calculate-SHAP-values" title="Link to this heading"></a></h3>
+<p>Compute SHAP values and SHAP interaction values for the first 20 test observations.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">expected_value</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">expected_value</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">expected_value</span> <span class="o">=</span> <span class="n">expected_value</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Explainer expected value: </span><span class="si">{</span><span class="n">expected_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">select</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">select</span><span class="p">]</span>
+<span class="n">features_display</span> <span class="o">=</span> <span class="n">X_display</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">features</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">features</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">shap_interaction_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">shap_interaction_values</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shap_interaction_values</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">shap_interaction_values</span> <span class="o">=</span> <span class="n">shap_interaction_values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Explainer expected value: -2.4296968952292404
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Basic-decision-plot-features">
+<h2>Basic decision plot features<a class="headerlink" href="#Basic-decision-plot-features" title="Link to this heading"></a></h2>
+<p>Refer to the decision plot of the 20 test observations below. <em>Note: This plot isn’t informative by itself; we use it only to illustrate the primary concepts.</em> * The x-axis represents the model’s output. In this case, the units are log odds. * The plot is centered on the x-axis at <code class="docutils literal notranslate"><span class="pre">explainer.expected_value</span></code>. All SHAP values are relative to the model’s expected value like a linear model’s effects are relative to the intercept. * The y-axis lists the model’s features. By default, the features
+are ordered by descending importance. The importance is calculated over the observations plotted. <em>This is usually different than the importance ordering for the entire dataset.</em> In addition to feature importance ordering, the decision plot also supports hierarchical cluster feature ordering and user-defined feature ordering. * Each observation’s prediction is represented by a colored line. At the top of the plot, each line strikes the x-axis at its corresponding observation’s predicted value.
+This value determines the color of the line on a spectrum. * Moving from the bottom of the plot to the top, SHAP values for each feature are added to the model’s base value. This shows how each feature contributes to the overall prediction. * At the bottom of the plot, the observations converge at <code class="docutils literal notranslate"><span class="pre">explainer.expected_value</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">features_display</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_8_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_8_0.png" />
+</div>
+</div>
+<p>Like the force plot, the decision plot supports <code class="docutils literal notranslate"><span class="pre">link='logit'</span></code> to transform log odds to probabilities.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">features_display</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_10_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_10_0.png" />
+</div>
+</div>
+<p>Observations can be highlighted using a dotted line style. Here, we highlight a misclassified observation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our naive cutoff point is zero log odds (probability 0.5).</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">shap_values</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">expected_value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">misclassified</span> <span class="o">=</span> <span class="n">y_pred</span> <span class="o">!=</span> <span class="n">y_test</span><span class="p">[</span><span class="n">select</span><span class="p">]</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">features_display</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span> <span class="n">highlight</span><span class="o">=</span><span class="n">misclassified</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_12_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_12_0.png" />
+</div>
+</div>
+<p>Let’s inspect the misclassified observation by plotting it alone. When a single observation is plotted, its corresponding feature values are displayed. Notice that the shape of the line has changed. Why? The feature order has changed on the y-axis based on the feature importance for this lone observation. The section “Preserving order and scale between plots” shows how to use the same feature order for multiple plots.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_values</span><span class="p">[</span><span class="n">misclassified</span><span class="p">],</span>
+    <span class="n">features_display</span><span class="p">[</span><span class="n">misclassified</span><span class="p">],</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">highlight</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_14_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_14_0.png" />
+</div>
+</div>
+<p>A force plot for the misclassified observation is shown below. In this case, the decision plot and the force plot are both effective at showing how the model arrived at its decision.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">force_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_values</span><span class="p">[</span><span class="n">misclassified</span><span class="p">],</span>
+    <span class="n">features_display</span><span class="p">[</span><span class="n">misclassified</span><span class="p">],</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">matplotlib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_16_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_16_0.png" />
+</div>
+</div>
+</section>
+<section id="When-is-a-decision-plot-helpful?">
+<h2>When is a decision plot helpful?<a class="headerlink" href="#When-is-a-decision-plot-helpful?" title="Link to this heading"></a></h2>
+<p>There are several use cases for a decision plot. We present several cases here. 1. Show a large number of feature effects clearly. 2. Visualize multioutput predictions. 3. Display the cumulative effect of interactions. 4. Explore feature effects for a range of feature values. 5. Identify outliers. 6. Identify typical prediction paths. 7. Compare and contrast predictions for several models.</p>
+<section id="Show-a-large-number-of-feature-effects-clearly">
+<h3>Show a large number of feature effects clearly<a class="headerlink" href="#Show-a-large-number-of-feature-effects-clearly" title="Link to this heading"></a></h3>
+<p>Like a force plot, a decision plot shows the important features involved in a model’s output. However, a decision plot can be more helpful than a force plot when there are a large number of significant features involved. To demonstrate, we use a model trained on the <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Communities+and+Crime+Unnormalized">UCI Communities and Crime</a> data set. The model uses 101 features. The two plots below describe the same prediction. The force plot’s horizontal format
+prevents it from showing all of the significant features clearly. In contrast, the decision plot’s vertical format can display the effects of any number of features.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the prediction from disk to keep the example short.</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./data/crime.pickle&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fl</span><span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">force_plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">matplotlib</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_18_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_18_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">feature_display_range</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">31</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_19_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_19_0.png" />
+</div>
+</div>
+</section>
+<section id="Visualize-multioutput-predictions">
+<h3>Visualize multioutput predictions<a class="headerlink" href="#Visualize-multioutput-predictions" title="Link to this heading"></a></h3>
+<p>Decision plots can show how multioutput models arrive at predictions. In this example, we use SHAP values from a Catboost model trained on the <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/heart+Disease">UCI Heart Disease</a> data set. There are five classes that indicate the extent of the disease: Class 1 indicates no disease; Class 5 indicates advanced disease.</p>
+<p>To keep the example short, the SHAP values are loaded from disk. The variable <code class="docutils literal notranslate"><span class="pre">heart_base_values</span></code> is a list of the SHAP expected values for each class. Likewise, the variable <code class="docutils literal notranslate"><span class="pre">heart_shap_values</span></code> is a list of SHAP matrices; one matrix per class. This is the multioutput format returned by <code class="docutils literal notranslate"><span class="pre">shap.TreeExplainer</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load all from disk to keep the example short.</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./data/heart.pickle&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fl</span><span class="p">:</span>
+    <span class="p">(</span>
+        <span class="n">heart_feature_names</span><span class="p">,</span>
+        <span class="n">heart_base_values</span><span class="p">,</span>
+        <span class="n">heart_shap_values</span><span class="p">,</span>
+        <span class="n">heart_predictions</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span>
+<span class="n">class_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">heart_base_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Create a function that generates labels for the plot legend. <em>Tip: Include the predicted values in the legend labels to help distinguish the classes.</em></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">class_labels</span><span class="p">(</span><span class="n">row_index</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Class </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">heart_predictions</span><span class="p">[</span><span class="n">row_index</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">class_count</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<p>Plot SHAP values for observation #2 using <code class="docutils literal notranslate"><span class="pre">shap.multioutput_decision_plot</span></code>. The plot’s default base value is the average of the multioutput base values. The SHAP values are adjusted accordingly to produce accurate predictions. The dashed (highlighted) line indicates the model’s predicted class. For this observation, the model is confident that disease is present, but it cannot easily distinguish between classes 3, 4, and 5.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row_index</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">multioutput_decision_plot</span><span class="p">(</span>
+    <span class="n">heart_base_values</span><span class="p">,</span>
+    <span class="n">heart_shap_values</span><span class="p">,</span>
+    <span class="n">row_index</span><span class="o">=</span><span class="n">row_index</span><span class="p">,</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">heart_feature_names</span><span class="p">,</span>
+    <span class="n">highlight</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">heart_predictions</span><span class="p">[</span><span class="n">row_index</span><span class="p">])],</span>
+    <span class="n">legend_labels</span><span class="o">=</span><span class="n">class_labels</span><span class="p">(</span><span class="n">row_index</span><span class="p">),</span>
+    <span class="n">legend_location</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_25_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_25_0.png" />
+</div>
+</div>
+<p>For observation #3, the model confidently predicts that disease is not present.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row_index</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">multioutput_decision_plot</span><span class="p">(</span>
+    <span class="n">heart_base_values</span><span class="p">,</span>
+    <span class="n">heart_shap_values</span><span class="p">,</span>
+    <span class="n">row_index</span><span class="o">=</span><span class="n">row_index</span><span class="p">,</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">heart_feature_names</span><span class="p">,</span>
+    <span class="n">highlight</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">heart_predictions</span><span class="p">[</span><span class="n">row_index</span><span class="p">])],</span>
+    <span class="n">legend_labels</span><span class="o">=</span><span class="n">class_labels</span><span class="p">(</span><span class="n">row_index</span><span class="p">),</span>
+    <span class="n">legend_location</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_27_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_27_0.png" />
+</div>
+</div>
+</section>
+<section id="Display-the-cumulative-effect-of-interactions">
+<h3>Display the cumulative effect of interactions<a class="headerlink" href="#Display-the-cumulative-effect-of-interactions" title="Link to this heading"></a></h3>
+<p>Decision plots support SHAP interaction values: the first-order interactions estimated from tree-based models. While SHAP dependence plots are the best way to visualize individual interactions, a decision plot can display the cumulative effect of main effects and interactions for one or more observations.</p>
+<p>The decision plot here explains a single prediction from the <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Adult">UCI Adult Income</a> data set using both main effects and interactions. The 20 most important features are displayed. For more details relating to support for interactions, see the section “SHAP interaction values.”</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_interaction_values</span><span class="p">[</span><span class="n">misclassified</span><span class="p">],</span>
+    <span class="n">features_display</span><span class="p">[</span><span class="n">misclassified</span><span class="p">],</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_29_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_29_0.png" />
+</div>
+</div>
+</section>
+<section id="Explore-feature-effects-for-a-range-of-feature-values">
+<h3>Explore feature effects for a range of feature values<a class="headerlink" href="#Explore-feature-effects-for-a-range-of-feature-values" title="Link to this heading"></a></h3>
+<p>A decision plot can reveal how predictions change across a set of feature values. This method is useful for presenting hypothetical scenarios and exposing model behaviors. In this example, we create hypothetical observations that differ only by capital gain.</p>
+<p>Start with the following reference observation from the <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/adult">UCI Adult Income</a> data set.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">X_display</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Age                                56
+Workclass                   Local-gov
+Education-Num                      13
+Marital Status     Married-civ-spouse
+Occupation               Tech-support
+Relationship                  Husband
+Race                            White
+Sex                              Male
+Capital Gain                        0
+Capital Loss                        0
+Hours per week                     40
+Country                 United-States
+Name: 25, dtype: object
+</pre></div></div>
+</div>
+<p>Create a synthetic data set using several copies of the reference observation. Vary the value of ‘Capital Gain’ from \$0-\$10,000 by \$100. Retrieve the corresponding SHAP values. This approach allows us to evaluate and debug the model. Analysts may also find this method useful for presenting hypothetical scenarios. Keep in mind that the effects for capital gains shown in this example are specific to the reference record, and therefore cannot be generalized.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rg</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rg</span><span class="p">))]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">R</span><span class="p">[</span><span class="s2">&quot;Capital Gain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rg</span>
+
+<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="n">hypothetical_shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">R</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">hypothetical_predictions</span> <span class="o">=</span> <span class="n">expected_value</span> <span class="o">+</span> <span class="n">hypothetical_shap_values</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">hypothetical_predictions</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">hypothetical_predictions</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>This dependence plot shows the change in SHAP values across a feature’s value range. The SHAP values for this model represent a change in log odds. This plot shows that there is a significant change in SHAP values around \$5,000. It also shows some significant outliers at \$0 and approximately \$3,000.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">dependence_plot</span><span class="p">(</span><span class="s2">&quot;Capital Gain&quot;</span><span class="p">,</span> <span class="n">hypothetical_shap_values</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">interaction_index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_35_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_35_0.png" />
+</div>
+</div>
+<p>Though the dependence plot is helpful, it is difficult to discern the practical effects of the SHAP values in context. For that purpose, we can plot the synthetic data set with a decision plot on the probability scale. First, we plot the reference observation to establish context. The prediction is probability 0.76. Capital gain is zero, for which the model assigns a small negative effect. The features have been ordered manually to match the next two plots.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The feature ordering was determined via &#39;hclust&#39; on the synthetic data set. We specify the order here manually so</span>
+<span class="c1"># the following two plots match up.</span>
+<span class="n">feature_idx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">hypothetical_shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">X_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+    <span class="n">feature_order</span><span class="o">=</span><span class="n">feature_idx</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_37_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_37_0.png" />
+</div>
+</div>
+<p>Now, we plot the synthetic data. The reference record is marked with a dashed line. The features are ordered via hierarchical clustering to group similar prediction paths. We see that, in practical terms, the effect of capital gain is largely polarized; only a handful of predictions lie between 0.2 and 0.8.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">hypothetical_shap_values</span><span class="p">,</span>
+    <span class="n">R</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">feature_order</span><span class="o">=</span><span class="s2">&quot;hclust&quot;</span><span class="p">,</span>
+    <span class="n">highlight</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_39_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_39_0.png" />
+</div>
+</div>
+<p>Upon further inspection of the predictions, we found a threshold around \$4,300, but there are anomalies. Capital gains of \$0, \$3,000, and \$3,100 contribute to unexpectedly high predictions; capital gains of \$5,000 contributes to unexpectedly low predictions. These anomalies are plotted here with a legend to help identify each prediction. The predictions paths for \$3,000 and \$3,100 are identical.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">legend_labels</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="sa">rf</span><span class="s2">&quot;\$</span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">hypothetical_predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">]</span>
+
+
+<span class="n">show_idx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">hypothetical_shap_values</span><span class="p">[</span><span class="n">show_idx</span><span class="p">],</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">feature_order</span><span class="o">=</span><span class="n">feature_idx</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">legend_labels</span><span class="o">=</span><span class="n">legend_labels</span><span class="p">(</span><span class="n">show_idx</span><span class="p">),</span>
+    <span class="n">legend_location</span><span class="o">=</span><span class="s2">&quot;upper center&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_41_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_41_0.png" />
+</div>
+</div>
+</section>
+<section id="Identify-outliers">
+<h3>Identify outliers<a class="headerlink" href="#Identify-outliers" title="Link to this heading"></a></h3>
+<p>Decision plots can help identify outliers. Specify <code class="docutils literal notranslate"><span class="pre">feature_order='hclust'</span></code> to groups observations with similar prediction paths. This often makes outliers easier to spot. Avoid using <code class="docutils literal notranslate"><span class="pre">link='logit'</span></code> when plotting outliers because predictions of amplitude are distorted by the sigmoid function.</p>
+<p>The plot below shows all predictions in the probability range [0.03, 0.1]. (Predictions less than 0.03 are excluded in this example because they represent a large number of observations.) Two predictions immediately stand out. The effects of ‘Age’, ‘Capital Loss’, and ‘Capital Gain’ are most prominent.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>  <span class="c1"># Get predictions on the probability scale.</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[(</span><span class="n">y_pred</span> <span class="o">&gt;=</span> <span class="mf">0.03</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">&lt;=</span> <span class="mf">0.1</span><span class="p">)]</span>
+<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="n">sh</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">T</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="n">sh</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">feature_order</span><span class="o">=</span><span class="s2">&quot;hclust&quot;</span><span class="p">,</span> <span class="n">return_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_43_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_43_0.png" />
+</div>
+</div>
+<p>Locate the outliers based on their SHAP values and plot them with their feature values. The outliers are plotted using the same feature order and scale as the original plot. See “Preserving order and scale between plots” for more details.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the two observations with the most negative &#39;Age&#39; SHAP values.</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">sh</span><span class="p">[:,</span> <span class="n">T</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s2">&quot;Age&quot;</span><span class="p">)],</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Plot the observations individually with their corresponding feature values. The plots use the same feature order</span>
+<span class="c1"># as the original plot.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">:</span>
+    <span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+        <span class="n">expected_value</span><span class="p">,</span>
+        <span class="n">sh</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">X_display</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">T</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span>
+        <span class="n">feature_order</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">feature_idx</span><span class="p">,</span>
+        <span class="n">xlim</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">xlim</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_45_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_45_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_45_1.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_45_1.png" />
+</div>
+</div>
+</section>
+<section id="Identify-typical-prediction-paths">
+<h3>Identify typical prediction paths<a class="headerlink" href="#Identify-typical-prediction-paths" title="Link to this heading"></a></h3>
+<p>A decision plot can expose a model’s typical prediction paths. Here, we plot all of the predictions in the probability interval [0.98, 1.0] to see what high-scoring predictions have in common. We use <code class="docutils literal notranslate"><span class="pre">'hclust'</span></code> feature ordering to group similar prediction paths. The plot shows two distinct paths: one is dominated by ‘Capital Gain’ while the other is dominated by ‘Capital Loss’. The effects of ‘Relationship’, ‘Age’, and ‘Education-Num’ are also notable.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>  <span class="c1"># Get predictions on the probability scale.</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_pred</span> <span class="o">&gt;=</span> <span class="mf">0.98</span><span class="p">]</span>
+<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="n">sh</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">T</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="n">sh</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">feature_order</span><span class="o">=</span><span class="s2">&quot;hclust&quot;</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_47_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_47_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="Compare-and-contrast-predictions-for-several-models">
+<h2>Compare and contrast predictions for several models<a class="headerlink" href="#Compare-and-contrast-predictions-for-several-models" title="Link to this heading"></a></h2>
+<p>Decision plots are useful for comparing predictions from different models, or for interpreting the predictions of an ensemble of models. In this example, we plot the predictions from an ensemble of five LightGBM models trained on the <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/adult">UCI Adult Income</a> data set. In this example, we create an ensemble of five models and plot the models’ predictions using <code class="docutils literal notranslate"><span class="pre">shap.multioutput_decision_plot</span></code>.</p>
+<p>Train an ensemble of five LightGBM models using 5-fold CV.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_count</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">model_count</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+        <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">t</span><span class="p">],</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">],</span>
+        <span class="n">eval_set</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">v</span><span class="p">]),</span>
+        <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">best_score_</span><span class="p">[</span><span class="s2">&quot;valid_0&quot;</span><span class="p">][</span><span class="s2">&quot;binary_logloss&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Best score: 0.28279460948508833
+Best score: 0.2743920496745268
+Best score: 0.2706647518976772
+Best score: 0.2809048231217079
+Best score: 0.2785044277595166
+</pre></div></div>
+</div>
+<p>Assemble the models’ base values and SHAP values into lists. This mimics the <code class="docutils literal notranslate"><span class="pre">shap</span></code> package’s output for multioutput models.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_ensemble_shap_values</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+    <span class="n">base_values</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">model_count</span>
+    <span class="n">shap_values</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">model_count</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">model_count</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">models</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">pred_contrib</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># `pred_contrib=True` returns SHAP values for LightGBM</span>
+        <span class="n">base_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># The last column in the matrix is the base value.</span>
+        <span class="n">shap_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>  <span class="c1"># Predictions as probabilities</span>
+    <span class="k">return</span> <span class="n">base_values</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">predictions</span>
+</pre></div>
+</div>
+</div>
+<p>Retrieve the SHAP values from the ensemble for a single observation.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">ensemble_base_values</span><span class="p">,</span>
+    <span class="n">ensemble_shap_values</span><span class="p">,</span>
+    <span class="n">ensemble_predictions</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">=</span> <span class="n">get_ensemble_shap_values</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">27</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<p>Plot the SHAP values. A legend identifies each model’s prediction. <em>Tip: Include the predicted values in the legend labels to help distinguish the models.</em></p>
+<p>If probability 0.5 is our cutoff value for this binary classification task, we see that this observation is difficult to classify. However, Model 2 is confident that the individual makes less than \$50K per year. If this is an exemplar observation, it might be worth examining why this model’s prediction is different.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create labels for legend</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Model </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">ensemble_predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">model_count</span><span class="p">)]</span>
+
+<span class="c1"># Plot</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">multioutput_decision_plot</span><span class="p">(</span>
+    <span class="n">ensemble_base_values</span><span class="p">,</span>
+    <span class="n">ensemble_shap_values</span><span class="p">,</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">legend_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+    <span class="n">legend_location</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_55_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_55_0.png" />
+</div>
+</div>
+</section>
+<section id="SHAP-interaction-values">
+<h2>SHAP interaction values<a class="headerlink" href="#SHAP-interaction-values" title="Link to this heading"></a></h2>
+<p>The decision plot supports SHAP interaction values as shown here. Notice that the lines do not completely converge to <code class="docutils literal notranslate"><span class="pre">explainer.expected_value</span></code> at the bottom of the plot. This is because there are N(N + 1)/2 = 12(13)/2 = 78 features including interaction and main effects, but the decision plot shows only the 20 most important features by default. See the section “Selecting features to display” to learn how to show more features.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="n">shap_interaction_values</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_57_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_57_0.png" />
+</div>
+</div>
+<p>The decision plot transforms the three-dimensional SHAP interaction structure to a standard two-dimensional SHAP matrix. It also generates corresponding feature labels. These structures can be retrieved from a decision plot by setting <code class="docutils literal notranslate"><span class="pre">return_objects=True</span></code>. In this example, we omit the plot by setting <code class="docutils literal notranslate"><span class="pre">show=False</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">features</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">return_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SHAP dimensions: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">shap_values</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[:</span><span class="o">-</span><span class="mi">11</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+SHAP dimensions: (20, 78)
+
+[&#39;Age&#39;,
+ &#39;Relationship&#39;,
+ &#39;Capital Gain&#39;,
+ &#39;Hours per week&#39;,
+ &#39;Education-Num&#39;,
+ &#39;Occupation&#39;,
+ &#39;Marital Status&#39;,
+ &#39;Sex&#39;,
+ &#39;Age *\nOccupation&#39;,
+ &#39;Marital Status *\nRelationship&#39;]
+</pre></div></div>
+</div>
+</section>
+<section id="Preserving-order-and-scale-between-plots">
+<h2>Preserving order and scale between plots<a class="headerlink" href="#Preserving-order-and-scale-between-plots" title="Link to this heading"></a></h2>
+<p>It is often helpful to create several decision plots using the same feature order and x-axis scale to facilitate direct comparisons. When <code class="docutils literal notranslate"><span class="pre">return_objects=True</span></code>, the decision plot returns plotting structures that can be used in subsequent plots.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the first plot, returning the plot structures.</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">features_display</span><span class="p">,</span> <span class="n">return_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_62_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_62_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create another plot using the same feature order and x-axis extents.</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_values</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+    <span class="n">features_display</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+    <span class="n">feature_order</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">feature_idx</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">xlim</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_63_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_63_0.png" />
+</div>
+</div>
+</section>
+<section id="Selecting-features-for-display">
+<h2>Selecting features for display<a class="headerlink" href="#Selecting-features-for-display" title="Link to this heading"></a></h2>
+<p>The features displayed in a decision plot are controlled by two parameters: <code class="docutils literal notranslate"><span class="pre">feature_order</span></code> and <code class="docutils literal notranslate"><span class="pre">feature_display_range</span></code>. The <code class="docutils literal notranslate"><span class="pre">feature_order</span></code> parameter determines how the features are ordered before display. The <code class="docutils literal notranslate"><span class="pre">feature_display_range</span></code> parameter determines which of the ordered features are displayed. It takes either a <code class="docutils literal notranslate"><span class="pre">slice</span></code> or a <code class="docutils literal notranslate"><span class="pre">range</span></code> object as an argument. The <code class="docutils literal notranslate"><span class="pre">feature_display_range</span></code> parameter also controls whether the features are plotted in ascending or descending order.</p>
+<p>For example, if <code class="docutils literal notranslate"><span class="pre">feature_order='importance'</span></code> (the default), the decision plot arranges the features in <em>ascending</em> order by importance before display. If <code class="docutils literal notranslate"><span class="pre">feature_display_range=slice(-1,</span> <span class="pre">-21,</span> <span class="pre">-1)</span></code> (the default), the plot shows the last (i.e., the most important) 20 features in descending order. The object <code class="docutils literal notranslate"><span class="pre">slice(-1,</span> <span class="pre">-21,</span> <span class="pre">-1)</span></code> is interpreted as “start at the last feature and iterate to the 21st feature from the end by a step of -1.” The end point, -21, is not included.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">feature_display_range</span></code> parameter is particularly important when <code class="docutils literal notranslate"><span class="pre">'hclust'</span></code> ordering is applied. In this case, many of the significant features are positioned at the beginning of the feature range. However, the decision plot shows the end of the feature range by default.</p>
+<p>The following plot shows the first 10 out of 78 SHAP interaction features using <code class="docutils literal notranslate"><span class="pre">'hclust'</span></code> ordering. <em>Note: Because we show only the first 10 features, the observations do not strike the x-axis at their final predicted values.</em> The snippet <code class="docutils literal notranslate"><span class="pre">feature_display_range=range(10,</span> <span class="pre">-1,</span> <span class="pre">-1)</span></code> indicates that we start at feature 10 and count to feature -1 by -1. The end point is not included in the range. Hence, we see the features 10 to 0.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">features</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">feature_order</span><span class="o">=</span><span class="s2">&quot;hclust&quot;</span><span class="p">,</span>
+    <span class="n">feature_display_range</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_65_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_65_0.png" />
+</div>
+</div>
+<p>We can produce the same plot in ascending order by specifying an ascending range: <code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">11,</span> <span class="pre">1)</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">features</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">feature_order</span><span class="o">=</span><span class="s2">&quot;hclust&quot;</span><span class="p">,</span>
+    <span class="n">feature_display_range</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_67_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_67_0.png" />
+</div>
+</div>
+<p>When selecting the last features in a range, it is more convenient to use a slice because slices support negative indices. For example, the index -20 indicates the 20th item from the end. The following plot shows the last 10 features in descending <code class="docutils literal notranslate"><span class="pre">'hclust'</span></code> order.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">features</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">feature_order</span><span class="o">=</span><span class="s2">&quot;hclust&quot;</span><span class="p">,</span>
+    <span class="n">feature_display_range</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_69_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_69_0.png" />
+</div>
+</div>
+<p>We can display all available features in a number of ways. The simplest is <code class="docutils literal notranslate"><span class="pre">feature_display_range=slice(None,</span> <span class="pre">None,</span> <span class="pre">-1)</span></code>. <em>Note: If your dataset contains many features, this will produce a very large plot.</em></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_interaction_values</span><span class="p">,</span>
+    <span class="n">features</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">feature_order</span><span class="o">=</span><span class="s2">&quot;hclust&quot;</span><span class="p">,</span>
+    <span class="n">feature_display_range</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_71_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_71_0.png" />
+</div>
+</div>
+</section>
+<section id="Changing-the-SHAP-base-value">
+<h2>Changing the SHAP base value<a class="headerlink" href="#Changing-the-SHAP-base-value" title="Link to this heading"></a></h2>
+<p>SHAP values are all relative to some base value. By default, the base value is <code class="docutils literal notranslate"><span class="pre">explainer.expected_value</span></code>: the mean of the raw model predictions for the training data.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The model&#39;s training mean</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">raw_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># The explainer expected value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">expected_value</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-2.4297
+-2.4297
+</pre></div></div>
+</div>
+<p>To obtain raw prediction values, <code class="docutils literal notranslate"><span class="pre">explainer.expected_value</span></code> is added to the sum of SHAP values for each observation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The model&#39;s raw prediction for the first observation.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">raw_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># The corresponding sum of the mean + shap values</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">expected_value</span> <span class="o">+</span> <span class="n">shap_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-3.1866
+-3.1866
+</pre></div></div>
+</div>
+<p>Hence, <code class="docutils literal notranslate"><span class="pre">explainer.expected_value</span></code> must be provided to the decision plot to produce correct predictions.</p>
+<p>In the decision plot, the base value is the starting value for each prediction at the bottom of the plot. Using <code class="docutils literal notranslate"><span class="pre">explainer.expected_value</span></code> as the base value is not always visually intuitive. Consider a logistic classification problem. If we choose probability 0.4 as our cutoff value, it might make more sense if the predictions converge at the cutoff point instead of <code class="docutils literal notranslate"><span class="pre">explainer.expected_value</span></code>. To this end, the decision plot provides the <code class="docutils literal notranslate"><span class="pre">new_base_value</span></code> argument. It shifts the SHAP base
+value to an arbitrary point without altering the predicted values.</p>
+<p>In this example, we specify probability 0.4 as the new base value. Because our model’s SHAP values are in log odds, we convert the probability to log odds before passing it to the decision plot. The <code class="docutils literal notranslate"><span class="pre">link='logit'</span></code> argument converts the base values and SHAP values to probabilities.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.4</span>  <span class="c1"># Probability 0.4</span>
+<span class="n">new_base_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span>  <span class="c1"># the logit function</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span>
+    <span class="n">expected_value</span><span class="p">,</span>
+    <span class="n">shap_values</span><span class="p">,</span>
+    <span class="n">features_display</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">,</span>
+    <span class="n">new_base_value</span><span class="o">=</span><span class="n">new_base_value</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_77_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_77_0.png" />
+</div>
+</div>
+<p>For comparision, here is the decision plot with the original base value.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">decision_plot</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="n">shap_values</span><span class="p">,</span> <span class="n">features_display</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="s2">&quot;logit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_api_examples_plots_decision_plot_79_0.png" src="../../../_images/example_notebooks_api_examples_plots_decision_plot_79_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="beeswarm.html" class="btn btn-neutral float-left" title="beeswarm plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="heatmap.html" class="btn btn-neutral float-right" title="heatmap plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

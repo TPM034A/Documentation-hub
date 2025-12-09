@@ -1,0 +1,30 @@
+﻿shap.models.TopKLM
+==================
+
+.. currentmodule:: shap.models
+
+.. autoclass:: TopKLM
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TopKLM.__init__
+      ~TopKLM.generate_topk_token_ids
+      ~TopKLM.get_inputs
+      ~TopKLM.get_lm_logits
+      ~TopKLM.get_logodds
+      ~TopKLM.get_output_names_and_update_topk_token_ids
+      ~TopKLM.load
+      ~TopKLM.save
+      ~TopKLM.update_cache_X
+   
+   
+
+   
+   
+   

@@ -1,0 +1,35 @@
+﻿shap.SamplingExplainer
+======================
+
+.. currentmodule:: shap
+
+.. autoclass:: SamplingExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SamplingExplainer.__init__
+      ~SamplingExplainer.addsample
+      ~SamplingExplainer.allocate
+      ~SamplingExplainer.explain
+      ~SamplingExplainer.explain_row
+      ~SamplingExplainer.load
+      ~SamplingExplainer.not_equal
+      ~SamplingExplainer.run
+      ~SamplingExplainer.sampling_estimate
+      ~SamplingExplainer.save
+      ~SamplingExplainer.shap_values
+      ~SamplingExplainer.solve
+      ~SamplingExplainer.supports_model_with_masker
+      ~SamplingExplainer.varying_groups
+   
+   
+
+   
+   
+   

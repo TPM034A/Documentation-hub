@@ -1,0 +1,6 @@
+﻿shap.utils.convert\_name
+========================
+
+.. currentmodule:: shap.utils
+
+.. autofunction:: convert_name

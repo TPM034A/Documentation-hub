@@ -1,0 +1,6 @@
+﻿shap.plots.bar
+==============
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: bar

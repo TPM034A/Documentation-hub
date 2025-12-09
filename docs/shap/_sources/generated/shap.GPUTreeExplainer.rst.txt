@@ -1,0 +1,29 @@
+﻿shap.GPUTreeExplainer
+=====================
+
+.. currentmodule:: shap
+
+.. autoclass:: GPUTreeExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~GPUTreeExplainer.__init__
+      ~GPUTreeExplainer.assert_additivity
+      ~GPUTreeExplainer.explain_row
+      ~GPUTreeExplainer.load
+      ~GPUTreeExplainer.save
+      ~GPUTreeExplainer.shap_interaction_values
+      ~GPUTreeExplainer.shap_values
+      ~GPUTreeExplainer.supports_model_with_masker
+   
+   
+
+   
+   
+   

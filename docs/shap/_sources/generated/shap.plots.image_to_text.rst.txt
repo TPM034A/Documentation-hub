@@ -1,0 +1,6 @@
+﻿shap.plots.image\_to\_text
+==========================
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: image_to_text

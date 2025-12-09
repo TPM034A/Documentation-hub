@@ -1,0 +1,6 @@
+﻿shap.plots.text
+===============
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: text

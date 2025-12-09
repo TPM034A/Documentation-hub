@@ -1,0 +1,6 @@
+﻿shap.datasets.independentlinear60
+=================================
+
+.. currentmodule:: shap.datasets
+
+.. autofunction:: independentlinear60

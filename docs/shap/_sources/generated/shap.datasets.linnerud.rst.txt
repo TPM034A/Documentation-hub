@@ -1,0 +1,6 @@
+﻿shap.datasets.linnerud
+======================
+
+.. currentmodule:: shap.datasets
+
+.. autofunction:: linnerud

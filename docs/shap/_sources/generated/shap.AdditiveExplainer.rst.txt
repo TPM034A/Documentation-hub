@@ -1,0 +1,26 @@
+﻿shap.AdditiveExplainer
+======================
+
+.. currentmodule:: shap
+
+.. autoclass:: AdditiveExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~AdditiveExplainer.__init__
+      ~AdditiveExplainer.explain_row
+      ~AdditiveExplainer.load
+      ~AdditiveExplainer.save
+      ~AdditiveExplainer.supports_model_with_masker
+   
+   
+
+   
+   
+   

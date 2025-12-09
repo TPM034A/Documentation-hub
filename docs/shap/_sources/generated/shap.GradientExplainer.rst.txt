@@ -1,0 +1,27 @@
+﻿shap.GradientExplainer
+======================
+
+.. currentmodule:: shap
+
+.. autoclass:: GradientExplainer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~GradientExplainer.__init__
+      ~GradientExplainer.explain_row
+      ~GradientExplainer.load
+      ~GradientExplainer.save
+      ~GradientExplainer.shap_values
+      ~GradientExplainer.supports_model_with_masker
+   
+   
+
+   
+   
+   

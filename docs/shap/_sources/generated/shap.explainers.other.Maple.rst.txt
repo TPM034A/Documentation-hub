@@ -1,0 +1,27 @@
+﻿shap.explainers.other.Maple
+===========================
+
+.. currentmodule:: shap.explainers.other
+
+.. autoclass:: Maple
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Maple.__init__
+      ~Maple.attributions
+      ~Maple.explain_row
+      ~Maple.load
+      ~Maple.save
+      ~Maple.supports_model_with_masker
+   
+   
+
+   
+   
+   

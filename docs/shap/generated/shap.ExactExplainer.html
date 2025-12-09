@@ -1,0 +1,261 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shap.ExactExplainer &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shap.explainers.other.Coefficient" href="shap.explainers.other.Coefficient.html" />
+    <link rel="prev" title="shap.GradientExplainer" href="shap.GradientExplainer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explanation">Explanation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#explainers">explainers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="shap.Explainer.html">shap.Explainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.TreeExplainer.html">shap.TreeExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.GPUTreeExplainer.html">shap.GPUTreeExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.LinearExplainer.html">shap.LinearExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.PermutationExplainer.html">shap.PermutationExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.PartitionExplainer.html">shap.PartitionExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.SamplingExplainer.html">shap.SamplingExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.AdditiveExplainer.html">shap.AdditiveExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.DeepExplainer.html">shap.DeepExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.KernelExplainer.html">shap.KernelExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.GradientExplainer.html">shap.GradientExplainer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">shap.ExactExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.Coefficient.html">shap.explainers.other.Coefficient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.Random.html">shap.explainers.other.Random</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.LimeTabular.html">shap.explainers.other.LimeTabular</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.Maple.html">shap.explainers.other.Maple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.TreeMaple.html">shap.explainers.other.TreeMaple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.TreeGain.html">shap.explainers.other.TreeGain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plots">plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#maskers">maskers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#models">models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#utils">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+      <li class="breadcrumb-item active">shap.ExactExplainer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/shap.ExactExplainer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="shap-exactexplainer">
+<h1>shap.ExactExplainer<a class="headerlink" href="#shap-exactexplainer" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="shap.ExactExplainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shap.</span></span><span class="sig-name descname"><span class="pre">ExactExplainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link=CPUDispatcher(&lt;function</span> <span class="pre">identity&gt;)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linearize_link=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.ExactExplainer" title="Link to this definition"></a></dt>
+<dd><p>Computes SHAP values via an optimized exact enumeration.</p>
+<p>This works well for standard Shapley value maskers for models with less than ~15 features that vary
+from the background per sample. It also works well for Owen values from hclustering structured
+maskers when there are less than ~100 features that vary from the background per sample. This
+explainer minimizes the number of function evaluations needed by ordering the masking sets to
+minimize sequential differences. This is done using gray codes for standard Shapley values
+and a greedy sorting method for hclustering structured maskers.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.ExactExplainer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link=CPUDispatcher(&lt;function</span> <span class="pre">identity&gt;)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linearize_link=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.ExactExplainer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Build an explainers.Exact object for the given model using the given masker object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model</strong><span class="classifier">function</span></dt><dd><p>A callable python object that executes the model given a set of input data samples.</p>
+</dd>
+<dt><strong>masker</strong><span class="classifier">function or numpy.array or pandas.DataFrame</span></dt><dd><p>A callable python object used to “mask” out hidden features of the form <cite>masker(mask, *fargs)</cite>.
+It takes a single a binary mask and an input sample and returns a matrix of masked samples. These
+masked samples are evaluated using the model function and the outputs are then averaged.
+As a shortcut for the standard masking used by SHAP you can pass a background data matrix
+instead of a function and that matrix will be used for masking. To use a clustering
+game structure you can pass a shap.maskers.TabularPartitions(data) object.</p>
+</dd>
+<dt><strong>link</strong><span class="classifier">function</span></dt><dd><p>The link function used to map between the output units of the model and the SHAP value units. By
+default it is shap.links.identity, but shap.links.logit can be useful so that expectations are
+computed in probability units while explanations remain in the (more naturally additive) log-odds
+units. For more details on how link functions work see any overview of link functions for generalized
+linear models.</p>
+</dd>
+<dt><strong>linearize_link</strong><span class="classifier">bool</span></dt><dd><p>If we use a non-linear link function to take expectations then models that are additive with respect to that
+link function for a single background sample will no longer be additive when using a background masker with
+many samples. This for example means that a linear logistic regression model would have interaction effects
+that arise from the non-linear changes in expectation averaging. To retain the additively of the model with
+still respecting the link function we linearize the link function by default.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.ExactExplainer.__init__" title="shap.ExactExplainer.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(model, masker[, link, ...])</p></td>
+<td><p>Build an explainers.Exact object for the given model using the given masker object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.ExactExplainer.explain_row" title="shap.ExactExplainer.explain_row"><code class="xref py py-obj docutils literal notranslate"><span class="pre">explain_row</span></code></a>(*row_args, max_evals, ...)</p></td>
+<td><p>Explains a single row and returns the tuple (row_values, row_expected_values, row_mask_shapes).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.ExactExplainer.load" title="shap.ExactExplainer.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(in_file[, model_loader, masker_loader, ...])</p></td>
+<td><p>Load an Explainer from the given file stream.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.ExactExplainer.save" title="shap.ExactExplainer.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(out_file[, model_saver, masker_saver])</p></td>
+<td><p>Write the explainer to the given file stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.ExactExplainer.supports_model_with_masker" title="shap.ExactExplainer.supports_model_with_masker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supports_model_with_masker</span></code></a>(model, masker)</p></td>
+<td><p>Determines if this explainer can handle the given model.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.ExactExplainer.explain_row">
+<span class="sig-name descname"><span class="pre">explain_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">row_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_evals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_effects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.ExactExplainer.explain_row" title="Link to this definition"></a></dt>
+<dd><p>Explains a single row and returns the tuple (row_values, row_expected_values, row_mask_shapes).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.ExactExplainer.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_loader=&lt;bound</span> <span class="pre">method</span> <span class="pre">Model.load</span> <span class="pre">of</span> <span class="pre">&lt;class</span> <span class="pre">'shap.models._model.Model'&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masker_loader=&lt;bound</span> <span class="pre">method</span> <span class="pre">Serializable.load</span> <span class="pre">of</span> <span class="pre">&lt;class</span> <span class="pre">'shap.maskers._masker.Masker'&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instantiate=True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.ExactExplainer.load" title="Link to this definition"></a></dt>
+<dd><p>Load an Explainer from the given file stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>in_file</strong><span class="classifier">The file stream to load objects from.</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.ExactExplainer.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_saver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.save'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masker_saver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.save'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.ExactExplainer.save" title="Link to this definition"></a></dt>
+<dd><p>Write the explainer to the given file stream.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.ExactExplainer.supports_model_with_masker">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supports_model_with_masker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masker</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.ExactExplainer.supports_model_with_masker" title="Link to this definition"></a></dt>
+<dd><p>Determines if this explainer can handle the given model.</p>
+<p>This is an abstract static method meant to be implemented by each subclass.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="shap.GradientExplainer.html" class="btn btn-neutral float-left" title="shap.GradientExplainer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shap.explainers.other.Coefficient.html" class="btn btn-neutral float-right" title="shap.explainers.other.Coefficient" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

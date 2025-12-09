@@ -1,0 +1,6 @@
+﻿shap.utils.sample
+=================
+
+.. currentmodule:: shap.utils
+
+.. autofunction:: sample

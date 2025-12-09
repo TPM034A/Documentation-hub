@@ -1,0 +1,401 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shap.KernelExplainer &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" href="../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shap.GradientExplainer" href="shap.GradientExplainer.html" />
+    <link rel="prev" title="shap.DeepExplainer" href="shap.DeepExplainer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#explanation">Explanation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#explainers">explainers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="shap.Explainer.html">shap.Explainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.TreeExplainer.html">shap.TreeExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.GPUTreeExplainer.html">shap.GPUTreeExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.LinearExplainer.html">shap.LinearExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.PermutationExplainer.html">shap.PermutationExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.PartitionExplainer.html">shap.PartitionExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.SamplingExplainer.html">shap.SamplingExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.AdditiveExplainer.html">shap.AdditiveExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.DeepExplainer.html">shap.DeepExplainer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">shap.KernelExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.GradientExplainer.html">shap.GradientExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.ExactExplainer.html">shap.ExactExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.Coefficient.html">shap.explainers.other.Coefficient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.Random.html">shap.explainers.other.Random</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.LimeTabular.html">shap.explainers.other.LimeTabular</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.Maple.html">shap.explainers.other.Maple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.TreeMaple.html">shap.explainers.other.TreeMaple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shap.explainers.other.TreeGain.html">shap.explainers.other.TreeGain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#plots">plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#maskers">maskers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#models">models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#utils">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#datasets">datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+      <li class="breadcrumb-item active">shap.KernelExplainer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/shap.KernelExplainer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="shap-kernelexplainer">
+<h1>shap.KernelExplainer<a class="headerlink" href="#shap-kernelexplainer" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="shap.KernelExplainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shap.</span></span><span class="sig-name descname"><span class="pre">KernelExplainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'identity'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.KernelExplainer" title="Link to this definition"></a></dt>
+<dd><p>Uses the Kernel SHAP method to explain the output of any function.</p>
+<p>Kernel SHAP is a method that uses a special weighted linear regression
+to compute the importance of each feature. The computed importance values
+are Shapley values from game theory and also coefficients from a local linear
+regression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model</strong><span class="classifier">function or iml.Model</span></dt><dd><p>User supplied function that takes a matrix of samples (# samples x # features) and
+computes the output of the model for those samples. The output can be a vector
+(# samples) or a matrix (# samples x # model outputs).</p>
+</dd>
+<dt><strong>data</strong><span class="classifier">numpy.array or pandas.DataFrame or shap.common.DenseData or any scipy.sparse matrix</span></dt><dd><p>The background dataset to use for integrating out features. To determine the impact
+of a feature, that feature is set to “missing” and the change in the model output
+is observed. Since most models aren’t designed to handle arbitrary missing data at test
+time, we simulate “missing” by replacing the feature with the values it takes in the
+background dataset. So if the background dataset is a simple sample of all zeros, then
+we would approximate a feature being missing by setting it to zero. For small problems,
+this background dataset can be the whole training set, but for larger problems consider
+using a single reference value or using the <code class="docutils literal notranslate"><span class="pre">kmeans</span></code> function to summarize the dataset.
+Note: for the sparse case, we accept any sparse matrix but convert to lil format for
+performance.</p>
+</dd>
+<dt><strong>feature_names</strong><span class="classifier">list</span></dt><dd><p>The names of the features in the background dataset. If the background dataset is
+supplied as a pandas.DataFrame, then <code class="docutils literal notranslate"><span class="pre">feature_names</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">None</span></code> (default),
+and the feature names will be taken as the column names of the dataframe.</p>
+</dd>
+<dt><strong>link</strong><span class="classifier">“identity” or “logit”</span></dt><dd><p>A generalized linear model link to connect the feature importance values to the model
+output. Since the feature importance values, phi, sum up to the model output, it often makes
+sense to connect them to the output with a link function where link(output) = sum(phi).
+Default is “identity” (a no-op).
+If the model output is a probability, then “logit” can be used to transform the SHAP values
+into log-odds units.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>See <span class="xref std std-ref">Kernel Explainer Examples</span>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.KernelExplainer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'identity'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.KernelExplainer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Build a new explainer for the passed model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model</strong><span class="classifier">object or function</span></dt><dd><p>User supplied function or model object that takes a dataset of samples and
+computes the output of the model for those samples.</p>
+</dd>
+<dt><strong>masker</strong><span class="classifier">function, numpy.array, pandas.DataFrame, tokenizer, None, or a list of these for each model input</span></dt><dd><p>The function used to “mask” out hidden features of the form <cite>masked_args = masker(*model_args, mask=mask)</cite>.
+It takes input in the same form as the model, but for just a single sample with a binary
+mask, then returns an iterable of masked samples. These
+masked samples will then be evaluated using the model function and the outputs averaged.
+As a shortcut for the standard masking using by SHAP you can pass a background data matrix
+instead of a function and that matrix will be used for masking. Domain specific masking
+functions are available in shap such as shap.ImageMasker for images and shap.TokenMasker
+for text. In addition to determining how to replace hidden features, the masker can also
+constrain the rules of the cooperative game used to explain the model. For example
+shap.TabularMasker(data, hclustering=”correlation”) will enforce a hierarchical clustering
+of coalitions for the game (in this special case the attributions are known as the Owen values).</p>
+</dd>
+<dt><strong>link</strong><span class="classifier">function</span></dt><dd><p>The link function used to map between the output units of the model and the SHAP value units. By
+default it is shap.links.identity, but shap.links.logit can be useful so that expectations are
+computed in probability units while explanations remain in the (more naturally additive) log-odds
+units. For more details on how link functions work see any overview of link functions for generalized
+linear models.</p>
+</dd>
+<dt><strong>algorithm</strong><span class="classifier">“auto”, “permutation”, “partition”, “tree”, or “linear”</span></dt><dd><p>The algorithm used to estimate the Shapley values. There are many different algorithms that
+can be used to estimate the Shapley values (and the related value for constrained games), each
+of these algorithms have various tradeoffs and are preferable in different situations. By
+default the “auto” options attempts to make the best choice given the passed model and masker,
+but this choice can always be overridden by passing the name of a specific algorithm. The type of
+algorithm used will determine what type of subclass object is returned by this constructor, and
+you can also build those subclasses directly if you prefer or need more fine grained control over
+their options.</p>
+</dd>
+<dt><strong>output_names</strong><span class="classifier">None or list of strings</span></dt><dd><p>The names of the model outputs. For example if the model is an image classifier, then output_names would
+be the names of all the output classes. This parameter is optional. When output_names is None then
+the Explanation objects produced by this explainer will not have any output_names, which could effect
+downstream plots.</p>
+</dd>
+<dt><strong>seed: None or int</strong></dt><dd><p>seed for reproducibility</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.KernelExplainer.__init__" title="shap.KernelExplainer.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(model, data[, feature_names, link])</p></td>
+<td><p>Build a new explainer for the passed model.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">addsample</span></code>(x, m, w)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">allocate</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">explain</span></code>(incoming_instance, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.KernelExplainer.explain_row" title="shap.KernelExplainer.explain_row"><code class="xref py py-obj docutils literal notranslate"><span class="pre">explain_row</span></code></a>(*row_args, max_evals, ...)</p></td>
+<td><p>Explains a single row and returns the tuple (row_values, row_expected_values, row_mask_shapes, main_effects).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.KernelExplainer.load" title="shap.KernelExplainer.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(in_file[, model_loader, masker_loader, ...])</p></td>
+<td><p>Load an Explainer from the given file stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">not_equal</span></code>(i, j)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#shap.KernelExplainer.save" title="shap.KernelExplainer.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(out_file[, model_saver, masker_saver])</p></td>
+<td><p>Write the explainer to the given file stream.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.KernelExplainer.shap_values" title="shap.KernelExplainer.shap_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap_values</span></code></a>(X, **kwargs)</p></td>
+<td><p>Estimate the SHAP values for a set of samples.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve</span></code>(fraction_evaluated, dim)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#shap.KernelExplainer.supports_model_with_masker" title="shap.KernelExplainer.supports_model_with_masker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supports_model_with_masker</span></code></a>(model, masker)</p></td>
+<td><p>Determines if this explainer can handle the given model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">varying_groups</span></code>(x)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.KernelExplainer.explain_row">
+<span class="sig-name descname"><span class="pre">explain_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">row_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_evals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_effects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.KernelExplainer.explain_row" title="Link to this definition"></a></dt>
+<dd><p>Explains a single row and returns the tuple (row_values, row_expected_values, row_mask_shapes, main_effects).</p>
+<p>This is an abstract method meant to be implemented by each subclass.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>tuple</dt><dd><p>A tuple of (row_values, row_expected_values, row_mask_shapes), where row_values is an array of the
+attribution values for each sample, row_expected_values is an array (or single value) representing
+the expected value of the model for each sample (which is the same for all samples unless there
+are fixed inputs present, like labels when explaining the loss), and row_mask_shapes is a list
+of all the input shapes (since the row_values is always flattened),</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.KernelExplainer.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_loader=&lt;bound</span> <span class="pre">method</span> <span class="pre">Model.load</span> <span class="pre">of</span> <span class="pre">&lt;class</span> <span class="pre">'shap.models._model.Model'&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masker_loader=&lt;bound</span> <span class="pre">method</span> <span class="pre">Serializable.load</span> <span class="pre">of</span> <span class="pre">&lt;class</span> <span class="pre">'shap.maskers._masker.Masker'&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instantiate=True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.KernelExplainer.load" title="Link to this definition"></a></dt>
+<dd><p>Load an Explainer from the given file stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>in_file</strong><span class="classifier">The file stream to load objects from.</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.KernelExplainer.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_saver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.save'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masker_saver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.save'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.KernelExplainer.save" title="Link to this definition"></a></dt>
+<dd><p>Write the explainer to the given file stream.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.KernelExplainer.shap_values">
+<span class="sig-name descname"><span class="pre">shap_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.KernelExplainer.shap_values" title="Link to this definition"></a></dt>
+<dd><p>Estimate the SHAP values for a set of samples.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>X</strong><span class="classifier">numpy.array or pandas.DataFrame or any scipy.sparse matrix</span></dt><dd><p>A matrix of samples (# samples x # features) on which to explain the model’s output.</p>
+</dd>
+<dt><strong>nsamples</strong><span class="classifier">“auto” or int</span></dt><dd><p>Number of times to re-evaluate the model when explaining each prediction. More samples
+lead to lower variance estimates of the SHAP values. The “auto” setting uses
+<cite>nsamples = 2 * X.shape[1] + 2048</cite>.</p>
+</dd>
+<dt><strong>l1_reg</strong><span class="classifier">“num_features(int)”, “aic”, “bic”, or float</span></dt><dd><p>The l1 regularization to use for feature selection. The estimation
+procedure is based on a debiased lasso.</p>
+<ul class="simple">
+<li><p>“num_features(int)” selects a fixed number of top features.</p></li>
+<li><p>“aic” and “bic” options use the AIC and BIC rules for regularization.</p></li>
+<li><p>Passing a float directly sets the “alpha” parameter of the
+<code class="docutils literal notranslate"><span class="pre">sklearn.linear_model.Lasso</span></code> model used for feature selection.</p></li>
+<li><p>“auto” (deprecated): uses “aic” when less than
+20% of the possible sample space is enumerated, otherwise it uses
+no regularization.</p></li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.47.0: </span>The default value changed from <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;num_features(10)&quot;</span></code>.</p>
+</div>
+</dd>
+<dt><strong>silent: bool</strong></dt><dd><p>If True, hide tqdm progress bar. Default False.</p>
+</dd>
+<dt><strong>gc_collect</strong><span class="classifier">bool</span></dt><dd><p>Run garbage collection after each explanation round. Sometime needed for memory intensive explanations (default False).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt>np.array or list</dt><dd><p>Estimated SHAP values, usually of shape <code class="docutils literal notranslate"><span class="pre">(#</span> <span class="pre">samples</span> <span class="pre">x</span> <span class="pre">#</span> <span class="pre">features)</span></code>.</p>
+<p>Each row sums to the difference between the model output for that
+sample and the expected value of the model output (which is stored as the <code class="docutils literal notranslate"><span class="pre">expected_value</span></code>
+attribute of the explainer).</p>
+<p>The type and shape of the return value depends on the number of model inputs and outputs:</p>
+<ul class="simple">
+<li><p>one input, one output: array of shape <code class="docutils literal notranslate"><span class="pre">(#num_samples,</span> <span class="pre">*X.shape[1:])</span></code>.</p></li>
+<li><p>one input, multiple outputs: array of shape <code class="docutils literal notranslate"><span class="pre">(#num_samples,</span> <span class="pre">*X.shape[1:],</span> <span class="pre">#num_outputs)</span></code></p></li>
+<li><p>multiple inputs: list of arrays of corresponding shape above.</p></li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.45.0: </span>Return type for models with multiple outputs and one input changed from list to np.ndarray.</p>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shap.KernelExplainer.supports_model_with_masker">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supports_model_with_masker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masker</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shap.KernelExplainer.supports_model_with_masker" title="Link to this definition"></a></dt>
+<dd><p>Determines if this explainer can handle the given model.</p>
+<p>This is an abstract static method meant to be implemented by each subclass.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="shap.DeepExplainer.html" class="btn btn-neutral float-left" title="shap.DeepExplainer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shap.GradientExplainer.html" class="btn btn-neutral float-right" title="shap.GradientExplainer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

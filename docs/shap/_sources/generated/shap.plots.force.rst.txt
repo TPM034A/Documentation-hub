@@ -1,0 +1,6 @@
+﻿shap.plots.force
+================
+
+.. currentmodule:: shap.plots
+
+.. autofunction:: force

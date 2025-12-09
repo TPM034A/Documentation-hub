@@ -1,0 +1,736 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be careful when interpreting predictive models in search of causal insights &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Explaining quantitative measures of fairness" href="Explaining%20quantitative%20measures%20of%20fairness.html" />
+    <link rel="prev" title="An introduction to explainable AI with Shapley values" href="An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../overviews.html">Topical overviews</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html">An introduction to explainable AI with Shapley values</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Be careful when interpreting predictive models in search of causal insights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#A-subscriber-retention-example">A subscriber retention example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Prediction-tasks-versus-causal tasks">Prediction tasks versus causal tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-challenges-of-estimating-causal effects">The challenges of estimating causal effects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#When-predictive-models-can-answer-causal-questions">When predictive models can answer causal questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#When-predictive-models-cannot-answer-causal-questions-but-causal-inference-methods-can help">When predictive models cannot answer causal questions but causal inference methods can help</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Observed-confounding">Observed confounding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Observational-Causal-Inference">Observational Causal Inference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Non-confounding-redundancy">Non-confounding redundancy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#When-neither-predictive-models-nor-unconfounding-methods-can-answer-causal-questions">When neither predictive models nor unconfounding methods can answer causal questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Explaining%20quantitative%20measures%20of%20fairness.html">Explaining quantitative measures of fairness</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../overviews.html">Topical Overviews</a></li>
+      <li class="breadcrumb-item active">Be careful when interpreting predictive models in search of causal insights</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/example_notebooks/overviews/Be careful when interpreting predictive models in search of causal insights.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Be-careful-when-interpreting-predictive-models-in-search-of-causal insights">
+<h1>Be careful when interpreting predictive models in search of causal insights<a class="headerlink" href="#Be-careful-when-interpreting-predictive-models-in-search-of-causal insights" title="Link to this heading"></a></h1>
+<p><em>A joint article about causality and interpretable machine learning with Eleanor Dillon, Jacob LaRiviere, Scott Lundberg, Jonathan Roth, and Vasilis Syrgkanis from Microsoft.</em></p>
+<p>Predictive machine learning models like XGBoost become even more powerful when paired with interpretability tools like SHAP. These tools identify the most informative relationships between the input features and the predicted outcome, which is useful for explaining what the model is doing, getting stakeholder buy-in, and diagnosing potential problems. It is tempting to take this analysis one step further and assume that interpretation tools can also identify what features decision makers should
+manipulate if they want to change outcomes in the future. However, <strong>in this article, we discuss how using predictive models to guide this kind of policy choice can often be misleading.</strong></p>
+<p>The reason relates to the fundamental difference between <em>correlation</em> and <em>causation</em>. SHAP makes transparent the correlations picked up by predictive ML models. But making correlations transparent does not make them causal! All predictive models implicitly assume that everyone will keep behaving the same way in the future, and therefore correlation patterns will stay constant. To understand what happens if someone starts behaving differently, we need to build causal models, which requires
+making assumptions and using the tools of causal analysis.</p>
+<section id="A-subscriber-retention-example">
+<h2>A subscriber retention example<a class="headerlink" href="#A-subscriber-retention-example" title="Link to this heading"></a></h2>
+<p>Imagine we are tasked with building a model that predicts whether a customer will renew their product subscription. Let’s assume that after a bit of digging we manage to get eight features which are important for predicting churn: customer discount, ad spending, customer’s monthly usage, last upgrade, bugs reported by a customer, interactions with a customer, sales calls with a customer, and macroeconomic activity. We then use those features to train a basic XGBoost model to predict if a
+customer will renew their subscription when it expires:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This cell defines the functions we use to generate the data in our scenario</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="kn">import</span> <span class="nn">xgboost</span>
+
+
+<span class="k">class</span> <span class="nc">FixableDataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper class for manipulating generative models.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="p">{},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;__fixed_var_dictionary&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fixed</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;__fixed_var_dictionary&quot;</span><span class="p">]:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;__fixed_var_dictionary&quot;</span><span class="p">][</span><span class="n">key</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="c1"># generate the data</span>
+<span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="p">{},</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The generative model for our subscriber retention example.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">FixableDataFrame</span><span class="p">(</span><span class="n">fixed</span><span class="o">=</span><span class="n">fixed</span><span class="p">)</span>
+
+    <span class="c1"># the number of sales calls made to this customer</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+
+    <span class="c1"># the number of sales calls made to this customer</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Interactions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span>
+
+    <span class="c1"># the health of the regional economy this customer is a part of</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Economy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span>
+
+    <span class="c1"># the time since the last product upgrade when this customer came up for renewal</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Last upgrade&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span>
+
+    <span class="c1"># how much the user perceives that they need the product</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Product need&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span>
+
+    <span class="c1"># the fractional discount offered to this customer upon renewal</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Discount&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">expit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;Product need&quot;</span><span class="p">]))</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,)))</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># What percent of the days in the last period was the user actively using the product</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Monthly usage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">expit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;Product need&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,)))</span>
+
+    <span class="c1"># how much ad money we spent per user targeted at this user (or a group this user is in)</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Ad spend&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Monthly usage&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span> <span class="o">+</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;Last upgrade&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;Last upgrade&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># how many bugs did this user encounter in the since their last renewal</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Bugs faced&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">v</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Monthly usage&quot;</span><span class="p">]])</span>
+
+    <span class="c1"># how many bugs did the user report?</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Bugs reported&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;Bugs faced&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">expit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;Product need&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+
+    <span class="c1"># did the user renew?</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Did renew&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">expit</span><span class="p">(</span>
+        <span class="mi">7</span>
+        <span class="o">*</span> <span class="p">(</span>
+            <span class="mf">0.18</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Product need&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="mf">0.08</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Monthly usage&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Economy&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Discount&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span>
+            <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Bugs faced&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">20</span><span class="p">)</span>
+            <span class="o">+</span> <span class="mf">0.005</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="mf">0.015</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Interactions&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="mf">0.1</span> <span class="o">/</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;Last upgrade&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Ad spend&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.0</span>
+            <span class="o">-</span> <span class="mf">0.45</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># in real life we would make a random draw to get either 0 or 1 for if the</span>
+    <span class="c1"># customer did or did not renew. but here we leave the label as the probability</span>
+    <span class="c1"># so that we can get less noise in our plots. Uncomment this line to get</span>
+    <span class="c1"># noiser causal effect lines but the same basic results</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Did renew&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;Did renew&quot;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">X</span>
+
+
+<span class="k">def</span> <span class="nf">user_retention_dataset</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The observed data for model training.&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">X_full</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">X_full</span><span class="p">[</span><span class="s2">&quot;Did renew&quot;</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X_full</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Did renew&quot;</span><span class="p">,</span> <span class="s2">&quot;Product need&quot;</span><span class="p">,</span> <span class="s2">&quot;Bugs faced&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+
+<span class="k">def</span> <span class="nf">fit_xgboost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Train an XGBoost model with early stopping.&quot;&quot;&quot;</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">dtrain</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
+    <span class="n">dtest</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_test</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+        <span class="p">{</span><span class="s2">&quot;eta&quot;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;objective&quot;</span><span class="p">:</span> <span class="s2">&quot;reg:logistic&quot;</span><span class="p">},</span>
+        <span class="n">dtrain</span><span class="p">,</span>
+        <span class="n">num_boost_round</span><span class="o">=</span><span class="mi">200000</span><span class="p">,</span>
+        <span class="n">evals</span><span class="o">=</span><span class="p">((</span><span class="n">dtest</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">),),</span>
+        <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">verbose_eval</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">user_retention_dataset</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fit_xgboost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Once we have our XGBoost customer retention model in hand, we can begin exploring what it has learned with an interpretability tool like SHAP. We start by plotting the global importance of each feature in the model:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shap</span>
+
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">clust</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">hclust</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">&quot;single&quot;</span><span class="p">)</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">clustering</span><span class="o">=</span><span class="n">clust</span><span class="p">,</span> <span class="n">clustering_cutoff</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_5_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_5_0.png" style="width: 622px; height: 347px;" />
+</div>
+</div>
+<p>This bar plot shows that the discount offered, ad spend, and number of bugs reported are the top three factors driving the model’s prediction of customer retention. This is interesting and at first glance looks reasonable. The bar plot also includes a feature redundancy clustering which we will use later.</p>
+<p>However, when we dig deeper and look at how changing the value of each feature impacts the model’s prediction, we find some unintuitive patterns. SHAP scatter plots show how changing the value of a feature impacts the model’s prediction of renewal probabilities. If the blue dots follow an increasing pattern, this means that the larger the feature, the higher is the model’s predicted renewal probability.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;SHAP value</span><span class="se">\n</span><span class="s2">(higher means more likely to renew)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_7_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_7_0.png" style="width: 918px; height: 320px;" />
+</div>
+</div>
+</section>
+<section id="Prediction-tasks-versus-causal tasks">
+<h2>Prediction tasks versus causal tasks<a class="headerlink" href="#Prediction-tasks-versus-causal tasks" title="Link to this heading"></a></h2>
+<p>The scatter plots show some surprising findings: - Users who report more bugs are more likely to renew! - Users with larger discounts are less likely to renew!</p>
+<p>We triple-check our code and data pipelines to rule out a bug, then talk to some business partners who offer an intuitive explanation: - Users with high usage who value the product are more likely to report bugs and to renew their subscriptions. - The sales force tends to give high discounts to customers they think are less likely to be interested in the product, and these customers have higher churn.</p>
+<p>Are these at-first counter-intuitive relationships in the model a problem? <em>That depends on what our goal is!</em></p>
+<p>Our original goal for this model was to predict customer retention, which is useful for projects like estimating future revenue for financial planning. Since users reporting more bugs are in fact more likely to renew, capturing this relationship in the model is helpful for prediction. As long as our model has good fit out-of-sample, we should be able to provide finance with a good prediction, and therefore shouldn’t worry about the direction of this relationship in the model.</p>
+<p>This is an example of a class of tasks called <strong>prediction tasks</strong>. In a prediction task, the goal is to predict an outcome <code class="docutils literal notranslate"><span class="pre">Y</span></code> (e.g. renewals) given a set of features <code class="docutils literal notranslate"><span class="pre">X</span></code>. A key component of a prediction exercise is that we only care that the prediction <code class="docutils literal notranslate"><span class="pre">model(X)</span></code> is close to <code class="docutils literal notranslate"><span class="pre">Y</span></code> in data distributions similar to our training set. A simple correlation between <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> can be helpful for these types of predictions.</p>
+<p>However, suppose a second team picks up our prediction model with the new goal of determining what actions our company can take to retain more customers. This team cares a lot about how each <code class="docutils literal notranslate"><span class="pre">X</span></code> feature relates to <code class="docutils literal notranslate"><span class="pre">Y</span></code>, not just in our training distribution, but the counterfactual scenario produced when the world changes. In that use case, it is no longer sufficient to identify a stable correlation between variables; this team wants to know whether manipulating feature <code class="docutils literal notranslate"><span class="pre">X</span></code> will cause a
+change in <code class="docutils literal notranslate"><span class="pre">Y</span></code>. Picture the face of the chief of engineering when you tell him that you want him to introduce new bugs to increase customer renewals!</p>
+<p>This is an example of a class of tasks called <strong>causal tasks</strong>. In a causal task, we want to know how changing an aspect of the world X (e.g bugs reported) affects an outcome <code class="docutils literal notranslate"><span class="pre">Y</span></code> (renewals). In this case, it’s critical to know whether changing <code class="docutils literal notranslate"><span class="pre">X</span></code> causes an increase in <code class="docutils literal notranslate"><span class="pre">Y</span></code>, or whether the relationship in the data is merely correlational.</p>
+</section>
+<section id="The-challenges-of-estimating-causal effects">
+<h2>The challenges of estimating causal effects<a class="headerlink" href="#The-challenges-of-estimating-causal effects" title="Link to this heading"></a></h2>
+<p>A useful tool to understanding causal relationships is writing down a causal graph of the data generating process we’re interested in. A causal graph of our example illustrates why the robust predictive relationships picked up by our XGBoost customer retention model differ from the causal relationships of interest to the team that wants to plan interventions to increase retention. This graph is just a summary of the true data generating mechanism (which is defined above). Solid ovals represent
+features that we observe, while dashed ovals represent hidden features that we don’t measure. Each feature is a function of all the features with an arrow to it, plus some random effects.</p>
+<p>In our example we know the causal graph because we simulate the data. In practice the true causal graph will not be known, but we may be able to use context-specific domain knowledge about how the world works to infer which relationships can or cannot exist.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">graphviz</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Bugs reported&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Monthly usage&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sales calls&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Economy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Discount&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Last upgrade&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ad spend&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Interactions&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;Product need&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;Bugs faced&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;Did renew&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;filled&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;10&quot;</span><span class="p">)</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Product need&quot;</span><span class="p">,</span> <span class="s2">&quot;Did renew&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Product need&quot;</span><span class="p">,</span> <span class="s2">&quot;Discount&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Product need&quot;</span><span class="p">,</span> <span class="s2">&quot;Bugs reported&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Product need&quot;</span><span class="p">,</span> <span class="s2">&quot;Monthly usage&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Discount&quot;</span><span class="p">,</span> <span class="s2">&quot;Did renew&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Monthly usage&quot;</span><span class="p">,</span> <span class="s2">&quot;Bugs faced&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Monthly usage&quot;</span><span class="p">,</span> <span class="s2">&quot;Did renew&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Monthly usage&quot;</span><span class="p">,</span> <span class="s2">&quot;Ad spend&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Economy&quot;</span><span class="p">,</span> <span class="s2">&quot;Did renew&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">,</span> <span class="s2">&quot;Did renew&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">,</span> <span class="s2">&quot;Product need&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">,</span> <span class="s2">&quot;Interactions&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Interactions&quot;</span><span class="p">,</span> <span class="s2">&quot;Did renew&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Bugs faced&quot;</span><span class="p">,</span> <span class="s2">&quot;Did renew&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Bugs faced&quot;</span><span class="p">,</span> <span class="s2">&quot;Bugs reported&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Last upgrade&quot;</span><span class="p">,</span> <span class="s2">&quot;Did renew&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s2">&quot;Last upgrade&quot;</span><span class="p">,</span> <span class="s2">&quot;Ad spend&quot;</span><span class="p">)</span>
+<span class="n">g</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_10_0.svg" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_10_0.svg" />
+</div>
+</div>
+<p>There are lots of relationships in this graph, but the first important concern is that some of the features we can measure are influenced by <strong>unmeasured confounding features</strong> like product need and bugs faced. For example, users who report more bugs are encountering more bugs because they use the product more, and they are also more likely to report those bugs because they need the product more. Product need has its own direct causal effect on renewal. Because we can’t directly measure product
+need, the correlation we end up capturing in predictive models between bugs reported and renewal combines a small negative direct effect of bugs faced and a large positive confounding effect from product need. The figure below plots the SHAP values in our example against the true causal effect of each feature (known in this example since we generated the data).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">marginal_effects</span><span class="p">(</span><span class="n">generative_model</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_points</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">logit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function to compute the true marginal causal effects.&quot;&quot;&quot;</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">generative_model</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">columns</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">]</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">]</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">))]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">columns</span><span class="p">):</span>
+        <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">v</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">max_points</span><span class="p">)])</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">Xnew</span> <span class="o">=</span> <span class="n">generative_model</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">x</span><span class="p">},</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">Xnew</span><span class="p">[</span><span class="s2">&quot;Did renew&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">logit</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">))]</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">))</span>
+
+
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">shap_values</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;SHAP value</span><span class="se">\n</span><span class="s2">(higher means more likely to renew)&quot;</span><span class="p">,</span>
+    <span class="n">overlay</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;True causal effects&quot;</span><span class="p">:</span> <span class="n">marginal_effects</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_12_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_12_0.png" style="width: 918px; height: 320px;" />
+</div>
+</div>
+<p>The predictive model captures an overall positive effect of bugs reported on retention (as shown with SHAP), even though the causal effect of reporting a bug is zero, and the effect of encoutering a bug is negative.</p>
+<p>We see a similar problem with Discounts, which are also driven by unobserved customer need for the product. Our predictive model finds a negative relationship between discounts and retention, driven by this correlation with the unobserved feature, Product Need, even though there is actually a small positive causal effect of discounts on renewal! Put another way, if two customers with have the same Product Need and are otherwise similar, then the customer with the larger discount is more likely
+to renew.</p>
+<p>This plot also reveals a second, sneakier problem when we start to interpret predictive models as if they were causal. Notice that Ad Spend has a similar problem - it has no causal effect on retention (the black line is flat), but the predictive model is picking up a positive effect!</p>
+<p>In this case, Ad Spend is only driven by Last Upgrade and Monthly Usage, so we don’t have an <em>unobserved</em> confounding problem, instead we have an <em>observed</em> confounding problem. There is statistical redundancy between Ad Spend and features that influence Ad Spend. When we have the same information captured by several features, predictive models can use any of those features for prediction, even though they are not all causal. While Ad Spend has no causal effect on renewal itself, it is strongly
+correlated with several features that do drive renewal. Our regularized model identifies Ad Spend as a useful predictor because it summarizes multiple causal drivers (so leading to a sparser model), but that becomes seriously misleading if we start to interpret it as a causal effect.</p>
+<p>We will now tackle each piece of our example in turn to illustrate when predictive models can accurately measure causal effects, and when they cannot. We will also introduce some causal tools that can sometimes estimate causal effects in cases where predictive models fail.</p>
+</section>
+<section id="When-predictive-models-can-answer-causal-questions">
+<h2>When predictive models can answer causal questions<a class="headerlink" href="#When-predictive-models-can-answer-causal-questions" title="Link to this heading"></a></h2>
+<p>Let’s start with the successes in our example. Notice that our predictive model does a good job of capturing the real causal effect of the Economy feature (a better economy has a positive effect on retention). So when can we expect predictive models to capture true causal effects?</p>
+<p>The important ingredient that allowed XGBoost to get a good causal effect estimate for Economy is the feature’s strong independent component (in this simulation); its predictive power for retention is not strongly redundant with any other measured features, or with any unmeasured confounders. In consequence, it is not subject to bias from either unmeasured confounders or feature redundancy.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Economy is independent of other measured features.</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">clustering</span><span class="o">=</span><span class="n">clust</span><span class="p">,</span> <span class="n">clustering_cutoff</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_15_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_15_0.png" style="width: 622px; height: 347px;" />
+</div>
+</div>
+<p>Since we have added clustering to the right side of the SHAP bar plot we can see the redundancy structure of our data as a dendrogram. When features merge together at the bottom (left) of the dendrogram it means that that the information those features contain about the outcome (renewal) is very redundant and the model could have used either feature. When features merge together at the top (right) of the dendrogram it means the information they contain about the outcome is independent from each
+other.</p>
+<p>We can see that Economy is independent from all the other measured features by noting that Economy does not merge with any other features until the very top of the clustering dendrogram. This tells us that Economy does not suffer from observed confounding. But to trust that the Economy effect is causal we also need to check for unobserved confounding. Checking for unmeasured confounders is harder and requires using domain knowledge (provided by the business partners in our example above).</p>
+<p>For classic predictive ML models to deliver causal results the features need to be independent not only of other features in the model, but also of unobserved confounders. It’s not common to find examples of drivers of interest that exhibit this level of independence naturally, but we can often find examples of independent features when our data contains some experiments.</p>
+</section>
+<section id="When-predictive-models-cannot-answer-causal-questions-but-causal-inference-methods-can help">
+<h2>When predictive models cannot answer causal questions but causal inference methods can help<a class="headerlink" href="#When-predictive-models-cannot-answer-causal-questions-but-causal-inference-methods-can help" title="Link to this heading"></a></h2>
+<p>In most real-world datasets features are not independent and unconfounded, so standard predictive models will not learn the true causal effects. As a result, explaining them with SHAP will not reveal causal effects. But all is not lost, sometimes we can fix or at least minimize this problem using the tools of observational causal inference.</p>
+<section id="Observed-confounding">
+<h3>Observed confounding<a class="headerlink" href="#Observed-confounding" title="Link to this heading"></a></h3>
+<p>The first scenario where causal inference can help is observed confounding. A feature is “confounded” when there is another feature that causally affects both the original feature and the outcome we are predicting. If we can measure that other feature it is called an <em>observed confounder</em>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ad spend is very redundant with Monthly usage and Last upgrade.</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">clustering</span><span class="o">=</span><span class="n">clust</span><span class="p">,</span> <span class="n">clustering_cutoff</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_18_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_18_0.png" style="width: 622px; height: 347px;" />
+</div>
+</div>
+<p>An example of this in our scenario is the Ad Spend feature. Even though Ad Spend has no direct causal effect on retention, it is correlated with the Last Upgrade and Monthly Usage features, which do drive retention. Our predictive model identifies Ad Spend as the one of the best single predictors of retention because it captures so many of the true causal drivers through correlations. XGBoost imposes regularization, which is a fancy way of saying that it tries to choose the simplest possible
+model that still predicts well. If it could predict equally well using one feature rather than three, it will tend to do that to avoid overfitting. But this means that if Ad Spend is highly correlated with both Last Upgrade and Monthly Usage, XGBoost may use Ad Spend instead of the causal features! This property of XGBoost (or any other machine learning model with regularization) is very useful for generating robust predictions of future retention, but not good for understanding which features
+we should manipulate if we want to increase retention.</p>
+<p>This highlights the importance of matching the right modeling tools to each question. Unlike the bug reporting example, there is nothing intuitively wrong with the conclusion that increasing ad spend increases retention. Without proper attention to what our predictive model is, and is not, measuring, we could easily have proceeded with this finding and only learned our mistake after increasing spending on advertising and not getting the renewal results we expected.</p>
+</section>
+<section id="Observational-Causal-Inference">
+<h3>Observational Causal Inference<a class="headerlink" href="#Observational-Causal-Inference" title="Link to this heading"></a></h3>
+<p>The good news for Ad Spend is that we can measure all the features that could confound it (those features with arrows into Ad Spend in our causal graph above). Therefore, this is an example of observed confounding, and we should be able to disentangle the correlation patterns using only the data we’ve already collected; we just need to use the right tools from observational causal inference. These tools allow us to specify what features could confound Ad Spend and then adjust for those features,
+to get an <strong>unconfounded</strong> estimate of the causal effect of Ad Spend on product renewal.</p>
+<p>One particularly flexible tool for observational causal inference is double/debiased machine learning. It uses any machine learning model you want to first deconfound the feature of interest (i.e. Ad Spend) and then estimate the average causal effect of changing that feature (i.e. the average slope of the causal effect).</p>
+<p>Double ML works as follows: 1. Train a model to predict a feature of interest (i.e. Ad Spend) using a set of possible confounders (i.e. any features not caused by Ad Spend). 2. Train a model to predict the outcome (i.e. Did Renew) using the same set of possible confounders. 3. Train a model to predict the residual variation of the outcome (the variation left after subtracting our prediction) using the residual variation of the causal feature of interest.</p>
+<p>The intuition is that if Ad Spend causes renewal, then the part of Ad Spend that can’t be predicted by other confounding features should be correlated with the part of renewal that can’t be predicted by other confounding features. Stated another way, double ML assumes that there is an independent (unobserved) noise feature that impacts Ad Spend (since Ad Spend is not perfectly determined by the other features), so we can impute the value of this independent noise feature and then train a model
+on this independent feature to predict the output.</p>
+<p>While we could do all the double ML steps manually, it is easier to use a causal inference package like econML or CausalML. Here we use econML’s LinearDML model. This returns a P-value of whether that treatment has a non-zero a causal effect, and works beautifully in our scenario, correctly identifying that there is no evidence for a causal effect of ad spending on renewal (P-value = 0.85):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">econml.dml</span> <span class="kn">import</span> <span class="n">LinearDML</span>
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">clone</span>
+
+
+<span class="k">class</span> <span class="nc">RegressionWrapper</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turns a classifier into a &#39;regressor&#39;.</span>
+
+<span class="sd">    We use the regression formulation of double ML, so we need to approximate the classifer</span>
+<span class="sd">    as a regression model. This treats the probabilities as just quantitative value targets</span>
+<span class="sd">    for least squares regression, but it turns out to be a reasonable approximation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clf</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clf_</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clf</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clf_</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">clf_</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+
+<span class="c1"># Run Double ML, controlling for all the other features</span>
+<span class="k">def</span> <span class="nf">double_ml</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">causal_feature</span><span class="p">,</span> <span class="n">control_features</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Use doubleML from econML to estimate the slope of the causal effect of a feature.&quot;&quot;&quot;</span>
+    <span class="n">xgb_model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="n">objective</span><span class="o">=</span><span class="s2">&quot;binary:logistic&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">est</span> <span class="o">=</span> <span class="n">LinearDML</span><span class="p">(</span><span class="n">model_y</span><span class="o">=</span><span class="n">RegressionWrapper</span><span class="p">(</span><span class="n">xgb_model</span><span class="p">))</span>
+    <span class="n">est</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">causal_feature</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="n">control_features</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">est</span><span class="o">.</span><span class="n">effect_inference</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_effect</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">true_ys</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a double ML effect estimate from econML as a line.</span>
+
+<span class="sd">    Note that the effect estimate from double ML is an average effect *slope* not a full</span>
+<span class="sd">    function. So we arbitrarily draw the slope of the line as passing through the origin.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+    <span class="n">pred_xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="p">[</span><span class="n">effect</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">mid</span><span class="p">),</span> <span class="n">effect</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">mid</span><span class="p">)]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">true_ys</span> <span class="o">-</span> <span class="n">true_ys</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;True causal effect&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">point_pred</span> <span class="o">=</span> <span class="n">effect</span><span class="o">.</span><span class="n">point_estimate</span> <span class="o">*</span> <span class="n">pred_xs</span>
+    <span class="n">pred_stderr</span> <span class="o">=</span> <span class="n">effect</span><span class="o">.</span><span class="n">stderr</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pred_xs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">pred_xs</span><span class="p">,</span>
+        <span class="n">point_pred</span> <span class="o">-</span> <span class="n">point_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Double ML slope&quot;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">blue_rgb</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># 99.9% CI</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+        <span class="n">pred_xs</span><span class="p">,</span>
+        <span class="n">point_pred</span> <span class="o">-</span> <span class="n">point_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">3.291</span> <span class="o">*</span> <span class="n">pred_stderr</span><span class="p">,</span>
+        <span class="n">point_pred</span> <span class="o">-</span> <span class="n">point_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">3.291</span> <span class="o">*</span> <span class="n">pred_stderr</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">blue_rgb</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Ad spend&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Zero centered effect&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ylim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">*</span><span class="n">ylim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># estimate the causal effect of Ad spend controlling for all the other features</span>
+<span class="n">causal_feature</span> <span class="o">=</span> <span class="s2">&quot;Ad spend&quot;</span>
+<span class="n">control_features</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Sales calls&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Interactions&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Economy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Last upgrade&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Discount&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Monthly usage&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Bugs reported&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">effect</span> <span class="o">=</span> <span class="n">double_ml</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="n">causal_feature</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">control_features</span><span class="p">])</span>
+
+<span class="c1"># plot the estimated slope against the true effect</span>
+<span class="n">xs</span><span class="p">,</span> <span class="n">true_ys</span> <span class="o">=</span> <span class="n">marginal_effects</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">X</span><span class="p">[[</span><span class="s2">&quot;Ad spend&quot;</span><span class="p">]],</span> <span class="n">logit</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_effect</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">true_ys</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_20_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_20_0.png" style="width: 346px; height: 214px;" />
+</div>
+</div>
+<p>Remember, double ML (or any other observational causal inference method) only works when you can measure and identify all the possible confounders of the feature for which you want to estimate causal effects. Here we know the causal graph and can see that Monthly Usage and Last Upgrade are the two direct confounders we need to control for. But if we didn’t know the causal graph we could still look at the redundancy in the SHAP bar plot and see that Monthly Usage and Last Upgrade are the most
+redundant features and so are good candidates to control for (as are Discounts and Bugs Reported).</p>
+</section>
+<section id="Non-confounding-redundancy">
+<h3>Non-confounding redundancy<a class="headerlink" href="#Non-confounding-redundancy" title="Link to this heading"></a></h3>
+<p>The second scenario where causal inference can help is non-confounding redundancy. This occurs when the feature we want causal effects for causally drives, or is driven by, another feature included in the model, but that other feature is not a confounder of our feature of interest.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Interactions and sales calls are very redundant with one another.</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">clustering</span><span class="o">=</span><span class="n">clust</span><span class="p">,</span> <span class="n">clustering_cutoff</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_22_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_22_0.png" style="width: 622px; height: 347px;" />
+</div>
+</div>
+<p>An example of this is the Sales Calls feature. Sales Calls directly impact retention, but also have an indirect effect on retention through Interactions. When we include both the Interactions and Sales Calls features in the model the causal effect shared by both features is forced to spread out between them. We can see this in the SHAP scatter plots above, which show how XGBoost underestimates the true causal effect of Sales Calls because most of that effect got put onto the Interactions
+feature.</p>
+<p>Non-confounding redundancy can be fixed in principle by removing the redundant variables from the model (see below). For example, if we removed Interactions from the model then we will capture the full effect of making a sales call on renewal probability. This removal is also important for double ML, since double ML will fail to capture indirect causal effects if you control for downstream features caused by the feature of interest. In this case double ML will only measure the “direct” effect
+that does not pass through the other feature. Double ML is however robust to controlling for upstream non-confounding redundancy (where the redundant feature causes the feature of interest), though this will reduce your statistical power to detect true effects.</p>
+<p>Unfortunately, we often don’t know the true causal graph so it can be hard to know when another feature is redundant with our feature of interest because of observed confounding vs. non-confounding redundancy. If it is because of confounding then we should control for that feature using a method like double ML, whereas if it is a downstream consequence then we should drop the feature from our model if we want full causal effects rather than only direct effects. Controlling for a feature we
+shouldn’t tends to hide or split up causal effects, while failing to control for a feature we should have controlled for tends to infer causal effects that do not exist. This generally makes controlling for a feature the safer option when you are uncertain.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit, explain, and plot a univariate model with just Sales calls</span>
+<span class="c1"># Note how this model does not have to split of credit between Sales calls and</span>
+<span class="c1"># Interactions, so we get a better agreement with the true causal effect.</span>
+<span class="n">sales_calls_model</span> <span class="o">=</span> <span class="n">fit_xgboost</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">]],</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">sales_calls_shap_values</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">sales_calls_model</span><span class="p">)(</span><span class="n">X</span><span class="p">[[</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">]])</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">sales_calls_shap_values</span><span class="p">,</span>
+    <span class="n">overlay</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;True causal effects&quot;</span><span class="p">:</span> <span class="n">marginal_effects</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Sales calls&quot;</span><span class="p">])},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_24_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_24_0.png" style="width: 399px; height: 320px;" />
+</div>
+</div>
+</section>
+</section>
+<section id="When-neither-predictive-models-nor-unconfounding-methods-can-answer-causal-questions">
+<h2>When neither predictive models nor unconfounding methods can answer causal questions<a class="headerlink" href="#When-neither-predictive-models-nor-unconfounding-methods-can-answer-causal-questions" title="Link to this heading"></a></h2>
+<p>Double ML (or any other causal inference method that assumes unconfoundedness) only works when you can measure and identify all the possible confounders of the feature for which you want to estimate causal effects. If you can’t measure all the confounders then you are in the hardest possible scenario: unobserved confounding.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Discount and Bugs reported seem are fairly independent of the other features we can</span>
+<span class="c1"># measure, but they are not independent of Product need, which is an unobserved confounder.</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">clustering</span><span class="o">=</span><span class="n">clust</span><span class="p">,</span> <span class="n">clustering_cutoff</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_26_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_26_0.png" style="width: 622px; height: 347px;" />
+</div>
+</div>
+<p>The Discount and Bugs Reported features both suffer from unobserved confounding because not all important variables (e.g., Product Need and Bugs Faced) are measured in the data. Even though both features are relatively independent of all the other features in the model, there are important drivers that are unmeasured. In this case, both predictive models and causal models that require confounders to be observed, like double ML, will fail. This is why double ML estimates a large negative causal
+effect for the Discount feature even when controlling for all other observed features:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># estimate the causal effect of Ad spend controlling for all the other features</span>
+<span class="n">causal_feature</span> <span class="o">=</span> <span class="s2">&quot;Discount&quot;</span>
+<span class="n">control_features</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Sales calls&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Interactions&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Economy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Last upgrade&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Monthly usage&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ad spend&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Bugs reported&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">effect</span> <span class="o">=</span> <span class="n">double_ml</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="n">causal_feature</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">control_features</span><span class="p">])</span>
+
+<span class="c1"># plot the estimated slope against the true effect</span>
+<span class="n">xs</span><span class="p">,</span> <span class="n">true_ys</span> <span class="o">=</span> <span class="n">marginal_effects</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">X</span><span class="p">[[</span><span class="n">causal_feature</span><span class="p">]],</span> <span class="n">logit</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_effect</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">true_ys</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_28_0.png" class="no-scaled-link" src="../../_images/example_notebooks_overviews_Be_careful_when_interpreting_predictive_models_in_search_of_causal_insights_28_0.png" style="width: 342px; height: 214px;" />
+</div>
+</div>
+<p>Barring the ability to measure the previously unmeasured features (or features correlated with them), finding causal effects in the presence of unobserved confounding is difficult. In these situations, the only way to identify causal effects that can inform policy is to create or exploit some randomization that breaks the correlation between the features of interest and the unmeasured confounders. Randomized experiments remain the gold standard for finding causal effects in this context.</p>
+<p>Specialized causal tools based on the principals of instrumental variables, differences-in-differences, or regression discontinuities can sometimes exploit partial randomization even in cases where a full experiment is impossible. For example, instrumental variable techniques can be used to identify causal effects in cases where we cannot randomly assign a treatment, but we can randomly nudge some customers towards treatment, like sending an email encouraging them to explore a new product
+feature. Difference-in-difference approaches can be helpful when the introduction of new treatments is staggered across groups. Finally, regression discontinuity approaches are a good option when patterns of treatment exhibit sharp cut-offs (for example qualification for treatment based on a specific, measurable trait like revenue over $5,000 per month).</p>
+</section>
+<section id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Link to this heading"></a></h2>
+<p>Flexible predictive models like XGBoost or LightGBM are powerful tools for solving prediction problems. However, they are not inherently causal models, so interpreting them with SHAP will fail to accurately answer causal questions in many common situations. Unless features in a model are the result of experimental variation, applying SHAP to predictive models without considering confounding is generally not an appropriate tool to measure causal impacts used to inform policy. SHAP and other
+interpretability tools can be useful for causal inference, and SHAP is integrated into many causal inference packages, but those use cases are explicitly causal in nature. To that end, using the same data we would collect for prediction problems and using causal inference methods like double ML that are particularly designed to return causal effects is often a good approach for informing policy. In other situations, only an experiment or other source of randomization can really answer what if
+questions. Causal inference always requires us to make important assumptions. The main point of this article is that the assumptions we make by interpreting a normal predictive model as causal are often unrealistic.</p>
+<hr><p>Have a comment or question? Checkout <a class="reference external" href="https://github.com/shap/shap/blob/master/notebooks/overviews/Be%20careful%20when%20interpreting%20predictive%20models%20in%20search%20of%20causal%C2%A0insights.ipynb">Github</a> or the <a class="reference external" href="https://towardsdatascience.com/be-careful-when-interpreting-predictive-models-in-search-of-causal-insights-e68626e664b6">Medium</a> version of this article!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html" class="btn btn-neutral float-left" title="An introduction to explainable AI with Shapley values" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Explaining%20quantitative%20measures%20of%20fairness.html" class="btn btn-neutral float-right" title="Explaining quantitative measures of fairness" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

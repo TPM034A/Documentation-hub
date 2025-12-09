@@ -1,0 +1,660 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explaining Image Captioning (Image to Text) using Open Source Image Captioning Model and Partition Explainer &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" href="../../../_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Genomic examples" href="../../../genomic_examples.html" />
+    <link rel="prev" title="Explaining Image Captioning (Image to Text) using Azure Cognitive Services and Partition Explainer" href="Image%20Captioning%20using%20Azure%20Cognitive%20Services.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../text_examples.html">Text examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../image_examples.html">Image examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../image_examples.html#image-classification">Image classification</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../image_examples.html#image-captioning">Image captioning</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Image%20Captioning%20using%20Azure%20Cognitive%20Services.html">Explaining Image Captioning (Image to Text) using Azure Cognitive Services and Partition Explainer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Explaining Image Captioning (Image to Text) using Open Source Image Captioning Model and Partition Explainer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Limitations">Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Setting-up-open-source-model">Setting up open source model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Load-sample-data">Load sample data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Getting-captions-using-open-source-model">Getting captions using open source model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Load-data">Load data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Note:-Replace-or-add-images-that-you-would-like-to-be-explained(tested)-in-the-'./test_images/'-folder.">Note: <strong>Replace or add images that you would like to be explained(tested) in the ‘./test_images/’ folder.</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Load-language-model-and-tokenizer">Load language model and tokenizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Create-an-explainer-object-using-wrapped-model-and-image-masker">Create an explainer object using wrapped model and image masker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#SHAP-explanation-for-test-images">SHAP explanation for test images</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../image_examples.html">Image examples</a></li>
+      <li class="breadcrumb-item active">Explaining Image Captioning (Image to Text) using Open Source Image Captioning Model and Partition Explainer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/example_notebooks/image_examples/image_captioning/Image Captioning using Open Source.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Explaining-Image-Captioning-(Image-to-Text)-using-Open-Source-Image-Captioning-Model-and-Partition-Explainer">
+<h1>Explaining Image Captioning (Image to Text) using Open Source Image Captioning Model and Partition Explainer<a class="headerlink" href="#Explaining-Image-Captioning-(Image-to-Text)-using-Open-Source-Image-Captioning-Model-and-Partition-Explainer" title="Link to this heading"></a></h1>
+<p>This notebook demonstrates how to use SHAP for explaining output of image captioning models i.e. given an image, model outputs a caption for the image.</p>
+<p>Here, we are using a pre-trained open source model from <a class="reference external" href="https://github.com/ruotianluo/ImageCaptioning.pytorch">https://github.com/ruotianluo/ImageCaptioning.pytorch</a> to get image captions. All pre-trained models are available at <a class="reference external" href="https://github.com/ruotianluo/ImageCaptioning.pytorch/blob/master/MODEL_ZOO.md">https://github.com/ruotianluo/ImageCaptioning.pytorch/blob/master/MODEL_ZOO.md</a>. Particularly, this notebook uses the model trained with ResNet101 features linked under “FC+new_self_critical” model &amp; metrics <a class="reference external" href="https://drive.google.com/open?id=1OsB_jLDorJnzKz6xsOfk1n493P3hwOP0">https://drive.google.com/open?id=1OsB_jLDorJnzKz6xsOfk1n493P3hwOP0</a>.</p>
+<section id="Limitations">
+<h2>Limitations<a class="headerlink" href="#Limitations" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>To explain image captions, we are segmenting images along axes (i.e. super pixels/partitions of halves, quarters, eights…); An alternate approach/future improvement could be to semantically segment images instead of axis-aligned partitioning and produce SHAP explanations using segments, instead of super pixels. <a class="reference external" href="https://github.com/shap/shap/issues/1738">https://github.com/shap/shap/issues/1738</a></p></li>
+<li><p>We are using transformer language model (ex. distilbart) to do alignment scoring between given image and masked image captions, assuming an external model is a good surrogate for the original captioning model’s language head. By using the captioning model’s own language head, we could eliminate this assumption and remove the dependency. (ex. refer to text2text notebook examples). For more details, refer to the “Load language model and tokenizer” section below.
+<a class="reference external" href="https://github.com/shap/shap/issues/1739">https://github.com/shap/shap/issues/1739</a></p></li>
+<li><p>The more evaluations used to generate explanations, longer it takes for SHAP to run. But, increasing the number of evaluations increases the granularity of the explanations (300-500 evaluations often produce detailed maps, but fewer or more are also often reasonable). Refer to “Create an explainer object using wrapped model and image masker” section below for more details.</p></li>
+</ol>
+</section>
+<section id="Setting-up-open-source-model">
+<h2>Setting up open source model<a class="headerlink" href="#Setting-up-open-source-model" title="Link to this heading"></a></h2>
+<section id="Note:-It-is-important-to-follow-set-up-instructions-exactly-as-given-below-to-ensure-notebook-runs.">
+<h3>Note: It is important to follow set up instructions exactly as given below to ensure notebook runs.<a class="headerlink" href="#Note:-It-is-important-to-follow-set-up-instructions-exactly-as-given-below-to-ensure-notebook-runs." title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Clone <a class="reference external" href="https://github.com/ruotianluo/ImageCaptioning.pytorch">https://github.com/ruotianluo/ImageCaptioning.pytorch</a> repo. In a terminal type: ‘git clone <a class="reference external" href="https://github.com/ruotianluo/ImageCaptioning.pytorch">https://github.com/ruotianluo/ImageCaptioning.pytorch</a>’.</p></li>
+<li><p>Change below PREFIX variable to have absolute path of your ImageCaptioning.pytorch folder. This is an important step to ensure all file paths are accessed correctly.</p></li>
+<li><p>Download the following files and place them in the folders as given:</p>
+<ol class="arabic simple">
+<li><p>“model-best.pth”: download from here <a class="reference external" href="https://drive.google.com/drive/folders/1OsB_jLDorJnzKz6xsOfk1n493P3hwOP0">https://drive.google.com/drive/folders/1OsB_jLDorJnzKz6xsOfk1n493P3hwOP0</a> and place in the cloned directory.</p></li>
+<li><p>“infos_fc_nsc-best.pkl”: download from here <a class="reference external" href="https://drive.google.com/drive/folders/1OsB_jLDorJnzKz6xsOfk1n493P3hwOP0">https://drive.google.com/drive/folders/1OsB_jLDorJnzKz6xsOfk1n493P3hwOP0</a> and place in the cloned directory</p></li>
+<li><p>“resnet101”: download from here <a class="reference external" href="https://drive.google.com/drive/folders/0B7fNdx_jAqhtbVYzOURMdDNHSGM">https://drive.google.com/drive/folders/0B7fNdx_jAqhtbVYzOURMdDNHSGM</a> and place in the cloned directory under ‘data/imagenet_weights’ folder. Create ‘imagenet_weights’ folder under ‘data’ directory if it doesn’t exist.</p></li>
+</ol>
+</li>
+<li><p>In a terminal, navigate to the cloned folder and type “python -m pip install -e .” or in a cell in jupyter notebook “!python -m pip install -e .” to install the module.</p></li>
+<li><p>Restart and clear kernel output to run this notebook.</p></li>
+<li><p><em>Optional</em>: After running cells below in “Load sample data” section which loads sample data and creates a ‘./test_images/’ folder, try “python tools/eval.py –model model-best.pth –infos_path infos_fc_nsc-best.pkl –image_folder test_images –num_images 10” command in a terminal to verify that the installation was succesful. If it fails, please install any missing packages. ex. if ‘lmdbdict’ package is missing, try installing using “pip install
+git+https://github.com/ruotianluo/lmdbdict.git”. If captions are shown in terminal output, then the installation was successful.</p>
+<p>##### Note: If these commands are being tested in a jupyter notebook, append ! in front of the commands. ex. “!python -m pip install -e .”</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="Load-sample-data">
+<h2>Load sample data<a class="headerlink" href="#Load-sample-data" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">shap</span>
+<span class="kn">from</span> <span class="nn">shap.utils.image</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">add_sample_images</span><span class="p">,</span>
+    <span class="n">is_empty</span><span class="p">,</span>
+    <span class="n">load_image</span><span class="p">,</span>
+    <span class="n">make_dir</span><span class="p">,</span>
+    <span class="n">save_image</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change PREFIX to have absolute path of cloned directory of ImageCaptioning.pytorch</span>
+<span class="n">PREFIX</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&lt;place full path to the cloned directory of ImageCaptioning.pytorch&gt;/ImageCaptioning.pytorch&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">PREFIX</span><span class="p">)</span>
+
+<span class="c1"># directory of images to be explained</span>
+<span class="n">DIR</span> <span class="o">=</span> <span class="s2">&quot;./test_images/&quot;</span>
+<span class="c1"># creates or empties directory if it already exists</span>
+<span class="n">make_dir</span><span class="p">(</span><span class="n">DIR</span><span class="p">)</span>
+<span class="n">add_sample_images</span><span class="p">(</span><span class="n">DIR</span><span class="p">)</span>
+
+<span class="c1"># directory for saving masked images</span>
+<span class="n">DIR_MASKED</span> <span class="o">=</span> <span class="s2">&quot;./masked_images/&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gc</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># to suppress verbose output from open source model</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+
+<span class="kn">import</span> <span class="nn">captioning.models</span> <span class="k">as</span> <span class="nn">models</span>
+<span class="kn">import</span> <span class="nn">captioning.modules.losses</span> <span class="k">as</span> <span class="nn">losses</span>
+<span class="kn">import</span> <span class="nn">captioning.utils.eval_utils</span> <span class="k">as</span> <span class="nn">eval_utils</span>
+<span class="kn">import</span> <span class="nn">captioning.utils.misc</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">captioning.data.dataloader</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">captioning.data.dataloaderraw</span> <span class="kn">import</span> <span class="n">DataLoaderRaw</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+
+
+<span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">suppress_stdout</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">devnull</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">devnull</span><span class="p">:</span>
+        <span class="n">old_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">devnull</span>
+        <span class="n">old_stderr</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">devnull</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">yield</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">old_stdout</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">old_stderr</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+cider or coco-caption missing
+</pre></div></div>
+</div>
+</section>
+<section id="Getting-captions-using-open-source-model">
+<h2>Getting captions using open source model<a class="headerlink" href="#Getting-captions-using-open-source-model" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ImageCaptioningPyTorchModel</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrapper class to get image captions using Resnet model from setup above.</span>
+<span class="sd">    Note: This class is being used instead of tools/eval.py to get predictions (captions).</span>
+<span class="sd">    To get more context for this class, please refer to tools/eval.py file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">infos_path</span><span class="p">,</span> <span class="n">cnn_model</span><span class="o">=</span><span class="s2">&quot;resnet101&quot;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializing the class by loading torch model and vocabulary at path given and using Resnet weights stored in data/imagenet_weights.</span>
+<span class="sd">        This is done to speeden the process of getting image captions and avoid loading the model every time captions are needed.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model_path  : pre-trained model path</span>
+<span class="sd">        infos_path  : pre-trained infos (vocab) path</span>
+<span class="sd">        cnn_model   : resnet model weights to use; options: &quot;resnet101&quot; (default), &quot;resnet152&quot;</span>
+<span class="sd">        device      : &quot;cpu&quot; or &quot;cuda&quot; (default)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># load infos</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">infos_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">infos</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">pickle_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">opt</span> <span class="o">=</span> <span class="n">infos</span><span class="p">[</span><span class="s2">&quot;opt&quot;</span><span class="p">]</span>
+
+        <span class="c1"># setup the model</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model_path</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">cnn_model</span> <span class="o">=</span> <span class="n">cnn_model</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">vocab</span> <span class="o">=</span> <span class="n">infos</span><span class="p">[</span><span class="s2">&quot;vocab&quot;</span><span class="p">]</span>  <span class="c1"># ix -&gt; word mapping</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">infos</span>
+        <span class="k">del</span> <span class="n">opt</span><span class="o">.</span><span class="n">vocab</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="n">crit</span> <span class="o">=</span> <span class="n">losses</span><span class="o">.</span><span class="n">LanguageModelCriterion</span><span class="p">()</span>
+
+        <span class="c1"># setup class variables for call function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opt</span> <span class="o">=</span> <span class="n">opt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crit</span> <span class="o">=</span> <span class="n">crit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">infos_path</span> <span class="o">=</span> <span class="n">infos_path</span>
+
+        <span class="c1"># free memory</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+        <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_folder</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Function to get captions for images placed in image_folder.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        image_folder: folder of images for which captions are needed</span>
+<span class="sd">        batch_size  : number of images to be evaluated at once</span>
+<span class="sd">        Output</span>
+<span class="sd">        -------</span>
+<span class="sd">        captions    : list of captions for images in image_folder (will return a string if there is only one image in folder)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># setting eval options</span>
+        <span class="n">opt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">image_folder</span> <span class="o">=</span> <span class="n">image_folder</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">coco_json</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">input_json</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">verbose_loss</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">dump_path</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">dump_images</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">num_images</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">language_eval</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># loading vocab</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">infos_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">infos</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">pickle_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">vocab</span> <span class="o">=</span> <span class="n">infos</span><span class="p">[</span><span class="s2">&quot;vocab&quot;</span><span class="p">]</span>
+
+        <span class="c1"># creating Data Loader instance to load images</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">image_folder</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoaderRaw</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;folder_path&quot;</span><span class="p">:</span> <span class="n">opt</span><span class="o">.</span><span class="n">image_folder</span><span class="p">,</span>
+                    <span class="s2">&quot;coco_json&quot;</span><span class="p">:</span> <span class="n">opt</span><span class="o">.</span><span class="n">coco_json</span><span class="p">,</span>
+                    <span class="s2">&quot;batch_size&quot;</span><span class="p">:</span> <span class="n">opt</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+                    <span class="s2">&quot;cnn_model&quot;</span><span class="p">:</span> <span class="n">opt</span><span class="o">.</span><span class="n">cnn_model</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+        <span class="c1"># when evaluating using provided pretrained model, vocab may be different from what is in cocotalk.json.</span>
+        <span class="c1"># hence, setting vocab from infos file.</span>
+        <span class="n">loader</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">ix_to_word</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">vocab</span>
+        <span class="k">del</span> <span class="n">infos</span>
+        <span class="k">del</span> <span class="n">opt</span><span class="o">.</span><span class="n">vocab</span>
+
+        <span class="c1"># getting caption predictions</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">split_predictions</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">eval_utils</span><span class="o">.</span><span class="n">eval_split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">crit</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="nb">vars</span><span class="p">(</span><span class="n">opt</span><span class="p">))</span>
+        <span class="n">captions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">split_predictions</span><span class="p">:</span>
+            <span class="n">captions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="s2">&quot;caption&quot;</span><span class="p">])</span>
+
+        <span class="c1"># free memory</span>
+        <span class="k">del</span> <span class="n">loader</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+        <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">captions</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">captions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">captions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create instance of ImageCaptioningPyTorchModel</span>
+<span class="n">osmodel</span> <span class="o">=</span> <span class="n">ImageCaptioningPyTorchModel</span><span class="p">(</span>
+    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;model-best.pth&quot;</span><span class="p">,</span>
+    <span class="n">infos_path</span><span class="o">=</span><span class="s2">&quot;infos_fc_nsc-best.pkl&quot;</span><span class="p">,</span>
+    <span class="n">cnn_model</span><span class="o">=</span><span class="s2">&quot;resnet101&quot;</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="c1"># create function to get caption using model created above</span>
+<span class="k">def</span> <span class="nf">get_caption</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">image_folder</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="p">(</span><span class="n">image_folder</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-data">
+<h2>Load data<a class="headerlink" href="#Load-data" title="Link to this heading"></a></h2>
+<p>‘./test_images/’ is the folder of images that will be explained. ‘./test_images/’ directory has been created for you and sample images needed to replicate examples shown in the notebook are already placed in the directory.</p>
+</section>
+<section id="Note:-Replace-or-add-images-that-you-would-like-to-be-explained(tested)-in-the-'./test_images/'-folder.">
+<h2>Note: <strong>Replace or add images that you would like to be explained(tested) in the ‘./test_images/’ folder.</strong><a class="headerlink" href="#Note:-Replace-or-add-images-that-you-would-like-to-be-explained(tested)-in-the-'./test_images/'-folder." title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checks if test images folder exists and if it has any files</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">DIR</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading data...&quot;</span><span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">DIR</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR</span><span class="p">,</span> <span class="n">f</span><span class="p">))]</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">path_to_image</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading image:&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+        <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">load_image</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">))</span>
+    <span class="k">with</span> <span class="n">suppress_stdout</span><span class="p">():</span>
+        <span class="n">captions</span> <span class="o">=</span> <span class="n">get_caption</span><span class="p">(</span><span class="n">osmodel</span><span class="p">,</span> <span class="s2">&quot;test_images&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Captions are...&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">captions</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Caption is...&quot;</span><span class="p">,</span> <span class="n">captions</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Number of images in test dataset:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Loading data...
+Loading image: 1.jpg
+Loading image: 2.jpg
+Loading image: 3.jpg
+Loading image: 4.jpg
+
+Captions are...
+a woman sitting on a bench
+a bird sitting on top of a tree branch
+a group of horses standing next to a fence
+a group of people playing with a soccer ball
+
+Number of images in test dataset: 4
+</pre></div></div>
+</div>
+</section>
+<section id="Load-language-model-and-tokenizer">
+<h2>Load language model and tokenizer<a class="headerlink" href="#Load-language-model-and-tokenizer" title="Link to this heading"></a></h2>
+<p>Transformer Language Model ‘distilbart’ and tokenizer are being used here to tokenize the image caption. This makes the image to text scenario similar to a multi-class problem. ‘distilbart’ is used to do alignment scoring between the original image caption and masked image captions being generated i.e. how does the probability of getting the original image caption change when the context of a masked image caption is given? (a.k.a. we are teacher forcing ‘distilbart’ to always produce the
+original image caption for the masked images and getting change in logits for each tokenized word in the caption as part of the process).</p>
+<p><strong>Note</strong>: We are using ‘distilbart’ here because during experimentation process we found it to give the most meaningful explanations for images. We have compared with other language models such as ‘openaigpt’ and ‘distilgpt2’. Please feel free to explore with other language models of your choice and compare the results.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load transformer language model and tokenizer</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;sshleifer/distilbart-xsum-12-6&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;sshleifer/distilbart-xsum-12-6&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Create-an-explainer-object-using-wrapped-model-and-image-masker">
+<h2>Create an explainer object using wrapped model and image masker<a class="headerlink" href="#Create-an-explainer-object-using-wrapped-model-and-image-masker" title="Link to this heading"></a></h2>
+<p>Various options for explainer object to experiment with:</p>
+<ol class="arabic simple">
+<li><p><strong>mask_value</strong> : Image masker uses an inpainting technqiue by default for masking (i.e. mask_value = “inpaint_ns”). There are alternate masking options available for blurring/inpainting such as “inpaint_telea” and “blur(kernel_xsize, kernel_xsize)”. Note: Different explanations can be generated by different masking options.</p></li>
+<li><p><strong>max_evals</strong> : Number of evaluations done of the underlying model to get SHAP values. Recommended number of evaluations is 300-500 to get explanations with meaningful granularity of super pixels. More the number of evaluations, more the granularity but also increases run-time. Default is set to 300 evals.</p></li>
+<li><p><strong>batch_size</strong> : Number of masked images to be evaluated at once. Default size is set to 50.</p></li>
+<li><p><strong>fixed_context</strong> : Masking technqiue used to build partition tree with options of ‘0’, ‘1’ or ‘None’. ‘fixed_context = None’ is the best option to generate meaningful results but it is relatively slower than fixed_context = 0 or 1 because it generates a full partition tree. Default option is set to ‘None’.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting values for logging/tracking variables</span>
+<span class="n">make_dir</span><span class="p">(</span><span class="n">DIR_MASKED</span><span class="p">)</span>
+<span class="n">image_counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">mask_counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<span class="c1"># define function f which takes input (masked image) and returns caption for it</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">mask_counter</span>
+
+    <span class="c1"># emptying masked images directory</span>
+    <span class="n">make_dir</span><span class="p">(</span><span class="n">DIR_MASKED</span><span class="p">)</span>
+
+    <span class="c1"># saving masked array of RGB values as an image in masked_images directory</span>
+    <span class="n">path_to_image</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DIR_MASKED</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">image_counter</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">mask_counter</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+    <span class="n">save_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">path_to_image</span><span class="p">)</span>
+
+    <span class="c1"># getting caption of masked image</span>
+    <span class="k">with</span> <span class="n">suppress_stdout</span><span class="p">():</span>
+        <span class="n">caption</span> <span class="o">=</span> <span class="n">get_caption</span><span class="p">(</span><span class="n">osmodel</span><span class="p">,</span> <span class="s2">&quot;masked_images&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">mask_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">caption</span>
+
+
+<span class="c1"># function to take a list of images and parameters such as masking option, max evals etc. and return shap_values_objects</span>
+<span class="k">def</span> <span class="nf">run_masker</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mask_value</span><span class="o">=</span><span class="s2">&quot;inpaint_ns&quot;</span><span class="p">,</span> <span class="n">max_evals</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">fixed_context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to take a list of images and parameters such max evals etc. and return shap explanations (shap_values) for test images(X).</span>
+<span class="sd">    Paramaters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X               : list of images which need to be explained</span>
+<span class="sd">    mask_value      : various masking options for blurring/inpainting such as &quot;inpaint_ns&quot;, &quot;inpaint_telea&quot; and &quot;blur(pixel_size, pixel_size)&quot;</span>
+<span class="sd">    max_evals       : number of evaluations done of the underlying model to get SHAP values</span>
+<span class="sd">    batch_size      : number of masked images to be evaluated at once</span>
+<span class="sd">    fixed_context   : masking technqiue used to build partition tree with options of &#39;0&#39;, &#39;1&#39; or &#39;None&#39;</span>
+<span class="sd">    Output</span>
+<span class="sd">    ------</span>
+<span class="sd">    shap_values_list: list of shap_values objects generated for the images</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">image_counter</span>
+    <span class="k">global</span> <span class="n">mask_counter</span>
+    <span class="n">shap_values_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
+        <span class="c1"># define a masker that is used to mask out partitions of the input image based on mask_value option</span>
+        <span class="n">masker</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">maskers</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">mask_value</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="c1"># wrap model with TeacherForcingLogits class</span>
+        <span class="n">wrapped_model</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">TeacherForcingLogits</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">similarity_model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">similarity_tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">)</span>
+
+        <span class="c1"># build a partition explainer with wrapped_model and image masker</span>
+        <span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">wrapped_model</span><span class="p">,</span> <span class="n">masker</span><span class="p">)</span>
+
+        <span class="c1"># compute SHAP values - here we use max_evals no. of evaluations of the underlying model to estimate SHAP values</span>
+        <span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">index</span> <span class="p">:</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]),</span>
+            <span class="n">max_evals</span><span class="o">=</span><span class="n">max_evals</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">fixed_context</span><span class="o">=</span><span class="n">fixed_context</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">shap_values_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+
+        <span class="c1"># output plot</span>
+        <span class="n">shap_values</span><span class="o">.</span><span class="n">output_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Ġ&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">shap_values</span><span class="o">.</span><span class="n">output_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">shap</span><span class="o">.</span><span class="n">image_plot</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+
+        <span class="c1"># setting values for next iterations</span>
+        <span class="n">mask_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">image_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">shap_values_list</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="SHAP-explanation-for-test-images">
+<h2>SHAP explanation for test images<a class="headerlink" href="#SHAP-explanation-for-test-images" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SHAP explanation using masking option &quot;blur(pixel_size, pixel_size)&quot; for blurring</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">run_masker</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mask_value</span><span class="o">=</span><span class="s2">&quot;blur(56,56)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [36:16, 1088.29s/it]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_17_1.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_17_1.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [05:47, 173.60s/it]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_17_3.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_17_3.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [05:44, 172.26s/it]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_17_5.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_17_5.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [05:42, 171.46s/it]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_17_7.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_17_7.svg" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SHAP explanation using masking option &quot;inpaint_telea&quot; for inpainting</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">run_masker</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">mask_value</span><span class="o">=</span><span class="s2">&quot;inpaint_telea&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Partition explainer: 2it [05:38, 169.49s/it]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_18_1.svg" src="../../../_images/example_notebooks_image_examples_image_captioning_Image_Captioning_using_Open_Source_18_1.svg" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Image%20Captioning%20using%20Azure%20Cognitive%20Services.html" class="btn btn-neutral float-left" title="Explaining Image Captioning (Image to Text) using Azure Cognitive Services and Partition Explainer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../genomic_examples.html" class="btn btn-neutral float-right" title="Genomic examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
