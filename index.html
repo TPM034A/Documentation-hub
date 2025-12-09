@@ -1,341 +1,363 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Documentation hub TPM034A — 2025</head>title>
-    <title>Machine learning for socio-technical systems</title>
-    <style>
-      :root {
-        --primary: #6366f1; /* Indigo 500 */
-        --primary-dark: #4338ca; /* Indigo 700 */
-        --secondary: #0f172a; /* Slate 900 */
-        --text-main: #f8fafc; /* Slate 50 */
-        --text-muted: #94a3b8; /* Slate 400 */
-        --accent: #38bdf8; /* Sky 400 */
-        --card-bg: #1e293b; /* Slate 800 */
-        --card-border: #334155; /* Slate 700 */
-        --bg-gradient: radial-gradient(circle at top center, #1e1b4b, #0f172a);
-      }
 
-      * {
-        box-sizing: border-box;
-      }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TPM034a — Machine Learning for Socio-technical Systems — Documentation Hub</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      /* Indigo 500 */
+      --primary-dark: #4338ca;
+      /* Indigo 700 */
+      --secondary: #0f172a;
+      /* Slate 900 */
+      --text-main: #f8fafc;
+      /* Slate 50 */
+      --text-muted: #94a3b8;
+      /* Slate 400 */
+      --accent: #38bdf8;
+      /* Sky 400 */
+      --card-bg: #1e293b;
+      /* Slate 800 */
+      --card-border: #334155;
+      /* Slate 700 */
+      --bg-gradient: radial-gradient(circle at top center, #1e1b4b, #0f172a);
+    }
 
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        background: var(--secondary);
-        background-image: var(--bg-gradient);
-        color: var(--text-main);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    * {
+      box-sizing: border-box;
+    }
 
-      /* Hero Section */
-      header {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.03);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        padding: 3rem 1rem;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--secondary);
+      background-image: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-      .hero-content {
-        max-width: 800px;
-      }
+    /* Hero Section */
+    header {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 3rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
 
+    .hero-content {
+      max-width: 800px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      margin: 0.5rem 0 0;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .intro {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    code {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+      color: var(--accent);
+    }
+
+    /* Main Content */
+    main {
+      width: 100%;
+      max-width: 1000px;
+      padding: 3rem 1.5rem;
+      flex: 1;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text-main);
+      border-left: 4px solid var(--primary);
+      padding-left: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      border-color: var(--primary);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .card-title a {
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .card-title a::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      align-self: flex-start;
+    }
+
+    /* Lab List */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .lab-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 0.75rem;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .lab-item:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .lab-item a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .lab-number {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .lab-item:hover .lab-number {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      width: 100%;
+    }
+
+    @media (max-width: 640px) {
       h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        font-weight: 800;
-        background: linear-gradient(to right, #818cf8, #c084fc);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: -0.02em;
-      }
-
-      h2 {
-        margin: 0.5rem 0 0;
-        font-size: 1.25rem;
-        font-weight: 400;
-        color: var(--text-muted);
-      }
-
-      .intro {
-        margin-top: 1.5rem;
-        font-size: 1.1rem;
-        line-height: 1.6;
-        color: var(--text-muted);
-        max-width: 650px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      code {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.2em 0.4em;
-        border-radius: 4px;
-        font-family: monospace;
-        font-size: 0.9em;
-        color: var(--accent);
-      }
-
-      /* Main Content */
-      main {
-        width: 100%;
-        max-width: 1000px;
-        padding: 3rem 1.5rem;
-        flex: 1;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-        color: var(--text-main);
-        border-left: 4px solid var(--primary);
-        padding-left: 1rem;
+        font-size: 2rem;
       }
 
       .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
+        grid-template-columns: 1fr;
       }
+    }
+  </style>
+</head>
 
-      /* Cards */
-      .card {
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: 12px;
-        padding: 1.5rem;
-        transition: transform 0.2s, box-shadow 0.2s;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        position: relative;
-        overflow: hidden;
-      }
+<body>
+  <header>
+    <div class="hero-content">
+      <h1>Documentation hub TPM034a - 2025</h1>
+      <h2>Machine Learning for Socio-technical Systems</h2>
+      <p class="intro">
+        Using this documentation hub you can quickly access course materials.
+    </div>
+  </header>
 
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-        border-color: var(--primary);
-      }
+  <main>
+    <div class="section-title">Lab sessions</div>
+    <div class="card" style="border-color: var(--primary-dark);">
+      <div class="card-header">
+        <div class="card-icon">🧪</div>
+        <div>
+          <h3 class="card-title">Lab sessions with solutions</h3>
+          <p class="card-desc" style="margin: 0;">Access HTML files for each lab session</p>
+        </div>
+      </div>
 
-      .card-header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
+      <div class="lab-grid">
+        <div class="lab-item">
+          <a href="docs/lab_sessions/Lab_01.html" target="_blank">
+            <span class="lab-number">Session</span>
+            01
+          </a>
+        </div>
+        <div class="lab-item">
+          <a href="docs/lab_sessions/Lab_02.html" target="_blank">
+            <span class="lab-number">Session</span>
+            02
+          </a>
+        </div>
+        <div class="lab-item">
+          <a href="docs/lab_sessions/Lab_03.html" target="_blank">
+            <span class="lab-number">Session</span>
+            03
+          </a>
+        </div>
+        <div class="lab-item">
+          <a href="docs/lab_sessions/Lab_04.html" target="_blank">
+            <span class="lab-number">Session</span>
+            04
+          </a>
+        </div>
+        <div class="lab-item">
+          <a href="docs/lab_sessions/Lab_05.html" target="_blank">
+            <span class="lab-number">Session</span>
+            05
+          </a>
+        </div>
+      </div>
+    </div>
 
-      .card-icon {
-        font-size: 2rem;
-        background: rgba(255, 255, 255, 0.05);
-        width: 3rem;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-      }
-
-      .card-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin: 0;
-      }
-
-      .card-title a {
-        color: var(--text-main);
-        text-decoration: none;
-      }
-
-      .card-title a::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-      }
-
-      .card-desc {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-        line-height: 1.5;
-      }
-
-      .status-pill {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        border-radius: 999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        background: rgba(56, 189, 248, 0.1);
-        color: var(--accent);
-        border: 1px solid rgba(56, 189, 248, 0.2);
-        align-self: flex-start;
-      }
-
-      /* Lab List */
-      .lab-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 0.75rem;
-        margin-top: 1rem;
-      }
-
-      .lab-item {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--card-border);
-        border-radius: 8px;
-        padding: 0;
-        text-align: center;
-        transition: all 0.2s;
-        overflow: hidden;
-      }
-
-      .lab-item:hover {
-        background: var(--primary);
-        border-color: var(--primary);
-        transform: translateY(-2px);
-      }
-
-      .lab-item a {
-        color: var(--text-main);
-        text-decoration: none;
-        font-weight: 600;
-        display: block;
-        width: 100%;
-        height: 100%;
-        padding: 0.75rem;
-      }
-
-      .lab-number {
-        display: block;
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        margin-bottom: 0.25rem;
-      }
-
-      .lab-item:hover .lab-number {
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      /* Footer */
-      footer {
-        margin-top: auto;
-        padding: 2rem;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        width: 100%;
-      }
-
-      @media (max-width: 640px) {
-        h1 { font-size: 2rem; }
-        .grid { grid-template-columns: 1fr; }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="hero-content">
-        <h1>Documentation hub TPM034A — 2025</h1>
-        <h1>Machine learning for socio-technical systems</h1>
-        <p class="intro">
-          Using this documentation hub you can quickly access course materials.
+    <div style="margin-top: 3rem;"></div>
+    <div class="section-title">Library Documentation</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🐼</div>
+          <h3 class="card-title"><a href="docs/pandas/reference/index.html" target="_blank">Pandas</a></h3>
+        </div>
+        <p class="card-desc">
+          Comprehensive documentation for the Pandas library. Essential for data manipulation and analysis.
         </p>
-      </div>
-    </header>
-    <main>
-
-      <div>
-        <div class="section-title">Lab sessions</div>
-        <div class="card" style="border-color: var(--primary-dark);">
-          <div class="card-header">
-            <div class="card-icon">🧪</div>
-            <div>
-              <h3 class="card-title">Lab sessions with solutions</h3>
-              <p class="card-desc" style="margin: 0;">Access HTML files for each session</p>
-            </div>
-          </div>
-          
-          <div class="lab-grid">
-            <div class="lab-item">
-              <a href="docs/lab_sessions/Lab_01.html" target="_blank">
-                <span class="lab-number">Session</span>
-                01
-              </a>
-            </div>
-            <div class="lab-item">
-              <a href="docs/lab_sessions/Lab_02.html" target="_blank">
-                <span class="lab-number">Session</span>
-                02
-              </a>
-            </div>
-            <div class="lab-item">
-              <a href="docs/lab_sessions/Lab_03.html" target="_blank">
-                <span class="lab-number">Session</span>
-                03
-              </a>
-            </div>
-            <div class="lab-item">
-              <a href="docs/lab_sessions/Lab_04.html" target="_blank">
-                <span class="lab-number">Session</span>
-                04
-              </a>
-            </div>
-            <div class="lab-item">
-              <a href="docs/lab_sessions/Lab_05.html" target="_blank">
-                <span class="lab-number">Session</span>
-                05
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div style="margin-top: 3rem;"></div>      
-      <div class="section-title">Library documentation</div>
-      <div class="grid">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon">🐼</div>
-            <h3 class="card-title"><a href="docs/pandas/index.html" target="_blank">Pandas</a></h3>
-          </div>
-          <p class="card-desc">
-            Comprehensive documentation for the Pandas library. Essential for data manipulation and analysis.
-          </p>
-          <span class="status-pill">Available</span>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon">🧠</div>
-            <h3 class="card-title"><a href="docs/scikit-learn/index.html" target="_blank">Scikit-learn</a></h3>
-          </div>
-          <p class="card-desc">
-            Machine Learning in Python. Simple and efficient tools for predictive data analysis.
-          </p>
-          <span class="status-pill">Available</span>
-        </div>
+        <span class="status-pill">Available</span>
       </div>
 
-    </main>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">📊</div>
+          <h3 class="card-title"><a href="docs/scikit-learn/api/index.html" target="_blank">Scikit-learn</a></h3>
+        </div>
+        <p class="card-desc">
+          Official documentation for Python Sci-kit learn. The core library for machine learning algorithms and tools.
+        </p>
+        <span class="status-pill">Available</span>
+      </div>
 
-    <footer>
-      <p>Internal Documentation Hub &bull; TPM034a &bull; Francisco Garrido-Valenzuela &bull; 2025</p>
-    </footer>
-  </body>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🔮</div>
+          <h3 class="card-title"><a href="docs/shap/api.html" target="_blank">Shap</a></h3>
+        </div>
+        <p class="card-desc">
+          Documentation for SHAP (SHapley Additive exPlanations). A game theoretic approach to explain the output of any
+          machine learning model.
+        </p>
+        <span class="status-pill">Available</span>
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Internal Documentation Hub &bull; TPM034a-2025 &bull; Francisco Garrido-Valenzuela &bull; 2025</p>
+  </footer>
+</body>
+
 </html>
