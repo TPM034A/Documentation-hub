@@ -1,0 +1,521 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="shap.Explanation" href="generated/shap.Explanation.html" />
+    <link rel="prev" title="DeepExplainer Genomics Example" href="example_notebooks/genomic_examples/DeepExplainer%20Genomics%20Example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#explanation">Explanation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.Explanation.html">shap.Explanation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.Cohorts.html">shap.Cohorts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#explainers">explainers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.Explainer.html">shap.Explainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.TreeExplainer.html">shap.TreeExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.GPUTreeExplainer.html">shap.GPUTreeExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.LinearExplainer.html">shap.LinearExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.PermutationExplainer.html">shap.PermutationExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.PartitionExplainer.html">shap.PartitionExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.SamplingExplainer.html">shap.SamplingExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.AdditiveExplainer.html">shap.AdditiveExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.DeepExplainer.html">shap.DeepExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.KernelExplainer.html">shap.KernelExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.GradientExplainer.html">shap.GradientExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.ExactExplainer.html">shap.ExactExplainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.explainers.other.Coefficient.html">shap.explainers.other.Coefficient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.explainers.other.Random.html">shap.explainers.other.Random</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.explainers.other.LimeTabular.html">shap.explainers.other.LimeTabular</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.explainers.other.Maple.html">shap.explainers.other.Maple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.explainers.other.TreeMaple.html">shap.explainers.other.TreeMaple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.explainers.other.TreeGain.html">shap.explainers.other.TreeGain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#plots">plots</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.bar.html">shap.plots.bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.waterfall.html">shap.plots.waterfall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.scatter.html">shap.plots.scatter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.heatmap.html">shap.plots.heatmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.force.html">shap.plots.force</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.text.html">shap.plots.text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.image.html">shap.plots.image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.partial_dependence.html">shap.plots.partial_dependence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.decision.html">shap.plots.decision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.embedding.html">shap.plots.embedding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.initjs.html">shap.plots.initjs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.group_difference.html">shap.plots.group_difference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.image_to_text.html">shap.plots.image_to_text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.monitoring.html">shap.plots.monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.beeswarm.html">shap.plots.beeswarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.plots.violin.html">shap.plots.violin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#maskers">maskers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.Masker.html">shap.maskers.Masker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.Independent.html">shap.maskers.Independent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.Partition.html">shap.maskers.Partition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.Impute.html">shap.maskers.Impute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.Fixed.html">shap.maskers.Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.Composite.html">shap.maskers.Composite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.FixedComposite.html">shap.maskers.FixedComposite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.OutputComposite.html">shap.maskers.OutputComposite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.Text.html">shap.maskers.Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.maskers.Image.html">shap.maskers.Image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#models">models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.models.Model.html">shap.models.Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.models.TeacherForcing.html">shap.models.TeacherForcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.models.TextGeneration.html">shap.models.TextGeneration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.models.TopKLM.html">shap.models.TopKLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.models.TransformersPipeline.html">shap.models.TransformersPipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utils">utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.hclust.html">shap.utils.hclust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.hclust_ordering.html">shap.utils.hclust_ordering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.partition_tree.html">shap.utils.partition_tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.partition_tree_shuffle.html">shap.utils.partition_tree_shuffle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.delta_minimization_order.html">shap.utils.delta_minimization_order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.approximate_interactions.html">shap.utils.approximate_interactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.potential_interactions.html">shap.utils.potential_interactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.sample.html">shap.utils.sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.shapley_coefficients.html">shap.utils.shapley_coefficients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.convert_name.html">shap.utils.convert_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.OpChain.html">shap.utils.OpChain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.show_progress.html">shap.utils.show_progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.MaskedModel.html">shap.utils.MaskedModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.utils.make_masks.html">shap.utils.make_masks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#datasets">datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.a1a.html">shap.datasets.a1a</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.adult.html">shap.datasets.adult</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.california.html">shap.datasets.california</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.communitiesandcrime.html">shap.datasets.communitiesandcrime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.corrgroups60.html">shap.datasets.corrgroups60</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.diabetes.html">shap.datasets.diabetes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.imagenet50.html">shap.datasets.imagenet50</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.imdb.html">shap.datasets.imdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.independentlinear60.html">shap.datasets.independentlinear60</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.iris.html">shap.datasets.iris</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.linnerud.html">shap.datasets.linnerud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.nhanesi.html">shap.datasets.nhanesi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/shap.datasets.rank.html">shap.datasets.rank</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<p>This page contains the API reference for public objects and functions in SHAP.
+There are also <a class="reference internal" href="api_examples.html#api-examples"><span class="std std-ref">example notebooks</span></a> available that demonstrate how
+to use the API of each object/function.</p>
+<section id="explanation">
+<span id="explanation-api"></span><h2>Explanation<a class="headerlink" href="#explanation" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.Explanation.html#shap.Explanation" title="shap.Explanation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.Explanation</span></code></a>(values[, base_values, ...])</p></td>
+<td><p>A sliceable set of parallel arrays representing a SHAP explanation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.Cohorts.html#shap.Cohorts" title="shap.Cohorts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.Cohorts</span></code></a>(**kwargs)</p></td>
+<td><p>A collection of <a class="reference internal" href="generated/shap.Explanation.html#shap.Explanation" title="shap.Explanation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Explanation</span></code></a> objects, typically each explaining a cluster of similar samples.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="explainers">
+<span id="explainers-api"></span><h2>explainers<a class="headerlink" href="#explainers" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.Explainer.html#shap.Explainer" title="shap.Explainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.Explainer</span></code></a>(model[, masker, link, ...])</p></td>
+<td><p>Uses Shapley values to explain any machine learning model or python function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.TreeExplainer.html#shap.TreeExplainer" title="shap.TreeExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.TreeExplainer</span></code></a>(model[, data, ...])</p></td>
+<td><p>Uses Tree SHAP algorithms to explain the output of ensemble tree models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.GPUTreeExplainer.html#shap.GPUTreeExplainer" title="shap.GPUTreeExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.GPUTreeExplainer</span></code></a>(model[, data, ...])</p></td>
+<td><p>Experimental GPU accelerated version of TreeExplainer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.LinearExplainer.html#shap.LinearExplainer" title="shap.LinearExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.LinearExplainer</span></code></a>(model, masker[, link, ...])</p></td>
+<td><p>Computes SHAP values for a linear model, optionally accounting for inter-feature correlations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.PermutationExplainer.html#shap.PermutationExplainer" title="shap.PermutationExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.PermutationExplainer</span></code></a>(model, masker[, ...])</p></td>
+<td><p>This method approximates the Shapley values by iterating through permutations of the inputs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.PartitionExplainer.html#shap.PartitionExplainer" title="shap.PartitionExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.PartitionExplainer</span></code></a>(model, masker, *[, ...])</p></td>
+<td><p>Uses the Partition SHAP method to explain the output of any function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.SamplingExplainer.html#shap.SamplingExplainer" title="shap.SamplingExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.SamplingExplainer</span></code></a>(model, data, **kwargs)</p></td>
+<td><p>Computes SHAP values using an extension of the Shapley sampling values explanation method (also known as IME).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.AdditiveExplainer.html#shap.AdditiveExplainer" title="shap.AdditiveExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.AdditiveExplainer</span></code></a>(model, masker[, ...])</p></td>
+<td><p>Computes SHAP values for generalized additive models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.DeepExplainer.html#shap.DeepExplainer" title="shap.DeepExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.DeepExplainer</span></code></a>(model, data[, session, ...])</p></td>
+<td><p>Meant to approximate SHAP values for deep learning models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.KernelExplainer.html#shap.KernelExplainer" title="shap.KernelExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.KernelExplainer</span></code></a>(model, data[, ...])</p></td>
+<td><p>Uses the Kernel SHAP method to explain the output of any function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.GradientExplainer.html#shap.GradientExplainer" title="shap.GradientExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.GradientExplainer</span></code></a>(model, data[, ...])</p></td>
+<td><p>Explains a model using expected gradients (an extension of integrated gradients).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.ExactExplainer.html#shap.ExactExplainer" title="shap.ExactExplainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.ExactExplainer</span></code></a>(model, masker[, link, ...])</p></td>
+<td><p>Computes SHAP values via an optimized exact enumeration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.explainers.other.Coefficient.html#shap.explainers.other.Coefficient" title="shap.explainers.other.Coefficient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.explainers.other.Coefficient</span></code></a>(model)</p></td>
+<td><p>Simply returns the model coefficients as the feature attributions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.explainers.other.Random.html#shap.explainers.other.Random" title="shap.explainers.other.Random"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.explainers.other.Random</span></code></a>(model, masker)</p></td>
+<td><p>Simply returns random (normally distributed) feature attributions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.explainers.other.LimeTabular.html#shap.explainers.other.LimeTabular" title="shap.explainers.other.LimeTabular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.explainers.other.LimeTabular</span></code></a>(model, data)</p></td>
+<td><p>Simply wrap of lime.lime_tabular.LimeTabularExplainer into the common shap interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.explainers.other.Maple.html#shap.explainers.other.Maple" title="shap.explainers.other.Maple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.explainers.other.Maple</span></code></a>(model, data)</p></td>
+<td><p>Simply wraps MAPLE into the common SHAP interface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.explainers.other.TreeMaple.html#shap.explainers.other.TreeMaple" title="shap.explainers.other.TreeMaple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.explainers.other.TreeMaple</span></code></a>(model, data)</p></td>
+<td><p>Simply tree MAPLE into the common SHAP interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.explainers.other.TreeGain.html#shap.explainers.other.TreeGain" title="shap.explainers.other.TreeGain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.explainers.other.TreeGain</span></code></a>(model)</p></td>
+<td><p>Simply returns the global gain/gini feature importances for tree models.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plots">
+<span id="plots-api"></span><h2>plots<a class="headerlink" href="#plots" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.plots.bar.html#shap.plots.bar" title="shap.plots.bar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.bar</span></code></a>(shap_values[, max_display, ...])</p></td>
+<td><p>Create a bar plot of a set of SHAP values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.plots.waterfall.html#shap.plots.waterfall" title="shap.plots.waterfall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.waterfall</span></code></a>(shap_values[, ...])</p></td>
+<td><p>Plots an explanation of a single prediction as a waterfall plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.plots.scatter.html#shap.plots.scatter" title="shap.plots.scatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.scatter</span></code></a>(shap_values[, color, ...])</p></td>
+<td><p>Create a SHAP dependence scatter plot, optionally colored by an interaction feature.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.plots.heatmap.html#shap.plots.heatmap" title="shap.plots.heatmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.heatmap</span></code></a>(shap_values[, ...])</p></td>
+<td><p>Create a heatmap plot of a set of SHAP values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.plots.force.html#shap.plots.force" title="shap.plots.force"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.force</span></code></a>(base_value[, shap_values, ...])</p></td>
+<td><p>Visualize the given SHAP values with an additive force layout.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.plots.text.html#shap.plots.text" title="shap.plots.text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.text</span></code></a>(shap_values[, ...])</p></td>
+<td><p>Plots an explanation of a string of text using coloring and interactive labels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.plots.image.html#shap.plots.image" title="shap.plots.image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.image</span></code></a>(shap_values[, ...])</p></td>
+<td><p>Plots SHAP values for image inputs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.plots.partial_dependence.html#shap.plots.partial_dependence" title="shap.plots.partial_dependence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.partial_dependence</span></code></a>(ind, model, data)</p></td>
+<td><p>A basic partial dependence plot function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.plots.decision.html#shap.plots.decision" title="shap.plots.decision"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.decision</span></code></a>(base_value, shap_values)</p></td>
+<td><p>Visualize model decisions using cumulative SHAP values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.plots.embedding.html#shap.plots.embedding" title="shap.plots.embedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.embedding</span></code></a>(ind, shap_values[, ...])</p></td>
+<td><p>Use the SHAP values as an embedding which we project to 2D for visualization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.plots.initjs.html#shap.plots.initjs" title="shap.plots.initjs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.initjs</span></code></a>()</p></td>
+<td><p>Initialize the necessary javascript libraries for interactive force plots.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.plots.group_difference.html#shap.plots.group_difference" title="shap.plots.group_difference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.group_difference</span></code></a>(shap_values, ...)</p></td>
+<td><p>This plots the difference in mean SHAP values between two groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.plots.image_to_text.html#shap.plots.image_to_text" title="shap.plots.image_to_text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.image_to_text</span></code></a>(shap_values)</p></td>
+<td><p>Plots SHAP values for image inputs with test outputs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.plots.monitoring.html#shap.plots.monitoring" title="shap.plots.monitoring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.monitoring</span></code></a>(ind, shap_values, features)</p></td>
+<td><p>Create a SHAP monitoring plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.plots.beeswarm.html#shap.plots.beeswarm" title="shap.plots.beeswarm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.beeswarm</span></code></a>(shap_values[, ...])</p></td>
+<td><p>Create a SHAP beeswarm plot, colored by feature values when they are provided.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.plots.violin.html#shap.plots.violin" title="shap.plots.violin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.plots.violin</span></code></a>(shap_values[, features, ...])</p></td>
+<td><p>Create a SHAP violin plot, colored by feature values when they are provided.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="maskers">
+<span id="maskers-api"></span><h2>maskers<a class="headerlink" href="#maskers" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.maskers.Masker.html#shap.maskers.Masker" title="shap.maskers.Masker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.Masker</span></code></a>()</p></td>
+<td><p>This is the superclass of all maskers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.maskers.Independent.html#shap.maskers.Independent" title="shap.maskers.Independent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.Independent</span></code></a>(data[, max_samples])</p></td>
+<td><p>This masks out tabular features by integrating over the given background dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.maskers.Partition.html#shap.maskers.Partition" title="shap.maskers.Partition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.Partition</span></code></a>(data[, max_samples, ...])</p></td>
+<td><p>This masks out tabular features by integrating over the given background dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.maskers.Impute.html#shap.maskers.Impute" title="shap.maskers.Impute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.Impute</span></code></a>(data[, method])</p></td>
+<td><p>This imputes the values of missing features using the values of the observed features.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.maskers.Fixed.html#shap.maskers.Fixed" title="shap.maskers.Fixed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.Fixed</span></code></a>()</p></td>
+<td><p>This leaves the input unchanged during masking, and is used for things like scoring labels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.maskers.Composite.html#shap.maskers.Composite" title="shap.maskers.Composite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.Composite</span></code></a>(*maskers)</p></td>
+<td><p>This merges several maskers for different inputs together into a single composite masker.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.maskers.FixedComposite.html#shap.maskers.FixedComposite" title="shap.maskers.FixedComposite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.FixedComposite</span></code></a>(masker)</p></td>
+<td><p>A masker that outputs both the masked data and the original data as a pair.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.maskers.OutputComposite.html#shap.maskers.OutputComposite" title="shap.maskers.OutputComposite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.OutputComposite</span></code></a>(masker, model)</p></td>
+<td><p>A masker that is a combination of a masker and a model and outputs both masked args and the model's output.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.maskers.Text.html#shap.maskers.Text" title="shap.maskers.Text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.Text</span></code></a>([tokenizer, mask_token, ...])</p></td>
+<td><p>This masks out tokens according to the given tokenizer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.maskers.Image.html#shap.maskers.Image" title="shap.maskers.Image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.maskers.Image</span></code></a>(mask_value[, shape])</p></td>
+<td><p>Masks out image regions with blurring or inpainting.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="models">
+<span id="models-api"></span><h2>models<a class="headerlink" href="#models" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.models.Model.html#shap.models.Model" title="shap.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.models.Model</span></code></a>([model])</p></td>
+<td><p>This is the superclass of all models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.models.TeacherForcing.html#shap.models.TeacherForcing" title="shap.models.TeacherForcing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.models.TeacherForcing</span></code></a>(model[, ...])</p></td>
+<td><p>Generates scores (log odds) for output text explanation algorithms using Teacher Forcing technique.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.models.TextGeneration.html#shap.models.TextGeneration" title="shap.models.TextGeneration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.models.TextGeneration</span></code></a>([model, ...])</p></td>
+<td><p>Generates target sentence/ids using a base model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.models.TopKLM.html#shap.models.TopKLM" title="shap.models.TopKLM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.models.TopKLM</span></code></a>(model, tokenizer[, k, ...])</p></td>
+<td><p>Generates scores (log odds) for the top-k tokens for Causal/Masked LM.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.models.TransformersPipeline.html#shap.models.TransformersPipeline" title="shap.models.TransformersPipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.models.TransformersPipeline</span></code></a>(pipeline[, ...])</p></td>
+<td><p>This wraps a transformers pipeline object for easy explanations.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="utils">
+<span id="utils-api"></span><h2>utils<a class="headerlink" href="#utils" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.utils.hclust.html#shap.utils.hclust" title="shap.utils.hclust"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.hclust</span></code></a>(X[, y, linkage, metric, ...])</p></td>
+<td><p>Fit a hierarchical clustering model for features X relative to target variable y.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.utils.hclust_ordering.html#shap.utils.hclust_ordering" title="shap.utils.hclust_ordering"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.hclust_ordering</span></code></a>(X[, metric, ...])</p></td>
+<td><p>A leaf ordering is under-defined, this picks the ordering that keeps nearby samples similar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.utils.partition_tree.html#shap.utils.partition_tree" title="shap.utils.partition_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.partition_tree</span></code></a>(X[, metric])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.utils.partition_tree_shuffle.html#shap.utils.partition_tree_shuffle" title="shap.utils.partition_tree_shuffle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.partition_tree_shuffle</span></code></a>(indexes, ...)</p></td>
+<td><p>Randomly shuffle the indexes in a way that is consistent with the given partition tree.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.utils.delta_minimization_order.html#shap.utils.delta_minimization_order" title="shap.utils.delta_minimization_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.delta_minimization_order</span></code></a>(all_masks)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.utils.approximate_interactions.html#shap.utils.approximate_interactions" title="shap.utils.approximate_interactions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.approximate_interactions</span></code></a>(index, ...)</p></td>
+<td><p>Order other features by how much interaction they seem to have with the feature at the given index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.utils.potential_interactions.html#shap.utils.potential_interactions" title="shap.utils.potential_interactions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.potential_interactions</span></code></a>(...)</p></td>
+<td><p>Order other features by how much interaction they seem to have with the feature at the given index.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.utils.sample.html#shap.utils.sample" title="shap.utils.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.sample</span></code></a>(X[, nsamples, random_state])</p></td>
+<td><p>Performs sampling without replacement of the input data <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.utils.shapley_coefficients.html#shap.utils.shapley_coefficients" title="shap.utils.shapley_coefficients"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.shapley_coefficients</span></code></a>(n)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.utils.convert_name.html#shap.utils.convert_name" title="shap.utils.convert_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.convert_name</span></code></a>(ind, shap_values, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.utils.OpChain.html#shap.utils.OpChain" title="shap.utils.OpChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.OpChain</span></code></a>([root_name])</p></td>
+<td><p>A way to represent a set of dot chained operations on an object without actually running them.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.utils.show_progress.html#shap.utils.show_progress" title="shap.utils.show_progress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.show_progress</span></code></a>(iterable[, total, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.utils.MaskedModel.html#shap.utils.MaskedModel" title="shap.utils.MaskedModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.MaskedModel</span></code></a>(model, masker, link, ...)</p></td>
+<td><p>This is a utility class that combines a model, a masker object, and a current input.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.utils.make_masks.html#shap.utils.make_masks" title="shap.utils.make_masks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.utils.make_masks</span></code></a>(cluster_matrix)</p></td>
+<td><p>Builds a sparse CSR mask matrix from the given clustering.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="datasets">
+<span id="datasets-api"></span><h2>datasets<a class="headerlink" href="#datasets" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.datasets.a1a.html#shap.datasets.a1a" title="shap.datasets.a1a"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.a1a</span></code></a>([n_points])</p></td>
+<td><p>Return a sparse dataset in scipy csr matrix format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.datasets.adult.html#shap.datasets.adult" title="shap.datasets.adult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.adult</span></code></a>([display, n_points])</p></td>
+<td><p>Return the Adult census data in a structured format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.datasets.california.html#shap.datasets.california" title="shap.datasets.california"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.california</span></code></a>([n_points])</p></td>
+<td><p>Return the California housing data in a tabular format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.datasets.communitiesandcrime.html#shap.datasets.communitiesandcrime" title="shap.datasets.communitiesandcrime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.communitiesandcrime</span></code></a>([n_points])</p></td>
+<td><p>Predict the total number of violent crimes per 100K population.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.datasets.corrgroups60.html#shap.datasets.corrgroups60" title="shap.datasets.corrgroups60"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.corrgroups60</span></code></a>([n_points])</p></td>
+<td><p>Correlated Groups (60 features)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.datasets.diabetes.html#shap.datasets.diabetes" title="shap.datasets.diabetes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.diabetes</span></code></a>([n_points])</p></td>
+<td><p>Return the diabetes data in a nice package.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.datasets.imagenet50.html#shap.datasets.imagenet50" title="shap.datasets.imagenet50"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.imagenet50</span></code></a>([resolution, n_points])</p></td>
+<td><p>Return a set of 50 images representative of ImageNet images.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.datasets.imdb.html#shap.datasets.imdb" title="shap.datasets.imdb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.imdb</span></code></a>([n_points])</p></td>
+<td><p>Return the classic IMDB sentiment analysis training data in a nice package.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.datasets.independentlinear60.html#shap.datasets.independentlinear60" title="shap.datasets.independentlinear60"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.independentlinear60</span></code></a>([n_points])</p></td>
+<td><p>Independent Linear (60 features)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.datasets.iris.html#shap.datasets.iris" title="shap.datasets.iris"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.iris</span></code></a>()</p></td>
+<td><p>Return the classic Iris dataset in a convenient package.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.datasets.linnerud.html#shap.datasets.linnerud" title="shap.datasets.linnerud"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.linnerud</span></code></a>([n_points])</p></td>
+<td><p>Return the Linnerud dataset in a convenient package for multi-target regression.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/shap.datasets.nhanesi.html#shap.datasets.nhanesi" title="shap.datasets.nhanesi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.nhanesi</span></code></a>([display, n_points])</p></td>
+<td><p>Return a nicely packaged version of NHANES I data with survival times as labels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/shap.datasets.rank.html#shap.datasets.rank" title="shap.datasets.rank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shap.datasets.rank</span></code></a>()</p></td>
+<td><p>Return ranking datasets from the LightGBM repository.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example_notebooks/genomic_examples/DeepExplainer%20Genomics%20Example.html" class="btn btn-neutral float-left" title="DeepExplainer Genomics Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/shap.Explanation.html" class="btn btn-neutral float-right" title="shap.Explanation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

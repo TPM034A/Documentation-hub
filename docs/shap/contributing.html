@@ -1,0 +1,544 @@
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing guidelines &mdash; SHAP latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c6e86fd7"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Release notes" href="release_notes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/shap_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overviews.html">Topical overviews</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tabular_examples.html">Tabular examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text_examples.html">Text examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_examples.html">Image examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genomic_examples.html">Genomic examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_examples.html">API examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-helpful-bug-reports">Writing helpful bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-the-latest-version">Installing the latest version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-a-local-development-environment">Setting up a local development environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fork-the-repository">Fork the repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-python-environment">Creating a python environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-from-source">Installing from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-checks-with-precommit">Code checks with precommit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unit-tests-with-pytest">Unit tests with pytest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-requests-prs">Pull Requests (PRs)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#etiquette-for-creating-prs">Etiquette for creating PRs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checklist-for-publishing-prs">Checklist for publishing PRs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-changes-on-pull-requests">Previewing changes on Pull Requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-docs-locally">Building the docs locally</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#jupyter-notebook-style-guide">Jupyter notebook style guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-jupyter-guidelines">General Jupyter guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#links-cross-references">Links / Cross-references</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notebook-linting-and-formatting">Notebook linting and formatting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#maintainer-guide">Maintainer guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#issue-triage">Issue triage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pr-triage">PR triage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#versioning">Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimum-supported-dependencies">Minimum supported dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-releases">Making releases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release-notes-from-pr-labels">Release notes from PR labels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #343131" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SHAP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contributing guidelines</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing-guidelines">
+<h1>Contributing guidelines<a class="headerlink" href="#contributing-guidelines" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction"><span class="xref myst">Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="#writing-helpful-bug-reports"><span class="xref myst">Writing helpful bug reports</span></a></p></li>
+<li><p><a class="reference internal" href="#installing-the-latest-version"><span class="xref myst">Installing the latest version</span></a></p></li>
+<li><p><a class="reference internal" href="#setting-up-a-local-development-environment"><span class="xref myst">Setting up a local development environment</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#fork-the-repository"><span class="xref myst">Fork the repository</span></a></p></li>
+<li><p><a class="reference internal" href="#creating-a-python-environment"><span class="xref myst">Creating a python environment</span></a></p></li>
+<li><p><a class="reference internal" href="#installing-from-source"><span class="xref myst">Installing from source</span></a></p></li>
+<li><p><a class="reference internal" href="#code-checks-with-precommit"><span class="xref myst">Code checks with precommit</span></a></p></li>
+<li><p><a class="reference internal" href="#unit-tests-with-pytest"><span class="xref myst">Unit tests with pytest</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pull-requests-prs"><span class="xref myst">Pull Requests (PRs)</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#etiquette-for-creating-prs"><span class="xref myst">Etiquette for creating PRs</span></a></p></li>
+<li><p><a class="reference internal" href="#checklist-for-publishing-prs"><span class="xref myst">Checklist for publishing PRs</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#documentation"><span class="xref myst">Documentation</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#previewing-changes-on-pull-requests"><span class="xref myst">Previewing changes on Pull Requests</span></a></p></li>
+<li><p><a class="reference internal" href="#building-the-docs-locally"><span class="xref myst">Building the docs locally</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#jupyter-notebook-style-guide"><span class="xref myst">Jupyter notebook style guide</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#general-jupyter-guidelines"><span class="xref myst">General Jupyter guidelines</span></a></p></li>
+<li><p><a class="reference internal" href="#links--cross-references"><span class="xref myst">Links / Cross-references</span></a></p></li>
+<li><p><a class="reference internal" href="#notebook-linting-and-formatting"><span class="xref myst">Notebook linting and formatting</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#maintainer-guide"><span class="xref myst">Maintainer guide</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#issue-triage"><span class="xref myst">Issue triage</span></a></p></li>
+<li><p><a class="reference internal" href="#pr-triage"><span class="xref myst">PR triage</span></a></p></li>
+<li><p><a class="reference internal" href="#versioning"><span class="xref myst">Versioning</span></a></p></li>
+<li><p><a class="reference internal" href="#minimum-supported-dependencies"><span class="xref myst">Minimum supported dependencies</span></a></p></li>
+<li><p><a class="reference internal" href="#making-releases"><span class="xref myst">Making releases</span></a></p></li>
+<li><p><a class="reference internal" href="#release-notes-from-pr-labels"><span class="xref myst">Release notes from PR labels</span></a></p></li>
+</ul>
+</li>
+</ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Thank you for contributing to SHAP. SHAP is an open source collective effort,
+and contributions of all forms are welcome!</p>
+<p>You can contribute by:</p>
+<ul class="simple">
+<li><p>Submitting bug reports and features requests on the GitHub <a class="reference external" href="https://github.com/shap/shap/issues">issue
+tracker</a>,</p></li>
+<li><p>Contributing fixes and improvements via <a class="reference external" href="https://github.com/shap/shap/pulls">Pull Requests</a>, or</p></li>
+<li><p>Discussing ideas and questions in the <a class="reference external" href="https://github.com/shap/shap/discussions">Discussions forum</a>.</p></li>
+</ul>
+<p>If you are looking for a good place to get started, look for issues with the
+<a class="reference external" href="https://github.com/shap/shap/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22">good first issue</a> label.</p>
+</section>
+<section id="writing-helpful-bug-reports">
+<h2>Writing helpful bug reports<a class="headerlink" href="#writing-helpful-bug-reports" title="Link to this heading"></a></h2>
+<p>When submitting bug reports on the <a class="reference external" href="https://github.com/shap/shap/issues">issue tracker</a>, it is very helpful
+for the maintainers to include a good <strong>Minimal Reproducible Example</strong> (MRE).</p>
+<p>An MRE should be:</p>
+<ul class="simple">
+<li><p><strong>Minimal</strong>: Use as little code as possible that still produces the same
+problem.</p></li>
+<li><p><strong>Self-contained</strong>: Include everything needed to reproduce your problem,
+including imports and input data.</p></li>
+<li><p><strong>Reproducible</strong>: Test the code you’re about to provide to make sure it
+reproduces the problem.</p></li>
+</ul>
+<p>For more information, see <a class="reference external" href="https://matthewrocklin.com/minimal-bug-reports">How To Craft Minimal Bug
+Reports</a>.</p>
+</section>
+<section id="installing-the-latest-version">
+<h2>Installing the latest version<a class="headerlink" href="#installing-the-latest-version" title="Link to this heading"></a></h2>
+<p>To get the very latest version of shap, you can pip-install the library directly
+from the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/shap/shap.git@master
+</pre></div>
+</div>
+<p>This can be useful to test if a particular issue or bug has been fixed since the
+most recent release.</p>
+<p>Alternatively, if you are considering making changes to the code you can clone
+the repository and install your local copy as described below.</p>
+</section>
+<section id="setting-up-a-local-development-environment">
+<h2>Setting up a local development environment<a class="headerlink" href="#setting-up-a-local-development-environment" title="Link to this heading"></a></h2>
+<section id="fork-the-repository">
+<h3>Fork the repository<a class="headerlink" href="#fork-the-repository" title="Link to this heading"></a></h3>
+<p>Click <a class="reference external" href="https://github.com/shap/shap/fork">this link</a> to fork the repository on
+GitHub to your user area.</p>
+<p>Clone the repository to your local environment, using the URL provided by the
+green <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> button on your projects home page.</p>
+</section>
+<section id="creating-a-python-environment">
+<h3>Creating a python environment<a class="headerlink" href="#creating-a-python-environment" title="Link to this heading"></a></h3>
+<p>Create a new isolated environment for the project, e.g. with conda:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>shap<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+conda<span class="w"> </span>activate<span class="w"> </span>shap
+</pre></div>
+</div>
+</section>
+<section id="installing-from-source">
+<h3>Installing from source<a class="headerlink" href="#installing-from-source" title="Link to this heading"></a></h3>
+<p>To build from source, you need a compiler to build the C extension.</p>
+<ul>
+<li><p>On linux, you can install gcc with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>build-essential
+</pre></div>
+</div>
+</li>
+<li><p>Or on Windows, one way of getting a compiler is to <a class="reference external" href="https://www.mingw-w64.org/downloads/">install
+mingw64</a>.</p></li>
+</ul>
+<p>Pip-install the project with the <code class="docutils literal notranslate"><span class="pre">--editable</span></code> flag, which ensures that any
+changes you make to the source code are immediately reflected in your
+environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--editable<span class="w"> </span><span class="s1">&#39;.[test,plots,docs]&#39;</span>
+</pre></div>
+</div>
+<p>The various pip extras are defined in <a class="reference internal" href="#pyproject.toml"><span class="xref myst">pyproject.toml</span></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test-core</span></code>: a minimal set of dependencies to run pytest.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span></code>: a wider set of 3rd party packages for the full test suite such as
+tensorflow, pytest, xgboost.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plots</span></code>: includes matplotlib.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs</span></code>: dependencies for building the docs with Sphinx.</p></li>
+</ul>
+<p>Note: When installing from source, shap will attempt to build the C extension
+and the CUDA extension. If CUDA is not available, shap will retry the build
+without CUDA support.</p>
+<p>Consequently, is is quite normal to see warnings such as <code class="docutils literal notranslate"><span class="pre">WARNING:</span> <span class="pre">Could</span> <span class="pre">not</span> <span class="pre">compile</span> <span class="pre">cuda</span> <span class="pre">extensions</span></code> when building from source if you do not have CUDA
+available.</p>
+</section>
+<section id="code-checks-with-precommit">
+<h3>Code checks with precommit<a class="headerlink" href="#code-checks-with-precommit" title="Link to this heading"></a></h3>
+<p>We use <a class="reference external" href="https://pre-commit.com/#install">pre-commit hooks</a> to run code checks.
+Enable <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> in your local environment with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pre-commit
+pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+<p>To run the checks on all files, use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
+pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</pre></div>
+</div>
+<p><a class="reference external" href="https://beta.ruff.rs/docs/">Ruff</a> is used as a linter, and it is enabled as a
+pre-commit hook. You can also run <code class="docutils literal notranslate"><span class="pre">ruff</span></code> locally with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>ruff
+ruff<span class="w"> </span>check<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="unit-tests-with-pytest">
+<h3>Unit tests with pytest<a class="headerlink" href="#unit-tests-with-pytest" title="Link to this heading"></a></h3>
+<p>The unit test suite can be run locally with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest
+</pre></div>
+</div>
+<p>For info about matplotlib tests, see <code class="docutils literal notranslate"><span class="pre">tests/plots/__init__.py</span></code>.</p>
+</section>
+</section>
+<section id="pull-requests-prs">
+<h2>Pull Requests (PRs)<a class="headerlink" href="#pull-requests-prs" title="Link to this heading"></a></h2>
+<section id="etiquette-for-creating-prs">
+<h3>Etiquette for creating PRs<a class="headerlink" href="#etiquette-for-creating-prs" title="Link to this heading"></a></h3>
+<p>Before starting on a PR, please make a proposal by <strong>opening an Issue</strong>,
+checking for any duplicates. This isn’t necessary for trivial PRs such as fixing
+a typo.</p>
+<p><strong>Keep the scope small</strong>. This makes PRs a lot easier to review. Separate
+functional code changes (such as bug fixes) from refactoring changes (such as
+style improvements). PRs should contain one or the other, but not both.</p>
+<p>Open a <strong>Draft PR</strong> as early as possible, do not wait until the feature is
+ready. Work on a feature branch with a descriptive name such as
+<code class="docutils literal notranslate"><span class="pre">fix/lightgbm-warnings</span></code> or <code class="docutils literal notranslate"><span class="pre">doc/contributing</span></code>.</p>
+<p>Use a descriptive title, such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FIX:</span> <span class="pre">Update</span> <span class="pre">parameters</span> <span class="pre">to</span> <span class="pre">remove</span> <span class="pre">DeprecationWarning</span> <span class="pre">in</span> <span class="pre">TreeExplainer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENH:</span> <span class="pre">Add</span> <span class="pre">support</span> <span class="pre">for</span> <span class="pre">python</span> <span class="pre">3.11</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOCS:</span> <span class="pre">Fix</span> <span class="pre">formatting</span> <span class="pre">of</span> <span class="pre">ExactExplainer</span> <span class="pre">docstring</span></code></p></li>
+</ul>
+</section>
+<section id="checklist-for-publishing-prs">
+<h3>Checklist for publishing PRs<a class="headerlink" href="#checklist-for-publishing-prs" title="Link to this heading"></a></h3>
+<p>Before marking your PR as “ready for review” (by removing the <code class="docutils literal notranslate"><span class="pre">Draft</span></code> status),
+please ensure:</p>
+<ul class="simple">
+<li><p>Your feature branch is up-to-date with the master branch,</p></li>
+<li><p>All <a class="reference internal" href="#code-checks-with-precommit"><span class="xref myst">pre-commit hooks</span></a> pass, and</p></li>
+<li><p>Unit tests have been added (if your PR adds any new features or fixes a bug).</p></li>
+</ul>
+</section>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<p>The documentation is hosted at
+<a class="reference external" href="https://shap.readthedocs.io/en/latest/">shap.readthedocs.io</a>. If you have
+modified the docstrings or notebooks, please also check that the changes are
+are rendered properly in the generated HTML files.</p>
+<section id="previewing-changes-on-pull-requests">
+<h3>Previewing changes on Pull Requests<a class="headerlink" href="#previewing-changes-on-pull-requests" title="Link to this heading"></a></h3>
+<p>The documentation is built automatically on each Pull Request, to facilitate
+previewing how your changes will render. To see the preview:</p>
+<ol class="arabic simple">
+<li><p>Look for “All checks have passed”, and click “Show all checks”.</p></li>
+<li><p>Browse to the check called “docs/readthedocs.org”.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Details</span></code> hyperlink to open a preview of the docs.</p></li>
+</ol>
+<p>The PR previews are typically hosted on a URL of the form below, replacing
+<code class="docutils literal notranslate"><span class="pre">&lt;pr-number&gt;</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://shap--&lt;pr-number&gt;.org.readthedocs.build/en/&lt;pr-number&gt;
+</pre></div>
+</div>
+</section>
+<section id="building-the-docs-locally">
+<h3>Building the docs locally<a class="headerlink" href="#building-the-docs-locally" title="Link to this heading"></a></h3>
+<p>To build the documentation locally:</p>
+<ol class="arabic simple">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>.</p></li>
+<li><p>Open “_build/html/index.html” in your browser to inspect the documentation.</p></li>
+</ol>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">nbsphinx</span></code> currently requires the stand-alone program <code class="docutils literal notranslate"><span class="pre">pandoc</span></code>. If you
+get an error “Pandoc wasn’t found”, install <code class="docutils literal notranslate"><span class="pre">pandoc</span></code> as described in
+<a class="reference external" href="https://nbsphinx.readthedocs.io/en/0.9.2/installation.html#pandoc">nbsphinx installation
+guide</a>.</p>
+<p>The documentation dependencies are pinned in <code class="docutils literal notranslate"><span class="pre">docs/requirements-docs.txt</span></code>. These can be
+updated by running the <code class="docutils literal notranslate"><span class="pre">uv</span></code> command specified in the top of that file, optionally with
+the <code class="docutils literal notranslate"><span class="pre">--upgrade</span></code> flag.</p>
+</section>
+</section>
+<section id="jupyter-notebook-style-guide">
+<h2>Jupyter notebook style guide<a class="headerlink" href="#jupyter-notebook-style-guide" title="Link to this heading"></a></h2>
+<p>If you are contributing changes to the Jupyter notebooks in the documentation, please
+adhere to the following style guidelines.</p>
+<section id="general-jupyter-guidelines">
+<h3>General Jupyter guidelines<a class="headerlink" href="#general-jupyter-guidelines" title="Link to this heading"></a></h3>
+<p>Before committing your notebook(s),</p>
+<ul class="simple">
+<li><p>Ensure that you “Restart Kernel and Run All Cells…”, making
+sure that cells are executed in order, the notebook is reproducible and does not have any hidden states.</p></li>
+<li><p>Ensure that the notebook does not raise syntax warnings in the Sphinx build logs as a result of your
+changes.</p></li>
+</ul>
+</section>
+<section id="links-cross-references">
+<h3>Links / Cross-references<a class="headerlink" href="#links-cross-references" title="Link to this heading"></a></h3>
+<p>You are advised to include links in the notebooks as much as possible if it provides the
+reader with more background / context on the topic at hand.</p>
+<p>Here’s an example of how you would accomplish this in a Markdown cell in the notebook:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Force Plot Colors</span>
+
+The [<span class="nt">scatter</span>][<span class="nl">scatter_doclink</span>] plot create Python matplotlib plots that can be customized at will.
+
+[<span class="nl">scatter_doclink</span>]: <span class="na">../../../generated/shap.plots.scatter.rst#shap.plots.scatter</span>
+</pre></div>
+</div>
+<p>where the link specified is a relative path to the rst file generated by Sphinx.
+Prefer relative links over absolute paths.</p>
+</section>
+<section id="notebook-linting-and-formatting">
+<h3>Notebook linting and formatting<a class="headerlink" href="#notebook-linting-and-formatting" title="Link to this heading"></a></h3>
+<p>We use <code class="docutils literal notranslate"><span class="pre">ruff</span></code> to perform code linting and auto-formatting on our notebooks.
+Assuming you have set up <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> as described
+<a class="reference internal" href="#code-checks-with-precommit"><span class="xref myst">above</span></a>, these checks will run automatically
+whenever you commit any changes.</p>
+<p>To run the code-quality checks manually, you can do, e.g.:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--files<span class="w"> </span>notebook1.ipynb<span class="w"> </span>notebook2.ipynb
+</pre></div>
+</div>
+<p>replacing <code class="docutils literal notranslate"><span class="pre">notebook1.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">notebook2.ipynb</span></code> with any notebook(s) you have modified.</p>
+</section>
+</section>
+<section id="maintainer-guide">
+<h2>Maintainer guide<a class="headerlink" href="#maintainer-guide" title="Link to this heading"></a></h2>
+<section id="issue-triage">
+<h3>Issue triage<a class="headerlink" href="#issue-triage" title="Link to this heading"></a></h3>
+<p>Bug reports and feature requests are managed on the github issue tracker. We use
+automation to help prioritise and organise the issues.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">good</span> <span class="pre">first</span> <span class="pre">issue</span></code> label should be assigned to any issue that could be
+suitable for new contributors.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">awaiting</span> <span class="pre">feedback</span></code> label should be assigned if more information is required
+from the author, such as a reproducible example.</p>
+<p>The <a class="reference external" href="https://github.com/actions/stale">stale bot</a> will mark issues and PRs that
+have not had any activity for a long period of time with the <code class="docutils literal notranslate"><span class="pre">stale</span></code> label, and
+comment to solicit feedback from our community. If there is still no activity,
+the issue will be closed after a further period of time.</p>
+<p>We value feedback from our users very highly, so the bot is configured with long
+time periods before marking issues as stale.</p>
+<p>Issues marked with the <code class="docutils literal notranslate"><span class="pre">todo</span></code> label will never be marked as stale, so this label
+should be assigned to any issues that should be kept open such as long-running
+feature requests.</p>
+</section>
+<section id="pr-triage">
+<h3>PR triage<a class="headerlink" href="#pr-triage" title="Link to this heading"></a></h3>
+<p>Pull Requests should generally be assigned a category label such as <code class="docutils literal notranslate"><span class="pre">bug</span></code>,
+<code class="docutils literal notranslate"><span class="pre">enhancement</span></code> or <code class="docutils literal notranslate"><span class="pre">BREAKING</span></code>. These labels are used to categorise the PR in the
+release notes, as described <a class="reference internal" href="#release-notes-from-pr-labels"><span class="xref myst">below</span></a>.</p>
+<p>All PRs should have at least one review before being merged. In particular,
+maintainers should generally ensure that PRs have sufficient unit tests to cover
+any fixed bugs or new features.</p>
+<p>PRs are usually completed with “squash and merge” in order to maintain a clear
+linear history and make it easier to debug any issues.</p>
+</section>
+<section id="versioning">
+<h3>Versioning<a class="headerlink" href="#versioning" title="Link to this heading"></a></h3>
+<p>shap uses a PEP 440-compliant versioning scheme of <code class="docutils literal notranslate"><span class="pre">MAJOR.MINOR.PATCH</span></code>. Like
+<a class="reference external" href="https://numpy.org/doc/stable/dev/depending_on_numpy.html">numpy</a>, shap does <em>not</em> use semantic versioning, and has
+never made a <code class="docutils literal notranslate"><span class="pre">major</span></code> release. Most releases increment <code class="docutils literal notranslate"><span class="pre">minor</span></code>, typically made
+every month or two. <code class="docutils literal notranslate"><span class="pre">patch</span></code> releases are sometimes made for any important
+bugfixes.</p>
+<p>Breaking changes are done with care, given that shap is a very popular package.
+When breaking changes are made, the PR should be tagged with the <code class="docutils literal notranslate"><span class="pre">BREAKING</span></code>
+label to ensure it is highlighted in the release notes. Deprecation cycles are
+used to mitigate the impact on downstream users.</p>
+<p>GitHub milestones can be used to track any actions that need to be completed for
+a given release, such as those relating to deprecation cycles.</p>
+<p>We use <code class="docutils literal notranslate"><span class="pre">setuptools-scm</span></code> to source the version number from the git history
+automatically. At build time, the version number is determined from the git tag.</p>
+</section>
+<section id="minimum-supported-dependencies">
+<h3>Minimum supported dependencies<a class="headerlink" href="#minimum-supported-dependencies" title="Link to this heading"></a></h3>
+<p>We aim to follow the <a class="reference external" href="https://scientific-python.org/specs/spec-0000/">SPEC 0</a> convention
+on minimum supported dependencies.</p>
+<ul class="simple">
+<li><p>Support for Python versions are dropped 3 years after their initial release.</p></li>
+<li><p>Support for core package dependencies are dropped 2 years after their initial release.</p></li>
+</ul>
+<p>We may support python versions for slightly longer than this window where it does
+not add any extra maintenance burden.</p>
+</section>
+<section id="making-releases">
+<h3>Making releases<a class="headerlink" href="#making-releases" title="Link to this heading"></a></h3>
+<p>We try to use automation to make the release process reliable, transparent and
+reproducible. This also helps us make releases more frequently.</p>
+<p>A release is made by publishing a <a class="reference external" href="https://github.com/shap/shap/releases">GitHub
+Release</a>, tagged with an appropriately
+incremented version number.</p>
+<p>When a release is published, the wheels will be built and published to PyPI
+automatically by the <code class="docutils literal notranslate"><span class="pre">build_wheels</span></code> GitHub action. This workflow can also be
+triggered manually at any time to do a dry-run of cibuildwheel.</p>
+<p>In the run-up to a release, create a GitHub issue for the release such as <a class="reference external" href="https://github.com/shap/shap/issues/3289">[Meta
+issue] Release 0.43.0</a>. This can be
+used to co-ordinate with other maintainers and agree to make a release.</p>
+<p>Suggested release checklist:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="k">- [ ]</span> Dry-run cibuildwheel &amp; test
+<span class="k">- [ ]</span> Make GitHub release &amp; tag
+<span class="k">- [ ]</span> Confirm PyPI wheels published
+<span class="k">- [ ]</span> Conda forge published
+</pre></div>
+</div>
+<p>The conda package is managed in a <a class="reference external" href="https://github.com/conda-forge/shap-feedstock">separate
+repo</a>. The conda-forge bot will
+automatically make a PR to this repo to update the conda package, typically
+within a few hours of the PyPSA package being published.</p>
+</section>
+<section id="release-notes-from-pr-labels">
+<h3>Release notes from PR labels<a class="headerlink" href="#release-notes-from-pr-labels" title="Link to this heading"></a></h3>
+<p>Release notes can be automatically drafted by Github using the titles and labels
+of PRs that were merged since the previous release. See the GitHub docs on
+<a class="reference external" href="https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes">automatically generated release notes</a> for more
+information.</p>
+<p>The generated notes will follow the template defined in
+<a class="reference internal" href="#.github/release.yml"><span class="xref myst">.github/release.yml</span></a>, arranging PRs into subheadings by
+label and excluding PRs made by bots. See the <a class="reference external" href="https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes">docs</a> for the
+available configuration options.</p>
+<p>It’s helpful to assign labels such as <code class="docutils literal notranslate"><span class="pre">BREAKING</span></code>, <code class="docutils literal notranslate"><span class="pre">bug</span></code>, <code class="docutils literal notranslate"><span class="pre">enhancement</span></code> or
+<code class="docutils literal notranslate"><span class="pre">skip-changelog</span></code> to each PR, so that the change will show up in the notes under
+the right section. It also helps to ensure each PR has a descriptive name.</p>
+<p>The notes can be edited (both before and after release) to remove information
+that is unlikely to be of high interest to users, such as maintenance updates.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="release_notes.html" class="btn btn-neutral float-left" title="Release notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Scott Lundberg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
