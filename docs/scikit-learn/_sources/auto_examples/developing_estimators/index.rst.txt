@@ -10,6 +10,10 @@ Developing Estimators
 Examples concerning the development of Custom Estimator.
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -26,7 +30,7 @@ Examples concerning the development of Custom Estimator.
   .. image:: /auto_examples/developing_estimators/images/thumb/sphx_glr_sklearn_is_fitted_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_developing_estimators_sklearn_is_fitted.py`
+  :doc:`/auto_examples/developing_estimators/sklearn_is_fitted`
 
 .. raw:: html
 

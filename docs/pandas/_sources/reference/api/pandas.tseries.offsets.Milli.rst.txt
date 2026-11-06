@@ -17,9 +17,6 @@ pandas.tseries.offsets.Milli
         ~Milli.base
       
       
-        ~Milli.delta
-      
-      
         ~Milli.freqstr
       
       
@@ -51,9 +48,6 @@ pandas.tseries.offsets.Milli
       
       
         ~Milli.copy
-      
-      
-        ~Milli.is_anchored
       
       
         ~Milli.is_month_end

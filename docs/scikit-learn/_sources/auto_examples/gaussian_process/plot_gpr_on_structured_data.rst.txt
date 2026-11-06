@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_gaussian_process_plot_gpr_on_structured_data.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -24,7 +24,7 @@ Gaussian processes on discrete data structures
 
 This example illustrates the use of Gaussian processes for regression and
 classification tasks on data that are not in fixed-length feature vector form.
-This is achieved through the use of kernel functions that operates directly
+This is achieved through the use of kernel functions that operate directly
 on discrete structures such as variable-length sequences, trees, and graphs.
 
 Specifically, here the input variables are some gene sequences stored as
@@ -70,7 +70,7 @@ four correct classifications and fails on one.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-107
+.. GENERATED FROM PYTHON SOURCE LINES 45-105
 
 .. code-block:: Python
 
@@ -86,7 +86,7 @@ four correct classifications and fails on one.
         A minimal (but valid) convolutional kernel for sequences of variable
         lengths."""
 
-        def __init__(self, baseline_similarity=0.5, baseline_similarity_bounds=(1e-5, 1)):
+        def __init__(self, baseline_similarity=0.5, baseline_similarity_bounds="fixed"):
             self.baseline_similarity = baseline_similarity
             self.baseline_similarity_bounds = baseline_similarity_bounds
 
@@ -134,6 +134,25 @@ four correct classifications and fails on one.
             return cloned
 
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 106-110
+
+.. note::
+   Here, we freeze the value of ``baseline_similarity`` by setting
+   `baseline_similarity_bounds="fixed"` as LBFGS would otherwise fail to
+   optimize the value of this kernel parameter for some unknown reason.
+
+.. GENERATED FROM PYTHON SOURCE LINES 110-113
+
+.. code-block:: Python
+
+
     kernel = SequenceKernel()
 
 
@@ -143,12 +162,12 @@ four correct classifications and fails on one.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-110
+.. GENERATED FROM PYTHON SOURCE LINES 114-116
 
 Sequence similarity matrix under the kernel
 ===========================================
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-125
+.. GENERATED FROM PYTHON SOURCE LINES 116-131
 
 .. code-block:: Python
 
@@ -179,12 +198,12 @@ Sequence similarity matrix under the kernel
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-128
+.. GENERATED FROM PYTHON SOURCE LINES 132-134
 
 Regression
 ==========
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-144
+.. GENERATED FROM PYTHON SOURCE LINES 134-150
 
 .. code-block:: Python
 
@@ -216,12 +235,12 @@ Regression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-147
+.. GENERATED FROM PYTHON SOURCE LINES 151-153
 
 Classification
 ==============
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-191
+.. GENERATED FROM PYTHON SOURCE LINES 153-197
 
 .. code-block:: Python
 
@@ -278,22 +297,13 @@ Classification
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/circleci/project/sklearn/gaussian_process/kernels.py:440: ConvergenceWarning:
-
-    The optimal value found for dimension 0 of parameter baseline_similarity is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
-
-
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.223 seconds)
+   **Total running time of the script:** (0 minutes 0.215 seconds)
 
 
 .. _sphx_glr_download_auto_examples_gaussian_process_plot_gpr_on_structured_data.py:
@@ -305,7 +315,7 @@ Classification
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/gaussian_process/plot_gpr_on_structured_data.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/gaussian_process/plot_gpr_on_structured_data.ipynb
         :alt: Launch binder
         :width: 150 px
 

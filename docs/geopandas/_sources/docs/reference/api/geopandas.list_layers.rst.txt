@@ -1,0 +1,6 @@
+﻿geopandas.list\_layers
+======================
+
+.. currentmodule:: geopandas
+
+.. autofunction:: list_layers

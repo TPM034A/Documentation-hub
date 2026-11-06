@@ -1,0 +1,70 @@
+
+
+.. _sphx_glr_auto_examples_callbacks:
+
+.. _callbacks_examples:
+
+Callbacks
+---------
+
+Examples related to the callback API of scikit-learn.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip=" The purpose of this example is three-fold:">
+
+.. only:: html
+
+  .. image:: /auto_examples/callbacks/images/thumb/sphx_glr_plot_scoring_monitor_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/callbacks/plot_scoring_monitor`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Analysis of the convergence of penalized logistic regression models</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This document shows how to make third party estimators and meta-estimators compatible with the callback infrastructure supported by scikit-learn.">
+
+.. only:: html
+
+  .. image:: /auto_examples/callbacks/images/thumb/sphx_glr_plot_callback_support_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/callbacks/plot_callback_support`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Supporting callbacks in third party estimators</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/callbacks/plot_scoring_monitor
+   /auto_examples/callbacks/plot_callback_support
+

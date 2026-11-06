@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_miscellaneous_plot_kernel_ridge_regression.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -35,17 +35,27 @@ This example illustrates both methods on an artificial dataset, which
 consists of a sinusoidal target function and strong noise added to every fifth
 datapoint.
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-24
+.. GENERATED FROM PYTHON SOURCE LINES 20-24
 
-Authors: The scikit-learn developers
-SPDX-License-Identifier: BSD-3-Clause
+.. code-block:: Python
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-28
+
+    # Authors: The scikit-learn developers
+    # SPDX-License-Identifier: BSD-3-Clause
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 25-27
 
 Generate sample data
 --------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-40
+.. GENERATED FROM PYTHON SOURCE LINES 27-39
 
 .. code-block:: Python
 
@@ -68,12 +78,12 @@ Generate sample data
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-43
+.. GENERATED FROM PYTHON SOURCE LINES 40-42
 
 Construct the kernel-based regression models
 --------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-60
+.. GENERATED FROM PYTHON SOURCE LINES 42-59
 
 .. code-block:: Python
 
@@ -101,12 +111,12 @@ Construct the kernel-based regression models
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-63
+.. GENERATED FROM PYTHON SOURCE LINES 60-62
 
 Compare times of SVR and Kernel Ridge Regression
 ------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-91
+.. GENERATED FROM PYTHON SOURCE LINES 62-90
 
 .. code-block:: Python
 
@@ -147,22 +157,22 @@ Compare times of SVR and Kernel Ridge Regression
  .. code-block:: none
 
     Best SVR with params: {'C': 1.0, 'gamma': np.float64(0.1)} and R2 score: 0.737
-    SVR complexity and bandwidth selected and model fitted in 0.525 s
+    SVR complexity and bandwidth selected and model fitted in 0.589 s
     Best KRR with params: {'alpha': 0.1, 'gamma': np.float64(0.1)} and R2 score: 0.723
-    KRR complexity and bandwidth selected and model fitted in 0.201 s
+    KRR complexity and bandwidth selected and model fitted in 0.246 s
     Support vector ratio: 0.340
-    SVR prediction for 100000 inputs in 0.124 s
-    KRR prediction for 100000 inputs in 0.102 s
+    SVR prediction for 100000 inputs in 0.151 s
+    KRR prediction for 100000 inputs in 0.095 s
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-94
+.. GENERATED FROM PYTHON SOURCE LINES 91-93
 
 Look at the results
 -------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-122
+.. GENERATED FROM PYTHON SOURCE LINES 93-121
 
 .. code-block:: Python
 
@@ -206,7 +216,7 @@ Look at the results
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-135
+.. GENERATED FROM PYTHON SOURCE LINES 122-134
 
 The previous figure compares the learned model of KRR and SVR when both
 complexity/regularization and bandwidth of the RBF kernel are optimized using
@@ -221,12 +231,12 @@ in the way the kernel function is computed for each model that can make the
 KRR model as fast or even faster despite computing more arithmetic
 operations.
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-139
+.. GENERATED FROM PYTHON SOURCE LINES 136-138
 
 Visualize training and prediction times
 ---------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 139-180
+.. GENERATED FROM PYTHON SOURCE LINES 138-179
 
 .. code-block:: Python
 
@@ -283,7 +293,7 @@ Visualize training and prediction times
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-189
+.. GENERATED FROM PYTHON SOURCE LINES 180-188
 
 This figure compares the time for fitting and prediction of KRR and SVR for
 different sizes of the training set. Fitting KRR is faster than SVR for
@@ -294,12 +304,12 @@ learned sparse solution, however this is not necessarily the case in practice
 because of implementation details. Note that the degree of sparsity and thus
 the prediction time depends on the parameters epsilon and C of the SVR.
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-193
+.. GENERATED FROM PYTHON SOURCE LINES 190-192
 
 Visualize the learning curves
 -----------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-218
+.. GENERATED FROM PYTHON SOURCE LINES 192-217
 
 .. code-block:: Python
 
@@ -343,7 +353,7 @@ Visualize the learning curves
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.193 seconds)
+   **Total running time of the script:** (0 minutes 8.864 seconds)
 
 
 .. _sphx_glr_download_auto_examples_miscellaneous_plot_kernel_ridge_regression.py:
@@ -355,7 +365,7 @@ Visualize the learning curves
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_kernel_ridge_regression.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_kernel_ridge_regression.ipynb
         :alt: Launch binder
         :width: 150 px
 

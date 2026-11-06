@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-learn/stable/auto_examples/miscellaneous/plot_isotonic_regression.html" />
 <meta property="og:site_name" content="scikit-learn" />
 <meta property="og:description" content="An illustration of the isotonic regression on generated data (non-linear monotonic trend with homoscedastic uniform noise). The isotonic regression algorithm finds a non-decreasing approximation of..." />
-<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-notext.png" />
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="An illustration of the isotonic regression on generated data (non-linear monotonic trend with homoscedastic uniform noise). The isotonic regression algorithm finds a non-decreasing approximation of..." />
 
-    <title>Isotonic Regression &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>Isotonic Regression &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,31 +35,32 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -67,38 +68,46 @@
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/miscellaneous/plot_isotonic_regression';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_isotonic_regression.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Metadata Routing" href="plot_metadata_routing.html" />
+    <link rel="next" title="Multilabel classification" href="plot_multilabel.html" />
     <link rel="prev" title="Introducing the set_output API" href="plot_set_output.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -124,7 +133,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -150,8 +159,8 @@
       
     
     
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -272,6 +281,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../about.html">
     About us
   </a>
@@ -299,11 +315,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -316,8 +339,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -484,6 +506,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../about.html">
     About us
   </a>
@@ -501,11 +530,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -518,8 +554,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -548,12 +583,22 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../release_highlights/index.html">Release Highlights</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_9_0.html">Release Highlights for scikit-learn 1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_8_0.html">Release Highlights for scikit-learn 1.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_7_0.html">Release Highlights for scikit-learn 1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_6_0.html">Release Highlights for scikit-learn 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_5_0.html">Release Highlights for scikit-learn 1.5</a></li>
@@ -580,6 +625,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration.html">Probability calibration of classifiers</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../callbacks/index.html">Callbacks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_scoring_monitor.html">Analysis of the convergence of penalized logistic regression models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_callback_support.html">Supporting callbacks in third party estimators</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_comparison.html">Classifier comparison</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_lda_qda.html">Linear and Quadratic Discriminant Analysis with covariance ellipsoid</a></li>
@@ -593,7 +643,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_coin_ward_segmentation.html">A demo of structured Ward hierarchical clustering on an image of coins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_mean_shift.html">A demo of the mean-shift clustering algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_adjusted_for_chance_measures.html">Adjustment for chance in clustering performance evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering.html">Agglomerative clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering_metrics.html">Agglomerative clustering with different metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_plusplus.html">An example of K-Means++ initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_bisect_kmeans.html">Bisecting K-Means and Regular K-Means Performance Comparison</a></li>
@@ -609,7 +658,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_stability_low_dim_dense.html">Empirical evaluation of the impact of k-means initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_digits_agglomeration.html">Feature agglomeration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_feature_agglomeration_vs_univariate_selection.html">Feature agglomeration vs. univariate selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering: structured vs unstructured ward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_inductive_clustering.html">Inductive Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_dict_face_patches.html">Online learning of a dictionary of parts of faces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_dendrogram.html">Plot Hierarchical Clustering Dendrogram</a></li>
@@ -690,7 +739,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../applications/index.html">Examples based on real world datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_tomography_l1_reconstruction.html">Compressive sensing: tomography reconstruction with L1 prior (Lasso)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and SVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and kernel approximation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_digits_denoising.html">Image denoising using kernel PCA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_time_series_lagged_features.html">Lagged features for time series forecasting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_model_complexity_influence.html">Model Complexity Influence</a></li>
@@ -701,7 +750,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_cyclical_feature_engineering.html">Time-related feature engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_topics_extraction_with_nmf_lda.html">Topic extraction with Non-negative Matrix Factorization and Latent Dirichlet Allocation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_stock_market.html">Visualizing the stock market structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/index.html">Feature Selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -754,7 +803,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_model_selection.html">Lasso model selection: AIC-BIC / cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_dense_vs_sparse_data.html">Lasso on dense and sparse data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_lasso_lars_elasticnet_path.html">Lasso, Lasso-LARS, and Elastic Net paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_logistic.html">Logistic function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_mnist.html">MNIST classification using multinomial logistic + L1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_20newsgroups.html">Multiclass sparse logistic regression on 20newgroups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_nnls.html">Non-negative least squares</a></li>
@@ -779,6 +827,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../inspection/index.html">Inspection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_linear_model_coefficient_interpretation.html">Common pitfalls in the interpretation of coefficients of linear models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_causal_interpretation.html">Failure of Machine Learning to infer causal effects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence.html">Partial Dependence and Individual Conditional Expectation Plots</a></li>
@@ -800,9 +849,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Miscellaneous</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_anomaly_comparison.html">Comparing anomaly detection algorithms for outlier detection on toy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_kernel_ridge_regression.html">Comparison of kernel ridge regression and SVR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_metadata_routing.html">Developing Estimators Compliant with Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_pipeline_display.html">Displaying Pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_estimator_representation.html">Displaying estimators and complex pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_outlier_detection_bench.html">Evaluation of outlier detection estimators</a></li>
@@ -810,7 +859,6 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_multioutput_face_completion.html">Face completion with a multi-output estimators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_set_output.html">Introducing the <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Isotonic Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_metadata_routing.html">Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_multilabel.html">Multilabel classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_roc_curve_visualization_api.html">ROC Curve with Visualization API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_johnson_lindenstrauss_bound.html">The Johnson-Lindenstrauss bound for embedding with random projections</a></li>
@@ -827,11 +875,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_likelihood_ratios.html">Class Likelihood Ratios to measure classification performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_randomized_search.html">Comparing randomized search and grid search for hyperparameter estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_successive_halving_heatmap.html">Comparison between grid search and successive halving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Confusion matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_grid_search_digits.html">Custom refit strategy of a grid search with cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_multi_metric_evaluation.html">Demonstration of multi-metric evaluation on cross_val_score and GridSearchCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_det.html">Detection error tradeoff (DET) curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_train_error_vs_test_error.html">Effect of model regularization on training and test error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Evaluate the performance of a classifier with Confusion Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_roc.html">Multiclass Receiver Operating Characteristic (ROC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_nested_cross_validation_iris.html">Nested versus non-nested cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_cv_predict.html">Plotting Cross-Validated Predictions</a></li>
@@ -990,7 +1038,7 @@
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#sphx-glr-download-auto-examples-miscellaneous-plot-isotonic-regression-py"><span class="std std-ref">Go to the end</span></a>
-to download the full example code. or to run this example in your browser via JupyterLite or Binder</p>
+to download the full example code or to run this example in your browser via JupyterLite or Binder.</p>
 </div>
 <section class="sphx-glr-example-title" id="isotonic-regression">
 <span id="sphx-glr-auto-examples-miscellaneous-plot-isotonic-regression-py"></span><h1>Isotonic Regression<a class="headerlink" href="#isotonic-regression" title="Link to this heading">#</a></h1>
@@ -1002,7 +1050,7 @@ benefit of such a non-parametric model is that it does not assume any shape for
 the target function besides monotonicity. For comparison a linear regression is
 also presented.</p>
 <p>The plot on the right-hand side shows the model prediction function that
-results from the linear interpolation of thresholds points. The thresholds
+results from the linear interpolation of threshold points. The threshold
 points are a subset of the training input observations and their matching
 target values are computed by the isotonic non-parametric fit.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-learn developers</span>
@@ -1023,7 +1071,7 @@ target values are computed by the isotonic non-parametric fit.</p>
 </pre></div>
 </div>
 <p>Fit IsotonicRegression and LinearRegression models:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.isotonic.IsotonicRegression.html#sklearn.isotonic.IsotonicRegression" title="sklearn.isotonic.IsotonicRegression" class="sphx-glr-backref-module-sklearn-isotonic sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">IsotonicRegression</span></a><span class="p">(</span><span class="n">out_of_bounds</span><span class="o">=</span><span class="s2">&quot;clip&quot;</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.isotonic.IsotonicRegression.html#sklearn.isotonic.IsotonicRegression" title="sklearn.isotonic.IsotonicRegression" class="sphx-glr-backref-module-sklearn-isotonic sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">IsotonicRegression</span></a><span class="p">(</span><span class="n">out_of_bounds</span><span class="o">=</span><span class="s2">"clip"</span><span class="p">)</span>
 <span class="n">y_</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="n">lr</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LinearRegression</span></a><span class="p">()</span>
@@ -1031,7 +1079,7 @@ target values are computed by the isotonic non-parametric fit.</p>
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
-<style>#sk-container-id-51 {
+<style>.sk-global {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -1046,34 +1094,34 @@ target values are computed by the isotonic non-parametric fit.</p>
   --sklearn-color-fitted-level-1: #d4ebff;
   --sklearn-color-fitted-level-2: #b3dbfd;
   --sklearn-color-fitted-level-3: cornflowerblue;
-
-  /* Specific color for light theme */
-  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-icon: #696969;
-
-  @media (prefers-color-scheme: dark) {
-    /* Redefinition of color scheme for dark theme */
-    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-icon: #878787;
-  }
 }
 
-#sk-container-id-51 {
+.sk-global.light {
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: black;
+  --sklearn-color-background: white;
+  --sklearn-color-border-box: black;
+  --sklearn-color-icon: #696969;
+}
+
+.sk-global.dark {
+  --sklearn-color-text-on-default-background: white;
+  --sklearn-color-background: #111;
+  --sklearn-color-border-box: white;
+  --sklearn-color-icon: #878787;
+}
+
+.sk-global {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-51 pre {
+.sk-global pre {
   padding: 0;
 }
 
-#sk-container-id-51 input.sk-hidden--visually {
+.sk-global input.sk-hidden--visually {
   border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(100%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -1082,7 +1130,7 @@ target values are computed by the isotonic non-parametric fit.</p>
   width: 1px;
 }
 
-#sk-container-id-51 div.sk-dashed-wrapped {
+.sk-global div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -1090,7 +1138,7 @@ target values are computed by the isotonic non-parametric fit.</p>
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-51 div.sk-container {
+.sk-global div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -1100,7 +1148,7 @@ target values are computed by the isotonic non-parametric fit.</p>
   position: relative;
 }
 
-#sk-container-id-51 div.sk-text-repr-fallback {
+.sk-global div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -1116,14 +1164,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-51 div.sk-parallel-item::after {
+.sk-global div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-51 div.sk-parallel {
+.sk-global div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -1131,28 +1179,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-51 div.sk-parallel-item {
+.sk-global div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-51 div.sk-parallel-item:first-child::after {
+.sk-global div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-51 div.sk-parallel-item:last-child::after {
+.sk-global div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-51 div.sk-parallel-item:only-child::after {
+.sk-global div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-51 div.sk-serial {
+.sk-global div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1170,14 +1218,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-51 div.sk-toggleable {
+.sk-global div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-51 label.sk-toggleable__label {
+.sk-global label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -1185,18 +1233,18 @@ clickable and can be expanded/collapsed.
   padding: 0.5em;
   box-sizing: border-box;
   text-align: center;
-  align-items: start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   gap: 0.5em;
 }
 
-#sk-container-id-51 label.sk-toggleable__label .caption {
+.sk-global label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-51 label.sk-toggleable__label-arrow:before {
+.sk-global label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -1204,25 +1252,25 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-51 label.sk-toggleable__label-arrow:hover:before {
+.sk-global label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-51 div.sk-toggleable__content {
+.sk-global div.sk-toggleable__content {
   display: none;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-51 div.sk-toggleable__content.fitted {
+.sk-global div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-51 div.sk-toggleable__content pre {
+.sk-global div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -1230,79 +1278,78 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-51 div.sk-toggleable__content.fitted pre {
+.sk-global div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-51 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+.sk-global input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
   display: block;
   width: 100%;
   overflow: visible;
 }
 
-#sk-container-id-51 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+.sk-global input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-51 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+.sk-global div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-51 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+.sk-global div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-51 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+.sk-global div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-51 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+.sk-global div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-51 div.sk-label label.sk-toggleable__label,
-#sk-container-id-51 div.sk-label label {
+.sk-global div.sk-label label.sk-toggleable__label,
+.sk-global div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-51 div.sk-label:hover label.sk-toggleable__label {
+.sk-global div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-51 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+.sk-global div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-51 div.sk-label label {
+.sk-global div.sk-label label {
   font-family: monospace;
   font-weight: bold;
-  display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-51 div.sk-label-container {
+.sk-global div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-51 div.sk-estimator {
+.sk-global div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -1312,18 +1359,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-51 div.sk-estimator.fitted {
+.sk-global div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-51 div.sk-estimator:hover {
+.sk-global div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-51 div.sk-estimator.fitted:hover {
+.sk-global div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -1339,7 +1386,7 @@ a:visited.sk-estimator-doc-link {
   font-size: smaller;
   line-height: 1em;
   font-family: monospace;
-  background-color: var(--sklearn-color-background);
+  background-color: var(--sklearn-color-unfitted-level-0);
   border-radius: 1em;
   height: 1em;
   width: 1em;
@@ -1347,16 +1394,17 @@ a:visited.sk-estimator-doc-link {
   margin-left: 0.5em;
   text-align: center;
   /* unfitted */
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-3) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-3);
 }
 
 .sk-estimator-doc-link.fitted,
 a:link.sk-estimator-doc-link.fitted,
 a:visited.sk-estimator-doc-link.fitted {
   /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
+  background-color: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3) 1pt solid;
+  color: var(--sklearn-color-fitted-level-3);
 }
 
 /* On hover */
@@ -1366,7 +1414,8 @@ div.sk-label-container:hover .sk-estimator-doc-link:hover,
 .sk-estimator-doc-link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
+  border: var(--sklearn-color-fitted-level-0) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-0);
   text-decoration: none;
 }
 
@@ -1376,7 +1425,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 .sk-estimator-doc-link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
-  color: var(--sklearn-color-background);
+  border: var(--sklearn-color-fitted-level-0) 1pt solid;
+  color: var(--sklearn-color-fitted-level-0);
   text-decoration: none;
 }
 
@@ -1411,12 +1461,12 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-51 a.estimator_doc_link {
+.sk-global a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
   font-family: monospace;
-  background-color: var(--sklearn-color-background);
+  background-color: var(--sklearn-color-unfitted-level-0);
   border-radius: 1rem;
   height: 1rem;
   width: 1rem;
@@ -1426,29 +1476,45 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-51 a.estimator_doc_link.fitted {
+.sk-global a.estimator_doc_link.fitted {
   /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-51 a.estimator_doc_link:hover {
+.sk-global a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-51 a.estimator_doc_link.fitted:hover {
+.sk-global a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
 
+.sk-top-container.sk-global {
+  /* pydata-sphinx-theme hides overflow, so scrolling is disabled.
+   We need to set it to !important and add tabindex="0" in the HTML
+   to allow keyboard-only users to navigate the display. */
+  overflow-x: scroll !important;
+  max-width: 100%;
+}
+
+.estimator-table {
+    font-family: monospace;
+}
+
 .estimator-table summary {
     padding: .5rem;
-    font-family: monospace;
     cursor: pointer;
+}
+
+.estimator-table summary::marker {
+    font-size: 0.7rem;
 }
 
 .estimator-table details[open] {
@@ -1460,6 +1526,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 .estimator-table .parameters-table {
     margin-left: auto !important;
     margin-right: auto !important;
+    margin-top: 0;
 }
 
 .estimator-table .parameters-table tr:nth-child(odd) {
@@ -1470,32 +1537,113 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
     background-color: #f6f6f6;
 }
 
-.estimator-table .parameters-table tr:hover {
+.estimator-table .parameters-table tr:hover td {
     background-color: #e0e0e0;
 }
 
-.estimator-table table td {
+.estimator-table table :is(td, th) {
     border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+/*
+    `table td`is set in notebook with right text-align.
+    We need to overwrite it.
+*/
+.estimator-table table td.param {
+    text-align: left;
+    position: relative;
+    padding: 0;
 }
 
 .user-set td {
     color:rgb(255, 94, 0);
-    text-align: left;
+    text-align: left !important;
 }
 
-.user-set td.value pre {
-    color:rgb(255, 94, 0) !important;
-    background-color: transparent !important;
+.user-set td.value {
+    color:rgb(255, 94, 0);
+    background-color: transparent;
 }
 
-.default td {
+.default td, .estimator-table th {
     color: black;
-    text-align: left;
+    text-align: left !important;
 }
 
 .user-set td i,
 .default td i {
     color: black;
+}
+
+td.fitted-att-type {
+    white-space: preserve nowrap;
+}
+
+/*
+    Styles for parameter documentation links
+    We need styling for visited so jupyter doesn't overwrite it
+*/
+a.param-doc-link,
+a.param-doc-link:link,
+a.param-doc-link:visited {
+    text-decoration: underline dashed;
+    text-underline-offset: .3em;
+    color: inherit;
+    display: block;
+    padding: .5em;
+}
+
+@supports(anchor-name: --doc-link) {
+    a.param-doc-link,
+    a.param-doc-link:link,
+    a.param-doc-link:visited {
+    anchor-name: --doc-link;
+    }
+}
+
+/* "hack" to make the entire area of the cell containing the link clickable */
+a.param-doc-link::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+}
+
+.param-doc-description {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    left: 0;
+    padding: .5ex;
+    margin-left: 1.5em;
+    color: var(--sklearn-color-text);
+    box-shadow: .3em .3em .4em #999;
+    width: max-content;
+    text-align: left;
+    max-height: 10em;
+    overflow-y: auto;
+
+    /* unfitted */
+    background: var(--sklearn-color-unfitted-level-0);
+    border: thin solid var(--sklearn-color-unfitted-level-3);
+}
+
+@supports(position-area: center right) {
+    .param-doc-description {
+    position-area: center right;
+    position: fixed;
+    margin-left: 0;
+    }
+}
+
+/* Fitted state for parameter tooltips */
+.fitted .param-doc-description {
+    /* fitted */
+    background: var(--sklearn-color-fitted-level-0);
+    border: thin solid var(--sklearn-color-fitted-level-3);
+}
+
+.param-doc-link:hover .param-doc-description {
+    display: block;
 }
 
 .copy-paste-icon {
@@ -1507,8 +1655,136 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
     width: 14px;
     height: 14px;
     cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
 }
-</style><body><div id="sk-container-id-51" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-229" type="checkbox" checked><label for="sk-estimator-id-229" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LinearRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+
+.copy-paste-icon:focus-visible {
+    outline: 1px solid currentColor;
+    outline-offset: 1px;
+}
+
+.features {
+  font-family: monospace;
+  cursor: pointer;
+  background-color: var(--sklearn-color-unfitted-level-0);
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: .20em;
+  margin-bottom: 0.5em;
+  font-size: inherit; /* Needed for jupyter */
+}
+
+.features.fitted {
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+.features summary {
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: .25em;
+}
+
+.features details[open] > summary {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+  border-radius: .20em 0 0 0;
+}
+
+.features.fitted details[open] > summary {
+  background-color: var(--sklearn-color-fitted-level-2);
+  border-radius: .20em 0 0 0;
+}
+
+.features details > summary .arrow::before {
+  content: "▸";
+  color: grey;
+}
+
+.features details[open] > summary .arrow::before {
+  content: "▾";
+}
+
+.features details:hover > summary {
+  margin: 0;
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+.features.fitted details:hover > summary {
+  margin: 0;
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+.features .features-container {
+  max-height: 10em;
+  overflow: auto;
+  scrollbar-width: thin;
+  padding: .25em 0.1rem;
+  background-color: var(--sklearn-color-unfitted-level-0);
+  border-radius: 0 0 .5em .5em;
+}
+
+.features.fitted .features-container {
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+.features .image-container {
+  block-size: 1em;
+  inline-size: 1em;
+  padding: 0;
+  margin: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.features .copy-paste-icon {
+  background-size: 1em 1em;
+  width: 1em;
+  height: 1em;
+  filter: grayscale(100%) opacity(60%);
+}
+
+.features .features-container table {
+  width: 100%;
+  margin: 0.01em;
+}
+
+.features .features-container table tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.features .features-container table tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
+
+.features .features-container table tr:hover {
+  background-color: #e0e0e0;
+}
+
+.features .features-container table {
+  table-layout: inherit;
+}
+
+.features .features-container table td {
+  text-align: left;
+  padding: 0 0.5em;
+  border: 1px solid rgba(106, 105, 104, 0.232);
+  white-space: nowrap;
+  color: var(--sklearn-color-text);
+}
+
+.total_features {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+</style><body><div id="sk-container-id-70" tabindex="0" class="sk-top-container sk-global"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-341" type="checkbox" checked><label for="sk-estimator-id-341" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LinearRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
         <div class="estimator-table">
             <details>
                 <summary>Parameters</summary>
@@ -1516,51 +1792,101 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                   <tbody>
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy fit_intercept to clipboard"
                  onclick="copyToClipboard('fit_intercept',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">fit_intercept&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-fit_intercept;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=fit_intercept,-bool%2C%20default%3DTrue">
+            fit_intercept
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-fit_intercept;">
+            fit_intercept: bool, default=True<br><br>Whether to calculate the intercept for this model. If set<br>to False, no intercept will be used in calculations<br>(i.e. data is expected to be centered).</span>
+        </a>
+    </td>
             <td class="value">True</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy copy_X to clipboard"
                  onclick="copyToClipboard('copy_X',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">copy_X&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-copy_X;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=copy_X,-bool%2C%20default%3DTrue">
+            copy_X
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-copy_X;">
+            copy_X: bool, default=True<br><br>If True, X will be copied; else, it may be overwritten.</span>
+        </a>
+    </td>
             <td class="value">True</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy tol to clipboard"
                  onclick="copyToClipboard('tol',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">tol&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-tol;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=tol,-float%2C%20default%3D1e-6">
+            tol
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-tol;">
+            tol: float, default=1e-6<br><br>The precision of the solution (`coef_`) is determined by `tol` which<br>specifies the convergence criterion of the underlying solver. `tol` is<br>set as `atol` and `btol` of :func:`scipy.sparse.linalg.lsqr` when<br>fitting on sparse training data. `tol` is set as `cond` of<br>:func:`scipy.linalg.lstsq` when fitting on dense training data.<br><br>.. versionadded:: 1.7<br>.. versionchanged:: 1.9<br>    Now supported on dense data, interpreted as the `cond` parameter.</span>
+        </a>
+    </td>
             <td class="value">1e-06</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy n_jobs to clipboard"
                  onclick="copyToClipboard('n_jobs',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">n_jobs&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-n_jobs;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=n_jobs,-int%2C%20default%3DNone">
+            n_jobs
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-n_jobs;">
+            n_jobs: int, default=None<br><br>The number of jobs to use for the computation. This will only provide<br>speedup in case of sufficiently large problems, that is if firstly<br>`n_targets &gt; 1` and secondly `X` is sparse or if `positive` is set<br>to `True`. ``None`` means 1 unless in a<br>:obj:`joblib.parallel_backend` context. ``-1`` means using all<br>processors. See :term:`Glossary &lt;n_jobs&gt;` for more details.</span>
+        </a>
+    </td>
             <td class="value">None</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy positive to clipboard"
                  onclick="copyToClipboard('positive',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">positive&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-positive;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=positive,-bool%2C%20default%3DFalse">
+            positive
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-positive;">
+            positive: bool, default=False<br><br>When set to ``True``, forces the coefficients to be positive. This<br>option is only supported for dense arrays.<br><br>For a comparison between a linear regression model with positive constraints<br>on the regression coefficients and a linear regression without such constraints,<br>see :ref:`sphx_glr_auto_examples_linear_model_plot_nnls.py`.<br><br>.. versionadded:: 0.24</span>
+        </a>
+    </td>
             <td class="value">False</td>
         </tr>
 
@@ -1568,7 +1894,116 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                 </table>
             </details>
         </div>
-    </div></div></div></div></div><script>function copyToClipboard(text, element) {
+
+        <div class="estimator-table">
+            <details>
+                <summary>Fitted attributes</summary>
+                <table class="parameters-table">
+                    <tbody>
+                        <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Value</th>
+                        </tr>
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-coef_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=coef_,-array%20of%20shape%20%28n_features%2C%20%29%20or%20%28n_targets%2C%20n_features%29">
+            coef_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-coef_;">
+            coef_: array of shape (n_features, ) or (n_targets, n_features)<br><br>Estimated coefficients for the linear regression problem.<br>If multiple targets are passed during the fit (y 2D), this<br>is a 2D array of shape (n_targets, n_features), while if only<br>one target is passed, this is a 1D array of length n_features.</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">ndarray[float64](1,)</td>
+           <td>[1.31]</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-intercept_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=intercept_,-float%20or%20array%20of%20shape%20%28n_targets%2C%29">
+            intercept_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-intercept_;">
+            intercept_: float or array of shape (n_targets,)<br><br>Independent term in the linear model. Set to 0.0 if<br>`fit_intercept = False`.</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">float64</td>
+           <td>115.1</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-n_features_in_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=n_features_in_,-int">
+            n_features_in_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-n_features_in_;">
+            n_features_in_: int<br><br>Number of features seen during :term:`fit`.<br><br>.. versionadded:: 0.24</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">int</td>
+           <td>1</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-rank_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=rank_,-int">
+            rank_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-rank_;">
+            rank_: int<br><br>Rank of matrix `X`. Only available when `X` is dense.</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">int64</td>
+           <td>np.int64(1)</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-singular_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.linear_model.LinearRegression.html#:~:text=singular_,-array%20of%20shape%20%28min%28X%2C%20y%29%2C%29">
+            singular_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-singular_;">
+            singular_: array of shape (min(X, y),)<br><br>Singular values of `X`. Only available when `X` is dense.</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">ndarray[float64](1,)</td>
+           <td>[288.66]</td>
+
+
+       </tr>
+
+                    </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div><script>/*  Authors: The scikit-learn developers
+ SPDX-License-Identifier: BSD-3-Clause
+*/
+
+function copyToClipboard(text, element) {
     // Get the parameter prefix from the closest toggleable content
     const toggleableContent = element.closest('.sk-toggleable__content');
     const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
@@ -1602,15 +2037,139 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
     return false;
 }
 
-document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+document.querySelectorAll('.copy-paste-icon').forEach(function(element) {
     const toggleableContent = element.closest('.sk-toggleable__content');
     const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+
+    const parent = element.parentElement;
+    if (!parent || !parent.nextElementSibling) {
+        console.warn('Expected copy-paste icon is missing from the DOM structure');
+        return;
+    }
+
+    const paramName = element.parentElement.nextElementSibling
+        .textContent.trim().split(' ')[0];
     const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
 
     element.setAttribute('title', fullParamName);
 });
-</script></body>
+
+/**
+ * Copy the list of feature names formatted as a Python list.
+ *
+ * @param {HTMLElement} element - The copy button inside a `.features` block; its siblings
+ *   contain a `details` element and a table containing feature named.
+ * @returns {boolean} Always returns `false` so callers can prevent the default click behavior.
+ */
+function copyFeatureNamesToClipboard(element) {
+    var detailsElem = element.closest('.features').querySelector('details');
+    var wasOpen = detailsElem.open;
+    detailsElem.open = true;
+    var content = element.closest('.features').querySelector('tbody')
+                  .innerText.trim();
+    if (!wasOpen) detailsElem.open = false;
+    const rows = content.split('\n').map(row => `    "${row}"`);
+    const formattedText = `[\n${rows.join(',\n')},\n]`;
+    const originalHTML = element.innerHTML.replace('✔', '');
+    const originalStyle = element.style;
+    const copyMark = document.createElement('span');
+    copyMark.innerHTML = '✔';
+    copyMark.style.color = 'blue';
+    copyMark.style.fontSize = '1em';
+
+    navigator.clipboard.writeText(formattedText)
+        .then(() => {
+            element.style.display = 'none';
+            element.parentElement.appendChild(copyMark);
+
+            setTimeout(() => {
+                copyMark.remove();
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 1000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'orange';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 1000);
+        });
+    return false;
+}
+/**
+ * Adapted from Skrub
+ * https://github.com/skrub-data/skrub/blob/403466d1d5d4dc76a7ef569b3f8228db59a31dc3/skrub/_reporting/_data/templates/report.js#L789
+ * @returns "light" or "dark"
+ */
+function detectTheme(element) {
+    const body = document.querySelector('body');
+
+    // Check VSCode theme
+    const themeKindAttr = body.getAttribute('data-vscode-theme-kind');
+    const themeNameAttr = body.getAttribute('data-vscode-theme-name');
+
+    if (themeKindAttr && themeNameAttr) {
+        const themeKind = themeKindAttr.toLowerCase();
+        const themeName = themeNameAttr.toLowerCase();
+
+        if (themeKind.includes("dark") || themeName.includes("dark")) {
+            return "dark";
+        }
+        if (themeKind.includes("light") || themeName.includes("light")) {
+            return "light";
+        }
+    }
+
+    // Check Jupyter theme
+    if (body.getAttribute('data-jp-theme-light') === 'false') {
+        return 'dark';
+    } else if (body.getAttribute('data-jp-theme-light') === 'true') {
+        return 'light';
+    }
+
+    // Guess based on a parent element's color
+    const color = window.getComputedStyle(element.parentNode, null).getPropertyValue('color');
+    const match = color.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*$/i);
+    if (match) {
+        const [r, g, b] = [
+            parseFloat(match[1]),
+            parseFloat(match[2]),
+            parseFloat(match[3])
+        ];
+
+        // https://en.wikipedia.org/wiki/HSL_and_HSV#Lightness
+        const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+
+        if (luma > 180) {
+            // If the text is very bright we have a dark theme
+            return 'dark';
+        }
+        if (luma < 75) {
+            // If the text is very dark we have a light theme
+            return 'light';
+        }
+        // Otherwise fall back to the next heuristic.
+    }
+
+    // Fallback to system preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+
+function forceTheme(elementId) {
+    const estimatorElement = document.querySelector(`#${elementId}`);
+    if (estimatorElement === null) {
+        console.error(`Element with id ${elementId} not found.`);
+    } else {
+        const theme = detectTheme(estimatorElement);
+        estimatorElement.classList.add(theme);
+    }
+}
+
+forceTheme('sk-container-id-70');</script></body>
 </div>
 <br />
 <br /><p>Plot results:</p>
@@ -1621,17 +2180,17 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;C0.&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="s2">&quot;C1.-&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <a href="https://numpy.org/doc/stable/reference/constants.html#numpy.newaxis" title="numpy.newaxis" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span></a><span class="p">]),</span> <span class="s2">&quot;C2-&quot;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">"C0."</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="s2">"C1.-"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <a href="https://numpy.org/doc/stable/reference/constants.html#numpy.newaxis" title="numpy.newaxis" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span></a><span class="p">]),</span> <span class="s2">"C2-"</span><span class="p">)</span>
 <span class="n">ax0</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;Training data&quot;</span><span class="p">,</span> <span class="s2">&quot;Isotonic fit&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear fit&quot;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
-<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Isotonic regression fit on noisy data (n=</span><span class="si">%d</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">"Training data"</span><span class="p">,</span> <span class="s2">"Isotonic fit"</span><span class="p">,</span> <span class="s2">"Linear fit"</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Isotonic regression fit on noisy data (n=</span><span class="si">%d</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
 
 <span class="n">x_test</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html#numpy.linspace" title="numpy.linspace" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">ir</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span> <span class="s2">&quot;C1-&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ir</span><span class="o">.</span><span class="n">X_thresholds_</span><span class="p">,</span> <span class="n">ir</span><span class="o">.</span><span class="n">y_thresholds_</span><span class="p">,</span> <span class="s2">&quot;C1.&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Prediction function (</span><span class="si">%d</span><span class="s2"> thresholds)&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">ir</span><span class="o">.</span><span class="n">X_thresholds_</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">ir</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span> <span class="s2">"C1-"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ir</span><span class="o">.</span><span class="n">X_thresholds_</span><span class="p">,</span> <span class="n">ir</span><span class="o">.</span><span class="n">y_thresholds_</span><span class="p">,</span> <span class="s2">"C1."</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Prediction function (</span><span class="si">%d</span><span class="s2"> thresholds)"</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">ir</span><span class="o">.</span><span class="n">X_thresholds_</span><span class="p">))</span>
 
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
@@ -1640,14 +2199,14 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <code class="docutils literal notranslate"><span class="pre">IsotonicRegression</span></code> to control the way the model extrapolates outside of the
 range of data observed in the training set. This “clipping” extrapolation can
 be seen on the plot of the decision function on the right-hand.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.150 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.146 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-miscellaneous-plot-isotonic-regression-py">
 <div class="binder-badge docutils container">
-<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_isotonic_regression.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo20.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_isotonic_regression.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo21.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="lite-badge docutils container">
-<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/miscellaneous/plot_isotonic_regression.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo20.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/miscellaneous/plot_isotonic_regression.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo21.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
@@ -1662,16 +2221,16 @@ be seen on the plot of the decision function on the right-hand.</p>
 </div>
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we give an overview of TransformedTargetRegressor. We use two examples to illustrate the benefit of transforming the targets before learning a linear regression model. The first example uses synthetic data while the second example is based on the Ames housing data set."><img alt="" src="../../_images/sphx_glr_plot_transformed_target_thumb.png" />
-<p><a class="reference internal" href="../compose/plot_transformed_target.html#sphx-glr-auto-examples-compose-plot-transformed-target-py"><span class="std std-ref">Effect of transforming the targets in regression model</span></a></p>
+<p><a class="reference internal" href="../compose/plot_transformed_target.html"><span class="doc">Effect of transforming the targets in regression model</span></a></p>
   <div class="sphx-glr-thumbnail-title">Effect of transforming the targets in regression model</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="The PCA does an unsupervised dimensionality reduction, while the logistic regression does the prediction."><img alt="" src="../../_images/sphx_glr_plot_digits_pipe_thumb.png" />
-<p><a class="reference internal" href="../compose/plot_digits_pipe.html#sphx-glr-auto-examples-compose-plot-digits-pipe-py"><span class="std std-ref">Pipelining: chaining a PCA and a logistic regression</span></a></p>
+<p><a class="reference internal" href="../compose/plot_digits_pipe.html"><span class="doc">Pipelining: chaining a PCA and a logistic regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Pipelining: chaining a PCA and a logistic regression</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="When performing classification one often wants to predict not only the class label, but also the associated probability. This probability gives some kind of confidence on the prediction. This example demonstrates how to visualize how well calibrated the predicted probabilities are using calibration curves, also known as reliability diagrams. Calibration of an uncalibrated classifier will also be demonstrated."><img alt="" src="../../_images/sphx_glr_plot_calibration_curve_thumb.png" />
-<p><a class="reference internal" href="../calibration/plot_calibration_curve.html#sphx-glr-auto-examples-calibration-plot-calibration-curve-py"><span class="std std-ref">Probability Calibration curves</span></a></p>
+<p><a class="reference internal" href="../calibration/plot_calibration_curve.html"><span class="doc">Probability Calibration curves</span></a></p>
   <div class="sphx-glr-thumbnail-title">Probability Calibration curves</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="When performing classification you often want to predict not only the class label, but also the associated probability. This probability gives you some kind of confidence on the prediction. However, not all classifiers provide well-calibrated probabilities, some being over-confident while others being under-confident. Thus, a separate calibration of predicted probabilities is often desirable as a postprocessing. This example illustrates two different methods for this calibration and evaluates the quality of the returned probabilities using Brier&#x27;s score (see https://en.wikipedia.org/wiki/Brier_score)."><img alt="" src="../../_images/sphx_glr_plot_calibration_thumb.png" />
-<p><a class="reference internal" href="../calibration/plot_calibration.html#sphx-glr-auto-examples-calibration-plot-calibration-py"><span class="std std-ref">Probability calibration of classifiers</span></a></p>
+<p><a class="reference internal" href="../calibration/plot_calibration.html"><span class="doc">Probability calibration of classifiers</span></a></p>
   <div class="sphx-glr-thumbnail-title">Probability calibration of classifiers</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
@@ -1696,11 +2255,11 @@ be seen on the plot of the decision function on the right-hand.</p>
       </div>
     </a>
     <a class="right-next"
-       href="plot_metadata_routing.html"
+       href="plot_multilabel.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Metadata Routing</p>
+        <p class="prev-next-title">Multilabel classification</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1718,15 +2277,6 @@ be seen on the plot of the decision function on the right-hand.</p>
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/auto_examples/miscellaneous/plot_isotonic_regression.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
   <div class="sidebar-secondary-item">
 
@@ -1771,21 +2321,37 @@ be seen on the plot of the decision function on the right-hand.</p>
       
         <div class="sphx-glr-sidebar-item lite-badge-sidebar">
           <a href="../../lite/lab/index.html?path=auto_examples/miscellaneous/plot_isotonic_regression.ipynb">
-            <img src="../../_images/jupyterlite_badge_logo20.svg" alt="Launch JupyterLite">
+            <img src="../../_images/jupyterlite_badge_logo21.svg" alt="Launch JupyterLite">
           </a>
         </div>
       
     
       
         <div class="sphx-glr-sidebar-item binder-badge-sidebar">
-          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_isotonic_regression.ipynb">
-            <img src="../../_images/binder_badge_logo20.svg" alt="Launch binder">
+          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_isotonic_regression.ipynb">
+            <img src="../../_images/binder_badge_logo21.svg" alt="Launch binder">
           </a>
         </div>
       
     
   </div>
 </div>
+
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1800,8 +2366,8 @@ be seen on the plot of the decision function on the right-hand.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1812,7 +2378,7 @@ be seen on the plot of the decision function on the right-hand.</p>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

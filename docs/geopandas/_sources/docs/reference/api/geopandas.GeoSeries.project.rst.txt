@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.project
+===========================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.project

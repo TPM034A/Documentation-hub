@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_linear_model_plot_sgd_iris.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -26,7 +26,7 @@ Plot decision surface of multi-class SGD on iris dataset.
 The hyperplanes corresponding to the three one-versus-all (OVA) classifiers
 are represented by the dashed lines.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-88
+.. GENERATED FROM PYTHON SOURCE LINES 11-87
 
 
 
@@ -59,7 +59,7 @@ are represented by the dashed lines.
     # avoid this ugly slicing by using a two-dim dataset
     X = iris.data[:, :2]
     y = iris.target
-    colors = "bry"
+    colors = "byr"
 
     # shuffle
     idx = np.arange(X.shape[0])
@@ -78,7 +78,6 @@ are represented by the dashed lines.
     DecisionBoundaryDisplay.from_estimator(
         clf,
         X,
-        cmap=plt.cm.Paired,
         ax=ax,
         response_method="predict",
         xlabel=iris.feature_names[0],
@@ -122,7 +121,7 @@ are represented by the dashed lines.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.123 seconds)
+   **Total running time of the script:** (0 minutes 0.117 seconds)
 
 
 .. _sphx_glr_download_auto_examples_linear_model_plot_sgd_iris.py:
@@ -134,7 +133,7 @@ are represented by the dashed lines.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_sgd_iris.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_sgd_iris.ipynb
         :alt: Launch binder
         :width: 150 px
 

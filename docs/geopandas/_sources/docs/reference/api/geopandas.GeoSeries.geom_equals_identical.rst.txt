@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.geom\_equals\_identical
+===========================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.geom_equals_identical

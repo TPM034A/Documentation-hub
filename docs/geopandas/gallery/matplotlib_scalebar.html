@@ -1,0 +1,1074 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Adding Scale Bars and North Arrows to a Matplotlib Plot &#8212; GeoPandas 1.1.3+0.gf5fe3ff.dirty documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=165729ea" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=83cc7163"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/toggleprompt.js?v=5801b3bb"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/matplotlib_scalebar';</script>
+    <link rel="canonical" href="https://geopandas.org/en/v1.1.3/gallery/matplotlib_scalebar.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overlays" href="overlays.html" />
+    <link rel="prev" title="Adding Inset Maps to a Matplotlib Plot" href="inset_map.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.1.3" />
+  <script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="geopandas" /><meta name="readthedocs-version-slug" content="v1.1.3" /><meta name="readthedocs-resolver-filename" content="/gallery/matplotlib_scalebar.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/geopandas_logo_web.svg" class="logo__image only-light" alt="GeoPandas 1.1.3+0.gf5fe3ff.dirty documentation - Home"/>
+    <img src="../_static/geopandas_logo_web.svg" class="logo__image only-dark pst-js-only" alt="GeoPandas 1.1.3+0.gf5fe3ff.dirty documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../community.html">
+    Community
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/geopandas/geopandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-xl fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../community.html">
+    Community
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/geopandas/geopandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-xl fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction to GeoPandas</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples Gallery</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cartopy_convert.html">Plotting with CartoPy and GeoPandas</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="choro_legends.html">Choro legends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choropleths.html">Choropleth classification schemes from PySAL for use with GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_geopandas_from_pandas.html">Creating a GeoDataFrame from a DataFrame with coordinates</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="geopandas_rasterio_sample.html">Using GeoPandas with Rasterio to sample point data</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="inset_map.html">Adding Inset Maps to a Matplotlib Plot</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Adding Scale Bars and North Arrows to a Matplotlib Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overlays.html">Overlays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas_accessor.html">Using GeoPandas via the pandas “geo” accessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_clip.html">Clip Vector Data with GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_basemap_background.html">Adding a background map to plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_with_folium.html">Plotting with Folium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polygon_plotting_with_folium.html">Plotting polygons with Folium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_joins.html">Spatial Joins</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../getting_started.html" class="nav-link">Getting Started</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Examples Gallery</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Adding Scale Bars and North Arrows to a Matplotlib Plot</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">This page was generated from <a class="reference external" href="https://github.com/geopandas/geopandas/blob/main/doc/source/gallery/matplotlib_scalebar.ipynb">gallery/matplotlib_scalebar.ipynb</a>.</div>
+<div class="line">Interactive online version: <span class="raw-html"><a href="https://mybinder.org/v2/gh/geopandas/geopandas/main?urlpath=lab/tree/doc/source/gallery/matplotlib_scalebar.ipynb"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a></span></div>
+</div>
+</div>
+<section id="Adding-Scale-Bars-and-North-Arrows-to-a-Matplotlib-Plot">
+<h1>Adding Scale Bars and North Arrows to a Matplotlib Plot<a class="headerlink" href="#Adding-Scale-Bars-and-North-Arrows-to-a-Matplotlib-Plot" title="Link to this heading">#</a></h1>
+<p>Scale bars and north arrows are common elements added to maps to indicate the scale and orientation of the map, respectively.</p>
+<p>Two packages exist for easily adding these elements to the default <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> plots generated by GeoPandas’ <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function: <a class="reference external" href="https://pypi.org/project/matplotlib-scalebar/">matplotlib-scalebar</a> and <a class="reference external" href="https://github.com/moss-xyz/matplotlib-map-utils">matplotlib-map-utils</a>. The use of each is described below.</p>
+<section id="Using-matplotlib-scalebar">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">matplotlib-scalebar</span></code><a class="headerlink" href="#Using-matplotlib-scalebar" title="Link to this heading">#</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">geodatasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib_scalebar.scalebar</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScaleBar</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+</pre></div>
+</div>
+</div>
+<section id="Creating-a-ScaleBar-object">
+<h3>Creating a ScaleBar object<a class="headerlink" href="#Creating-a-ScaleBar-object" title="Link to this heading">#</a></h3>
+<p>The only required parameter for creating a ScaleBar object is <code class="docutils literal notranslate"><span class="pre">dx</span></code>. This is equal to a size of one pixel in real world. Value of this parameter depends on units of your CRS.</p>
+<section id="Projected-coordinate-system-(meters)">
+<h4>Projected coordinate system (meters)<a class="headerlink" href="#Projected-coordinate-system-(meters)" title="Link to this heading">#</a></h4>
+<p>The easiest way to add a scale bar is using a projected coordinate system with meters as units. Just set <code class="docutils literal notranslate"><span class="pre">dx</span> <span class="pre">=</span> <span class="pre">1</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nybb</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;nybb&quot;</span><span class="p">))</span>
+<span class="n">nybb</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">32619</span><span class="p">)</span>  <span class="c1"># Convert the dataset to a coordinate</span>
+<span class="c1"># system which uses meters</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">ScaleBar</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib_scalebar.scalebar.ScaleBar at 0x771913d3a900&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_4_1.png" src="../_images/gallery_matplotlib_scalebar_4_1.png" />
+</div>
+</div>
+</section>
+<section id="Geographic-coordinate-system-(degrees)">
+<h4>Geographic coordinate system (degrees)<a class="headerlink" href="#Geographic-coordinate-system-(degrees)" title="Link to this heading">#</a></h4>
+<div class="line-block">
+<div class="line">With a geographic coordinate system with degrees as units, <code class="docutils literal notranslate"><span class="pre">dx</span></code> should be equal to a distance in meters of two points with the same latitude (Y coordinate) which are one full degree of longitude (X) apart. You can calculate this distance by online calculator <a class="reference external" href="http://edwilliams.org/gccalc.htm">(e.g. the Great Circle calculator)</a> or in geopandas.</div>
+<div class="line">Firstly, we will create a GeoSeries with two points that have roughly the coordinates of NYC. They are located on the same latitude but one degree of longitude from each other. Their initial coordinates are specified in a geographic coordinate system (geographic WGS 84). They are then converted to a projected system for the calculation:</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry.point</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+
+<span class="n">points</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">73.5</span><span class="p">,</span> <span class="mf">40.5</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">74.5</span><span class="p">,</span> <span class="mf">40.5</span><span class="p">)],</span> <span class="n">crs</span><span class="o">=</span><span class="mi">4326</span>
+<span class="p">)</span>  <span class="c1"># Geographic WGS 84 - degrees</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">32619</span><span class="p">)</span>  <span class="c1"># Projected WGS 84 - meters</span>
+</pre></div>
+</div>
+</div>
+<p>After the conversion, we can calculate the distance between the points. The result slightly differs from the Great Circle Calculator but the difference is insignificant (84,921 and 84,767 meters):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_meters</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, we are able to use geographic coordinate system in our plot. We set value of <code class="docutils literal notranslate"><span class="pre">dx</span></code> parameter to a distance we just calculated:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nybb</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;nybb&quot;</span><span class="p">))</span>
+<span class="n">nybb</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>  <span class="c1"># Using geographic WGS 84</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">ScaleBar</span><span class="p">(</span><span class="n">distance_meters</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib_scalebar.scalebar.ScaleBar at 0x771913d2afd0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/docs/checkouts/readthedocs.org/user_builds/geopandas/conda/v1.1.3/lib/python3.13/site-packages/matplotlib_scalebar/scalebar.py:457: UserWarning: Drawing scalebar on axes with unequal aspect ratio; either call ax.set_aspect(1) or suppress the warning with rotation=&#39;horizontal-only&#39;.
+  warnings.warn(
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_10_2.png" src="../_images/gallery_matplotlib_scalebar_10_2.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="Using-other-units">
+<h3>Using other units<a class="headerlink" href="#Using-other-units" title="Link to this heading">#</a></h3>
+<p>The default unit for <code class="docutils literal notranslate"><span class="pre">dx</span></code> is m (meter). You can change this unit by the <code class="docutils literal notranslate"><span class="pre">units</span></code> and <code class="docutils literal notranslate"><span class="pre">dimension</span></code> parameters. There is a list of some possible <code class="docutils literal notranslate"><span class="pre">units</span></code> for various values of <code class="docutils literal notranslate"><span class="pre">dimension</span></code> below:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>dimension</p></th>
+<th class="head"><p>units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>si-length</p></td>
+<td><p>km, m, cm, um</p></td>
+</tr>
+<tr class="row-odd"><td><p>imperial-length</p></td>
+<td><p>in, ft, yd, mi</p></td>
+</tr>
+<tr class="row-even"><td><p>si-length-reciprocal</p></td>
+<td><p>1/m, 1/cm</p></td>
+</tr>
+<tr class="row-odd"><td><p>angle</p></td>
+<td><p>deg</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In the following example, we will leave the dataset in its initial CRS which uses feet as units. The plot shows scale of 2 leagues (approximately 11 kilometers):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nybb</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;nybb&quot;</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">ScaleBar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="s2">&quot;imperial-length&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;ft&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib_scalebar.scalebar.ScaleBar at 0x77190ef9c2d0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_12_1.png" src="../_images/gallery_matplotlib_scalebar_12_1.png" />
+</div>
+</div>
+</section>
+<section id="Customization-of-the-scale-bar">
+<h3>Customization of the scale bar<a class="headerlink" href="#Customization-of-the-scale-bar" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nybb</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;nybb&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">32619</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># Position and layout</span>
+<span class="n">scale1</span> <span class="o">=</span> <span class="n">ScaleBar</span><span class="p">(</span>
+    <span class="n">dx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Scale 1&quot;</span><span class="p">,</span>
+    <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span>  <span class="c1"># in relation to the whole plot</span>
+    <span class="n">label_loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+    <span class="n">scale_loc</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span>  <span class="c1"># in relation to the line</span>
+<span class="p">)</span>
+
+<span class="c1"># Color</span>
+<span class="n">scale2</span> <span class="o">=</span> <span class="n">ScaleBar</span><span class="p">(</span>
+    <span class="n">dx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Scale 2&quot;</span><span class="p">,</span>
+    <span class="n">location</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#b32400&quot;</span><span class="p">,</span>
+    <span class="n">box_color</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span>
+    <span class="n">box_alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>  <span class="c1"># Slightly transparent box</span>
+<span class="p">)</span>
+
+<span class="c1"># Font and text formatting</span>
+<span class="n">scale3</span> <span class="o">=</span> <span class="n">ScaleBar</span><span class="p">(</span>
+    <span class="n">dx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Scale 3&quot;</span><span class="p">,</span>
+    <span class="n">font_properties</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;family&quot;</span><span class="p">:</span> <span class="s2">&quot;serif&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;large&quot;</span><span class="p">,</span>
+    <span class="p">},</span>  <span class="c1"># For more information, see the cell below</span>
+    <span class="n">scale_formatter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">value</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;&gt; </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2"> &lt;&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">scale1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">scale2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">scale3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib_scalebar.scalebar.ScaleBar at 0x771906c6b750&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_14_1.png" src="../_images/gallery_matplotlib_scalebar_14_1.png" />
+</div>
+</div>
+<div class="line-block">
+<div class="line"><em>Note:</em> Font is specified by six properties: <code class="docutils literal notranslate"><span class="pre">family</span></code>, <code class="docutils literal notranslate"><span class="pre">style</span></code>, <code class="docutils literal notranslate"><span class="pre">variant</span></code>, <code class="docutils literal notranslate"><span class="pre">stretch</span></code>, <code class="docutils literal notranslate"><span class="pre">weight</span></code>, <code class="docutils literal notranslate"><span class="pre">size</span></code> (and <code class="docutils literal notranslate"><span class="pre">math_fontfamily</span></code>). See <a class="reference external" href="https://matplotlib.org/stable/api/font_manager_api.html#matplotlib.font_manager.FontProperties">more</a>.</div>
+<div class="line">For more information about matplotlib-scalebar library, see the <a class="reference external" href="https://pypi.org/project/matplotlib-scalebar/">PyPI</a> or <a class="reference external" href="https://github.com/ppinard/matplotlib-scalebar">GitHub</a> page.</div>
+</div>
+</section>
+</section>
+<section id="Using-matplotlib-map-utils">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">matplotlib-map-utils</span></code><a class="headerlink" href="#Using-matplotlib-map-utils" title="Link to this heading">#</a></h2>
+<p>Using this package, north arrows and scale bars can be made with either <strong>functions</strong> or <strong>classes</strong>; for the purposes of this tutorial, only the <em>functions</em> will be used, though the <em>classes</em> work in much the same way. Tutorials for customizing each object are available within the <a class="reference external" href="https://github.com/moss-xyz/matplotlib-map-utils/tree/main/matplotlib_map_utils/docs">docs</a> directory of the repository.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">geodatasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib_map_utils.core.north_arrow</span><span class="w"> </span><span class="kn">import</span> <span class="n">NorthArrow</span><span class="p">,</span> <span class="n">north_arrow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib_map_utils.core.scale_bar</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScaleBar</span><span class="p">,</span> <span class="n">scale_bar</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+</pre></div>
+</div>
+</div>
+<section id="Set-Up">
+<h3>Set-Up<a class="headerlink" href="#Set-Up" title="Link to this heading">#</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nybb</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;nybb&quot;</span><span class="p">))</span>
+<span class="c1"># By default, the data is projected in feet</span>
+<span class="n">nybb</span><span class="o">.</span><span class="n">crs</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Projected CRS: EPSG:2263&gt;
+Name: NAD83 / New York Long Island (ftUS)
+Axis Info [cartesian]:
+- X[east]: Easting (US survey foot)
+- Y[north]: Northing (US survey foot)
+Area of Use:
+- name: United States (USA) - New York - counties of Bronx; Kings; Nassau; New York; Queens; Richmond; Suffolk.
+- bounds: (-74.26, 40.47, -71.8, 41.3)
+Coordinate Operation:
+- name: SPCS83 New York Long Island zone (US survey foot)
+- method: Lambert Conic Conformal (2SP)
+Datum: North American Datum 1983
+- Ellipsoid: GRS 1980
+- Prime Meridian: Greenwich
+</pre></div></div>
+</div>
+<p>If you are working with a common plot size, both <code class="docutils literal notranslate"><span class="pre">NorthArrow</span></code> and <code class="docutils literal notranslate"><span class="pre">ScaleBar</span></code> have a function called <code class="docutils literal notranslate"><span class="pre">set_size()</span></code> that bulk-updates a variety of settings so that the relevant object looks “better” at that size.</p>
+<p>GeoPandas’ <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function will create figures of <code class="docutils literal notranslate"><span class="pre">6.4&quot;x4.8&quot;</span></code> with the data used in this tutorial, which corresponds to a size of <code class="docutils literal notranslate"><span class="pre">small</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NorthArrow</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
+<span class="n">ScaleBar</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="North-Arrows">
+<h3>North Arrows<a class="headerlink" href="#North-Arrows" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">north_arrow()</span></code> function takes in the following arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ax</span></code>: the axis on which to plot the north arrow</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">location</span></code>: a string indicating the location of the north arrow on the plot (see <code class="docutils literal notranslate"><span class="pre">loc</span></code> under <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html">matplotlib.pyplot.legend</a> e.g., “upper left”, “lower right”, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code>: the desired height of the north arrow, in <em>inches</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotation</span></code>: a dictionary containing either a value for <code class="docutils literal notranslate"><span class="pre">degrees</span></code> (if rotation will be set manually), or arguments for <code class="docutils literal notranslate"><span class="pre">crs</span></code>, <code class="docutils literal notranslate"><span class="pre">reference</span></code>, and <code class="docutils literal notranslate"><span class="pre">coords</span></code> (if rotation will be calculated based on the provided CRS)</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Making a basic arrow using the minimum amount of arguments</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">north_arrow</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;crs&quot;</span><span class="p">:</span> <span class="n">nybb</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="s2">&quot;reference&quot;</span><span class="p">:</span> <span class="s2">&quot;center&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_24_0.png" src="../_images/gallery_matplotlib_scalebar_24_0.png" />
+</div>
+</div>
+<p>Optional additional arguments can be passed to <code class="docutils literal notranslate"><span class="pre">base</span></code>, <code class="docutils literal notranslate"><span class="pre">fancy</span></code>, <code class="docutils literal notranslate"><span class="pre">shadow</span></code>, <code class="docutils literal notranslate"><span class="pre">label</span></code>, <code class="docutils literal notranslate"><span class="pre">pack</span></code>, and <code class="docutils literal notranslate"><span class="pre">aob</span></code> to change the styling of the arrow; see the documentation under <a class="reference external" href="https://github.com/moss-xyz/matplotlib-map-utils/blob/main/matplotlib_map_utils/docs/howto_north_arrow.ipynb">docs/howto_north_arrow.ipynb</a> in the GitHub repository for details.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Making a more customized arrow</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">north_arrow</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">rotation</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;crs&quot;</span><span class="p">:</span> <span class="n">nybb</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="s2">&quot;reference&quot;</span><span class="p">:</span> <span class="s2">&quot;center&quot;</span><span class="p">},</span>
+    <span class="n">base</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;linewidth&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="n">fancy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">shadow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># this turns off the component</span>
+    <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;position&quot;</span><span class="p">:</span> <span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;North&quot;</span><span class="p">,</span> <span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_26_0.png" src="../_images/gallery_matplotlib_scalebar_26_0.png" />
+</div>
+</div>
+</section>
+<section id="Scale-Bars">
+<h3>Scale Bars<a class="headerlink" href="#Scale-Bars" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">scale_bar()</span></code> function takes in the following arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ax</span></code>: the axis on which to plot the scale bar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">location</span></code>: a string indicating the location of the scale bar on the plot (see <code class="docutils literal notranslate"><span class="pre">loc</span></code> under <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html">matplotlib.pyplot.legend</a> e.g., “upper left”, “lower right”, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">style</span></code>: the appearance of the arrow: can be either <code class="docutils literal notranslate"><span class="pre">ticks</span></code> or <code class="docutils literal notranslate"><span class="pre">boxes</span></code> (default)</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Making a basic scale bar using the minimum amount of arguments</span>
+<span class="c1"># Note that the data is auto-converted to miles</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">scale_bar</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;boxes&quot;</span><span class="p">,</span> <span class="n">bar</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">nybb</span><span class="o">.</span><span class="n">crs</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_28_0.png" src="../_images/gallery_matplotlib_scalebar_28_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Making the same scale bar but in the other style (ticks)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">scale_bar</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="n">bar</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">nybb</span><span class="o">.</span><span class="n">crs</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_29_0.png" src="../_images/gallery_matplotlib_scalebar_29_0.png" />
+</div>
+</div>
+<p>The scale bar can handle converting between common unit types, as shown in the table below.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Unit Type</p></th>
+<th class="head"><p>Conversion Factor</p></th>
+<th class="head"><p>Accepted Inputs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Meters</p></td>
+<td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">m</span></code>,<code class="docutils literal notranslate"><span class="pre">meter</span></code>,<code class="docutils literal notranslate"><span class="pre">metre</span></code>,<code class="docutils literal notranslate"><span class="pre">meters</span></code>,<code class="docutils literal notranslate"><span class="pre">meters</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Kilometers</p></td>
+<td><p>1000</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">km</span></code>,<code class="docutils literal notranslate"><span class="pre">kilometer</span></code>,<code class="docutils literal notranslate"><span class="pre">kilometre</span></code>,<code class="docutils literal notranslate"><span class="pre">kilometers</span></code>,<code class="docutils literal notranslate"><span class="pre">kilometers</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Feet</p></td>
+<td><p>0.3048</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ft</span></code>,<code class="docutils literal notranslate"><span class="pre">ftUS</span></code>,<code class="docutils literal notranslate"><span class="pre">foot</span></code>,<code class="docutils literal notranslate"><span class="pre">feet</span></code>,<code class="docutils literal notranslate"><span class="pre">US</span> <span class="pre">survey</span> <span class="pre">foot</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Yards</p></td>
+<td><p>0.9144</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">yd</span></code>,<code class="docutils literal notranslate"><span class="pre">yard</span></code>,<code class="docutils literal notranslate"><span class="pre">yards</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Miles</p></td>
+<td><p>1609.34</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mi</span></code>,<code class="docutils literal notranslate"><span class="pre">mile</span></code>,<code class="docutils literal notranslate"><span class="pre">miles</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Nautical Miles</p></td>
+<td><p>1852</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nmi</span></code>,<code class="docutils literal notranslate"><span class="pre">nautical</span></code>,<code class="docutils literal notranslate"><span class="pre">nautical</span> <span class="pre">mile</span></code>,<code class="docutils literal notranslate"><span class="pre">nautical</span> <span class="pre">miles</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The scale bar can also handle <em>unprojected</em> data (degrees) - it will convert it to metres using <em>great circle distance</em>, and then convert it into the units selected by the user. This will happen automatically when <code class="docutils literal notranslate"><span class="pre">projection</span></code> is set to a CRS of <code class="docutils literal notranslate"><span class="pre">4326</span></code> or similar.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Making a scale bar in kilometers instead, by changing bar[&quot;units&quot;]</span>
+<span class="c1"># Note that the data did not have to be reprojected to do this</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">scale_bar</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;boxes&quot;</span><span class="p">,</span> <span class="n">bar</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">nybb</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="s2">&quot;km&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_31_0.png" src="../_images/gallery_matplotlib_scalebar_31_0.png" />
+</div>
+</div>
+<p>Optional additional arguments can be passed to <code class="docutils literal notranslate"><span class="pre">bar</span></code>, <code class="docutils literal notranslate"><span class="pre">labels</span></code>, <code class="docutils literal notranslate"><span class="pre">units</span></code>, <code class="docutils literal notranslate"><span class="pre">text</span></code>, and <code class="docutils literal notranslate"><span class="pre">aob</span></code> to change the styling of the bar; see the documentation under <a class="reference external" href="https://github.com/moss-xyz/matplotlib-map-utils/blob/main/matplotlib_map_utils/docs/howto_scale_bar.ipynb">docs/howto_scale_bar.ipynb</a> in the GitHub repository for details.</p>
+<p><em>Note that control of the length of the bar, as well as the number of major and minor divisions, is handled within the ``bar`` style dictionary.</em></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Making a more formatted scale bar (ticks)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">scale_bar</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">,</span>
+    <span class="n">bar</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">nybb</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="s2">&quot;major_div&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;minor_div&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;minor_type&quot;</span><span class="p">:</span> <span class="s2">&quot;first&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tick_loc&quot;</span><span class="p">:</span> <span class="s2">&quot;middle&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tickcolors&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;basecolors&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tickwidth&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;loc&quot;</span><span class="p">:</span> <span class="s2">&quot;above&quot;</span><span class="p">,</span> <span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;major&quot;</span><span class="p">},</span>
+    <span class="n">units</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;loc&quot;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+    <span class="n">text</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontfamily&quot;</span><span class="p">:</span> <span class="s2">&quot;monospace&quot;</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_matplotlib_scalebar_33_0.png" src="../_images/gallery_matplotlib_scalebar_33_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="inset_map.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Adding Inset Maps to a Matplotlib Plot</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="overlays.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Overlays</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Using-matplotlib-scalebar">Using <code class="docutils literal notranslate"><span class="pre">matplotlib-scalebar</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Creating-a-ScaleBar-object">Creating a ScaleBar object</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Projected-coordinate-system-(meters)">Projected coordinate system (meters)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Geographic-coordinate-system-(degrees)">Geographic coordinate system (degrees)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Using-other-units">Using other units</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Customization-of-the-scale-bar">Customization of the scale bar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Using-matplotlib-map-utils">Using <code class="docutils literal notranslate"><span class="pre">matplotlib-map-utils</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Set-Up">Set-Up</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#North-Arrows">North Arrows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Scale-Bars">Scale Bars</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/gallery/matplotlib_scalebar.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2013–, GeoPandas developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

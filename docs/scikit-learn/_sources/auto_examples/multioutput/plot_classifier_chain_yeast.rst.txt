@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_multioutput_plot_classifier_chain_yeast.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -243,7 +243,7 @@ There are three main takeaways from this plot:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.681 seconds)
+   **Total running time of the script:** (0 minutes 1.739 seconds)
 
 
 .. _sphx_glr_download_auto_examples_multioutput_plot_classifier_chain_yeast.py:
@@ -255,7 +255,7 @@ There are three main takeaways from this plot:
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/multioutput/plot_classifier_chain_yeast.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/multioutput/plot_classifier_chain_yeast.ipynb
         :alt: Launch binder
         :width: 150 px
 

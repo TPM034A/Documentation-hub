@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_calibration_plot_calibration_curve.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -270,7 +270,7 @@ metrics: :ref:`brier_score_loss`, :ref:`log_loss`,
       <thead>
         <tr style="text-align: right;">
           <th></th>
-          <th>Brier  loss</th>
+          <th>Brier&nbsp;&nbsp;loss</th>
           <th>Log loss</th>
           <th>Roc auc</th>
           <th>Precision</th>
@@ -546,7 +546,7 @@ As before, we show the :ref:`brier_score_loss`, :ref:`log_loss`,
       <thead>
         <tr style="text-align: right;">
           <th></th>
-          <th>Brier  loss</th>
+          <th>Brier&nbsp;&nbsp;loss</th>
           <th>Log loss</th>
           <th>Roc auc</th>
           <th>Precision</th>
@@ -633,7 +633,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.335 seconds)
+   **Total running time of the script:** (0 minutes 3.060 seconds)
 
 
 .. _sphx_glr_download_auto_examples_calibration_plot_calibration_curve.py:
@@ -645,7 +645,7 @@ References
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/calibration/plot_calibration_curve.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/calibration/plot_calibration_curve.ipynb
         :alt: Launch binder
         :width: 150 px
 

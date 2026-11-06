@@ -26,6 +26,7 @@ sklearn.manifold
   :template: base.rst
 
 
+  ClassicalMDS
   Isomap
   LocallyLinearEmbedding
   MDS

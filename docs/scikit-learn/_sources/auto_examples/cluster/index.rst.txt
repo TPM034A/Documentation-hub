@@ -10,6 +10,10 @@ Clustering
 Examples concerning the :mod:`sklearn.cluster` module.
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -26,7 +30,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_kmeans_digits_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_digits.py`
+  :doc:`/auto_examples/cluster/plot_kmeans_digits`
 
 .. raw:: html
 
@@ -43,7 +47,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_coin_ward_segmentation_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_coin_ward_segmentation.py`
+  :doc:`/auto_examples/cluster/plot_coin_ward_segmentation`
 
 .. raw:: html
 
@@ -60,7 +64,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_mean_shift_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_mean_shift.py`
+  :doc:`/auto_examples/cluster/plot_mean_shift`
 
 .. raw:: html
 
@@ -77,28 +81,11 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_adjusted_for_chance_measures_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_adjusted_for_chance_measures.py`
+  :doc:`/auto_examples/cluster/plot_adjusted_for_chance_measures`
 
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Adjustment for chance in clustering performance evaluation</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="This example shows the effect of imposing a connectivity graph to capture local structure in the data. The graph is simply the graph of 20 nearest neighbors.">
-
-.. only:: html
-
-  .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_agglomerative_clustering_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_cluster_plot_agglomerative_clustering.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Agglomerative clustering with and without structure</div>
     </div>
 
 
@@ -111,7 +98,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_agglomerative_clustering_metrics_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_agglomerative_clustering_metrics.py`
+  :doc:`/auto_examples/cluster/plot_agglomerative_clustering_metrics`
 
 .. raw:: html
 
@@ -128,7 +115,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_kmeans_plusplus_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_plusplus.py`
+  :doc:`/auto_examples/cluster/plot_kmeans_plusplus`
 
 .. raw:: html
 
@@ -145,7 +132,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_bisect_kmeans_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_bisect_kmeans.py`
+  :doc:`/auto_examples/cluster/plot_bisect_kmeans`
 
 .. raw:: html
 
@@ -162,7 +149,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_birch_vs_minibatchkmeans_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_birch_vs_minibatchkmeans.py`
+  :doc:`/auto_examples/cluster/plot_birch_vs_minibatchkmeans`
 
 .. raw:: html
 
@@ -179,7 +166,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_cluster_comparison_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_cluster_comparison.py`
+  :doc:`/auto_examples/cluster/plot_cluster_comparison`
 
 .. raw:: html
 
@@ -196,7 +183,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_linkage_comparison_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_linkage_comparison.py`
+  :doc:`/auto_examples/cluster/plot_linkage_comparison`
 
 .. raw:: html
 
@@ -213,7 +200,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_mini_batch_kmeans_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_mini_batch_kmeans.py`
+  :doc:`/auto_examples/cluster/plot_mini_batch_kmeans`
 
 .. raw:: html
 
@@ -230,7 +217,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_dbscan_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_dbscan.py`
+  :doc:`/auto_examples/cluster/plot_dbscan`
 
 .. raw:: html
 
@@ -247,7 +234,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_hdbscan_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_hdbscan.py`
+  :doc:`/auto_examples/cluster/plot_hdbscan`
 
 .. raw:: html
 
@@ -264,7 +251,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_optics_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_optics.py`
+  :doc:`/auto_examples/cluster/plot_optics`
 
 .. raw:: html
 
@@ -281,7 +268,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_affinity_propagation_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_affinity_propagation.py`
+  :doc:`/auto_examples/cluster/plot_affinity_propagation`
 
 .. raw:: html
 
@@ -298,7 +285,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_kmeans_assumptions_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_assumptions.py`
+  :doc:`/auto_examples/cluster/plot_kmeans_assumptions`
 
 .. raw:: html
 
@@ -315,7 +302,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_kmeans_stability_low_dim_dense_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_stability_low_dim_dense.py`
+  :doc:`/auto_examples/cluster/plot_kmeans_stability_low_dim_dense`
 
 .. raw:: html
 
@@ -332,7 +319,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_digits_agglomeration_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_digits_agglomeration.py`
+  :doc:`/auto_examples/cluster/plot_digits_agglomeration`
 
 .. raw:: html
 
@@ -349,7 +336,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_feature_agglomeration_vs_univariate_selection_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_feature_agglomeration_vs_univariate_selection.py`
+  :doc:`/auto_examples/cluster/plot_feature_agglomeration_vs_univariate_selection`
 
 .. raw:: html
 
@@ -359,18 +346,18 @@ Examples concerning the :mod:`sklearn.cluster` module.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example builds a swiss roll dataset and runs hierarchical clustering on their position.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates hierarchical clustering with and without connectivity constraints. It shows the effect of imposing a connectivity graph to capture local structure in the data. Without connectivity constraints, the clustering is based purely on distance, while with constraints, the clustering respects local structure.">
 
 .. only:: html
 
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_ward_structured_vs_unstructured_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_ward_structured_vs_unstructured.py`
+  :doc:`/auto_examples/cluster/plot_ward_structured_vs_unstructured`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Hierarchical clustering: structured vs unstructured ward</div>
+      <div class="sphx-glr-thumbnail-title">Hierarchical clustering with and without structure</div>
     </div>
 
 
@@ -383,7 +370,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_inductive_clustering_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_inductive_clustering.py`
+  :doc:`/auto_examples/cluster/plot_inductive_clustering`
 
 .. raw:: html
 
@@ -400,7 +387,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_dict_face_patches_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_dict_face_patches.py`
+  :doc:`/auto_examples/cluster/plot_dict_face_patches`
 
 .. raw:: html
 
@@ -417,7 +404,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_agglomerative_dendrogram_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_agglomerative_dendrogram.py`
+  :doc:`/auto_examples/cluster/plot_agglomerative_dendrogram`
 
 .. raw:: html
 
@@ -434,7 +421,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_coin_segmentation_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_coin_segmentation.py`
+  :doc:`/auto_examples/cluster/plot_coin_segmentation`
 
 .. raw:: html
 
@@ -451,7 +438,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_kmeans_silhouette_analysis_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_kmeans_silhouette_analysis.py`
+  :doc:`/auto_examples/cluster/plot_kmeans_silhouette_analysis`
 
 .. raw:: html
 
@@ -468,7 +455,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_segmentation_toy_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_segmentation_toy.py`
+  :doc:`/auto_examples/cluster/plot_segmentation_toy`
 
 .. raw:: html
 
@@ -485,7 +472,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_digits_linkage_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_digits_linkage.py`
+  :doc:`/auto_examples/cluster/plot_digits_linkage`
 
 .. raw:: html
 
@@ -502,7 +489,7 @@ Examples concerning the :mod:`sklearn.cluster` module.
   .. image:: /auto_examples/cluster/images/thumb/sphx_glr_plot_face_compress_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_cluster_plot_face_compress.py`
+  :doc:`/auto_examples/cluster/plot_face_compress`
 
 .. raw:: html
 
@@ -524,7 +511,6 @@ Examples concerning the :mod:`sklearn.cluster` module.
    /auto_examples/cluster/plot_coin_ward_segmentation
    /auto_examples/cluster/plot_mean_shift
    /auto_examples/cluster/plot_adjusted_for_chance_measures
-   /auto_examples/cluster/plot_agglomerative_clustering
    /auto_examples/cluster/plot_agglomerative_clustering_metrics
    /auto_examples/cluster/plot_kmeans_plusplus
    /auto_examples/cluster/plot_bisect_kmeans

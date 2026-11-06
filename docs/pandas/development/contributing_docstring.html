@@ -8,41 +8,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pandas docstring guide &#8212; pandas 2.3.3 documentation</title>
+    <title>pandas docstring guide &#8212; pandas 3.0.6 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css?v=150e0881" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css?v=8d8a0ed4" />
     <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css?v=b7db95b1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=956a7be408686d7d6a7b"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b" />
 
-    <script src="../_static/documentation_options.js?v=f4302432"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=c3365b21"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -50,10 +53,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'development/contributing_docstring';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pandas.pydata.org/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.3';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -62,6 +66,7 @@
     <link rel="prev" title="Contributing to the documentation" href="contributing_documentation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.6" />
   </head>
   
   
@@ -69,32 +74,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -102,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -110,20 +98,28 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/_templates/docs-announcement-banner.html"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -137,8 +133,8 @@
       
     
     
-    <img src="../_static/pandas.svg" class="logo__image only-light" alt="pandas 2.3.3 documentation - Home"/>
-    <script>document.write(`<img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark" alt="pandas 2.3.3 documentation - Home"/>`);</script>
+    <img src="../_static/pandas.svg" class="logo__image only-light" alt="pandas 3.0.6 documentation - Home"/>
+    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark pst-js-only" alt="pandas 3.0.6 documentation - Home"/>
   
   
 </a></div>
@@ -150,49 +146,43 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -204,55 +194,43 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -263,7 +241,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -275,8 +253,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -287,7 +265,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -299,31 +277,31 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -332,52 +310,49 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -386,42 +361,34 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -432,7 +399,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -444,8 +411,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -456,7 +423,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -471,14 +438,13 @@ document.write(`
     
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to pandas</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="contributing_environment.html">Creating a development environment</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="contributing_gitpod.html">Using Gitpod for pandas development</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="contributing_environment.html">Creating a development environment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="contributing_documentation.html">Contributing to the documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="contributing_documentation.html">Contributing to the documentation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">pandas docstring guide</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing_codebase.html">Contributing to the code base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maintaining.html">pandas maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="internals.html">Internals</a></li>
@@ -497,29 +463,32 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -533,7 +502,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="contributing_documentation.html" class="nav-link">Contributing to the documentation</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">pandas...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pandas docstring guide</span></li>
   </ul>
 </nav>
 </div>
@@ -548,7 +517,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="pandas-docstring-guide">
 <span id="docstring"></span><h1>pandas docstring guide<a class="headerlink" href="#pandas-docstring-guide" title="Link to this heading">#</a></h1>
@@ -562,7 +531,7 @@ automatically from docstrings. <a class="reference external" href="https://www.s
 this purpose.</p>
 <p>The next example gives an idea of what a docstring looks like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Add up two integer numbers.</span>
 
 <span class="sd">    This function simply wraps the ``+`` operator, and does not</span>
@@ -593,7 +562,7 @@ this purpose.</p>
 <span class="sd">    25</span>
 <span class="sd">    &gt;&gt;&gt; add(10, -10)</span>
 <span class="sd">    0</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span>
 </pre></div>
 </div>
@@ -650,32 +619,32 @@ for details.</p>
 </div>
 <p><strong>Good:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add_values</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Add the values in ``arr``.</span>
 
 <span class="sd">    This is equivalent to Python ``sum`` of :meth:`pandas.Series.sum`.</span>
 
 <span class="sd">    Some sections are omitted here for simplicity.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Bad:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">():</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Some function.</span>
+<span class="w">    </span><span class="sd">"""Some function.</span>
 
 <span class="sd">    With several mistakes in the docstring.</span>
 
-<span class="sd">    It has a blank like after the signature ``def func():``.</span>
+<span class="sd">    It has a blank line after the signature ``def func():``.</span>
 
-<span class="sd">    The text &#39;Some function&#39; should go in the line after the</span>
+<span class="sd">    The text 'Some function' should go in the line after the</span>
 <span class="sd">    opening quotes of the docstring, not in the same line.</span>
 
 <span class="sd">    There is a blank line between the docstring and the first line</span>
 <span class="sd">    of code ``foo = 1``.</span>
 
-<span class="sd">    The closing quotes should be in the next line, not in this one.&quot;&quot;&quot;</span>
+<span class="sd">    The closing quotes should be in the next line, not in this one."""</span>
 
     <span class="n">foo</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">bar</span> <span class="o">=</span> <span class="mi">2</span>
@@ -693,49 +662,49 @@ details. For functions and methods, the short summary must start with an
 infinitive verb.</p>
 <p><strong>Good:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Cast Series type.</span>
 
 <span class="sd">    This section will provide further details.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <p><strong>Bad:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Casts Series type.</span>
 
 <span class="sd">    Verb in third-person of the present simple, should be infinitive.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Method to cast Series type.</span>
 
 <span class="sd">    Does not start with verb.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Cast Series type</span>
 
 <span class="sd">    Missing dot at the end.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Cast Series type from its current type to the new type defined in</span>
 <span class="sd">    the parameter dtype.</span>
 
-<span class="sd">    Summary is too verbose and doesn&#39;t fit in a single line.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    Summary is too verbose and doesn't fit in a single line.</span>
+<span class="sd">    """</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -750,7 +719,7 @@ Every paragraph in the extended summary ends with a dot.</p>
 <p>The extended summary should provide details on why the function is useful and
 their use cases, if it is not too generic.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">unstack</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Pivot a row index to columns.</span>
 
 <span class="sd">    When using a MultiIndex, a level can be pivoted so each value in</span>
@@ -760,7 +729,7 @@ their use cases, if it is not too generic.</p>
 
 <span class="sd">    The index level will be automatically removed from the index when added</span>
 <span class="sd">    as columns.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -796,8 +765,8 @@ provided. In this case we will use <code class="docutils literal notranslate"><s
 would be used, then we will specify “str, int or None, default None”.</p>
 <p><strong>Good:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Series</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Generate a plot.</span>
 
 <span class="sd">        Render the data in the Series as a matplotlib plot of the</span>
@@ -807,19 +776,19 @@ would be used, then we will specify “str, int or None, default None”.</p>
 <span class="sd">        ----------</span>
 <span class="sd">        kind : str</span>
 <span class="sd">            Kind of matplotlib plot.</span>
-<span class="sd">        color : str, default &#39;blue&#39;</span>
+<span class="sd">        color : str, default 'blue'</span>
 <span class="sd">            Color name or rgb code.</span>
 <span class="sd">        **kwargs</span>
 <span class="sd">            These parameters will be passed to the matplotlib plotting</span>
 <span class="sd">            function.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span>
 </pre></div>
 </div>
 <p><strong>Bad:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Series</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Generate a plot.</span>
 
 <span class="sd">        Render the data in the Series as a matplotlib plot of the</span>
@@ -839,7 +808,7 @@ would be used, then we will specify “str, int or None, default None”.</p>
 
 <span class="sd">        kind: str</span>
 <span class="sd">            kind of matplotlib plot</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span>
 </pre></div>
 </div>
@@ -930,7 +899,7 @@ one value (a tuple of values).</p>
 “Parameters”. Also, the description must finish with a dot.</p>
 <p>For example, with a single value:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sample</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generate and return a random number.</span>
 
 <span class="sd">    The value is sampled from a continuous uniform distribution between</span>
@@ -940,7 +909,7 @@ one value (a tuple of values).</p>
 <span class="sd">    -------</span>
 <span class="sd">    float</span>
 <span class="sd">        Random number generated.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -948,7 +917,7 @@ one value (a tuple of values).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">random_letters</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generate and return a sequence of random letters.</span>
 
 <span class="sd">    The length of the returned string is also random, and is also</span>
@@ -960,16 +929,16 @@ one value (a tuple of values).</p>
 <span class="sd">        Length of the returned string.</span>
 <span class="sd">    letters : str</span>
 <span class="sd">        String of random letters.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">letters</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">)</span>
+    <span class="n">letters</span> <span class="o">=</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">)</span>
                       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">length</span><span class="p">,</span> <span class="n">letters</span>
 </pre></div>
 </div>
 <p>If the method yields its value:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sample_values</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generate an infinite sequence of random numbers.</span>
 
 <span class="sd">    The values are sampled from a continuous uniform distribution between</span>
@@ -979,7 +948,7 @@ one value (a tuple of values).</p>
 <span class="sd">    ------</span>
 <span class="sd">    float</span>
 <span class="sd">        Random number generated.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">yield</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
 </pre></div>
@@ -1031,7 +1000,7 @@ line, it can continue onto other lines which must be further indented.</p>
 <p>For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Series</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the first 5 elements of the Series.</span>
 
 <span class="sd">        This function is mainly useful to preview the values of the</span>
@@ -1047,7 +1016,7 @@ line, it can continue onto other lines which must be further indented.</p>
 <span class="sd">        Series.tail : Return the last 5 elements of the Series.</span>
 <span class="sd">        Series.iloc : Return a slice of the elements in the Series,</span>
 <span class="sd">            which can also be used to return the first or last n.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1086,7 +1055,7 @@ used for extended functionality</p></li>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Series</span><span class="p">:</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">head</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the first elements of the Series.</span>
 
 <span class="sd">        This function is mainly useful to preview the values of the</span>
@@ -1108,8 +1077,8 @@ used for extended functionality</p></li>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; ser = pd.Series([&#39;Ant&#39;, &#39;Bear&#39;, &#39;Cow&#39;, &#39;Dog&#39;, &#39;Falcon&#39;,</span>
-<span class="sd">        ...                &#39;Lion&#39;, &#39;Monkey&#39;, &#39;Rabbit&#39;, &#39;Zebra&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; ser = pd.Series(['Ant', 'Bear', 'Cow', 'Dog', 'Falcon',</span>
+<span class="sd">        ...                'Lion', 'Monkey', 'Rabbit', 'Zebra'])</span>
 <span class="sd">        &gt;&gt;&gt; ser.head()</span>
 <span class="sd">        0   Ant</span>
 <span class="sd">        1   Bear</span>
@@ -1125,7 +1094,7 @@ used for extended functionality</p></li>
 <span class="sd">        1   Bear</span>
 <span class="sd">        2   Cow</span>
 <span class="sd">        dtype: object</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1169,7 +1138,7 @@ positional arguments <code class="docutils literal notranslate"><span class="pre
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Series</span><span class="p">:</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Compute the mean of the input.</span>
 
 <span class="sd">        Examples</span>
@@ -1177,12 +1146,12 @@ positional arguments <code class="docutils literal notranslate"><span class="pre
 <span class="sd">        &gt;&gt;&gt; ser = pd.Series([1, 2, 3])</span>
 <span class="sd">        &gt;&gt;&gt; ser.mean()</span>
 <span class="sd">        2</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">fillna</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Replace missing values by ``value``.</span>
 
 <span class="sd">        Examples</span>
@@ -1190,28 +1159,28 @@ positional arguments <code class="docutils literal notranslate"><span class="pre
 <span class="sd">        &gt;&gt;&gt; ser = pd.Series([1, np.nan, 3])</span>
 <span class="sd">        &gt;&gt;&gt; ser.fillna(0)</span>
 <span class="sd">        [1, 0, 3]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">groupby_mean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Group by index and return mean.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; ser = pd.Series([380., 370., 24., 26],</span>
-<span class="sd">        ...               name=&#39;max_speed&#39;,</span>
-<span class="sd">        ...               index=[&#39;falcon&#39;, &#39;falcon&#39;, &#39;parrot&#39;, &#39;parrot&#39;])</span>
+<span class="sd">        ...               name='max_speed',</span>
+<span class="sd">        ...               index=['falcon', 'falcon', 'parrot', 'parrot'])</span>
 <span class="sd">        &gt;&gt;&gt; ser.groupby_mean()</span>
 <span class="sd">        index</span>
 <span class="sd">        falcon    375.0</span>
 <span class="sd">        parrot     25.0</span>
 <span class="sd">        Name: max_speed, dtype: float64</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return whether each value contains ``pattern``.</span>
 
 <span class="sd">        In this case, we are illustrating how to use sections, even</span>
@@ -1219,8 +1188,8 @@ positional arguments <code class="docutils literal notranslate"><span class="pre
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; ser = pd.Series(&#39;Antelope&#39;, &#39;Lion&#39;, &#39;Zebra&#39;, np.nan)</span>
-<span class="sd">        &gt;&gt;&gt; ser.contains(pattern=&#39;a&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; ser = pd.Series('Antelope', 'Lion', 'Zebra', np.nan)</span>
+<span class="sd">        &gt;&gt;&gt; ser.contains(pattern='a')</span>
 <span class="sd">        0    False</span>
 <span class="sd">        1    False</span>
 <span class="sd">        2     True</span>
@@ -1232,7 +1201,7 @@ positional arguments <code class="docutils literal notranslate"><span class="pre
 <span class="sd">        With ``case_sensitive`` set to ``False`` we can match ``a`` with both</span>
 <span class="sd">        ``a`` and ``A``:</span>
 
-<span class="sd">        &gt;&gt;&gt; s.contains(pattern=&#39;a&#39;, case_sensitive=False)</span>
+<span class="sd">        &gt;&gt;&gt; s.contains(pattern='a', case_sensitive=False)</span>
 <span class="sd">        0     True</span>
 <span class="sd">        1    False</span>
 <span class="sd">        2     True</span>
@@ -1243,19 +1212,19 @@ positional arguments <code class="docutils literal notranslate"><span class="pre
 
 <span class="sd">        We can fill missing values in the output using the ``na`` parameter:</span>
 
-<span class="sd">        &gt;&gt;&gt; ser.contains(pattern=&#39;a&#39;, na=False)</span>
+<span class="sd">        &gt;&gt;&gt; ser.contains(pattern='a', na=False)</span>
 <span class="sd">        0    False</span>
 <span class="sd">        1    False</span>
 <span class="sd">        2     True</span>
 <span class="sd">        3    False</span>
 <span class="sd">        dtype: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span>
 </pre></div>
 </div>
 <p><strong>Bad:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bar</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A sample DataFrame method.</span>
 
 <span class="sd">    Do not import NumPy and pandas.</span>
@@ -1276,12 +1245,12 @@ positional arguments <code class="docutils literal notranslate"><span class="pre
 <span class="sd">    &gt;&gt;&gt; import numpy as np</span>
 <span class="sd">    &gt;&gt;&gt; import pandas as pd</span>
 <span class="sd">    &gt;&gt;&gt; df = pd.DataFrame(np.random.randn(3, 3),</span>
-<span class="sd">    ...                   columns=(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;))</span>
+<span class="sd">    ...                   columns=('a', 'b', 'c'))</span>
 <span class="sd">    &gt;&gt;&gt; df.method(1)</span>
 <span class="sd">    21</span>
 <span class="sd">    &gt;&gt;&gt; df.method(bar=14)</span>
 <span class="sd">    123</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -1301,19 +1270,19 @@ meaningful is too much, such that creating it manually is very cumbersome.
 In those cases, always use a fixed random seed to make the generated examples
 predictable. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;normal&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'normal'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)})</span>
 </pre></div>
 </div>
 </li>
 <li><p>If you have a code snippet that wraps multiple lines, you need to use ‘…’
 on the continued lines:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span>
-<span class="gp">... </span>                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">])</span>
 </pre></div>
 </div>
 </li>
 <li><p>If you want to show a case where an exception is raised, you can do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">([</span><span class="s2">&quot;712-01-01&quot;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">([</span><span class="s2">"712-01-01"</span><span class="p">])</span>
 <span class="gt">Traceback (most recent call last):</span>
 <span class="gr">OutOfBoundsDatetime</span>: <span class="n">Out of bounds nanosecond timestamp: 712-01-01 00:00:00</span>
 </pre></div>
@@ -1330,7 +1299,7 @@ this will fail the doctest</p>
 </pre></div>
 </div>
 <p>However, you can do (notice the comment that needs to be added)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>  
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at ...&gt;</span>
 </pre></div>
 </div>
@@ -1345,7 +1314,7 @@ by the examples in the documentation, the <code class="docutils literal notransl
 plot will be generated automatically when building the documentation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Series</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Generate a plot with the ``Series`` data.</span>
 
 <span class="sd">        Examples</span>
@@ -1356,7 +1325,7 @@ plot will be generated automatically when building the documentation.</p>
 
 <span class="sd">            &gt;&gt;&gt; ser = pd.Series([1, 2, 3])</span>
 <span class="sd">            &gt;&gt;&gt; ser.plot()</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span>
 </pre></div>
 </div>
@@ -1372,24 +1341,24 @@ for the user reading. It comes at the cost of some complexity when writing.</p>
 <code class="docutils literal notranslate"><span class="pre">{klass}</span></code>. The variables filled in later on using the <code class="docutils literal notranslate"><span class="pre">doc</span></code> decorator.
 Finally, docstrings can also be appended to with the <code class="docutils literal notranslate"><span class="pre">doc</span></code> decorator.</p>
 <p>In this example, we’ll create a parent docstring normally (this is like
-<code class="docutils literal notranslate"><span class="pre">pandas.core.generic.NDFrame</span></code>. Then we’ll have two children (like
-<code class="docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame</span></code>). We’ll
+<code class="docutils literal notranslate"><span class="pre">pandas.core.generic.NDFrame</span></code>). Then we’ll have two children (like
+<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>). We’ll
 substitute the class names in this docstring.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Parent</span><span class="p">:</span>
-    <span class="nd">@doc</span><span class="p">(</span><span class="n">klass</span><span class="o">=</span><span class="s2">&quot;Parent&quot;</span><span class="p">)</span>
+    <span class="nd">@doc</span><span class="p">(</span><span class="n">klass</span><span class="o">=</span><span class="s2">"Parent"</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply my function to {klass}.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Apply my function to {klass}."""</span>
         <span class="o">...</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ChildA</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
-    <span class="nd">@doc</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">my_function</span><span class="p">,</span> <span class="n">klass</span><span class="o">=</span><span class="s2">&quot;ChildA&quot;</span><span class="p">)</span>
+    <span class="nd">@doc</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">my_function</span><span class="p">,</span> <span class="n">klass</span><span class="o">=</span><span class="s2">"ChildA"</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ChildB</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
-    <span class="nd">@doc</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">my_function</span><span class="p">,</span> <span class="n">klass</span><span class="o">=</span><span class="s2">&quot;ChildB&quot;</span><span class="p">)</span>
+    <span class="nd">@doc</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">my_function</span><span class="p">,</span> <span class="n">klass</span><span class="o">=</span><span class="s2">"ChildB"</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
 </pre></div>
@@ -1420,7 +1389,7 @@ common substitution values (things like <code class="docutils literal notranslat
 mapping function names to docstrings. Wherever possible, we prefer using
 <code class="docutils literal notranslate"><span class="pre">doc</span></code>, since the docstring-writing processes is slightly closer to normal.</p>
 <p>See <code class="docutils literal notranslate"><span class="pre">pandas.core.generic.NDFrame.fillna</span></code> for an example template, and
-<code class="docutils literal notranslate"><span class="pre">pandas.core.series.Series.fillna</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas.core.generic.frame.fillna</span></code>
+<code class="docutils literal notranslate"><span class="pre">pandas.Series.fillna</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas.core.generic.frame.fillna</span></code>
 for the filled versions.</p>
 </section>
 </section>
@@ -1432,7 +1401,7 @@ for the filled versions.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1460,14 +1429,17 @@ for the filled versions.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-docstrings-and-standards">About docstrings and standards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-docstring">Writing a docstring</a><ul class="nav section-nav flex-column">
@@ -1493,15 +1465,6 @@ for the filled versions.</p>
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/development/contributing_docstring.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1515,8 +1478,8 @@ for the filled versions.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1524,13 +1487,13 @@ for the filled versions.</p>
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="copyright">
-    &copy 2025, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
+    &copy 2026, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
 </p></div>
       
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
     <br/>
   </p>
 </div>
@@ -1543,7 +1506,8 @@ for the filled versions.</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

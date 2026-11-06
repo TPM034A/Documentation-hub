@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:04.971071Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.827341Z",
+      "mimetype": null,
+      "name": "plot_calibration.ipynb",
+      "path": "jupyterlite_contents/auto_examples/calibration/plot_calibration.ipynb",
+      "size": 7091,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:04.971410Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.828046Z",
+      "mimetype": null,
+      "name": "plot_calibration_curve.ipynb",
+      "path": "jupyterlite_contents/auto_examples/calibration/plot_calibration_curve.ipynb",
+      "size": 15088,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:04.971777Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.828719Z",
+      "mimetype": null,
+      "name": "plot_calibration_multiclass.ipynb",
+      "path": "jupyterlite_contents/auto_examples/calibration/plot_calibration_multiclass.ipynb",
+      "size": 14329,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:04.972142Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.829369Z",
+      "mimetype": null,
+      "name": "plot_compare_calibration.ipynb",
+      "path": "jupyterlite_contents/auto_examples/calibration/plot_compare_calibration.ipynb",
+      "size": 14616,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-09-11T14:01:04.972142Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-09-11T14:01:04.972142Z",
+  "mimetype": null,
+  "name": "calibration",
+  "path": "jupyterlite_contents/auto_examples/calibration",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

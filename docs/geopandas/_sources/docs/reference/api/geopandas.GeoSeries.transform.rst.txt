@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.transform
+=============================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.transform

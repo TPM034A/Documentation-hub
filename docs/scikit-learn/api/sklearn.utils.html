@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-learn/stable/api/sklearn.utils.html" />
 <meta property="og:site_name" content="scikit-learn" />
 <meta property="og:description" content="Various utilities to help with development. Developer guide. See the Utilities for Developers section for further details. Input and parameter validation: Functions to validate input and parameters..." />
-<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-notext.png" />
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="Various utilities to help with development. Developer guide. See the Utilities for Developers section for further details. Input and parameter validation: Functions to validate input and parameters..." />
 
-    <title>sklearn.utils &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>sklearn.utils &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,31 +35,32 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -67,15 +68,17 @@
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/sklearn.utils';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/api/sklearn.utils.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -84,21 +87,27 @@
     <link rel="prev" title="plot_tree" href="../modules/generated/sklearn.tree.plot_tree.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -124,7 +133,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -150,8 +159,8 @@
       
     
     
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -272,6 +281,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../about.html">
     About us
   </a>
@@ -299,11 +315,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -316,8 +339,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -480,6 +502,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../about.html">
     About us
   </a>
@@ -497,11 +526,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -514,8 +550,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -544,7 +579,15 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
@@ -579,6 +622,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.calibration.CalibratedClassifierCV.html">CalibratedClassifierCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.calibration.calibration_curve.html">calibration_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.calibration.CalibrationDisplay.html">CalibrationDisplay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sklearn.callback.html">sklearn.callback</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.callback.AutoPropagatedCallback.html">AutoPropagatedCallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.callback.CallbackContext.html">CallbackContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.callback.CallbackSupportMixin.html">CallbackSupportMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.callback.FitCallback.html">FitCallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.callback.ProgressBar.html">ProgressBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.callback.ScoringMonitor.html">ScoringMonitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.callback.ScoringMonitorLog.html">ScoringMonitorLog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.callback.with_callbacks.html">with_callbacks</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="sklearn.cluster.html">sklearn.cluster</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -897,6 +951,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="sklearn.manifold.html">sklearn.manifold</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.manifold.ClassicalMDS.html">ClassicalMDS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.manifold.Isomap.html">Isomap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.manifold.LocallyLinearEmbedding.html">LocallyLinearEmbedding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.manifold.MDS.html">MDS</a></li>
@@ -922,6 +977,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.classification_report.html">classification_report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.cohen_kappa_score.html">cohen_kappa_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.confusion_matrix.html">confusion_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.confusion_matrix_at_thresholds.html">confusion_matrix_at_thresholds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.d2_brier_score.html">d2_brier_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.d2_log_loss_score.html">d2_log_loss_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.dcg_score.html">dcg_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.det_curve.html">det_curve</a></li>
@@ -932,6 +989,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.jaccard_score.html">jaccard_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.log_loss.html">log_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.matthews_corrcoef.html">matthews_corrcoef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.metric_at_thresholds.html">metric_at_thresholds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.multilabel_confusion_matrix.html">multilabel_confusion_matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.ndcg_score.html">ndcg_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/sklearn.metrics.precision_recall_curve.html">precision_recall_curve</a></li>
@@ -1299,7 +1357,7 @@
 <span id="sklearn-utils"></span><span id="utils-ref"></span><h1>sklearn.utils<a class="headerlink" href="#module-sklearn.utils" title="Link to this heading">#</a></h1>
 <p>Various utilities to help with development.</p>
 <p><strong>Developer guide.</strong> See the <a class="reference internal" href="../developers/utilities.html#developers-utils"><span class="std std-ref">Utilities for Developers</span></a> section for further details.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.Bunch.html#sklearn.utils.Bunch" title="sklearn.utils.Bunch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Bunch</span></code></a></p></td>
 <td><p>Container object exposing keys as attributes.</p></td>
@@ -1317,7 +1375,7 @@
 <td><p>Decorator to mark a function or class as deprecated.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.estimator_html_repr.html#sklearn.utils.estimator_html_repr" title="sklearn.utils.estimator_html_repr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimator_html_repr</span></code></a></p></td>
-<td><p>Build a HTML representation of an estimator.</p></td>
+<td><p>Build an HTML representation of an estimator.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.gen_batches.html#sklearn.utils.gen_batches" title="sklearn.utils.gen_batches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_batches</span></code></a></p></td>
 <td><p>Generator to create slices containing <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> elements from 0 to <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></td>
@@ -1335,7 +1393,7 @@
 <td><p>Resample arrays or sparse matrices in a consistent way.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.safe_mask.html#sklearn.utils.safe_mask" title="sklearn.utils.safe_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">safe_mask</span></code></a></p></td>
-<td><p>Return a mask which is safe to use on X.</p></td>
+<td><p>Return an indexing mask compatible with X.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.safe_sqr.html#sklearn.utils.safe_sqr" title="sklearn.utils.safe_sqr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">safe_sqr</span></code></a></p></td>
 <td><p>Element wise squaring of array-likes and sparse matrices.</p></td>
@@ -1370,7 +1428,7 @@
 <section id="module-sklearn.utils.validation">
 <span id="input-and-parameter-validation"></span><span id="utils-ref-input-and-parameter-validation"></span><h2>Input and parameter validation<a class="headerlink" href="#module-sklearn.utils.validation" title="Link to this heading">#</a></h2>
 <p>Functions to validate input and parameters within scikit-learn estimators.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.check_X_y.html#sklearn.utils.check_X_y" title="sklearn.utils.check_X_y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_X_y</span></code></a></p></td>
 <td><p>Input validation for standard estimators.</p></td>
@@ -1382,7 +1440,7 @@
 <td><p>Check that all arrays have consistent first dimensions.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state" title="sklearn.utils.check_random_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_random_state</span></code></a></p></td>
-<td><p>Turn seed into a np.random.RandomState instance.</p></td>
+<td><p>Turn seed into an np.random.RandomState instance.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.check_scalar.html#sklearn.utils.check_scalar" title="sklearn.utils.check_scalar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_scalar</span></code></a></p></td>
 <td><p>Validate scalar parameters type and value.</p></td>
@@ -1412,7 +1470,7 @@
 <section id="module-sklearn.utils.metaestimators">
 <span id="meta-estimators"></span><span id="utils-ref-meta-estimators"></span><h2>Meta-estimators<a class="headerlink" href="#module-sklearn.utils.metaestimators" title="Link to this heading">#</a></h2>
 <p>Utilities for meta-estimators.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.metaestimators.available_if.html#sklearn.utils.metaestimators.available_if" title="sklearn.utils.metaestimators.available_if"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metaestimators.available_if</span></code></a></p></td>
 <td><p>An attribute that is available only if check returns a truthy value.</p></td>
@@ -1424,7 +1482,7 @@
 <section id="module-sklearn.utils.class_weight">
 <span id="weight-handling-based-on-class-labels"></span><span id="utils-ref-weight-handling-based-on-class-labels"></span><h2>Weight handling based on class labels<a class="headerlink" href="#module-sklearn.utils.class_weight" title="Link to this heading">#</a></h2>
 <p>Utilities for handling weights based on class labels.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.class_weight.compute_class_weight.html#sklearn.utils.class_weight.compute_class_weight" title="sklearn.utils.class_weight.compute_class_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">class_weight.compute_class_weight</span></code></a></p></td>
 <td><p>Estimate class weights for unbalanced datasets.</p></td>
@@ -1439,7 +1497,7 @@
 <section id="module-sklearn.utils.multiclass">
 <span id="dealing-with-multiclass-target-in-classifiers"></span><span id="utils-ref-dealing-with-multiclass-target-in-classifiers"></span><h2>Dealing with multiclass target in classifiers<a class="headerlink" href="#module-sklearn.utils.multiclass" title="Link to this heading">#</a></h2>
 <p>Utilities to handle multiclass/multioutput target in classifiers.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.multiclass.is_multilabel.html#sklearn.utils.multiclass.is_multilabel" title="sklearn.utils.multiclass.is_multilabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiclass.is_multilabel</span></code></a></p></td>
 <td><p>Check if <code class="docutils literal notranslate"><span class="pre">y</span></code> is in a multilabel format.</p></td>
@@ -1457,7 +1515,7 @@
 <section id="module-sklearn.utils.extmath">
 <span id="optimal-mathematical-operations"></span><span id="utils-ref-optimal-mathematical-operations"></span><h2>Optimal mathematical operations<a class="headerlink" href="#module-sklearn.utils.extmath" title="Link to this heading">#</a></h2>
 <p>Utilities to perform optimal mathematical operations in scikit-learn.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.extmath.density.html#sklearn.utils.extmath.density" title="sklearn.utils.extmath.density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extmath.density</span></code></a></p></td>
 <td><p>Compute density of a sparse vector.</p></td>
@@ -1484,7 +1542,7 @@
 <section id="module-sklearn.utils.sparsefuncs">
 <span id="working-with-sparse-matrices-and-arrays"></span><span id="utils-ref-working-with-sparse-matrices-and-arrays"></span><h2>Working with sparse matrices and arrays<a class="headerlink" href="#module-sklearn.utils.sparsefuncs" title="Link to this heading">#</a></h2>
 <p>A collection of utilities to work with sparse matrices and arrays.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.sparsefuncs.incr_mean_variance_axis.html#sklearn.utils.sparsefuncs.incr_mean_variance_axis" title="sklearn.utils.sparsefuncs.incr_mean_variance_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparsefuncs.incr_mean_variance_axis</span></code></a></p></td>
 <td><p>Compute incremental mean and variance along an axis on a CSR or CSC matrix.</p></td>
@@ -1511,7 +1569,7 @@
 </table>
 </div>
 <p id="module-sklearn.utils.sparsefuncs_fast">Utilities to work with sparse matrices and arrays written in Cython.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.sparsefuncs_fast.inplace_csr_row_normalize_l1.html#sklearn.utils.sparsefuncs_fast.inplace_csr_row_normalize_l1" title="sklearn.utils.sparsefuncs_fast.inplace_csr_row_normalize_l1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparsefuncs_fast.inplace_csr_row_normalize_l1</span></code></a></p></td>
 <td><p>Normalize inplace the rows of a CSR matrix or array by their L1 norm.</p></td>
@@ -1526,7 +1584,7 @@
 <section id="module-sklearn.utils.graph">
 <span id="working-with-graphs"></span><span id="utils-ref-working-with-graphs"></span><h2>Working with graphs<a class="headerlink" href="#module-sklearn.utils.graph" title="Link to this heading">#</a></h2>
 <p>Graph utilities and algorithms.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.graph.single_source_shortest_path_length.html#sklearn.utils.graph.single_source_shortest_path_length" title="sklearn.utils.graph.single_source_shortest_path_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph.single_source_shortest_path_length</span></code></a></p></td>
 <td><p>Return the length of the shortest path from source to all reachable nodes.</p></td>
@@ -1538,7 +1596,7 @@
 <section id="module-sklearn.utils.random">
 <span id="random-sampling"></span><span id="utils-ref-random-sampling"></span><h2>Random sampling<a class="headerlink" href="#module-sklearn.utils.random" title="Link to this heading">#</a></h2>
 <p>Utilities for random sampling.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.random.sample_without_replacement.html#sklearn.utils.random.sample_without_replacement" title="sklearn.utils.random.sample_without_replacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">random.sample_without_replacement</span></code></a></p></td>
 <td><p>Sample integers without replacement.</p></td>
@@ -1550,7 +1608,7 @@
 <section id="module-sklearn.utils.arrayfuncs">
 <span id="auxiliary-functions-that-operate-on-arrays"></span><span id="utils-ref-auxiliary-functions-that-operate-on-arrays"></span><h2>Auxiliary functions that operate on arrays<a class="headerlink" href="#module-sklearn.utils.arrayfuncs" title="Link to this heading">#</a></h2>
 <p>A small collection of auxiliary functions that operate on arrays.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.arrayfuncs.min_pos.html#sklearn.utils.arrayfuncs.min_pos" title="sklearn.utils.arrayfuncs.min_pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arrayfuncs.min_pos</span></code></a></p></td>
 <td><p>Find the minimum value of an array over positive values.</p></td>
@@ -1563,16 +1621,16 @@
 <span id="metadata-routing"></span><span id="utils-ref-metadata-routing"></span><h2>Metadata routing<a class="headerlink" href="#module-sklearn.utils.metadata_routing" title="Link to this heading">#</a></h2>
 <p>Utilities to route metadata within scikit-learn estimators.</p>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../metadata_routing.html#metadata-routing"><span class="std std-ref">Metadata Routing</span></a> section for further details.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="sklearn.utils.metadata_routing.MetadataRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata_routing.MetadataRequest</span></code></a></p></td>
-<td><p>Contains the metadata request info of a consumer.</p></td>
+<td><p>Container for storing metadata request info and an associated consumer (<code class="docutils literal notranslate"><span class="pre">owner</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.metadata_routing.MetadataRouter.html#sklearn.utils.metadata_routing.MetadataRouter" title="sklearn.utils.metadata_routing.MetadataRouter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata_routing.MetadataRouter</span></code></a></p></td>
 <td><p>Coordinates metadata routing for a <a class="reference internal" href="../glossary.html#term-router"><span class="xref std std-term">router</span></a> object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.metadata_routing.MethodMapping.html#sklearn.utils.metadata_routing.MethodMapping" title="sklearn.utils.metadata_routing.MethodMapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata_routing.MethodMapping</span></code></a></p></td>
-<td><p>Stores the mapping between caller and callee methods for a <a class="reference internal" href="../glossary.html#term-router"><span class="xref std std-term">router</span></a>.</p></td>
+<td><p>Stores the mapping between <code class="docutils literal notranslate"><span class="pre">caller</span></code> and <code class="docutils literal notranslate"><span class="pre">callee</span></code> methods for a <a class="reference internal" href="../glossary.html#term-router"><span class="xref std std-term">router</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.metadata_routing.get_routing_for_object.html#sklearn.utils.metadata_routing.get_routing_for_object" title="sklearn.utils.metadata_routing.get_routing_for_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata_routing.get_routing_for_object</span></code></a></p></td>
 <td><p>Get a <code class="docutils literal notranslate"><span class="pre">Metadata{Router,</span> <span class="pre">Request}</span></code> instance from the given object.</p></td>
@@ -1587,7 +1645,7 @@
 <section id="module-sklearn.utils.discovery">
 <span id="discovering-scikit-learn-objects"></span><span id="utils-ref-discovering-scikit-learn-objects"></span><h2>Discovering scikit-learn objects<a class="headerlink" href="#module-sklearn.utils.discovery" title="Link to this heading">#</a></h2>
 <p>Utilities to discover scikit-learn objects.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.discovery.all_displays.html#sklearn.utils.discovery.all_displays" title="sklearn.utils.discovery.all_displays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discovery.all_displays</span></code></a></p></td>
 <td><p>Get a list of all displays from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p></td>
@@ -1605,7 +1663,7 @@
 <section id="module-sklearn.utils.estimator_checks">
 <span id="api-compatibility-checkers"></span><span id="utils-ref-api-compatibility-checkers"></span><h2>API compatibility checkers<a class="headerlink" href="#module-sklearn.utils.estimator_checks" title="Link to this heading">#</a></h2>
 <p>Various utilities to check the compatibility of estimators with scikit-learn API.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.estimator_checks.check_estimator.html#sklearn.utils.estimator_checks.check_estimator" title="sklearn.utils.estimator_checks.check_estimator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimator_checks.check_estimator</span></code></a></p></td>
 <td><p>Check if estimator adheres to scikit-learn conventions.</p></td>
@@ -1622,12 +1680,12 @@
 </section>
 <section id="module-sklearn.utils.parallel">
 <span id="parallel-computing"></span><span id="utils-ref-parallel-computing"></span><h2>Parallel computing<a class="headerlink" href="#module-sklearn.utils.parallel" title="Link to this heading">#</a></h2>
-<p>Customizations of <a class="reference external" href="https://joblib.readthedocs.io/en/latest/index.html#module-joblib" title="(in joblib v1.6.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">joblib</span></code></a> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">threadpoolctl</span></code> tools for scikit-learn
+<p>Customizations of <a class="reference external" href="https://joblib.readthedocs.io/en/latest/index.html#module-joblib" title="(in joblib v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">joblib</span></code></a> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">threadpoolctl</span></code> tools for scikit-learn
 usage.</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.parallel.Parallel.html#sklearn.utils.parallel.Parallel" title="sklearn.utils.parallel.Parallel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parallel.Parallel</span></code></a></p></td>
-<td><p>Tweak of <a class="reference external" href="https://joblib.readthedocs.io/en/latest/generated/joblib.Parallel.html#joblib.Parallel" title="(in joblib v1.6.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">joblib.Parallel</span></code></a> that propagates the scikit-learn configuration.</p></td>
+<td><p>Tweak of <a class="reference external" href="https://joblib.readthedocs.io/en/latest/generated/joblib.Parallel.html#joblib.Parallel" title="(in joblib v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">joblib.Parallel</span></code></a> that propagates the scikit-learn configuration.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/sklearn.utils.parallel.delayed.html#sklearn.utils.parallel.delayed" title="sklearn.utils.parallel.delayed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parallel.delayed</span></code></a></p></td>
 <td><p>Decorator used to capture the arguments of a function.</p></td>
@@ -1688,8 +1746,8 @@ usage.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1700,7 +1758,7 @@ usage.</p>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

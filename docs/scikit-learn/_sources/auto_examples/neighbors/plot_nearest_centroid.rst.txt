@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_neighbors_plot_nearest_centroid.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -22,50 +22,26 @@
 Nearest Centroid Classification
 ===============================
 
-Sample usage of Nearest Centroid classification.
+Sample usage of the :ref:`nearest_centroid_classifier` with different shrink thresholds.
 It will plot the decision boundaries for each class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-51
-
-
-
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/neighbors/images/sphx_glr_plot_nearest_centroid_001.png
-         :alt: 3-Class classification (shrink_threshold=None)
-         :srcset: /auto_examples/neighbors/images/sphx_glr_plot_nearest_centroid_001.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/neighbors/images/sphx_glr_plot_nearest_centroid_002.png
-         :alt: 3-Class classification (shrink_threshold=0.2)
-         :srcset: /auto_examples/neighbors/images/sphx_glr_plot_nearest_centroid_002.png
-         :class: sphx-glr-multi-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    None 0.8133333333333334
-    0.2 0.82
-
-
-
-
-
-
-|
+.. GENERATED FROM PYTHON SOURCE LINES 10-13
 
 .. code-block:: Python
 
 
     # Authors: The scikit-learn developers
     # SPDX-License-Identifier: BSD-3-Clause
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 14-51
+
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
     import numpy as np
@@ -82,33 +58,56 @@ It will plot the decision boundaries for each class.
     X = iris.data[:, :2]
     y = iris.target
 
-    # Create color maps
-    cmap_light = ListedColormap(["orange", "cyan", "cornflowerblue"])
-    cmap_bold = ListedColormap(["darkorange", "c", "darkblue"])
-
     for shrinkage in [None, 0.2]:
         # we create an instance of Nearest Centroid Classifier and fit the data.
         clf = NearestCentroid(shrink_threshold=shrinkage)
         clf.fit(X, y)
         y_pred = clf.predict(X)
-        print(shrinkage, np.mean(y == y_pred))
+        acc = np.mean(y == y_pred)
 
         _, ax = plt.subplots()
-        DecisionBoundaryDisplay.from_estimator(
-            clf, X, cmap=cmap_light, ax=ax, response_method="predict"
+        disp = DecisionBoundaryDisplay.from_estimator(
+            clf, X, ax=ax, response_method="predict", alpha=0.5
         )
 
         # Plot also the training points
-        plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold, edgecolor="k", s=20)
-        plt.title("3-Class classification (shrink_threshold=%r)" % shrinkage)
+        cmap = ListedColormap(disp.multiclass_colors_)
+        plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap, edgecolor="k", s=20)
+        plt.title(
+            f"3-Class classification (shrink_threshold={shrinkage})\nAccuracy: {acc:.2f}"
+        )
         plt.axis("tight")
 
     plt.show()
 
 
+
+
+.. rst-class:: sphx-glr-horizontal
+
+
+    *
+
+      .. image-sg:: /auto_examples/neighbors/images/sphx_glr_plot_nearest_centroid_001.png
+         :alt: 3-Class classification (shrink_threshold=None) Accuracy: 0.81
+         :srcset: /auto_examples/neighbors/images/sphx_glr_plot_nearest_centroid_001.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/neighbors/images/sphx_glr_plot_nearest_centroid_002.png
+         :alt: 3-Class classification (shrink_threshold=0.2) Accuracy: 0.82
+         :srcset: /auto_examples/neighbors/images/sphx_glr_plot_nearest_centroid_002.png
+         :class: sphx-glr-multi-img
+
+
+
+
+
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.173 seconds)
+   **Total running time of the script:** (0 minutes 0.161 seconds)
 
 
 .. _sphx_glr_download_auto_examples_neighbors_plot_nearest_centroid.py:
@@ -120,7 +119,7 @@ It will plot the decision boundaries for each class.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/neighbors/plot_nearest_centroid.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/neighbors/plot_nearest_centroid.ipynb
         :alt: Launch binder
         :width: 150 px
 

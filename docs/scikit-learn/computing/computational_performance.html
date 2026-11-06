@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="9.2. Computational Performance" />
+<meta property="og:title" content="10.2. Computational Performance" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-learn/stable/computing/computational_performance.html" />
 <meta property="og:site_name" content="scikit-learn" />
@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="atomic_prediction_latency" />
 <meta name="description" content="For some applications the performance (mainly latency and throughput at prediction time) of estimators is crucial. It may also be of interest to consider the training throughput but this is often l..." />
 
-    <title>9.2. Computational Performance &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>10.2. Computational Performance &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,71 +35,80 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'computing/computational_performance';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/computing/computational_performance.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.3. Parallelism, resource management, and configuration" href="parallelism.html" />
-    <link rel="prev" title="9.1. Strategies to scale computationally: bigger data" href="scaling_strategies.html" />
+    <link rel="next" title="10.3. Parallelism and resource management" href="parallelism.html" />
+    <link rel="prev" title="10.1. Strategies to scale computationally: bigger data" href="scaling_strategies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -125,7 +134,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -151,8 +160,8 @@
       
     
     
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -273,6 +282,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../about.html">
     About us
   </a>
@@ -300,11 +316,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -317,8 +340,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -485,6 +507,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../about.html">
     About us
   </a>
@@ -502,11 +531,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -519,8 +555,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -549,7 +584,15 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
@@ -601,39 +644,41 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualizations.html">6. Visualizations</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">7. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/compose.html">7.1. Pipelines and composite estimators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/feature_extraction.html">7.2. Feature extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/preprocessing.html">7.3. Preprocessing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/impute.html">7.4. Imputation of missing values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/unsupervised_reduction.html">7.5. Unsupervised dimensionality reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/random_projection.html">7.6. Random Projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/kernel_approximation.html">7.7. Kernel Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/metrics.html">7.8. Pairwise metrics, Affinities and Kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/preprocessing_targets.html">7.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks.html">7. Callbacks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">8. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/compose.html">8.1. Pipelines and composite estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/feature_extraction.html">8.2. Feature extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/preprocessing.html">8.3. Preprocessing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/impute.html">8.4. Imputation of missing values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/unsupervised_reduction.html">8.5. Unsupervised dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/random_projection.html">8.6. Random Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/kernel_approximation.html">8.7. Kernel Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/metrics.html">8.8. Pairwise metrics, Affinities and Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/preprocessing_targets.html">8.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">8. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">8.1. Toy datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">8.2. Real world datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">8.3. Generated datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">8.4. Loading other datasets</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">9. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">9.1. Toy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">9.2. Real world datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">9.3. Generated datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">9.4. Loading other datasets</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../computing.html">9. Computing with scikit-learn</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="scaling_strategies.html">9.1. Strategies to scale computationally: bigger data</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.2. Computational Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parallelism.html">9.3. Parallelism, resource management, and configuration</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../computing.html">10. Computing with scikit-learn</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="scaling_strategies.html">10.1. Strategies to scale computationally: bigger data</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.2. Computational Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallelism.html">10.3. Parallelism and resource management</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">10. Model persistence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">11. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dispatching.html">12. Dispatching</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/array_api.html">12.1. Array API support (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">11. Model persistence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">12. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_interoperability.html">13. Data Interoperability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/df_output_transform.html">13.1. Pandas/Polars Output for Transformers with <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/array_api.html">13.2. Array API support (experimental)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">13. Choosing the right estimator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../presentations.html">14. External Resources, Videos and Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">14. Choosing the right estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../presentations.html">15. External Resources, Videos and Talks</a></li>
 </ul>
 </div>
 </nav></div>
@@ -671,9 +716,9 @@
     <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User Guide</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../computing.html" class="nav-link"><span class="section-number">9. </span>Computing with scikit-learn</a></li>
+    <li class="breadcrumb-item"><a href="../computing.html" class="nav-link"><span class="section-number">10. </span>Computing with scikit-learn</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">9.2. </span>Computational Performance</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">10.2. </span>Computational Performance</span></li>
   </ul>
 </nav>
 </div>
@@ -691,7 +736,7 @@
                 <article class="bd-article">
                   
   <section id="computational-performance">
-<span id="id1"></span><h1><span class="section-number">9.2. </span>Computational Performance<a class="headerlink" href="#computational-performance" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">10.2. </span>Computational Performance<a class="headerlink" href="#computational-performance" title="Link to this heading">#</a></h1>
 <p>For some applications the performance (mainly latency and throughput at
 prediction time) of estimators is crucial. It may also be of interest to
 consider the training throughput but this is often less important in a
@@ -710,7 +755,7 @@ prediction accuracy. Indeed, simpler models (e.g. linear instead of
 non-linear, or with fewer parameters) often run faster but are not always able
 to take into account the same exact properties of the data as more complex ones.</p>
 <section id="prediction-latency">
-<h2><span class="section-number">9.2.1. </span>Prediction Latency<a class="headerlink" href="#prediction-latency" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2.1. </span>Prediction Latency<a class="headerlink" href="#prediction-latency" title="Link to this heading">#</a></h2>
 <p>One of the most straightforward concerns one may have when using/choosing a
 machine learning toolkit is the latency at which predictions can be made in a
 production environment.</p>
@@ -724,27 +769,27 @@ production environment.</p>
 <p>A last major parameter is also the possibility to do predictions in bulk or
 one-at-a-time mode.</p>
 <section id="bulk-versus-atomic-mode">
-<h3><span class="section-number">9.2.1.1. </span>Bulk versus Atomic mode<a class="headerlink" href="#bulk-versus-atomic-mode" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.1.1. </span>Bulk versus Atomic mode<a class="headerlink" href="#bulk-versus-atomic-mode" title="Link to this heading">#</a></h3>
 <p>In general doing predictions in bulk (many instances at the same time) is
 more efficient for a number of reasons (branching predictability, CPU cache,
 linear algebra libraries optimizations etc.). Here we see on a setting
 with few features that independently of estimator choice the bulk mode is
 always faster, and for some of them by 1 to 2 orders of magnitude:</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/applications/plot_prediction_latency.html"><img alt="atomic_prediction_latency" src="../_images/sphx_glr_plot_prediction_latency_001.png" style="width: 800.0px; height: 480.0px;" /></a></strong></p><p class="centered">
-<strong><a class="reference external" href="../auto_examples/applications/plot_prediction_latency.html"><img alt="bulk_prediction_latency" src="../_images/sphx_glr_plot_prediction_latency_002.png" style="width: 800.0px; height: 480.0px;" /></a></strong></p><p>To benchmark different estimators for your case you can simply change the
+<strong><a class="reference external" href="../auto_examples/applications/plot_prediction_latency.html"><img alt="atomic_prediction_latency" height="480" src="../_images/sphx_glr_plot_prediction_latency_001.png" width="800" /></a></strong></p><p class="centered">
+<strong><a class="reference external" href="../auto_examples/applications/plot_prediction_latency.html"><img alt="bulk_prediction_latency" height="480" src="../_images/sphx_glr_plot_prediction_latency_002.png" width="800" /></a></strong></p><p>To benchmark different estimators for your case you can simply change the
 <code class="docutils literal notranslate"><span class="pre">n_features</span></code> parameter in this example:
 <a class="reference internal" href="../auto_examples/applications/plot_prediction_latency.html#sphx-glr-auto-examples-applications-plot-prediction-latency-py"><span class="std std-ref">Prediction Latency</span></a>. This should give
 you an estimate of the order of magnitude of the prediction latency.</p>
 </section>
 <section id="configuring-scikit-learn-for-reduced-validation-overhead">
-<h3><span class="section-number">9.2.1.2. </span>Configuring Scikit-learn for reduced validation overhead<a class="headerlink" href="#configuring-scikit-learn-for-reduced-validation-overhead" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.1.2. </span>Configuring Scikit-learn for reduced validation overhead<a class="headerlink" href="#configuring-scikit-learn-for-reduced-validation-overhead" title="Link to this heading">#</a></h3>
 <p>Scikit-learn does some validation on data that increases the overhead per
 call to <code class="docutils literal notranslate"><span class="pre">predict</span></code> and similar functions. In particular, checking that
 features are finite (not NaN or infinite) involves a full pass over the
 data. If you ensure that your data is acceptable, you may suppress
-checking for finiteness by setting the environment variable
-<code class="docutils literal notranslate"><span class="pre">SKLEARN_ASSUME_FINITE</span></code> to a non-empty string before importing
+checking for finiteness by setting
+<a class="reference internal" href="../developers/global_configuration.html#envvar-sklearn-assume-finite"><span class="std std-ref">SKLEARN_ASSUME_FINITE</span></a> before importing
 scikit-learn, or configure it in Python with <a class="reference internal" href="../modules/generated/sklearn.set_config.html#sklearn.set_config" title="sklearn.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_config</span></code></a>.
 For more control than these global settings, a <a class="reference internal" href="../modules/generated/sklearn.config_context.html#sklearn.config_context" title="sklearn.config_context"><code class="xref py py-func docutils literal notranslate"><span class="pre">config_context</span></code></a>
 allows you to set this configuration within a specified context:</p>
@@ -757,7 +802,7 @@ allows you to set this configuration within a specified context:</p>
 <a class="reference internal" href="../modules/generated/sklearn.utils.assert_all_finite.html#sklearn.utils.assert_all_finite" title="sklearn.utils.assert_all_finite"><code class="xref py py-func docutils literal notranslate"><span class="pre">assert_all_finite</span></code></a> within the context.</p>
 </section>
 <section id="influence-of-the-number-of-features">
-<h3><span class="section-number">9.2.1.3. </span>Influence of the Number of Features<a class="headerlink" href="#influence-of-the-number-of-features" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.1.3. </span>Influence of the Number of Features<a class="headerlink" href="#influence-of-the-number-of-features" title="Link to this heading">#</a></h3>
 <p>Obviously when the number of features increases so does the memory
 consumption of each example. Indeed, for a matrix of <span class="math notranslate nohighlight">\(M\)</span> instances
 with <span class="math notranslate nohighlight">\(N\)</span> features, the space complexity is in <span class="math notranslate nohighlight">\(O(NM)\)</span>.
@@ -766,12 +811,12 @@ From a computing perspective it also means that the number of basic operations
 too. Here is a graph of the evolution of the prediction latency with the
 number of features:</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/applications/plot_prediction_latency.html"><img alt="influence_of_n_features_on_latency" src="../_images/sphx_glr_plot_prediction_latency_003.png" style="width: 800.0px; height: 480.0px;" /></a></strong></p><p>Overall you can expect the prediction time to increase at least linearly with
+<strong><a class="reference external" href="../auto_examples/applications/plot_prediction_latency.html"><img alt="influence_of_n_features_on_latency" height="480" src="../_images/sphx_glr_plot_prediction_latency_003.png" width="800" /></a></strong></p><p>Overall you can expect the prediction time to increase at least linearly with
 the number of features (non-linear cases can happen depending on the global
 memory footprint and estimator).</p>
 </section>
 <section id="influence-of-the-input-data-representation">
-<h3><span class="section-number">9.2.1.4. </span>Influence of the Input Data Representation<a class="headerlink" href="#influence-of-the-input-data-representation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.1.4. </span>Influence of the Input Data Representation<a class="headerlink" href="#influence-of-the-input-data-representation" title="Link to this heading">#</a></h3>
 <p>Scipy provides sparse matrix data structures which are optimized for storing
 sparse data. The main feature of sparse formats is that you don’t store zeros
 so if your data is sparse then you use much less memory. A non-zero value in
@@ -791,7 +836,7 @@ with many CPUs and an optimized BLAS implementation.</p>
 <p>Here is sample code to test the sparsity of your input:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sparsity_ratio</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
     <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;input sparsity ratio:&quot;</span><span class="p">,</span> <span class="n">sparsity_ratio</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"input sparsity ratio:"</span><span class="p">,</span> <span class="n">sparsity_ratio</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>As a rule of thumb you can consider that if the sparsity ratio is greater
@@ -801,17 +846,16 @@ for more information on how to build (or convert your data to) sparse matrix
 formats. Most of the time the <code class="docutils literal notranslate"><span class="pre">CSR</span></code> and <code class="docutils literal notranslate"><span class="pre">CSC</span></code> formats work best.</p>
 </section>
 <section id="influence-of-the-model-complexity">
-<h3><span class="section-number">9.2.1.5. </span>Influence of the Model Complexity<a class="headerlink" href="#influence-of-the-model-complexity" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.1.5. </span>Influence of the Model Complexity<a class="headerlink" href="#influence-of-the-model-complexity" title="Link to this heading">#</a></h3>
 <p>Generally speaking, when model complexity increases, predictive power and
 latency are supposed to increase. Increasing predictive power is usually
 interesting, but for many applications we would better not increase
 prediction latency too much. We will now review this idea for different
 families of supervised models.</p>
 <p>For <a class="reference internal" href="../api/sklearn.linear_model.html#module-sklearn.linear_model" title="sklearn.linear_model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code></a> (e.g. Lasso, ElasticNet,
-SGDClassifier/Regressor, Ridge &amp; RidgeClassifier,
-PassiveAggressiveClassifier/Regressor, LinearSVC, LogisticRegression…) the
-decision function that is applied at prediction time is the same (a dot product)
-, so latency should be equivalent.</p>
+SGDClassifier/Regressor, Ridge &amp; RidgeClassifier, LinearSVC, LogisticRegression…) the
+decision function that is applied at prediction time is the same (a dot product), so
+latency should be equivalent.</p>
 <p>Here is an example using
 <a class="reference internal" href="../modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">SGDClassifier</span></code></a> with the
 <code class="docutils literal notranslate"><span class="pre">elasticnet</span></code> penalty. The regularization strength is globally controlled by
@@ -823,28 +867,28 @@ describe it fully. Of course sparsity influences in turn the prediction time
 as the sparse dot-product takes time roughly proportional to the number of
 non-zero coefficients.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/applications/plot_model_complexity_influence.html"><img alt="en_model_complexity" src="../_images/sphx_glr_plot_model_complexity_influence_001.png" style="width: 512.0px; height: 384.0px;" /></a></strong></p><p>For the <a class="reference internal" href="../api/sklearn.svm.html#module-sklearn.svm" title="sklearn.svm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code></a> family of algorithms with a non-linear kernel,
+<strong><a class="reference external" href="../auto_examples/applications/plot_model_complexity_influence.html"><img alt="en_model_complexity" height="384" src="../_images/sphx_glr_plot_model_complexity_influence_001.png" width="512" /></a></strong></p><p>For the <a class="reference internal" href="../api/sklearn.svm.html#module-sklearn.svm" title="sklearn.svm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code></a> family of algorithms with a non-linear kernel,
 the latency is tied to the number of support vectors (the fewer the faster).
 Latency and throughput should (asymptotically) grow linearly with the number
-of support vectors in a SVC or SVR model. The kernel will also influence the
+of support vectors in an SVC or SVR model. The kernel will also influence the
 latency as it is used to compute the projection of the input vector once per
 support vector. In the following graph the <code class="docutils literal notranslate"><span class="pre">nu</span></code> parameter of
 <a class="reference internal" href="../modules/generated/sklearn.svm.NuSVR.html#sklearn.svm.NuSVR" title="sklearn.svm.NuSVR"><code class="xref py py-class docutils literal notranslate"><span class="pre">NuSVR</span></code></a> was used to influence the number of
 support vectors.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/applications/plot_model_complexity_influence.html"><img alt="nusvr_model_complexity" src="../_images/sphx_glr_plot_model_complexity_influence_002.png" style="width: 512.0px; height: 384.0px;" /></a></strong></p><p>For <a class="reference internal" href="../api/sklearn.ensemble.html#module-sklearn.ensemble" title="sklearn.ensemble"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code></a> of trees (e.g. RandomForest, GBT,
+<strong><a class="reference external" href="../auto_examples/applications/plot_model_complexity_influence.html"><img alt="nusvr_model_complexity" height="384" src="../_images/sphx_glr_plot_model_complexity_influence_002.png" width="512" /></a></strong></p><p>For <a class="reference internal" href="../api/sklearn.ensemble.html#module-sklearn.ensemble" title="sklearn.ensemble"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code></a> of trees (e.g. RandomForest, GBT,
 ExtraTrees, etc.) the number of trees and their depth play the most
 important role. Latency and throughput should scale linearly with the number
 of trees. In this case we used directly the <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> parameter of
 <a class="reference internal" href="../modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="sklearn.ensemble.GradientBoostingRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GradientBoostingRegressor</span></code></a>.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/applications/plot_model_complexity_influence.html"><img alt="gbt_model_complexity" src="../_images/sphx_glr_plot_model_complexity_influence_003.png" style="width: 512.0px; height: 384.0px;" /></a></strong></p><p>In any case be warned that decreasing model complexity can hurt accuracy as
+<strong><a class="reference external" href="../auto_examples/applications/plot_model_complexity_influence.html"><img alt="gbt_model_complexity" height="384" src="../_images/sphx_glr_plot_model_complexity_influence_003.png" width="512" /></a></strong></p><p>In any case be warned that decreasing model complexity can hurt accuracy as
 mentioned above. For instance a non-linearly separable problem can be handled
 with a speedy linear model but prediction power will very likely suffer in
 the process.</p>
 </section>
 <section id="feature-extraction-latency">
-<h3><span class="section-number">9.2.1.6. </span>Feature Extraction Latency<a class="headerlink" href="#feature-extraction-latency" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.1.6. </span>Feature Extraction Latency<a class="headerlink" href="#feature-extraction-latency" title="Link to this heading">#</a></h3>
 <p>Most scikit-learn models are usually pretty fast as they are implemented
 either with compiled Cython extensions or optimized computing libraries.
 On the other hand, in many real world applications the feature extraction
@@ -855,20 +899,20 @@ files, tokenizing the text and hashing it into a common vector space) is
 taking 100 to 500 times more time than the actual prediction code, depending on
 the chosen model.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/applications/plot_out_of_core_classification.html"><img alt="prediction_time" src="../_images/sphx_glr_plot_out_of_core_classification_004.png" style="width: 512.0px; height: 384.0px;" /></a></strong></p><p>In many cases it is thus recommended to carefully time and profile your
+<strong><a class="reference external" href="../auto_examples/applications/plot_out_of_core_classification.html"><img alt="prediction_time" height="384" src="../_images/sphx_glr_plot_out_of_core_classification_004.png" width="512" /></a></strong></p><p>In many cases it is thus recommended to carefully time and profile your
 feature extraction code as it may be a good place to start optimizing when
 your overall latency is too slow for your application.</p>
 </section>
 </section>
 <section id="prediction-throughput">
-<h2><span class="section-number">9.2.2. </span>Prediction Throughput<a class="headerlink" href="#prediction-throughput" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2.2. </span>Prediction Throughput<a class="headerlink" href="#prediction-throughput" title="Link to this heading">#</a></h2>
 <p>Another important metric to care about when sizing production systems is the
 throughput i.e. the number of predictions you can make in a given amount of
 time. Here is a benchmark from the
 <a class="reference internal" href="../auto_examples/applications/plot_prediction_latency.html#sphx-glr-auto-examples-applications-plot-prediction-latency-py"><span class="std std-ref">Prediction Latency</span></a> example that measures
 this quantity for a number of estimators on synthetic data:</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/applications/plot_prediction_latency.html"><img alt="throughput_benchmark" src="../_images/sphx_glr_plot_prediction_latency_004.png" style="width: 800.0px; height: 480.0px;" /></a></strong></p><p>These throughputs are achieved on a single process. An obvious way to
+<strong><a class="reference external" href="../auto_examples/applications/plot_prediction_latency.html"><img alt="throughput_benchmark" height="480" src="../_images/sphx_glr_plot_prediction_latency_004.png" width="800" /></a></strong></p><p>These throughputs are achieved on a single process. An obvious way to
 increase the throughput of your application is to spawn additional instances
 (usually processes in Python because of the
 <a class="reference external" href="https://wiki.python.org/moin/GlobalInterpreterLock">GIL</a>) that share the
@@ -877,9 +921,9 @@ explanation on how to achieve this is beyond the scope of this documentation
 though.</p>
 </section>
 <section id="tips-and-tricks">
-<h2><span class="section-number">9.2.3. </span>Tips and Tricks<a class="headerlink" href="#tips-and-tricks" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2.3. </span>Tips and Tricks<a class="headerlink" href="#tips-and-tricks" title="Link to this heading">#</a></h2>
 <section id="linear-algebra-libraries">
-<h3><span class="section-number">9.2.3.1. </span>Linear algebra libraries<a class="headerlink" href="#linear-algebra-libraries" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.3.1. </span>Linear algebra libraries<a class="headerlink" href="#linear-algebra-libraries" title="Link to this heading">#</a></h3>
 <p>As scikit-learn relies heavily on Numpy/Scipy and linear algebra in general it
 makes sense to take explicit care of the versions of these libraries.
 Basically, you ought to make sure that Numpy is built using an optimized <a class="reference external" href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">BLAS</a> /
@@ -893,13 +937,12 @@ BLAS implementation and lead to orders of magnitude speedup over a
 non-optimized BLAS.</p>
 <p>You can display the BLAS / LAPACK implementation used by your NumPy / SciPy /
 scikit-learn install with the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;import sklearn; sklearn.show_versions()&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"import sklearn; sklearn.show_versions()"</span>
 </pre></div>
 </div>
 <p>Optimized BLAS / LAPACK implementations include:</p>
 <ul class="simple">
-<li><p>Atlas (need hardware specific tuning by rebuilding on the target machine)</p></li>
-<li><p>OpenBLAS</p></li>
+<li><p>OpenBLAS (e.g. default in Numpy and SciPy PyPI wheels)</p></li>
 <li><p>MKL</p></li>
 <li><p>Apple Accelerate and vecLib frameworks (OSX only)</p></li>
 </ul>
@@ -910,14 +953,15 @@ from Daniel Nouri which has some nice step by step install instructions for
 Debian / Ubuntu.</p>
 </section>
 <section id="limiting-working-memory">
-<span id="working-memory"></span><h3><span class="section-number">9.2.3.2. </span>Limiting Working Memory<a class="headerlink" href="#limiting-working-memory" title="Link to this heading">#</a></h3>
+<span id="working-memory"></span><h3><span class="section-number">10.2.3.2. </span>Limiting Working Memory<a class="headerlink" href="#limiting-working-memory" title="Link to this heading">#</a></h3>
 <p>Some calculations when implemented using standard numpy vectorized operations
 involve using a large amount of temporary memory.  This may potentially exhaust
 system memory.  Where computations can be performed in fixed-memory chunks, we
 attempt to do so, and allow the user to hint at the maximum size of this
 working memory (defaulting to 1GB) using <a class="reference internal" href="../modules/generated/sklearn.set_config.html#sklearn.set_config" title="sklearn.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_config</span></code></a> or
-<a class="reference internal" href="../modules/generated/sklearn.config_context.html#sklearn.config_context" title="sklearn.config_context"><code class="xref py py-func docutils literal notranslate"><span class="pre">config_context</span></code></a>.  The following suggests to limit temporary working
-memory to 128 MiB:</p>
+<a class="reference internal" href="../modules/generated/sklearn.config_context.html#sklearn.config_context" title="sklearn.config_context"><code class="xref py py-func docutils literal notranslate"><span class="pre">config_context</span></code></a>. See <a class="reference internal" href="../developers/global_configuration.html#envvar-sklearn-working-memory"><span class="std std-ref">SKLEARN_WORKING_MEMORY</span></a>
+which can be used to change the global default.</p>
+<p>The following suggests to limit temporary working memory to 128 MiB:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">sklearn</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">config_context</span><span class="p">(</span><span class="n">working_memory</span><span class="o">=</span><span class="mi">128</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">pass</span>  <span class="c1"># do chunked work here</span>
@@ -928,13 +972,13 @@ memory to 128 MiB:</p>
 row-wise reductions of a pairwise distance matrix.</p>
 </section>
 <section id="model-compression">
-<h3><span class="section-number">9.2.3.3. </span>Model Compression<a class="headerlink" href="#model-compression" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.3.3. </span>Model Compression<a class="headerlink" href="#model-compression" title="Link to this heading">#</a></h3>
 <p>Model compression in scikit-learn only concerns linear models for the moment.
 In this context it means that we want to control the model sparsity (i.e. the
 number of non-zero coordinates in the model vectors). It is generally a good
 idea to combine model sparsity with sparse input data representation.</p>
 <p>Here is sample code that illustrates the use of the <code class="docutils literal notranslate"><span class="pre">sparsify()</span></code> method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">SGDRegressor</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;elasticnet&#39;</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">SGDRegressor</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s1">'elasticnet'</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">sparsify</span><span class="p">()</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
@@ -952,7 +996,7 @@ Furthermore, sparsifying can be very useful to reduce the memory usage of
 predictive models deployed on production servers.</p>
 </section>
 <section id="model-reshaping">
-<h3><span class="section-number">9.2.3.4. </span>Model Reshaping<a class="headerlink" href="#model-reshaping" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.3.4. </span>Model Reshaping<a class="headerlink" href="#model-reshaping" title="Link to this heading">#</a></h3>
 <p>Model reshaping consists in selecting only a portion of the available features
 to fit a model. In other words, if a model discards features during the
 learning phase we can then strip those from the input. This has several
@@ -970,7 +1014,7 @@ In the case of sparse input (particularly in <code class="docutils literal notra
 sufficient to not generate the relevant features, leaving their columns empty.</p>
 </section>
 <section id="links">
-<h3><span class="section-number">9.2.3.5. </span>Links<a class="headerlink" href="#links" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.3.5. </span>Links<a class="headerlink" href="#links" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="../developers/performance.html#performance-howto"><span class="std std-ref">scikit-learn developer performance documentation</span></a></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html">Scipy sparse matrix formats documentation</a></p></li>
@@ -995,7 +1039,7 @@ sufficient to not generate the relevant features, leaving their columns empty.</
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9.1. </span>Strategies to scale computationally: bigger data</p>
+        <p class="prev-next-title"><span class="section-number">10.1. </span>Strategies to scale computationally: bigger data</p>
       </div>
     </a>
     <a class="right-next"
@@ -1003,7 +1047,7 @@ sufficient to not generate the relevant features, leaving their columns empty.</
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.3. </span>Parallelism, resource management, and configuration</p>
+        <p class="prev-next-title"><span class="section-number">10.3. </span>Parallelism and resource management</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1028,37 +1072,44 @@ sufficient to not generate the relevant features, leaving their columns empty.</
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-latency">9.2.1. Prediction Latency</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-versus-atomic-mode">9.2.1.1. Bulk versus Atomic mode</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-scikit-learn-for-reduced-validation-overhead">9.2.1.2. Configuring Scikit-learn for reduced validation overhead</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-the-number-of-features">9.2.1.3. Influence of the Number of Features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-the-input-data-representation">9.2.1.4. Influence of the Input Data Representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-the-model-complexity">9.2.1.5. Influence of the Model Complexity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction-latency">9.2.1.6. Feature Extraction Latency</a></li>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-latency">10.2.1. Prediction Latency</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-versus-atomic-mode">10.2.1.1. Bulk versus Atomic mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-scikit-learn-for-reduced-validation-overhead">10.2.1.2. Configuring Scikit-learn for reduced validation overhead</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-the-number-of-features">10.2.1.3. Influence of the Number of Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-the-input-data-representation">10.2.1.4. Influence of the Input Data Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-the-model-complexity">10.2.1.5. Influence of the Model Complexity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction-latency">10.2.1.6. Feature Extraction Latency</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-throughput">9.2.2. Prediction Throughput</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-tricks">9.2.3. Tips and Tricks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-libraries">9.2.3.1. Linear algebra libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-working-memory">9.2.3.2. Limiting Working Memory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-compression">9.2.3.3. Model Compression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-reshaping">9.2.3.4. Model Reshaping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#links">9.2.3.5. Links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-throughput">10.2.2. Prediction Throughput</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-tricks">10.2.3. Tips and Tricks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-libraries">10.2.3.1. Linear algebra libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-working-memory">10.2.3.2. Limiting Working Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-compression">10.2.3.3. Model Compression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-reshaping">10.2.3.4. Model Reshaping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#links">10.2.3.5. Links</a></li>
 </ul>
 </li>
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/computing/computational_performance.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1073,8 +1124,8 @@ sufficient to not generate the relevant features, leaving their columns empty.</
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1085,7 +1136,7 @@ sufficient to not generate the relevant features, leaving their columns empty.</
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

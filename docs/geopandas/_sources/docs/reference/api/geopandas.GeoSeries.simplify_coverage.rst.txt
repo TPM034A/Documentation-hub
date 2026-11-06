@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.simplify\_coverage
+======================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.simplify_coverage

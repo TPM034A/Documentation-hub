@@ -17,9 +17,6 @@ pandas.tseries.offsets.Minute
         ~Minute.base
       
       
-        ~Minute.delta
-      
-      
         ~Minute.freqstr
       
       
@@ -51,9 +48,6 @@ pandas.tseries.offsets.Minute
       
       
         ~Minute.copy
-      
-      
-        ~Minute.is_anchored
       
       
         ~Minute.is_month_end

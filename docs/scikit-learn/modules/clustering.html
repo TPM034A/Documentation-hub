@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="Clustering of unlabeled data can be performed with the module sklearn.cluster. Each clustering algorithm comes in two variants: a class, that implements the fit method to learn the clusters on trai..." />
 
-    <title>2.3. Clustering &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>2.3. Clustering &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,48 +35,51 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules/clustering';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/modules/clustering.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -85,21 +88,27 @@
     <link rel="prev" title="2.2. Manifold learning" href="manifold.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -125,7 +134,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -151,8 +160,8 @@
       
     
     
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -273,6 +282,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../about.html">
     About us
   </a>
@@ -300,11 +316,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -317,8 +340,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -485,6 +507,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../about.html">
     About us
   </a>
@@ -502,11 +531,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -519,8 +555,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -549,7 +584,15 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
@@ -601,39 +644,41 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualizations.html">6. Visualizations</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">7. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="compose.html">7.1. Pipelines and composite estimators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_extraction.html">7.2. Feature extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">7.3. Preprocessing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="impute.html">7.4. Imputation of missing values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">7.5. Unsupervised dimensionality reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="random_projection.html">7.6. Random Projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">7.7. Kernel Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metrics.html">7.8. Pairwise metrics, Affinities and Kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">7.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks.html">7. Callbacks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">8. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="compose.html">8.1. Pipelines and composite estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction.html">8.2. Feature extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">8.3. Preprocessing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impute.html">8.4. Imputation of missing values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">8.5. Unsupervised dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random_projection.html">8.6. Random Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">8.7. Kernel Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">8.8. Pairwise metrics, Affinities and Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">8.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">8. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">8.1. Toy datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">8.2. Real world datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">8.3. Generated datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">8.4. Loading other datasets</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">9. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">9.1. Toy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">9.2. Real world datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">9.3. Generated datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">9.4. Loading other datasets</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">9. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">9.1. Strategies to scale computationally: bigger data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">9.2. Computational Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">9.3. Parallelism, resource management, and configuration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">10. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">10.1. Strategies to scale computationally: bigger data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">10.2. Computational Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">10.3. Parallelism and resource management</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">10. Model persistence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">11. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dispatching.html">12. Dispatching</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="array_api.html">12.1. Array API support (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">11. Model persistence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">12. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_interoperability.html">13. Data Interoperability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="df_output_transform.html">13.1. Pandas/Polars Output for Transformers with <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_api.html">13.2. Array API support (experimental)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">13. Choosing the right estimator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../presentations.html">14. External Resources, Videos and Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">14. Choosing the right estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../presentations.html">15. External Resources, Videos and Talks</a></li>
 </ul>
 </div>
 </nav></div>
@@ -713,7 +758,7 @@ in the <a class="reference internal" href="../api/sklearn.metrics.html#module-sk
 <section id="overview-of-clustering-methods">
 <h2><span class="section-number">2.3.1. </span>Overview of clustering methods<a class="headerlink" href="#overview-of-clustering-methods" title="Link to this heading">#</a></h2>
 <figure class="align-center" id="id24">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_cluster_comparison.html"><img alt="../_images/sphx_glr_plot_cluster_comparison_001.png" src="../_images/sphx_glr_plot_cluster_comparison_001.png" style="width: 1050.0px; height: 650.0px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_cluster_comparison.html"><img alt="../_images/sphx_glr_plot_cluster_comparison_001.png" height="650" src="../_images/sphx_glr_plot_cluster_comparison_001.png" width="1050" />
 </a>
 <figcaption>
 <p><span class="caption-text">A comparison of the clustering algorithms in scikit-learn</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
@@ -850,7 +895,7 @@ although they live in the same space.</p>
 <p>The K-means algorithm aims to choose centroids that minimise the <strong>inertia</strong>,
 or <strong>within-cluster sum-of-squares criterion</strong>:</p>
 <div class="math notranslate nohighlight">
-\[\sum_{i=0}^{n}\min_{\mu_j \in C}(||x_i - \mu_j||^2)\]</div>
+\[\sum_{i=0}^{N-1}\min_{\mu_j \in C}(||x_i - \mu_j||^2)\]</div>
 <p>Inertia can be recognized as a measure of how internally coherent clusters are.
 It suffers from various drawbacks:</p>
 <ul class="simple">
@@ -865,7 +910,7 @@ Running a dimensionality reduction algorithm such as <a class="reference interna
 k-means clustering can alleviate this problem and speed up the
 computations.</p></li>
 </ul>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_kmeans_assumptions.html"><img alt="../_images/sphx_glr_plot_kmeans_assumptions_002.png" class="align-center" src="../_images/sphx_glr_plot_kmeans_assumptions_002.png" style="width: 600.0px; height: 600.0px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_kmeans_assumptions.html"><img alt="../_images/sphx_glr_plot_kmeans_assumptions_002.png" class="align-center" height="600" src="../_images/sphx_glr_plot_kmeans_assumptions_002.png" width="600" />
 </a>
 <p>For more detailed descriptions of the issues shown above and how to address them,
 refer to the examples <a class="reference internal" href="../auto_examples/cluster/plot_kmeans_assumptions.html#sphx-glr-auto-examples-cluster-plot-kmeans-assumptions-py"><span class="std std-ref">Demonstration of k-means assumptions</span></a>
@@ -880,7 +925,7 @@ samples assigned to each previous centroid. The difference between the old
 and the new centroids are computed and the algorithm repeats these last two
 steps until this value is less than a threshold. In other words, it repeats
 until the centroids do not move significantly.</p>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_kmeans_digits.html"><img alt="../_images/sphx_glr_plot_kmeans_digits_001.png" class="align-right" src="../_images/sphx_glr_plot_kmeans_digits_001.png" style="width: 224.0px; height: 168.0px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_kmeans_digits.html"><img alt="../_images/sphx_glr_plot_kmeans_digits_001.png" class="align-right" height="168" src="../_images/sphx_glr_plot_kmeans_digits_001.png" width="224" />
 </a>
 <p>K-means is equivalent to the expectation-maximization algorithm
 with a small, all-equal, diagonal covariance matrix.</p>
@@ -907,7 +952,7 @@ comparing different initialization schemes, refer to
 clustering algorithms, see <a class="reference internal" href="generated/sklearn.cluster.kmeans_plusplus.html#sklearn.cluster.kmeans_plusplus" title="sklearn.cluster.kmeans_plusplus"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.cluster.kmeans_plusplus</span></code></a> for details
 and example usage.</p>
 <p>The algorithm supports sample weights, which can be given by a parameter
-<code class="docutils literal notranslate"><span class="pre">sample_weight</span></code>. This allows to assign more weight to some samples when
+<code class="docutils literal notranslate"><span class="pre">sample_weight</span></code>. This allows assigning more weight to some samples when
 computing cluster centers and values of inertia. For example, assigning a
 weight of 2 to a sample is equivalent to adding a duplicate of that sample
 to the dataset <span class="math notranslate nohighlight">\(X\)</span>.</p>
@@ -964,7 +1009,7 @@ convergence or a predetermined number of iterations is reached.</p>
 of the results is reduced. In practice this difference in quality can be quite
 small, as shown in the example and cited reference.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_mini_batch_kmeans.html"><img alt="../_images/sphx_glr_plot_mini_batch_kmeans_001.png" src="../_images/sphx_glr_plot_mini_batch_kmeans_001.png" style="width: 800.0px; height: 300.0px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_mini_batch_kmeans.html"><img alt="../_images/sphx_glr_plot_mini_batch_kmeans_001.png" height="300" src="../_images/sphx_glr_plot_mini_batch_kmeans_001.png" width="800" />
 </a>
 </figure>
 <p class="rubric">Examples</p>
@@ -979,9 +1024,9 @@ using <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">References<a class="headerlink" href="#references-2" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
-<li><p class="sd-card-text"><a class="reference external" href="https://www.eecs.tufts.edu/~dsculley/papers/fastkmeans.pdf">“Web Scale K-Means clustering”</a>
+<li><p class="sd-card-text"><a class="reference external" href="https://www.ccs.neu.edu/home/vip/teach/DMcourse/2_cluster_EM_mixt/notes_slides/sculey_webscale_kmeans_approx.pdf">“Web Scale K-Means clustering”</a>
 D. Sculley, <em>Proceedings of the 19th international conference on World
-wide web</em> (2010)</p></li>
+wide web</em> (2010).</p></li>
 </ul>
 </div>
 </details></section>
@@ -997,7 +1042,7 @@ values from other pairs. This updating happens iteratively until convergence,
 at which point the final exemplars are chosen, and hence the final clustering
 is given.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_affinity_propagation.html"><img alt="../_images/sphx_glr_plot_affinity_propagation_001.png" src="../_images/sphx_glr_plot_affinity_propagation_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_affinity_propagation.html"><img alt="../_images/sphx_glr_plot_affinity_propagation_001.png" height="240" src="../_images/sphx_glr_plot_affinity_propagation_001.png" width="320" />
 </a>
 </figure>
 <p>Affinity Propagation can be interesting as it chooses the number of
@@ -1096,7 +1141,7 @@ is small.</p>
 <p>Labelling a new sample is performed by finding the nearest centroid for a
 given sample.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_mean_shift.html"><img alt="../_images/sphx_glr_plot_mean_shift_001.png" src="../_images/sphx_glr_plot_mean_shift_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_mean_shift.html"><img alt="../_images/sphx_glr_plot_mean_shift_001.png" height="240" src="../_images/sphx_glr_plot_mean_shift_001.png" width="320" />
 </a>
 </figure>
 <p class="rubric">Examples</p>
@@ -1132,7 +1177,7 @@ cluster. This criteria is especially interesting when working on images, where
 graph vertices are pixels, and weights of the edges of the similarity graph are
 computed using a function of a gradient of the image.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="noisy_img" src="../_images/sphx_glr_plot_segmentation_toy_001.png" style="width: 500.0px; height: 250.0px;" /></a> <a class="reference external" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="segmented_img" src="../_images/sphx_glr_plot_segmentation_toy_002.png" style="width: 500.0px; height: 250.0px;" /></a></strong></p><div class="admonition warning">
+<strong><a class="reference external" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="noisy_img" height="250" src="../_images/sphx_glr_plot_segmentation_toy_001.png" width="500" /></a> <a class="reference external" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="segmented_img" height="250" src="../_images/sphx_glr_plot_segmentation_toy_002.png" width="500" /></a></strong></p><div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Transforming distance to well-behaved similarities</p>
 <p>Note that if the values of your similarity matrix are not well
@@ -1173,9 +1218,9 @@ below.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="../auto_examples/cluster/plot_coin_segmentation.html"><img alt="coin_kmeans" src="../_images/sphx_glr_plot_coin_segmentation_001.png" style="width: 175.0px; height: 175.0px;" /></a></p></td>
-<td><p><a class="reference external" href="../auto_examples/cluster/plot_coin_segmentation.html"><img alt="coin_discretize" src="../_images/sphx_glr_plot_coin_segmentation_002.png" style="width: 175.0px; height: 175.0px;" /></a></p></td>
-<td><p><a class="reference external" href="../auto_examples/cluster/plot_coin_segmentation.html"><img alt="coin_cluster_qr" src="../_images/sphx_glr_plot_coin_segmentation_003.png" style="width: 175.0px; height: 175.0px;" /></a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="../auto_examples/cluster/plot_coin_segmentation.html"><img alt="coin_kmeans" height="175" src="../_images/sphx_glr_plot_coin_segmentation_001.png" width="175" /></a></p></td>
+<td><p><a class="reference external" href="../auto_examples/cluster/plot_coin_segmentation.html"><img alt="coin_discretize" height="175" src="../_images/sphx_glr_plot_coin_segmentation_002.png" width="175" /></a></p></td>
+<td><p><a class="reference external" href="../auto_examples/cluster/plot_coin_segmentation.html"><img alt="coin_cluster_qr" height="175" src="../_images/sphx_glr_plot_coin_segmentation_003.png" width="175" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1197,9 +1242,9 @@ Anil Damle, Victor Minden, Lexing Ying, 2019</p></li>
 embeddings.  In this case, the affinity matrix is the adjacency matrix of the
 graph, and SpectralClustering is initialized with <code class="docutils literal notranslate"><span class="pre">affinity='precomputed'</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpectralClustering</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">SpectralClustering</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">affinity</span><span class="o">=</span><span class="s1">&#39;precomputed&#39;</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="gp">... </span>                        <span class="n">assign_labels</span><span class="o">=</span><span class="s1">&#39;discretize&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">SpectralClustering</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">affinity</span><span class="o">=</span><span class="s1">'precomputed'</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="n">assign_labels</span><span class="o">=</span><span class="s1">'discretize'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">)</span>
 </pre></div>
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-5">
@@ -1258,7 +1303,7 @@ number of features. It is a dimensionality reduction tool, see
 <h3><span class="section-number">2.3.6.1. </span>Different linkage type: Ward, complete, average, and single linkage<a class="headerlink" href="#different-linkage-type-ward-complete-average-and-single-linkage" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="sklearn.cluster.AgglomerativeClustering"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgglomerativeClustering</span></code></a> supports Ward, single, average, and complete
 linkage strategies.</p>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_linkage_comparison.html"><img alt="../_images/sphx_glr_plot_linkage_comparison_001.png" src="../_images/sphx_glr_plot_linkage_comparison_001.png" style="width: 589.1px; height: 623.5px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_linkage_comparison.html"><img alt="../_images/sphx_glr_plot_linkage_comparison_001.png" height="624" src="../_images/sphx_glr_plot_linkage_comparison_001.png" width="589" />
 </a>
 <p>Agglomerative cluster has a “rich get richer” behavior that leads to
 uneven cluster sizes. In this regard, single linkage is the worst
@@ -1284,7 +1329,7 @@ the different linkage strategies in toy datasets.</p></li>
 <p>It’s possible to visualize the tree representing the hierarchical merging of clusters
 as a dendrogram. Visual inspection can often be useful for understanding the structure
 of the data, though more so in the case of small sample sizes.</p>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_dendrogram.html"><img alt="../_images/sphx_glr_plot_agglomerative_dendrogram_001.png" src="../_images/sphx_glr_plot_agglomerative_dendrogram_001.png" style="width: 268.8px; height: 201.6px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_dendrogram.html"><img alt="../_images/sphx_glr_plot_agglomerative_dendrogram_001.png" height="202" src="../_images/sphx_glr_plot_agglomerative_dendrogram_001.png" width="269" />
 </a>
 <p class="rubric">Examples</p>
 <ul class="simple">
@@ -1297,22 +1342,22 @@ of the data, though more so in the case of small sample sizes.</p>
 connectivity constraints can be added to this algorithm (only adjacent
 clusters can be merged together), through a connectivity matrix that defines
 for each sample the neighboring samples following a given structure of the
-data. For instance, in the swiss-roll example below, the connectivity
-constraints forbid the merging of points that are not adjacent on the swiss
+data. For instance, in the Swiss-roll example below, the connectivity
+constraints forbid the merging of points that are not adjacent on the Swiss
 roll, and thus avoid forming clusters that extend across overlapping folds of
 the roll.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="unstructured" src="../_images/sphx_glr_plot_ward_structured_vs_unstructured_001.png" style="width: 313.6px; height: 235.2px;" /></a> <a class="reference external" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="structured" src="../_images/sphx_glr_plot_ward_structured_vs_unstructured_002.png" style="width: 313.6px; height: 235.2px;" /></a></strong></p><p>These constraint are useful to impose a certain local structure, but they
-also make the algorithm faster, especially when the number of the samples
+<strong><a class="reference external" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="unstructured" height="235" src="../_images/sphx_glr_plot_ward_structured_vs_unstructured_001.png" width="314" /></a> <a class="reference external" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="structured" height="235" src="../_images/sphx_glr_plot_ward_structured_vs_unstructured_002.png" width="314" /></a></strong></p><p>These constraints are not only useful to impose a certain local structure, but
+they also make the algorithm faster, especially when the number of the samples
 is high.</p>
-<p>The connectivity constraints are imposed via an connectivity matrix: a
+<p>The connectivity constraints are imposed via a connectivity matrix: a
 scipy sparse matrix that has elements only at the intersection of a row
 and a column with indices of the dataset that should be connected. This
 matrix can be constructed from a-priori information: for instance, you
 may wish to cluster web pages by only merging pages with a link pointing
 from one to another. It can also be learned from the data, for instance
 using <a class="reference internal" href="generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="sklearn.neighbors.kneighbors_graph"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.neighbors.kneighbors_graph</span></code></a> to restrict
-merging to nearest neighbors as in <a class="reference internal" href="../auto_examples/cluster/plot_agglomerative_clustering.html#sphx-glr-auto-examples-cluster-plot-agglomerative-clustering-py"><span class="std std-ref">this example</span></a>, or
+merging to nearest neighbors as in <a class="reference internal" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html#sphx-glr-auto-examples-cluster-plot-ward-structured-vs-unstructured-py"><span class="std std-ref">this example</span></a>, or
 using <a class="reference internal" href="generated/sklearn.feature_extraction.image.grid_to_graph.html#sklearn.feature_extraction.image.grid_to_graph" title="sklearn.feature_extraction.image.grid_to_graph"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.feature_extraction.image.grid_to_graph</span></code></a> to
 enable only merging of neighboring pixels on an image, as in the
 <a class="reference internal" href="../auto_examples/cluster/plot_coin_ward_segmentation.html#sphx-glr-auto-examples-cluster-plot-coin-ward-segmentation-py"><span class="std std-ref">coin</span></a> example.</p>
@@ -1325,28 +1370,21 @@ particularly so if they are built with
 <a class="reference internal" href="generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="sklearn.neighbors.kneighbors_graph"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.neighbors.kneighbors_graph</span></code></a>. In the limit of a small
 number of clusters, they tend to give a few macroscopically occupied
 clusters and almost empty ones. (see the discussion in
-<a class="reference internal" href="../auto_examples/cluster/plot_agglomerative_clustering.html#sphx-glr-auto-examples-cluster-plot-agglomerative-clustering-py"><span class="std std-ref">Agglomerative clustering with and without structure</span></a>).
+<a class="reference internal" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html#sphx-glr-auto-examples-cluster-plot-ward-structured-vs-unstructured-py"><span class="std std-ref">Hierarchical clustering with and without structure</span></a>).
 Single linkage is the most brittle linkage option with regard to this issue.</p>
 </div>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_001.png" src="../_images/sphx_glr_plot_agglomerative_clustering_001.png" style="width: 380.0px; height: 152.0px;" />
-</a>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_002.png" src="../_images/sphx_glr_plot_agglomerative_clustering_002.png" style="width: 380.0px; height: 152.0px;" />
-</a>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_003.png" src="../_images/sphx_glr_plot_agglomerative_clustering_003.png" style="width: 380.0px; height: 152.0px;" />
-</a>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_004.png" src="../_images/sphx_glr_plot_agglomerative_clustering_004.png" style="width: 380.0px; height: 152.0px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="../_images/sphx_glr_plot_ward_structured_vs_unstructured_003.png" height="456" src="../_images/sphx_glr_plot_ward_structured_vs_unstructured_003.png" width="304" />
 </a>
 <p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../auto_examples/cluster/plot_coin_ward_segmentation.html#sphx-glr-auto-examples-cluster-plot-coin-ward-segmentation-py"><span class="std std-ref">A demo of structured Ward hierarchical clustering on an image of coins</span></a>: Ward
 clustering to split the image of coins in regions.</p></li>
-<li><p><a class="reference internal" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html#sphx-glr-auto-examples-cluster-plot-ward-structured-vs-unstructured-py"><span class="std std-ref">Hierarchical clustering: structured vs unstructured ward</span></a>: Example
-of Ward algorithm on a swiss-roll, comparison of structured approaches
+<li><p><a class="reference internal" href="../auto_examples/cluster/plot_ward_structured_vs_unstructured.html#sphx-glr-auto-examples-cluster-plot-ward-structured-vs-unstructured-py"><span class="std std-ref">Hierarchical clustering with and without structure</span></a>: Example
+of Ward algorithm on a Swiss-roll, comparison of structured approaches
 versus unstructured approaches.</p></li>
 <li><p><a class="reference internal" href="../auto_examples/cluster/plot_feature_agglomeration_vs_univariate_selection.html#sphx-glr-auto-examples-cluster-plot-feature-agglomeration-vs-univariate-selection-py"><span class="std std-ref">Feature agglomeration vs. univariate selection</span></a>: Example
 of dimensionality reduction with feature agglomeration based on Ward
 hierarchical clustering.</p></li>
-<li><p><a class="reference internal" href="../auto_examples/cluster/plot_agglomerative_clustering.html#sphx-glr-auto-examples-cluster-plot-agglomerative-clustering-py"><span class="std std-ref">Agglomerative clustering with and without structure</span></a></p></li>
 </ul>
 </section>
 <section id="varying-the-metric">
@@ -1365,11 +1403,11 @@ scalings of the signal.</p></li>
 <p>The guidelines for choosing a metric is to use one that maximizes the
 distance between samples in different classes, and minimizes that within
 each class.</p>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering_metrics.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_metrics_005.png" src="../_images/sphx_glr_plot_agglomerative_clustering_metrics_005.png" style="width: 204.8px; height: 153.6px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering_metrics.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_metrics_005.png" height="154" src="../_images/sphx_glr_plot_agglomerative_clustering_metrics_005.png" width="205" />
 </a>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering_metrics.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_metrics_006.png" src="../_images/sphx_glr_plot_agglomerative_clustering_metrics_006.png" style="width: 204.8px; height: 153.6px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering_metrics.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_metrics_006.png" height="154" src="../_images/sphx_glr_plot_agglomerative_clustering_metrics_006.png" width="205" />
 </a>
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering_metrics.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_metrics_007.png" src="../_images/sphx_glr_plot_agglomerative_clustering_metrics_007.png" style="width: 204.8px; height: 153.6px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_agglomerative_clustering_metrics.html"><img alt="../_images/sphx_glr_plot_agglomerative_clustering_metrics_007.png" height="154" src="../_images/sphx_glr_plot_agglomerative_clustering_metrics_007.png" width="205" />
 </a>
 <p class="rubric">Examples</p>
 <ul class="simple">
@@ -1413,9 +1451,9 @@ clusters from Bisecting K-Means are well ordered and create quite a visible hier
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">References<a class="headerlink" href="#references-6" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
-<li><p class="sd-card-text"><a class="reference external" href="http://www.philippe-fournier-viger.com/spmf/bisectingkmeans.pdf">“A Comparison of Document Clustering Techniques”</a> Michael
+<li><p class="sd-card-text"><a class="reference external" href="https://www.philippe-fournier-viger.com/spmf/bisectingkmeans.pdf">“A Comparison of Document Clustering Techniques”</a> Michael
 Steinbach, George Karypis and Vipin Kumar, Department of Computer Science and
-Egineering, University of Minnesota (June 2000)</p></li>
+Engineering, University of Minnesota (June 2000)</p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://ijeter.everscience.org/Manuscripts/Volume-4/Issue-8/Vol-4-issue-8-M-23.pdf">“Performance Analysis of K-Means and Bisecting K-Means Algorithms in Weblog
 Data”</a>
 K.Abirami and Dr.P.Mayilvahanan, International Journal of Emerging
@@ -1472,7 +1510,7 @@ indicating core samples found by the algorithm. Smaller circles are non-core
 samples that are still part of a cluster. Moreover, the outliers are indicated
 by black points below.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/cluster/plot_dbscan.html"><img alt="dbscan_results" src="../_images/sphx_glr_plot_dbscan_002.png" style="width: 320.0px; height: 240.0px;" /></a></strong></p><p class="rubric">Examples</p>
+<strong><a class="reference external" href="../auto_examples/cluster/plot_dbscan.html"><img alt="dbscan_results" height="240" src="../_images/sphx_glr_plot_dbscan_002.png" width="320" /></a></strong></p><p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../auto_examples/cluster/plot_dbscan.html#sphx-glr-auto-examples-cluster-plot-dbscan-py"><span class="std std-ref">Demo of DBSCAN clustering algorithm</span></a></p></li>
 </ul>
@@ -1506,7 +1544,7 @@ floats. A couple of mechanisms for getting around this are:</p>
 <ul class="simple">
 <li><p class="sd-card-text">Use <a class="reference internal" href="#optics"><span class="std std-ref">OPTICS</span></a> clustering in conjunction with the <code class="docutils literal notranslate"><span class="pre">extract_dbscan</span></code>
 method. OPTICS clustering also calculates the full pairwise matrix, but only
-keeps one row in memory at a time (memory complexity n).</p></li>
+keeps one row in memory at a time (memory complexity <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span>).</p></li>
 <li><p class="sd-card-text">A sparse radius neighborhood graph (where missing entries are presumed to be
 out of eps) can be precomputed in a memory-efficient way and dbscan can be run
 over this with <code class="docutils literal notranslate"><span class="pre">metric='precomputed'</span></code>.  See
@@ -1520,17 +1558,17 @@ number of representatives for a large number of points. You can then provide a
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-7">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">References<a class="headerlink" href="#references-7" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-</div>
-</details><ul class="simple">
-<li><p><a class="reference external" href="https://www.aaai.org/Papers/KDD/1996/KDD96-037.pdf">A Density-Based Algorithm for Discovering Clusters in Large Spatial
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://www.aaai.org/Papers/KDD/1996/KDD96-037.pdf">A Density-Based Algorithm for Discovering Clusters in Large Spatial
 Databases with Noise</a>
 Ester, M., H. P. Kriegel, J. Sander, and X. Xu, In Proceedings of the 2nd
 International Conference on Knowledge Discovery and Data Mining, Portland, OR,
-AAAI Press, pp. 226-231. 1996</p></li>
-<li><p><a class="reference external" href="https://doi.org/10.1145/3068335">DBSCAN revisited, revisited: why and how you should (still) use DBSCAN.</a> Schubert, E., Sander, J., Ester, M., Kriegel, H. P., &amp; Xu,
+AAAI Press, pp. 226-231. 1996.</p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://doi.org/10.1145/3068335">DBSCAN revisited, revisited: why and how you should (still) use DBSCAN.</a> Schubert, E., Sander, J., Ester, M., Kriegel, H. P., &amp; Xu,
 X. (2017). In ACM Transactions on Database Systems (TODS), 42(3), 19.</p></li>
 </ul>
-</section>
+</div>
+</details></section>
 <section id="hdbscan">
 <span id="id8"></span><h2><span class="section-number">2.3.8. </span>HDBSCAN<a class="headerlink" href="#hdbscan" title="Link to this heading">#</a></h2>
 <p>The <a class="reference internal" href="generated/sklearn.cluster.HDBSCAN.html#sklearn.cluster.HDBSCAN" title="sklearn.cluster.HDBSCAN"><code class="xref py py-class docutils literal notranslate"><span class="pre">HDBSCAN</span></code></a> algorithm can be seen as an extension of <a class="reference internal" href="generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN" title="sklearn.cluster.DBSCAN"><code class="xref py py-class docutils literal notranslate"><span class="pre">DBSCAN</span></code></a>
@@ -1604,8 +1642,8 @@ and as such it no longer needs <span class="math notranslate nohighlight">\(\var
 it relies solely on the choice of <code class="docutils literal notranslate"><span class="pre">min_samples</span></code>, which tends to be a more robust
 hyperparameter.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/cluster/plot_hdbscan.html"><img alt="hdbscan_ground_truth" src="../_images/sphx_glr_plot_hdbscan_005.png" style="width: 750.0px; height: 300.0px;" /></a></strong></p><p class="centered">
-<strong><a class="reference external" href="../auto_examples/cluster/plot_hdbscan.html"><img alt="hdbscan_results" src="../_images/sphx_glr_plot_hdbscan_007.png" style="width: 750.0px; height: 300.0px;" /></a></strong></p><p>HDBSCAN can be smoothed with an additional hyperparameter <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code>
+<strong><a class="reference external" href="../auto_examples/cluster/plot_hdbscan.html"><img alt="hdbscan_ground_truth" height="300" src="../_images/sphx_glr_plot_hdbscan_005.png" width="750" /></a></strong></p><p class="centered">
+<strong><a class="reference external" href="../auto_examples/cluster/plot_hdbscan.html"><img alt="hdbscan_results" height="300" src="../_images/sphx_glr_plot_hdbscan_007.png" width="750" /></a></strong></p><p>HDBSCAN can be smoothed with an additional hyperparameter <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code>
 which specifies that during the hierarchical clustering, components with fewer
 than <code class="docutils literal notranslate"><span class="pre">minimum_cluster_size</span></code> many samples are considered noise. In practice, one
 can set <code class="docutils literal notranslate"><span class="pre">minimum_cluster_size</span> <span class="pre">=</span> <span class="pre">min_samples</span></code> to couple the parameters and
@@ -1647,7 +1685,7 @@ given <code class="docutils literal notranslate"><span class="pre">eps</span></c
 thought of as the maximum neighborhood radius from each point to find other
 potential reachable points.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/cluster/plot_optics.html"><img alt="optics_results" src="../_images/sphx_glr_plot_optics_001.png" style="width: 500.0px; height: 350.0px;" /></a></strong></p><p>The <em>reachability</em> distances generated by OPTICS allow for variable density
+<strong><a class="reference external" href="../auto_examples/cluster/plot_optics.html"><img alt="optics_results" height="350" src="../_images/sphx_glr_plot_optics_001.png" width="500" /></a></strong></p><p>The <em>reachability</em> distances generated by OPTICS allow for variable density
 extraction of clusters within a single data set. As shown in the above plot,
 combining <em>reachability</em> distances and data set <code class="docutils literal notranslate"><span class="pre">ordering_</span></code> produces a
 <em>reachability plot</em>, where point density is represented on the Y-axis, and
@@ -1730,7 +1768,7 @@ the need to hold the entire input data in memory. This information includes:</p>
 The branching factor limits the number of subclusters in a node and the
 threshold limits the distance between the entering sample and the existing
 subclusters.</p>
-<p>This algorithm can be viewed as an instance or data reduction method,
+<p>This algorithm can be viewed as an instance of a data reduction method,
 since it reduces the input data to a set of subclusters which are obtained directly
 from the leaves of the CFT. This reduced data can be further processed by feeding
 it into a global clusterer. This global clusterer can be set by <code class="docutils literal notranslate"><span class="pre">n_clusters</span></code>.
@@ -1965,49 +2003,49 @@ proposed more recently and is <strong>normalized against chance</strong>:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
 <span class="go">0.22504</span>
 </pre></div>
 </div>
 <p>One can permute 0 and 1 in the predicted labels, rename 2 to 3 and get
 the same score:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
 <span class="go">0.22504</span>
 </pre></div>
 </div>
 <p>All, <a class="reference internal" href="generated/sklearn.metrics.mutual_info_score.html#sklearn.metrics.mutual_info_score" title="sklearn.metrics.mutual_info_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutual_info_score</span></code></a>, <a class="reference internal" href="generated/sklearn.metrics.adjusted_mutual_info_score.html#sklearn.metrics.adjusted_mutual_info_score" title="sklearn.metrics.adjusted_mutual_info_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">adjusted_mutual_info_score</span></code></a> and
 <a class="reference internal" href="generated/sklearn.metrics.normalized_mutual_info_score.html#sklearn.metrics.normalized_mutual_info_score" title="sklearn.metrics.normalized_mutual_info_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">normalized_mutual_info_score</span></code></a> are symmetric: swapping the argument does
 not change the score. Thus they can be used as a <strong>consensus measure</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_pred</span><span class="p">,</span> <span class="n">labels_true</span><span class="p">)</span>  
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_pred</span><span class="p">,</span> <span class="n">labels_true</span><span class="p">)</span>
 <span class="go">0.22504</span>
 </pre></div>
 </div>
 <p>Perfect labeling is scored 1.0:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_pred</span> <span class="o">=</span> <span class="n">labels_true</span><span class="p">[:]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
 <span class="go">1.0</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">normalized_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">normalized_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
 <span class="go">1.0</span>
 </pre></div>
 </div>
 <p>This is not true for <code class="docutils literal notranslate"><span class="pre">mutual_info_score</span></code>, which is therefore harder to judge:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>  
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
 <span class="go">0.69</span>
 </pre></div>
 </div>
 <p>Bad (e.g. independent labelings) have non-positive scores:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
 <span class="go">-0.10526</span>
 </pre></div>
 </div>
 <aside class="topic">
 <p class="topic-title">Advantages:</p>
 <ul class="simple">
-<li><p><strong>Random (uniform) label assignments have a AMI score close to 0.0</strong> for any
+<li><p><strong>Random (uniform) label assignments have an AMI score close to 0.0</strong> for any
 value of <code class="docutils literal notranslate"><span class="pre">n_clusters</span></code> and <code class="docutils literal notranslate"><span class="pre">n_samples</span></code> (which is not the case for raw
 Mutual Information or the V-measure for instance).</p></li>
 <li><p><strong>Upper bound  of 1</strong>:  Values close to zero indicate two label assignments
@@ -2089,7 +2127,7 @@ means; we use these more broadly common names.</p>
 <ul class="simple">
 <li><p class="sd-card-text">Strehl, Alexander, and Joydeep Ghosh (2002). “Cluster ensembles - a
 knowledge reuse framework for combining multiple partitions”. Journal of
-Machine Learning Research 3: 583-617. <a class="reference external" href="http://strehl.com/download/strehl-jmlr02.pdf">doi:10.1162/153244303321897735</a>.</p></li>
+Machine Learning Research 3: 583-617. <a class="reference external" href="https://strehl.com/download/strehl-jmlr02.pdf">doi:10.1162/153244303321897735</a>.</p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://en.wikipedia.org/wiki/Mutual_Information">Wikipedia entry for the (normalized) Mutual Information</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://en.wikipedia.org/wiki/Adjusted_Mutual_Information">Wikipedia entry for the Adjusted Mutual Information</a></p></li>
 </ul>
@@ -2217,7 +2255,7 @@ as the Adjusted Rand Index (ARI)</strong>.</p>
 </li>
 </ul>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_adjusted_for_chance_measures.html"><img alt="../_images/sphx_glr_plot_adjusted_for_chance_measures_001.png" src="../_images/sphx_glr_plot_adjusted_for_chance_measures_001.png" style="width: 640.0px; height: 480.0px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_adjusted_for_chance_measures.html"><img alt="../_images/sphx_glr_plot_adjusted_for_chance_measures_001.png" height="480" src="../_images/sphx_glr_plot_adjusted_for_chance_measures_001.png" width="640" />
 </a>
 </figure>
 <ul class="simple">
@@ -2267,7 +2305,7 @@ Hirschberg, 2007</p></li>
 <div role="list" class="citation-list">
 <div class="citation" id="b2011" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">B2011</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="http://www.cs.columbia.edu/~hila/hila-thesis-distributed.pdf">Identification and Characterization of Events in Social Media</a>, Hila
+<p><a class="reference external" href="https://www.cs.columbia.edu/~hila/hila-thesis-distributed.pdf">Identification and Characterization of Events in Social Media</a>, Hila
 Becker, PhD Thesis.</p>
 </div>
 </div>
@@ -2392,7 +2430,7 @@ cluster analysis.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kmeans_model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans_model</span><span class="o">.</span><span class="n">labels_</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">'euclidean'</span><span class="p">)</span>
 <span class="go">0.55</span>
 </pre></div>
 </div>
@@ -2584,7 +2622,7 @@ metrics where the samples are independent and identically distributed and
 one doesn’t need to account for some instances not being clustered.</p>
 <p>Here is an example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">contingency_matrix</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">contingency_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="go">array([[2, 1, 0],</span>
@@ -2602,7 +2640,7 @@ of classes.</p>
 <aside class="topic">
 <p class="topic-title">Advantages:</p>
 <ul class="simple">
-<li><p>Allows to examine the spread of each true cluster across predicted clusters
+<li><p>Allows examining the spread of each true cluster across predicted clusters
 and vice versa.</p></li>
 <li><p>The contingency table calculated is typically utilized in the calculation of
 a similarity statistic (like the others listed in this document) between the
@@ -2750,8 +2788,8 @@ Journal of Classification 1985</p></li>
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-clustering-methods">2.3.1. Overview of clustering methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">2.3.2. K-means</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-level-parallelism">2.3.2.1. Low-level parallelism</a></li>
@@ -2796,14 +2834,21 @@ Journal of Classification 1985</p></li>
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/modules/clustering.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -2818,8 +2863,8 @@ Journal of Classification 1985</p></li>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -2830,7 +2875,7 @@ Journal of Classification 1985</p></li>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

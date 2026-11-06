@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.is\_ccw
+===========================
+
+.. currentmodule:: geopandas
+
+.. autoproperty:: GeoSeries.is_ccw

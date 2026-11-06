@@ -7,16 +7,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Hierarchical clustering: structured vs unstructured ward" />
+<meta property="og:title" content="Hierarchical clustering with and without structure" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-learn/stable/auto_examples/cluster/plot_ward_structured_vs_unstructured.html" />
 <meta property="og:site_name" content="scikit-learn" />
-<meta property="og:description" content="Example builds a swiss roll dataset and runs hierarchical clustering on their position. For more information, see Hierarchical clustering. In a first step, the hierarchical clustering is performed ..." />
-<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:description" content="This example demonstrates hierarchical clustering with and without connectivity constraints. It shows the effect of imposing a connectivity graph to capture local structure in the data. Without con..." />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-notext.png" />
 <meta property="og:image:alt" content="scikit-learn" />
-<meta name="description" content="Example builds a swiss roll dataset and runs hierarchical clustering on their position. For more information, see Hierarchical clustering. In a first step, the hierarchical clustering is performed ..." />
+<meta name="description" content="This example demonstrates hierarchical clustering with and without connectivity constraints. It shows the effect of imposing a connectivity graph to capture local structure in the data. Without con..." />
 
-    <title>Hierarchical clustering: structured vs unstructured ward &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>Hierarchical clustering with and without structure &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,31 +35,32 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -67,15 +68,17 @@
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/cluster/plot_ward_structured_vs_unstructured';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/auto_examples/cluster/plot_ward_structured_vs_unstructured.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -84,21 +87,27 @@
     <link rel="prev" title="Feature agglomeration vs. univariate selection" href="plot_feature_agglomeration_vs_univariate_selection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -124,7 +133,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -150,8 +159,8 @@
       
     
     
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -272,6 +281,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../about.html">
     About us
   </a>
@@ -299,11 +315,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -316,8 +339,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -484,6 +506,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../about.html">
     About us
   </a>
@@ -501,11 +530,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -518,8 +554,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -548,12 +583,22 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../release_highlights/index.html">Release Highlights</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_9_0.html">Release Highlights for scikit-learn 1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_8_0.html">Release Highlights for scikit-learn 1.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_7_0.html">Release Highlights for scikit-learn 1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_6_0.html">Release Highlights for scikit-learn 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_5_0.html">Release Highlights for scikit-learn 1.5</a></li>
@@ -580,6 +625,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration.html">Probability calibration of classifiers</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../callbacks/index.html">Callbacks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_scoring_monitor.html">Analysis of the convergence of penalized logistic regression models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_callback_support.html">Supporting callbacks in third party estimators</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_comparison.html">Classifier comparison</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_lda_qda.html">Linear and Quadratic Discriminant Analysis with covariance ellipsoid</a></li>
@@ -593,7 +643,6 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_coin_ward_segmentation.html">A demo of structured Ward hierarchical clustering on an image of coins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_mean_shift.html">A demo of the mean-shift clustering algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_adjusted_for_chance_measures.html">Adjustment for chance in clustering performance evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_agglomerative_clustering.html">Agglomerative clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_agglomerative_clustering_metrics.html">Agglomerative clustering with different metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_kmeans_plusplus.html">An example of K-Means++ initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_bisect_kmeans.html">Bisecting K-Means and Regular K-Means Performance Comparison</a></li>
@@ -609,7 +658,7 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_kmeans_stability_low_dim_dense.html">Empirical evaluation of the impact of k-means initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_digits_agglomeration.html">Feature agglomeration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_feature_agglomeration_vs_univariate_selection.html">Feature agglomeration vs. univariate selection</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Hierarchical clustering: structured vs unstructured ward</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Hierarchical clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_inductive_clustering.html">Inductive Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_dict_face_patches.html">Online learning of a dictionary of parts of faces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_agglomerative_dendrogram.html">Plot Hierarchical Clustering Dendrogram</a></li>
@@ -690,7 +739,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../applications/index.html">Examples based on real world datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_tomography_l1_reconstruction.html">Compressive sensing: tomography reconstruction with L1 prior (Lasso)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and SVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and kernel approximation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_digits_denoising.html">Image denoising using kernel PCA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_time_series_lagged_features.html">Lagged features for time series forecasting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_model_complexity_influence.html">Model Complexity Influence</a></li>
@@ -701,7 +750,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_cyclical_feature_engineering.html">Time-related feature engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_topics_extraction_with_nmf_lda.html">Topic extraction with Non-negative Matrix Factorization and Latent Dirichlet Allocation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_stock_market.html">Visualizing the stock market structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/index.html">Feature Selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -754,7 +803,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_model_selection.html">Lasso model selection: AIC-BIC / cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_dense_vs_sparse_data.html">Lasso on dense and sparse data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_lasso_lars_elasticnet_path.html">Lasso, Lasso-LARS, and Elastic Net paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_logistic.html">Logistic function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_mnist.html">MNIST classification using multinomial logistic + L1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_20newsgroups.html">Multiclass sparse logistic regression on 20newgroups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_nnls.html">Non-negative least squares</a></li>
@@ -779,6 +827,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../inspection/index.html">Inspection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_linear_model_coefficient_interpretation.html">Common pitfalls in the interpretation of coefficients of linear models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_causal_interpretation.html">Failure of Machine Learning to infer causal effects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence.html">Partial Dependence and Individual Conditional Expectation Plots</a></li>
@@ -800,9 +849,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../miscellaneous/index.html">Miscellaneous</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_anomaly_comparison.html">Comparing anomaly detection algorithms for outlier detection on toy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_kernel_ridge_regression.html">Comparison of kernel ridge regression and SVR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Developing Estimators Compliant with Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_pipeline_display.html">Displaying Pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_estimator_representation.html">Displaying estimators and complex pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_outlier_detection_bench.html">Evaluation of outlier detection estimators</a></li>
@@ -810,7 +859,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multioutput_face_completion.html">Face completion with a multi-output estimators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_set_output.html">Introducing the <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_isotonic_regression.html">Isotonic Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multilabel.html">Multilabel classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_roc_curve_visualization_api.html">ROC Curve with Visualization API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_johnson_lindenstrauss_bound.html">The Johnson-Lindenstrauss bound for embedding with random projections</a></li>
@@ -827,11 +875,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_likelihood_ratios.html">Class Likelihood Ratios to measure classification performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_randomized_search.html">Comparing randomized search and grid search for hyperparameter estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_successive_halving_heatmap.html">Comparison between grid search and successive halving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Confusion matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_grid_search_digits.html">Custom refit strategy of a grid search with cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_multi_metric_evaluation.html">Demonstration of multi-metric evaluation on cross_val_score and GridSearchCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_det.html">Detection error tradeoff (DET) curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_train_error_vs_test_error.html">Effect of model regularization on training and test error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Evaluate the performance of a classifier with Confusion Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_roc.html">Multiclass Receiver Operating Characteristic (ROC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_nested_cross_validation_iris.html">Nested versus non-nested cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_cv_predict.html">Plotting Cross-Validated Predictions</a></li>
@@ -970,7 +1018,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Clustering</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Hierarchical clustering: structured vs unstructured ward</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Hierarchical clustering with and without structure</span></li>
   </ul>
 </nav>
 </div>
@@ -990,58 +1038,64 @@
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#sphx-glr-download-auto-examples-cluster-plot-ward-structured-vs-unstructured-py"><span class="std std-ref">Go to the end</span></a>
-to download the full example code. or to run this example in your browser via JupyterLite or Binder</p>
+to download the full example code or to run this example in your browser via JupyterLite or Binder.</p>
 </div>
-<section class="sphx-glr-example-title" id="hierarchical-clustering-structured-vs-unstructured-ward">
-<span id="sphx-glr-auto-examples-cluster-plot-ward-structured-vs-unstructured-py"></span><h1>Hierarchical clustering: structured vs unstructured ward<a class="headerlink" href="#hierarchical-clustering-structured-vs-unstructured-ward" title="Link to this heading">#</a></h1>
-<p>Example builds a swiss roll dataset and runs
-hierarchical clustering on their position.</p>
+<section class="sphx-glr-example-title" id="hierarchical-clustering-with-and-without-structure">
+<span id="sphx-glr-auto-examples-cluster-plot-ward-structured-vs-unstructured-py"></span><h1>Hierarchical clustering with and without structure<a class="headerlink" href="#hierarchical-clustering-with-and-without-structure" title="Link to this heading">#</a></h1>
+<p>This example demonstrates hierarchical clustering with and without
+connectivity constraints. It shows the effect of imposing a connectivity
+graph to capture local structure in the data. Without connectivity constraints,
+the clustering is based purely on distance, while with constraints, the
+clustering respects local structure.</p>
 <p>For more information, see <a class="reference internal" href="../../modules/clustering.html#hierarchical-clustering"><span class="std std-ref">Hierarchical clustering</span></a>.</p>
-<p>In a first step, the hierarchical clustering is performed without connectivity
-constraints on the structure and is solely based on distance, whereas in
-a second step the clustering is restricted to the k-Nearest Neighbors
-graph: it’s a hierarchical clustering with structure prior.</p>
-<p>Some of the clusters learned without connectivity constraints do not
-respect the structure of the swiss roll and extend across different folds of
-the manifolds. On the opposite, when opposing connectivity constraints,
-the clusters form a nice parcellation of the swiss roll.</p>
+<p>There are two advantages of imposing connectivity. First, clustering
+with sparse connectivity matrices is faster in general.</p>
+<p>Second, when using a connectivity matrix, single, average and complete
+linkage are unstable and tend to create a few clusters that grow very
+quickly. Indeed, average and complete linkage fight this percolation behavior
+by considering all the distances between two clusters when merging them
+(while single linkage exaggerates the behaviour by considering only the
+shortest distance between clusters). The connectivity graph breaks this
+mechanism for average and complete linkage, making them resemble the more
+brittle single linkage. This effect is more pronounced for very sparse graphs
+(try decreasing the number of neighbors in <code class="docutils literal notranslate"><span class="pre">kneighbors_graph</span></code>) and with
+complete linkage. In particular, having a very small number of neighbors in
+the graph, imposes a geometry that is close to that of single linkage,
+which is well known to have this percolation instability.</p>
+<p>The effect of imposing connectivity is illustrated on two different but
+similar datasets which show a spiral structure. In the first example we
+build a Swiss roll dataset and run hierarchical clustering on the position
+of the data. Here, we compare unstructured Ward clustering with a
+structured variant that enforces k-Nearest Neighbors connectivity. In the
+second example we include the effects of applying a such a connectivity graph
+to single, average and complete linkage.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-learn developers</span>
 <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">time</span>
-
-<span class="c1"># The following import is required</span>
-<span class="c1"># for 3D projection to work with matplotlib &lt; 3.2</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span>  <span class="c1"># noqa: F401</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
-<section id="generate-data">
-<h2>Generate data<a class="headerlink" href="#generate-data" title="Link to this heading">#</a></h2>
-<p>We start by generating the Swiss Roll dataset.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a href="../../modules/generated/sklearn.datasets.make_swiss_roll.html#sklearn.datasets.make_swiss_roll" title="sklearn.datasets.make_swiss_roll" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_swiss_roll</span></a>
+<section id="generate-the-swiss-roll-dataset">
+<h2>Generate the Swiss Roll dataset.<a class="headerlink" href="#generate-the-swiss-roll-dataset" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <a href="../../modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="sklearn.cluster.AgglomerativeClustering" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AgglomerativeClustering</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a href="../../modules/generated/sklearn.datasets.make_swiss_roll.html#sklearn.datasets.make_swiss_roll" title="sklearn.datasets.make_swiss_roll" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_swiss_roll</span></a>
 
 <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1500</span>
 <span class="n">noise</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.make_swiss_roll.html#sklearn.datasets.make_swiss_roll" title="sklearn.datasets.make_swiss_roll" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_swiss_roll</span></a><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="n">noise</span><span class="p">)</span>
-<span class="c1"># Make it thinner</span>
-<span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">0.5</span>
+<span class="n">X1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.datasets.make_swiss_roll.html#sklearn.datasets.make_swiss_roll" title="sklearn.datasets.make_swiss_roll" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">make_swiss_roll</span></a><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="n">noise</span><span class="p">)</span>
+<span class="n">X1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">0.5</span>  <span class="c1"># Make the roll thinner</span>
 </pre></div>
 </div>
 </section>
-<section id="compute-clustering">
-<h2>Compute clustering<a class="headerlink" href="#compute-clustering" title="Link to this heading">#</a></h2>
-<p>We perform AgglomerativeClustering which comes under Hierarchical Clustering
-without any connectivity constraints.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <a href="../../modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="sklearn.cluster.AgglomerativeClustering" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AgglomerativeClustering</span></a>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compute unstructured hierarchical clustering...&quot;</span><span class="p">)</span>
+<section id="compute-clustering-without-connectivity-constraints">
+<h2>Compute clustering without connectivity constraints<a class="headerlink" href="#compute-clustering-without-connectivity-constraints" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Compute unstructured hierarchical clustering..."</span><span class="p">)</span>
 <span class="n">st</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
-<span class="n">ward</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="sklearn.cluster.AgglomerativeClustering" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AgglomerativeClustering</span></a><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">elapsed_time</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
-<span class="n">label</span> <span class="o">=</span> <span class="n">ward</span><span class="o">.</span><span class="n">labels_</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elapsed time: </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of points: </span><span class="si">{</span><span class="n">label</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ward_unstructured</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="sklearn.cluster.AgglomerativeClustering" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AgglomerativeClustering</span></a><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">"ward"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
+<span class="n">elapsed_time_unstructured</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
+<span class="n">label_unstructured</span> <span class="o">=</span> <span class="n">ward_unstructured</span><span class="o">.</span><span class="n">labels_</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Elapsed time: </span><span class="si">{</span><span class="n">elapsed_time_unstructured</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of points: </span><span class="si">{</span><span class="n">label_unstructured</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Compute unstructured hierarchical clustering...
@@ -1049,84 +1103,139 @@ Elapsed time: 0.04s
 Number of points: 1500
 </pre></div>
 </div>
-</section>
-<section id="plot-result">
-<h2>Plot result<a class="headerlink" href="#plot-result" title="Link to this heading">#</a></h2>
-<p>Plotting the unstructured hierarchical clusters.</p>
+<p>Plot unstructured clustering result</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">fig1</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">,</span> <span class="n">elev</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">azim</span><span class="o">=-</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">"3d"</span><span class="p">,</span> <span class="n">elev</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">azim</span><span class="o">=-</span><span class="mi">80</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><span class="n">label_unstructured</span><span class="p">):</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">/</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.max.html#numpy.max" title="numpy.max" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">max</span></a><span class="p">(</span><span class="n">label</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span>
+        <span class="n">X1</span><span class="p">[</span><span class="n">label_unstructured</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">X1</span><span class="p">[</span><span class="n">label_unstructured</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">X1</span><span class="p">[</span><span class="n">label_unstructured</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">/</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.max.html#numpy.max" title="numpy.max" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">max</span></a><span class="p">(</span><span class="n">label_unstructured</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span>
         <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span>
     <span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Without connectivity constraints (time </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"Without connectivity constraints (time </span><span class="si">{</span><span class="n">elapsed_time_unstructured</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)"</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_plot_ward_structured_vs_unstructured_001.png" srcset="../../_images/sphx_glr_plot_ward_structured_vs_unstructured_001.png" alt="Without connectivity constraints (time 0.04s)" class = "sphx-glr-single-img"/></section>
-<section id="we-are-defining-k-nearest-neighbors-with-10-neighbors">
-<h2>We are defining k-Nearest Neighbors with 10 neighbors<a class="headerlink" href="#we-are-defining-k-nearest-neighbors-with-10-neighbors" title="Link to this heading">#</a></h2>
+<section id="compute-clustering-with-connectivity-constraints">
+<h2>Compute clustering with connectivity constraints<a class="headerlink" href="#compute-clustering-with-connectivity-constraints" title="Link to this heading">#</a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <a href="../../modules/generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="sklearn.neighbors.kneighbors_graph" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-function"><span class="n">kneighbors_graph</span></a>
 
-<span class="n">connectivity</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="sklearn.neighbors.kneighbors_graph" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-function"><span class="n">kneighbors_graph</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">include_self</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="id1">
-<h2>Compute clustering<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>We perform AgglomerativeClustering again with connectivity constraints.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compute structured hierarchical clustering...&quot;</span><span class="p">)</span>
+<span class="n">connectivity</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="sklearn.neighbors.kneighbors_graph" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-function"><span class="n">kneighbors_graph</span></a><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">include_self</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Compute structured hierarchical clustering..."</span><span class="p">)</span>
 <span class="n">st</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
-<span class="n">ward</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="sklearn.cluster.AgglomerativeClustering" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AgglomerativeClustering</span></a><span class="p">(</span>
-    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">elapsed_time</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
-<span class="n">label</span> <span class="o">=</span> <span class="n">ward</span><span class="o">.</span><span class="n">labels_</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elapsed time: </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of points: </span><span class="si">{</span><span class="n">label</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ward_structured</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="sklearn.cluster.AgglomerativeClustering" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AgglomerativeClustering</span></a><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">"ward"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
+<span class="n">elapsed_time_structured</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
+<span class="n">label_structured</span> <span class="o">=</span> <span class="n">ward_structured</span><span class="o">.</span><span class="n">labels_</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Elapsed time: </span><span class="si">{</span><span class="n">elapsed_time_structured</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of points: </span><span class="si">{</span><span class="n">label_structured</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Compute structured hierarchical clustering...
-Elapsed time: 0.06s
+Elapsed time: 0.05s
 Number of points: 1500
 </pre></div>
 </div>
-</section>
-<section id="id2">
-<h2>Plot result<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>Plotting the structured hierarchical clusters.</p>
+<p>Plot structured clustering result</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig2</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">,</span> <span class="n">elev</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">azim</span><span class="o">=-</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig2</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">"3d"</span><span class="p">,</span> <span class="n">elev</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">azim</span><span class="o">=-</span><span class="mi">80</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><span class="n">label_structured</span><span class="p">):</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">/</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.max.html#numpy.max" title="numpy.max" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">max</span></a><span class="p">(</span><span class="n">label</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span>
+        <span class="n">X1</span><span class="p">[</span><span class="n">label_structured</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">X1</span><span class="p">[</span><span class="n">label_structured</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">X1</span><span class="p">[</span><span class="n">label_structured</span> <span class="o">==</span> <span class="n">l</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">/</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.max.html#numpy.max" title="numpy.max" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">max</span></a><span class="p">(</span><span class="n">label_structured</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span>
         <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span>
     <span class="p">)</span>
-<span class="n">fig2</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;With connectivity constraints (time </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">fig2</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"With connectivity constraints (time </span><span class="si">{</span><span class="n">elapsed_time_structured</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)"</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_ward_structured_vs_unstructured_002.png" srcset="../../_images/sphx_glr_plot_ward_structured_vs_unstructured_002.png" alt="With connectivity constraints (time 0.05s)" class = "sphx-glr-single-img"/></section>
+<section id="generate-2d-spiral-dataset">
+<h2>Generate 2D spiral dataset.<a class="headerlink" href="#generate-2d-spiral-dataset" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1500</span>
+<a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/constants.html#numpy.pi" title="numpy.pi" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">pi</span></a> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html#numpy.random.rand" title="numpy.random.rand" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.cos.html#numpy.cos" title="numpy.cos" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">cos</span></a><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.sin.html#numpy.sin" title="numpy.sin" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">sin</span></a><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">X2</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html#numpy.concatenate" title="numpy.concatenate" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span></a><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="n">X2</span> <span class="o">+=</span> <span class="mf">0.7</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randn.html#numpy.random.randn" title="numpy.random.randn" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="n">X2</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</section>
+<section id="capture-local-connectivity-using-a-graph">
+<h2>Capture local connectivity using a graph<a class="headerlink" href="#capture-local-connectivity-using-a-graph" title="Link to this heading">#</a></h2>
+<p>Larger number of neighbors will give more homogeneous clusters to
+the cost of computation time. A very large number of neighbors gives
+more evenly distributed cluster sizes, but may not impose the local
+manifold structure of the data.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">knn_graph</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="sklearn.neighbors.kneighbors_graph" class="sphx-glr-backref-module-sklearn-neighbors sphx-glr-backref-type-py-function"><span class="n">kneighbors_graph</span></a><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">include_self</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="plot-clustering-with-and-without-structure">
+<h3>Plot clustering with and without structure<a class="headerlink" href="#plot-clustering-with-and-without-structure" title="Link to this heading">#</a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig3</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">subfigs</span> <span class="o">=</span> <span class="n">fig3</span><span class="o">.</span><span class="n">subfigures</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+    <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">knn_graph</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">knn_graph</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">subfig</span><span class="p">,</span> <span class="p">(</span><span class="n">connectivity</span><span class="p">,</span> <span class="n">n_clusters</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">subfigs</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="n">axs</span> <span class="o">=</span> <span class="n">subfig</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">linkage</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">((</span><span class="s2">"average"</span><span class="p">,</span> <span class="s2">"complete"</span><span class="p">,</span> <span class="s2">"ward"</span><span class="p">,</span> <span class="s2">"single"</span><span class="p">)):</span>
+        <span class="n">model</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="sklearn.cluster.AgglomerativeClustering" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AgglomerativeClustering</span></a><span class="p">(</span>
+            <span class="n">linkage</span><span class="o">=</span><span class="n">linkage</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span>
+        <span class="p">)</span>
+        <span class="n">t0</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+        <span class="n">elapsed_time</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+            <span class="n">X2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">nipy_spectral</span>
+        <span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+            <span class="s2">"linkage=</span><span class="si">%s</span><span class="se">\n</span><span class="s2">(time </span><span class="si">%.2f</span><span class="s2">s)"</span> <span class="o">%</span> <span class="p">(</span><span class="n">linkage</span><span class="p">,</span> <span class="n">elapsed_time</span><span class="p">),</span>
+            <span class="n">fontdict</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">verticalalignment</span><span class="o">=</span><span class="s2">"top"</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">"equal"</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
+
+        <span class="n">subfig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.83</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">subfig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
+            <span class="s2">"n_cluster=</span><span class="si">%i</span><span class="s2">, connectivity=</span><span class="si">%r</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">connectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span>
+        <span class="p">)</span>
 
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_ward_structured_vs_unstructured_002.png" srcset="../../_images/sphx_glr_plot_ward_structured_vs_unstructured_002.png" alt="With connectivity constraints (time 0.06s)" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.423 seconds)</p>
+<img src="../../_images/sphx_glr_plot_ward_structured_vs_unstructured_003.png" srcset="../../_images/sphx_glr_plot_ward_structured_vs_unstructured_003.png" alt="linkage=average (time 0.04s), linkage=complete (time 0.03s), linkage=ward (time 0.04s), linkage=single (time 0.01s), linkage=average (time 0.04s), linkage=complete (time 0.03s), linkage=ward (time 0.04s), linkage=single (time 0.01s), linkage=average (time 0.10s), linkage=complete (time 0.10s), linkage=ward (time 0.13s), linkage=single (time 0.02s), linkage=average (time 0.10s), linkage=complete (time 0.10s), linkage=ward (time 0.14s), linkage=single (time 0.02s)" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.096 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-cluster-plot-ward-structured-vs-unstructured-py">
 <div class="binder-badge docutils container">
-<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/cluster/plot_ward_structured_vs_unstructured.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo4.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/cluster/plot_ward_structured_vs_unstructured.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo5.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="lite-badge docutils container">
-<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/cluster/plot_ward_structured_vs_unstructured.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo4.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/cluster/plot_ward_structured_vs_unstructured.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo5.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
@@ -1141,18 +1250,19 @@ Number of points: 1500
 </div>
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Compute the segmentation of a 2D image with Ward hierarchical clustering. The clustering is spatially constrained in order for each segmented region to be in one piece."><img alt="" src="../../_images/sphx_glr_plot_coin_ward_segmentation_thumb.png" />
-<p><a class="reference internal" href="plot_coin_ward_segmentation.html#sphx-glr-auto-examples-cluster-plot-coin-ward-segmentation-py"><span class="std std-ref">A demo of structured Ward hierarchical clustering on an image of coins</span></a></p>
+<p><a class="reference internal" href="plot_coin_ward_segmentation.html"><span class="doc">A demo of structured Ward hierarchical clustering on an image of coins</span></a></p>
   <div class="sphx-glr-thumbnail-title">A demo of structured Ward hierarchical clustering on an image of coins</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the effect of imposing a connectivity graph to capture local structure in the data. The graph is simply the graph of 20 nearest neighbors."><img alt="" src="../../_images/sphx_glr_plot_agglomerative_clustering_thumb.png" />
-<p><a class="reference internal" href="plot_agglomerative_clustering.html#sphx-glr-auto-examples-cluster-plot-agglomerative-clustering-py"><span class="std std-ref">Agglomerative clustering with and without structure</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Agglomerative clustering with and without structure</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Plot Hierarchical Clustering Dendrogram"><img alt="" src="../../_images/sphx_glr_plot_agglomerative_dendrogram_thumb.png" />
-<p><a class="reference internal" href="plot_agglomerative_dendrogram.html#sphx-glr-auto-examples-cluster-plot-agglomerative-dendrogram-py"><span class="std std-ref">Plot Hierarchical Clustering Dendrogram</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Plot Hierarchical Clustering Dendrogram</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different linkage methods for hierarchical clustering on datasets that are &quot;interesting&quot; but still in 2D."><img alt="" src="../../_images/sphx_glr_plot_linkage_comparison_thumb.png" />
+<p><a class="reference internal" href="plot_linkage_comparison.html"><span class="doc">Comparing different hierarchical linkage methods on toy datasets</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Comparing different hierarchical linkage methods on toy datasets</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An illustration of various linkage option for agglomerative clustering on a 2D embedding of the digits dataset."><img alt="" src="../../_images/sphx_glr_plot_digits_linkage_thumb.png" />
+<p><a class="reference internal" href="plot_digits_linkage.html"><span class="doc">Various Agglomerative Clustering on a 2D embedding of digits</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Various Agglomerative Clustering on a 2D embedding of digits</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows characteristics of different clustering algorithms on datasets that are &quot;interesting&quot; but still in 2D. With the exception of the last dataset, the parameters of each of these dataset-algorithm pairs has been tuned to produce good clustering results. Some algorithms are more sensitive to parameter values than others."><img alt="" src="../../_images/sphx_glr_plot_cluster_comparison_thumb.png" />
-<p><a class="reference internal" href="plot_cluster_comparison.html#sphx-glr-auto-examples-cluster-plot-cluster-comparison-py"><span class="std std-ref">Comparing different clustering algorithms on toy datasets</span></a></p>
+<p><a class="reference internal" href="plot_cluster_comparison.html"><span class="doc">Comparing different clustering algorithms on toy datasets</span></a></p>
   <div class="sphx-glr-thumbnail-title">Comparing different clustering algorithms on toy datasets</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
 </section>
 </section>
 
@@ -1205,25 +1315,18 @@ Number of points: 1500
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-data">Generate data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-clustering">Compute clustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-result">Plot result</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-are-defining-k-nearest-neighbors-with-10-neighbors">We are defining k-Nearest Neighbors with 10 neighbors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Compute clustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Plot result</a></li>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-the-swiss-roll-dataset">Generate the Swiss Roll dataset.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-clustering-without-connectivity-constraints">Compute clustering without connectivity constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-clustering-with-connectivity-constraints">Compute clustering with connectivity constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-2d-spiral-dataset">Generate 2D spiral dataset.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capture-local-connectivity-using-a-graph">Capture local connectivity using a graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-clustering-with-and-without-structure">Plot clustering with and without structure</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/auto_examples/cluster/plot_ward_structured_vs_unstructured.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
   <div class="sidebar-secondary-item">
 
@@ -1268,21 +1371,37 @@ Number of points: 1500
       
         <div class="sphx-glr-sidebar-item lite-badge-sidebar">
           <a href="../../lite/lab/index.html?path=auto_examples/cluster/plot_ward_structured_vs_unstructured.ipynb">
-            <img src="../../_images/jupyterlite_badge_logo4.svg" alt="Launch JupyterLite">
+            <img src="../../_images/jupyterlite_badge_logo5.svg" alt="Launch JupyterLite">
           </a>
         </div>
       
     
       
         <div class="sphx-glr-sidebar-item binder-badge-sidebar">
-          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/cluster/plot_ward_structured_vs_unstructured.ipynb">
-            <img src="../../_images/binder_badge_logo4.svg" alt="Launch binder">
+          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/cluster/plot_ward_structured_vs_unstructured.ipynb">
+            <img src="../../_images/binder_badge_logo5.svg" alt="Launch binder">
           </a>
         </div>
       
     
   </div>
 </div>
+
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1297,8 +1416,8 @@ Number of points: 1500
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1309,7 +1428,7 @@ Number of points: 1500
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

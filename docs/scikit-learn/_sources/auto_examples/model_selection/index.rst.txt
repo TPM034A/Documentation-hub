@@ -10,6 +10,10 @@ Model Selection
 Examples related to the :mod:`sklearn.model_selection` module.
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -19,14 +23,14 @@ Examples related to the :mod:`sklearn.model_selection` module.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to balance model complexity and cross-validated score by finding a decent accuracy within 1 standard deviation of the best accuracy score while minimising the number of PCA components [1]. It uses GridSearchCV with a custom refit callable to select the optimal model.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to balance model complexity and cross-validated score by finding a decent accuracy within 1 standard deviation of the best accuracy score while minimising the number of PCA components [1]_. It uses GridSearchCV with a custom refit callable to select the optimal model.">
 
 .. only:: html
 
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_grid_search_refit_callable_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_grid_search_refit_callable.py`
+  :doc:`/auto_examples/model_selection/plot_grid_search_refit_callable`
 
 .. raw:: html
 
@@ -43,7 +47,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_likelihood_ratios_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_likelihood_ratios.py`
+  :doc:`/auto_examples/model_selection/plot_likelihood_ratios`
 
 .. raw:: html
 
@@ -53,14 +57,14 @@ Examples related to the :mod:`sklearn.model_selection` module.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Compare randomized search and grid search for optimizing hyperparameters of a linear SVM with SGD training. All parameters that influence the learning are searched simultaneously (except for the number of estimators, which poses a time / quality tradeoff).">
+    <div class="sphx-glr-thumbcontainer" tooltip="Compare several strategies to optimize the hyperparameters of a linear SVM trained with stochastic gradient descent. We score the candidates with the one-vs-rest ROC AUC (``roc_auc_ovr``), which evaluates the ranking quality of the predicted class probabilities rather than the raw accuracy of the hard labels.">
 
 .. only:: html
 
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_randomized_search_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_randomized_search.py`
+  :doc:`/auto_examples/model_selection/plot_randomized_search`
 
 .. raw:: html
 
@@ -77,28 +81,11 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_successive_halving_heatmap_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_successive_halving_heatmap.py`
+  :doc:`/auto_examples/model_selection/plot_successive_halving_heatmap`
 
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Comparison between grid search and successive halving</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of confusion matrix usage to evaluate the quality of the output of a classifier on the iris data set. The diagonal elements represent the number of points for which the predicted label is equal to the true label, while off-diagonal elements are those that are mislabeled by the classifier. The higher the diagonal values of the confusion matrix the better, indicating many correct predictions.">
-
-.. only:: html
-
-  .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_confusion_matrix_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_model_selection_plot_confusion_matrix.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Confusion matrix</div>
     </div>
 
 
@@ -111,7 +98,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_grid_search_digits_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_grid_search_digits.py`
+  :doc:`/auto_examples/model_selection/plot_grid_search_digits`
 
 .. raw:: html
 
@@ -128,7 +115,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_multi_metric_evaluation_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_multi_metric_evaluation.py`
+  :doc:`/auto_examples/model_selection/plot_multi_metric_evaluation`
 
 .. raw:: html
 
@@ -145,7 +132,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_det_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_det.py`
+  :doc:`/auto_examples/model_selection/plot_det`
 
 .. raw:: html
 
@@ -162,11 +149,28 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_train_error_vs_test_error_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_train_error_vs_test_error.py`
+  :doc:`/auto_examples/model_selection/plot_train_error_vs_test_error`
 
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Effect of model regularization on training and test error</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of confusion matrix usage to evaluate the quality of the output of a classifier on the iris data set. The diagonal elements represent the number of points for which the predicted label is equal to the true label, while off-diagonal elements are those that are mislabeled by the classifier. The higher the diagonal values of the confusion matrix the better, indicating many correct predictions.">
+
+.. only:: html
+
+  .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_confusion_matrix_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/model_selection/plot_confusion_matrix`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Evaluate the performance of a classifier with Confusion Matrix</div>
     </div>
 
 
@@ -179,7 +183,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_roc_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_roc.py`
+  :doc:`/auto_examples/model_selection/plot_roc`
 
 .. raw:: html
 
@@ -196,7 +200,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_nested_cross_validation_iris_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_nested_cross_validation_iris.py`
+  :doc:`/auto_examples/model_selection/plot_nested_cross_validation_iris`
 
 .. raw:: html
 
@@ -213,7 +217,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_cv_predict_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_cv_predict.py`
+  :doc:`/auto_examples/model_selection/plot_cv_predict`
 
 .. raw:: html
 
@@ -230,7 +234,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_learning_curve_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_learning_curve.py`
+  :doc:`/auto_examples/model_selection/plot_learning_curve`
 
 .. raw:: html
 
@@ -247,7 +251,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_tuned_decision_threshold_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_tuned_decision_threshold.py`
+  :doc:`/auto_examples/model_selection/plot_tuned_decision_threshold`
 
 .. raw:: html
 
@@ -264,7 +268,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_cost_sensitive_learning_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_cost_sensitive_learning.py`
+  :doc:`/auto_examples/model_selection/plot_cost_sensitive_learning`
 
 .. raw:: html
 
@@ -281,7 +285,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_precision_recall_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_precision_recall.py`
+  :doc:`/auto_examples/model_selection/plot_precision_recall`
 
 .. raw:: html
 
@@ -298,7 +302,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_roc_crossval_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_roc_crossval.py`
+  :doc:`/auto_examples/model_selection/plot_roc_crossval`
 
 .. raw:: html
 
@@ -315,7 +319,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_grid_search_text_feature_extraction_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_grid_search_text_feature_extraction.py`
+  :doc:`/auto_examples/model_selection/plot_grid_search_text_feature_extraction`
 
 .. raw:: html
 
@@ -332,7 +336,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_grid_search_stats_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_grid_search_stats.py`
+  :doc:`/auto_examples/model_selection/plot_grid_search_stats`
 
 .. raw:: html
 
@@ -349,7 +353,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_successive_halving_iterations_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_successive_halving_iterations.py`
+  :doc:`/auto_examples/model_selection/plot_successive_halving_iterations`
 
 .. raw:: html
 
@@ -366,7 +370,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_permutation_tests_for_classification_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_permutation_tests_for_classification.py`
+  :doc:`/auto_examples/model_selection/plot_permutation_tests_for_classification`
 
 .. raw:: html
 
@@ -383,7 +387,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_underfitting_overfitting_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_underfitting_overfitting.py`
+  :doc:`/auto_examples/model_selection/plot_underfitting_overfitting`
 
 .. raw:: html
 
@@ -400,7 +404,7 @@ Examples related to the :mod:`sklearn.model_selection` module.
   .. image:: /auto_examples/model_selection/images/thumb/sphx_glr_plot_cv_indices_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_model_selection_plot_cv_indices.py`
+  :doc:`/auto_examples/model_selection/plot_cv_indices`
 
 .. raw:: html
 
@@ -422,11 +426,11 @@ Examples related to the :mod:`sklearn.model_selection` module.
    /auto_examples/model_selection/plot_likelihood_ratios
    /auto_examples/model_selection/plot_randomized_search
    /auto_examples/model_selection/plot_successive_halving_heatmap
-   /auto_examples/model_selection/plot_confusion_matrix
    /auto_examples/model_selection/plot_grid_search_digits
    /auto_examples/model_selection/plot_multi_metric_evaluation
    /auto_examples/model_selection/plot_det
    /auto_examples/model_selection/plot_train_error_vs_test_error
+   /auto_examples/model_selection/plot_confusion_matrix
    /auto_examples/model_selection/plot_roc
    /auto_examples/model_selection/plot_nested_cross_validation_iris
    /auto_examples/model_selection/plot_cv_predict

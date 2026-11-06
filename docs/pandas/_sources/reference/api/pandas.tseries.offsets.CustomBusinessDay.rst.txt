@@ -62,9 +62,6 @@ pandas.tseries.offsets.CustomBusinessDay
         ~CustomBusinessDay.copy
       
       
-        ~CustomBusinessDay.is_anchored
-      
-      
         ~CustomBusinessDay.is_month_end
       
       

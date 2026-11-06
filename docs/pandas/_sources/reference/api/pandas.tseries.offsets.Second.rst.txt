@@ -17,9 +17,6 @@ pandas.tseries.offsets.Second
         ~Second.base
       
       
-        ~Second.delta
-      
-      
         ~Second.freqstr
       
       
@@ -51,9 +48,6 @@ pandas.tseries.offsets.Second
       
       
         ~Second.copy
-      
-      
-        ~Second.is_anchored
       
       
         ~Second.is_month_end

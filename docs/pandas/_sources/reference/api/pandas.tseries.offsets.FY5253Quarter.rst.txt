@@ -68,9 +68,6 @@ pandas.tseries.offsets.FY5253Quarter
         ~FY5253Quarter.get_weeks
       
       
-        ~FY5253Quarter.is_anchored
-      
-      
         ~FY5253Quarter.is_month_end
       
       

@@ -56,9 +56,6 @@ pandas.tseries.offsets.WeekOfMonth
         ~WeekOfMonth.copy
       
       
-        ~WeekOfMonth.is_anchored
-      
-      
         ~WeekOfMonth.is_month_end
       
       

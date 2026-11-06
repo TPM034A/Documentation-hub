@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_svm_plot_svm_scale_c.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -47,7 +47,7 @@ amount of regularization with `C`, there would be a different amount of samples
 between the main problem and the smaller problems within the folds of the cross
 validation.
 
-Since the loss function dependens on the amount of samples, the latter
+Since the loss function depends on the amount of samples, the latter
 influences the selected value of `C`. The question that arises is "How do we
 optimally adjust C to account for the different amount of training samples?"
 
@@ -223,7 +223,7 @@ accuracy in this region is at the chance level.
 
 Using the default scale results in a somewhat stable optimal value of `C`,
 whereas the transition out of the underfitting region depends on the number of
-training samples. The reparametrization leads to even more stable results.
+training samples. The reparameterization leads to even more stable results.
 
 See e.g. theorem 3 of :arxiv:`On the prediction performance of the Lasso
 <1402.1700>` or :arxiv:`Simultaneous analysis of Lasso and Dantzig selector
@@ -311,7 +311,7 @@ parameter should be kept constant as the number of samples grow.
 
 .. GENERATED FROM PYTHON SOURCE LINES 201-209
 
-For the L2 penalty case, the reparametrization seems to have a smaller impact
+For the L2 penalty case, the reparameterization seems to have a smaller impact
 on the stability of the optimal value for the regularization. The transition
 out of the overfitting region occurs in a more spread range and the accuracy
 does not seem to be degraded up to chance level.
@@ -323,7 +323,7 @@ builder.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 19.274 seconds)
+   **Total running time of the script:** (0 minutes 24.825 seconds)
 
 
 .. _sphx_glr_download_auto_examples_svm_plot_svm_scale_c.py:
@@ -335,7 +335,7 @@ builder.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/svm/plot_svm_scale_c.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/svm/plot_svm_scale_c.ipynb
         :alt: Launch binder
         :width: 150 px
 

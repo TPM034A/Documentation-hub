@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_linear_model_plot_lasso_dense_vs_sparse_data.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -67,7 +67,7 @@ runtime with a dense data format.
 
     X, y = make_regression(n_samples=200, n_features=5000, random_state=0)
     # create a copy of X in sparse format
-    X_sp = sparse.coo_matrix(X)
+    X_sp = sparse.coo_array(X)
 
     alpha = 1
     sparse_lasso = Lasso(alpha=alpha, fit_intercept=False, max_iter=1000)
@@ -94,9 +94,9 @@ runtime with a dense data format.
 
  .. code-block:: none
 
-    Sparse Lasso done in 0.105s
-    Dense Lasso done in 0.034s
-    Distance between coefficients : 1.01e-13
+    Sparse Lasso done in 0.116s
+    Dense Lasso done in 0.043s
+    Distance between coefficients : 5.23e-14
 
 
 
@@ -120,7 +120,7 @@ expect the implementation that uses the sparse data format to be faster.
     # make Xs sparse by replacing the values lower than 2.5 with 0s
     Xs[Xs < 2.5] = 0.0
     # create a copy of Xs in sparse format
-    Xs_sp = sparse.coo_matrix(Xs)
+    Xs_sp = sparse.coo_array(Xs)
     Xs_sp = Xs_sp.tocsc()
 
     # compute the proportion of non-zero coefficient in the data matrix
@@ -151,9 +151,9 @@ expect the implementation that uses the sparse data format to be faster.
  .. code-block:: none
 
     Matrix density : 0.626%
-    Sparse Lasso done in 0.195s
-    Dense Lasso done in  0.791s
-    Distance between coefficients : 8.65e-12
+    Sparse Lasso done in 0.148s
+    Dense Lasso done in  0.908s
+    Distance between coefficients : 3.85e-13
 
 
 
@@ -161,7 +161,7 @@ expect the implementation that uses the sparse data format to be faster.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.194 seconds)
+   **Total running time of the script:** (0 minutes 1.282 seconds)
 
 
 .. _sphx_glr_download_auto_examples_linear_model_plot_lasso_dense_vs_sparse_data.py:
@@ -173,7 +173,7 @@ expect the implementation that uses the sparse data format to be faster.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_lasso_dense_vs_sparse_data.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_lasso_dense_vs_sparse_data.ipynb
         :alt: Launch binder
         :width: 150 px
 

@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.line\_merge
+===============================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.line_merge

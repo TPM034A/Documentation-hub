@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.extract\_unique\_points
+===========================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.extract_unique_points

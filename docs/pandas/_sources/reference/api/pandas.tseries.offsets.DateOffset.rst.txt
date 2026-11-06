@@ -50,9 +50,6 @@ pandas.tseries.offsets.DateOffset
         ~DateOffset.copy
       
       
-        ~DateOffset.is_anchored
-      
-      
         ~DateOffset.is_month_end
       
       

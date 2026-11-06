@@ -8,41 +8,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pandas.io.formats.style.Styler &#8212; pandas 2.3.3 documentation</title>
+    <title>pandas.io.formats.style.Styler &#8212; pandas 3.0.6 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=150e0881" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=8d8a0ed4" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/pandas.css?v=b7db95b1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=956a7be408686d7d6a7b"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b" />
 
-    <script src="../../_static/documentation_options.js?v=f4302432"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=c3365b21"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -50,10 +53,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/api/pandas.io.formats.style.Styler';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pandas.pydata.org/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.3';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -62,6 +66,7 @@
     <link rel="prev" title="Style" href="../style.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.6" />
   </head>
   
   
@@ -69,32 +74,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -102,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -110,20 +98,28 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/_templates/docs-announcement-banner.html"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -137,8 +133,8 @@
       
     
     
-    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 2.3.3 documentation - Home"/>
-    <script>document.write(`<img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark" alt="pandas 2.3.3 documentation - Home"/>`);</script>
+    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 3.0.6 documentation - Home"/>
+    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark pst-js-only" alt="pandas 3.0.6 documentation - Home"/>
   
   
 </a></div>
@@ -150,49 +146,43 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -204,55 +194,43 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -263,7 +241,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -275,8 +253,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -287,7 +265,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -299,31 +277,31 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -332,52 +310,49 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -386,42 +361,34 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -432,7 +399,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -444,8 +411,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -456,7 +423,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -481,7 +448,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../window.html">Window</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupby.html">GroupBy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resampling.html">Resampling</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../style.html">Style</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../style.html">Style</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">pandas.io.formats.style.Styler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.from_custom_template.html">pandas.io.formats.style.Styler.from_custom_template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.env.html">pandas.io.formats.style.Styler.env</a></li>
@@ -489,6 +456,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.template_html_style.html">pandas.io.formats.style.Styler.template_html_style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.template_html_table.html">pandas.io.formats.style.Styler.template_html_table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.template_latex.html">pandas.io.formats.style.Styler.template_latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.template_typst.html">pandas.io.formats.style.Styler.template_typst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.template_string.html">pandas.io.formats.style.Styler.template_string</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.loader.html">pandas.io.formats.style.Styler.loader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.apply.html">pandas.io.formats.style.Styler.apply</a></li>
@@ -497,6 +465,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.map_index.html">pandas.io.formats.style.Styler.map_index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.format.html">pandas.io.formats.style.Styler.format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.format_index.html">pandas.io.formats.style.Styler.format_index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.format_index_names.html">pandas.io.formats.style.Styler.format_index_names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.relabel_index.html">pandas.io.formats.style.Styler.relabel_index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.hide.html">pandas.io.formats.style.Styler.hide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.concat.html">pandas.io.formats.style.Styler.concat</a></li>
@@ -520,17 +489,19 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.bar.html">pandas.io.formats.style.Styler.bar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.to_html.html">pandas.io.formats.style.Styler.to_html</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.to_latex.html">pandas.io.formats.style.Styler.to_latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.to_typst.html">pandas.io.formats.style.Styler.to_typst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.to_excel.html">pandas.io.formats.style.Styler.to_excel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.to_string.html">pandas.io.formats.style.Styler.to_string</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.export.html">pandas.io.formats.style.Styler.export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.formats.style.Styler.use.html">pandas.io.formats.style.Styler.use</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../options.html">Options and settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../extensions.html">Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../missing_value.html">Missing values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aliases.html">pandas typing aliases</a></li>
 </ul>
 
     
@@ -540,29 +511,32 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -576,7 +550,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../style.html" class="nav-link">Style</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">pandas.io.fo...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pandas.io.formats.style.Styler</span></li>
   </ul>
 </nav>
 </div>
@@ -591,14 +565,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="pandas-io-formats-style-styler">
 <h1>pandas.io.formats.style.Styler<a class="headerlink" href="#pandas-io-formats-style-styler" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pandas.io.formats.style.Styler">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pandas.io.formats.style.</span></span><span class="sig-name descname"><span class="pre">Styler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_styles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caption</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_rep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thousands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.3.3/pandas/io/formats/style.py#L129-L3731"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.io.formats.style.Styler" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pandas.io.formats.style.</span></span><span class="sig-name descname"><span class="pre">Styler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_styles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caption</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_rep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thousands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v3.0.6/pandas/io/formats/style.py#L82-L4127"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.io.formats.style.Styler" title="Link to this definition">#</a></dt>
 <dd><p>Helps style a DataFrame or Series according to the data with HTML and CSS.</p>
+<p>This class provides methods for styling and formatting a Pandas DataFrame or Series.
+The styled output can be rendered as HTML or LaTeX, and it supports CSS-based
+styling, allowing users to control colors, font styles, and other visual aspects of
+tabular data. It is particularly useful for presenting DataFrame objects in a
+Jupyter Notebook environment or when exporting styled tables for reports and</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -606,9 +585,6 @@ document.write(`
 </dd>
 <dt><strong>precision</strong><span class="classifier">int, optional</span></dt><dd><p>Precision to round floats to. If not given defaults to
 <code class="docutils literal notranslate"><span class="pre">pandas.options.styler.format.precision</span></code>.</p>
-<div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 1.4.0.</span></p>
-</div>
 </dd>
 <dt><strong>table_styles</strong><span class="classifier">list-like, default None</span></dt><dd><p>List of {selector: (attr, value)} dicts; see Notes.</p>
 </dd>
@@ -633,41 +609,35 @@ expressed in hex characters, in range [0, 32].</p>
 </dd>
 <dt><strong>decimal</strong><span class="classifier">str, optional</span></dt><dd><p>Character used as decimal separator for floats, complex and integers. If not
 given uses <code class="docutils literal notranslate"><span class="pre">pandas.options.styler.format.decimal</span></code>.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.3.0.</span></p>
-</div>
 </dd>
 <dt><strong>thousands</strong><span class="classifier">str, optional, default None</span></dt><dd><p>Character used as thousands separator for floats, complex and integers. If not
 given uses <code class="docutils literal notranslate"><span class="pre">pandas.options.styler.format.thousands</span></code>.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.3.0.</span></p>
-</div>
 </dd>
 <dt><strong>escape</strong><span class="classifier">str, optional</span></dt><dd><p>Use ‘html’ to replace the characters <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">'</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>
-in cell display string with HTML-safe sequences.
-Use ‘latex’ to replace the characters <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>, <code class="docutils literal notranslate"><span class="pre">$</span></code>, <code class="docutils literal notranslate"><span class="pre">#</span></code>, <code class="docutils literal notranslate"><span class="pre">_</span></code>,
+in cell display string with HTML-safe sequences.</p>
+<p>Use ‘latex’ to replace the characters <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>, <code class="docutils literal notranslate"><span class="pre">$</span></code>, <code class="docutils literal notranslate"><span class="pre">#</span></code>, <code class="docutils literal notranslate"><span class="pre">_</span></code>,
 <code class="docutils literal notranslate"><span class="pre">{</span></code>, <code class="docutils literal notranslate"><span class="pre">}</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, and <code class="docutils literal notranslate"><span class="pre">\</span></code> in the cell display string with
 LaTeX-safe sequences. Use ‘latex-math’ to replace the characters
 the same way as in ‘latex’ mode, except for math substrings,
 which either are surrounded by two characters <code class="docutils literal notranslate"><span class="pre">$</span></code> or start with
 the character <code class="docutils literal notranslate"><span class="pre">\(</span></code> and end with <code class="docutils literal notranslate"><span class="pre">\)</span></code>.
 If not given uses <code class="docutils literal notranslate"><span class="pre">pandas.options.styler.format.escape</span></code>.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.3.0.</span></p>
-</div>
 </dd>
 <dt><strong>formatter</strong><span class="classifier">str, callable, dict, optional</span></dt><dd><p>Object to define how values are displayed. See <code class="docutils literal notranslate"><span class="pre">Styler.format</span></code>. If not given
 uses <code class="docutils literal notranslate"><span class="pre">pandas.options.styler.format.formatter</span></code>.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.4.0.</span></p>
-</div>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Attributes</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
+<tr class="row-odd"><td><p><strong>index</strong></p></td>
+<td><p>(data.index Index)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>columns</strong></p></td>
+<td><p>(data.columns Index)</p></td>
+</tr>
 <tr class="row-odd"><td><p><strong>env</strong></p></td>
 <td><p>(Jinja2 jinja2.Environment)</p></td>
 </tr>
@@ -688,6 +658,7 @@ uses <code class="docutils literal notranslate"><span class="pre">pandas.options
 </tr>
 </tbody>
 </table>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
@@ -696,6 +667,13 @@ uses <code class="docutils literal notranslate"><span class="pre">pandas.options
 </dl>
 </div>
 <p class="rubric">Notes</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">Styler</span></code> is primarily intended for use on safe input that you control.
+When using <code class="docutils literal notranslate"><span class="pre">Styler</span></code> on untrusted, user-provided input to serve HTML,
+you should set <code class="docutils literal notranslate"><span class="pre">escape=&quot;html&quot;</span></code> to prevent security vulnerabilities.
+See the Jinja2 documentation on escaping HTML for more.</p>
+</div>
 <p>Most styling will be done by passing style functions into
 <code class="docutils literal notranslate"><span class="pre">Styler.apply</span></code> or <code class="docutils literal notranslate"><span class="pre">Styler.map</span></code>. Style functions should
 return values with strings containing CSS <code class="docutils literal notranslate"><span class="pre">'attr:</span> <span class="pre">value'</span></code> that will
@@ -714,28 +692,33 @@ where <cite>k</cite> is its level in a MultiIndex</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">level&lt;k&gt;</span></code> where <cite>k</cite> is the level in a MultiIndex</p></li>
 </ul>
 </li>
-<li><p>Column label cells include
-* <code class="docutils literal notranslate"><span class="pre">col_heading</span></code>
-* <code class="docutils literal notranslate"><span class="pre">col&lt;n&gt;</span></code> where <cite>n</cite> is the numeric position of the column
-* <code class="docutils literal notranslate"><span class="pre">level&lt;k&gt;</span></code> where <cite>k</cite> is the level in a MultiIndex</p></li>
+<li><p>Column label cells include</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">col_heading</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">col&lt;n&gt;</span></code> where <cite>n</cite> is the numeric position of the column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level&lt;k&gt;</span></code> where <cite>k</cite> is the level in a MultiIndex</p></li>
+</ul>
+</li>
 <li><p>Blank cells include <code class="docutils literal notranslate"><span class="pre">blank</span></code></p></li>
 <li><p>Data cells include <code class="docutils literal notranslate"><span class="pre">data</span></code></p></li>
 <li><p>Trimmed cells include <code class="docutils literal notranslate"><span class="pre">col_trim</span></code> or <code class="docutils literal notranslate"><span class="pre">row_trim</span></code>.</p></li>
 </ul>
 <p>Any, or all, or these classes can be renamed by using the <code class="docutils literal notranslate"><span class="pre">css_class_names</span></code>
-argument in <code class="docutils literal notranslate"><span class="pre">Styler.set_table_classes</span></code>, giving a value such as
+argument in <code class="docutils literal notranslate"><span class="pre">Styler.set_table_styles</span></code>, giving a value such as
 <em>{“row”: “MY_ROW_CLASS”, “col_trim”: “”, “row_trim”: “”}</em>.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span>
-<span class="gp">... </span>                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">formats</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">Styler</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="gp">... </span>                           <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;My table&quot;</span><span class="p">)</span>  
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">formats</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">Styler</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">df</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">"My table"</span>
+<span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Please see:
 <a class="reference internal" href="../../user_guide/style.html"><span class="doc">Table Visualization</span></a> for more examples.</p>
 <p class="rubric">Attributes</p>
-<table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.env.html#pandas.io.formats.style.Styler.env" title="pandas.io.formats.style.Styler.env"><code class="xref py py-obj docutils literal notranslate"><span class="pre">env</span></code></a></p></td>
 <td><p></p></td>
@@ -743,37 +726,41 @@ argument in <code class="docutils literal notranslate"><span class="pre">Styler.
 <tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.loader.html#pandas.io.formats.style.Styler.loader" title="pandas.io.formats.style.Styler.loader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loader</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_html.html#pandas.io.formats.style.Styler.template_html" title="pandas.io.formats.style.Styler.template_html"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_html</span></code></a></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_dir</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_html_style.html#pandas.io.formats.style.Styler.template_html_style" title="pandas.io.formats.style.Styler.template_html_style"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_html_style</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_html.html#pandas.io.formats.style.Styler.template_html" title="pandas.io.formats.style.Styler.template_html"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_html</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_html_table.html#pandas.io.formats.style.Styler.template_html_table" title="pandas.io.formats.style.Styler.template_html_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_html_table</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_html_style.html#pandas.io.formats.style.Styler.template_html_style" title="pandas.io.formats.style.Styler.template_html_style"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_html_style</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_latex.html#pandas.io.formats.style.Styler.template_latex" title="pandas.io.formats.style.Styler.template_latex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_latex</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_html_table.html#pandas.io.formats.style.Styler.template_html_table" title="pandas.io.formats.style.Styler.template_html_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_html_table</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_string.html#pandas.io.formats.style.Styler.template_string" title="pandas.io.formats.style.Styler.template_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_string</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_latex.html#pandas.io.formats.style.Styler.template_latex" title="pandas.io.formats.style.Styler.template_latex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_latex</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_string.html#pandas.io.formats.style.Styler.template_string" title="pandas.io.formats.style.Styler.template_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_string</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.template_typst.html#pandas.io.formats.style.Styler.template_typst" title="pandas.io.formats.style.Styler.template_typst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_typst</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">this_dir</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p class="rubric">Methods</p>
-<table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.apply.html#pandas.io.formats.style.Styler.apply" title="pandas.io.formats.style.Styler.apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply</span></code></a>(func[, axis, subset])</p></td>
 <td><p>Apply a CSS-styling function column-wise, row-wise, or table-wise.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.apply_index.html#pandas.io.formats.style.Styler.apply_index" title="pandas.io.formats.style.Styler.apply_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_index</span></code></a>(func[, axis, level])</p></td>
 <td><p>Apply a CSS-styling function to the index or column headers, level-wise.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">applymap</span></code>(func[, subset])</p></td>
-<td><p>(DEPRECATED) Apply a CSS-styling function elementwise.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">applymap_index</span></code>(func[, axis, level])</p></td>
-<td><p>(DEPRECATED) Apply a CSS-styling function to the index or column headers, elementwise.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.background_gradient.html#pandas.io.formats.style.Styler.background_gradient" title="pandas.io.formats.style.Styler.background_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">background_gradient</span></code></a>([cmap, low, high, axis, ...])</p></td>
 <td><p>Color the background in a gradient style.</p></td>
@@ -796,83 +783,90 @@ argument in <code class="docutils literal notranslate"><span class="pre">Styler.
 <tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.format_index.html#pandas.io.formats.style.Styler.format_index" title="pandas.io.formats.style.Styler.format_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_index</span></code></a>([formatter, axis, level, ...])</p></td>
 <td><p>Format the text display value of index labels or column headers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.from_custom_template.html#pandas.io.formats.style.Styler.from_custom_template" title="pandas.io.formats.style.Styler.from_custom_template"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_custom_template</span></code></a>(searchpath[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.format_index_names.html#pandas.io.formats.style.Styler.format_index_names" title="pandas.io.formats.style.Styler.format_index_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_index_names</span></code></a>([formatter, axis, level, ...])</p></td>
+<td><p>Format the text display value of index names or column names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.from_custom_template.html#pandas.io.formats.style.Styler.from_custom_template" title="pandas.io.formats.style.Styler.from_custom_template"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_custom_template</span></code></a>(searchpath[, ...])</p></td>
 <td><p>Factory function for creating a subclass of <code class="docutils literal notranslate"><span class="pre">Styler</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.hide.html#pandas.io.formats.style.Styler.hide" title="pandas.io.formats.style.Styler.hide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code></a>([subset, axis, level, names])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.hide.html#pandas.io.formats.style.Styler.hide" title="pandas.io.formats.style.Styler.hide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hide</span></code></a>([subset, axis, level, names])</p></td>
 <td><p>Hide the entire index / column headers, or specific rows / columns from display.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_between.html#pandas.io.formats.style.Styler.highlight_between" title="pandas.io.formats.style.Styler.highlight_between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_between</span></code></a>([subset, color, axis, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_between.html#pandas.io.formats.style.Styler.highlight_between" title="pandas.io.formats.style.Styler.highlight_between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_between</span></code></a>([subset, color, axis, ...])</p></td>
 <td><p>Highlight a defined range with a style.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_max.html#pandas.io.formats.style.Styler.highlight_max" title="pandas.io.formats.style.Styler.highlight_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_max</span></code></a>([subset, color, axis, props])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_max.html#pandas.io.formats.style.Styler.highlight_max" title="pandas.io.formats.style.Styler.highlight_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_max</span></code></a>([subset, color, axis, props])</p></td>
 <td><p>Highlight the maximum with a style.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_min.html#pandas.io.formats.style.Styler.highlight_min" title="pandas.io.formats.style.Styler.highlight_min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_min</span></code></a>([subset, color, axis, props])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_min.html#pandas.io.formats.style.Styler.highlight_min" title="pandas.io.formats.style.Styler.highlight_min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_min</span></code></a>([subset, color, axis, props])</p></td>
 <td><p>Highlight the minimum with a style.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_null.html#pandas.io.formats.style.Styler.highlight_null" title="pandas.io.formats.style.Styler.highlight_null"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_null</span></code></a>([color, subset, props])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_null.html#pandas.io.formats.style.Styler.highlight_null" title="pandas.io.formats.style.Styler.highlight_null"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_null</span></code></a>([color, subset, props])</p></td>
 <td><p>Highlight missing values with a style.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_quantile.html#pandas.io.formats.style.Styler.highlight_quantile" title="pandas.io.formats.style.Styler.highlight_quantile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_quantile</span></code></a>([subset, color, axis, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.highlight_quantile.html#pandas.io.formats.style.Styler.highlight_quantile" title="pandas.io.formats.style.Styler.highlight_quantile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlight_quantile</span></code></a>([subset, color, axis, ...])</p></td>
 <td><p>Highlight values defined by a quantile with a style.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.map.html#pandas.io.formats.style.Styler.map" title="pandas.io.formats.style.Styler.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map</span></code></a>(func[, subset])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.map.html#pandas.io.formats.style.Styler.map" title="pandas.io.formats.style.Styler.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map</span></code></a>(func[, subset])</p></td>
 <td><p>Apply a CSS-styling function elementwise.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.map_index.html#pandas.io.formats.style.Styler.map_index" title="pandas.io.formats.style.Styler.map_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_index</span></code></a>(func[, axis, level])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.map_index.html#pandas.io.formats.style.Styler.map_index" title="pandas.io.formats.style.Styler.map_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_index</span></code></a>(func[, axis, level])</p></td>
 <td><p>Apply a CSS-styling function to the index or column headers, elementwise.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.pipe.html#pandas.io.formats.style.Styler.pipe" title="pandas.io.formats.style.Styler.pipe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pipe</span></code></a>(func, *args, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.pipe.html#pandas.io.formats.style.Styler.pipe" title="pandas.io.formats.style.Styler.pipe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pipe</span></code></a>(func, *args, **kwargs)</p></td>
 <td><p>Apply <code class="docutils literal notranslate"><span class="pre">func(self,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code>, and return the result.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.relabel_index.html#pandas.io.formats.style.Styler.relabel_index" title="pandas.io.formats.style.Styler.relabel_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">relabel_index</span></code></a>(labels[, axis, level])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.relabel_index.html#pandas.io.formats.style.Styler.relabel_index" title="pandas.io.formats.style.Styler.relabel_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">relabel_index</span></code></a>(labels[, axis, level])</p></td>
 <td><p>Relabel the index, or column header, keys to display a set of specified values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_caption.html#pandas.io.formats.style.Styler.set_caption" title="pandas.io.formats.style.Styler.set_caption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_caption</span></code></a>(caption)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_caption.html#pandas.io.formats.style.Styler.set_caption" title="pandas.io.formats.style.Styler.set_caption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_caption</span></code></a>(caption)</p></td>
 <td><p>Set the text added to a <code class="docutils literal notranslate"><span class="pre">&lt;caption&gt;</span></code> HTML element.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_properties.html#pandas.io.formats.style.Styler.set_properties" title="pandas.io.formats.style.Styler.set_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_properties</span></code></a>([subset])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_properties.html#pandas.io.formats.style.Styler.set_properties" title="pandas.io.formats.style.Styler.set_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_properties</span></code></a>([subset])</p></td>
 <td><p>Set defined CSS-properties to each <code class="docutils literal notranslate"><span class="pre">&lt;td&gt;</span></code> HTML element for the given subset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_sticky.html#pandas.io.formats.style.Styler.set_sticky" title="pandas.io.formats.style.Styler.set_sticky"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_sticky</span></code></a>([axis, pixel_size, levels])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_sticky.html#pandas.io.formats.style.Styler.set_sticky" title="pandas.io.formats.style.Styler.set_sticky"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_sticky</span></code></a>([axis, pixel_size, levels])</p></td>
 <td><p>Add CSS to permanently display the index or column headers in a scrolling frame.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_table_attributes.html#pandas.io.formats.style.Styler.set_table_attributes" title="pandas.io.formats.style.Styler.set_table_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_table_attributes</span></code></a>(attributes)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_table_attributes.html#pandas.io.formats.style.Styler.set_table_attributes" title="pandas.io.formats.style.Styler.set_table_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_table_attributes</span></code></a>(attributes)</p></td>
 <td><p>Set the table attributes added to the <code class="docutils literal notranslate"><span class="pre">&lt;table&gt;</span></code> HTML element.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_table_styles.html#pandas.io.formats.style.Styler.set_table_styles" title="pandas.io.formats.style.Styler.set_table_styles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_table_styles</span></code></a>([table_styles, axis, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_table_styles.html#pandas.io.formats.style.Styler.set_table_styles" title="pandas.io.formats.style.Styler.set_table_styles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_table_styles</span></code></a>([table_styles, axis, ...])</p></td>
 <td><p>Set the table styles included within the <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> HTML element.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_td_classes.html#pandas.io.formats.style.Styler.set_td_classes" title="pandas.io.formats.style.Styler.set_td_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_td_classes</span></code></a>(classes)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_td_classes.html#pandas.io.formats.style.Styler.set_td_classes" title="pandas.io.formats.style.Styler.set_td_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_td_classes</span></code></a>(classes)</p></td>
 <td><p>Set the <code class="docutils literal notranslate"><span class="pre">class</span></code> attribute of <code class="docutils literal notranslate"><span class="pre">&lt;td&gt;</span></code> HTML elements.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_tooltips.html#pandas.io.formats.style.Styler.set_tooltips" title="pandas.io.formats.style.Styler.set_tooltips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_tooltips</span></code></a>(ttips[, props, css_class])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_tooltips.html#pandas.io.formats.style.Styler.set_tooltips" title="pandas.io.formats.style.Styler.set_tooltips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_tooltips</span></code></a>(ttips[, props, css_class, ...])</p></td>
 <td><p>Set the DataFrame of strings on <code class="docutils literal notranslate"><span class="pre">Styler</span></code> generating <code class="docutils literal notranslate"><span class="pre">:hover</span></code> tooltips.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_uuid.html#pandas.io.formats.style.Styler.set_uuid" title="pandas.io.formats.style.Styler.set_uuid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_uuid</span></code></a>(uuid)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.set_uuid.html#pandas.io.formats.style.Styler.set_uuid" title="pandas.io.formats.style.Styler.set_uuid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_uuid</span></code></a>(uuid)</p></td>
 <td><p>Set the uuid applied to <code class="docutils literal notranslate"><span class="pre">id</span></code> attributes of HTML elements.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.text_gradient.html#pandas.io.formats.style.Styler.text_gradient" title="pandas.io.formats.style.Styler.text_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">text_gradient</span></code></a>([cmap, low, high, axis, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.text_gradient.html#pandas.io.formats.style.Styler.text_gradient" title="pandas.io.formats.style.Styler.text_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">text_gradient</span></code></a>([cmap, low, high, axis, ...])</p></td>
 <td><p>Color the text in a gradient style.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.to_excel.html#pandas.io.formats.style.Styler.to_excel" title="pandas.io.formats.style.Styler.to_excel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_excel</span></code></a>(excel_writer[, sheet_name, na_rep, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.to_excel.html#pandas.io.formats.style.Styler.to_excel" title="pandas.io.formats.style.Styler.to_excel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_excel</span></code></a>(excel_writer[, sheet_name, na_rep, ...])</p></td>
 <td><p>Write Styler to an Excel sheet.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.to_html.html#pandas.io.formats.style.Styler.to_html" title="pandas.io.formats.style.Styler.to_html"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_html</span></code></a>([buf, table_uuid, table_attributes, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.to_html.html#pandas.io.formats.style.Styler.to_html" title="pandas.io.formats.style.Styler.to_html"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_html</span></code></a>([buf, table_uuid, table_attributes, ...])</p></td>
 <td><p>Write Styler to a file, buffer or string in HTML-CSS format.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.to_latex.html#pandas.io.formats.style.Styler.to_latex" title="pandas.io.formats.style.Styler.to_latex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_latex</span></code></a>([buf, column_format, position, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.to_latex.html#pandas.io.formats.style.Styler.to_latex" title="pandas.io.formats.style.Styler.to_latex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_latex</span></code></a>([buf, column_format, position, ...])</p></td>
 <td><p>Write Styler to a file, buffer or string in LaTeX format.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.to_string.html#pandas.io.formats.style.Styler.to_string" title="pandas.io.formats.style.Styler.to_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_string</span></code></a>([buf, encoding, sparse_index, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.to_string.html#pandas.io.formats.style.Styler.to_string" title="pandas.io.formats.style.Styler.to_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_string</span></code></a>([buf, encoding, sparse_index, ...])</p></td>
 <td><p>Write Styler to a file, buffer or string in text format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.to_typst.html#pandas.io.formats.style.Styler.to_typst" title="pandas.io.formats.style.Styler.to_typst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_typst</span></code></a>([buf, encoding, sparse_index, ...])</p></td>
+<td><p>Write Styler to a file, buffer or string in Typst format.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="pandas.io.formats.style.Styler.use.html#pandas.io.formats.style.Styler.use" title="pandas.io.formats.style.Styler.use"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use</span></code></a>(styles)</p></td>
 <td><p>Set the styles on the current Styler.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </dd></dl>
 
 </section>
@@ -884,7 +878,7 @@ argument in <code class="docutils literal notranslate"><span class="pre">Styler.
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -912,27 +906,21 @@ argument in <code class="docutils literal notranslate"><span class="pre">Styler.
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas.io.formats.style.Styler"><code class="docutils literal notranslate"><span class="pre">Styler</span></code></a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/reference/api/pandas.io.formats.style.Styler.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               
@@ -947,8 +935,8 @@ argument in <code class="docutils literal notranslate"><span class="pre">Styler.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -956,13 +944,13 @@ argument in <code class="docutils literal notranslate"><span class="pre">Styler.
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="copyright">
-    &copy 2025, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
+    &copy 2026, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
 </p></div>
       
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
     <br/>
   </p>
 </div>
@@ -975,7 +963,8 @@ argument in <code class="docutils literal notranslate"><span class="pre">Styler.
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

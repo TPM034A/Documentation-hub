@@ -10,6 +10,10 @@ Support Vector Machines
 Examples concerning the :mod:`sklearn.svm` module.
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -26,7 +30,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_oneclass_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_oneclass.py`
+  :doc:`/auto_examples/svm/plot_oneclass`
 
 .. raw:: html
 
@@ -43,7 +47,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_svm_kernels_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_svm_kernels.py`
+  :doc:`/auto_examples/svm/plot_svm_kernels`
 
 .. raw:: html
 
@@ -60,7 +64,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_iris_svc_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_iris_svc.py`
+  :doc:`/auto_examples/svm/plot_iris_svc`
 
 .. raw:: html
 
@@ -77,7 +81,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_linearsvc_support_vectors_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_linearsvc_support_vectors.py`
+  :doc:`/auto_examples/svm/plot_linearsvc_support_vectors`
 
 .. raw:: html
 
@@ -94,7 +98,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_rbf_parameters_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_rbf_parameters.py`
+  :doc:`/auto_examples/svm/plot_rbf_parameters`
 
 .. raw:: html
 
@@ -111,7 +115,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_svm_margin_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_svm_margin.py`
+  :doc:`/auto_examples/svm/plot_svm_margin`
 
 .. raw:: html
 
@@ -128,7 +132,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_svm_tie_breaking_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_svm_tie_breaking.py`
+  :doc:`/auto_examples/svm/plot_svm_tie_breaking`
 
 .. raw:: html
 
@@ -138,14 +142,14 @@ Examples concerning the :mod:`sklearn.svm` module.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Simple usage of Support Vector Machines to classify a sample. It will plot the decision surface and the support vectors.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple usage of svm classifier with a custom kernel. It will plot the decision surface and highlight the support vectors.">
 
 .. only:: html
 
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_custom_kernel_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_custom_kernel.py`
+  :doc:`/auto_examples/svm/plot_custom_kernel`
 
 .. raw:: html
 
@@ -162,7 +166,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_svm_anova_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_svm_anova.py`
+  :doc:`/auto_examples/svm/plot_svm_anova`
 
 .. raw:: html
 
@@ -179,7 +183,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_separating_hyperplane_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_separating_hyperplane.py`
+  :doc:`/auto_examples/svm/plot_separating_hyperplane`
 
 .. raw:: html
 
@@ -196,7 +200,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_separating_hyperplane_unbalanced_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_separating_hyperplane_unbalanced.py`
+  :doc:`/auto_examples/svm/plot_separating_hyperplane_unbalanced`
 
 .. raw:: html
 
@@ -213,7 +217,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_weighted_samples_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_weighted_samples.py`
+  :doc:`/auto_examples/svm/plot_weighted_samples`
 
 .. raw:: html
 
@@ -230,7 +234,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_svm_scale_c_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_svm_scale_c.py`
+  :doc:`/auto_examples/svm/plot_svm_scale_c`
 
 .. raw:: html
 
@@ -247,7 +251,7 @@ Examples concerning the :mod:`sklearn.svm` module.
   .. image:: /auto_examples/svm/images/thumb/sphx_glr_plot_svm_regression_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_svm_plot_svm_regression.py`
+  :doc:`/auto_examples/svm/plot_svm_regression`
 
 .. raw:: html
 

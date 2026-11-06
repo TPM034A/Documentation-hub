@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.count\_geometries
+=====================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.count_geometries

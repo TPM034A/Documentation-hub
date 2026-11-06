@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_impute_plot_iterative_imputer_variants_comparison.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -206,7 +206,7 @@ complex and costly missing values imputation strategies.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.652 seconds)
+   **Total running time of the script:** (0 minutes 5.774 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_iterative_imputer_variants_comparison.py:
@@ -218,7 +218,7 @@ complex and costly missing values imputation strategies.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/impute/plot_iterative_imputer_variants_comparison.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/impute/plot_iterative_imputer_variants_comparison.ipynb
         :alt: Launch binder
         :width: 150 px
 

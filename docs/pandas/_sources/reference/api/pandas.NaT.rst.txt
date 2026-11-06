@@ -3,4 +3,4 @@ pandas.NaT
 
 .. currentmodule:: pandas
 
-.. autoclass:: NaT
+.. autodata:: NaT

@@ -17,9 +17,6 @@ pandas.tseries.offsets.Day
         ~Day.base
       
       
-        ~Day.delta
-      
-      
         ~Day.freqstr
       
       
@@ -51,9 +48,6 @@ pandas.tseries.offsets.Day
       
       
         ~Day.copy
-      
-      
-        ~Day.is_anchored
       
       
         ~Day.is_month_end

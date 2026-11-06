@@ -1,0 +1,6 @@
+﻿geopandas.GeoDataFrame.active\_geometry\_name
+=============================================
+
+.. currentmodule:: geopandas
+
+.. autoproperty:: GeoDataFrame.active_geometry_name

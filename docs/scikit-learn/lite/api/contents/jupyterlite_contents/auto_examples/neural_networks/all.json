@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:05.049028Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.964132Z",
+      "mimetype": null,
+      "name": "plot_mlp_alpha.ipynb",
+      "path": "jupyterlite_contents/auto_examples/neural_networks/plot_mlp_alpha.ipynb",
+      "size": 6266,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:05.049378Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.964538Z",
+      "mimetype": null,
+      "name": "plot_mlp_training_curves.ipynb",
+      "path": "jupyterlite_contents/auto_examples/neural_networks/plot_mlp_training_curves.ipynb",
+      "size": 5927,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:05.049710Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.964972Z",
+      "mimetype": null,
+      "name": "plot_mnist_filters.ipynb",
+      "path": "jupyterlite_contents/auto_examples/neural_networks/plot_mnist_filters.ipynb",
+      "size": 4434,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:05.050060Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.965538Z",
+      "mimetype": null,
+      "name": "plot_rbm_logistic_classification.ipynb",
+      "path": "jupyterlite_contents/auto_examples/neural_networks/plot_rbm_logistic_classification.ipynb",
+      "size": 7455,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-09-11T14:01:05.050060Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-09-11T14:01:05.050060Z",
+  "mimetype": null,
+  "name": "neural_networks",
+  "path": "jupyterlite_contents/auto_examples/neural_networks",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

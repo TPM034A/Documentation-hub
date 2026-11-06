@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_gaussian_process_plot_compare_gpr_krr.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -317,7 +317,7 @@ dataset, we use `sin` as the generative process, implying a
 being :math:`1`, it explains the high frequency observed in the predictions of
 our model.
 Similar conclusions could be drawn with the length-scale parameter. Thus, it
-tell us that the kernel parameters need to be tuned. We will use a randomized
+tells us that the kernel parameters need to be tuned. We will use a randomized
 search to tune the different parameters the kernel ridge model: the `alpha`
 parameter and the kernel parameters.
 
@@ -352,7 +352,7 @@ parameter and the kernel parameters.
 
  .. code-block:: none
 
-    Time for KernelRidge fitting: 3.809 seconds
+    Time for KernelRidge fitting: 4.468 seconds
 
 
 
@@ -489,7 +489,7 @@ estimate the noise in the dataset.
 
  .. code-block:: none
 
-    Time for GaussianProcessRegressor fitting: 0.031 seconds
+    Time for GaussianProcessRegressor fitting: 0.024 seconds
 
 
 
@@ -714,7 +714,7 @@ also increases.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.447 seconds)
+   **Total running time of the script:** (0 minutes 5.149 seconds)
 
 
 .. _sphx_glr_download_auto_examples_gaussian_process_plot_compare_gpr_krr.py:
@@ -726,7 +726,7 @@ also increases.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/gaussian_process/plot_compare_gpr_krr.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/gaussian_process/plot_compare_gpr_krr.ipynb
         :alt: Launch binder
         :width: 150 px
 

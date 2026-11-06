@@ -8,41 +8,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Comparison with spreadsheets &#8212; pandas 2.3.3 documentation</title>
+    <title>Comparison with spreadsheets &#8212; pandas 3.0.6 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=150e0881" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=8d8a0ed4" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/pandas.css?v=b7db95b1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=956a7be408686d7d6a7b"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b" />
 
-    <script src="../../_static/documentation_options.js?v=f4302432"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=c3365b21"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -50,10 +53,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/comparison/comparison_with_spreadsheets';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pandas.pydata.org/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.3';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -62,6 +66,7 @@
     <link rel="prev" title="Comparison with SQL" href="comparison_with_sql.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.6" />
   </head>
   
   
@@ -69,32 +74,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -102,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -110,20 +98,28 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/_templates/docs-announcement-banner.html"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -137,8 +133,8 @@
       
     
     
-    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 2.3.3 documentation - Home"/>
-    <script>document.write(`<img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark" alt="pandas 2.3.3 documentation - Home"/>`);</script>
+    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 3.0.6 documentation - Home"/>
+    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark pst-js-only" alt="pandas 3.0.6 documentation - Home"/>
   
   
 </a></div>
@@ -150,49 +146,43 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -204,55 +194,43 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -263,7 +241,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -275,8 +253,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -287,7 +265,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -299,31 +277,31 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -332,52 +310,49 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -386,42 +361,34 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -432,7 +399,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -444,8 +411,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -456,7 +423,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -472,7 +439,7 @@ document.write(`
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Package overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_tutorials/index.html">Getting started tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_tutorials/index.html">Getting started tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/01_table_oriented.html">What kind of data does pandas handle?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/02_read_write.html">How do I read and write tabular data?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/03_subset_data.html">How do I select a subset of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>?</a></li>
@@ -484,15 +451,16 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/09_timeseries.html">How to handle time series data with ease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/10_text_data.html">How to manipulate textual data</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Comparison with other tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Comparison with other tools</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_r.html">Comparison with R / R libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_sql.html">Comparison with SQL</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Comparison with spreadsheets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_sas.html">Comparison with SAS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_stata.html">Comparison with Stata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparison_with_spss.html">Comparison with SPSS</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Community tutorials</a></li>
 </ul>
 
@@ -503,29 +471,32 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -539,7 +510,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Comparison with other tools</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Comparison...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Comparison with spreadsheets</span></li>
   </ul>
 </nav>
 </div>
@@ -554,7 +525,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="comparison-with-spreadsheets">
 <span id="compare-with-spreadsheets"></span><h1>Comparison with spreadsheets<a class="headerlink" href="#comparison-with-spreadsheets" title="Link to this heading">#</a></h1>
@@ -578,7 +549,7 @@ to familiarize yourself with the library.</p>
 <h2>Data structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h2>
 <section id="general-terminology-translation">
 <h3>General terminology translation<a class="headerlink" href="#general-terminology-translation" title="Link to this heading">#</a></h3>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
 <col style="width: 50.0%" />
 <col style="width: 50.0%" />
@@ -606,6 +577,7 @@ to familiarize yourself with the library.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="dataframe">
 <h3><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#dataframe" title="Link to this heading">#</a></h3>
@@ -638,13 +610,13 @@ effectively.</p>
 <p>Most pandas operations return copies of the <code class="docutils literal notranslate"><span class="pre">Series</span></code>/<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. To make the changes “stick”,
 you’ll need to either assign to a new variable:</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;col1&quot;</span><span class="p">)</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"col1"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <p>or overwrite the original one:</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;col1&quot;</span><span class="p">)</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"col1"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -672,7 +644,7 @@ necessary anymore in the context of Copy-on-Write. The proposal can be found
 but for a small number of values, it is often convenient to specify it as
 a Python dictionary, where the keys are the column names
 and the values are the data.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"x"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s2">"y"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
 
 <span class="gp">In [4]: </span><span class="n">df</span>
 <span class="gh">Out[4]: </span>
@@ -695,8 +667,8 @@ dataset from the pandas tests, which is a CSV file. In Excel, you would download
 <a class="reference external" href="https://support.microsoft.com/en-us/office/import-or-export-text-txt-or-csv-files-5250ac4c-663c-47ce-937b-339e391393ba">open the CSV</a>.
 In pandas, you pass the URL or local path of the CSV file to <a class="reference internal" href="../../reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_csv()</span></code></a>:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">   ...: </span>    <span class="s2">&quot;https://raw.githubusercontent.com/pandas-dev&quot;</span>
-<span class="gp">   ...: </span>    <span class="s2">&quot;/pandas/main/pandas/tests/io/data/csv/tips.csv&quot;</span>
+<span class="gp">   ...: </span>    <span class="s2">"https://raw.githubusercontent.com/pandas-dev"</span>
+<span class="gp">   ...: </span>    <span class="s2">"/pandas/main/pandas/tests/io/data/csv/tips.csv"</span>
 <span class="gp">   ...: </span><span class="p">)</span>
 <span class="gp">   ...: </span>
 
@@ -724,10 +696,10 @@ In pandas, you pass the URL or local path of the CSV file to <a class="reference
 <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> can take a number of parameters to specify how the data should be parsed. For
 example, if the data was instead tab delimited, and did not have column names, the pandas command
 would be:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tips.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"tips.csv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
 <span class="c1"># alternatively, read_table is an alias to read_csv with tab delimiter</span>
-<span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;tips.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">"tips.csv"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -737,11 +709,11 @@ would be:</p>
 by double-clicking them, or using <a class="reference external" href="https://support.microsoft.com/en-us/office/open-files-from-the-file-menu-97f087d8-3136-4485-8e86-c5b12a8c4176">the Open menu</a>.
 In pandas, you use <a class="reference internal" href="../../user_guide/io.html#io-excel"><span class="std std-ref">special methods for reading and writing from/to Excel files</span></a>.</p>
 <p>Let’s first <a class="reference internal" href="../../user_guide/io.html#io-excel-writer"><span class="std std-ref">create a new Excel file</span></a> based on the <code class="docutils literal notranslate"><span class="pre">tips</span></code> dataframe in the above example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;./tips.xlsx&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">"./tips.xlsx"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Should you wish to subsequently access the data in the <code class="docutils literal notranslate"><span class="pre">tips.xlsx</span></code> file, you can read it into your module using</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;./tips.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">"./tips.xlsx"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You have just read in an Excel file using pandas!</p>
@@ -783,9 +755,9 @@ columns directly.</p>
 <p>pandas provides vectorized operations by specifying the individual <code class="docutils literal notranslate"><span class="pre">Series</span></code> in the
 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. New columns can be assigned in the same way. The <a class="reference internal" href="../../reference/api/pandas.DataFrame.drop.html#pandas.DataFrame.drop" title="pandas.DataFrame.drop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.drop()</span></code></a> method drops
 a column from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span>
 
-<span class="gp">In [10]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;new_bill&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">In [10]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"new_bill"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
 
 <span class="gp">In [11]: </span><span class="n">tips</span>
 <span class="gh">Out[11]: </span>
@@ -804,7 +776,7 @@ a column from the <code class="docutils literal notranslate"><span class="pre">D
 
 <span class="go">[244 rows x 8 columns]</span>
 
-<span class="gp">In [12]: </span><span class="n">tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;new_bill&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">In [12]: </span><span class="n">tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">"new_bill"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Note that we aren’t having to tell it to do that subtraction cell-by-cell — pandas handles that for
@@ -816,7 +788,7 @@ us. See <a class="reference internal" href="../intro_tutorials/05_add_columns.ht
 <img alt="Screenshot showing filtering of the total_bill column to values greater than 10" class="align-center" src="../../_images/filter.png" />
 <p>DataFrames can be filtered in multiple ways; the most intuitive of which is using
 <a class="reference internal" href="../../user_guide/indexing.html#indexing-boolean"><span class="std std-ref">boolean indexing</span></a>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">tips</span><span class="p">[</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">tips</span><span class="p">[</span><span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
 <span class="gh">Out[13]: </span>
 <span class="go">     total_bill   tip     sex smoker   day    time  size</span>
 <span class="go">0         14.99  1.01  Female     No   Sun  Dinner     2</span>
@@ -836,7 +808,7 @@ us. See <a class="reference internal" href="../intro_tutorials/05_add_columns.ht
 </div>
 <p>The above statement is simply passing a <code class="docutils literal notranslate"><span class="pre">Series</span></code> of <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> objects to the DataFrame,
 returning all rows with <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">is_dinner</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Dinner&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">is_dinner</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Dinner"</span>
 
 <span class="gp">In [15]: </span><span class="n">is_dinner</span>
 <span class="gh">Out[15]: </span>
@@ -889,7 +861,7 @@ column.</p>
 <img alt="Screenshot showing the formula from above in a bucket column of the tips spreadsheet" class="align-center" src="../../_images/conditional.png" />
 <p>The same operation in pandas can be accomplished using
 the <code class="docutils literal notranslate"><span class="pre">where</span></code> method from <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;bucket&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"bucket"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"low"</span><span class="p">,</span> <span class="s2">"high"</span><span class="p">)</span>
 
 <span class="gp">In [19]: </span><span class="n">tips</span>
 <span class="gh">Out[19]: </span>
@@ -924,7 +896,7 @@ functions</a>
 in spreadsheets, and <a class="reference internal" href="../intro_tutorials/09_timeseries.html#min-tut-09-timeseries-properties"><span class="std std-ref">datetime properties</span></a> in pandas.</p>
 <p>Given <code class="docutils literal notranslate"><span class="pre">date1</span></code> and <code class="docutils literal notranslate"><span class="pre">date2</span></code> in columns <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> of a spreadsheet, you might have these
 formulas:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>column</p></th>
 <th class="head"><p>formula</p></th>
@@ -945,24 +917,25 @@ formulas:</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>The equivalent pandas operations are shown below.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2013-01-15&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date1"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2013-01-15"</span><span class="p">)</span>
 
-<span class="gp">In [21]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2015-02-15&quot;</span><span class="p">)</span>
+<span class="gp">In [21]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date2"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2015-02-15"</span><span class="p">)</span>
 
-<span class="gp">In [22]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1_year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="gp">In [22]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date1_year"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"date1"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
 
-<span class="gp">In [23]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date2_month&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="gp">In [23]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date2_month"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"date2"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
 
-<span class="gp">In [24]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1_next&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">MonthBegin</span><span class="p">()</span>
+<span class="gp">In [24]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date1_next"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"date1"</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">MonthBegin</span><span class="p">()</span>
 
-<span class="gp">In [25]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;months_between&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span>
-<span class="gp">   ....: </span>    <span class="s2">&quot;date1&quot;</span>
-<span class="gp">   ....: </span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
+<span class="gp">In [25]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"months_between"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"date2"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">"M"</span><span class="p">)</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span>
+<span class="gp">   ....: </span>    <span class="s2">"date1"</span>
+<span class="gp">   ....: </span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">"M"</span><span class="p">)</span>
 <span class="gp">   ....: </span>
 
 <span class="gp">In [26]: </span><span class="n">tips</span><span class="p">[</span>
-<span class="gp">   ....: </span>    <span class="p">[</span><span class="s2">&quot;date1&quot;</span><span class="p">,</span> <span class="s2">&quot;date2&quot;</span><span class="p">,</span> <span class="s2">&quot;date1_year&quot;</span><span class="p">,</span> <span class="s2">&quot;date2_month&quot;</span><span class="p">,</span> <span class="s2">&quot;date1_next&quot;</span><span class="p">,</span> <span class="s2">&quot;months_between&quot;</span><span class="p">]</span>
+<span class="gp">   ....: </span>    <span class="p">[</span><span class="s2">"date1"</span><span class="p">,</span> <span class="s2">"date2"</span><span class="p">,</span> <span class="s2">"date1_year"</span><span class="p">,</span> <span class="s2">"date2_month"</span><span class="p">,</span> <span class="s2">"date1_next"</span><span class="p">,</span> <span class="s2">"months_between"</span><span class="p">]</span>
 <span class="gp">   ....: </span><span class="p">]</span>
 <span class="gp">   ....: </span>
 <span class="gh">Out[26]: </span>
@@ -997,7 +970,7 @@ renaming a column is simply a matter of changing the text in that first cell.</p
 <p>The same operations are expressed in pandas below.</p>
 <section id="keep-certain-columns">
 <h4>Keep certain columns<a class="headerlink" href="#keep-certain-columns" title="Link to this heading">#</a></h4>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [27]: </span><span class="n">tips</span><span class="p">[[</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="s2">&quot;tip&quot;</span><span class="p">]]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [27]: </span><span class="n">tips</span><span class="p">[[</span><span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"total_bill"</span><span class="p">,</span> <span class="s2">"tip"</span><span class="p">]]</span>
 <span class="gh">Out[27]: </span>
 <span class="go">        sex  total_bill   tip</span>
 <span class="go">0    Female       14.99  1.01</span>
@@ -1018,7 +991,7 @@ renaming a column is simply a matter of changing the text in that first cell.</p
 </section>
 <section id="drop-a-column">
 <h4>Drop a column<a class="headerlink" href="#drop-a-column" title="Link to this heading">#</a></h4>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">tips</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">tips</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">"sex"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gh">Out[28]: </span>
 <span class="go">     total_bill   tip smoker   day    time  size</span>
 <span class="go">0         14.99  1.01     No   Sun  Dinner     2</span>
@@ -1039,7 +1012,7 @@ renaming a column is simply a matter of changing the text in that first cell.</p
 </section>
 <section id="rename-a-column">
 <h4>Rename a column<a class="headerlink" href="#rename-a-column" title="Link to this heading">#</a></h4>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="n">tips</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;total_bill&quot;</span><span class="p">:</span> <span class="s2">&quot;total_bill_2&quot;</span><span class="p">})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="n">tips</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"total_bill"</span><span class="p">:</span> <span class="s2">"total_bill_2"</span><span class="p">})</span>
 <span class="gh">Out[29]: </span>
 <span class="go">     total_bill_2   tip     sex smoker   day    time  size</span>
 <span class="go">0           14.99  1.01  Female     No   Sun  Dinner     2</span>
@@ -1064,7 +1037,7 @@ renaming a column is simply a matter of changing the text in that first cell.</p
 <p>Sorting in spreadsheets is accomplished via <a class="reference external" href="https://support.microsoft.com/en-us/office/sort-data-in-a-range-or-table-62d0b95d-2a90-4610-a6ae-2e545c4a4654">the sort dialog</a>.</p>
 <img alt="Screenshot of dialog from Excel showing sorting by the sex then total_bill columns" class="align-center" src="../../_images/sort.png" />
 <p>pandas has a <a class="reference internal" href="../../reference/api/pandas.DataFrame.sort_values.html#pandas.DataFrame.sort_values" title="pandas.DataFrame.sort_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.sort_values()</span></code></a> method, which takes a list of columns to sort by.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="n">tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">])</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="n">tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"total_bill"</span><span class="p">])</span>
 
 <span class="gp">In [31]: </span><span class="n">tips</span>
 <span class="gh">Out[31]: </span>
@@ -1099,7 +1072,7 @@ function to remove extra whitespace.</p>
 <p>You can find the length of a character string with <a class="reference internal" href="../../reference/api/pandas.Series.str.len.html#pandas.Series.str.len" title="pandas.Series.str.len"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.len()</span></code></a>.
 In Python 3, all strings are Unicode strings. <code class="docutils literal notranslate"><span class="pre">len</span></code> includes trailing blanks.
 Use <code class="docutils literal notranslate"><span class="pre">len</span></code> and <code class="docutils literal notranslate"><span class="pre">rstrip</span></code> to exclude trailing blanks.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
 <span class="gh">Out[32]: </span>
 <span class="go">67     6</span>
 <span class="go">92     6</span>
@@ -1114,7 +1087,7 @@ Use <code class="docutils literal notranslate"><span class="pre">len</span></cod
 <span class="go">170    6</span>
 <span class="go">Name: time, Length: 244, dtype: int64</span>
 
-<span class="gp">In [33]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+<span class="gp">In [33]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
 <span class="gh">Out[33]: </span>
 <span class="go">67     6</span>
 <span class="go">92     6</span>
@@ -1141,7 +1114,7 @@ spreadsheet function returns the position of a substring, with the first charact
 method. <code class="docutils literal notranslate"><span class="pre">find</span></code> searches for the first position of the substring. If the substring is found, the
 method returns its position. If not found, it returns <code class="docutils literal notranslate"><span class="pre">-1</span></code>. Keep in mind that Python indexes are
 zero-based.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;ale&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"ale"</span><span class="p">)</span>
 <span class="gh">Out[34]: </span>
 <span class="go">67     3</span>
 <span class="go">92     3</span>
@@ -1168,7 +1141,7 @@ formula for extracting a substring from a given position. To get the first chara
 <p>With pandas you can use <code class="docutils literal notranslate"><span class="pre">[]</span></code> notation to extract a substring
 from a string by position locations. Keep in mind that Python
 indexes are zero-based.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [35]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [35]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
 <span class="gh">Out[35]: </span>
 <span class="go">67     F</span>
 <span class="go">92     F</span>
@@ -1181,7 +1154,7 @@ indexes are zero-based.</p>
 <span class="go">59     M</span>
 <span class="go">212    M</span>
 <span class="go">170    M</span>
-<span class="go">Name: sex, Length: 244, dtype: object</span>
+<span class="go">Name: sex, Length: 244, dtype: str</span>
 </pre></div>
 </div>
 </section>
@@ -1192,11 +1165,11 @@ for splitting text and retrieving a specific column. (Note <a class="reference e
 as well</a>.)</p>
 <p>The simplest way to extract words in pandas is to split the strings by spaces, then reference the
 word by index. Note there are more powerful approaches should you need them.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [36]: </span><span class="n">firstlast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;String&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;John Smith&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Cook&quot;</span><span class="p">]})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [36]: </span><span class="n">firstlast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"String"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"John Smith"</span><span class="p">,</span> <span class="s2">"Jane Cook"</span><span class="p">]})</span>
 
-<span class="gp">In [37]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;First_Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;String&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">In [37]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"First_Name"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"String"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="gp">In [38]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;Last_Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;String&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">In [38]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"Last_Name"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"String"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="gp">In [39]: </span><span class="n">firstlast</span>
 <span class="gh">Out[39]: </span>
@@ -1212,13 +1185,13 @@ word by index. Note there are more powerful approaches should you need them.</p>
 for converting text to upper, lower, and title case, respectively.</p>
 <p>The equivalent pandas methods are <a class="reference internal" href="../../reference/api/pandas.Series.str.upper.html#pandas.Series.str.upper" title="pandas.Series.str.upper"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.upper()</span></code></a>, <a class="reference internal" href="../../reference/api/pandas.Series.str.lower.html#pandas.Series.str.lower" title="pandas.Series.str.lower"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.lower()</span></code></a>, and
 <a class="reference internal" href="../../reference/api/pandas.Series.str.title.html#pandas.Series.str.title" title="pandas.Series.str.title"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.title()</span></code></a>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [40]: </span><span class="n">firstlast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;string&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;John Smith&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Cook&quot;</span><span class="p">]})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [40]: </span><span class="n">firstlast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"string"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"John Smith"</span><span class="p">,</span> <span class="s2">"Jane Cook"</span><span class="p">]})</span>
 
-<span class="gp">In [41]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;upper&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="gp">In [41]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"upper"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"string"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 
-<span class="gp">In [42]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;lower&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="gp">In [42]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"lower"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"string"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
-<span class="gp">In [43]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="gp">In [43]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"title"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"string"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
 
 <span class="gp">In [44]: </span><span class="n">firstlast</span>
 <span class="gh">Out[44]: </span>
@@ -1232,7 +1205,7 @@ for converting text to upper, lower, and title case, respectively.</p>
 <section id="merging">
 <h2>Merging<a class="headerlink" href="#merging" title="Link to this heading">#</a></h2>
 <p>The following tables will be used in the merge examples:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [45]: </span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [45]: </span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"key"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
 
 <span class="gp">In [46]: </span><span class="n">df1</span>
 <span class="gh">Out[46]: </span>
@@ -1242,7 +1215,7 @@ for converting text to upper, lower, and title case, respectively.</p>
 <span class="go">2   C -1.509059</span>
 <span class="go">3   D -1.135632</span>
 
-<span class="gp">In [47]: </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
+<span class="gp">In [47]: </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"key"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
 
 <span class="gp">In [48]: </span><span class="n">df2</span>
 <span class="gh">Out[48]: </span>
@@ -1258,7 +1231,7 @@ for converting text to upper, lower, and title case, respectively.</p>
 <p>pandas DataFrames have a <a class="reference internal" href="../../reference/api/pandas.DataFrame.merge.html#pandas.DataFrame.merge" title="pandas.DataFrame.merge"><code class="xref py py-meth docutils literal notranslate"><span class="pre">merge()</span></code></a> method, which provides similar functionality. The
 data does not have to be sorted ahead of time, and different join types are accomplished via the
 <code class="docutils literal notranslate"><span class="pre">how</span></code> keyword.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [49]: </span><span class="n">inner_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [49]: </span><span class="n">inner_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"key"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span><span class="p">)</span>
 
 <span class="gp">In [50]: </span><span class="n">inner_join</span>
 <span class="gh">Out[50]: </span>
@@ -1267,7 +1240,7 @@ data does not have to be sorted ahead of time, and different join types are acco
 <span class="go">1   D -1.135632 -0.173215</span>
 <span class="go">2   D -1.135632  0.119209</span>
 
-<span class="gp">In [51]: </span><span class="n">left_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="gp">In [51]: </span><span class="n">left_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"key"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
 
 <span class="gp">In [52]: </span><span class="n">left_join</span>
 <span class="gh">Out[52]: </span>
@@ -1278,7 +1251,7 @@ data does not have to be sorted ahead of time, and different join types are acco
 <span class="go">3   D -1.135632 -0.173215</span>
 <span class="go">4   D -1.135632  0.119209</span>
 
-<span class="gp">In [53]: </span><span class="n">right_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="gp">In [53]: </span><span class="n">right_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"key"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span>
 
 <span class="gp">In [54]: </span><span class="n">right_join</span>
 <span class="gh">Out[54]: </span>
@@ -1288,7 +1261,7 @@ data does not have to be sorted ahead of time, and different join types are acco
 <span class="go">2   D -1.135632  0.119209</span>
 <span class="go">3   E       NaN -1.044236</span>
 
-<span class="gp">In [55]: </span><span class="n">outer_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+<span class="gp">In [55]: </span><span class="n">outer_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"key"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"outer"</span><span class="p">)</span>
 
 <span class="gp">In [56]: </span><span class="n">outer_join</span>
 <span class="gh">Out[56]: </span>
@@ -1317,7 +1290,7 @@ data does not have to be sorted ahead of time, and different join types are acco
 a spreadsheet, this would be done by shift+drag after entering the first number or by
 entering the first two or three values and then dragging.</p>
 <p>This can be achieved by creating a series and assigning it to the desired cells.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [57]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;AAA&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;BBB&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">))})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [57]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"AAA"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">"BBB"</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">))})</span>
 
 <span class="gp">In [58]: </span><span class="n">df</span>
 <span class="gh">Out[58]: </span>
@@ -1336,7 +1309,7 @@ entering the first two or three values and then dragging.</p>
 <span class="gp">In [60]: </span><span class="n">series</span>
 <span class="gh">Out[60]: </span><span class="go">[1, 2, 3, 4]</span>
 
-<span class="gp">In [61]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;AAA&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">series</span>
+<span class="gp">In [61]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"AAA"</span><span class="p">]</span> <span class="o">=</span> <span class="n">series</span>
 
 <span class="gp">In [62]: </span><span class="n">df</span>
 <span class="gh">Out[62]: </span>
@@ -1358,9 +1331,9 @@ entering the first two or three values and then dragging.</p>
 This is supported in pandas via <a class="reference internal" href="../../reference/api/pandas.DataFrame.drop_duplicates.html#pandas.DataFrame.drop_duplicates" title="pandas.DataFrame.drop_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">drop_duplicates()</span></code></a>.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [63]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
 <span class="gp">   ....: </span>    <span class="p">{</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;student_count&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;all_pass&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span>
+<span class="gp">   ....: </span>        <span class="s2">"class"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span>
+<span class="gp">   ....: </span>        <span class="s2">"student_count"</span><span class="p">:</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span>
+<span class="gp">   ....: </span>        <span class="s2">"all_pass"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Yes"</span><span class="p">,</span> <span class="s2">"Yes"</span><span class="p">,</span> <span class="s2">"Yes"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">,</span> <span class="s2">"Yes"</span><span class="p">],</span>
 <span class="gp">   ....: </span>    <span class="p">}</span>
 <span class="gp">   ....: </span><span class="p">)</span>
 <span class="gp">   ....: </span>
@@ -1374,7 +1347,7 @@ This is supported in pandas via <a class="reference internal" href="../../refere
 <span class="go">4     C             47       No</span>
 <span class="go">5     D             45      Yes</span>
 
-<span class="gp">In [65]: </span><span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;student_count&quot;</span><span class="p">])</span>
+<span class="gp">In [65]: </span><span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s2">"class"</span><span class="p">,</span> <span class="s2">"student_count"</span><span class="p">])</span>
 <span class="gh">Out[65]: </span>
 <span class="go">  class  student_count all_pass</span>
 <span class="go">0     A             42      Yes</span>
@@ -1394,7 +1367,7 @@ let’s find the average gratuity by size of the party and sex of the server.</p
 <img alt="Screenshot showing a PivotTable in Excel, using sex as the column, size as the rows, then average tip as the values" class="align-center" src="../../_images/pivot.png" />
 <p>The equivalent in pandas:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [66]: </span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-<span class="gp">   ....: </span>    <span class="n">tips</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">],</span> <span class="n">aggfunc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">average</span>
+<span class="gp">   ....: </span>    <span class="n">tips</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"size"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">],</span> <span class="n">aggfunc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">average</span>
 <span class="gp">   ....: </span><span class="p">)</span>
 <span class="gp">   ....: </span>
 <span class="gh">Out[66]: </span>
@@ -1422,8 +1395,8 @@ let’s find the average gratuity by size of the party and sex of the server.</p
 <span class="go">4     C             47       No</span>
 <span class="go">5     D             45      Yes</span>
 
-<span class="gp">In [68]: </span><span class="n">new_row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="kc">True</span><span class="p">]],</span>
-<span class="gp">   ....: </span>                       <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;student_count&quot;</span><span class="p">,</span> <span class="s2">&quot;all_pass&quot;</span><span class="p">])</span>
+<span class="gp">In [68]: </span><span class="n">new_row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">"E"</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="kc">True</span><span class="p">]],</span>
+<span class="gp">   ....: </span>                       <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"class"</span><span class="p">,</span> <span class="s2">"student_count"</span><span class="p">,</span> <span class="s2">"all_pass"</span><span class="p">])</span>
 <span class="gp">   ....: </span>
 
 <span class="gp">In [69]: </span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">new_row</span><span class="p">])</span>
@@ -1461,7 +1434,7 @@ entire column or <code class="docutils literal notranslate"><span class="pre">Da
 
 <span class="go">[244 rows x 7 columns]</span>
 
-<span class="gp">In [71]: </span><span class="n">tips</span> <span class="o">==</span> <span class="s2">&quot;Sun&quot;</span>
+<span class="gp">In [71]: </span><span class="n">tips</span> <span class="o">==</span> <span class="s2">"Sun"</span>
 <span class="gh">Out[71]: </span>
 <span class="go">     total_bill    tip    sex  smoker    day   time   size</span>
 <span class="go">67        False  False  False   False  False  False  False</span>
@@ -1478,7 +1451,7 @@ entire column or <code class="docutils literal notranslate"><span class="pre">Da
 
 <span class="go">[244 rows x 7 columns]</span>
 
-<span class="gp">In [72]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="gp">In [72]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"day"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"S"</span><span class="p">)</span>
 <span class="gh">Out[72]: </span>
 <span class="go">67      True</span>
 <span class="go">92     False</span>
@@ -1495,7 +1468,7 @@ entire column or <code class="docutils literal notranslate"><span class="pre">Da
 </pre></div>
 </div>
 <p>pandas’ <a class="reference internal" href="../../reference/api/pandas.DataFrame.replace.html#pandas.DataFrame.replace" title="pandas.DataFrame.replace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">replace()</span></code></a> is comparable to Excel’s <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">All</span></code>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [73]: </span><span class="n">tips</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Thu&quot;</span><span class="p">,</span> <span class="s2">&quot;Thursday&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [73]: </span><span class="n">tips</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"Thu"</span><span class="p">,</span> <span class="s2">"Thursday"</span><span class="p">)</span>
 <span class="gh">Out[73]: </span>
 <span class="go">     total_bill    tip     sex smoker   day    time  size</span>
 <span class="go">67         1.07   1.00  Female    Yes   Sat  Dinner     1</span>
@@ -1524,7 +1497,7 @@ entire column or <code class="docutils literal notranslate"><span class="pre">Da
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1552,14 +1525,17 @@ entire column or <code class="docutils literal notranslate"><span class="pre">Da
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">Data structures</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-terminology-translation">General terminology translation</a></li>
@@ -1614,15 +1590,6 @@ entire column or <code class="docutils literal notranslate"><span class="pre">Da
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/getting_started/comparison/comparison_with_spreadsheets.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1636,8 +1603,8 @@ entire column or <code class="docutils literal notranslate"><span class="pre">Da
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1645,13 +1612,13 @@ entire column or <code class="docutils literal notranslate"><span class="pre">Da
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="copyright">
-    &copy 2025, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
+    &copy 2026, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
 </p></div>
       
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
     <br/>
   </p>
 </div>
@@ -1664,7 +1631,8 @@ entire column or <code class="docutils literal notranslate"><span class="pre">Da
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

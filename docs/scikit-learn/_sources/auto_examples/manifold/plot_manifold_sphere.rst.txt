@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_manifold_plot_manifold_sphere.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -31,7 +31,7 @@ side. This enables the manifold learning techniques to
 'spread it open' whilst projecting it onto two dimensions.
 
 For a similar example, where the methods are applied to the
-S-curve dataset, see :ref:`sphx_glr_auto_examples_manifold_plot_compare_methods.py`
+S-curve dataset, see :ref:`sphx_glr_auto_examples_manifold_plot_compare_methods.py`.
 
 Note that the purpose of the :ref:`MDS <multidimensional_scaling>` is
 to find a low-dimensional representation of the data (here 2D) in
@@ -40,14 +40,14 @@ high-dimensional space, unlike other manifold-learning algorithms,
 it does not seeks an isotropic representation of the data in
 the low-dimensional space. Here the manifold problem matches fairly
 that of representing a flat map of the Earth, as with
-`map projection <https://en.wikipedia.org/wiki/Map_projection>`_
+`map projection <https://en.wikipedia.org/wiki/Map_projection>`_.
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-158
+.. GENERATED FROM PYTHON SOURCE LINES 27-184
 
 
 
 .. image-sg:: /auto_examples/manifold/images/sphx_glr_plot_manifold_sphere_001.png
-   :alt: Manifold Learning with 1000 points, 10 neighbors, LLE (0.056 sec), LTSA (0.88 sec), Hessian LLE (0.67 sec), Modified LLE (1.3 sec), Isomap (0.2 sec), MDS (0.79 sec), Spectral Embedding (0.041 sec), t-SNE (3.9 sec)
+   :alt: Manifold Learning with 1000 points, 10 neighbors, LLE (0.064 sec), LTSA (0.65 sec), Hessian LLE (0.57 sec), Modified LLE (0.94 sec), Isomap (0.1 sec), MDS (0.88 sec), Non-metric MDS (11 sec), Classical MDS (0.035 sec), Spectral Embedding (0.015 sec), t-SNE (3.5 sec)
    :srcset: /auto_examples/manifold/images/sphx_glr_plot_manifold_sphere_001.png
    :class: sphx-glr-single-img
 
@@ -56,14 +56,16 @@ that of representing a flat map of the Earth, as with
 
  .. code-block:: none
 
-    standard: 0.056 sec
-    ltsa: 0.88 sec
-    hessian: 0.67 sec
-    modified: 1.3 sec
-    ISO: 0.2 sec
-    MDS: 0.79 sec
-    Spectral Embedding: 0.041 sec
-    t-SNE: 3.9 sec
+    standard: 0.064 sec
+    ltsa: 0.65 sec
+    hessian: 0.57 sec
+    modified: 0.94 sec
+    ISO: 0.1 sec
+    MDS: 0.88 sec
+    Non-metric MDS: 11 sec
+    Classical MDS: 0.035 sec
+    Spectral Embedding: 0.015 sec
+    t-SNE: 3.5 sec
 
 
 
@@ -109,12 +111,12 @@ that of representing a flat map of the Earth, as with
     )
 
     # Plot our dataset.
-    fig = plt.figure(figsize=(15, 8))
+    fig = plt.figure(figsize=(15, 12))
     plt.suptitle(
         "Manifold Learning with %i points, %i neighbors" % (1000, n_neighbors), fontsize=14
     )
 
-    ax = fig.add_subplot(251, projection="3d")
+    ax = fig.add_subplot(351, projection="3d")
     ax.scatter(x, y, z, c=p[indices], cmap=plt.cm.rainbow)
     ax.view_init(40, -10)
 
@@ -136,7 +138,7 @@ that of representing a flat map of the Earth, as with
         t1 = time()
         print("%s: %.2g sec" % (methods[i], t1 - t0))
 
-        ax = fig.add_subplot(252 + i)
+        ax = fig.add_subplot(352 + i)
         plt.scatter(trans_data[0], trans_data[1], c=colors, cmap=plt.cm.rainbow)
         plt.title("%s (%.2g sec)" % (labels[i], t1 - t0))
         ax.xaxis.set_major_formatter(NullFormatter())
@@ -153,7 +155,7 @@ that of representing a flat map of the Earth, as with
     t1 = time()
     print("%s: %.2g sec" % ("ISO", t1 - t0))
 
-    ax = fig.add_subplot(257)
+    ax = fig.add_subplot(357)
     plt.scatter(trans_data[0], trans_data[1], c=colors, cmap=plt.cm.rainbow)
     plt.title("%s (%.2g sec)" % ("Isomap", t1 - t0))
     ax.xaxis.set_major_formatter(NullFormatter())
@@ -162,14 +164,40 @@ that of representing a flat map of the Earth, as with
 
     # Perform Multi-dimensional scaling.
     t0 = time()
-    mds = manifold.MDS(2, max_iter=100, n_init=1, random_state=42)
+    mds = manifold.MDS(2, n_init=1, random_state=42, init="classical_mds")
     trans_data = mds.fit_transform(sphere_data).T
     t1 = time()
     print("MDS: %.2g sec" % (t1 - t0))
 
-    ax = fig.add_subplot(258)
+    ax = fig.add_subplot(358)
     plt.scatter(trans_data[0], trans_data[1], c=colors, cmap=plt.cm.rainbow)
     plt.title("MDS (%.2g sec)" % (t1 - t0))
+    ax.xaxis.set_major_formatter(NullFormatter())
+    ax.yaxis.set_major_formatter(NullFormatter())
+    plt.axis("tight")
+
+    t0 = time()
+    mds = manifold.MDS(2, n_init=1, random_state=42, metric_mds=False, init="classical_mds")
+    trans_data = mds.fit_transform(sphere_data).T
+    t1 = time()
+    print("Non-metric MDS: %.2g sec" % (t1 - t0))
+
+    ax = fig.add_subplot(359)
+    plt.scatter(trans_data[0], trans_data[1], c=colors, cmap=plt.cm.rainbow)
+    plt.title("Non-metric MDS (%.2g sec)" % (t1 - t0))
+    ax.xaxis.set_major_formatter(NullFormatter())
+    ax.yaxis.set_major_formatter(NullFormatter())
+    plt.axis("tight")
+
+    t0 = time()
+    mds = manifold.ClassicalMDS(2)
+    trans_data = mds.fit_transform(sphere_data).T
+    t1 = time()
+    print("Classical MDS: %.2g sec" % (t1 - t0))
+
+    ax = fig.add_subplot(3, 5, 10)
+    plt.scatter(trans_data[0], trans_data[1], c=colors, cmap=plt.cm.rainbow)
+    plt.title("Classical MDS (%.2g sec)" % (t1 - t0))
     ax.xaxis.set_major_formatter(NullFormatter())
     ax.yaxis.set_major_formatter(NullFormatter())
     plt.axis("tight")
@@ -183,7 +211,7 @@ that of representing a flat map of the Earth, as with
     t1 = time()
     print("Spectral Embedding: %.2g sec" % (t1 - t0))
 
-    ax = fig.add_subplot(259)
+    ax = fig.add_subplot(3, 5, 12)
     plt.scatter(trans_data[0], trans_data[1], c=colors, cmap=plt.cm.rainbow)
     plt.title("Spectral Embedding (%.2g sec)" % (t1 - t0))
     ax.xaxis.set_major_formatter(NullFormatter())
@@ -197,7 +225,7 @@ that of representing a flat map of the Earth, as with
     t1 = time()
     print("t-SNE: %.2g sec" % (t1 - t0))
 
-    ax = fig.add_subplot(2, 5, 10)
+    ax = fig.add_subplot(3, 5, 13)
     plt.scatter(trans_data[0], trans_data[1], c=colors, cmap=plt.cm.rainbow)
     plt.title("t-SNE (%.2g sec)" % (t1 - t0))
     ax.xaxis.set_major_formatter(NullFormatter())
@@ -209,7 +237,7 @@ that of representing a flat map of the Earth, as with
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.349 seconds)
+   **Total running time of the script:** (0 minutes 18.181 seconds)
 
 
 .. _sphx_glr_download_auto_examples_manifold_plot_manifold_sphere.py:
@@ -221,7 +249,7 @@ that of representing a flat map of the Earth, as with
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/manifold/plot_manifold_sphere.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/manifold/plot_manifold_sphere.ipynb
         :alt: Launch binder
         :width: 150 px
 

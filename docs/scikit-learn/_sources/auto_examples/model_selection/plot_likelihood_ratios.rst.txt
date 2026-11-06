@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_model_selection_plot_likelihood_ratios.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -342,46 +342,26 @@ class, which in this case is "no-disease".
 
  .. code-block:: none
 
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
-
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: No samples were predicted for the positive class and `positive_likelihood_ratio` is set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
 
 
 .. raw:: html
@@ -462,26 +442,16 @@ be interpreted as an increment of the post-test odds of having the condition.
 
  .. code-block:: none
 
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
-
-    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning:
-
-    `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
-
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
+    /home/circleci/project/sklearn/utils/_param_validation.py:218: UndefinedMetricWarning: `positive_likelihood_ratio` is ill-defined and set to `np.nan`. Use the `replace_undefined_by` param to 
+      return func(*args, **kwargs)
 
 
 .. raw:: html
@@ -872,7 +842,7 @@ of those computed with on balanced classes.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.085 seconds)
+   **Total running time of the script:** (0 minutes 3.290 seconds)
 
 
 .. _sphx_glr_download_auto_examples_model_selection_plot_likelihood_ratios.py:
@@ -884,7 +854,7 @@ of those computed with on balanced classes.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/model_selection/plot_likelihood_ratios.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/model_selection/plot_likelihood_ratios.ipynb
         :alt: Launch binder
         :width: 150 px
 

@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.segmentize
+==============================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.segmentize

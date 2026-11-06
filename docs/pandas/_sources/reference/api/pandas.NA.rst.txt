@@ -3,4 +3,4 @@ pandas.NA
 
 .. currentmodule:: pandas
 
-.. autoclass:: NA
+.. autodata:: NA

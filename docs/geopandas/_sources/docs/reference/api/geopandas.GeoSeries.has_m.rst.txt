@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.has\_m
+==========================
+
+.. currentmodule:: geopandas
+
+.. autoproperty:: GeoSeries.has_m

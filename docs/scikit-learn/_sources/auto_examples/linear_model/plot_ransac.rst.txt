@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_linear_model_plot_ransac.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -126,7 +126,7 @@ and the fitted line is determined only by the identified inliers.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.096 seconds)
+   **Total running time of the script:** (0 minutes 0.095 seconds)
 
 
 .. _sphx_glr_download_auto_examples_linear_model_plot_ransac.py:
@@ -138,7 +138,7 @@ and the fitted line is determined only by the identified inliers.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_ransac.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_ransac.ipynb
         :alt: Launch binder
         :width: 150 px
 

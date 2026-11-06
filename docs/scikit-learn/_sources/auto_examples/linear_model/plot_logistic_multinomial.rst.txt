@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_linear_model_plot_logistic_multinomial.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -49,15 +49,15 @@ the line when the probability estimate for a class is of 0.5.
 Dataset Generation
 ------------------
 
-We generate a synthetic dataset using :func:`~sklearn.datasets.make_blobs` function.
-The dataset consists of 1,000 samples from three different classes,
+We generate a synthetic dataset using the :func:`~sklearn.datasets.make_blobs`
+function. The dataset consists of 1,000 samples from three different classes,
 centered around [-5, 0], [0, 1.5], and [5, -1]. After generation, we apply a linear
-transformation to introduce some correlation between features and make the problem
+transformation to introduce some correlation between the features to make the problem
 more challenging. This results in a 2D dataset with three overlapping classes,
 suitable for demonstrating the differences between multinomial and one-vs-rest
 logistic regression.
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-45
+.. GENERATED FROM PYTHON SOURCE LINES 28-47
 
 .. code-block:: Python
 
@@ -66,6 +66,8 @@ logistic regression.
 
     from sklearn.datasets import make_blobs
 
+    cmap = "coolwarm"
+
     centers = [[-5, 0], [0, 1.5], [5, -1]]
     X, y = make_blobs(n_samples=1_000, centers=centers, random_state=40)
     transformation = [[0.4, 0.2], [-0.4, 1.2]]
@@ -73,7 +75,7 @@ logistic regression.
 
     fig, ax = plt.subplots(figsize=(6, 4))
 
-    scatter = ax.scatter(X[:, 0], X[:, 1], c=y, edgecolor="black")
+    scatter = ax.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap, edgecolor="black")
     ax.set(title="Synthetic Dataset", xlabel="Feature 1", ylabel="Feature 2")
     _ = ax.legend(*scatter.legend_elements(), title="Classes")
 
@@ -90,7 +92,7 @@ logistic regression.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-52
+.. GENERATED FROM PYTHON SOURCE LINES 48-54
 
 Classifier Training
 -------------------
@@ -99,7 +101,7 @@ We train two different logistic regression classifiers: multinomial and one-vs-r
 The multinomial classifier handles all classes simultaneously, while the one-vs-rest
 approach trains a binary classifier for each class against all others.
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-61
+.. GENERATED FROM PYTHON SOURCE LINES 54-63
 
 .. code-block:: Python
 
@@ -119,7 +121,7 @@ approach trains a binary classifier for each class against all others.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-67
+.. GENERATED FROM PYTHON SOURCE LINES 64-69
 
 Decision Boundaries Visualization
 ---------------------------------
@@ -127,7 +129,7 @@ Decision Boundaries Visualization
 Let's visualize the decision boundaries of both models that is provided by the
 method `predict` of the classifiers.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-96
+.. GENERATED FROM PYTHON SOURCE LINES 69-99
 
 .. code-block:: Python
 
@@ -153,8 +155,9 @@ method `predict` of the classifiers.
             ax=ax,
             response_method="predict",
             alpha=0.8,
+            multiclass_colors=cmap,
         )
-        scatter = ax.scatter(X[:, 0], X[:, 1], c=y, edgecolor="k")
+        scatter = ax.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap, edgecolor="k")
         legend = ax.legend(*scatter.legend_elements(), title="Classes")
         ax.add_artist(legend)
         ax.set_title(title)
@@ -172,7 +175,7 @@ method `predict` of the classifiers.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-112
+.. GENERATED FROM PYTHON SOURCE LINES 100-115
 
 We see that the decision boundaries are different. This difference stems from their
 approaches:
@@ -188,13 +191,13 @@ Hyperplanes Visualization
 --------------------------
 
 We also visualize the hyperplanes that correspond to the line when the probability
-estimate for a class is of 0.5.
+estimate for a class is 0.5.
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-134
+.. GENERATED FROM PYTHON SOURCE LINES 115-137
 
 .. code-block:: Python
 
-    def plot_hyperplanes(classifier, X, ax):
+    def plot_hyperplanes(classifier, X, ax, colors):
         xmin, xmax = X[:, 0].min(), X[:, 0].max()
         ymin, ymax = X[:, 1].min(), X[:, 1].max()
         ax.set(xlim=(xmin, xmax), ylim=(ymin, ymax))
@@ -206,12 +209,12 @@ estimate for a class is of 0.5.
             coef = classifier.coef_
             intercept = classifier.intercept_
 
-        for i in range(coef.shape[0]):
+        for i, color in zip(range(coef.shape[0]), colors):
             w = coef[i]
             a = -w[0] / w[1]
             xx = np.linspace(xmin, xmax)
             yy = a * xx - (intercept[i]) / w[1]
-            ax.plot(xx, yy, "--", linewidth=3, label=f"Class {i}")
+            ax.plot(xx, yy, "--", color=color, linewidth=4, label=f"Class {i}")
 
         return ax.get_legend_handles_labels()
 
@@ -223,7 +226,7 @@ estimate for a class is of 0.5.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-157
+.. GENERATED FROM PYTHON SOURCE LINES 138-162
 
 .. code-block:: Python
 
@@ -237,8 +240,10 @@ estimate for a class is of 0.5.
         ),
         (logistic_regression_ovr, "One-vs-Rest Logistic Regression Hyperplanes", ax2),
     ]:
-        hyperplane_handles, hyperplane_labels = plot_hyperplanes(model, X, ax)
-        scatter = ax.scatter(X[:, 0], X[:, 1], c=y, edgecolor="k")
+        hyperplane_handles, hyperplane_labels = plot_hyperplanes(
+            model, X, ax, colors=["blue", "dimgray", "red"]
+        )
+        scatter = ax.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap, edgecolor="k")
         scatter_handles, scatter_labels = scatter.legend_elements()
 
         all_handles = hyperplane_handles + scatter_handles
@@ -261,7 +266,7 @@ estimate for a class is of 0.5.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-194
+.. GENERATED FROM PYTHON SOURCE LINES 163-199
 
 While the hyperplanes for classes 0 and 2 are quite similar between the two methods,
 we observe that the hyperplane for class 1 is notably different. This difference stems
@@ -303,7 +308,7 @@ a utility function would.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.580 seconds)
+   **Total running time of the script:** (0 minutes 0.600 seconds)
 
 
 .. _sphx_glr_download_auto_examples_linear_model_plot_logistic_multinomial.py:
@@ -315,7 +320,7 @@ a utility function would.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_logistic_multinomial.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_logistic_multinomial.ipynb
         :alt: Launch binder
         :width: 150 px
 

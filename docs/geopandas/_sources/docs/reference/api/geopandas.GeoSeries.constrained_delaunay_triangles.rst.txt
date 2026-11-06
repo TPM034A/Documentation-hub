@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.constrained\_delaunay\_triangles
+====================================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.constrained_delaunay_triangles

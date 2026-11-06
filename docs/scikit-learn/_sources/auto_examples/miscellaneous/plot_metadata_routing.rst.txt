@@ -11,31 +11,31 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_miscellaneous_plot_metadata_routing.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
 .. _sphx_glr_auto_examples_miscellaneous_plot_metadata_routing.py:
 
 
-================
-Metadata Routing
-================
+=====================================================
+Developing Estimators Compliant with Metadata Routing
+=====================================================
 
 .. currentmodule:: sklearn
 
 This document shows how you can use the :ref:`metadata routing mechanism
-<metadata_routing>` in scikit-learn to route metadata to the estimators,
-scorers, and CV splitters consuming them.
+<metadata_routing>` in scikit-learn to build estimators that route metadata
+to other estimators, scorers, and CV splitters, that can consume :term:`metadata`.
 
 To better understand the following document, we need to introduce two concepts:
-routers and consumers. A router is an object which forwards some given data and
-metadata to other objects. In most cases, a router is a :term:`meta-estimator`,
-i.e. an estimator which takes another estimator as a parameter. A function such
-as :func:`sklearn.model_selection.cross_validate` which takes an estimator as a
-parameter and forwards data and metadata, is also a router.
+:term:`routers <router>` and :term:`consumers <consumer>`. A :term:`router` is an object
+which forwards some given data and metadata to other objects. In most cases, a router is
+a :term:`meta-estimator`, i.e. an estimator which takes another estimator as a
+parameter. A function such as :func:`sklearn.model_selection.cross_validate` which takes
+an estimator as a parameter and forwards data and metadata, is also a router.
 
-A consumer, on the other hand, is an object which accepts and uses some given
+A :term:`consumer`, on the other hand, is an object which accepts and uses some given
 metadata. For instance, an estimator taking into account ``sample_weight`` in
 its :term:`fit` method is a consumer of ``sample_weight``.
 
@@ -60,7 +60,7 @@ First a few imports and some random data for the rest of the script.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-67
+.. GENERATED FROM PYTHON SOURCE LINES 34-66
 
 .. code-block:: Python
 
@@ -84,7 +84,6 @@ First a few imports and some random data for the rest of the script.
     from sklearn.utils.metadata_routing import (
         MetadataRouter,
         MethodMapping,
-        get_routing_for_object,
         process_routing,
     )
     from sklearn.utils.validation import check_is_fitted
@@ -104,11 +103,11 @@ First a few imports and some random data for the rest of the script.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-69
+.. GENERATED FROM PYTHON SOURCE LINES 67-68
 
 Metadata routing is only available if explicitly enabled:
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-72
+.. GENERATED FROM PYTHON SOURCE LINES 68-71
 
 .. code-block:: Python
 
@@ -122,11 +121,11 @@ Metadata routing is only available if explicitly enabled:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 73-74
+.. GENERATED FROM PYTHON SOURCE LINES 72-73
 
 This utility function is a dummy to check if a metadata is passed:
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-84
+.. GENERATED FROM PYTHON SOURCE LINES 73-83
 
 .. code-block:: Python
 
@@ -147,11 +146,11 @@ This utility function is a dummy to check if a metadata is passed:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-86
+.. GENERATED FROM PYTHON SOURCE LINES 84-85
 
 A utility function to nicely print the routing information of an object:
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-90
+.. GENERATED FROM PYTHON SOURCE LINES 85-89
 
 .. code-block:: Python
 
@@ -166,16 +165,16 @@ A utility function to nicely print the routing information of an object:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-97
+.. GENERATED FROM PYTHON SOURCE LINES 90-96
 
 Consuming Estimator
 -------------------
 Here we demonstrate how an estimator can expose the required API to support
 metadata routing as a consumer. Imagine a simple classifier accepting
-``sample_weight`` as a metadata on its ``fit`` and ``groups`` in its
+``sample_weight`` as a metadata in its ``fit`` and ``groups`` in its
 ``predict`` method:
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-112
+.. GENERATED FROM PYTHON SOURCE LINES 96-111
 
 .. code-block:: Python
 
@@ -201,7 +200,7 @@ metadata routing as a consumer. Imagine a simple classifier accepting
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-123
+.. GENERATED FROM PYTHON SOURCE LINES 112-122
 
 The above estimator now has all it needs to consume metadata. This is
 accomplished by some magic done in :class:`~base.BaseEstimator`. There are
@@ -214,7 +213,7 @@ now three methods exposed by the above class: ``set_fit_request``,
 
 By default, no metadata is requested, which we can see as:
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-126
+.. GENERATED FROM PYTHON SOURCE LINES 122-125
 
 .. code-block:: Python
 
@@ -236,7 +235,7 @@ By default, no metadata is requested, which we can see as:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-133
+.. GENERATED FROM PYTHON SOURCE LINES 126-132
 
 The above output means that ``sample_weight`` and ``groups`` are not
 requested by `ExampleClassifier`, and if a router is given those metadata, it
@@ -245,7 +244,7 @@ required or not. The same is true for ``sample_weight`` in the ``score``
 method, which is inherited from :class:`~base.ClassifierMixin`. In order to
 explicitly set request values for those metadata, we can use these methods:
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-142
+.. GENERATED FROM PYTHON SOURCE LINES 132-141
 
 .. code-block:: Python
 
@@ -273,7 +272,7 @@ explicitly set request values for those metadata, we can use these methods:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-149
+.. GENERATED FROM PYTHON SOURCE LINES 142-163
 
 .. note ::
     Please note that as long as the above estimator is not used in a
@@ -282,31 +281,22 @@ explicitly set request values for those metadata, we can use these methods:
     validate or route given metadata. A simple usage of the above estimator
     would work as expected.
 
-.. GENERATED FROM PYTHON SOURCE LINES 149-154
+    .. code-block:: python
 
-.. code-block:: Python
+        est = ExampleClassifier()
+        est.fit(X, y, sample_weight=my_weights)
+        est.predict(X[:3, :], groups=my_groups)
 
+    Out:
 
-    est = ExampleClassifier()
-    est.fit(X, y, sample_weight=my_weights)
-    est.predict(X[:3, :], groups=my_groups)
+    .. code-block:: python-console
 
+        Received sample_weight of length = 100 in ExampleClassifier.
+        Received groups of length = 100 in ExampleClassifier.
 
+        array([1., 1., 1.])
 
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Received sample_weight of length = 100 in ExampleClassifier.
-    Received groups of length = 100 in ExampleClassifier.
-
-    array([1., 1., 1.])
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 155-160
+.. GENERATED FROM PYTHON SOURCE LINES 165-177
 
 Routing Meta-Estimator
 ----------------------
@@ -314,7 +304,14 @@ Now, we show how to design a meta-estimator to be a router. As a simplified
 example, here is a meta-estimator, which doesn't do much other than routing
 the metadata.
 
-.. GENERATED FROM PYTHON SOURCE LINES 160-214
+To make the meta-estimator a router, you only need to:
+
+- define its `get_metadata_routing` method, which returns a `MetadataRouter`
+  instance in charge of configuring the metadata routing.
+- use `process_routing` inside its methods (`fit`, `predict`, ...) to  properly
+  route the metadata from the meta-estimator to its sub-estimator.
+
+.. GENERATED FROM PYTHON SOURCE LINES 177-218
 
 .. code-block:: Python
 
@@ -327,8 +324,8 @@ the metadata.
         def get_metadata_routing(self):
             # This method defines the routing for this meta-estimator.
             # In order to do so, a `MetadataRouter` instance is created, and the
-            # routing is added to it. More explanations follow below.
-            router = MetadataRouter(owner=self.__class__.__name__).add(
+            # routing is added to it.
+            router = MetadataRouter(owner=self).add(
                 estimator=self.estimator,
                 method_mapping=MethodMapping()
                 .add(caller="fit", callee="fit")
@@ -338,38 +335,25 @@ the metadata.
             return router
 
         def fit(self, X, y, **fit_params):
-            # `get_routing_for_object` returns a copy of the `MetadataRouter`
-            # constructed by the above `get_metadata_routing` method, that is
-            # internally called.
-            request_router = get_routing_for_object(self)
-            # Meta-estimators are responsible for validating the given metadata.
-            # `method` refers to the parent's method, i.e. `fit` in this example.
-            request_router.validate_metadata(params=fit_params, method="fit")
-            # `MetadataRouter.route_params` maps the given metadata to the metadata
-            # required by the underlying estimator based on the routing information
-            # defined by the MetadataRouter. The output of type `Bunch` has a key
-            # for each consuming object and those hold keys for their consuming
-            # methods, which then contain key for the metadata which should be
-            # routed to them.
-            routed_params = request_router.route_params(params=fit_params, caller="fit")
-
+            # Get information on all the metadata that should be routed from here to
+            # consuming methods.
+            routed_params = process_routing(self, "fit", **fit_params)
             # A sub-estimator is fitted and its classes are attributed to the
-            # meta-estimator.
-            self.estimator_ = clone(self.estimator).fit(X, y, **routed_params.estimator.fit)
+            # meta-estimator. Since we call the sub-estimator's fit method, we pass the
+            # the metadata stored in `routed_params["estimator"]["fit"]`.
+            self.estimator_ = clone(self.estimator).fit(
+                X, y, **routed_params["estimator"]["fit"]
+            )
             self.classes_ = self.estimator_.classes_
             return self
 
         def predict(self, X, **predict_params):
             check_is_fitted(self)
-            # As in `fit`, we get a copy of the object's MetadataRouter,
-            request_router = get_routing_for_object(self)
-            # then we validate the given metadata,
-            request_router.validate_metadata(params=predict_params, method="predict")
-            # and then prepare the input to the underlying `predict` method.
-            routed_params = request_router.route_params(
-                params=predict_params, caller="predict"
-            )
-            return self.estimator_.predict(X, **routed_params.estimator.predict)
+            # As in `fit`, we get information on all the metadata that should be routed
+            # and pass the metadata that is stored in
+            # `routed_params["estimator"]["predict"]` to the sub-estimator's predict method.
+            routed_params = process_routing(self, "predict", **predict_params)
+            return self.estimator_.predict(X, **routed_params["estimator"]["predict"])
 
 
 
@@ -379,22 +363,19 @@ the metadata.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 215-232
+.. GENERATED FROM PYTHON SOURCE LINES 219-228
 
 Let's break down different parts of the above code.
 
-First, the :meth:`~utils.metadata_routing.get_routing_for_object` takes our
-meta-estimator (``self``) and returns a
-:class:`~utils.metadata_routing.MetadataRouter` or, a
-:class:`~utils.metadata_routing.MetadataRequest` if the object is a consumer,
-based on the output of the estimator's ``get_metadata_routing`` method.
-
-Then in each method, we use the ``route_params`` method to construct a
-dictionary of the form ``{"object_name": {"method_name": {"metadata":
+In each method, we use the ``process_routing`` function to construct a
+:class:`~utils.Bunch` of the form ``{"object_name": {"method_name": {"metadata":
 value}}}`` to pass to the underlying estimator's method. The ``object_name``
-(``estimator`` in the above ``routed_params.estimator.fit`` example) is the
-same as the one added in the ``get_metadata_routing``. ``validate_metadata``
-makes sure all given metadata are requested to avoid silent bugs.
+(``estimator`` in ``routed_params["estimator"]["fit"]``) is the same as the
+`estimator` added in the ``get_metadata_routing``. ``process_routing`` also validates
+the input
+metadata: it makes sure all given metadata are requested to avoid silent bugs.
+
+.. GENERATED FROM PYTHON SOURCE LINES 230-232
 
 Next, we illustrate the different behaviors and notably the type of errors
 raised.
@@ -423,7 +404,7 @@ raised.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <style>#sk-container-id-52 {
+    <style>.sk-global {
       /* Definition of color scheme common for light and dark mode */
       --sklearn-color-text: #000;
       --sklearn-color-text-muted: #666;
@@ -438,34 +419,34 @@ raised.
       --sklearn-color-fitted-level-1: #d4ebff;
       --sklearn-color-fitted-level-2: #b3dbfd;
       --sklearn-color-fitted-level-3: cornflowerblue;
-
-      /* Specific color for light theme */
-      --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-      --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-      --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-      --sklearn-color-icon: #696969;
-
-      @media (prefers-color-scheme: dark) {
-        /* Redefinition of color scheme for dark theme */
-        --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-        --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-        --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-        --sklearn-color-icon: #878787;
-      }
     }
 
-    #sk-container-id-52 {
+    .sk-global.light {
+      /* Specific color for light theme */
+      --sklearn-color-text-on-default-background: black;
+      --sklearn-color-background: white;
+      --sklearn-color-border-box: black;
+      --sklearn-color-icon: #696969;
+    }
+
+    .sk-global.dark {
+      --sklearn-color-text-on-default-background: white;
+      --sklearn-color-background: #111;
+      --sklearn-color-border-box: white;
+      --sklearn-color-icon: #878787;
+    }
+
+    .sk-global {
       color: var(--sklearn-color-text);
     }
 
-    #sk-container-id-52 pre {
+    .sk-global pre {
       padding: 0;
     }
 
-    #sk-container-id-52 input.sk-hidden--visually {
+    .sk-global input.sk-hidden--visually {
       border: 0;
-      clip: rect(1px 1px 1px 1px);
-      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(100%);
       height: 1px;
       margin: -1px;
       overflow: hidden;
@@ -474,7 +455,7 @@ raised.
       width: 1px;
     }
 
-    #sk-container-id-52 div.sk-dashed-wrapped {
+    .sk-global div.sk-dashed-wrapped {
       border: 1px dashed var(--sklearn-color-line);
       margin: 0 0.4em 0.5em 0.4em;
       box-sizing: border-box;
@@ -482,7 +463,7 @@ raised.
       background-color: var(--sklearn-color-background);
     }
 
-    #sk-container-id-52 div.sk-container {
+    .sk-global div.sk-container {
       /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
          but bootstrap.min.css set `[hidden] { display: none !important; }`
          so we also need the `!important` here to be able to override the
@@ -492,7 +473,7 @@ raised.
       position: relative;
     }
 
-    #sk-container-id-52 div.sk-text-repr-fallback {
+    .sk-global div.sk-text-repr-fallback {
       display: none;
     }
 
@@ -508,14 +489,14 @@ raised.
 
     /* Parallel-specific style estimator block */
 
-    #sk-container-id-52 div.sk-parallel-item::after {
+    .sk-global div.sk-parallel-item::after {
       content: "";
       width: 100%;
       border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
       flex-grow: 1;
     }
 
-    #sk-container-id-52 div.sk-parallel {
+    .sk-global div.sk-parallel {
       display: flex;
       align-items: stretch;
       justify-content: center;
@@ -523,28 +504,28 @@ raised.
       position: relative;
     }
 
-    #sk-container-id-52 div.sk-parallel-item {
+    .sk-global div.sk-parallel-item {
       display: flex;
       flex-direction: column;
     }
 
-    #sk-container-id-52 div.sk-parallel-item:first-child::after {
+    .sk-global div.sk-parallel-item:first-child::after {
       align-self: flex-end;
       width: 50%;
     }
 
-    #sk-container-id-52 div.sk-parallel-item:last-child::after {
+    .sk-global div.sk-parallel-item:last-child::after {
       align-self: flex-start;
       width: 50%;
     }
 
-    #sk-container-id-52 div.sk-parallel-item:only-child::after {
+    .sk-global div.sk-parallel-item:only-child::after {
       width: 0;
     }
 
     /* Serial-specific style estimator block */
 
-    #sk-container-id-52 div.sk-serial {
+    .sk-global div.sk-serial {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -562,14 +543,14 @@ raised.
 
     /* Pipeline and ColumnTransformer style (default) */
 
-    #sk-container-id-52 div.sk-toggleable {
+    .sk-global div.sk-toggleable {
       /* Default theme specific background. It is overwritten whether we have a
       specific estimator or a Pipeline/ColumnTransformer */
       background-color: var(--sklearn-color-background);
     }
 
     /* Toggleable label */
-    #sk-container-id-52 label.sk-toggleable__label {
+    .sk-global label.sk-toggleable__label {
       cursor: pointer;
       display: flex;
       width: 100%;
@@ -577,18 +558,18 @@ raised.
       padding: 0.5em;
       box-sizing: border-box;
       text-align: center;
-      align-items: start;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
       gap: 0.5em;
     }
 
-    #sk-container-id-52 label.sk-toggleable__label .caption {
+    .sk-global label.sk-toggleable__label .caption {
       font-size: 0.6rem;
       font-weight: lighter;
       color: var(--sklearn-color-text-muted);
     }
 
-    #sk-container-id-52 label.sk-toggleable__label-arrow:before {
+    .sk-global label.sk-toggleable__label-arrow:before {
       /* Arrow on the left of the label */
       content: "▸";
       float: left;
@@ -596,25 +577,25 @@ raised.
       color: var(--sklearn-color-icon);
     }
 
-    #sk-container-id-52 label.sk-toggleable__label-arrow:hover:before {
+    .sk-global label.sk-toggleable__label-arrow:hover:before {
       color: var(--sklearn-color-text);
     }
 
     /* Toggleable content - dropdown */
 
-    #sk-container-id-52 div.sk-toggleable__content {
+    .sk-global div.sk-toggleable__content {
       display: none;
       text-align: left;
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-52 div.sk-toggleable__content.fitted {
+    .sk-global div.sk-toggleable__content.fitted {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
-    #sk-container-id-52 div.sk-toggleable__content pre {
+    .sk-global div.sk-toggleable__content pre {
       margin: 0.2em;
       border-radius: 0.25em;
       color: var(--sklearn-color-text);
@@ -622,79 +603,78 @@ raised.
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-52 div.sk-toggleable__content.fitted pre {
+    .sk-global div.sk-toggleable__content.fitted pre {
       /* unfitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
-    #sk-container-id-52 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+    .sk-global input.sk-toggleable__control:checked~div.sk-toggleable__content {
       /* Expand drop-down */
       display: block;
       width: 100%;
       overflow: visible;
     }
 
-    #sk-container-id-52 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+    .sk-global input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
       content: "▾";
     }
 
     /* Pipeline/ColumnTransformer-specific style */
 
-    #sk-container-id-52 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-52 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
     /* Estimator-specific style */
 
     /* Colorize estimator box */
-    #sk-container-id-52 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-52 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
-    #sk-container-id-52 div.sk-label label.sk-toggleable__label,
-    #sk-container-id-52 div.sk-label label {
+    .sk-global div.sk-label label.sk-toggleable__label,
+    .sk-global div.sk-label label {
       /* The background is the default theme color */
       color: var(--sklearn-color-text-on-default-background);
     }
 
     /* On hover, darken the color of the background */
-    #sk-container-id-52 div.sk-label:hover label.sk-toggleable__label {
+    .sk-global div.sk-label:hover label.sk-toggleable__label {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
     /* Label box, darken color on hover, fitted */
-    #sk-container-id-52 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+    .sk-global div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
     /* Estimator label */
 
-    #sk-container-id-52 div.sk-label label {
+    .sk-global div.sk-label label {
       font-family: monospace;
       font-weight: bold;
-      display: inline-block;
       line-height: 1.2em;
     }
 
-    #sk-container-id-52 div.sk-label-container {
+    .sk-global div.sk-label-container {
       text-align: center;
     }
 
     /* Estimator-specific */
-    #sk-container-id-52 div.sk-estimator {
+    .sk-global div.sk-estimator {
       font-family: monospace;
       border: 1px dotted var(--sklearn-color-border-box);
       border-radius: 0.25em;
@@ -704,18 +684,18 @@ raised.
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-52 div.sk-estimator.fitted {
+    .sk-global div.sk-estimator.fitted {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
     /* on hover */
-    #sk-container-id-52 div.sk-estimator:hover {
+    .sk-global div.sk-estimator:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-52 div.sk-estimator.fitted:hover {
+    .sk-global div.sk-estimator.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-2);
     }
@@ -731,7 +711,7 @@ raised.
       font-size: smaller;
       line-height: 1em;
       font-family: monospace;
-      background-color: var(--sklearn-color-background);
+      background-color: var(--sklearn-color-unfitted-level-0);
       border-radius: 1em;
       height: 1em;
       width: 1em;
@@ -739,16 +719,17 @@ raised.
       margin-left: 0.5em;
       text-align: center;
       /* unfitted */
-      border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-      color: var(--sklearn-color-unfitted-level-1);
+      border: var(--sklearn-color-unfitted-level-3) 1pt solid;
+      color: var(--sklearn-color-unfitted-level-3);
     }
 
     .sk-estimator-doc-link.fitted,
     a:link.sk-estimator-doc-link.fitted,
     a:visited.sk-estimator-doc-link.fitted {
       /* fitted */
-      border: var(--sklearn-color-fitted-level-1) 1pt solid;
-      color: var(--sklearn-color-fitted-level-1);
+      background-color: var(--sklearn-color-fitted-level-0);
+      border: var(--sklearn-color-fitted-level-3) 1pt solid;
+      color: var(--sklearn-color-fitted-level-3);
     }
 
     /* On hover */
@@ -758,7 +739,8 @@ raised.
     .sk-estimator-doc-link:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-3);
-      color: var(--sklearn-color-background);
+      border: var(--sklearn-color-fitted-level-0) 1pt solid;
+      color: var(--sklearn-color-unfitted-level-0);
       text-decoration: none;
     }
 
@@ -768,7 +750,8 @@ raised.
     .sk-estimator-doc-link.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-3);
-      color: var(--sklearn-color-background);
+      border: var(--sklearn-color-fitted-level-0) 1pt solid;
+      color: var(--sklearn-color-fitted-level-0);
       text-decoration: none;
     }
 
@@ -803,12 +786,12 @@ raised.
 
     /* "?"-specific style due to the `<a>` HTML tag */
 
-    #sk-container-id-52 a.estimator_doc_link {
+    .sk-global a.estimator_doc_link {
       float: right;
       font-size: 1rem;
       line-height: 1em;
       font-family: monospace;
-      background-color: var(--sklearn-color-background);
+      background-color: var(--sklearn-color-unfitted-level-0);
       border-radius: 1rem;
       height: 1rem;
       width: 1rem;
@@ -818,29 +801,45 @@ raised.
       border: var(--sklearn-color-unfitted-level-1) 1pt solid;
     }
 
-    #sk-container-id-52 a.estimator_doc_link.fitted {
+    .sk-global a.estimator_doc_link.fitted {
       /* fitted */
+      background-color: var(--sklearn-color-fitted-level-0);
       border: var(--sklearn-color-fitted-level-1) 1pt solid;
       color: var(--sklearn-color-fitted-level-1);
     }
 
     /* On hover */
-    #sk-container-id-52 a.estimator_doc_link:hover {
+    .sk-global a.estimator_doc_link:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-3);
       color: var(--sklearn-color-background);
       text-decoration: none;
     }
 
-    #sk-container-id-52 a.estimator_doc_link.fitted:hover {
+    .sk-global a.estimator_doc_link.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-3);
     }
 
+    .sk-top-container.sk-global {
+      /* pydata-sphinx-theme hides overflow, so scrolling is disabled.
+       We need to set it to !important and add tabindex="0" in the HTML
+       to allow keyboard-only users to navigate the display. */
+      overflow-x: scroll !important;
+      max-width: 100%;
+    }
+
+    .estimator-table {
+        font-family: monospace;
+    }
+
     .estimator-table summary {
         padding: .5rem;
-        font-family: monospace;
         cursor: pointer;
+    }
+
+    .estimator-table summary::marker {
+        font-size: 0.7rem;
     }
 
     .estimator-table details[open] {
@@ -852,6 +851,7 @@ raised.
     .estimator-table .parameters-table {
         margin-left: auto !important;
         margin-right: auto !important;
+        margin-top: 0;
     }
 
     .estimator-table .parameters-table tr:nth-child(odd) {
@@ -862,32 +862,113 @@ raised.
         background-color: #f6f6f6;
     }
 
-    .estimator-table .parameters-table tr:hover {
+    .estimator-table .parameters-table tr:hover td {
         background-color: #e0e0e0;
     }
 
-    .estimator-table table td {
+    .estimator-table table :is(td, th) {
         border: 1px solid rgba(106, 105, 104, 0.232);
+    }
+
+    /*
+        `table td`is set in notebook with right text-align.
+        We need to overwrite it.
+    */
+    .estimator-table table td.param {
+        text-align: left;
+        position: relative;
+        padding: 0;
     }
 
     .user-set td {
         color:rgb(255, 94, 0);
-        text-align: left;
+        text-align: left !important;
     }
 
-    .user-set td.value pre {
-        color:rgb(255, 94, 0) !important;
-        background-color: transparent !important;
+    .user-set td.value {
+        color:rgb(255, 94, 0);
+        background-color: transparent;
     }
 
-    .default td {
+    .default td, .estimator-table th {
         color: black;
-        text-align: left;
+        text-align: left !important;
     }
 
     .user-set td i,
     .default td i {
         color: black;
+    }
+
+    td.fitted-att-type {
+        white-space: preserve nowrap;
+    }
+
+    /*
+        Styles for parameter documentation links
+        We need styling for visited so jupyter doesn't overwrite it
+    */
+    a.param-doc-link,
+    a.param-doc-link:link,
+    a.param-doc-link:visited {
+        text-decoration: underline dashed;
+        text-underline-offset: .3em;
+        color: inherit;
+        display: block;
+        padding: .5em;
+    }
+
+    @supports(anchor-name: --doc-link) {
+        a.param-doc-link,
+        a.param-doc-link:link,
+        a.param-doc-link:visited {
+        anchor-name: --doc-link;
+        }
+    }
+
+    /* "hack" to make the entire area of the cell containing the link clickable */
+    a.param-doc-link::before {
+        position: absolute;
+        content: "";
+        inset: 0;
+    }
+
+    .param-doc-description {
+        display: none;
+        position: absolute;
+        z-index: 9999;
+        left: 0;
+        padding: .5ex;
+        margin-left: 1.5em;
+        color: var(--sklearn-color-text);
+        box-shadow: .3em .3em .4em #999;
+        width: max-content;
+        text-align: left;
+        max-height: 10em;
+        overflow-y: auto;
+
+        /* unfitted */
+        background: var(--sklearn-color-unfitted-level-0);
+        border: thin solid var(--sklearn-color-unfitted-level-3);
+    }
+
+    @supports(position-area: center right) {
+        .param-doc-description {
+        position-area: center right;
+        position: fixed;
+        margin-left: 0;
+        }
+    }
+
+    /* Fitted state for parameter tooltips */
+    .fitted .param-doc-description {
+        /* fitted */
+        background: var(--sklearn-color-fitted-level-0);
+        border: thin solid var(--sklearn-color-fitted-level-3);
+    }
+
+    .param-doc-link:hover .param-doc-description {
+        display: block;
     }
 
     .copy-paste-icon {
@@ -899,8 +980,136 @@ raised.
         width: 14px;
         height: 14px;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        background-color: transparent;
     }
-    </style><body><div id="sk-container-id-52" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>MetaClassifier(estimator=ExampleClassifier())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-230" type="checkbox" ><label for="sk-estimator-id-230" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>MetaClassifier</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+
+    .copy-paste-icon:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 1px;
+    }
+
+    .features {
+      font-family: monospace;
+      cursor: pointer;
+      background-color: var(--sklearn-color-unfitted-level-0);
+      border: 1px dotted var(--sklearn-color-border-box);
+      border-radius: .20em;
+      margin-bottom: 0.5em;
+      font-size: inherit; /* Needed for jupyter */
+    }
+
+    .features.fitted {
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    .features summary {
+      cursor: pointer;
+      display: flex;
+      margin-bottom: 0;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      padding: .25em;
+    }
+
+    .features details[open] > summary {
+      color: var(--sklearn-color-text);
+      background-color: var(--sklearn-color-unfitted-level-2);
+      border-radius: .20em 0 0 0;
+    }
+
+    .features.fitted details[open] > summary {
+      background-color: var(--sklearn-color-fitted-level-2);
+      border-radius: .20em 0 0 0;
+    }
+
+    .features details > summary .arrow::before {
+      content: "▸";
+      color: grey;
+    }
+
+    .features details[open] > summary .arrow::before {
+      content: "▾";
+    }
+
+    .features details:hover > summary {
+      margin: 0;
+      background-color: var(--sklearn-color-unfitted-level-2);
+    }
+
+    .features.fitted details:hover > summary {
+      margin: 0;
+      background-color: var(--sklearn-color-fitted-level-2);
+    }
+
+    .features .features-container {
+      max-height: 10em;
+      overflow: auto;
+      scrollbar-width: thin;
+      padding: .25em 0.1rem;
+      background-color: var(--sklearn-color-unfitted-level-0);
+      border-radius: 0 0 .5em .5em;
+    }
+
+    .features.fitted .features-container {
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    .features .image-container {
+      block-size: 1em;
+      inline-size: 1em;
+      padding: 0;
+      margin: 0%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .features .copy-paste-icon {
+      background-size: 1em 1em;
+      width: 1em;
+      height: 1em;
+      filter: grayscale(100%) opacity(60%);
+    }
+
+    .features .features-container table {
+      width: 100%;
+      margin: 0.01em;
+    }
+
+    .features .features-container table tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    .features .features-container table tr:nth-child(even) {
+      background-color: #f6f6f6;
+    }
+
+    .features .features-container table tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    .features .features-container table {
+      table-layout: inherit;
+    }
+
+    .features .features-container table td {
+      text-align: left;
+      padding: 0 0.5em;
+      border: 1px solid rgba(106, 105, 104, 0.232);
+      white-space: nowrap;
+      color: var(--sklearn-color-text);
+    }
+
+    .total_features {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5em;
+    }
+    </style><body><div id="sk-container-id-58" tabindex="0" class="sk-top-container sk-global"><div class="sk-text-repr-fallback"><pre>MetaClassifier(estimator=ExampleClassifier())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-286" type="checkbox" ><label for="sk-estimator-id-286" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>MetaClassifier</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -908,11 +1117,12 @@ raised.
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy estimator to clipboard"
                      onclick="copyToClipboard('estimator',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
-                <td class="param">estimator&nbsp;</td>
+                ></button></td>
+                <td class="param">estimator</td>
                 <td class="value">ExampleClassifier()</td>
             </tr>
     
@@ -920,7 +1130,40 @@ raised.
                     </table>
                 </details>
             </div>
-        </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-231" type="checkbox" ><label for="sk-estimator-id-231" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>estimator: ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__"><pre>ExampleClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-232" type="checkbox" ><label for="sk-estimator-id-232" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__">
+    
+            <div class="estimator-table">
+                <details>
+                    <summary>Fitted attributes</summary>
+                    <table class="parameters-table">
+                        <tbody>
+                            <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Value</th>
+                            </tr>
+                        
+           <tr class="default">
+               <td class="param"><a class="param-doc-link" style="text-decoration:none;">classes_</a></td>
+               <td class="fitted-att-type">ndarray[int64](2,)</td>
+               <td>[0,1]</td>
+
+
+           </tr>
+    
+
+           <tr class="default">
+               <td class="param"><a class="param-doc-link" style="text-decoration:none;">estimator_</a></td>
+               <td class="fitted-att-type">ExampleClassifier</td>
+               <td>ExampleClassifier()</td>
+
+
+           </tr>
+    
+                        </tbody>
+                    </table>
+                </details>
+            </div>
+        </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-287" type="checkbox" ><label for="sk-estimator-id-287" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>estimator: ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__"><pre>ExampleClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-288" type="checkbox" ><label for="sk-estimator-id-288" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -931,7 +1174,11 @@ raised.
                     </table>
                 </details>
             </div>
-        </div></div></div></div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+        </div></div></div></div></div></div></div></div></div></div><script>/*  Authors: The scikit-learn developers
+     SPDX-License-Identifier: BSD-3-Clause
+    */
+
+    function copyToClipboard(text, element) {
         // Get the parameter prefix from the closest toggleable content
         const toggleableContent = element.closest('.sk-toggleable__content');
         const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
@@ -965,15 +1212,139 @@ raised.
         return false;
     }
 
-    document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    document.querySelectorAll('.copy-paste-icon').forEach(function(element) {
         const toggleableContent = element.closest('.sk-toggleable__content');
         const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-        const paramName = element.parentElement.nextElementSibling.textContent.trim();
+
+        const parent = element.parentElement;
+        if (!parent || !parent.nextElementSibling) {
+            console.warn('Expected copy-paste icon is missing from the DOM structure');
+            return;
+        }
+
+        const paramName = element.parentElement.nextElementSibling
+            .textContent.trim().split(' ')[0];
         const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
 
         element.setAttribute('title', fullParamName);
     });
-    </script></body>
+
+    /**
+     * Copy the list of feature names formatted as a Python list.
+     *
+     * @param {HTMLElement} element - The copy button inside a `.features` block; its siblings
+     *   contain a `details` element and a table containing feature named.
+     * @returns {boolean} Always returns `false` so callers can prevent the default click behavior.
+     */
+    function copyFeatureNamesToClipboard(element) {
+        var detailsElem = element.closest('.features').querySelector('details');
+        var wasOpen = detailsElem.open;
+        detailsElem.open = true;
+        var content = element.closest('.features').querySelector('tbody')
+                      .innerText.trim();
+        if (!wasOpen) detailsElem.open = false;
+        const rows = content.split('\n').map(row => `    "${row}"`);
+        const formattedText = `[\n${rows.join(',\n')},\n]`;
+        const originalHTML = element.innerHTML.replace('✔', '');
+        const originalStyle = element.style;
+        const copyMark = document.createElement('span');
+        copyMark.innerHTML = '✔';
+        copyMark.style.color = 'blue';
+        copyMark.style.fontSize = '1em';
+
+        navigator.clipboard.writeText(formattedText)
+            .then(() => {
+                element.style.display = 'none';
+                element.parentElement.appendChild(copyMark);
+
+                setTimeout(() => {
+                    copyMark.remove();
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 1000);
+            })
+            .catch(err => {
+                console.error('Failed to copy:', err);
+                element.style.color = 'orange';
+                element.innerHTML = "Failed!";
+                setTimeout(() => {
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 1000);
+            });
+        return false;
+    }
+    /**
+     * Adapted from Skrub
+     * https://github.com/skrub-data/skrub/blob/403466d1d5d4dc76a7ef569b3f8228db59a31dc3/skrub/_reporting/_data/templates/report.js#L789
+     * @returns "light" or "dark"
+     */
+    function detectTheme(element) {
+        const body = document.querySelector('body');
+
+        // Check VSCode theme
+        const themeKindAttr = body.getAttribute('data-vscode-theme-kind');
+        const themeNameAttr = body.getAttribute('data-vscode-theme-name');
+
+        if (themeKindAttr && themeNameAttr) {
+            const themeKind = themeKindAttr.toLowerCase();
+            const themeName = themeNameAttr.toLowerCase();
+
+            if (themeKind.includes("dark") || themeName.includes("dark")) {
+                return "dark";
+            }
+            if (themeKind.includes("light") || themeName.includes("light")) {
+                return "light";
+            }
+        }
+
+        // Check Jupyter theme
+        if (body.getAttribute('data-jp-theme-light') === 'false') {
+            return 'dark';
+        } else if (body.getAttribute('data-jp-theme-light') === 'true') {
+            return 'light';
+        }
+
+        // Guess based on a parent element's color
+        const color = window.getComputedStyle(element.parentNode, null).getPropertyValue('color');
+        const match = color.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*$/i);
+        if (match) {
+            const [r, g, b] = [
+                parseFloat(match[1]),
+                parseFloat(match[2]),
+                parseFloat(match[3])
+            ];
+
+            // https://en.wikipedia.org/wiki/HSL_and_HSV#Lightness
+            const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+
+            if (luma > 180) {
+                // If the text is very bright we have a dark theme
+                return 'dark';
+            }
+            if (luma < 75) {
+                // If the text is very dark we have a light theme
+                return 'light';
+            }
+            // Otherwise fall back to the next heuristic.
+        }
+
+        // Fallback to system preference
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+
+    function forceTheme(elementId) {
+        const estimatorElement = document.querySelector(`#${elementId}`);
+        if (estimatorElement === null) {
+            console.error(`Element with id ${elementId} not found.`);
+        } else {
+            const theme = detectTheme(estimatorElement);
+            estimatorElement.classList.add(theme);
+        }
+    }
+
+    forceTheme('sk-container-id-58');</script></body>
     </div>
     <br />
     <br />
@@ -1006,7 +1377,7 @@ following example, it would print that ``sample_weight`` is ``None``:
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <style>#sk-container-id-53 {
+    <style>.sk-global {
       /* Definition of color scheme common for light and dark mode */
       --sklearn-color-text: #000;
       --sklearn-color-text-muted: #666;
@@ -1021,34 +1392,34 @@ following example, it would print that ``sample_weight`` is ``None``:
       --sklearn-color-fitted-level-1: #d4ebff;
       --sklearn-color-fitted-level-2: #b3dbfd;
       --sklearn-color-fitted-level-3: cornflowerblue;
-
-      /* Specific color for light theme */
-      --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-      --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-      --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-      --sklearn-color-icon: #696969;
-
-      @media (prefers-color-scheme: dark) {
-        /* Redefinition of color scheme for dark theme */
-        --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-        --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-        --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-        --sklearn-color-icon: #878787;
-      }
     }
 
-    #sk-container-id-53 {
+    .sk-global.light {
+      /* Specific color for light theme */
+      --sklearn-color-text-on-default-background: black;
+      --sklearn-color-background: white;
+      --sklearn-color-border-box: black;
+      --sklearn-color-icon: #696969;
+    }
+
+    .sk-global.dark {
+      --sklearn-color-text-on-default-background: white;
+      --sklearn-color-background: #111;
+      --sklearn-color-border-box: white;
+      --sklearn-color-icon: #878787;
+    }
+
+    .sk-global {
       color: var(--sklearn-color-text);
     }
 
-    #sk-container-id-53 pre {
+    .sk-global pre {
       padding: 0;
     }
 
-    #sk-container-id-53 input.sk-hidden--visually {
+    .sk-global input.sk-hidden--visually {
       border: 0;
-      clip: rect(1px 1px 1px 1px);
-      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(100%);
       height: 1px;
       margin: -1px;
       overflow: hidden;
@@ -1057,7 +1428,7 @@ following example, it would print that ``sample_weight`` is ``None``:
       width: 1px;
     }
 
-    #sk-container-id-53 div.sk-dashed-wrapped {
+    .sk-global div.sk-dashed-wrapped {
       border: 1px dashed var(--sklearn-color-line);
       margin: 0 0.4em 0.5em 0.4em;
       box-sizing: border-box;
@@ -1065,7 +1436,7 @@ following example, it would print that ``sample_weight`` is ``None``:
       background-color: var(--sklearn-color-background);
     }
 
-    #sk-container-id-53 div.sk-container {
+    .sk-global div.sk-container {
       /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
          but bootstrap.min.css set `[hidden] { display: none !important; }`
          so we also need the `!important` here to be able to override the
@@ -1075,7 +1446,7 @@ following example, it would print that ``sample_weight`` is ``None``:
       position: relative;
     }
 
-    #sk-container-id-53 div.sk-text-repr-fallback {
+    .sk-global div.sk-text-repr-fallback {
       display: none;
     }
 
@@ -1091,14 +1462,14 @@ following example, it would print that ``sample_weight`` is ``None``:
 
     /* Parallel-specific style estimator block */
 
-    #sk-container-id-53 div.sk-parallel-item::after {
+    .sk-global div.sk-parallel-item::after {
       content: "";
       width: 100%;
       border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
       flex-grow: 1;
     }
 
-    #sk-container-id-53 div.sk-parallel {
+    .sk-global div.sk-parallel {
       display: flex;
       align-items: stretch;
       justify-content: center;
@@ -1106,28 +1477,28 @@ following example, it would print that ``sample_weight`` is ``None``:
       position: relative;
     }
 
-    #sk-container-id-53 div.sk-parallel-item {
+    .sk-global div.sk-parallel-item {
       display: flex;
       flex-direction: column;
     }
 
-    #sk-container-id-53 div.sk-parallel-item:first-child::after {
+    .sk-global div.sk-parallel-item:first-child::after {
       align-self: flex-end;
       width: 50%;
     }
 
-    #sk-container-id-53 div.sk-parallel-item:last-child::after {
+    .sk-global div.sk-parallel-item:last-child::after {
       align-self: flex-start;
       width: 50%;
     }
 
-    #sk-container-id-53 div.sk-parallel-item:only-child::after {
+    .sk-global div.sk-parallel-item:only-child::after {
       width: 0;
     }
 
     /* Serial-specific style estimator block */
 
-    #sk-container-id-53 div.sk-serial {
+    .sk-global div.sk-serial {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1145,14 +1516,14 @@ following example, it would print that ``sample_weight`` is ``None``:
 
     /* Pipeline and ColumnTransformer style (default) */
 
-    #sk-container-id-53 div.sk-toggleable {
+    .sk-global div.sk-toggleable {
       /* Default theme specific background. It is overwritten whether we have a
       specific estimator or a Pipeline/ColumnTransformer */
       background-color: var(--sklearn-color-background);
     }
 
     /* Toggleable label */
-    #sk-container-id-53 label.sk-toggleable__label {
+    .sk-global label.sk-toggleable__label {
       cursor: pointer;
       display: flex;
       width: 100%;
@@ -1160,18 +1531,18 @@ following example, it would print that ``sample_weight`` is ``None``:
       padding: 0.5em;
       box-sizing: border-box;
       text-align: center;
-      align-items: start;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
       gap: 0.5em;
     }
 
-    #sk-container-id-53 label.sk-toggleable__label .caption {
+    .sk-global label.sk-toggleable__label .caption {
       font-size: 0.6rem;
       font-weight: lighter;
       color: var(--sklearn-color-text-muted);
     }
 
-    #sk-container-id-53 label.sk-toggleable__label-arrow:before {
+    .sk-global label.sk-toggleable__label-arrow:before {
       /* Arrow on the left of the label */
       content: "▸";
       float: left;
@@ -1179,25 +1550,25 @@ following example, it would print that ``sample_weight`` is ``None``:
       color: var(--sklearn-color-icon);
     }
 
-    #sk-container-id-53 label.sk-toggleable__label-arrow:hover:before {
+    .sk-global label.sk-toggleable__label-arrow:hover:before {
       color: var(--sklearn-color-text);
     }
 
     /* Toggleable content - dropdown */
 
-    #sk-container-id-53 div.sk-toggleable__content {
+    .sk-global div.sk-toggleable__content {
       display: none;
       text-align: left;
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-53 div.sk-toggleable__content.fitted {
+    .sk-global div.sk-toggleable__content.fitted {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
-    #sk-container-id-53 div.sk-toggleable__content pre {
+    .sk-global div.sk-toggleable__content pre {
       margin: 0.2em;
       border-radius: 0.25em;
       color: var(--sklearn-color-text);
@@ -1205,79 +1576,78 @@ following example, it would print that ``sample_weight`` is ``None``:
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-53 div.sk-toggleable__content.fitted pre {
+    .sk-global div.sk-toggleable__content.fitted pre {
       /* unfitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
-    #sk-container-id-53 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+    .sk-global input.sk-toggleable__control:checked~div.sk-toggleable__content {
       /* Expand drop-down */
       display: block;
       width: 100%;
       overflow: visible;
     }
 
-    #sk-container-id-53 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+    .sk-global input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
       content: "▾";
     }
 
     /* Pipeline/ColumnTransformer-specific style */
 
-    #sk-container-id-53 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-53 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
     /* Estimator-specific style */
 
     /* Colorize estimator box */
-    #sk-container-id-53 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-53 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
-    #sk-container-id-53 div.sk-label label.sk-toggleable__label,
-    #sk-container-id-53 div.sk-label label {
+    .sk-global div.sk-label label.sk-toggleable__label,
+    .sk-global div.sk-label label {
       /* The background is the default theme color */
       color: var(--sklearn-color-text-on-default-background);
     }
 
     /* On hover, darken the color of the background */
-    #sk-container-id-53 div.sk-label:hover label.sk-toggleable__label {
+    .sk-global div.sk-label:hover label.sk-toggleable__label {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
     /* Label box, darken color on hover, fitted */
-    #sk-container-id-53 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+    .sk-global div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
     /* Estimator label */
 
-    #sk-container-id-53 div.sk-label label {
+    .sk-global div.sk-label label {
       font-family: monospace;
       font-weight: bold;
-      display: inline-block;
       line-height: 1.2em;
     }
 
-    #sk-container-id-53 div.sk-label-container {
+    .sk-global div.sk-label-container {
       text-align: center;
     }
 
     /* Estimator-specific */
-    #sk-container-id-53 div.sk-estimator {
+    .sk-global div.sk-estimator {
       font-family: monospace;
       border: 1px dotted var(--sklearn-color-border-box);
       border-radius: 0.25em;
@@ -1287,18 +1657,18 @@ following example, it would print that ``sample_weight`` is ``None``:
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-53 div.sk-estimator.fitted {
+    .sk-global div.sk-estimator.fitted {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
     /* on hover */
-    #sk-container-id-53 div.sk-estimator:hover {
+    .sk-global div.sk-estimator:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-53 div.sk-estimator.fitted:hover {
+    .sk-global div.sk-estimator.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-2);
     }
@@ -1314,7 +1684,7 @@ following example, it would print that ``sample_weight`` is ``None``:
       font-size: smaller;
       line-height: 1em;
       font-family: monospace;
-      background-color: var(--sklearn-color-background);
+      background-color: var(--sklearn-color-unfitted-level-0);
       border-radius: 1em;
       height: 1em;
       width: 1em;
@@ -1322,16 +1692,17 @@ following example, it would print that ``sample_weight`` is ``None``:
       margin-left: 0.5em;
       text-align: center;
       /* unfitted */
-      border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-      color: var(--sklearn-color-unfitted-level-1);
+      border: var(--sklearn-color-unfitted-level-3) 1pt solid;
+      color: var(--sklearn-color-unfitted-level-3);
     }
 
     .sk-estimator-doc-link.fitted,
     a:link.sk-estimator-doc-link.fitted,
     a:visited.sk-estimator-doc-link.fitted {
       /* fitted */
-      border: var(--sklearn-color-fitted-level-1) 1pt solid;
-      color: var(--sklearn-color-fitted-level-1);
+      background-color: var(--sklearn-color-fitted-level-0);
+      border: var(--sklearn-color-fitted-level-3) 1pt solid;
+      color: var(--sklearn-color-fitted-level-3);
     }
 
     /* On hover */
@@ -1341,7 +1712,8 @@ following example, it would print that ``sample_weight`` is ``None``:
     .sk-estimator-doc-link:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-3);
-      color: var(--sklearn-color-background);
+      border: var(--sklearn-color-fitted-level-0) 1pt solid;
+      color: var(--sklearn-color-unfitted-level-0);
       text-decoration: none;
     }
 
@@ -1351,7 +1723,8 @@ following example, it would print that ``sample_weight`` is ``None``:
     .sk-estimator-doc-link.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-3);
-      color: var(--sklearn-color-background);
+      border: var(--sklearn-color-fitted-level-0) 1pt solid;
+      color: var(--sklearn-color-fitted-level-0);
       text-decoration: none;
     }
 
@@ -1386,12 +1759,12 @@ following example, it would print that ``sample_weight`` is ``None``:
 
     /* "?"-specific style due to the `<a>` HTML tag */
 
-    #sk-container-id-53 a.estimator_doc_link {
+    .sk-global a.estimator_doc_link {
       float: right;
       font-size: 1rem;
       line-height: 1em;
       font-family: monospace;
-      background-color: var(--sklearn-color-background);
+      background-color: var(--sklearn-color-unfitted-level-0);
       border-radius: 1rem;
       height: 1rem;
       width: 1rem;
@@ -1401,29 +1774,45 @@ following example, it would print that ``sample_weight`` is ``None``:
       border: var(--sklearn-color-unfitted-level-1) 1pt solid;
     }
 
-    #sk-container-id-53 a.estimator_doc_link.fitted {
+    .sk-global a.estimator_doc_link.fitted {
       /* fitted */
+      background-color: var(--sklearn-color-fitted-level-0);
       border: var(--sklearn-color-fitted-level-1) 1pt solid;
       color: var(--sklearn-color-fitted-level-1);
     }
 
     /* On hover */
-    #sk-container-id-53 a.estimator_doc_link:hover {
+    .sk-global a.estimator_doc_link:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-3);
       color: var(--sklearn-color-background);
       text-decoration: none;
     }
 
-    #sk-container-id-53 a.estimator_doc_link.fitted:hover {
+    .sk-global a.estimator_doc_link.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-3);
     }
 
+    .sk-top-container.sk-global {
+      /* pydata-sphinx-theme hides overflow, so scrolling is disabled.
+       We need to set it to !important and add tabindex="0" in the HTML
+       to allow keyboard-only users to navigate the display. */
+      overflow-x: scroll !important;
+      max-width: 100%;
+    }
+
+    .estimator-table {
+        font-family: monospace;
+    }
+
     .estimator-table summary {
         padding: .5rem;
-        font-family: monospace;
         cursor: pointer;
+    }
+
+    .estimator-table summary::marker {
+        font-size: 0.7rem;
     }
 
     .estimator-table details[open] {
@@ -1435,6 +1824,7 @@ following example, it would print that ``sample_weight`` is ``None``:
     .estimator-table .parameters-table {
         margin-left: auto !important;
         margin-right: auto !important;
+        margin-top: 0;
     }
 
     .estimator-table .parameters-table tr:nth-child(odd) {
@@ -1445,32 +1835,113 @@ following example, it would print that ``sample_weight`` is ``None``:
         background-color: #f6f6f6;
     }
 
-    .estimator-table .parameters-table tr:hover {
+    .estimator-table .parameters-table tr:hover td {
         background-color: #e0e0e0;
     }
 
-    .estimator-table table td {
+    .estimator-table table :is(td, th) {
         border: 1px solid rgba(106, 105, 104, 0.232);
+    }
+
+    /*
+        `table td`is set in notebook with right text-align.
+        We need to overwrite it.
+    */
+    .estimator-table table td.param {
+        text-align: left;
+        position: relative;
+        padding: 0;
     }
 
     .user-set td {
         color:rgb(255, 94, 0);
-        text-align: left;
+        text-align: left !important;
     }
 
-    .user-set td.value pre {
-        color:rgb(255, 94, 0) !important;
-        background-color: transparent !important;
+    .user-set td.value {
+        color:rgb(255, 94, 0);
+        background-color: transparent;
     }
 
-    .default td {
+    .default td, .estimator-table th {
         color: black;
-        text-align: left;
+        text-align: left !important;
     }
 
     .user-set td i,
     .default td i {
         color: black;
+    }
+
+    td.fitted-att-type {
+        white-space: preserve nowrap;
+    }
+
+    /*
+        Styles for parameter documentation links
+        We need styling for visited so jupyter doesn't overwrite it
+    */
+    a.param-doc-link,
+    a.param-doc-link:link,
+    a.param-doc-link:visited {
+        text-decoration: underline dashed;
+        text-underline-offset: .3em;
+        color: inherit;
+        display: block;
+        padding: .5em;
+    }
+
+    @supports(anchor-name: --doc-link) {
+        a.param-doc-link,
+        a.param-doc-link:link,
+        a.param-doc-link:visited {
+        anchor-name: --doc-link;
+        }
+    }
+
+    /* "hack" to make the entire area of the cell containing the link clickable */
+    a.param-doc-link::before {
+        position: absolute;
+        content: "";
+        inset: 0;
+    }
+
+    .param-doc-description {
+        display: none;
+        position: absolute;
+        z-index: 9999;
+        left: 0;
+        padding: .5ex;
+        margin-left: 1.5em;
+        color: var(--sklearn-color-text);
+        box-shadow: .3em .3em .4em #999;
+        width: max-content;
+        text-align: left;
+        max-height: 10em;
+        overflow-y: auto;
+
+        /* unfitted */
+        background: var(--sklearn-color-unfitted-level-0);
+        border: thin solid var(--sklearn-color-unfitted-level-3);
+    }
+
+    @supports(position-area: center right) {
+        .param-doc-description {
+        position-area: center right;
+        position: fixed;
+        margin-left: 0;
+        }
+    }
+
+    /* Fitted state for parameter tooltips */
+    .fitted .param-doc-description {
+        /* fitted */
+        background: var(--sklearn-color-fitted-level-0);
+        border: thin solid var(--sklearn-color-fitted-level-3);
+    }
+
+    .param-doc-link:hover .param-doc-description {
+        display: block;
     }
 
     .copy-paste-icon {
@@ -1482,8 +1953,136 @@ following example, it would print that ``sample_weight`` is ``None``:
         width: 14px;
         height: 14px;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        background-color: transparent;
     }
-    </style><body><div id="sk-container-id-53" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>MetaClassifier(estimator=ExampleClassifier())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-233" type="checkbox" ><label for="sk-estimator-id-233" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>MetaClassifier</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+
+    .copy-paste-icon:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 1px;
+    }
+
+    .features {
+      font-family: monospace;
+      cursor: pointer;
+      background-color: var(--sklearn-color-unfitted-level-0);
+      border: 1px dotted var(--sklearn-color-border-box);
+      border-radius: .20em;
+      margin-bottom: 0.5em;
+      font-size: inherit; /* Needed for jupyter */
+    }
+
+    .features.fitted {
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    .features summary {
+      cursor: pointer;
+      display: flex;
+      margin-bottom: 0;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      padding: .25em;
+    }
+
+    .features details[open] > summary {
+      color: var(--sklearn-color-text);
+      background-color: var(--sklearn-color-unfitted-level-2);
+      border-radius: .20em 0 0 0;
+    }
+
+    .features.fitted details[open] > summary {
+      background-color: var(--sklearn-color-fitted-level-2);
+      border-radius: .20em 0 0 0;
+    }
+
+    .features details > summary .arrow::before {
+      content: "▸";
+      color: grey;
+    }
+
+    .features details[open] > summary .arrow::before {
+      content: "▾";
+    }
+
+    .features details:hover > summary {
+      margin: 0;
+      background-color: var(--sklearn-color-unfitted-level-2);
+    }
+
+    .features.fitted details:hover > summary {
+      margin: 0;
+      background-color: var(--sklearn-color-fitted-level-2);
+    }
+
+    .features .features-container {
+      max-height: 10em;
+      overflow: auto;
+      scrollbar-width: thin;
+      padding: .25em 0.1rem;
+      background-color: var(--sklearn-color-unfitted-level-0);
+      border-radius: 0 0 .5em .5em;
+    }
+
+    .features.fitted .features-container {
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    .features .image-container {
+      block-size: 1em;
+      inline-size: 1em;
+      padding: 0;
+      margin: 0%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .features .copy-paste-icon {
+      background-size: 1em 1em;
+      width: 1em;
+      height: 1em;
+      filter: grayscale(100%) opacity(60%);
+    }
+
+    .features .features-container table {
+      width: 100%;
+      margin: 0.01em;
+    }
+
+    .features .features-container table tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    .features .features-container table tr:nth-child(even) {
+      background-color: #f6f6f6;
+    }
+
+    .features .features-container table tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    .features .features-container table {
+      table-layout: inherit;
+    }
+
+    .features .features-container table td {
+      text-align: left;
+      padding: 0 0.5em;
+      border: 1px solid rgba(106, 105, 104, 0.232);
+      white-space: nowrap;
+      color: var(--sklearn-color-text);
+    }
+
+    .total_features {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5em;
+    }
+    </style><body><div id="sk-container-id-59" tabindex="0" class="sk-top-container sk-global"><div class="sk-text-repr-fallback"><pre>MetaClassifier(estimator=ExampleClassifier())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-289" type="checkbox" ><label for="sk-estimator-id-289" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>MetaClassifier</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -1491,11 +2090,12 @@ following example, it would print that ``sample_weight`` is ``None``:
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy estimator to clipboard"
                      onclick="copyToClipboard('estimator',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
-                <td class="param">estimator&nbsp;</td>
+                ></button></td>
+                <td class="param">estimator</td>
                 <td class="value">ExampleClassifier()</td>
             </tr>
     
@@ -1503,7 +2103,40 @@ following example, it would print that ``sample_weight`` is ``None``:
                     </table>
                 </details>
             </div>
-        </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-234" type="checkbox" ><label for="sk-estimator-id-234" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>estimator: ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__"><pre>ExampleClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-235" type="checkbox" ><label for="sk-estimator-id-235" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__">
+    
+            <div class="estimator-table">
+                <details>
+                    <summary>Fitted attributes</summary>
+                    <table class="parameters-table">
+                        <tbody>
+                            <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Value</th>
+                            </tr>
+                        
+           <tr class="default">
+               <td class="param"><a class="param-doc-link" style="text-decoration:none;">classes_</a></td>
+               <td class="fitted-att-type">ndarray[int64](2,)</td>
+               <td>[0,1]</td>
+
+
+           </tr>
+    
+
+           <tr class="default">
+               <td class="param"><a class="param-doc-link" style="text-decoration:none;">estimator_</a></td>
+               <td class="fitted-att-type">ExampleClassifier</td>
+               <td>ExampleClassifier()</td>
+
+
+           </tr>
+    
+                        </tbody>
+                    </table>
+                </details>
+            </div>
+        </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-290" type="checkbox" ><label for="sk-estimator-id-290" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>estimator: ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__"><pre>ExampleClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-291" type="checkbox" ><label for="sk-estimator-id-291" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -1514,7 +2147,11 @@ following example, it would print that ``sample_weight`` is ``None``:
                     </table>
                 </details>
             </div>
-        </div></div></div></div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+        </div></div></div></div></div></div></div></div></div></div><script>/*  Authors: The scikit-learn developers
+     SPDX-License-Identifier: BSD-3-Clause
+    */
+
+    function copyToClipboard(text, element) {
         // Get the parameter prefix from the closest toggleable content
         const toggleableContent = element.closest('.sk-toggleable__content');
         const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
@@ -1548,15 +2185,139 @@ following example, it would print that ``sample_weight`` is ``None``:
         return false;
     }
 
-    document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    document.querySelectorAll('.copy-paste-icon').forEach(function(element) {
         const toggleableContent = element.closest('.sk-toggleable__content');
         const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-        const paramName = element.parentElement.nextElementSibling.textContent.trim();
+
+        const parent = element.parentElement;
+        if (!parent || !parent.nextElementSibling) {
+            console.warn('Expected copy-paste icon is missing from the DOM structure');
+            return;
+        }
+
+        const paramName = element.parentElement.nextElementSibling
+            .textContent.trim().split(' ')[0];
         const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
 
         element.setAttribute('title', fullParamName);
     });
-    </script></body>
+
+    /**
+     * Copy the list of feature names formatted as a Python list.
+     *
+     * @param {HTMLElement} element - The copy button inside a `.features` block; its siblings
+     *   contain a `details` element and a table containing feature named.
+     * @returns {boolean} Always returns `false` so callers can prevent the default click behavior.
+     */
+    function copyFeatureNamesToClipboard(element) {
+        var detailsElem = element.closest('.features').querySelector('details');
+        var wasOpen = detailsElem.open;
+        detailsElem.open = true;
+        var content = element.closest('.features').querySelector('tbody')
+                      .innerText.trim();
+        if (!wasOpen) detailsElem.open = false;
+        const rows = content.split('\n').map(row => `    "${row}"`);
+        const formattedText = `[\n${rows.join(',\n')},\n]`;
+        const originalHTML = element.innerHTML.replace('✔', '');
+        const originalStyle = element.style;
+        const copyMark = document.createElement('span');
+        copyMark.innerHTML = '✔';
+        copyMark.style.color = 'blue';
+        copyMark.style.fontSize = '1em';
+
+        navigator.clipboard.writeText(formattedText)
+            .then(() => {
+                element.style.display = 'none';
+                element.parentElement.appendChild(copyMark);
+
+                setTimeout(() => {
+                    copyMark.remove();
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 1000);
+            })
+            .catch(err => {
+                console.error('Failed to copy:', err);
+                element.style.color = 'orange';
+                element.innerHTML = "Failed!";
+                setTimeout(() => {
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 1000);
+            });
+        return false;
+    }
+    /**
+     * Adapted from Skrub
+     * https://github.com/skrub-data/skrub/blob/403466d1d5d4dc76a7ef569b3f8228db59a31dc3/skrub/_reporting/_data/templates/report.js#L789
+     * @returns "light" or "dark"
+     */
+    function detectTheme(element) {
+        const body = document.querySelector('body');
+
+        // Check VSCode theme
+        const themeKindAttr = body.getAttribute('data-vscode-theme-kind');
+        const themeNameAttr = body.getAttribute('data-vscode-theme-name');
+
+        if (themeKindAttr && themeNameAttr) {
+            const themeKind = themeKindAttr.toLowerCase();
+            const themeName = themeNameAttr.toLowerCase();
+
+            if (themeKind.includes("dark") || themeName.includes("dark")) {
+                return "dark";
+            }
+            if (themeKind.includes("light") || themeName.includes("light")) {
+                return "light";
+            }
+        }
+
+        // Check Jupyter theme
+        if (body.getAttribute('data-jp-theme-light') === 'false') {
+            return 'dark';
+        } else if (body.getAttribute('data-jp-theme-light') === 'true') {
+            return 'light';
+        }
+
+        // Guess based on a parent element's color
+        const color = window.getComputedStyle(element.parentNode, null).getPropertyValue('color');
+        const match = color.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*$/i);
+        if (match) {
+            const [r, g, b] = [
+                parseFloat(match[1]),
+                parseFloat(match[2]),
+                parseFloat(match[3])
+            ];
+
+            // https://en.wikipedia.org/wiki/HSL_and_HSV#Lightness
+            const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+
+            if (luma > 180) {
+                // If the text is very bright we have a dark theme
+                return 'dark';
+            }
+            if (luma < 75) {
+                // If the text is very dark we have a light theme
+                return 'light';
+            }
+            // Otherwise fall back to the next heuristic.
+        }
+
+        // Fallback to system preference
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+
+    function forceTheme(elementId) {
+        const estimatorElement = document.querySelector(`#${elementId}`);
+        if (estimatorElement === null) {
+            console.error(`Element with id ${elementId} not found.`);
+        } else {
+            const theme = detectTheme(estimatorElement);
+            estimatorElement.classList.add(theme);
+        }
+    }
+
+    forceTheme('sk-container-id-59');</script></body>
     </div>
     <br />
     <br />
@@ -1682,7 +2443,7 @@ meta-estimator, but the meta-estimator understands that
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <style>#sk-container-id-54 {
+    <style>.sk-global {
       /* Definition of color scheme common for light and dark mode */
       --sklearn-color-text: #000;
       --sklearn-color-text-muted: #666;
@@ -1697,34 +2458,34 @@ meta-estimator, but the meta-estimator understands that
       --sklearn-color-fitted-level-1: #d4ebff;
       --sklearn-color-fitted-level-2: #b3dbfd;
       --sklearn-color-fitted-level-3: cornflowerblue;
-
-      /* Specific color for light theme */
-      --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-      --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-      --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-      --sklearn-color-icon: #696969;
-
-      @media (prefers-color-scheme: dark) {
-        /* Redefinition of color scheme for dark theme */
-        --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-        --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-        --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-        --sklearn-color-icon: #878787;
-      }
     }
 
-    #sk-container-id-54 {
+    .sk-global.light {
+      /* Specific color for light theme */
+      --sklearn-color-text-on-default-background: black;
+      --sklearn-color-background: white;
+      --sklearn-color-border-box: black;
+      --sklearn-color-icon: #696969;
+    }
+
+    .sk-global.dark {
+      --sklearn-color-text-on-default-background: white;
+      --sklearn-color-background: #111;
+      --sklearn-color-border-box: white;
+      --sklearn-color-icon: #878787;
+    }
+
+    .sk-global {
       color: var(--sklearn-color-text);
     }
 
-    #sk-container-id-54 pre {
+    .sk-global pre {
       padding: 0;
     }
 
-    #sk-container-id-54 input.sk-hidden--visually {
+    .sk-global input.sk-hidden--visually {
       border: 0;
-      clip: rect(1px 1px 1px 1px);
-      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(100%);
       height: 1px;
       margin: -1px;
       overflow: hidden;
@@ -1733,7 +2494,7 @@ meta-estimator, but the meta-estimator understands that
       width: 1px;
     }
 
-    #sk-container-id-54 div.sk-dashed-wrapped {
+    .sk-global div.sk-dashed-wrapped {
       border: 1px dashed var(--sklearn-color-line);
       margin: 0 0.4em 0.5em 0.4em;
       box-sizing: border-box;
@@ -1741,7 +2502,7 @@ meta-estimator, but the meta-estimator understands that
       background-color: var(--sklearn-color-background);
     }
 
-    #sk-container-id-54 div.sk-container {
+    .sk-global div.sk-container {
       /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
          but bootstrap.min.css set `[hidden] { display: none !important; }`
          so we also need the `!important` here to be able to override the
@@ -1751,7 +2512,7 @@ meta-estimator, but the meta-estimator understands that
       position: relative;
     }
 
-    #sk-container-id-54 div.sk-text-repr-fallback {
+    .sk-global div.sk-text-repr-fallback {
       display: none;
     }
 
@@ -1767,14 +2528,14 @@ meta-estimator, but the meta-estimator understands that
 
     /* Parallel-specific style estimator block */
 
-    #sk-container-id-54 div.sk-parallel-item::after {
+    .sk-global div.sk-parallel-item::after {
       content: "";
       width: 100%;
       border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
       flex-grow: 1;
     }
 
-    #sk-container-id-54 div.sk-parallel {
+    .sk-global div.sk-parallel {
       display: flex;
       align-items: stretch;
       justify-content: center;
@@ -1782,28 +2543,28 @@ meta-estimator, but the meta-estimator understands that
       position: relative;
     }
 
-    #sk-container-id-54 div.sk-parallel-item {
+    .sk-global div.sk-parallel-item {
       display: flex;
       flex-direction: column;
     }
 
-    #sk-container-id-54 div.sk-parallel-item:first-child::after {
+    .sk-global div.sk-parallel-item:first-child::after {
       align-self: flex-end;
       width: 50%;
     }
 
-    #sk-container-id-54 div.sk-parallel-item:last-child::after {
+    .sk-global div.sk-parallel-item:last-child::after {
       align-self: flex-start;
       width: 50%;
     }
 
-    #sk-container-id-54 div.sk-parallel-item:only-child::after {
+    .sk-global div.sk-parallel-item:only-child::after {
       width: 0;
     }
 
     /* Serial-specific style estimator block */
 
-    #sk-container-id-54 div.sk-serial {
+    .sk-global div.sk-serial {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1821,14 +2582,14 @@ meta-estimator, but the meta-estimator understands that
 
     /* Pipeline and ColumnTransformer style (default) */
 
-    #sk-container-id-54 div.sk-toggleable {
+    .sk-global div.sk-toggleable {
       /* Default theme specific background. It is overwritten whether we have a
       specific estimator or a Pipeline/ColumnTransformer */
       background-color: var(--sklearn-color-background);
     }
 
     /* Toggleable label */
-    #sk-container-id-54 label.sk-toggleable__label {
+    .sk-global label.sk-toggleable__label {
       cursor: pointer;
       display: flex;
       width: 100%;
@@ -1836,18 +2597,18 @@ meta-estimator, but the meta-estimator understands that
       padding: 0.5em;
       box-sizing: border-box;
       text-align: center;
-      align-items: start;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
       gap: 0.5em;
     }
 
-    #sk-container-id-54 label.sk-toggleable__label .caption {
+    .sk-global label.sk-toggleable__label .caption {
       font-size: 0.6rem;
       font-weight: lighter;
       color: var(--sklearn-color-text-muted);
     }
 
-    #sk-container-id-54 label.sk-toggleable__label-arrow:before {
+    .sk-global label.sk-toggleable__label-arrow:before {
       /* Arrow on the left of the label */
       content: "▸";
       float: left;
@@ -1855,25 +2616,25 @@ meta-estimator, but the meta-estimator understands that
       color: var(--sklearn-color-icon);
     }
 
-    #sk-container-id-54 label.sk-toggleable__label-arrow:hover:before {
+    .sk-global label.sk-toggleable__label-arrow:hover:before {
       color: var(--sklearn-color-text);
     }
 
     /* Toggleable content - dropdown */
 
-    #sk-container-id-54 div.sk-toggleable__content {
+    .sk-global div.sk-toggleable__content {
       display: none;
       text-align: left;
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-54 div.sk-toggleable__content.fitted {
+    .sk-global div.sk-toggleable__content.fitted {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
-    #sk-container-id-54 div.sk-toggleable__content pre {
+    .sk-global div.sk-toggleable__content pre {
       margin: 0.2em;
       border-radius: 0.25em;
       color: var(--sklearn-color-text);
@@ -1881,79 +2642,78 @@ meta-estimator, but the meta-estimator understands that
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-54 div.sk-toggleable__content.fitted pre {
+    .sk-global div.sk-toggleable__content.fitted pre {
       /* unfitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
-    #sk-container-id-54 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+    .sk-global input.sk-toggleable__control:checked~div.sk-toggleable__content {
       /* Expand drop-down */
       display: block;
       width: 100%;
       overflow: visible;
     }
 
-    #sk-container-id-54 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+    .sk-global input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
       content: "▾";
     }
 
     /* Pipeline/ColumnTransformer-specific style */
 
-    #sk-container-id-54 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-54 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
     /* Estimator-specific style */
 
     /* Colorize estimator box */
-    #sk-container-id-54 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-54 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
-    #sk-container-id-54 div.sk-label label.sk-toggleable__label,
-    #sk-container-id-54 div.sk-label label {
+    .sk-global div.sk-label label.sk-toggleable__label,
+    .sk-global div.sk-label label {
       /* The background is the default theme color */
       color: var(--sklearn-color-text-on-default-background);
     }
 
     /* On hover, darken the color of the background */
-    #sk-container-id-54 div.sk-label:hover label.sk-toggleable__label {
+    .sk-global div.sk-label:hover label.sk-toggleable__label {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
     /* Label box, darken color on hover, fitted */
-    #sk-container-id-54 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+    .sk-global div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
     /* Estimator label */
 
-    #sk-container-id-54 div.sk-label label {
+    .sk-global div.sk-label label {
       font-family: monospace;
       font-weight: bold;
-      display: inline-block;
       line-height: 1.2em;
     }
 
-    #sk-container-id-54 div.sk-label-container {
+    .sk-global div.sk-label-container {
       text-align: center;
     }
 
     /* Estimator-specific */
-    #sk-container-id-54 div.sk-estimator {
+    .sk-global div.sk-estimator {
       font-family: monospace;
       border: 1px dotted var(--sklearn-color-border-box);
       border-radius: 0.25em;
@@ -1963,18 +2723,18 @@ meta-estimator, but the meta-estimator understands that
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-54 div.sk-estimator.fitted {
+    .sk-global div.sk-estimator.fitted {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
     /* on hover */
-    #sk-container-id-54 div.sk-estimator:hover {
+    .sk-global div.sk-estimator:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-54 div.sk-estimator.fitted:hover {
+    .sk-global div.sk-estimator.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-2);
     }
@@ -1990,7 +2750,7 @@ meta-estimator, but the meta-estimator understands that
       font-size: smaller;
       line-height: 1em;
       font-family: monospace;
-      background-color: var(--sklearn-color-background);
+      background-color: var(--sklearn-color-unfitted-level-0);
       border-radius: 1em;
       height: 1em;
       width: 1em;
@@ -1998,16 +2758,17 @@ meta-estimator, but the meta-estimator understands that
       margin-left: 0.5em;
       text-align: center;
       /* unfitted */
-      border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-      color: var(--sklearn-color-unfitted-level-1);
+      border: var(--sklearn-color-unfitted-level-3) 1pt solid;
+      color: var(--sklearn-color-unfitted-level-3);
     }
 
     .sk-estimator-doc-link.fitted,
     a:link.sk-estimator-doc-link.fitted,
     a:visited.sk-estimator-doc-link.fitted {
       /* fitted */
-      border: var(--sklearn-color-fitted-level-1) 1pt solid;
-      color: var(--sklearn-color-fitted-level-1);
+      background-color: var(--sklearn-color-fitted-level-0);
+      border: var(--sklearn-color-fitted-level-3) 1pt solid;
+      color: var(--sklearn-color-fitted-level-3);
     }
 
     /* On hover */
@@ -2017,7 +2778,8 @@ meta-estimator, but the meta-estimator understands that
     .sk-estimator-doc-link:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-3);
-      color: var(--sklearn-color-background);
+      border: var(--sklearn-color-fitted-level-0) 1pt solid;
+      color: var(--sklearn-color-unfitted-level-0);
       text-decoration: none;
     }
 
@@ -2027,7 +2789,8 @@ meta-estimator, but the meta-estimator understands that
     .sk-estimator-doc-link.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-3);
-      color: var(--sklearn-color-background);
+      border: var(--sklearn-color-fitted-level-0) 1pt solid;
+      color: var(--sklearn-color-fitted-level-0);
       text-decoration: none;
     }
 
@@ -2062,12 +2825,12 @@ meta-estimator, but the meta-estimator understands that
 
     /* "?"-specific style due to the `<a>` HTML tag */
 
-    #sk-container-id-54 a.estimator_doc_link {
+    .sk-global a.estimator_doc_link {
       float: right;
       font-size: 1rem;
       line-height: 1em;
       font-family: monospace;
-      background-color: var(--sklearn-color-background);
+      background-color: var(--sklearn-color-unfitted-level-0);
       border-radius: 1rem;
       height: 1rem;
       width: 1rem;
@@ -2077,29 +2840,45 @@ meta-estimator, but the meta-estimator understands that
       border: var(--sklearn-color-unfitted-level-1) 1pt solid;
     }
 
-    #sk-container-id-54 a.estimator_doc_link.fitted {
+    .sk-global a.estimator_doc_link.fitted {
       /* fitted */
+      background-color: var(--sklearn-color-fitted-level-0);
       border: var(--sklearn-color-fitted-level-1) 1pt solid;
       color: var(--sklearn-color-fitted-level-1);
     }
 
     /* On hover */
-    #sk-container-id-54 a.estimator_doc_link:hover {
+    .sk-global a.estimator_doc_link:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-3);
       color: var(--sklearn-color-background);
       text-decoration: none;
     }
 
-    #sk-container-id-54 a.estimator_doc_link.fitted:hover {
+    .sk-global a.estimator_doc_link.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-3);
     }
 
+    .sk-top-container.sk-global {
+      /* pydata-sphinx-theme hides overflow, so scrolling is disabled.
+       We need to set it to !important and add tabindex="0" in the HTML
+       to allow keyboard-only users to navigate the display. */
+      overflow-x: scroll !important;
+      max-width: 100%;
+    }
+
+    .estimator-table {
+        font-family: monospace;
+    }
+
     .estimator-table summary {
         padding: .5rem;
-        font-family: monospace;
         cursor: pointer;
+    }
+
+    .estimator-table summary::marker {
+        font-size: 0.7rem;
     }
 
     .estimator-table details[open] {
@@ -2111,6 +2890,7 @@ meta-estimator, but the meta-estimator understands that
     .estimator-table .parameters-table {
         margin-left: auto !important;
         margin-right: auto !important;
+        margin-top: 0;
     }
 
     .estimator-table .parameters-table tr:nth-child(odd) {
@@ -2121,32 +2901,113 @@ meta-estimator, but the meta-estimator understands that
         background-color: #f6f6f6;
     }
 
-    .estimator-table .parameters-table tr:hover {
+    .estimator-table .parameters-table tr:hover td {
         background-color: #e0e0e0;
     }
 
-    .estimator-table table td {
+    .estimator-table table :is(td, th) {
         border: 1px solid rgba(106, 105, 104, 0.232);
+    }
+
+    /*
+        `table td`is set in notebook with right text-align.
+        We need to overwrite it.
+    */
+    .estimator-table table td.param {
+        text-align: left;
+        position: relative;
+        padding: 0;
     }
 
     .user-set td {
         color:rgb(255, 94, 0);
-        text-align: left;
+        text-align: left !important;
     }
 
-    .user-set td.value pre {
-        color:rgb(255, 94, 0) !important;
-        background-color: transparent !important;
+    .user-set td.value {
+        color:rgb(255, 94, 0);
+        background-color: transparent;
     }
 
-    .default td {
+    .default td, .estimator-table th {
         color: black;
-        text-align: left;
+        text-align: left !important;
     }
 
     .user-set td i,
     .default td i {
         color: black;
+    }
+
+    td.fitted-att-type {
+        white-space: preserve nowrap;
+    }
+
+    /*
+        Styles for parameter documentation links
+        We need styling for visited so jupyter doesn't overwrite it
+    */
+    a.param-doc-link,
+    a.param-doc-link:link,
+    a.param-doc-link:visited {
+        text-decoration: underline dashed;
+        text-underline-offset: .3em;
+        color: inherit;
+        display: block;
+        padding: .5em;
+    }
+
+    @supports(anchor-name: --doc-link) {
+        a.param-doc-link,
+        a.param-doc-link:link,
+        a.param-doc-link:visited {
+        anchor-name: --doc-link;
+        }
+    }
+
+    /* "hack" to make the entire area of the cell containing the link clickable */
+    a.param-doc-link::before {
+        position: absolute;
+        content: "";
+        inset: 0;
+    }
+
+    .param-doc-description {
+        display: none;
+        position: absolute;
+        z-index: 9999;
+        left: 0;
+        padding: .5ex;
+        margin-left: 1.5em;
+        color: var(--sklearn-color-text);
+        box-shadow: .3em .3em .4em #999;
+        width: max-content;
+        text-align: left;
+        max-height: 10em;
+        overflow-y: auto;
+
+        /* unfitted */
+        background: var(--sklearn-color-unfitted-level-0);
+        border: thin solid var(--sklearn-color-unfitted-level-3);
+    }
+
+    @supports(position-area: center right) {
+        .param-doc-description {
+        position-area: center right;
+        position: fixed;
+        margin-left: 0;
+        }
+    }
+
+    /* Fitted state for parameter tooltips */
+    .fitted .param-doc-description {
+        /* fitted */
+        background: var(--sklearn-color-fitted-level-0);
+        border: thin solid var(--sklearn-color-fitted-level-3);
+    }
+
+    .param-doc-link:hover .param-doc-description {
+        display: block;
     }
 
     .copy-paste-icon {
@@ -2158,8 +3019,136 @@ meta-estimator, but the meta-estimator understands that
         width: 14px;
         height: 14px;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        background-color: transparent;
     }
-    </style><body><div id="sk-container-id-54" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>MetaClassifier(estimator=ExampleClassifier())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-236" type="checkbox" ><label for="sk-estimator-id-236" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>MetaClassifier</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+
+    .copy-paste-icon:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 1px;
+    }
+
+    .features {
+      font-family: monospace;
+      cursor: pointer;
+      background-color: var(--sklearn-color-unfitted-level-0);
+      border: 1px dotted var(--sklearn-color-border-box);
+      border-radius: .20em;
+      margin-bottom: 0.5em;
+      font-size: inherit; /* Needed for jupyter */
+    }
+
+    .features.fitted {
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    .features summary {
+      cursor: pointer;
+      display: flex;
+      margin-bottom: 0;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      padding: .25em;
+    }
+
+    .features details[open] > summary {
+      color: var(--sklearn-color-text);
+      background-color: var(--sklearn-color-unfitted-level-2);
+      border-radius: .20em 0 0 0;
+    }
+
+    .features.fitted details[open] > summary {
+      background-color: var(--sklearn-color-fitted-level-2);
+      border-radius: .20em 0 0 0;
+    }
+
+    .features details > summary .arrow::before {
+      content: "▸";
+      color: grey;
+    }
+
+    .features details[open] > summary .arrow::before {
+      content: "▾";
+    }
+
+    .features details:hover > summary {
+      margin: 0;
+      background-color: var(--sklearn-color-unfitted-level-2);
+    }
+
+    .features.fitted details:hover > summary {
+      margin: 0;
+      background-color: var(--sklearn-color-fitted-level-2);
+    }
+
+    .features .features-container {
+      max-height: 10em;
+      overflow: auto;
+      scrollbar-width: thin;
+      padding: .25em 0.1rem;
+      background-color: var(--sklearn-color-unfitted-level-0);
+      border-radius: 0 0 .5em .5em;
+    }
+
+    .features.fitted .features-container {
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    .features .image-container {
+      block-size: 1em;
+      inline-size: 1em;
+      padding: 0;
+      margin: 0%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .features .copy-paste-icon {
+      background-size: 1em 1em;
+      width: 1em;
+      height: 1em;
+      filter: grayscale(100%) opacity(60%);
+    }
+
+    .features .features-container table {
+      width: 100%;
+      margin: 0.01em;
+    }
+
+    .features .features-container table tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    .features .features-container table tr:nth-child(even) {
+      background-color: #f6f6f6;
+    }
+
+    .features .features-container table tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    .features .features-container table {
+      table-layout: inherit;
+    }
+
+    .features .features-container table td {
+      text-align: left;
+      padding: 0 0.5em;
+      border: 1px solid rgba(106, 105, 104, 0.232);
+      white-space: nowrap;
+      color: var(--sklearn-color-text);
+    }
+
+    .total_features {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5em;
+    }
+    </style><body><div id="sk-container-id-60" tabindex="0" class="sk-top-container sk-global"><div class="sk-text-repr-fallback"><pre>MetaClassifier(estimator=ExampleClassifier())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-292" type="checkbox" ><label for="sk-estimator-id-292" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>MetaClassifier</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -2167,11 +3156,12 @@ meta-estimator, but the meta-estimator understands that
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy estimator to clipboard"
                      onclick="copyToClipboard('estimator',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
-                <td class="param">estimator&nbsp;</td>
+                ></button></td>
+                <td class="param">estimator</td>
                 <td class="value">ExampleClassifier()</td>
             </tr>
     
@@ -2179,7 +3169,40 @@ meta-estimator, but the meta-estimator understands that
                     </table>
                 </details>
             </div>
-        </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-237" type="checkbox" ><label for="sk-estimator-id-237" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>estimator: ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__"><pre>ExampleClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-238" type="checkbox" ><label for="sk-estimator-id-238" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__">
+    
+            <div class="estimator-table">
+                <details>
+                    <summary>Fitted attributes</summary>
+                    <table class="parameters-table">
+                        <tbody>
+                            <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Value</th>
+                            </tr>
+                        
+           <tr class="default">
+               <td class="param"><a class="param-doc-link" style="text-decoration:none;">classes_</a></td>
+               <td class="fitted-att-type">ndarray[int64](2,)</td>
+               <td>[0,1]</td>
+
+
+           </tr>
+    
+
+           <tr class="default">
+               <td class="param"><a class="param-doc-link" style="text-decoration:none;">estimator_</a></td>
+               <td class="fitted-att-type">ExampleClassifier</td>
+               <td>ExampleClassifier()</td>
+
+
+           </tr>
+    
+                        </tbody>
+                    </table>
+                </details>
+            </div>
+        </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-293" type="checkbox" ><label for="sk-estimator-id-293" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>estimator: ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__"><pre>ExampleClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-294" type="checkbox" ><label for="sk-estimator-id-294" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -2190,7 +3213,11 @@ meta-estimator, but the meta-estimator understands that
                     </table>
                 </details>
             </div>
-        </div></div></div></div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+        </div></div></div></div></div></div></div></div></div></div><script>/*  Authors: The scikit-learn developers
+     SPDX-License-Identifier: BSD-3-Clause
+    */
+
+    function copyToClipboard(text, element) {
         // Get the parameter prefix from the closest toggleable content
         const toggleableContent = element.closest('.sk-toggleable__content');
         const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
@@ -2224,15 +3251,139 @@ meta-estimator, but the meta-estimator understands that
         return false;
     }
 
-    document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    document.querySelectorAll('.copy-paste-icon').forEach(function(element) {
         const toggleableContent = element.closest('.sk-toggleable__content');
         const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-        const paramName = element.parentElement.nextElementSibling.textContent.trim();
+
+        const parent = element.parentElement;
+        if (!parent || !parent.nextElementSibling) {
+            console.warn('Expected copy-paste icon is missing from the DOM structure');
+            return;
+        }
+
+        const paramName = element.parentElement.nextElementSibling
+            .textContent.trim().split(' ')[0];
         const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
 
         element.setAttribute('title', fullParamName);
     });
-    </script></body>
+
+    /**
+     * Copy the list of feature names formatted as a Python list.
+     *
+     * @param {HTMLElement} element - The copy button inside a `.features` block; its siblings
+     *   contain a `details` element and a table containing feature named.
+     * @returns {boolean} Always returns `false` so callers can prevent the default click behavior.
+     */
+    function copyFeatureNamesToClipboard(element) {
+        var detailsElem = element.closest('.features').querySelector('details');
+        var wasOpen = detailsElem.open;
+        detailsElem.open = true;
+        var content = element.closest('.features').querySelector('tbody')
+                      .innerText.trim();
+        if (!wasOpen) detailsElem.open = false;
+        const rows = content.split('\n').map(row => `    "${row}"`);
+        const formattedText = `[\n${rows.join(',\n')},\n]`;
+        const originalHTML = element.innerHTML.replace('✔', '');
+        const originalStyle = element.style;
+        const copyMark = document.createElement('span');
+        copyMark.innerHTML = '✔';
+        copyMark.style.color = 'blue';
+        copyMark.style.fontSize = '1em';
+
+        navigator.clipboard.writeText(formattedText)
+            .then(() => {
+                element.style.display = 'none';
+                element.parentElement.appendChild(copyMark);
+
+                setTimeout(() => {
+                    copyMark.remove();
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 1000);
+            })
+            .catch(err => {
+                console.error('Failed to copy:', err);
+                element.style.color = 'orange';
+                element.innerHTML = "Failed!";
+                setTimeout(() => {
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 1000);
+            });
+        return false;
+    }
+    /**
+     * Adapted from Skrub
+     * https://github.com/skrub-data/skrub/blob/403466d1d5d4dc76a7ef569b3f8228db59a31dc3/skrub/_reporting/_data/templates/report.js#L789
+     * @returns "light" or "dark"
+     */
+    function detectTheme(element) {
+        const body = document.querySelector('body');
+
+        // Check VSCode theme
+        const themeKindAttr = body.getAttribute('data-vscode-theme-kind');
+        const themeNameAttr = body.getAttribute('data-vscode-theme-name');
+
+        if (themeKindAttr && themeNameAttr) {
+            const themeKind = themeKindAttr.toLowerCase();
+            const themeName = themeNameAttr.toLowerCase();
+
+            if (themeKind.includes("dark") || themeName.includes("dark")) {
+                return "dark";
+            }
+            if (themeKind.includes("light") || themeName.includes("light")) {
+                return "light";
+            }
+        }
+
+        // Check Jupyter theme
+        if (body.getAttribute('data-jp-theme-light') === 'false') {
+            return 'dark';
+        } else if (body.getAttribute('data-jp-theme-light') === 'true') {
+            return 'light';
+        }
+
+        // Guess based on a parent element's color
+        const color = window.getComputedStyle(element.parentNode, null).getPropertyValue('color');
+        const match = color.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*$/i);
+        if (match) {
+            const [r, g, b] = [
+                parseFloat(match[1]),
+                parseFloat(match[2]),
+                parseFloat(match[3])
+            ];
+
+            // https://en.wikipedia.org/wiki/HSL_and_HSV#Lightness
+            const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+
+            if (luma > 180) {
+                // If the text is very bright we have a dark theme
+                return 'dark';
+            }
+            if (luma < 75) {
+                // If the text is very dark we have a light theme
+                return 'light';
+            }
+            // Otherwise fall back to the next heuristic.
+        }
+
+        // Fallback to system preference
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+
+    function forceTheme(elementId) {
+        const estimatorElement = document.querySelector(`#${elementId}`);
+        if (estimatorElement === null) {
+            console.error(`Element with id ${elementId} not found.`);
+        } else {
+            const theme = detectTheme(estimatorElement);
+            estimatorElement.classList.add(theme);
+        }
+    }
+
+    forceTheme('sk-container-id-60');</script></body>
     </div>
     <br />
     <br />
@@ -2361,7 +3512,7 @@ in its own methods. This meta-estimator is a consumer and a router at the
 same time. Implementing one is very similar to what we had before, but with a
 few tweaks.
 
-.. GENERATED FROM PYTHON SOURCE LINES 347-402
+.. GENERATED FROM PYTHON SOURCE LINES 347-394
 
 .. code-block:: Python
 
@@ -2373,7 +3524,7 @@ few tweaks.
 
         def get_metadata_routing(self):
             router = (
-                MetadataRouter(owner=self.__class__.__name__)
+                MetadataRouter(owner=self)
                 # defining metadata routing request values for usage in the meta-estimator
                 .add_self_request(self)
                 # defining metadata routing request values for usage in the sub-estimator
@@ -2399,25 +3550,17 @@ few tweaks.
             # We add `sample_weight` to the `fit_params` dictionary.
             if sample_weight is not None:
                 fit_params["sample_weight"] = sample_weight
-
-            request_router = get_routing_for_object(self)
-            request_router.validate_metadata(params=fit_params, method="fit")
-            routed_params = request_router.route_params(params=fit_params, caller="fit")
-            self.estimator_ = clone(self.estimator).fit(X, y, **routed_params.estimator.fit)
+            routed_params = process_routing(self, "fit", **fit_params)
+            self.estimator_ = clone(self.estimator).fit(
+                X, y, **routed_params["estimator"]["fit"]
+            )
             self.classes_ = self.estimator_.classes_
             return self
 
         def predict(self, X, **predict_params):
             check_is_fitted(self)
-            # As in `fit`, we get a copy of the object's MetadataRouter,
-            request_router = get_routing_for_object(self)
-            # we validate the given metadata,
-            request_router.validate_metadata(params=predict_params, method="predict")
-            # and then prepare the input to the underlying ``predict`` method.
-            routed_params = request_router.route_params(
-                params=predict_params, caller="predict"
-            )
-            return self.estimator_.predict(X, **routed_params.estimator.predict)
+            routed_params = process_routing(self, "predict", **predict_params)
+            return self.estimator_.predict(X, **routed_params["estimator"]["predict"])
 
 
 
@@ -2427,7 +3570,7 @@ few tweaks.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 403-415
+.. GENERATED FROM PYTHON SOURCE LINES 395-407
 
 The key parts where the above meta-estimator differs from our previous
 meta-estimator is accepting ``sample_weight`` explicitly in ``fit`` and
@@ -2442,11 +3585,11 @@ In ``get_metadata_routing``, we add ``self`` to the routing using
 ``$self_request`` key to the routing info as illustrated below. Now let's
 look at some examples:
 
-.. GENERATED FROM PYTHON SOURCE LINES 417-418
+.. GENERATED FROM PYTHON SOURCE LINES 409-410
 
 - No metadata requested
 
-.. GENERATED FROM PYTHON SOURCE LINES 418-422
+.. GENERATED FROM PYTHON SOURCE LINES 410-414
 
 .. code-block:: Python
 
@@ -2474,11 +3617,11 @@ look at some examples:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 423-424
+.. GENERATED FROM PYTHON SOURCE LINES 415-416
 
 - ``sample_weight`` requested by sub-estimator
 
-.. GENERATED FROM PYTHON SOURCE LINES 424-429
+.. GENERATED FROM PYTHON SOURCE LINES 416-421
 
 .. code-block:: Python
 
@@ -2507,11 +3650,11 @@ look at some examples:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 430-431
+.. GENERATED FROM PYTHON SOURCE LINES 422-423
 
 - ``sample_weight`` requested by meta-estimator
 
-.. GENERATED FROM PYTHON SOURCE LINES 431-436
+.. GENERATED FROM PYTHON SOURCE LINES 423-428
 
 .. code-block:: Python
 
@@ -2540,14 +3683,14 @@ look at some examples:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 437-441
+.. GENERATED FROM PYTHON SOURCE LINES 429-433
 
 Note the difference in the requested metadata representations above.
 
 - We can also alias the metadata to pass different values to the fit methods
   of the meta- and the sub-estimator:
 
-.. GENERATED FROM PYTHON SOURCE LINES 441-447
+.. GENERATED FROM PYTHON SOURCE LINES 433-439
 
 .. code-block:: Python
 
@@ -2577,13 +3720,13 @@ Note the difference in the requested metadata representations above.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 448-451
+.. GENERATED FROM PYTHON SOURCE LINES 440-443
 
 However, ``fit`` of the meta-estimator only needs the alias for the
 sub-estimator and addresses their own sample weight as `sample_weight`, since
 it doesn't validate and route its own required metadata:
 
-.. GENERATED FROM PYTHON SOURCE LINES 451-453
+.. GENERATED FROM PYTHON SOURCE LINES 443-445
 
 .. code-block:: Python
 
@@ -2604,7 +3747,7 @@ it doesn't validate and route its own required metadata:
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <style>#sk-container-id-55 {
+    <style>.sk-global {
       /* Definition of color scheme common for light and dark mode */
       --sklearn-color-text: #000;
       --sklearn-color-text-muted: #666;
@@ -2619,34 +3762,34 @@ it doesn't validate and route its own required metadata:
       --sklearn-color-fitted-level-1: #d4ebff;
       --sklearn-color-fitted-level-2: #b3dbfd;
       --sklearn-color-fitted-level-3: cornflowerblue;
-
-      /* Specific color for light theme */
-      --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-      --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-      --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-      --sklearn-color-icon: #696969;
-
-      @media (prefers-color-scheme: dark) {
-        /* Redefinition of color scheme for dark theme */
-        --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-        --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-        --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-        --sklearn-color-icon: #878787;
-      }
     }
 
-    #sk-container-id-55 {
+    .sk-global.light {
+      /* Specific color for light theme */
+      --sklearn-color-text-on-default-background: black;
+      --sklearn-color-background: white;
+      --sklearn-color-border-box: black;
+      --sklearn-color-icon: #696969;
+    }
+
+    .sk-global.dark {
+      --sklearn-color-text-on-default-background: white;
+      --sklearn-color-background: #111;
+      --sklearn-color-border-box: white;
+      --sklearn-color-icon: #878787;
+    }
+
+    .sk-global {
       color: var(--sklearn-color-text);
     }
 
-    #sk-container-id-55 pre {
+    .sk-global pre {
       padding: 0;
     }
 
-    #sk-container-id-55 input.sk-hidden--visually {
+    .sk-global input.sk-hidden--visually {
       border: 0;
-      clip: rect(1px 1px 1px 1px);
-      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(100%);
       height: 1px;
       margin: -1px;
       overflow: hidden;
@@ -2655,7 +3798,7 @@ it doesn't validate and route its own required metadata:
       width: 1px;
     }
 
-    #sk-container-id-55 div.sk-dashed-wrapped {
+    .sk-global div.sk-dashed-wrapped {
       border: 1px dashed var(--sklearn-color-line);
       margin: 0 0.4em 0.5em 0.4em;
       box-sizing: border-box;
@@ -2663,7 +3806,7 @@ it doesn't validate and route its own required metadata:
       background-color: var(--sklearn-color-background);
     }
 
-    #sk-container-id-55 div.sk-container {
+    .sk-global div.sk-container {
       /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
          but bootstrap.min.css set `[hidden] { display: none !important; }`
          so we also need the `!important` here to be able to override the
@@ -2673,7 +3816,7 @@ it doesn't validate and route its own required metadata:
       position: relative;
     }
 
-    #sk-container-id-55 div.sk-text-repr-fallback {
+    .sk-global div.sk-text-repr-fallback {
       display: none;
     }
 
@@ -2689,14 +3832,14 @@ it doesn't validate and route its own required metadata:
 
     /* Parallel-specific style estimator block */
 
-    #sk-container-id-55 div.sk-parallel-item::after {
+    .sk-global div.sk-parallel-item::after {
       content: "";
       width: 100%;
       border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
       flex-grow: 1;
     }
 
-    #sk-container-id-55 div.sk-parallel {
+    .sk-global div.sk-parallel {
       display: flex;
       align-items: stretch;
       justify-content: center;
@@ -2704,28 +3847,28 @@ it doesn't validate and route its own required metadata:
       position: relative;
     }
 
-    #sk-container-id-55 div.sk-parallel-item {
+    .sk-global div.sk-parallel-item {
       display: flex;
       flex-direction: column;
     }
 
-    #sk-container-id-55 div.sk-parallel-item:first-child::after {
+    .sk-global div.sk-parallel-item:first-child::after {
       align-self: flex-end;
       width: 50%;
     }
 
-    #sk-container-id-55 div.sk-parallel-item:last-child::after {
+    .sk-global div.sk-parallel-item:last-child::after {
       align-self: flex-start;
       width: 50%;
     }
 
-    #sk-container-id-55 div.sk-parallel-item:only-child::after {
+    .sk-global div.sk-parallel-item:only-child::after {
       width: 0;
     }
 
     /* Serial-specific style estimator block */
 
-    #sk-container-id-55 div.sk-serial {
+    .sk-global div.sk-serial {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2743,14 +3886,14 @@ it doesn't validate and route its own required metadata:
 
     /* Pipeline and ColumnTransformer style (default) */
 
-    #sk-container-id-55 div.sk-toggleable {
+    .sk-global div.sk-toggleable {
       /* Default theme specific background. It is overwritten whether we have a
       specific estimator or a Pipeline/ColumnTransformer */
       background-color: var(--sklearn-color-background);
     }
 
     /* Toggleable label */
-    #sk-container-id-55 label.sk-toggleable__label {
+    .sk-global label.sk-toggleable__label {
       cursor: pointer;
       display: flex;
       width: 100%;
@@ -2758,18 +3901,18 @@ it doesn't validate and route its own required metadata:
       padding: 0.5em;
       box-sizing: border-box;
       text-align: center;
-      align-items: start;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
       gap: 0.5em;
     }
 
-    #sk-container-id-55 label.sk-toggleable__label .caption {
+    .sk-global label.sk-toggleable__label .caption {
       font-size: 0.6rem;
       font-weight: lighter;
       color: var(--sklearn-color-text-muted);
     }
 
-    #sk-container-id-55 label.sk-toggleable__label-arrow:before {
+    .sk-global label.sk-toggleable__label-arrow:before {
       /* Arrow on the left of the label */
       content: "▸";
       float: left;
@@ -2777,25 +3920,25 @@ it doesn't validate and route its own required metadata:
       color: var(--sklearn-color-icon);
     }
 
-    #sk-container-id-55 label.sk-toggleable__label-arrow:hover:before {
+    .sk-global label.sk-toggleable__label-arrow:hover:before {
       color: var(--sklearn-color-text);
     }
 
     /* Toggleable content - dropdown */
 
-    #sk-container-id-55 div.sk-toggleable__content {
+    .sk-global div.sk-toggleable__content {
       display: none;
       text-align: left;
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-55 div.sk-toggleable__content.fitted {
+    .sk-global div.sk-toggleable__content.fitted {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
-    #sk-container-id-55 div.sk-toggleable__content pre {
+    .sk-global div.sk-toggleable__content pre {
       margin: 0.2em;
       border-radius: 0.25em;
       color: var(--sklearn-color-text);
@@ -2803,79 +3946,78 @@ it doesn't validate and route its own required metadata:
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-55 div.sk-toggleable__content.fitted pre {
+    .sk-global div.sk-toggleable__content.fitted pre {
       /* unfitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
-    #sk-container-id-55 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+    .sk-global input.sk-toggleable__control:checked~div.sk-toggleable__content {
       /* Expand drop-down */
       display: block;
       width: 100%;
       overflow: visible;
     }
 
-    #sk-container-id-55 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+    .sk-global input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
       content: "▾";
     }
 
     /* Pipeline/ColumnTransformer-specific style */
 
-    #sk-container-id-55 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-55 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
     /* Estimator-specific style */
 
     /* Colorize estimator box */
-    #sk-container-id-55 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-55 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+    .sk-global div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
-    #sk-container-id-55 div.sk-label label.sk-toggleable__label,
-    #sk-container-id-55 div.sk-label label {
+    .sk-global div.sk-label label.sk-toggleable__label,
+    .sk-global div.sk-label label {
       /* The background is the default theme color */
       color: var(--sklearn-color-text-on-default-background);
     }
 
     /* On hover, darken the color of the background */
-    #sk-container-id-55 div.sk-label:hover label.sk-toggleable__label {
+    .sk-global div.sk-label:hover label.sk-toggleable__label {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
     /* Label box, darken color on hover, fitted */
-    #sk-container-id-55 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+    .sk-global div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
       color: var(--sklearn-color-text);
       background-color: var(--sklearn-color-fitted-level-2);
     }
 
     /* Estimator label */
 
-    #sk-container-id-55 div.sk-label label {
+    .sk-global div.sk-label label {
       font-family: monospace;
       font-weight: bold;
-      display: inline-block;
       line-height: 1.2em;
     }
 
-    #sk-container-id-55 div.sk-label-container {
+    .sk-global div.sk-label-container {
       text-align: center;
     }
 
     /* Estimator-specific */
-    #sk-container-id-55 div.sk-estimator {
+    .sk-global div.sk-estimator {
       font-family: monospace;
       border: 1px dotted var(--sklearn-color-border-box);
       border-radius: 0.25em;
@@ -2885,18 +4027,18 @@ it doesn't validate and route its own required metadata:
       background-color: var(--sklearn-color-unfitted-level-0);
     }
 
-    #sk-container-id-55 div.sk-estimator.fitted {
+    .sk-global div.sk-estimator.fitted {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-0);
     }
 
     /* on hover */
-    #sk-container-id-55 div.sk-estimator:hover {
+    .sk-global div.sk-estimator:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-2);
     }
 
-    #sk-container-id-55 div.sk-estimator.fitted:hover {
+    .sk-global div.sk-estimator.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-2);
     }
@@ -2912,7 +4054,7 @@ it doesn't validate and route its own required metadata:
       font-size: smaller;
       line-height: 1em;
       font-family: monospace;
-      background-color: var(--sklearn-color-background);
+      background-color: var(--sklearn-color-unfitted-level-0);
       border-radius: 1em;
       height: 1em;
       width: 1em;
@@ -2920,16 +4062,17 @@ it doesn't validate and route its own required metadata:
       margin-left: 0.5em;
       text-align: center;
       /* unfitted */
-      border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-      color: var(--sklearn-color-unfitted-level-1);
+      border: var(--sklearn-color-unfitted-level-3) 1pt solid;
+      color: var(--sklearn-color-unfitted-level-3);
     }
 
     .sk-estimator-doc-link.fitted,
     a:link.sk-estimator-doc-link.fitted,
     a:visited.sk-estimator-doc-link.fitted {
       /* fitted */
-      border: var(--sklearn-color-fitted-level-1) 1pt solid;
-      color: var(--sklearn-color-fitted-level-1);
+      background-color: var(--sklearn-color-fitted-level-0);
+      border: var(--sklearn-color-fitted-level-3) 1pt solid;
+      color: var(--sklearn-color-fitted-level-3);
     }
 
     /* On hover */
@@ -2939,7 +4082,8 @@ it doesn't validate and route its own required metadata:
     .sk-estimator-doc-link:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-3);
-      color: var(--sklearn-color-background);
+      border: var(--sklearn-color-fitted-level-0) 1pt solid;
+      color: var(--sklearn-color-unfitted-level-0);
       text-decoration: none;
     }
 
@@ -2949,7 +4093,8 @@ it doesn't validate and route its own required metadata:
     .sk-estimator-doc-link.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-3);
-      color: var(--sklearn-color-background);
+      border: var(--sklearn-color-fitted-level-0) 1pt solid;
+      color: var(--sklearn-color-fitted-level-0);
       text-decoration: none;
     }
 
@@ -2984,12 +4129,12 @@ it doesn't validate and route its own required metadata:
 
     /* "?"-specific style due to the `<a>` HTML tag */
 
-    #sk-container-id-55 a.estimator_doc_link {
+    .sk-global a.estimator_doc_link {
       float: right;
       font-size: 1rem;
       line-height: 1em;
       font-family: monospace;
-      background-color: var(--sklearn-color-background);
+      background-color: var(--sklearn-color-unfitted-level-0);
       border-radius: 1rem;
       height: 1rem;
       width: 1rem;
@@ -2999,29 +4144,45 @@ it doesn't validate and route its own required metadata:
       border: var(--sklearn-color-unfitted-level-1) 1pt solid;
     }
 
-    #sk-container-id-55 a.estimator_doc_link.fitted {
+    .sk-global a.estimator_doc_link.fitted {
       /* fitted */
+      background-color: var(--sklearn-color-fitted-level-0);
       border: var(--sklearn-color-fitted-level-1) 1pt solid;
       color: var(--sklearn-color-fitted-level-1);
     }
 
     /* On hover */
-    #sk-container-id-55 a.estimator_doc_link:hover {
+    .sk-global a.estimator_doc_link:hover {
       /* unfitted */
       background-color: var(--sklearn-color-unfitted-level-3);
       color: var(--sklearn-color-background);
       text-decoration: none;
     }
 
-    #sk-container-id-55 a.estimator_doc_link.fitted:hover {
+    .sk-global a.estimator_doc_link.fitted:hover {
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-3);
     }
 
+    .sk-top-container.sk-global {
+      /* pydata-sphinx-theme hides overflow, so scrolling is disabled.
+       We need to set it to !important and add tabindex="0" in the HTML
+       to allow keyboard-only users to navigate the display. */
+      overflow-x: scroll !important;
+      max-width: 100%;
+    }
+
+    .estimator-table {
+        font-family: monospace;
+    }
+
     .estimator-table summary {
         padding: .5rem;
-        font-family: monospace;
         cursor: pointer;
+    }
+
+    .estimator-table summary::marker {
+        font-size: 0.7rem;
     }
 
     .estimator-table details[open] {
@@ -3033,6 +4194,7 @@ it doesn't validate and route its own required metadata:
     .estimator-table .parameters-table {
         margin-left: auto !important;
         margin-right: auto !important;
+        margin-top: 0;
     }
 
     .estimator-table .parameters-table tr:nth-child(odd) {
@@ -3043,32 +4205,113 @@ it doesn't validate and route its own required metadata:
         background-color: #f6f6f6;
     }
 
-    .estimator-table .parameters-table tr:hover {
+    .estimator-table .parameters-table tr:hover td {
         background-color: #e0e0e0;
     }
 
-    .estimator-table table td {
+    .estimator-table table :is(td, th) {
         border: 1px solid rgba(106, 105, 104, 0.232);
+    }
+
+    /*
+        `table td`is set in notebook with right text-align.
+        We need to overwrite it.
+    */
+    .estimator-table table td.param {
+        text-align: left;
+        position: relative;
+        padding: 0;
     }
 
     .user-set td {
         color:rgb(255, 94, 0);
-        text-align: left;
+        text-align: left !important;
     }
 
-    .user-set td.value pre {
-        color:rgb(255, 94, 0) !important;
-        background-color: transparent !important;
+    .user-set td.value {
+        color:rgb(255, 94, 0);
+        background-color: transparent;
     }
 
-    .default td {
+    .default td, .estimator-table th {
         color: black;
-        text-align: left;
+        text-align: left !important;
     }
 
     .user-set td i,
     .default td i {
         color: black;
+    }
+
+    td.fitted-att-type {
+        white-space: preserve nowrap;
+    }
+
+    /*
+        Styles for parameter documentation links
+        We need styling for visited so jupyter doesn't overwrite it
+    */
+    a.param-doc-link,
+    a.param-doc-link:link,
+    a.param-doc-link:visited {
+        text-decoration: underline dashed;
+        text-underline-offset: .3em;
+        color: inherit;
+        display: block;
+        padding: .5em;
+    }
+
+    @supports(anchor-name: --doc-link) {
+        a.param-doc-link,
+        a.param-doc-link:link,
+        a.param-doc-link:visited {
+        anchor-name: --doc-link;
+        }
+    }
+
+    /* "hack" to make the entire area of the cell containing the link clickable */
+    a.param-doc-link::before {
+        position: absolute;
+        content: "";
+        inset: 0;
+    }
+
+    .param-doc-description {
+        display: none;
+        position: absolute;
+        z-index: 9999;
+        left: 0;
+        padding: .5ex;
+        margin-left: 1.5em;
+        color: var(--sklearn-color-text);
+        box-shadow: .3em .3em .4em #999;
+        width: max-content;
+        text-align: left;
+        max-height: 10em;
+        overflow-y: auto;
+
+        /* unfitted */
+        background: var(--sklearn-color-unfitted-level-0);
+        border: thin solid var(--sklearn-color-unfitted-level-3);
+    }
+
+    @supports(position-area: center right) {
+        .param-doc-description {
+        position-area: center right;
+        position: fixed;
+        margin-left: 0;
+        }
+    }
+
+    /* Fitted state for parameter tooltips */
+    .fitted .param-doc-description {
+        /* fitted */
+        background: var(--sklearn-color-fitted-level-0);
+        border: thin solid var(--sklearn-color-fitted-level-3);
+    }
+
+    .param-doc-link:hover .param-doc-description {
+        display: block;
     }
 
     .copy-paste-icon {
@@ -3080,8 +4323,136 @@ it doesn't validate and route its own required metadata:
         width: 14px;
         height: 14px;
         cursor: pointer;
+        border: none;
+        padding: 0;
+        background-color: transparent;
     }
-    </style><body><div id="sk-container-id-55" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RouterConsumerClassifier(estimator=ExampleClassifier())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-239" type="checkbox" ><label for="sk-estimator-id-239" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>RouterConsumerClassifier</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+
+    .copy-paste-icon:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: 1px;
+    }
+
+    .features {
+      font-family: monospace;
+      cursor: pointer;
+      background-color: var(--sklearn-color-unfitted-level-0);
+      border: 1px dotted var(--sklearn-color-border-box);
+      border-radius: .20em;
+      margin-bottom: 0.5em;
+      font-size: inherit; /* Needed for jupyter */
+    }
+
+    .features.fitted {
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    .features summary {
+      cursor: pointer;
+      display: flex;
+      margin-bottom: 0;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      padding: .25em;
+    }
+
+    .features details[open] > summary {
+      color: var(--sklearn-color-text);
+      background-color: var(--sklearn-color-unfitted-level-2);
+      border-radius: .20em 0 0 0;
+    }
+
+    .features.fitted details[open] > summary {
+      background-color: var(--sklearn-color-fitted-level-2);
+      border-radius: .20em 0 0 0;
+    }
+
+    .features details > summary .arrow::before {
+      content: "▸";
+      color: grey;
+    }
+
+    .features details[open] > summary .arrow::before {
+      content: "▾";
+    }
+
+    .features details:hover > summary {
+      margin: 0;
+      background-color: var(--sklearn-color-unfitted-level-2);
+    }
+
+    .features.fitted details:hover > summary {
+      margin: 0;
+      background-color: var(--sklearn-color-fitted-level-2);
+    }
+
+    .features .features-container {
+      max-height: 10em;
+      overflow: auto;
+      scrollbar-width: thin;
+      padding: .25em 0.1rem;
+      background-color: var(--sklearn-color-unfitted-level-0);
+      border-radius: 0 0 .5em .5em;
+    }
+
+    .features.fitted .features-container {
+      background-color: var(--sklearn-color-fitted-level-0);
+    }
+
+    .features .image-container {
+      block-size: 1em;
+      inline-size: 1em;
+      padding: 0;
+      margin: 0%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .features .copy-paste-icon {
+      background-size: 1em 1em;
+      width: 1em;
+      height: 1em;
+      filter: grayscale(100%) opacity(60%);
+    }
+
+    .features .features-container table {
+      width: 100%;
+      margin: 0.01em;
+    }
+
+    .features .features-container table tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    .features .features-container table tr:nth-child(even) {
+      background-color: #f6f6f6;
+    }
+
+    .features .features-container table tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    .features .features-container table {
+      table-layout: inherit;
+    }
+
+    .features .features-container table td {
+      text-align: left;
+      padding: 0 0.5em;
+      border: 1px solid rgba(106, 105, 104, 0.232);
+      white-space: nowrap;
+      color: var(--sklearn-color-text);
+    }
+
+    .total_features {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5em;
+    }
+    </style><body><div id="sk-container-id-61" tabindex="0" class="sk-top-container sk-global"><div class="sk-text-repr-fallback"><pre>RouterConsumerClassifier(estimator=ExampleClassifier())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-295" type="checkbox" ><label for="sk-estimator-id-295" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>RouterConsumerClassifier</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -3089,11 +4460,12 @@ it doesn't validate and route its own required metadata:
                       <tbody>
                     
             <tr class="user-set">
-                <td><i class="copy-paste-icon"
+                <td><button type="button" class="copy-paste-icon"
+                     aria-label="Copy estimator to clipboard"
                      onclick="copyToClipboard('estimator',
                               this.parentElement.nextElementSibling)"
-                ></i></td>
-                <td class="param">estimator&nbsp;</td>
+                ></button></td>
+                <td class="param">estimator</td>
                 <td class="value">ExampleClassifier()</td>
             </tr>
     
@@ -3101,7 +4473,40 @@ it doesn't validate and route its own required metadata:
                     </table>
                 </details>
             </div>
-        </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-240" type="checkbox" ><label for="sk-estimator-id-240" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>estimator: ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__"><pre>ExampleClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-241" type="checkbox" ><label for="sk-estimator-id-241" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__">
+    
+            <div class="estimator-table">
+                <details>
+                    <summary>Fitted attributes</summary>
+                    <table class="parameters-table">
+                        <tbody>
+                            <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Value</th>
+                            </tr>
+                        
+           <tr class="default">
+               <td class="param"><a class="param-doc-link" style="text-decoration:none;">classes_</a></td>
+               <td class="fitted-att-type">ndarray[int64](2,)</td>
+               <td>[0,1]</td>
+
+
+           </tr>
+    
+
+           <tr class="default">
+               <td class="param"><a class="param-doc-link" style="text-decoration:none;">estimator_</a></td>
+               <td class="fitted-att-type">ExampleClassifier</td>
+               <td>ExampleClassifier()</td>
+
+
+           </tr>
+    
+                        </tbody>
+                    </table>
+                </details>
+            </div>
+        </div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-296" type="checkbox" ><label for="sk-estimator-id-296" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>estimator: ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__"><pre>ExampleClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-297" type="checkbox" ><label for="sk-estimator-id-297" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>ExampleClassifier</div></div></label><div class="sk-toggleable__content fitted" data-param-prefix="estimator__">
             <div class="estimator-table">
                 <details>
                     <summary>Parameters</summary>
@@ -3112,7 +4517,11 @@ it doesn't validate and route its own required metadata:
                     </table>
                 </details>
             </div>
-        </div></div></div></div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+        </div></div></div></div></div></div></div></div></div></div><script>/*  Authors: The scikit-learn developers
+     SPDX-License-Identifier: BSD-3-Clause
+    */
+
+    function copyToClipboard(text, element) {
         // Get the parameter prefix from the closest toggleable content
         const toggleableContent = element.closest('.sk-toggleable__content');
         const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
@@ -3146,27 +4555,151 @@ it doesn't validate and route its own required metadata:
         return false;
     }
 
-    document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    document.querySelectorAll('.copy-paste-icon').forEach(function(element) {
         const toggleableContent = element.closest('.sk-toggleable__content');
         const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-        const paramName = element.parentElement.nextElementSibling.textContent.trim();
+
+        const parent = element.parentElement;
+        if (!parent || !parent.nextElementSibling) {
+            console.warn('Expected copy-paste icon is missing from the DOM structure');
+            return;
+        }
+
+        const paramName = element.parentElement.nextElementSibling
+            .textContent.trim().split(' ')[0];
         const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
 
         element.setAttribute('title', fullParamName);
     });
-    </script></body>
+
+    /**
+     * Copy the list of feature names formatted as a Python list.
+     *
+     * @param {HTMLElement} element - The copy button inside a `.features` block; its siblings
+     *   contain a `details` element and a table containing feature named.
+     * @returns {boolean} Always returns `false` so callers can prevent the default click behavior.
+     */
+    function copyFeatureNamesToClipboard(element) {
+        var detailsElem = element.closest('.features').querySelector('details');
+        var wasOpen = detailsElem.open;
+        detailsElem.open = true;
+        var content = element.closest('.features').querySelector('tbody')
+                      .innerText.trim();
+        if (!wasOpen) detailsElem.open = false;
+        const rows = content.split('\n').map(row => `    "${row}"`);
+        const formattedText = `[\n${rows.join(',\n')},\n]`;
+        const originalHTML = element.innerHTML.replace('✔', '');
+        const originalStyle = element.style;
+        const copyMark = document.createElement('span');
+        copyMark.innerHTML = '✔';
+        copyMark.style.color = 'blue';
+        copyMark.style.fontSize = '1em';
+
+        navigator.clipboard.writeText(formattedText)
+            .then(() => {
+                element.style.display = 'none';
+                element.parentElement.appendChild(copyMark);
+
+                setTimeout(() => {
+                    copyMark.remove();
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 1000);
+            })
+            .catch(err => {
+                console.error('Failed to copy:', err);
+                element.style.color = 'orange';
+                element.innerHTML = "Failed!";
+                setTimeout(() => {
+                    element.innerHTML = originalHTML;
+                    element.style = originalStyle;
+                }, 1000);
+            });
+        return false;
+    }
+    /**
+     * Adapted from Skrub
+     * https://github.com/skrub-data/skrub/blob/403466d1d5d4dc76a7ef569b3f8228db59a31dc3/skrub/_reporting/_data/templates/report.js#L789
+     * @returns "light" or "dark"
+     */
+    function detectTheme(element) {
+        const body = document.querySelector('body');
+
+        // Check VSCode theme
+        const themeKindAttr = body.getAttribute('data-vscode-theme-kind');
+        const themeNameAttr = body.getAttribute('data-vscode-theme-name');
+
+        if (themeKindAttr && themeNameAttr) {
+            const themeKind = themeKindAttr.toLowerCase();
+            const themeName = themeNameAttr.toLowerCase();
+
+            if (themeKind.includes("dark") || themeName.includes("dark")) {
+                return "dark";
+            }
+            if (themeKind.includes("light") || themeName.includes("light")) {
+                return "light";
+            }
+        }
+
+        // Check Jupyter theme
+        if (body.getAttribute('data-jp-theme-light') === 'false') {
+            return 'dark';
+        } else if (body.getAttribute('data-jp-theme-light') === 'true') {
+            return 'light';
+        }
+
+        // Guess based on a parent element's color
+        const color = window.getComputedStyle(element.parentNode, null).getPropertyValue('color');
+        const match = color.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*$/i);
+        if (match) {
+            const [r, g, b] = [
+                parseFloat(match[1]),
+                parseFloat(match[2]),
+                parseFloat(match[3])
+            ];
+
+            // https://en.wikipedia.org/wiki/HSL_and_HSV#Lightness
+            const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+
+            if (luma > 180) {
+                // If the text is very bright we have a dark theme
+                return 'dark';
+            }
+            if (luma < 75) {
+                // If the text is very dark we have a light theme
+                return 'light';
+            }
+            // Otherwise fall back to the next heuristic.
+        }
+
+        // Fallback to system preference
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+
+    function forceTheme(elementId) {
+        const estimatorElement = document.querySelector(`#${elementId}`);
+        if (estimatorElement === null) {
+            console.error(`Element with id ${elementId} not found.`);
+        } else {
+            const theme = detectTheme(estimatorElement);
+            estimatorElement.classList.add(theme);
+        }
+    }
+
+    forceTheme('sk-container-id-61');</script></body>
     </div>
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 454-458
+.. GENERATED FROM PYTHON SOURCE LINES 446-450
 
 - Alias only on the sub-estimator:
 
 This is useful when we don't want the meta-estimator to use the metadata, but
 the sub-estimator should.
 
-.. GENERATED FROM PYTHON SOURCE LINES 458-462
+.. GENERATED FROM PYTHON SOURCE LINES 450-454
 
 .. code-block:: Python
 
@@ -3194,13 +4727,13 @@ the sub-estimator should.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 463-466
+.. GENERATED FROM PYTHON SOURCE LINES 455-458
 
 The meta-estimator cannot use `aliased_sample_weight`, because it expects
 it passed as `sample_weight`. This would apply even if
 `set_fit_request(sample_weight=True)` was set on it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 468-477
+.. GENERATED FROM PYTHON SOURCE LINES 460-469
 
 Simple Pipeline
 ---------------
@@ -3212,7 +4745,7 @@ transformed data. Upon `predict`, it applies the transformer's `transform`
 before predicting with the classifier's `predict` method on the transformed
 new data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 477-534
+.. GENERATED FROM PYTHON SOURCE LINES 469-526
 
 .. code-block:: Python
 
@@ -3225,7 +4758,7 @@ new data.
 
         def get_metadata_routing(self):
             router = (
-                MetadataRouter(owner=self.__class__.__name__)
+                MetadataRouter(owner=self)
                 # We add the routing for the transformer.
                 .add(
                     transformer=self.transformer,
@@ -3251,14 +4784,14 @@ new data.
             routed_params = process_routing(self, "fit", **fit_params)
 
             self.transformer_ = clone(self.transformer).fit(
-                X, y, **routed_params.transformer.fit
+                X, y, **routed_params["transformer"]["fit"]
             )
             X_transformed = self.transformer_.transform(
-                X, **routed_params.transformer.transform
+                X, **routed_params["transformer"]["transform"]
             )
 
             self.classifier_ = clone(self.classifier).fit(
-                X_transformed, y, **routed_params.classifier.fit
+                X_transformed, y, **routed_params["classifier"]["fit"]
             )
             return self
 
@@ -3266,10 +4799,10 @@ new data.
             routed_params = process_routing(self, "predict", **predict_params)
 
             X_transformed = self.transformer_.transform(
-                X, **routed_params.transformer.transform
+                X, **routed_params["transformer"]["transform"]
             )
             return self.classifier_.predict(
-                X_transformed, **routed_params.classifier.predict
+                X_transformed, **routed_params["classifier"]["predict"]
             )
 
 
@@ -3280,7 +4813,7 @@ new data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 535-551
+.. GENERATED FROM PYTHON SOURCE LINES 527-543
 
 Note the usage of :class:`~utils.metadata_routing.MethodMapping` to
 declare which methods of the child estimator (callee) are used in which
@@ -3299,7 +4832,7 @@ against it.
 
 In order to test the above pipeline, let's add an example transformer.
 
-.. GENERATED FROM PYTHON SOURCE LINES 551-566
+.. GENERATED FROM PYTHON SOURCE LINES 543-558
 
 .. code-block:: Python
 
@@ -3325,7 +4858,7 @@ In order to test the above pipeline, let's add an example transformer.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 567-576
+.. GENERATED FROM PYTHON SOURCE LINES 559-568
 
 Note that in the above example, we have implemented ``fit_transform`` which
 calls ``fit`` and ``transform`` with the appropriate metadata. This is only
@@ -3337,7 +4870,7 @@ Now we can test our pipeline, and see if metadata is correctly passed around.
 This example uses our `SimplePipeline`, our `ExampleTransformer`, and our
 `RouterConsumerClassifier` which uses our `ExampleClassifier`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 576-597
+.. GENERATED FROM PYTHON SOURCE LINES 568-589
 
 .. code-block:: Python
 
@@ -3381,7 +4914,7 @@ This example uses our `SimplePipeline`, our `ExampleTransformer`, and our
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 598-605
+.. GENERATED FROM PYTHON SOURCE LINES 590-597
 
 Deprecation / Default Value Change
 ----------------------------------
@@ -3391,7 +4924,7 @@ sub-estimator, or a consumer starts consuming a metadata which it wasn't in
 an older release. In this case, a warning should be raised for a while, to
 let users know the behavior is changed from previous versions.
 
-.. GENERATED FROM PYTHON SOURCE LINES 605-623
+.. GENERATED FROM PYTHON SOURCE LINES 597-617
 
 .. code-block:: Python
 
@@ -3403,10 +4936,12 @@ let users know the behavior is changed from previous versions.
 
         def fit(self, X, y, **fit_params):
             routed_params = process_routing(self, "fit", **fit_params)
-            self.estimator_ = clone(self.estimator).fit(X, y, **routed_params.estimator.fit)
+            self.estimator_ = clone(self.estimator).fit(
+                X, y, **routed_params["estimator"]["fit"]
+            )
 
         def get_metadata_routing(self):
-            router = MetadataRouter(owner=self.__class__.__name__).add(
+            router = MetadataRouter(owner=self).add(
                 estimator=self.estimator,
                 method_mapping=MethodMapping().add(caller="fit", callee="fit"),
             )
@@ -3420,12 +4955,12 @@ let users know the behavior is changed from previous versions.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 624-626
+.. GENERATED FROM PYTHON SOURCE LINES 618-620
 
 As explained above, this is a valid usage if `my_weights` aren't supposed
 to be passed as `sample_weight` to `MetaRegressor`:
 
-.. GENERATED FROM PYTHON SOURCE LINES 626-631
+.. GENERATED FROM PYTHON SOURCE LINES 620-625
 
 .. code-block:: Python
 
@@ -3441,12 +4976,12 @@ to be passed as `sample_weight` to `MetaRegressor`:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 632-634
+.. GENERATED FROM PYTHON SOURCE LINES 626-628
 
 Now imagine we further develop ``MetaRegressor`` and it now also *consumes*
 ``sample_weight``:
 
-.. GENERATED FROM PYTHON SOURCE LINES 634-663
+.. GENERATED FROM PYTHON SOURCE LINES 628-659
 
 .. code-block:: Python
 
@@ -3465,11 +5000,13 @@ Now imagine we further develop ``MetaRegressor`` and it now also *consumes*
                 self, "fit", sample_weight=sample_weight, **fit_params
             )
             check_metadata(self, sample_weight=sample_weight)
-            self.estimator_ = clone(self.estimator).fit(X, y, **routed_params.estimator.fit)
+            self.estimator_ = clone(self.estimator).fit(
+                X, y, **routed_params["estimator"]["fit"]
+            )
 
         def get_metadata_routing(self):
             router = (
-                MetadataRouter(owner=self.__class__.__name__)
+                MetadataRouter(owner=self)
                 .add_self_request(self)
                 .add(
                     estimator=self.estimator,
@@ -3486,13 +5023,13 @@ Now imagine we further develop ``MetaRegressor`` and it now also *consumes*
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 664-667
+.. GENERATED FROM PYTHON SOURCE LINES 660-663
 
 The above implementation is almost the same as ``MetaRegressor``, and
 because of the default request value defined in ``__metadata_request__fit``
 there is a warning raised when fitted.
 
-.. GENERATED FROM PYTHON SOURCE LINES 667-676
+.. GENERATED FROM PYTHON SOURCE LINES 663-672
 
 .. code-block:: Python
 
@@ -3514,17 +5051,17 @@ there is a warning raised when fitted.
  .. code-block:: none
 
     Received sample_weight of length = 100 in WeightedMetaRegressor.
-    Support for sample_weight has recently been added to this class. To maintain backward compatibility, it is ignored now. Using `set_fit_request(sample_weight={True, False})` on this method of the class, you can set the request value to False to silence this warning, or to True to consume and use the metadata.
+    Support for sample_weight has recently been added to WeightedMetaRegressor(estimator=LinearRegression()) class. To maintain backward compatibility, it is ignored now. Using `set_fit_request(sample_weight={True, False})` on this method of the class, you can set the request value to False to silence this warning, or to True to consume and use the metadata.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 677-679
+.. GENERATED FROM PYTHON SOURCE LINES 673-675
 
 When an estimator consumes a metadata which it didn't consume before, the
 following pattern can be used to warn the users about it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 679-697
+.. GENERATED FROM PYTHON SOURCE LINES 675-693
 
 .. code-block:: Python
 
@@ -3555,16 +5092,16 @@ following pattern can be used to warn the users about it.
  .. code-block:: none
 
     sample_weight is None in ExampleRegressor.
-    Support for sample_weight has recently been added to this class. To maintain backward compatibility, it is ignored now. Using `set_fit_request(sample_weight={True, False})` on this method of the class, you can set the request value to False to silence this warning, or to True to consume and use the metadata.
+    Support for sample_weight has recently been added to ExampleRegressor() class. To maintain backward compatibility, it is ignored now. Using `set_fit_request(sample_weight={True, False})` on this method of the class, you can set the request value to False to silence this warning, or to True to consume and use the metadata.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 698-699
+.. GENERATED FROM PYTHON SOURCE LINES 694-695
 
 At the end we disable the configuration flag for metadata routing:
 
-.. GENERATED FROM PYTHON SOURCE LINES 699-702
+.. GENERATED FROM PYTHON SOURCE LINES 695-698
 
 .. code-block:: Python
 
@@ -3578,7 +5115,7 @@ At the end we disable the configuration flag for metadata routing:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 703-720
+.. GENERATED FROM PYTHON SOURCE LINES 699-716
 
 Third Party Development and scikit-learn Dependency
 ---------------------------------------------------
@@ -3601,7 +5138,7 @@ need to modify your code at all:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.047 seconds)
+   **Total running time of the script:** (0 minutes 0.040 seconds)
 
 
 .. _sphx_glr_download_auto_examples_miscellaneous_plot_metadata_routing.py:
@@ -3613,7 +5150,7 @@ need to modify your code at all:
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_metadata_routing.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_metadata_routing.ipynb
         :alt: Launch binder
         :width: 150 px
 

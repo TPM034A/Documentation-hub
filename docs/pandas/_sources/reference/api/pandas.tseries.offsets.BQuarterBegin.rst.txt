@@ -53,9 +53,6 @@ pandas.tseries.offsets.BQuarterBegin
         ~BQuarterBegin.copy
       
       
-        ~BQuarterBegin.is_anchored
-      
-      
         ~BQuarterBegin.is_month_end
       
       

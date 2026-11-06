@@ -11,6 +11,10 @@ Applications to real world problems with some medium sized datasets or
 interactive user interface.
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -27,7 +31,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_tomography_l1_reconstruction_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_tomography_l1_reconstruction.py`
+  :doc:`/auto_examples/applications/plot_tomography_l1_reconstruction`
 
 .. raw:: html
 
@@ -37,18 +41,18 @@ interactive user interface.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The dataset used in this example is a preprocessed excerpt of the &quot;Labeled Faces in the Wild&quot;, aka LFW: https://www.kaggle.com/datasets/jessicali9530/lfw-dataset">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example builds a classical face recognition pipeline on the &quot;Labeled Faces in the Wild&quot; (LFW) dataset, a preprocessed excerpt of which is available here: https://www.kaggle.com/datasets/jessicali9530/lfw-dataset">
 
 .. only:: html
 
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_face_recognition_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_face_recognition.py`
+  :doc:`/auto_examples/applications/plot_face_recognition`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Faces recognition example using eigenfaces and SVMs</div>
+      <div class="sphx-glr-thumbnail-title">Faces recognition example using eigenfaces and kernel approximation</div>
     </div>
 
 
@@ -61,7 +65,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_digits_denoising_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_digits_denoising.py`
+  :doc:`/auto_examples/applications/plot_digits_denoising`
 
 .. raw:: html
 
@@ -78,7 +82,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_time_series_lagged_features_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_time_series_lagged_features.py`
+  :doc:`/auto_examples/applications/plot_time_series_lagged_features`
 
 .. raw:: html
 
@@ -95,7 +99,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_model_complexity_influence_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_model_complexity_influence.py`
+  :doc:`/auto_examples/applications/plot_model_complexity_influence`
 
 .. raw:: html
 
@@ -112,7 +116,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_out_of_core_classification_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_out_of_core_classification.py`
+  :doc:`/auto_examples/applications/plot_out_of_core_classification`
 
 .. raw:: html
 
@@ -129,7 +133,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_outlier_detection_wine_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_outlier_detection_wine.py`
+  :doc:`/auto_examples/applications/plot_outlier_detection_wine`
 
 .. raw:: html
 
@@ -146,7 +150,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_prediction_latency_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_prediction_latency.py`
+  :doc:`/auto_examples/applications/plot_prediction_latency`
 
 .. raw:: html
 
@@ -163,7 +167,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_species_distribution_modeling_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_species_distribution_modeling.py`
+  :doc:`/auto_examples/applications/plot_species_distribution_modeling`
 
 .. raw:: html
 
@@ -180,7 +184,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_cyclical_feature_engineering_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_cyclical_feature_engineering.py`
+  :doc:`/auto_examples/applications/plot_cyclical_feature_engineering`
 
 .. raw:: html
 
@@ -197,7 +201,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_topics_extraction_with_nmf_lda_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_topics_extraction_with_nmf_lda.py`
+  :doc:`/auto_examples/applications/plot_topics_extraction_with_nmf_lda`
 
 .. raw:: html
 
@@ -214,7 +218,7 @@ interactive user interface.
   .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_stock_market_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_plot_stock_market.py`
+  :doc:`/auto_examples/applications/plot_stock_market`
 
 .. raw:: html
 
@@ -228,10 +232,10 @@ interactive user interface.
 
 .. only:: html
 
-  .. image:: /auto_examples/applications/images/thumb/sphx_glr_wikipedia_principal_eigenvector_thumb.png
+  .. image:: /auto_examples/applications/images/thumb/sphx_glr_plot_wikipedia_principal_eigenvector_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_applications_wikipedia_principal_eigenvector.py`
+  :doc:`/auto_examples/applications/plot_wikipedia_principal_eigenvector`
 
 .. raw:: html
 
@@ -261,5 +265,5 @@ interactive user interface.
    /auto_examples/applications/plot_cyclical_feature_engineering
    /auto_examples/applications/plot_topics_extraction_with_nmf_lda
    /auto_examples/applications/plot_stock_market
-   /auto_examples/applications/wikipedia_principal_eigenvector
+   /auto_examples/applications/plot_wikipedia_principal_eigenvector
 

@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="classification_1" />
 <meta name="description" content="sklearn.neighbors provides functionality for unsupervised and supervised neighbors-based learning methods. Unsupervised nearest neighbors is the foundation of many other learning methods, notably m..." />
 
-    <title>1.6. Nearest Neighbors &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>1.6. Nearest Neighbors &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,48 +35,51 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules/neighbors';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/modules/neighbors.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -85,21 +88,27 @@
     <link rel="prev" title="1.5. Stochastic Gradient Descent" href="sgd.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -125,7 +134,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -151,8 +160,8 @@
       
     
     
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -273,6 +282,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../about.html">
     About us
   </a>
@@ -300,11 +316,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -317,8 +340,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -485,6 +507,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../about.html">
     About us
   </a>
@@ -502,11 +531,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -519,8 +555,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -549,7 +584,15 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
@@ -601,39 +644,41 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualizations.html">6. Visualizations</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">7. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="compose.html">7.1. Pipelines and composite estimators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_extraction.html">7.2. Feature extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">7.3. Preprocessing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="impute.html">7.4. Imputation of missing values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">7.5. Unsupervised dimensionality reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="random_projection.html">7.6. Random Projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">7.7. Kernel Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metrics.html">7.8. Pairwise metrics, Affinities and Kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">7.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks.html">7. Callbacks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">8. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="compose.html">8.1. Pipelines and composite estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction.html">8.2. Feature extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">8.3. Preprocessing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impute.html">8.4. Imputation of missing values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">8.5. Unsupervised dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random_projection.html">8.6. Random Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">8.7. Kernel Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">8.8. Pairwise metrics, Affinities and Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">8.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">8. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">8.1. Toy datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">8.2. Real world datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">8.3. Generated datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">8.4. Loading other datasets</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">9. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">9.1. Toy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">9.2. Real world datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">9.3. Generated datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">9.4. Loading other datasets</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">9. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">9.1. Strategies to scale computationally: bigger data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">9.2. Computational Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">9.3. Parallelism, resource management, and configuration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">10. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">10.1. Strategies to scale computationally: bigger data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">10.2. Computational Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">10.3. Parallelism and resource management</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">10. Model persistence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">11. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dispatching.html">12. Dispatching</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="array_api.html">12.1. Array API support (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">11. Model persistence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">12. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_interoperability.html">13. Data Interoperability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="df_output_transform.html">13.1. Pandas/Polars Output for Transformers with <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_api.html">13.2. Array API support (experimental)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">13. Choosing the right estimator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../presentations.html">14. External Resources, Videos and Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">14. Choosing the right estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../presentations.html">15. External Resources, Videos and Talks</a></li>
 </ul>
 </div>
 </nav></div>
@@ -748,7 +793,7 @@ used:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">NearestNeighbors</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;ball_tree&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">'ball_tree'</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">distances</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span>
 <span class="go">array([[0, 1],</span>
@@ -788,7 +833,7 @@ unsupervised learning: in particular, see <a class="reference internal" href="ge
 <a class="reference internal" href="generated/sklearn.cluster.SpectralClustering.html#sklearn.cluster.SpectralClustering" title="sklearn.cluster.SpectralClustering"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpectralClustering</span></code></a>.</p>
 </section>
 <section id="kdtree-and-balltree-classes">
-<h3><span class="section-number">1.6.1.2. </span>KDTree and BallTree Classes<a class="headerlink" href="#kdtree-and-balltree-classes" title="Link to this heading">#</a></h3>
+<span id="id1"></span><h3><span class="section-number">1.6.1.2. </span>KDTree and BallTree Classes<a class="headerlink" href="#kdtree-and-balltree-classes" title="Link to this heading">#</a></h3>
 <p>Alternatively, one can use the <a class="reference internal" href="generated/sklearn.neighbors.KDTree.html#sklearn.neighbors.KDTree" title="sklearn.neighbors.KDTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">KDTree</span></code></a> or <a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">BallTree</span></code></a> classes
 directly to find nearest neighbors.  This is the functionality wrapped by
 the <a class="reference internal" href="generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors" title="sklearn.neighbors.NearestNeighbors"><code class="xref py py-class docutils literal notranslate"><span class="pre">NearestNeighbors</span></code></a> class used above.  The Ball Tree and KD Tree
@@ -796,7 +841,7 @@ have the same interface; we’ll show an example of using the KD Tree here:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KDTree</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">kdt</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">leaf_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kdt</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">leaf_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">'euclidean'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kdt</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">array([[0, 1],</span>
 <span class="go">       [1, 0],</span>
@@ -812,9 +857,9 @@ including specification of query strategies, distance metrics, etc. For a list
 of valid metrics use <code class="docutils literal notranslate"><span class="pre">KDTree.valid_metrics</span></code> and <code class="docutils literal notranslate"><span class="pre">BallTree.valid_metrics</span></code>:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KDTree</span><span class="p">,</span> <span class="n">BallTree</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">KDTree</span><span class="o">.</span><span class="n">valid_metrics</span>
-<span class="go">[&#39;euclidean&#39;, &#39;l2&#39;, &#39;minkowski&#39;, &#39;p&#39;, &#39;manhattan&#39;, &#39;cityblock&#39;, &#39;l1&#39;, &#39;chebyshev&#39;, &#39;infinity&#39;]</span>
+<span class="go">['euclidean', 'l2', 'minkowski', 'p', 'manhattan', 'cityblock', 'l1', 'chebyshev', 'infinity']</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">BallTree</span><span class="o">.</span><span class="n">valid_metrics</span>
-<span class="go">[&#39;euclidean&#39;, &#39;l2&#39;, &#39;minkowski&#39;, &#39;p&#39;, &#39;manhattan&#39;, &#39;cityblock&#39;, &#39;l1&#39;, &#39;chebyshev&#39;, &#39;infinity&#39;, &#39;seuclidean&#39;, &#39;mahalanobis&#39;, &#39;hamming&#39;, &#39;canberra&#39;, &#39;braycurtis&#39;, &#39;jaccard&#39;, &#39;dice&#39;, &#39;rogerstanimoto&#39;, &#39;russellrao&#39;, &#39;sokalmichener&#39;, &#39;sokalsneath&#39;, &#39;haversine&#39;, &#39;pyfunc&#39;]</span>
+<span class="go">['euclidean', 'l2', 'minkowski', 'p', 'manhattan', 'cityblock', 'l1', 'chebyshev', 'infinity', 'seuclidean', 'mahalanobis', 'hamming', 'canberra', 'braycurtis', 'jaccard', 'dice', 'rogerstanimoto', 'russellrao', 'sokalmichener', 'sokalsneath', 'haversine', 'pyfunc']</span>
 </pre></div>
 </div>
 </section>
@@ -854,7 +899,7 @@ be accomplished through the <code class="docutils literal notranslate"><span cla
 distance from the query point.  Alternatively, a user-defined function of the
 distance can be supplied to compute the weights.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/neighbors/plot_classification.html"><img alt="classification_1" src="../_images/sphx_glr_plot_classification_001.png" style="width: 900.0px; height: 375.0px;" /></a></strong></p><p class="rubric">Examples</p>
+<strong><a class="reference external" href="../auto_examples/neighbors/plot_classification.html"><img alt="classification_1" height="375" src="../_images/sphx_glr_plot_classification_001.png" width="900" /></a></strong></p><p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../auto_examples/neighbors/plot_classification.html#sphx-glr-auto-examples-neighbors-plot-classification-py"><span class="std std-ref">Nearest Neighbors Classification</span></a>: an example of
 classification using nearest neighbors.</p></li>
@@ -883,7 +928,7 @@ weights proportional to the inverse of the distance from the query point.
 Alternatively, a user-defined function of the distance can be supplied,
 which will be used to compute the weights.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/neighbors/plot_regression.html"><img alt="../_images/sphx_glr_plot_regression_001.png" src="../_images/sphx_glr_plot_regression_001.png" style="width: 480.0px; height: 360.0px;" />
+<a class="reference external image-reference" href="../auto_examples/neighbors/plot_regression.html"><img alt="../_images/sphx_glr_plot_regression_001.png" height="360" src="../_images/sphx_glr_plot_regression_001.png" width="480" />
 </a>
 </figure>
 <p>The use of multi-output nearest neighbors for regression is demonstrated in
@@ -891,7 +936,7 @@ which will be used to compute the weights.</p>
 X are the pixels of the upper half of faces and the outputs Y are the pixels of
 the lower half of those faces.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/miscellaneous/plot_multioutput_face_completion.html"><img alt="../_images/sphx_glr_plot_multioutput_face_completion_001.png" src="../_images/sphx_glr_plot_multioutput_face_completion_001.png" style="width: 750.0px; height: 847.5px;" />
+<a class="reference external image-reference" href="../auto_examples/miscellaneous/plot_multioutput_face_completion.html"><img alt="../_images/sphx_glr_plot_multioutput_face_completion_001.png" height="848" src="../_images/sphx_glr_plot_multioutput_face_completion_001.png" width="750" />
 </a>
 </figure>
 <p class="rubric">Examples</p>
@@ -905,7 +950,7 @@ an example of multi-output regression using nearest neighbors.</p></li>
 <section id="nearest-neighbor-algorithms">
 <h2><span class="section-number">1.6.4. </span>Nearest Neighbor Algorithms<a class="headerlink" href="#nearest-neighbor-algorithms" title="Link to this heading">#</a></h2>
 <section id="brute-force">
-<span id="id1"></span><h3><span class="section-number">1.6.4.1. </span>Brute Force<a class="headerlink" href="#brute-force" title="Link to this heading">#</a></h3>
+<span id="id2"></span><h3><span class="section-number">1.6.4.1. </span>Brute Force<a class="headerlink" href="#brute-force" title="Link to this heading">#</a></h3>
 <p>Fast computation of nearest neighbors is an active area of research in
 machine learning. The most naive neighbor search implementation involves
 the brute-force computation of distances between all pairs of points in the
@@ -957,7 +1002,7 @@ Bentley, J.L., Communications of the ACM (1975)</p></li>
 </div>
 </details></section>
 <section id="ball-tree">
-<span id="id2"></span><h3><span class="section-number">1.6.4.3. </span>Ball Tree<a class="headerlink" href="#ball-tree" title="Link to this heading">#</a></h3>
+<span id="id3"></span><h3><span class="section-number">1.6.4.3. </span>Ball Tree<a class="headerlink" href="#ball-tree" title="Link to this heading">#</a></h3>
 <p>To address the inefficiencies of KD Trees in higher dimensions, the <em>ball tree</em>
 data structure was developed.  Where KD trees partition data along
 Cartesian axes, ball trees partition data in a series of nesting
@@ -1117,14 +1162,14 @@ metric uses <a class="reference internal" href="generated/sklearn.metrics.pairwi
 <code class="docutils literal notranslate"><span class="pre">valid_metric</span></code> attribute. For example, valid metrics for <code class="docutils literal notranslate"><span class="pre">KDTree</span></code> can be generated by:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KDTree</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">KDTree</span><span class="o">.</span><span class="n">valid_metrics</span><span class="p">))</span>
-<span class="go">[&#39;chebyshev&#39;, &#39;cityblock&#39;, &#39;euclidean&#39;, &#39;infinity&#39;, &#39;l1&#39;, &#39;l2&#39;, &#39;manhattan&#39;, &#39;minkowski&#39;, &#39;p&#39;]</span>
+<span class="go">['chebyshev', 'cityblock', 'euclidean', 'infinity', 'l1', 'l2', 'manhattan', 'minkowski', 'p']</span>
 </pre></div>
 </div>
 </div>
 </details></section>
 </section>
 <section id="nearest-centroid-classifier">
-<span id="id3"></span><h2><span class="section-number">1.6.5. </span>Nearest Centroid Classifier<a class="headerlink" href="#nearest-centroid-classifier" title="Link to this heading">#</a></h2>
+<span id="id4"></span><h2><span class="section-number">1.6.5. </span>Nearest Centroid Classifier<a class="headerlink" href="#nearest-centroid-classifier" title="Link to this heading">#</a></h2>
 <p>The <a class="reference internal" href="generated/sklearn.neighbors.NearestCentroid.html#sklearn.neighbors.NearestCentroid" title="sklearn.neighbors.NearestCentroid"><code class="xref py py-class docutils literal notranslate"><span class="pre">NearestCentroid</span></code></a> classifier is a simple algorithm that represents
 each class by the centroid of its members. In effect, this makes it
 similar to the label updating phase of the <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><code class="xref py py-class docutils literal notranslate"><span class="pre">KMeans</span></code></a> algorithm.
@@ -1158,7 +1203,7 @@ This is useful, for example, for removing noisy features.</p>
 <p>In the example below, using a small shrink threshold increases the accuracy of
 the model from 0.81 to 0.82.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/neighbors/plot_nearest_centroid.html"><img alt="nearest_centroid_1" src="../_images/sphx_glr_plot_nearest_centroid_001.png" style="width: 320.0px; height: 240.0px;" /></a> <a class="reference external" href="../auto_examples/neighbors/plot_nearest_centroid.html"><img alt="nearest_centroid_2" src="../_images/sphx_glr_plot_nearest_centroid_002.png" style="width: 320.0px; height: 240.0px;" /></a></strong></p><p class="rubric">Examples</p>
+<strong><a class="reference external" href="../auto_examples/neighbors/plot_nearest_centroid.html"><img alt="nearest_centroid_1" height="240" src="../_images/sphx_glr_plot_nearest_centroid_001.png" width="320" /></a> <a class="reference external" href="../auto_examples/neighbors/plot_nearest_centroid.html"><img alt="nearest_centroid_2" height="240" src="../_images/sphx_glr_plot_nearest_centroid_002.png" width="320" /></a></strong></p><p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../auto_examples/neighbors/plot_nearest_centroid.html#sphx-glr-auto-examples-neighbors-plot-nearest-centroid-py"><span class="std std-ref">Nearest Centroid Classification</span></a>: an example of
 classification using nearest centroid with different shrink thresholds.</p></li>
@@ -1195,8 +1240,8 @@ using the caching properties of the scikit-learn pipeline:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cache_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">()</span>  <span class="c1"># we use a temporary folder here</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">KNeighborsTransformer</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">Isomap</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;precomputed&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">KNeighborsTransformer</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'distance'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">Isomap</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">'precomputed'</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">memory</span><span class="o">=</span><span class="n">cache_path</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_embedded</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_embedded</span><span class="o">.</span><span class="n">shape</span>
@@ -1265,7 +1310,7 @@ k-nearest neighbors (KNN) score on the training set. It can also learn a
 low-dimensional linear projection of data that can be used for data
 visualization and fast classification.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/neighbors/plot_nca_illustration.html"><img alt="nca_illustration_1" src="../_images/sphx_glr_plot_nca_illustration_001.png" style="width: 320.0px; height: 240.0px;" /></a> <a class="reference external" href="../auto_examples/neighbors/plot_nca_illustration.html"><img alt="nca_illustration_2" src="../_images/sphx_glr_plot_nca_illustration_002.png" style="width: 320.0px; height: 240.0px;" /></a></strong></p><p>In the above illustrating figure, we consider some points from a randomly
+<strong><a class="reference external" href="../auto_examples/neighbors/plot_nca_illustration.html"><img alt="nca_illustration_1" height="240" src="../_images/sphx_glr_plot_nca_illustration_001.png" width="320" /></a> <a class="reference external" href="../auto_examples/neighbors/plot_nca_illustration.html"><img alt="nca_illustration_2" height="240" src="../_images/sphx_glr_plot_nca_illustration_002.png" width="320" /></a></strong></p><p>In the above illustrating figure, we consider some points from a randomly
 generated dataset. We focus on the stochastic KNN classification of point no.
 3. The thickness of a link between sample 3 and another point is proportional
 to their distance, and can be seen as the relative weight (or probability) that
@@ -1276,8 +1321,8 @@ learned by NCA, the only stochastic neighbors with non-negligible weight are
 from the same class as sample 3, guaranteeing that the latter will be well
 classified. See the <a class="reference internal" href="#nca-mathematical-formulation"><span class="std std-ref">mathematical formulation</span></a>
 for more details.</p>
-<section id="id4">
-<h3><span class="section-number">1.6.7.1. </span>Classification<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3><span class="section-number">1.6.7.1. </span>Classification<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>Combined with a nearest neighbors classifier (<a class="reference internal" href="generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code></a>),
 NCA is attractive for classification because it can naturally handle
 multi-class problems without any increase in the model size, and does not
@@ -1302,7 +1347,7 @@ classes:</p>
 <span class="gp">... </span><span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nca</span> <span class="o">=</span> <span class="n">NeighborhoodComponentsAnalysis</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nca_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;nca&#39;</span><span class="p">,</span> <span class="n">nca</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">knn</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nca_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">'nca'</span><span class="p">,</span> <span class="n">nca</span><span class="p">),</span> <span class="p">(</span><span class="s1">'knn'</span><span class="p">,</span> <span class="n">knn</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nca_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="go">Pipeline(...)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">nca_pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
@@ -1310,7 +1355,7 @@ classes:</p>
 </pre></div>
 </div>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/neighbors/plot_nca_classification.html"><img alt="nca_classification_1" src="../_images/sphx_glr_plot_nca_classification_001.png" style="width: 320.0px; height: 240.0px;" /></a> <a class="reference external" href="../auto_examples/neighbors/plot_nca_classification.html"><img alt="nca_classification_2" src="../_images/sphx_glr_plot_nca_classification_002.png" style="width: 320.0px; height: 240.0px;" /></a></strong></p><p>The plot shows decision boundaries for Nearest Neighbor Classification and
+<strong><a class="reference external" href="../auto_examples/neighbors/plot_nca_classification.html"><img alt="nca_classification_1" height="240" src="../_images/sphx_glr_plot_nca_classification_001.png" width="320" /></a> <a class="reference external" href="../auto_examples/neighbors/plot_nca_classification.html"><img alt="nca_classification_2" height="240" src="../_images/sphx_glr_plot_nca_classification_002.png" width="320" /></a></strong></p><p>The plot shows decision boundaries for Nearest Neighbor Classification and
 Neighborhood Components Analysis classification on the iris dataset, when
 training and scoring on only two features, for visualisation purposes.</p>
 </section>
@@ -1368,7 +1413,7 @@ space:</p>
 </details></section>
 <section id="implementation">
 <h3><span class="section-number">1.6.7.4. </span>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h3>
-<p>This implementation follows what is explained in the original paper <a class="footnote-reference brackets" href="#id6" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. For
+<p>This implementation follows what is explained in the original paper <a class="footnote-reference brackets" href="#id7" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. For
 the optimisation method, it currently uses scipy’s L-BFGS-B with a full
 gradient computation at each iteration, to avoid to tune the learning rate and
 provide stable learning.</p>
@@ -1392,8 +1437,8 @@ complexity equals <code class="docutils literal notranslate"><span class="pre">n
 added space complexity in the operation.</p>
 <p class="rubric">References</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id6" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">1</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://papers.nips.cc/paper_files/paper/2004/file/42fe880812925e520249e808937738d2-Paper.pdf">“Neighbourhood Components Analysis”</a>,
 J. Goldberger, S. Roweis, G. Hinton, R. Salakhutdinov, Advances in
 Neural Information Processing Systems, Vol. 17, May 2005, pp. 513-520.</p>
@@ -1456,8 +1501,8 @@ Neural Information Processing Systems, Vol. 17, May 2005, pp. 513-520.</p>
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-nearest-neighbors">1.6.1. Unsupervised Nearest Neighbors</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-nearest-neighbors">1.6.1.1. Finding the Nearest Neighbors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kdtree-and-balltree-classes">1.6.1.2. KDTree and BallTree Classes</a></li>
@@ -1477,7 +1522,7 @@ Neural Information Processing Systems, Vol. 17, May 2005, pp. 513-520.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbors-transformer">1.6.6. Nearest Neighbors Transformer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neighborhood-components-analysis">1.6.7. Neighborhood Components Analysis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.6.7.1. Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.6.7.1. Classification</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction">1.6.7.2. Dimensionality reduction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">1.6.7.3. Mathematical formulation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">1.6.7.4. Implementation</a></li>
@@ -1491,14 +1536,21 @@ Neural Information Processing Systems, Vol. 17, May 2005, pp. 513-520.</p>
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/modules/neighbors.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1513,8 +1565,8 @@ Neural Information Processing Systems, Vol. 17, May 2005, pp. 513-520.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1525,7 +1577,7 @@ Neural Information Processing Systems, Vol. 17, May 2005, pp. 513-520.</p>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

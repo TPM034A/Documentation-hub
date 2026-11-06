@@ -71,9 +71,6 @@ pandas.tseries.offsets.CustomBusinessMonthEnd
         ~CustomBusinessMonthEnd.copy
       
       
-        ~CustomBusinessMonthEnd.is_anchored
-      
-      
         ~CustomBusinessMonthEnd.is_month_end
       
       

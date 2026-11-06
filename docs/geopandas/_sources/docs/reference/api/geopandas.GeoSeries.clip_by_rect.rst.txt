@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.clip\_by\_rect
+==================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.clip_by_rect

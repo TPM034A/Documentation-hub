@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Adding Inset Maps to a Matplotlib Plot &#8212; GeoPandas 1.1.3+0.gf5fe3ff.dirty documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=165729ea" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=83cc7163"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/toggleprompt.js?v=5801b3bb"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/inset_map';</script>
+    <link rel="canonical" href="https://geopandas.org/en/v1.1.3/gallery/inset_map.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Adding Scale Bars and North Arrows to a Matplotlib Plot" href="matplotlib_scalebar.html" />
+    <link rel="prev" title="Using GeoPandas with Rasterio to sample point data" href="geopandas_rasterio_sample.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.1.3" />
+  <script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="geopandas" /><meta name="readthedocs-version-slug" content="v1.1.3" /><meta name="readthedocs-resolver-filename" content="/gallery/inset_map.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/geopandas_logo_web.svg" class="logo__image only-light" alt="GeoPandas 1.1.3+0.gf5fe3ff.dirty documentation - Home"/>
+    <img src="../_static/geopandas_logo_web.svg" class="logo__image only-dark pst-js-only" alt="GeoPandas 1.1.3+0.gf5fe3ff.dirty documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../community.html">
+    Community
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/geopandas/geopandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-xl fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../community.html">
+    Community
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/geopandas/geopandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-xl fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction to GeoPandas</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples Gallery</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cartopy_convert.html">Plotting with CartoPy and GeoPandas</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="choro_legends.html">Choro legends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choropleths.html">Choropleth classification schemes from PySAL for use with GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_geopandas_from_pandas.html">Creating a GeoDataFrame from a DataFrame with coordinates</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="geopandas_rasterio_sample.html">Using GeoPandas with Rasterio to sample point data</a></li>
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Adding Inset Maps to a Matplotlib Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib_scalebar.html">Adding Scale Bars and North Arrows to a Matplotlib Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overlays.html">Overlays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas_accessor.html">Using GeoPandas via the pandas “geo” accessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_clip.html">Clip Vector Data with GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_basemap_background.html">Adding a background map to plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_with_folium.html">Plotting with Folium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polygon_plotting_with_folium.html">Plotting polygons with Folium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_joins.html">Spatial Joins</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../getting_started.html" class="nav-link">Getting Started</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Examples Gallery</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Adding Inset Maps to a Matplotlib Plot</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">This page was generated from <a class="reference external" href="https://github.com/geopandas/geopandas/blob/main/doc/source/gallery/inset_map.ipynb">gallery/inset_map.ipynb</a>.</div>
+<div class="line">Interactive online version: <span class="raw-html"><a href="https://mybinder.org/v2/gh/geopandas/geopandas/main?urlpath=lab/tree/doc/source/gallery/inset_map.ipynb"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a></span></div>
+</div>
+</div>
+<section id="Adding-Inset-Maps-to-a-Matplotlib-Plot">
+<h1>Adding Inset Maps to a Matplotlib Plot<a class="headerlink" href="#Adding-Inset-Maps-to-a-Matplotlib-Plot" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Map_layout#Inset_map">Inset maps</a> are elements commonly added to maps to show additional detail of a smaller region, show the location of the map within a larger region, or to show another region that is discontiguous from the main portion of the map.</p>
+<p>Two options exist for easily adding these elements to the default <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> plots generated by GeoPandas’ <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function: either the functions included in the base <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library, or the <code class="docutils literal notranslate"><span class="pre">matplotlib-map-utils</span></code> library (see <a class="reference external" href="https://github.com/moss-xyz/matplotlib-map-utils">here</a>). The use of each is described below.</p>
+<section id="Using-matplotlib">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code><a class="headerlink" href="#Using-matplotlib" title="Link to this heading">#</a></h2>
+<p>Two distinct functions within <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> provide the functionality to add inset axes to already-existing axes. Confusingly, both are named <code class="docutils literal notranslate"><span class="pre">inset_axes()</span></code>, but one lives within <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, and the other within <code class="docutils literal notranslate"><span class="pre">mpl_toolkits.axes_grid1</span></code>.</p>
+<section id="Using-matplotlib.axes.Axes.inset_axes()">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.inset_axes()</span></code><a class="headerlink" href="#Using-matplotlib.axes.Axes.inset_axes()" title="Link to this heading">#</a></h3>
+<p>The first option is to use the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.inset_axes.html">inset_axes</a> method available in matplotlib.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geodatasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_path</span>
+</pre></div>
+</div>
+</div>
+<section id="Creating-the-Parent-Axis">
+<h4>Creating the Parent Axis<a class="headerlink" href="#Creating-the-Parent-Axis" title="Link to this heading">#</a></h4>
+<p>The “parent axis” is the one that will contain the inset axes (also called a “child axis”). This is the axis that is returned by the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nybb</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;nybb&quot;</span><span class="p">))</span>
+<span class="n">nybb</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">32619</span><span class="p">)</span>  <span class="c1"># Convert the dataset to a coordinate system which uses meters</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ax</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;matplotlib.axes._axes.Axes&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_inset_map_5_1.png" src="../_images/gallery_inset_map_5_1.png" />
+</div>
+</div>
+</section>
+<section id="Adding-an-Inset-Axis">
+<h4>Adding an Inset Axis<a class="headerlink" href="#Adding-an-Inset-Axis" title="Link to this heading">#</a></h4>
+<p>The inset axis (or “child axis”, relative to the “parent axis” created by <code class="docutils literal notranslate"><span class="pre">.plot()</span></code>) can be added via the <code class="docutils literal notranslate"><span class="pre">inset_axes()</span></code> method on an <code class="docutils literal notranslate"><span class="pre">axes.Axes</span></code> object.</p>
+<p>This function’s first argument, <code class="docutils literal notranslate"><span class="pre">bounds</span></code>, requires a 4-tuple of integers of floats, matching <code class="docutils literal notranslate"><span class="pre">(x0,</span> <span class="pre">y0,</span> <span class="pre">width,</span> <span class="pre">height)</span></code>, where <code class="docutils literal notranslate"><span class="pre">(x0,</span> <span class="pre">y0)</span></code> is the lower-left corner of the inset axes, and <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> are the width and height of the inset axes. By default, these values should be in <code class="docutils literal notranslate"><span class="pre">ax.transAxes</span></code> scaling, i.e. ranging from zero to one, representing a fraction of the parent axis, though users may pass their own desired transformation via the <code class="docutils literal notranslate"><span class="pre">transform</span></code> argument.</p>
+<p><code class="docutils literal notranslate"><span class="pre">inset_axes()</span></code> shares common kwargs with the regular <code class="docutils literal notranslate"><span class="pre">Axes</span></code> class along with others; see <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.inset_axes.html">the documentation</a> for details.</p>
+<p>The axis returned by <code class="docutils literal notranslate"><span class="pre">inset_axes()</span></code> can then be used to plot data, as normal.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># Now adding an inset axis</span>
+<span class="n">iax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="c1"># Additional data may now be plotted on this axis</span>
+<span class="c1"># ex. new_york_state.plot(ax=iax)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_inset_map_7_0.png" src="../_images/gallery_inset_map_7_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="Using-mpl_toolkits.axes_grid1.inset_locator.inset_axes">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">mpl_toolkits.axes_grid1.inset_locator.inset_axes</span></code><a class="headerlink" href="#Using-mpl_toolkits.axes_grid1.inset_locator.inset_axes" title="Link to this heading">#</a></h3>
+<p>Another option is available in the <code class="docutils literal notranslate"><span class="pre">mpl_toolkits</span></code> part of matplotlib, via the function <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.inset_axes.html">inset_axes</a>.</p>
+<p>This separate <code class="docutils literal notranslate"><span class="pre">inset_axes()</span></code> function provided by <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is intended to be used in a similar way to the <code class="docutils literal notranslate"><span class="pre">inset_axes()</span></code> method of the Axes class. However, it may also (optionally) be paired with <code class="docutils literal notranslate"><span class="pre">mark_inset()</span></code> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.mark_inset.html">documentation</a>) to connect the inset axes to the parent axes, in the case where the inset axes are showing additional detail of a small area of the parent axes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.axes_grid1</span><span class="w"> </span><span class="kn">import</span> <span class="n">inset_locator</span>
+</pre></div>
+</div>
+</div>
+<section id="Creating-a-Parent-and-Inset-Axis">
+<h4>Creating a Parent and Inset Axis<a class="headerlink" href="#Creating-a-Parent-and-Inset-Axis" title="Link to this heading">#</a></h4>
+<p>At a high level, creating a simple parent and inset axis occurs with more-or-less the same workflow as above.</p>
+<p>However, this <code class="docutils literal notranslate"><span class="pre">inset_axes()</span></code> function is very different from the <code class="docutils literal notranslate"><span class="pre">inset_axes()</span></code> method of the Axes class; most notably:</p>
+<ul class="simple">
+<li><p>It is applied as a standalone function (via <code class="docutils literal notranslate"><span class="pre">mpl_toolkits.axes_grid1.inset_locator.inset_axes()</span></code>) rather than as a method of an Axes object (like <code class="docutils literal notranslate"><span class="pre">ax.inset_axes()</span></code>). As such, the parent axes must be passed as the first argument.</p></li>
+<li><p>Instead of providing a 4-tuple of values specifying the bottom-left corner and width and height of the inset axes, it requires separate values for <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code>, as well as a <code class="docutils literal notranslate"><span class="pre">loc</span></code> keyword similar to how <code class="docutils literal notranslate"><span class="pre">Legend</span></code> objects are placed.</p>
+<ul>
+<li><p>If integers or floats are passed to width and height, they are interpreted as <em>inches</em>. If strings are passed, they are interpreted as percentages of the parent axes, or to the bounding box specified under <code class="docutils literal notranslate"><span class="pre">bbox_to_anchor</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">loc</span></code> keyword is similar to the <code class="docutils literal notranslate"><span class="pre">loc</span></code> keyword of <code class="docutils literal notranslate"><span class="pre">Legend</span></code> objects. It can be a string or an integer. See <a class="reference external" href="https://matplotlib.org/stable/api/legend_api.html#matplotlib.legend.Legend">the documentation</a> for more details.</p></li>
+<li><p>Advanced positioning is also possible via <code class="docutils literal notranslate"><span class="pre">bbox_to_anchor</span></code>, and <code class="docutils literal notranslate"><span class="pre">bbox_transform</span></code>, just like <code class="docutils literal notranslate"><span class="pre">Legend</span></code>s. See <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.inset_axes.html">the documentation</a> for more details.</p></li>
+</ul>
+</li>
+<li><p>While kwargs are accepted and passed along when creating the inset axes, they must be provided in for the form of a dictionary via the <code class="docutils literal notranslate"><span class="pre">axes_kwargs</span></code> keyword.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># Now adding an inset axis</span>
+<span class="n">iax</span> <span class="o">=</span> <span class="n">inset_locator</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">borderpad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axes_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;xticks&quot;</span><span class="p">:[],</span> <span class="s2">&quot;yticks&quot;</span><span class="p">:[]})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_inset_map_11_0.png" src="../_images/gallery_inset_map_11_0.png" />
+</div>
+</div>
+</section>
+<section id="Marking-an-Indicator">
+<h4>Marking an Indicator<a class="headerlink" href="#Marking-an-Indicator" title="Link to this heading">#</a></h4>
+<p>Unique to the <code class="docutils literal notranslate"><span class="pre">mpl_toolkits.axes_grid1</span></code> approach, the <code class="docutils literal notranslate"><span class="pre">mark_inset()</span></code> function can be used to connect the inset axes to the parent axes, in the case that the inset axes is displaying a zoomed-in section of the parent axes. See <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.axes_grid1.inset_locator.mark_inset.html">this documentation</a> for more details.</p>
+<p><strong>Important:</strong> For this function to work, both the inset and parent axes <strong>must</strong> be using the same coordinate system.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># Now adding an inset axis</span>
+<span class="n">iax</span> <span class="o">=</span> <span class="n">inset_locator</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">borderpad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axes_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;xticks&quot;</span><span class="p">:[],</span> <span class="s2">&quot;yticks&quot;</span><span class="p">:[]})</span>
+<span class="c1"># Zooming into the neighborhood of Coney Island</span>
+<span class="n">nyc</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;geoda.nyc&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">32619</span><span class="p">)</span>
+<span class="n">coney</span> <span class="o">=</span> <span class="n">nyc</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;name==&#39;Coney Island&#39;&quot;</span><span class="p">)</span>
+<span class="n">minx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">=</span> <span class="n">coney</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">total_bounds</span>
+<span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">iax</span><span class="p">)</span>
+<span class="n">coney</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">iax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">iax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">)</span>
+<span class="n">iax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">)</span>
+
+
+<span class="c1"># Connecting the inset axis to the main axis</span>
+<span class="c1"># Note: loc1 and loc2 will accept the integers 1, 2, 3, or 4, each corresponding to a different corner</span>
+<span class="c1"># 1 = upper right, 2 = upper left, 3 = lower left, 4 = lower right</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">inset_locator</span><span class="o">.</span><span class="n">mark_inset</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">iax</span><span class="p">,</span> <span class="n">loc1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc2</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_inset_map_13_0.png" src="../_images/gallery_inset_map_13_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="Using-matplotlib-map-utils">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">matplotlib-map-utils</span></code><a class="headerlink" href="#Using-matplotlib-map-utils" title="Link to this heading">#</a></h2>
+<p>Other option is the <a class="reference external" href="(https://github.com/moss-xyz/matplotlib-map-utils)">matplotlib-map-utils</a> library.</p>
+<p>This library is intended to provide an easier-to-use interface for constructing inset maps (along with scale bars and north arrows) for matplotlib plots than either the <code class="docutils literal notranslate"><span class="pre">inset_axes()</span></code> method or function.</p>
+<p>Using this package, an inset map and its relevant indicators can be made with either <strong>functions</strong> or <strong>classes</strong>, which are re-usable across plots; for the purposes of this tutorial, only the <em>functions</em> will be used, though the <em>classes</em> work in much the same way. Tutorials for customizing the map are available within the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory of the repository (see <a class="reference external" href="https://github.com/moss-xyz/matplotlib-map-utils/blob/main/matplotlib_map_utils/docs/howto_inset_map.ipynb">here</a>).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib_map_utils.core.inset_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">inset_map</span><span class="p">,</span> <span class="n">indicate_extent</span><span class="p">,</span> <span class="n">indicate_detail</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib_map_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_size</span>
+<br/></pre></div>
+</div>
+</div>
+<section id="Set-Up">
+<h3>Set-Up<a class="headerlink" href="#Set-Up" title="Link to this heading">#</a></h3>
+<p>If you are working with a common plot size, <code class="docutils literal notranslate"><span class="pre">matplotlib-map-utils</span></code> has a function called <code class="docutils literal notranslate"><span class="pre">set_size()</span></code> that bulk-updates a variety of settings so that the relevant object looks “better” at that size.</p>
+<p>GeoPandas’ <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function will create figures of <code class="docutils literal notranslate"><span class="pre">6.4&quot;x4.8&quot;</span></code> with the data used in this tutorial, which corresponds to a size of <code class="docutils literal notranslate"><span class="pre">small</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">set_size</span><span class="p">(</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Creating-an-inset-map">
+<h3>Creating an inset map<a class="headerlink" href="#Creating-an-inset-map" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">inset_map()</span></code> function takes in the following arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ax</span></code>: the axis on which to plot the inset map</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">location</span></code>: a string indicating the location of the inset map on the plot (see <code class="docutils literal notranslate"><span class="pre">loc</span></code> under <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.legend</span></code> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html">documentation</a>) e.g., “upper left”, “lower right”, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale</span></code>: the desired height of the north arrow, in <em>inches</em>; can be a single value for a square map, or a two-tuple of (width, height)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad</span></code>: the amount of padding between the inset map and the edge of the plot, in <em>inches</em></p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Making a basic arrow using the minimum amount of arguments</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="c1"># This is using the default values for `scale` and `pad`</span>
+<span class="c1"># xticks and yticks are kwargs passed along to the axis constructor</span>
+<span class="n">iax</span> <span class="o">=</span> <span class="n">inset_map</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="c1"># iax can now be plotted on like normal</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_inset_map_20_0.png" src="../_images/gallery_inset_map_20_0.png" />
+</div>
+</div>
+<p>Optional additional arguments can be passed, such as <code class="docutils literal notranslate"><span class="pre">coords</span></code> and <code class="docutils literal notranslate"><span class="pre">transform</span></code> for positioning the map, <code class="docutils literal notranslate"><span class="pre">to_plot</span></code> for plotting additional data, and any <code class="docutils literal notranslate"><span class="pre">kwarg</span></code> accepted as by an Axes object; see the documentation under <code class="docutils literal notranslate"><span class="pre">docs\howto_inset_map.ipynb</span></code> in <a class="reference external" href="https://github.com/moss-xyz/matplotlib-map-utils/blob/main/matplotlib_map_utils/docs/howto_inset_map.ipynb">the GitHub repo</a> for details.</p>
+</section>
+<section id="Creating-indicators">
+<h3>Creating indicators<a class="headerlink" href="#Creating-indicators" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">matplotlib-map-utils</span></code> makes two indicators available:</p>
+<ul class="simple">
+<li><p><em>Extent indicators</em> may be used when the inset map shows a <em>zoomed-out</em> version of the parent axes, providing additional location context; in this instance, the extent indicator will show the boundary of the extent of the parent axes on the inset map.</p></li>
+<li><p><em>Detail indicators</em> may be used in the opposite scenario, when the inset map shows a <em>zoomed-in</em> version of the parent axes; in this instance, the detail indicator will show the boundary of the extent of the inset map on the parent axes, and connect the two together, just as <code class="docutils literal notranslate"><span class="pre">mark_inset())</span></code> does, above.</p></li>
+</ul>
+<p>To work, both indicators require the CRSs of both the parent and inset axes; however, they do not require the CRSs be the same, and will handle conversion between the two.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Detail indicator example</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># Now adding an inset axis</span>
+<span class="n">iax</span> <span class="o">=</span> <span class="n">inset_map</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="c1"># Zooming into the neighborhood of Coney Island</span>
+<span class="n">coney</span> <span class="o">=</span> <span class="n">nyc</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;name==&#39;Coney Island&#39;&quot;</span><span class="p">)</span>
+<span class="n">minx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">=</span> <span class="n">coney</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">total_bounds</span>
+<span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">iax</span><span class="p">)</span>
+<span class="n">coney</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">iax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">iax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">)</span>
+<span class="n">iax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">)</span>
+
+<span class="c1"># Connecting the inset axis to the main axis</span>
+<span class="n">indicate_detail</span><span class="p">(</span><span class="n">pax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">iax</span><span class="o">=</span><span class="n">iax</span><span class="p">,</span> <span class="n">pcrs</span><span class="o">=</span><span class="mi">32619</span><span class="p">,</span> <span class="n">icrs</span><span class="o">=</span><span class="mi">32619</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_inset_map_23_0.png" src="../_images/gallery_inset_map_23_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extent indicator example</span>
+<span class="c1"># Note that we reverse which data is plotted on which axis!</span>
+<span class="c1"># Parent axis will have the neighborhood</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">nyc</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;name==&#39;Coney Island&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># Now adding an inset axis</span>
+<span class="n">iax</span> <span class="o">=</span> <span class="n">inset_map</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+
+<span class="c1"># Inset axis will have the whole city</span>
+<span class="n">nybb</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">iax</span><span class="p">)</span>
+
+<span class="c1"># Connecting the inset axis to the main axis</span>
+<span class="c1"># The indicator is the red box that appears in the inset axis</span>
+<span class="n">indicate_extent</span><span class="p">(</span><span class="n">pax</span><span class="o">=</span><span class="n">iax</span><span class="p">,</span> <span class="n">bax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">pcrs</span><span class="o">=</span><span class="mi">32619</span><span class="p">,</span> <span class="n">bcrs</span><span class="o">=</span><span class="mi">32619</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_inset_map_24_0.png" src="../_images/gallery_inset_map_24_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="geopandas_rasterio_sample.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using GeoPandas with Rasterio to sample point data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="matplotlib_scalebar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Adding Scale Bars and North Arrows to a Matplotlib Plot</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Using-matplotlib">Using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Using-matplotlib.axes.Axes.inset_axes()">Using <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.inset_axes()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Creating-the-Parent-Axis">Creating the Parent Axis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Adding-an-Inset-Axis">Adding an Inset Axis</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Using-mpl_toolkits.axes_grid1.inset_locator.inset_axes">Using <code class="docutils literal notranslate"><span class="pre">mpl_toolkits.axes_grid1.inset_locator.inset_axes</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Creating-a-Parent-and-Inset-Axis">Creating a Parent and Inset Axis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Marking-an-Indicator">Marking an Indicator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Using-matplotlib-map-utils">Using <code class="docutils literal notranslate"><span class="pre">matplotlib-map-utils</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Set-Up">Set-Up</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Creating-an-inset-map">Creating an inset map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Creating-indicators">Creating indicators</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/gallery/inset_map.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2013–, GeoPandas developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

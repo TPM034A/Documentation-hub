@@ -1,0 +1,6 @@
+﻿geopandas.GeoDataFrame.to\_arrow
+================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoDataFrame.to_arrow

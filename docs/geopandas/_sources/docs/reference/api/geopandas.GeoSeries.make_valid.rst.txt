@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.make\_valid
+===============================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.make_valid

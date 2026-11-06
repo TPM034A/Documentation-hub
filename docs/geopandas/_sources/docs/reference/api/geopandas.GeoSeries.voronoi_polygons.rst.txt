@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.voronoi\_polygons
+=====================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.voronoi_polygons

@@ -66,6 +66,8 @@ Classification metrics
   classification_report
   cohen_kappa_score
   confusion_matrix
+  confusion_matrix_at_thresholds
+  d2_brier_score
   d2_log_loss_score
   dcg_score
   det_curve
@@ -76,6 +78,7 @@ Classification metrics
   jaccard_score
   log_loss
   matthews_corrcoef
+  metric_at_thresholds
   multilabel_confusion_matrix
   ndcg_score
   precision_recall_curve

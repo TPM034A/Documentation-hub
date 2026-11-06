@@ -3,4 +3,4 @@ pandas.set\_option
 
 .. currentmodule:: pandas
 
-.. autodata:: set_option
+.. autofunction:: set_option

@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.minimum\_clearance\_line
+============================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.minimum_clearance_line

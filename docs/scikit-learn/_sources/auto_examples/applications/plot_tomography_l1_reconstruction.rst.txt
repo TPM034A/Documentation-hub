@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_applications_plot_tomography_l1_reconstruction.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -53,7 +53,7 @@ reconstructed image, contrary to the L1 penalization. Note in particular
 the circular artifact separating the pixels in the corners, that have
 contributed to fewer projections than the central disk.
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-146
+.. GENERATED FROM PYTHON SOURCE LINES 38-148
 
 
 
@@ -122,7 +122,9 @@ contributed to fewer projections than the central disk.
             weights += list(w[mask])
             camera_inds += list(inds[mask] + i * l_x)
             data_inds += list(data_unravel_indices[mask])
-        proj_operator = sparse.coo_matrix((weights, (camera_inds, data_inds)))
+        camera_inds = np.array(camera_inds, dtype=np.int32)  # lasso needs int32 inds
+        data_inds = np.array(data_inds, dtype=np.int32)
+        proj_operator = sparse.coo_array((weights, (camera_inds, data_inds)))
         return proj_operator
 
 
@@ -180,7 +182,7 @@ contributed to fewer projections than the central disk.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.311 seconds)
+   **Total running time of the script:** (0 minutes 0.969 seconds)
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_tomography_l1_reconstruction.py:
@@ -192,7 +194,7 @@ contributed to fewer projections than the central disk.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/applications/plot_tomography_l1_reconstruction.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/applications/plot_tomography_l1_reconstruction.ipynb
         :alt: Launch binder
         :width: 150 px
 

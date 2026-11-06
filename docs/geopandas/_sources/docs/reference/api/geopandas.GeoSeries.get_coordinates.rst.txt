@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.get\_coordinates
+====================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.get_coordinates

@@ -17,9 +17,6 @@ pandas.tseries.offsets.Tick
         ~Tick.base
       
       
-        ~Tick.delta
-      
-      
         ~Tick.freqstr
       
       
@@ -51,9 +48,6 @@ pandas.tseries.offsets.Tick
       
       
         ~Tick.copy
-      
-      
-        ~Tick.is_anchored
       
       
         ~Tick.is_month_end

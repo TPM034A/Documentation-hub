@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_linear_model_plot_ard.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -24,7 +24,7 @@ Comparing Linear Bayesian Regressors
 
 This example compares two different bayesian regressors:
 
-- a :ref:`automatic_relevance_determination`
+- an :ref:`automatic_relevance_determination`
 - a :ref:`bayesian_ridge_regression`
 
 In the first part, we use an :ref:`ordinary_least_squares` (OLS) model as a
@@ -351,7 +351,7 @@ models fail when extrapolating.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.650 seconds)
+   **Total running time of the script:** (0 minutes 0.713 seconds)
 
 
 .. _sphx_glr_download_auto_examples_linear_model_plot_ard.py:
@@ -363,7 +363,7 @@ models fail when extrapolating.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_ard.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_ard.ipynb
         :alt: Launch binder
         :width: 150 px
 

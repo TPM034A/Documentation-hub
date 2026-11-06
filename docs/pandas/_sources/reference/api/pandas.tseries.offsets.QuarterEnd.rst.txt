@@ -53,9 +53,6 @@ pandas.tseries.offsets.QuarterEnd
         ~QuarterEnd.copy
       
       
-        ~QuarterEnd.is_anchored
-      
-      
         ~QuarterEnd.is_month_end
       
       

@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-learn/stable/install.html" />
 <meta property="og:site_name" content="scikit-learn" />
 <meta property="og:description" content="There are different ways to install scikit-learn: Install the latest official release. This is the best approach for most users. It will provide a stable version and pre-built packages are availabl..." />
-<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-notext.png" />
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="There are different ways to install scikit-learn: Install the latest official release. This is the best approach for most users. It will provide a stable version and pre-built packages are availabl..." />
 
-    <title>Installing scikit-learn &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>Installing scikit-learn &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,31 +35,32 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="_static/documentation_options.js?v=908dc885"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/documentation_options.js?v=60b3a732"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=97f0b27d"></script>
     <script src="_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -67,15 +68,17 @@
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'install';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/install.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
@@ -84,21 +87,27 @@
     <link rel="prev" title="Index" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -124,7 +133,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -150,8 +159,8 @@
       
     
     
-    <img src="_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -272,6 +281,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="about.html">
     About us
   </a>
@@ -299,11 +315,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -316,8 +339,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -484,6 +506,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="about.html">
     About us
   </a>
@@ -501,11 +530,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -518,8 +554,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -604,10 +639,13 @@ and pre-built packages are available for most platforms.</p></li>
 This is a quick option for those who have operating systems or Python
 distributions that distribute scikit-learn.
 It might not provide the latest release version.</p></li>
-<li><p><a class="reference internal" href="developers/advanced_installation.html#install-bleeding-edge"><span class="std std-ref">Building the package from source</span></a>. This is best for users who want the
-latest-and-greatest features and aren’t afraid of running
-brand-new code. This is also needed for users who wish to contribute to the
-project.</p></li>
+<li><p><a class="reference internal" href="#install-nightly-builds"><span class="std std-ref">Install a nightly build</span></a>. This is the quickest way to
+try a new feature that will be shipped in the next release (that is, a
+feature from a pull-request that was recently merged to the main branch); or to check
+whether a bug you encountered has been fixed since the last release.</p></li>
+<li><p><a class="reference internal" href="developers/development_setup.html#setup-development-environment"><span class="std std-ref">Building the package from source</span></a>.
+This is mainly needed by users who wish to contribute to the project, as this allows
+to install an editable version of the project.</p></li>
 </ul>
 <section id="installing-the-latest-release">
 <span id="install-official-release"></span><h2>Installing the latest release<a class="headerlink" href="#installing-the-latest-release" title="Link to this heading">#</a></h2>
@@ -650,7 +688,7 @@ span.prompt1:before {
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">show</span> <span class="n">scikit-learn</span>  <span class="c"># show scikit-learn version and location</span></span>
 <span class="prompt1"><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">freeze</span>             <span class="c"># show all installed packages in the environment</span></span>
-<span class="prompt1"><span class="n">python</span> <span class="n">-c</span> <span class="s2">&quot;import sklearn; sklearn.show_versions()&quot;</span></span>
+<span class="prompt1"><span class="n">python</span> <span class="n">-c</span> <span class="s2">"import sklearn; sklearn.show_versions()"</span></span>
 </pre></div></div></div>
 <input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
 <label class="sd-tab-label tab-6" data-sync-group="tab" data-sync-id="package-manager-conda" for="sd-tab-item-4">
@@ -667,7 +705,7 @@ span.prompt2:before {
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">conda<span class="w"> </span>list<span class="w"> </span>scikit-learn<span class="w">  </span><span class="c1"># show scikit-learn version and location</span></span>
 <span class="prompt2">conda<span class="w"> </span>list<span class="w">               </span><span class="c1"># show all installed packages in the environment</span></span>
-<span class="prompt2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sklearn; sklearn.show_versions()&quot;</span></span>
+<span class="prompt2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sklearn; sklearn.show_versions()"</span></span>
 </pre></div></div></div>
 </div>
 </div>
@@ -689,7 +727,7 @@ order to avoid potential conflicts with other packages.</p>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>scikit-learn<span class="w">  </span><span class="c1"># show scikit-learn version and location</span></span>
 <span class="prompt2">python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w">             </span><span class="c1"># show all installed packages in the environment</span></span>
-<span class="prompt2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sklearn; sklearn.show_versions()&quot;</span></span>
+<span class="prompt2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sklearn; sklearn.show_versions()"</span></span>
 </pre></div></div></div>
 <input id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
 <label class="sd-tab-label tab-6" data-sync-group="tab" data-sync-id="package-manager-conda" for="sd-tab-item-6">
@@ -702,7 +740,7 @@ administrator permission required). Then run:</p>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">conda<span class="w"> </span>list<span class="w"> </span>scikit-learn<span class="w">  </span><span class="c1"># show scikit-learn version and location</span></span>
 <span class="prompt2">conda<span class="w"> </span>list<span class="w">               </span><span class="c1"># show all installed packages in the environment</span></span>
-<span class="prompt2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sklearn; sklearn.show_versions()&quot;</span></span>
+<span class="prompt2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sklearn; sklearn.show_versions()"</span></span>
 </pre></div></div></div>
 </div>
 </div>
@@ -728,7 +766,7 @@ order to avoid potential conflicts with other packages.</p>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>scikit-learn<span class="w">  </span><span class="c1"># show scikit-learn version and location</span></span>
 <span class="prompt2">python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w">             </span><span class="c1"># show all installed packages in the environment</span></span>
-<span class="prompt2">python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sklearn; sklearn.show_versions()&quot;</span></span>
+<span class="prompt2">python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sklearn; sklearn.show_versions()"</span></span>
 </pre></div></div></div>
 <input id="sd-tab-item-8" name="sd-tab-set-3" type="radio">
 <label class="sd-tab-label tab-6" data-sync-group="tab" data-sync-id="package-manager-conda" for="sd-tab-item-8">
@@ -741,7 +779,7 @@ administrator permission required). Then run:</p>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">conda<span class="w"> </span>list<span class="w"> </span>scikit-learn<span class="w">  </span><span class="c1"># show scikit-learn version and location</span></span>
 <span class="prompt2">conda<span class="w"> </span>list<span class="w">               </span><span class="c1"># show all installed packages in the environment</span></span>
-<span class="prompt2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sklearn; sklearn.show_versions()&quot;</span></span>
+<span class="prompt2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sklearn; sklearn.show_versions()"</span></span>
 </pre></div></div></div>
 </div>
 </div>
@@ -773,43 +811,51 @@ purpose.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>numpy</p></td>
-<td><p>1.22.0</p></td>
+<td><p>1.24.1</p></td>
 <td><p>build, install</p></td>
 </tr>
 <tr class="row-odd"><td><p>scipy</p></td>
-<td><p>1.8.0</p></td>
+<td><p>1.10.0</p></td>
 <td><p>build, install</p></td>
 </tr>
 <tr class="row-even"><td><p>joblib</p></td>
-<td><p>1.2.0</p></td>
+<td><p>1.4.0</p></td>
 <td><p>install</p></td>
 </tr>
-<tr class="row-odd"><td><p>threadpoolctl</p></td>
-<td><p>3.1.0</p></td>
+<tr class="row-odd"><td><p>narwhals</p></td>
+<td><p>2.0.1</p></td>
 <td><p>install</p></td>
 </tr>
-<tr class="row-even"><td><p>cython</p></td>
-<td><p>3.0.10</p></td>
+<tr class="row-even"><td><p>threadpoolctl</p></td>
+<td><p>3.5.0</p></td>
+<td><p>install</p></td>
+</tr>
+<tr class="row-odd"><td><p>cython</p></td>
+<td><p>3.1.2</p></td>
 <td><p>build</p></td>
 </tr>
-<tr class="row-odd"><td><p>meson-python</p></td>
+<tr class="row-even"><td><p>meson-python</p></td>
 <td><p>0.17.1</p></td>
 <td><p>build</p></td>
 </tr>
-<tr class="row-even"><td><p>matplotlib</p></td>
-<td><p>3.5.0</p></td>
+<tr class="row-odd"><td><p>matplotlib</p></td>
+<td><p>3.6.1</p></td>
 <td><p>benchmark, docs, examples, tests</p></td>
 </tr>
-<tr class="row-odd"><td><p>scikit-image</p></td>
-<td><p>0.19.0</p></td>
+<tr class="row-even"><td><p>scikit-image</p></td>
+<td><p>0.22.0</p></td>
+<td><p>docs, examples</p></td>
+</tr>
+<tr class="row-odd"><td><p>pandas</p></td>
+<td><p>1.5.0</p></td>
+<td><p>benchmark, docs, examples, tests</p></td>
+</tr>
+<tr class="row-even"><td><p>rich</p></td>
+<td><p>14.1.0</p></td>
 <td><p>docs, examples, tests</p></td>
 </tr>
-<tr class="row-even"><td><p>pandas</p></td>
-<td><p>1.4.0</p></td>
-<td><p>benchmark, docs, examples, tests</p></td>
-</tr>
 <tr class="row-odd"><td><p>seaborn</p></td>
-<td><p>0.9.0</p></td>
+<td><p>0.13.0</p></td>
 <td><p>docs, examples</p></td>
 </tr>
 <tr class="row-even"><td><p>memory_profiler</p></td>
@@ -825,64 +871,72 @@ purpose.</p>
 <td><p>tests</p></td>
 </tr>
 <tr class="row-odd"><td><p>ruff</p></td>
-<td><p>0.11.7</p></td>
+<td><p>0.12.2</p></td>
 <td><p>tests</p></td>
 </tr>
-<tr class="row-even"><td><p>mypy</p></td>
-<td><p>1.15</p></td>
+<tr class="row-even"><td><p>pyrefly</p></td>
+<td><p>1.2.0</p></td>
 <td><p>tests</p></td>
 </tr>
-<tr class="row-odd"><td><p>pyamg</p></td>
-<td><p>4.2.1</p></td>
+<tr class="row-odd"><td><p>cython-lint</p></td>
+<td><p>0.21</p></td>
 <td><p>tests</p></td>
 </tr>
-<tr class="row-even"><td><p>polars</p></td>
+<tr class="row-even"><td><p>sphinx-lint</p></td>
+<td><p>1.0.2</p></td>
+<td><p>tests</p></td>
+</tr>
+<tr class="row-odd"><td><p>codespell</p></td>
+<td><p>2.4.1</p></td>
+<td><p>tests</p></td>
+</tr>
+<tr class="row-even"><td><p>pyamg</p></td>
+<td><p>5.0.0</p></td>
+<td><p>tests</p></td>
+</tr>
+<tr class="row-odd"><td><p>polars</p></td>
 <td><p>0.20.30</p></td>
 <td><p>docs, tests</p></td>
 </tr>
-<tr class="row-odd"><td><p>pyarrow</p></td>
-<td><p>12.0.0</p></td>
+<tr class="row-even"><td><p>pyarrow</p></td>
+<td><p>13.0.0</p></td>
 <td><p>tests</p></td>
 </tr>
-<tr class="row-even"><td><p>sphinx</p></td>
+<tr class="row-odd"><td><p>sphinx</p></td>
 <td><p>7.3.7</p></td>
 <td><p>docs</p></td>
 </tr>
-<tr class="row-odd"><td><p>sphinx-copybutton</p></td>
+<tr class="row-even"><td><p>sphinx-copybutton</p></td>
 <td><p>0.5.2</p></td>
 <td><p>docs</p></td>
 </tr>
-<tr class="row-even"><td><p>sphinx-gallery</p></td>
+<tr class="row-odd"><td><p>sphinx-gallery</p></td>
 <td><p>0.17.1</p></td>
 <td><p>docs</p></td>
 </tr>
-<tr class="row-odd"><td><p>numpydoc</p></td>
+<tr class="row-even"><td><p>numpydoc</p></td>
 <td><p>1.2.0</p></td>
 <td><p>docs, tests</p></td>
 </tr>
-<tr class="row-even"><td><p>Pillow</p></td>
-<td><p>8.4.0</p></td>
+<tr class="row-odd"><td><p>Pillow</p></td>
+<td><p>12.1.1</p></td>
 <td><p>docs</p></td>
 </tr>
-<tr class="row-odd"><td><p>pooch</p></td>
-<td><p>1.6.0</p></td>
+<tr class="row-even"><td><p>pooch</p></td>
+<td><p>1.8.0</p></td>
 <td><p>docs, examples, tests</p></td>
 </tr>
-<tr class="row-even"><td><p>sphinx-prompt</p></td>
+<tr class="row-odd"><td><p>sphinx-prompt</p></td>
 <td><p>1.4.0</p></td>
 <td><p>docs</p></td>
 </tr>
-<tr class="row-odd"><td><p>sphinxext-opengraph</p></td>
+<tr class="row-even"><td><p>sphinxext-opengraph</p></td>
 <td><p>0.9.1</p></td>
 <td><p>docs</p></td>
 </tr>
-<tr class="row-even"><td><p>plotly</p></td>
-<td><p>5.14.0</p></td>
+<tr class="row-odd"><td><p>plotly</p></td>
+<td><p>5.22.0</p></td>
 <td><p>docs, examples</p></td>
-</tr>
-<tr class="row-odd"><td><p>sphinxcontrib-sass</p></td>
-<td><p>0.3.4</p></td>
-<td><p>docs</p></td>
 </tr>
 <tr class="row-even"><td><p>sphinx-remove-toctrees</p></td>
 <td><p>1.0.0.post1</p></td>
@@ -963,12 +1017,12 @@ It can be installed using <code class="docutils literal notranslate"><span class
 </pre></div></div></section>
 <section id="netbsd">
 <h3>NetBSD<a class="headerlink" href="#netbsd" title="Link to this heading">#</a></h3>
-<p>scikit-learn is available via <a class="reference external" href="http://pkgsrc-wip.sourceforge.net/">pkgsrc-wip</a>:
+<p>scikit-learn is available via <a class="reference external" href="https://pkgsrc-wip.sourceforge.net/">pkgsrc-wip</a>:
 <a class="reference external" href="https://pkgsrc.se/math/py-scikit-learn">https://pkgsrc.se/math/py-scikit-learn</a></p>
 </section>
 <section id="macports-for-mac-osx">
 <h3>MacPorts for Mac OSX<a class="headerlink" href="#macports-for-mac-osx" title="Link to this heading">#</a></h3>
-<p>The MacPorts package is named <code class="docutils literal notranslate"><span class="pre">py&lt;XY&gt;-scikits-learn</span></code>,
+<p>The MacPorts package is named <code class="docutils literal notranslate"><span class="pre">py&lt;XY&gt;-scikit-learn</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">XY</span></code> denotes the Python version.
 It can be installed by typing the following
 command:</p>
@@ -993,7 +1047,7 @@ is used as a fallback. Those optimized solvers come from the oneDAL
 C++ library and are optimized for the x86_64 architecture, and are
 optimized for multi-core Intel CPUs.</p>
 <p>Note that those solvers are not enabled by default, please refer to the
-<a class="reference external" href="https://intel.github.io/scikit-learn-intelex/latest/what-is-patching.html">scikit-learn-intelex</a>
+<a class="reference external" href="https://uxlfoundation.github.io/scikit-learn-intelex/latest/patching.html">scikit-learn-intelex</a>
 documentation for more details on usage scenarios. Direct export example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt3:before {
@@ -1026,7 +1080,7 @@ size limit of Windows if Python is installed in a nested location such as the
 <span class="n">Collecting</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
 <span class="o">...</span>
 <span class="n">Installing</span> <span class="n">collected</span> <span class="n">packages</span><span class="p">:</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
-<span class="n">ERROR</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">install</span> <span class="n">packages</span> <span class="n">due</span> <span class="n">to</span> <span class="n">an</span> <span class="ne">OSError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">2</span><span class="p">]</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">username</span><span class="se">\\</span><span class="s1">AppData</span><span class="se">\\</span><span class="s1">Local</span><span class="se">\\</span><span class="s1">Packages</span><span class="se">\\</span><span class="s1">PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0</span><span class="se">\\</span><span class="s1">LocalCache</span><span class="se">\\</span><span class="s1">local-packages</span><span class="se">\\</span><span class="s1">Python37</span><span class="se">\\</span><span class="s1">site-packages</span><span class="se">\\</span><span class="s1">sklearn</span><span class="se">\\</span><span class="s1">datasets</span><span class="se">\\</span><span class="s1">tests</span><span class="se">\\</span><span class="s1">data</span><span class="se">\\</span><span class="s1">openml</span><span class="se">\\</span><span class="s1">292</span><span class="se">\\</span><span class="s1">api-v1-json-data-list-data_name-australian-limit-2-data_version-1-status-deactivated.json.gz&#39;</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">install</span> <span class="n">packages</span> <span class="n">due</span> <span class="n">to</span> <span class="n">an</span> <span class="ne">OSError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">2</span><span class="p">]</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="p">:</span> <span class="s1">'C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">username</span><span class="se">\\</span><span class="s1">AppData</span><span class="se">\\</span><span class="s1">Local</span><span class="se">\\</span><span class="s1">Packages</span><span class="se">\\</span><span class="s1">PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0</span><span class="se">\\</span><span class="s1">LocalCache</span><span class="se">\\</span><span class="s1">local-packages</span><span class="se">\\</span><span class="s1">Python37</span><span class="se">\\</span><span class="s1">site-packages</span><span class="se">\\</span><span class="s1">sklearn</span><span class="se">\\</span><span class="s1">datasets</span><span class="se">\\</span><span class="s1">tests</span><span class="se">\\</span><span class="s1">data</span><span class="se">\\</span><span class="s1">openml</span><span class="se">\\</span><span class="s1">292</span><span class="se">\\</span><span class="s1">api-v1-json-data-list-data_name-australian-limit-2-data_version-1-status-deactivated.json.gz'</span>
 </pre></div>
 </div>
 <p>In this case it is possible to lift that limit in the Windows registry by
@@ -1043,6 +1097,17 @@ it to 1.</p></li>
 </pre></div></div></li>
 </ol>
 </section>
+</section>
+<section id="installing-nightly-builds">
+<span id="install-nightly-builds"></span><h2>Installing nightly builds<a class="headerlink" href="#installing-nightly-builds" title="Link to this heading">#</a></h2>
+<p>The continuous integration servers of the scikit-learn project build, test
+and upload wheel packages for the most recent Python version on a nightly
+basis.</p>
+<p>You can install the nightly build of scikit-learn using the <code class="docutils literal notranslate"><span class="pre">scientific-python-nightly-wheels</span></code>
+index from the PyPI registry of <code class="docutils literal notranslate"><span class="pre">anaconda.org</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">pip<span class="w"> </span>install<span class="w"> </span>--pre<span class="w"> </span>--extra-index<span class="w"> </span>https://pypi.anaconda.org/scientific-python-nightly-wheels/simple<span class="w"> </span>scikit-learn</span>
+</pre></div></div><p>Note that first uninstalling scikit-learn might be required to be able to
+install nightly builds of scikit-learn.</p>
 </section>
 </section>
 
@@ -1095,8 +1160,8 @@ it to 1.</p></li>
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-latest-release">Installing the latest release</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-distributions-of-scikit-learn">Third party distributions of scikit-learn</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpine-linux">Alpine Linux</a></li>
@@ -1114,17 +1179,25 @@ it to 1.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-caused-by-file-path-length-limit-on-windows">Error caused by file path length limit on Windows</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-nightly-builds">Installing nightly builds</a></li>
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/install.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1139,8 +1212,8 @@ it to 1.</p></li>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1151,7 +1224,7 @@ it to 1.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

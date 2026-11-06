@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-learn/stable/auto_examples/inspection/plot_causal_interpretation.html" />
 <meta property="og:site_name" content="scikit-learn" />
 <meta property="og:description" content="Machine Learning models are great for measuring statistical associations. Unfortunately, unless we’re willing to make strong assumptions about the data, those models are unable to infer causal effe..." />
-<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-notext.png" />
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="Machine Learning models are great for measuring statistical associations. Unfortunately, unless we’re willing to make strong assumptions about the data, those models are unable to infer causal effe..." />
 
-    <title>Failure of Machine Learning to infer causal effects &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>Failure of Machine Learning to infer causal effects &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,31 +35,32 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -67,15 +68,17 @@
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/inspection/plot_causal_interpretation';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/auto_examples/inspection/plot_causal_interpretation.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -84,21 +87,27 @@
     <link rel="prev" title="Common pitfalls in the interpretation of coefficients of linear models" href="plot_linear_model_coefficient_interpretation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -124,7 +133,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -150,8 +159,8 @@
       
     
     
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -272,6 +281,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../about.html">
     About us
   </a>
@@ -299,11 +315,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -316,8 +339,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -484,6 +506,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../about.html">
     About us
   </a>
@@ -501,11 +530,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -518,8 +554,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -548,12 +583,22 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../release_highlights/index.html">Release Highlights</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_9_0.html">Release Highlights for scikit-learn 1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_8_0.html">Release Highlights for scikit-learn 1.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_7_0.html">Release Highlights for scikit-learn 1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_6_0.html">Release Highlights for scikit-learn 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_5_0.html">Release Highlights for scikit-learn 1.5</a></li>
@@ -580,6 +625,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration.html">Probability calibration of classifiers</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../callbacks/index.html">Callbacks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_scoring_monitor.html">Analysis of the convergence of penalized logistic regression models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_callback_support.html">Supporting callbacks in third party estimators</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_comparison.html">Classifier comparison</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_lda_qda.html">Linear and Quadratic Discriminant Analysis with covariance ellipsoid</a></li>
@@ -593,7 +643,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_coin_ward_segmentation.html">A demo of structured Ward hierarchical clustering on an image of coins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_mean_shift.html">A demo of the mean-shift clustering algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_adjusted_for_chance_measures.html">Adjustment for chance in clustering performance evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering.html">Agglomerative clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering_metrics.html">Agglomerative clustering with different metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_plusplus.html">An example of K-Means++ initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_bisect_kmeans.html">Bisecting K-Means and Regular K-Means Performance Comparison</a></li>
@@ -609,7 +658,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_stability_low_dim_dense.html">Empirical evaluation of the impact of k-means initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_digits_agglomeration.html">Feature agglomeration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_feature_agglomeration_vs_univariate_selection.html">Feature agglomeration vs. univariate selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering: structured vs unstructured ward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_inductive_clustering.html">Inductive Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_dict_face_patches.html">Online learning of a dictionary of parts of faces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_dendrogram.html">Plot Hierarchical Clustering Dendrogram</a></li>
@@ -690,7 +739,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../applications/index.html">Examples based on real world datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_tomography_l1_reconstruction.html">Compressive sensing: tomography reconstruction with L1 prior (Lasso)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and SVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and kernel approximation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_digits_denoising.html">Image denoising using kernel PCA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_time_series_lagged_features.html">Lagged features for time series forecasting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_model_complexity_influence.html">Model Complexity Influence</a></li>
@@ -701,7 +750,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_cyclical_feature_engineering.html">Time-related feature engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_topics_extraction_with_nmf_lda.html">Topic extraction with Non-negative Matrix Factorization and Latent Dirichlet Allocation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_stock_market.html">Visualizing the stock market structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/index.html">Feature Selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -754,7 +803,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_model_selection.html">Lasso model selection: AIC-BIC / cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_dense_vs_sparse_data.html">Lasso on dense and sparse data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_lasso_lars_elasticnet_path.html">Lasso, Lasso-LARS, and Elastic Net paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_logistic.html">Logistic function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_mnist.html">MNIST classification using multinomial logistic + L1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_20newsgroups.html">Multiclass sparse logistic regression on 20newgroups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_nnls.html">Non-negative least squares</a></li>
@@ -779,6 +827,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Inspection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_linear_model_coefficient_interpretation.html">Common pitfalls in the interpretation of coefficients of linear models</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Failure of Machine Learning to infer causal effects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_partial_dependence.html">Partial Dependence and Individual Conditional Expectation Plots</a></li>
@@ -800,9 +849,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../miscellaneous/index.html">Miscellaneous</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_anomaly_comparison.html">Comparing anomaly detection algorithms for outlier detection on toy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_kernel_ridge_regression.html">Comparison of kernel ridge regression and SVR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Developing Estimators Compliant with Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_pipeline_display.html">Displaying Pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_estimator_representation.html">Displaying estimators and complex pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_outlier_detection_bench.html">Evaluation of outlier detection estimators</a></li>
@@ -810,7 +859,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multioutput_face_completion.html">Face completion with a multi-output estimators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_set_output.html">Introducing the <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_isotonic_regression.html">Isotonic Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multilabel.html">Multilabel classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_roc_curve_visualization_api.html">ROC Curve with Visualization API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_johnson_lindenstrauss_bound.html">The Johnson-Lindenstrauss bound for embedding with random projections</a></li>
@@ -827,11 +875,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_likelihood_ratios.html">Class Likelihood Ratios to measure classification performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_randomized_search.html">Comparing randomized search and grid search for hyperparameter estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_successive_halving_heatmap.html">Comparison between grid search and successive halving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Confusion matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_grid_search_digits.html">Custom refit strategy of a grid search with cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_multi_metric_evaluation.html">Demonstration of multi-metric evaluation on cross_val_score and GridSearchCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_det.html">Detection error tradeoff (DET) curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_train_error_vs_test_error.html">Effect of model regularization on training and test error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Evaluate the performance of a classifier with Confusion Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_roc.html">Multiclass Receiver Operating Characteristic (ROC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_nested_cross_validation_iris.html">Nested versus non-nested cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_cv_predict.html">Plotting Cross-Validated Predictions</a></li>
@@ -990,7 +1038,7 @@
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#sphx-glr-download-auto-examples-inspection-plot-causal-interpretation-py"><span class="std std-ref">Go to the end</span></a>
-to download the full example code. or to run this example in your browser via JupyterLite or Binder</p>
+to download the full example code or to run this example in your browser via JupyterLite or Binder.</p>
 </div>
 <section class="sphx-glr-example-title" id="failure-of-machine-learning-to-infer-causal-effects">
 <span id="sphx-glr-auto-examples-inspection-plot-causal-interpretation-py"></span><h1>Failure of Machine Learning to infer causal effects<a class="headerlink" href="#failure-of-machine-learning-to-infer-causal-effects" title="Link to this heading">#</a></h1>
@@ -1032,17 +1080,17 @@ have a positive effect on hourly wages.</p>
 
 <span class="n">true_coef</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.Series" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pd</span><span class="o">.</span><span class="n">Series</span></a><span class="p">(</span>
     <span class="p">{</span>
-        <span class="s2">&quot;college degree&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
-        <span class="s2">&quot;ability&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
-        <span class="s2">&quot;experience&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-        <span class="s2">&quot;parent hourly wage&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">"college degree"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+        <span class="s2">"ability"</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+        <span class="s2">"experience"</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="s2">"parent hourly wage"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">)</span>
 <span class="n">hourly_wages</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">true_coef</span><span class="p">[</span><span class="s2">&quot;experience&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">experiences</span>
-    <span class="o">+</span> <span class="n">true_coef</span><span class="p">[</span><span class="s2">&quot;parent hourly wage&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">parent_hourly_wages</span>
-    <span class="o">+</span> <span class="n">true_coef</span><span class="p">[</span><span class="s2">&quot;college degree&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">college_degrees</span>
-    <span class="o">+</span> <span class="n">true_coef</span><span class="p">[</span><span class="s2">&quot;ability&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">abilities</span>
+    <span class="n">true_coef</span><span class="p">[</span><span class="s2">"experience"</span><span class="p">]</span> <span class="o">*</span> <span class="n">experiences</span>
+    <span class="o">+</span> <span class="n">true_coef</span><span class="p">[</span><span class="s2">"parent hourly wage"</span><span class="p">]</span> <span class="o">*</span> <span class="n">parent_hourly_wages</span>
+    <span class="o">+</span> <span class="n">true_coef</span><span class="p">[</span><span class="s2">"college degree"</span><span class="p">]</span> <span class="o">*</span> <span class="n">college_degrees</span>
+    <span class="o">+</span> <span class="n">true_coef</span><span class="p">[</span><span class="s2">"ability"</span><span class="p">]</span> <span class="o">*</span> <span class="n">abilities</span>
     <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
 <span class="p">)</span>
 
@@ -1059,15 +1107,15 @@ ability and college degree.</p>
 
 <span class="n">df</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">(</span>
     <span class="p">{</span>
-        <span class="s2">&quot;college degree&quot;</span><span class="p">:</span> <span class="n">college_degrees</span><span class="p">,</span>
-        <span class="s2">&quot;ability&quot;</span><span class="p">:</span> <span class="n">abilities</span><span class="p">,</span>
-        <span class="s2">&quot;hourly wage&quot;</span><span class="p">:</span> <span class="n">hourly_wages</span><span class="p">,</span>
-        <span class="s2">&quot;experience&quot;</span><span class="p">:</span> <span class="n">experiences</span><span class="p">,</span>
-        <span class="s2">&quot;parent hourly wage&quot;</span><span class="p">:</span> <span class="n">parent_hourly_wages</span><span class="p">,</span>
+        <span class="s2">"college degree"</span><span class="p">:</span> <span class="n">college_degrees</span><span class="p">,</span>
+        <span class="s2">"ability"</span><span class="p">:</span> <span class="n">abilities</span><span class="p">,</span>
+        <span class="s2">"hourly wage"</span><span class="p">:</span> <span class="n">hourly_wages</span><span class="p">,</span>
+        <span class="s2">"experience"</span><span class="p">:</span> <span class="n">experiences</span><span class="p">,</span>
+        <span class="s2">"parent hourly wage"</span><span class="p">:</span> <span class="n">parent_hourly_wages</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">)</span>
 
-<span class="n">grid</span> <span class="o">=</span> <a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="seaborn.pairplot" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="seaborn.pairplot" class="sphx-glr-backref-module-seaborn sphx-glr-backref-type-py-function"><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">"kde"</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_plot_causal_interpretation_001.png" srcset="../../_images/sphx_glr_plot_causal_interpretation_001.png" alt="plot causal interpretation" class = "sphx-glr-single-img"/><p>In the next section, we train predictive models and we therefore split the
@@ -1075,7 +1123,7 @@ target column from over features and we split the data into a training and a
 testing set.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a href="../../modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a>
 
-<span class="n">target_name</span> <span class="o">=</span> <span class="s2">&quot;hourly wage&quot;</span>
+<span class="n">target_name</span> <span class="o">=</span> <span class="s2">"hourly wage"</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">target_name</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">target_name</span><span class="p">]</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -1089,14 +1137,14 @@ we assume that all variables used by the true generative model are available.</p
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LinearRegression</span></a>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <a href="../../modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a>
 
-<span class="n">features_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;experience&quot;</span><span class="p">,</span> <span class="s2">&quot;parent hourly wage&quot;</span><span class="p">,</span> <span class="s2">&quot;college degree&quot;</span><span class="p">,</span> <span class="s2">&quot;ability&quot;</span><span class="p">]</span>
+<span class="n">features_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"experience"</span><span class="p">,</span> <span class="s2">"parent hourly wage"</span><span class="p">,</span> <span class="s2">"college degree"</span><span class="p">,</span> <span class="s2">"ability"</span><span class="p">]</span>
 
 <span class="n">regressor_with_ability</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LinearRegression</span></a><span class="p">()</span>
 <span class="n">regressor_with_ability</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">features_names</span><span class="p">],</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_pred_with_ability</span> <span class="o">=</span> <span class="n">regressor_with_ability</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">features_names</span><span class="p">])</span>
 <span class="n">R2_with_ability</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_with_ability</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2 score with ability: </span><span class="si">{</span><span class="n">R2_with_ability</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"R2 score with ability: </span><span class="si">{</span><span class="n">R2_with_ability</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>R2 score with ability: 0.975
@@ -1110,12 +1158,12 @@ the true generative model.</p>
 <span class="n">model_coef</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.Series" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pd</span><span class="o">.</span><span class="n">Series</span></a><span class="p">(</span><span class="n">regressor_with_ability</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">features_names</span><span class="p">)</span>
 <span class="n">coef</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html#pandas.concat" title="pandas.concat" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function"><span class="n">pd</span><span class="o">.</span><span class="n">concat</span></a><span class="p">(</span>
     <span class="p">[</span><span class="n">true_coef</span><span class="p">[</span><span class="n">features_names</span><span class="p">],</span> <span class="n">model_coef</span><span class="p">],</span>
-    <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Coefficients of true generative model&quot;</span><span class="p">,</span> <span class="s2">&quot;Model coefficients&quot;</span><span class="p">],</span>
+    <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"Coefficients of true generative model"</span><span class="p">,</span> <span class="s2">"Model coefficients"</span><span class="p">],</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">coef</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Coefficient values&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Coefficients of the linear regression including the ability features&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Coefficient values"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Coefficients of the linear regression including the ability features"</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 </pre></div>
 </div>
@@ -1126,14 +1174,14 @@ the true generative model.</p>
 from proxies that inadvertently measure education as well (e.g. by IQ tests).
 But omitting the “ability” feature from a linear model inflates the estimate
 via a positive OVB.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">features_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;experience&quot;</span><span class="p">,</span> <span class="s2">&quot;parent hourly wage&quot;</span><span class="p">,</span> <span class="s2">&quot;college degree&quot;</span><span class="p">]</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">features_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"experience"</span><span class="p">,</span> <span class="s2">"parent hourly wage"</span><span class="p">,</span> <span class="s2">"college degree"</span><span class="p">]</span>
 
 <span class="n">regressor_without_ability</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LinearRegression</span></a><span class="p">()</span>
 <span class="n">regressor_without_ability</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">features_names</span><span class="p">],</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_pred_without_ability</span> <span class="o">=</span> <span class="n">regressor_without_ability</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">features_names</span><span class="p">])</span>
 <span class="n">R2_without_ability</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_without_ability</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2 score without ability: </span><span class="si">{</span><span class="n">R2_without_ability</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"R2 score without ability: </span><span class="si">{</span><span class="n">R2_without_ability</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>R2 score without ability: 0.968
@@ -1145,12 +1193,12 @@ different from the true generative model.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">model_coef</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.Series" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pd</span><span class="o">.</span><span class="n">Series</span></a><span class="p">(</span><span class="n">regressor_without_ability</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">features_names</span><span class="p">)</span>
 <span class="n">coef</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html#pandas.concat" title="pandas.concat" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function"><span class="n">pd</span><span class="o">.</span><span class="n">concat</span></a><span class="p">(</span>
     <span class="p">[</span><span class="n">true_coef</span><span class="p">[</span><span class="n">features_names</span><span class="p">],</span> <span class="n">model_coef</span><span class="p">],</span>
-    <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Coefficients of true generative model&quot;</span><span class="p">,</span> <span class="s2">&quot;Model coefficients&quot;</span><span class="p">],</span>
+    <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"Coefficients of true generative model"</span><span class="p">,</span> <span class="s2">"Model coefficients"</span><span class="p">],</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">coef</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Coefficient values&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Coefficients of the linear regression excluding the ability feature&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Coefficient values"</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Coefficients of the linear regression excluding the ability feature"</span><span class="p">)</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
@@ -1175,14 +1223,14 @@ college degree) is randomized. When an experiment is prohibitively expensive
 or unethical, researchers can sometimes use other causal inference techniques
 such as <a class="reference external" href="https://en.wikipedia.org/wiki/Instrumental_variables_estimation">Instrumental Variables</a> (IV)
 estimations.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.048 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.629 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-inspection-plot-causal-interpretation-py">
 <div class="binder-badge docutils container">
-<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/inspection/plot_causal_interpretation.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo16.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/inspection/plot_causal_interpretation.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo17.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="lite-badge docutils container">
-<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/inspection/plot_causal_interpretation.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo16.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/inspection/plot_causal_interpretation.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo17.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
@@ -1197,16 +1245,16 @@ estimations.</p>
 </div>
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In linear models, the target value is modeled as a linear combination of the features (see the linear_model User Guide section for a description of a set of linear models available in scikit-learn). Coefficients in multiple linear models represent the relationship between the given feature, X_i and the target, y, assuming that all the other features remain constant (conditional dependence). This is different from plotting X_i versus y and fitting a linear relationship: in that case all possible values of the other features are taken into account in the estimation (marginal dependence)."><img alt="" src="../../_images/sphx_glr_plot_linear_model_coefficient_interpretation_thumb.png" />
-<p><a class="reference internal" href="plot_linear_model_coefficient_interpretation.html#sphx-glr-auto-examples-inspection-plot-linear-model-coefficient-interpretation-py"><span class="std std-ref">Common pitfalls in the interpretation of coefficients of linear models</span></a></p>
+<p><a class="reference internal" href="plot_linear_model_coefficient_interpretation.html"><span class="doc">Common pitfalls in the interpretation of coefficients of linear models</span></a></p>
   <div class="sphx-glr-thumbnail-title">Common pitfalls in the interpretation of coefficients of linear models</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we fit a linear model with positive constraints on the regression coefficients and compare the estimated coefficients to a classic linear regression."><img alt="" src="../../_images/sphx_glr_plot_nnls_thumb.png" />
-<p><a class="reference internal" href="../linear_model/plot_nnls.html#sphx-glr-auto-examples-linear-model-plot-nnls-py"><span class="std std-ref">Non-negative least squares</span></a></p>
+<p><a class="reference internal" href="../linear_model/plot_nnls.html"><span class="doc">Non-negative least squares</span></a></p>
   <div class="sphx-glr-thumbnail-title">Non-negative least squares</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="A model that overfits learns the training data too well, capturing both the underlying patterns and the noise in the data. However, when applied to unseen data, the learned associations may not hold. We normally detect this when we apply our trained predictions to the test data and see the statistical performance drop significantly compared to the training data."><img alt="" src="../../_images/sphx_glr_plot_ridge_coeffs_thumb.png" />
-<p><a class="reference internal" href="../linear_model/plot_ridge_coeffs.html#sphx-glr-auto-examples-linear-model-plot-ridge-coeffs-py"><span class="std std-ref">Ridge coefficients as a function of the L2 Regularization</span></a></p>
+<p><a class="reference internal" href="../linear_model/plot_ridge_coeffs.html"><span class="doc">Ridge coefficients as a function of the L2 Regularization</span></a></p>
   <div class="sphx-glr-thumbnail-title">Ridge coefficients as a function of the L2 Regularization</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we evaluate the impact of the regularization parameter in a linear model called ElasticNet. To carry out this evaluation, we use a validation curve using ValidationCurveDisplay. This curve shows the training and test scores of the model for different values of the regularization parameter."><img alt="" src="../../_images/sphx_glr_plot_train_error_vs_test_error_thumb.png" />
-<p><a class="reference internal" href="../model_selection/plot_train_error_vs_test_error.html#sphx-glr-auto-examples-model-selection-plot-train-error-vs-test-error-py"><span class="std std-ref">Effect of model regularization on training and test error</span></a></p>
+<p><a class="reference internal" href="../model_selection/plot_train_error_vs_test_error.html"><span class="doc">Effect of model regularization on training and test error</span></a></p>
   <div class="sphx-glr-thumbnail-title">Effect of model regularization on training and test error</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
@@ -1261,8 +1309,8 @@ estimations.</p>
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dataset-simulated-hourly-wages">The dataset: simulated hourly wages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description-of-the-simulated-data">Description of the simulated data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#income-prediction-with-fully-observed-variables">Income prediction with fully observed variables</a></li>
@@ -1270,15 +1318,6 @@ estimations.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons learned</a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/auto_examples/inspection/plot_causal_interpretation.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
   <div class="sidebar-secondary-item">
 
@@ -1323,21 +1362,37 @@ estimations.</p>
       
         <div class="sphx-glr-sidebar-item lite-badge-sidebar">
           <a href="../../lite/lab/index.html?path=auto_examples/inspection/plot_causal_interpretation.ipynb">
-            <img src="../../_images/jupyterlite_badge_logo16.svg" alt="Launch JupyterLite">
+            <img src="../../_images/jupyterlite_badge_logo17.svg" alt="Launch JupyterLite">
           </a>
         </div>
       
     
       
         <div class="sphx-glr-sidebar-item binder-badge-sidebar">
-          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/inspection/plot_causal_interpretation.ipynb">
-            <img src="../../_images/binder_badge_logo16.svg" alt="Launch binder">
+          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/inspection/plot_causal_interpretation.ipynb">
+            <img src="../../_images/binder_badge_logo17.svg" alt="Launch binder">
           </a>
         </div>
       
     
   </div>
 </div>
+
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1352,8 +1407,8 @@ estimations.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1364,7 +1419,7 @@ estimations.</p>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

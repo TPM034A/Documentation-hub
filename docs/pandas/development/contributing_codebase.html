@@ -8,41 +8,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Contributing to the code base &#8212; pandas 2.3.3 documentation</title>
+    <title>Contributing to the code base &#8212; pandas 3.0.6 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css?v=150e0881" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css?v=8d8a0ed4" />
     <link rel="stylesheet" type="text/css" href="../_static/css/pandas.css?v=b7db95b1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=956a7be408686d7d6a7b"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b" />
 
-    <script src="../_static/documentation_options.js?v=f4302432"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=c3365b21"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -50,10 +53,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'development/contributing_codebase';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pandas.pydata.org/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.3';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -62,6 +66,7 @@
     <link rel="prev" title="pandas docstring guide" href="contributing_docstring.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.6" />
   </head>
   
   
@@ -69,32 +74,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -102,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -110,20 +98,28 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/_templates/docs-announcement-banner.html"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -137,8 +133,8 @@
       
     
     
-    <img src="../_static/pandas.svg" class="logo__image only-light" alt="pandas 2.3.3 documentation - Home"/>
-    <script>document.write(`<img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark" alt="pandas 2.3.3 documentation - Home"/>`);</script>
+    <img src="../_static/pandas.svg" class="logo__image only-light" alt="pandas 3.0.6 documentation - Home"/>
+    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark pst-js-only" alt="pandas 3.0.6 documentation - Home"/>
   
   
 </a></div>
@@ -150,49 +146,43 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -204,55 +194,43 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -263,7 +241,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -275,8 +253,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -287,7 +265,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -299,31 +277,31 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -332,52 +310,49 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -386,42 +361,34 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -432,7 +399,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -444,8 +411,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -456,7 +423,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -471,14 +438,13 @@ document.write(`
     
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to pandas</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="contributing_environment.html">Creating a development environment</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="contributing_gitpod.html">Using Gitpod for pandas development</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="contributing_environment.html">Creating a development environment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="contributing_documentation.html">Contributing to the documentation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="contributing_documentation.html">Contributing to the documentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="contributing_docstring.html">pandas docstring guide</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Contributing to the code base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maintaining.html">pandas maintenance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="internals.html">Internals</a></li>
@@ -497,29 +463,32 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -530,7 +499,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Development</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Contributing...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Contributing to the code base</span></li>
   </ul>
 </nav>
 </div>
@@ -545,7 +514,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="contributing-to-the-code-base">
 <span id="contributing-codebase"></span><h1>Contributing to the code base<a class="headerlink" href="#contributing-to-the-code-base" title="Link to this heading">#</a></h1>
@@ -611,7 +580,7 @@ as possible to avoid mass breakages.</p>
 <section id="pre-commit">
 <span id="contributing-pre-commit"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Pre-commit</a><a class="headerlink" href="#pre-commit" title="Link to this heading">#</a></h2>
 <p>Additionally, <a class="reference internal" href="#contributing-ci"><span class="std std-ref">Continuous Integration</span></a> will run code formatting checks
-like <code class="docutils literal notranslate"><span class="pre">black</span></code>, <code class="docutils literal notranslate"><span class="pre">ruff</span></code>,
+like <code class="docutils literal notranslate"><span class="pre">ruff</span></code>,
 <code class="docutils literal notranslate"><span class="pre">isort</span></code>, and <code class="docutils literal notranslate"><span class="pre">clang-format</span></code> and more using <a class="reference external" href="https://pre-commit.com/">pre-commit hooks</a>.
 Any warnings from these checks will cause the <a class="reference internal" href="#contributing-ci"><span class="std std-ref">Continuous Integration</span></a> to fail; therefore,
 it is helpful to run the check yourself before submitting code. This
@@ -680,7 +649,7 @@ directive to the deprecated functions or methods.</p>
 the <code class="docutils literal notranslate"><span class="pre">pandas.util._decorators.deprecate</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pandas.util._decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">deprecate</span>
 
-<span class="n">deprecate</span><span class="p">(</span><span class="s1">&#39;old_func&#39;</span><span class="p">,</span> <span class="s1">&#39;new_func&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1.0&#39;</span><span class="p">)</span>
+<span class="n">deprecate</span><span class="p">(</span><span class="s1">'old_func'</span><span class="p">,</span> <span class="s1">'new_func'</span><span class="p">,</span> <span class="s1">'1.1.0'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Otherwise, you need to do it manually:</p>
@@ -689,13 +658,13 @@ the <code class="docutils literal notranslate"><span class="pre">pandas.util._de
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">old_func</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Summary of the function.</span>
+<span class="w">    </span><span class="sd">"""Summary of the function.</span>
 
 <span class="sd">    .. deprecated:: 1.1.0</span>
 <span class="sd">       Use new_func instead.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-        <span class="s1">&#39;Use new_func instead.&#39;</span><span class="p">,</span>
+        <span class="s1">'Use new_func instead.'</span><span class="p">,</span>
         <span class="ne">FutureWarning</span><span class="p">,</span>
         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
     <span class="p">)</span>
@@ -747,7 +716,7 @@ by the <a class="reference internal" href="#contributing-pre-commit"><span class
         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The limitation here is that while a human can reasonably understand that <code class="docutils literal notranslate"><span class="pre">is_number</span></code> would catch the <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> types mypy cannot make that same inference just yet (see <a class="reference external" href="https://github.com/python/mypy/issues/5206">mypy #5206</a>. While the above works, the use of <code class="docutils literal notranslate"><span class="pre">cast</span></code> is <strong>strongly discouraged</strong>. Where applicable a refactor of the code to appease static analysis is preferable</p>
+<p>The limitation here is that while a human can reasonably understand that <code class="docutils literal notranslate"><span class="pre">is_number</span></code> would catch the <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> types mypy cannot make that same inference just yet (see <a class="reference external" href="https://github.com/python/mypy/issues/5206">mypy #5206</a>). While the above works, the use of <code class="docutils literal notranslate"><span class="pre">cast</span></code> is <strong>strongly discouraged</strong>. Where applicable a refactor of the code to appease static analysis is preferable</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cannot_infer_good</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]):</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -760,7 +729,8 @@ by the <a class="reference internal" href="#contributing-pre-commit"><span class
 </section>
 <section id="pandas-specific-types">
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">pandas-specific types</a><a class="headerlink" href="#pandas-specific-types" title="Link to this heading">#</a></h3>
-<p>Commonly used types specific to pandas will appear in <a class="reference external" href="https://github.com/pandas-dev/pandas/blob/main/pandas/_typing.py">pandas._typing</a> and you should use these where applicable. This module is private for now but ultimately this should be exposed to third party libraries who want to implement type checking against pandas.</p>
+<p>Commonly used types specific to pandas will appear in <a class="reference external" href="https://github.com/pandas-dev/pandas/blob/main/pandas/_typing.py">pandas._typing</a> and you should use these where applicable. This module is private and is meant for pandas development.
+Types that are meant for user consumption should be exposed in <a class="reference external" href="https://github.com/pandas-dev/pandas/blob/main/pandas/api/typing/aliases.py">pandas.api.typing.aliases</a> and ideally added to the <a class="reference external" href="https://github.com/pandas-dev/pandas-stubs">pandas-stubs</a> project.</p>
 <p>For example, quite a few functions in pandas accept a <code class="docutils literal notranslate"><span class="pre">dtype</span></code> argument. This can be expressed as a string like <code class="docutils literal notranslate"><span class="pre">&quot;object&quot;</span></code>, a <code class="docutils literal notranslate"><span class="pre">numpy.dtype</span></code> like <code class="docutils literal notranslate"><span class="pre">np.int64</span></code> or even a pandas <code class="docutils literal notranslate"><span class="pre">ExtensionDtype</span></code> like <code class="docutils literal notranslate"><span class="pre">pd.CategoricalDtype</span></code>. Rather than burden the user with having to constantly annotate all of those options, this can simply be imported and reused from the pandas._typing module</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pandas._typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dtype</span>
 
@@ -784,7 +754,7 @@ pre-commit<span class="w"> </span>run<span class="w"> </span>--hook-stage<span c
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul class="simple">
-<li><p>Please be aware that the above commands will use the current python environment. If your python packages are older/newer than those installed by the pandas CI, the above commands might fail. This is often the case when the <code class="docutils literal notranslate"><span class="pre">mypy</span></code> or <code class="docutils literal notranslate"><span class="pre">numpy</span></code> versions do not match. Please see <a class="reference internal" href="contributing_environment.html#contributing-mamba"><span class="std std-ref">how to setup the python environment</span></a> or select a <a class="reference external" href="https://github.com/pandas-dev/pandas/actions/workflows/code-checks.yml?query=branch%3Amain+is%3Asuccess">recently succeeded workflow</a>, select the “Docstring validation, typing, and other manual pre-commit hooks” job, then click on “Set up Conda” and “Environment info” to see which versions the pandas CI installs.</p></li>
+<li><p>Please be aware that the above commands will use the current python environment. If your python packages are older/newer than those installed by the pandas CI, the above commands might fail. This is often the case when the <code class="docutils literal notranslate"><span class="pre">mypy</span></code> or <code class="docutils literal notranslate"><span class="pre">numpy</span></code> versions do not match. Please see <a class="reference internal" href="contributing_environment.html#contributing-conda"><span class="std std-ref">how to setup the python environment</span></a> or select a <a class="reference external" href="https://github.com/pandas-dev/pandas/actions/workflows/code-checks.yml?query=branch%3Amain+is%3Asuccess">recently succeeded workflow</a>, select the “Docstring validation, typing, and other manual pre-commit hooks” job, then click on “Set up Conda” and “Environment info” to see which versions the pandas CI installs.</p></li>
 </ul>
 </div>
 </section>
@@ -793,7 +763,7 @@ pre-commit<span class="w"> </span>run<span class="w"> </span>--hook-stage<span c
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul class="simple">
-<li><p>Pandas is not yet a py.typed library (<span class="target" id="index-1"></span><a class="pep reference external" href="https://peps.python.org/pep-0561/"><strong>PEP 561</strong></a>)!
+<li><p>pandas is not yet a py.typed library (<span class="target" id="index-1"></span><a class="pep reference external" href="https://peps.python.org/pep-0561/"><strong>PEP 561</strong></a>)!
 The primary purpose of locally declaring pandas as a py.typed library is to test and
 improve the pandas-builtin type annotations.</p></li>
 </ul>
@@ -801,7 +771,7 @@ improve the pandas-builtin type annotations.</p></li>
 <p>Until pandas becomes a py.typed library, it is possible to easily experiment with the type
 annotations shipped with pandas by creating an empty file named “py.typed” in the pandas
 installation folder:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -c &quot;import pandas; import pathlib; (pathlib.Path(pandas.__path__[0]) / &#39;py.typed&#39;).touch()&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -c "import pandas; import pathlib; (pathlib.Path(pandas.__path__[0]) / 'py.typed').touch()"
 </pre></div>
 </div>
 <p>The existence of the py.typed file signals to type checkers that pandas is already a py.typed
@@ -830,6 +800,11 @@ improvement or new function, then produces the minimum amount of code to pass th
 So, before actually writing any code, you should write your tests.  Often the test can be
 taken from the original GitHub issue.  However, it is always worth considering additional
 use cases and writing corresponding tests.</p>
+<p>We use <a class="reference external" href="https://en.wikipedia.org/wiki/Code_coverage">code coverage</a> to help understand
+the amount of code which is covered by a test. We recommend striving to ensure code
+you add or change within Pandas is covered by a test. Please see our
+<a class="reference external" href="https://app.codecov.io/github/pandas-dev/pandas">code coverage dashboard through Codecov</a>
+for more information.</p>
 <p>Adding tests is one of the most common requests after code is pushed to pandas.  Therefore,
 it is worth getting in the habit of writing tests ahead of time so this is never an issue.</p>
 <section id="writing-tests">
@@ -864,7 +839,7 @@ outside of <code class="docutils literal notranslate"><span class="pre">pd._libs
 <li><p>tests.tseries.offsets</p></li>
 </ul>
 </li>
-<li><p>Does your test depend only on code in pd._libs?
+<li><p>Does your test depend only on code in <code class="docutils literal notranslate"><span class="pre">pd._libs</span></code>?
 This test likely belongs in one of:</p>
 <ul class="simple">
 <li><p>tests.libs</p></li>
@@ -964,15 +939,13 @@ This test likely belongs in one of:</p>
     <span class="n">tm</span><span class="o">.</span><span class="n">assert_series_equal</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-</ol>
-<blockquote>
-<div><p>In cases like this, the test location should be based on the <em>underlying</em>
+<p>In cases like this, the test location should be based on the <em>underlying</em>
 method being tested.  Or in the case of a test for a bugfix, the location
 of the actual bug.  So in this example, we know that <code class="docutils literal notranslate"><span class="pre">Series.__getitem__</span></code>
 calls <code class="docutils literal notranslate"><span class="pre">Series.loc.__getitem__</span></code>, so this is <em>really</em> a test for
 <code class="docutils literal notranslate"><span class="pre">loc.__getitem__</span></code>.  So this test belongs in <code class="docutils literal notranslate"><span class="pre">tests.indexing.test_loc</span></code>.</p>
-</div></blockquote>
+</li>
+</ol>
 </li>
 <li><p>Is your test for a DataFrame or Series method?</p>
 <ol class="upperalpha">
@@ -1070,7 +1043,7 @@ framework that will facilitate testing and developing. Thus, instead of writing 
 test and does not check if the test will fail. If this is the behavior you desire, use <code class="docutils literal notranslate"><span class="pre">pytest.skip</span></code> instead.</p>
 </div>
 <p>If a test is known to fail but the manner in which it fails
-is not meant to be captured, use <code class="docutils literal notranslate"><span class="pre">pytest.mark.xfail</span></code> It is common to use this method for a test that
+is not meant to be captured, use <code class="docutils literal notranslate"><span class="pre">pytest.mark.xfail</span></code>. It is common to use this method for a test that
 exhibits buggy behavior or a non-implemented feature. If
 the failing test has flaky behavior, use the argument <code class="docutils literal notranslate"><span class="pre">strict=False</span></code>. This
 will make it so pytest does not fail if the test happens to pass. Using <code class="docutils literal notranslate"><span class="pre">strict=False</span></code> is highly undesirable, please use it only as a last resort.</p>
@@ -1080,7 +1053,7 @@ collection phase of pytest. For xfailing a test that involves multiple
 parameters, a fixture, or a combination of these, it is only possible to
 xfail during the testing phase. To do so, use the <code class="docutils literal notranslate"><span class="pre">request</span></code> fixture:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_xfail</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">mark</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="n">raises</span><span class="o">=</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s2">&quot;Indicate why here&quot;</span><span class="p">)</span>
+    <span class="n">mark</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span><span class="n">raises</span><span class="o">=</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s2">"Indicate why here"</span><span class="p">)</span>
     <span class="n">request</span><span class="o">.</span><span class="n">applymarker</span><span class="p">(</span><span class="n">mark</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1090,8 +1063,9 @@ is being raised, using <code class="docutils literal notranslate"><span class="p
 </section>
 <section id="testing-a-warning">
 <span id="contributing-warnings"></span><h4><a class="toc-backref" href="#id17" role="doc-backlink">Testing a warning</a><a class="headerlink" href="#testing-a-warning" title="Link to this heading">#</a></h4>
-<p>Use <code class="docutils literal notranslate"><span class="pre">tm.assert_produces_warning</span></code> as a context manager to check that a block of code raises a warning.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tm</span><span class="o">.</span><span class="n">assert_produces_warning</span><span class="p">(</span><span class="ne">DeprecationWarning</span><span class="p">):</span>
+<p>Use <code class="docutils literal notranslate"><span class="pre">tm.assert_produces_warning</span></code> as a context manager to check that a block of code raises a warning
+and specify the warning message using the <code class="docutils literal notranslate"><span class="pre">match</span></code> argument.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tm</span><span class="o">.</span><span class="n">assert_produces_warning</span><span class="p">(</span><span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">"the warning message"</span><span class="p">):</span>
     <span class="n">pd</span><span class="o">.</span><span class="n">deprecated_function</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1104,7 +1078,7 @@ is being raised, using <code class="docutils literal notranslate"><span class="p
 warning itself (say because it’s going to be removed in the future, or because we’re
 matching a 3rd-party library’s behavior), then use <code class="docutils literal notranslate"><span class="pre">pytest.mark.filterwarnings</span></code> to
 ignore the error.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore:msg:category&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore:msg:category"</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">test_thing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
@@ -1113,21 +1087,21 @@ ignore the error.</p>
 <section id="testing-an-exception">
 <h4><a class="toc-backref" href="#id18" role="doc-backlink">Testing an exception</a><a class="headerlink" href="#testing-an-exception" title="Link to this heading">#</a></h4>
 <p>Use <a class="reference external" href="https://docs.pytest.org/en/latest/reference/reference.html#pytest-raises">pytest.raises</a> as a context manager
-with the specific exception subclass (i.e. never use <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a>) and the exception message in <code class="docutils literal notranslate"><span class="pre">match</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;an error&quot;</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;an error&quot;</span><span class="p">)</span>
+with the specific exception subclass (i.e. never use <a class="reference external" href="https://docs.python.org/3/builtins/exceptions.html#Exception" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a>) and the exception message in <code class="docutils literal notranslate"><span class="pre">match</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">"an error"</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"an error"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="testing-involving-files">
 <h4><a class="toc-backref" href="#id19" role="doc-backlink">Testing involving files</a><a class="headerlink" href="#testing-involving-files" title="Link to this heading">#</a></h4>
-<p>The <code class="docutils literal notranslate"><span class="pre">tm.ensure_clean</span></code> context manager creates a temporary file for testing,
-with a generated filename (or your filename if provided), that is automatically
-deleted when the context block is exited.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tm</span><span class="o">.</span><span class="n">ensure_clean</span><span class="p">(</span><span class="s1">&#39;my_file_path&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">path</span><span class="p">:</span>
-    <span class="c1"># do something with the path</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">temp_file</span></code> pytest fixture creates a temporary file <code class="xref py py-class docutils literal notranslate"><span class="pre">Pathlib</span></code> object for testing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_something</span><span class="p">(</span><span class="n">temp_file</span><span class="p">):</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">temp_file</span><span class="p">))</span>
 </pre></div>
 </div>
+<p>Please reference <a class="reference external" href="https://docs.pytest.org/en/latest/how-to/tmp_path.html#the-default-base-temporary-directory">pytest’s documentation</a>
+for the file retention policy.</p>
 </section>
 <section id="testing-involving-network-connectivity">
 <h4><a class="toc-backref" href="#id20" role="doc-backlink">Testing involving network connectivity</a><a class="headerlink" href="#testing-involving-network-connectivity" title="Link to this heading">#</a></h4>
@@ -1137,7 +1111,7 @@ lack of ownership of the server that is being connected to. To mock this interac
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">network</span>
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">single_cpu</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">test_network</span><span class="p">(</span><span class="n">httpserver</span><span class="p">):</span>
-    <span class="n">httpserver</span><span class="o">.</span><span class="n">serve_content</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;content&quot;</span><span class="p">)</span>
+    <span class="n">httpserver</span><span class="o">.</span><span class="n">serve_content</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">"content"</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">httpserver</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1152,17 +1126,17 @@ as a comment to a new test.</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="s1">&#39;int32&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">])</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">'dtype'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'int8'</span><span class="p">,</span> <span class="s1">'int16'</span><span class="p">,</span> <span class="s1">'int32'</span><span class="p">,</span> <span class="s1">'int64'</span><span class="p">])</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">test_dtypes</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span> <span class="o">==</span> <span class="n">dtype</span>
 
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
-    <span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="n">marks</span><span class="o">=</span><span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skip</span><span class="p">),</span>
-              <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s1">&#39;int32&#39;</span><span class="p">,</span> <span class="n">marks</span><span class="o">=</span><span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span>
-                  <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;to show how it works&#39;</span><span class="p">))])</span>
+    <span class="s1">'dtype'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'float32'</span><span class="p">,</span> <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s1">'int16'</span><span class="p">,</span> <span class="n">marks</span><span class="o">=</span><span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skip</span><span class="p">),</span>
+              <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s1">'int32'</span><span class="p">,</span> <span class="n">marks</span><span class="o">=</span><span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">xfail</span><span class="p">(</span>
+                  <span class="n">reason</span><span class="o">=</span><span class="s1">'to show how it works'</span><span class="p">))])</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">test_mark</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span> <span class="o">==</span> <span class="s1">&#39;float32&#39;</span>
+    <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span> <span class="o">==</span> <span class="s1">'float32'</span>
 
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
@@ -1170,7 +1144,7 @@ as a comment to a new test.</p>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="s1">&#39;int32&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">])</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="s1">'int8'</span><span class="p">,</span> <span class="s1">'int16'</span><span class="p">,</span> <span class="s1">'int32'</span><span class="p">,</span> <span class="s1">'int64'</span><span class="p">])</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">dtype</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="n">param</span>
 
@@ -1265,8 +1239,7 @@ if run in parallel. As long as you can import pandas from your locally built ver
 your installation is probably fine and you can start contributing!</p>
 </div>
 <p>Often it is worth running only a subset of tests first around your changes before running the
-entire suite (tip: you can use the <a class="reference external" href="https://pandas-coverage-12d2130077bc.herokuapp.com/">pandas-coverage app</a>)
-to find out which tests hit the lines of code you’ve modified, and then run only those).</p>
+entire suite.</p>
 <p>The easiest way to do this is with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="n">pandas</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">k</span> <span class="n">regex_matching_test_name</span>
 </pre></div>
@@ -1291,7 +1264,7 @@ pytest<span class="w"> </span>-n<span class="w"> </span>auto<span class="w"> </s
 </div>
 <p>If you’d like to speed things along further a more advanced use of this
 command would look like this</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>pandas<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;not slow and not network and not db and not single_cpu&quot;</span><span class="w"> </span>-r<span class="w"> </span>sxX
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>pandas<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">"not slow and not network and not db and not single_cpu"</span><span class="w"> </span>-r<span class="w"> </span>sxX
 </pre></div>
 </div>
 <p>In addition to the multithreaded performance increase this improves test
@@ -1325,12 +1298,12 @@ which has happened in the past, please set a seed before running the command
 and opening a bug report, that way we can reproduce it. Here’s an example
 for setting a seed on windows</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span><span class="nv">PYTHONHASHSEED</span><span class="o">=</span><span class="m">314159265</span>
-pytest<span class="w"> </span>pandas<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;not slow and not network and not db and not single_cpu&quot;</span><span class="w"> </span>-r<span class="w"> </span>sxX
+pytest<span class="w"> </span>pandas<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">"not slow and not network and not db and not single_cpu"</span><span class="w"> </span>-r<span class="w"> </span>sxX
 </pre></div>
 </div>
 <p>On Unix use</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONHASHSEED</span><span class="o">=</span><span class="m">314159265</span>
-pytest<span class="w"> </span>pandas<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;not slow and not network and not db and not single_cpu&quot;</span><span class="w"> </span>-r<span class="w"> </span>sxX
+pytest<span class="w"> </span>pandas<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">"not slow and not network and not db and not single_cpu"</span><span class="w"> </span>-r<span class="w"> </span>sxX
 </pre></div>
 </div>
 <p>For more, see the <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a> documentation.</p>
@@ -1444,7 +1417,7 @@ or a new keyword argument (<a class="reference external" href="https://github.co
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1472,14 +1445,17 @@ or a new keyword argument (<a class="reference external" href="https://github.co
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-standards">Code standards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit">Pre-commit</a></li>
@@ -1514,15 +1490,6 @@ or a new keyword argument (<a class="reference external" href="https://github.co
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/development/contributing_codebase.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1536,8 +1503,8 @@ or a new keyword argument (<a class="reference external" href="https://github.co
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1545,13 +1512,13 @@ or a new keyword argument (<a class="reference external" href="https://github.co
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="copyright">
-    &copy 2025, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
+    &copy 2026, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
 </p></div>
       
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
     <br/>
   </p>
 </div>
@@ -1564,7 +1531,8 @@ or a new keyword argument (<a class="reference external" href="https://github.co
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

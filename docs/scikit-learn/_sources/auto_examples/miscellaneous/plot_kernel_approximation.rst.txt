@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_miscellaneous_plot_kernel_approximation.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -86,7 +86,7 @@ Python package and dataset imports, load dataset
 
 Timing and accuracy plots
 --------------------------------------------------
-To apply an classifier on this data, we need to flatten the image, to
+To apply a classifier on this data, we need to flatten the image, to
 turn the data in a (samples, feature) matrix:
 
 .. GENERATED FROM PYTHON SOURCE LINES 60-183
@@ -326,7 +326,7 @@ in :ref:`kernel_approximation`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.765 seconds)
+   **Total running time of the script:** (0 minutes 1.690 seconds)
 
 
 .. _sphx_glr_download_auto_examples_miscellaneous_plot_kernel_approximation.py:
@@ -338,7 +338,7 @@ in :ref:`kernel_approximation`.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_kernel_approximation.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_kernel_approximation.ipynb
         :alt: Launch binder
         :width: 150 px
 

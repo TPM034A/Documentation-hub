@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_tree_plot_cost_complexity_pruning.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -25,7 +25,7 @@ Post pruning decision trees with cost complexity pruning
 .. currentmodule:: sklearn.tree
 
 The :class:`DecisionTreeClassifier` provides parameters such as
-``min_samples_leaf`` and ``max_depth`` to prevent a tree from overfiting. Cost
+``min_samples_leaf`` and ``max_depth`` to prevent a tree from overfitting. Cost
 complexity pruning provides another option to control the size of a tree. In
 :class:`DecisionTreeClassifier`, this pruning technique is parameterized by the
 cost complexity parameter, ``ccp_alpha``. Greater values of ``ccp_alpha``
@@ -233,7 +233,7 @@ In this example, setting ``ccp_alpha=0.015`` maximizes the testing accuracy.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.464 seconds)
+   **Total running time of the script:** (0 minutes 0.447 seconds)
 
 
 .. _sphx_glr_download_auto_examples_tree_plot_cost_complexity_pruning.py:
@@ -245,7 +245,7 @@ In this example, setting ``ccp_alpha=0.015`` maximizes the testing accuracy.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/tree/plot_cost_complexity_pruning.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/tree/plot_cost_complexity_pruning.ipynb
         :alt: Launch binder
         :width: 150 px
 

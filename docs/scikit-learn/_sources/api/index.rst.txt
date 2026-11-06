@@ -19,6 +19,7 @@ reference on concepts repeated across the API, see :ref:`glossary`.
   sklearn
   sklearn.base
   sklearn.calibration
+  sklearn.callback
   sklearn.cluster
   sklearn.compose
   sklearn.covariance
@@ -444,6 +445,138 @@ reference on concepts repeated across the API, see :ref:`glossary`.
         .. div:: caption
 
           :mod:`sklearn.calibration`
+
+
+
+
+
+
+
+
+
+  * - :obj:`~sklearn.callback.AutoPropagatedCallback`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.callback
+
+        .. autoshortsummary:: sklearn.callback.AutoPropagatedCallback
+
+        .. div:: caption
+
+          :mod:`sklearn.callback`
+
+
+
+
+
+  * - :obj:`~sklearn.callback.CallbackContext`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.callback
+
+        .. autoshortsummary:: sklearn.callback.CallbackContext
+
+        .. div:: caption
+
+          :mod:`sklearn.callback`
+
+
+
+
+
+  * - :obj:`~sklearn.callback.CallbackSupportMixin`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.callback
+
+        .. autoshortsummary:: sklearn.callback.CallbackSupportMixin
+
+        .. div:: caption
+
+          :mod:`sklearn.callback`
+
+
+
+
+
+  * - :obj:`~sklearn.callback.FitCallback`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.callback
+
+        .. autoshortsummary:: sklearn.callback.FitCallback
+
+        .. div:: caption
+
+          :mod:`sklearn.callback`
+
+
+
+
+
+  * - :obj:`~sklearn.callback.ProgressBar`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.callback
+
+        .. autoshortsummary:: sklearn.callback.ProgressBar
+
+        .. div:: caption
+
+          :mod:`sklearn.callback`
+
+
+
+
+
+  * - :obj:`~sklearn.callback.ScoringMonitor`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.callback
+
+        .. autoshortsummary:: sklearn.callback.ScoringMonitor
+
+        .. div:: caption
+
+          :mod:`sklearn.callback`
+
+
+
+
+
+  * - :obj:`~sklearn.callback.ScoringMonitorLog`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.callback
+
+        .. autoshortsummary:: sklearn.callback.ScoringMonitorLog
+
+        .. div:: caption
+
+          :mod:`sklearn.callback`
+
+
+
+
+
+  * - :obj:`~sklearn.callback.with_callbacks`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.callback
+
+        .. autoshortsummary:: sklearn.callback.with_callbacks
+
+        .. div:: caption
+
+          :mod:`sklearn.callback`
 
 
 
@@ -4593,6 +4726,22 @@ reference on concepts repeated across the API, see :ref:`glossary`.
 
 
 
+  * - :obj:`~sklearn.manifold.ClassicalMDS`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.manifold
+
+        .. autoshortsummary:: sklearn.manifold.ClassicalMDS
+
+        .. div:: caption
+
+          :mod:`sklearn.manifold`
+
+
+
+
+
   * - :obj:`~sklearn.manifold.Isomap`
 
     - .. div:: sk-apisearch-desc
@@ -4951,6 +5100,38 @@ reference on concepts repeated across the API, see :ref:`glossary`.
 
 
 
+  * - :obj:`~sklearn.metrics.confusion_matrix_at_thresholds`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.metrics
+
+        .. autoshortsummary:: sklearn.metrics.confusion_matrix_at_thresholds
+
+        .. div:: caption
+
+          :mod:`sklearn.metrics`
+
+
+
+
+
+  * - :obj:`~sklearn.metrics.d2_brier_score`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.metrics
+
+        .. autoshortsummary:: sklearn.metrics.d2_brier_score
+
+        .. div:: caption
+
+          :mod:`sklearn.metrics`
+
+
+
+
+
   * - :obj:`~sklearn.metrics.d2_log_loss_score`
 
     - .. div:: sk-apisearch-desc
@@ -5102,6 +5283,22 @@ reference on concepts repeated across the API, see :ref:`glossary`.
         .. currentmodule:: sklearn.metrics
 
         .. autoshortsummary:: sklearn.metrics.matthews_corrcoef
+
+        .. div:: caption
+
+          :mod:`sklearn.metrics`
+
+
+
+
+
+  * - :obj:`~sklearn.metrics.metric_at_thresholds`
+
+    - .. div:: sk-apisearch-desc
+
+        .. currentmodule:: sklearn.metrics
+
+        .. autoshortsummary:: sklearn.metrics.metric_at_thresholds
 
         .. div:: caption
 

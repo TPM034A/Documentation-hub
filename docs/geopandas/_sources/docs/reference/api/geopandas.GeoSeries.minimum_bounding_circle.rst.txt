@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.minimum\_bounding\_circle
+=============================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.minimum_bounding_circle

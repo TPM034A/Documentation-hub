@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_decomposition_plot_pca_iris.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -123,7 +123,7 @@ for the three types.
 Plot a PCA representation
 -------------------------
 Let's apply a Principal Component Analysis (PCA) to the iris dataset
-and then plot the irises across the first three PCA dimensions.
+and then plot the irises across the first three principal components.
 This will allow us to better differentiate among the three types!
 
 .. GENERATED FROM PYTHON SOURCE LINES 60-101
@@ -151,10 +151,10 @@ This will allow us to better differentiate among the three types!
     )
 
     ax.set(
-        title="First three PCA dimensions",
-        xlabel="1st Eigenvector",
-        ylabel="2nd Eigenvector",
-        zlabel="3rd Eigenvector",
+        title="First three principal components",
+        xlabel="1st Principal Component",
+        ylabel="2nd Principal Component",
+        zlabel="3rd Principal Component",
     )
     ax.xaxis.set_ticklabels([])
     ax.yaxis.set_ticklabels([])
@@ -175,7 +175,7 @@ This will allow us to better differentiate among the three types!
 
 
 .. image-sg:: /auto_examples/decomposition/images/sphx_glr_plot_pca_iris_002.png
-   :alt: First three PCA dimensions
+   :alt: First three principal components
    :srcset: /auto_examples/decomposition/images/sphx_glr_plot_pca_iris_002.png
    :class: sphx-glr-single-img
 
@@ -183,17 +183,16 @@ This will allow us to better differentiate among the three types!
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-106
+.. GENERATED FROM PYTHON SOURCE LINES 102-105
 
 PCA will create 3 new features that are a linear combination of the 4 original
 features. In addition, this transformation maximizes the variance. With this
-transformation, we see that we can identify each species using only the first feature
-(i.e., first eigenvector).
+transformation, we can identify each species using only the first principal component.
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.435 seconds)
+   **Total running time of the script:** (0 minutes 1.663 seconds)
 
 
 .. _sphx_glr_download_auto_examples_decomposition_plot_pca_iris.py:
@@ -205,7 +204,7 @@ transformation, we see that we can identify each species using only the first fe
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/decomposition/plot_pca_iris.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/decomposition/plot_pca_iris.ipynb
         :alt: Launch binder
         :width: 150 px
 

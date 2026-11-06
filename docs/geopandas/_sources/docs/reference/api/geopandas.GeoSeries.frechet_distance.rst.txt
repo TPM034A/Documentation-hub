@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.frechet\_distance
+=====================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.frechet_distance

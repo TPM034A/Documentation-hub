@@ -146,9 +146,6 @@ pandas.Series
         ~Series.autocorr
       
       
-        ~Series.backfill
-      
-      
         ~Series.between
       
       
@@ -156,9 +153,6 @@ pandas.Series
       
       
         ~Series.bfill
-      
-      
-        ~Series.bool
       
       
         ~Series.case_when
@@ -263,13 +257,13 @@ pandas.Series
         ~Series.filter
       
       
-        ~Series.first
-      
-      
         ~Series.first_valid_index
       
       
         ~Series.floordiv
+      
+      
+        ~Series.from_arrow
       
       
         ~Series.ge
@@ -327,9 +321,6 @@ pandas.Series
       
       
         ~Series.kurtosis
-      
-      
-        ~Series.last
       
       
         ~Series.last_valid_index
@@ -392,9 +383,6 @@ pandas.Series
         ~Series.nunique
       
       
-        ~Series.pad
-      
-      
         ~Series.pct_change
       
       
@@ -420,9 +408,6 @@ pandas.Series
       
       
         ~Series.rank
-      
-      
-        ~Series.ravel
       
       
         ~Series.rdiv
@@ -524,9 +509,6 @@ pandas.Series
         ~Series.sum
       
       
-        ~Series.swapaxes
-      
-      
         ~Series.swaplevel
       
       
@@ -621,9 +603,6 @@ pandas.Series
       
       
         ~Series.var
-      
-      
-        ~Series.view
       
       
         ~Series.where

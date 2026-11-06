@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_bicluster_plot_spectral_biclustering.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -261,7 +261,7 @@ labels are represented by different shades of blue.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.499 seconds)
+   **Total running time of the script:** (0 minutes 0.446 seconds)
 
 
 .. _sphx_glr_download_auto_examples_bicluster_plot_spectral_biclustering.py:
@@ -273,7 +273,7 @@ labels are represented by different shades of blue.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/bicluster/plot_spectral_biclustering.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/bicluster/plot_spectral_biclustering.ipynb
         :alt: Launch binder
         :width: 150 px
 

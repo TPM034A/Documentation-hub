@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_model_selection_plot_learning_curve.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -55,8 +55,8 @@ Learning curves show the effect of adding more samples during the training
 process. The effect is depicted by checking the statistical performance of
 the model in terms of training score and testing score.
 
-Here, we compute the learning curve of a naive Bayes classifier and a SVM
-classifier with a RBF kernel using the digits dataset.
+Here, we compute the learning curve of a naive Bayes classifier and an SVM
+classifier with an RBF kernel using the digits dataset.
 
 .. GENERATED FROM PYTHON SOURCE LINES 29-37
 
@@ -293,7 +293,7 @@ increases.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 28.760 seconds)
+   **Total running time of the script:** (0 minutes 17.597 seconds)
 
 
 .. _sphx_glr_download_auto_examples_model_selection_plot_learning_curve.py:
@@ -305,7 +305,7 @@ increases.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/model_selection/plot_learning_curve.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/model_selection/plot_learning_curve.ipynb
         :alt: Launch binder
         :width: 150 px
 

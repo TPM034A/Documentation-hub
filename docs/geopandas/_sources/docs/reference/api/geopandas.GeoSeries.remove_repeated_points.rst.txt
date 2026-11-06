@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.remove\_repeated\_points
+============================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.remove_repeated_points

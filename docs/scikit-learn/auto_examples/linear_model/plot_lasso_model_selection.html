@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-learn/stable/auto_examples/linear_model/plot_lasso_model_selection.html" />
 <meta property="og:site_name" content="scikit-learn" />
 <meta property="og:description" content="This example focuses on model selection for Lasso models that are linear models with an L1 penalty for regression problems. Indeed, several strategies can be used to select the value of the regular..." />
-<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-notext.png" />
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="This example focuses on model selection for Lasso models that are linear models with an L1 penalty for regression problems. Indeed, several strategies can be used to select the value of the regular..." />
 
-    <title>Lasso model selection: AIC-BIC / cross-validation &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>Lasso model selection: AIC-BIC / cross-validation &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,31 +35,32 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -67,15 +68,17 @@
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/linear_model/plot_lasso_model_selection';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_model_selection.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -84,21 +87,27 @@
     <link rel="prev" title="Lasso model selection via information criteria" href="plot_lasso_lars_ic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -124,7 +133,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -150,8 +159,8 @@
       
     
     
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -272,6 +281,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../about.html">
     About us
   </a>
@@ -299,11 +315,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -316,8 +339,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -484,6 +506,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../about.html">
     About us
   </a>
@@ -501,11 +530,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -518,8 +554,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -548,12 +583,22 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../release_highlights/index.html">Release Highlights</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_9_0.html">Release Highlights for scikit-learn 1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_8_0.html">Release Highlights for scikit-learn 1.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_7_0.html">Release Highlights for scikit-learn 1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_6_0.html">Release Highlights for scikit-learn 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_5_0.html">Release Highlights for scikit-learn 1.5</a></li>
@@ -580,6 +625,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration.html">Probability calibration of classifiers</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../callbacks/index.html">Callbacks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_scoring_monitor.html">Analysis of the convergence of penalized logistic regression models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_callback_support.html">Supporting callbacks in third party estimators</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_comparison.html">Classifier comparison</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_lda_qda.html">Linear and Quadratic Discriminant Analysis with covariance ellipsoid</a></li>
@@ -593,7 +643,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_coin_ward_segmentation.html">A demo of structured Ward hierarchical clustering on an image of coins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_mean_shift.html">A demo of the mean-shift clustering algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_adjusted_for_chance_measures.html">Adjustment for chance in clustering performance evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering.html">Agglomerative clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering_metrics.html">Agglomerative clustering with different metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_plusplus.html">An example of K-Means++ initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_bisect_kmeans.html">Bisecting K-Means and Regular K-Means Performance Comparison</a></li>
@@ -609,7 +658,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_stability_low_dim_dense.html">Empirical evaluation of the impact of k-means initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_digits_agglomeration.html">Feature agglomeration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_feature_agglomeration_vs_univariate_selection.html">Feature agglomeration vs. univariate selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering: structured vs unstructured ward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_inductive_clustering.html">Inductive Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_dict_face_patches.html">Online learning of a dictionary of parts of faces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_dendrogram.html">Plot Hierarchical Clustering Dendrogram</a></li>
@@ -690,7 +739,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../applications/index.html">Examples based on real world datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_tomography_l1_reconstruction.html">Compressive sensing: tomography reconstruction with L1 prior (Lasso)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and SVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and kernel approximation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_digits_denoising.html">Image denoising using kernel PCA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_time_series_lagged_features.html">Lagged features for time series forecasting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_model_complexity_influence.html">Model Complexity Influence</a></li>
@@ -701,7 +750,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_cyclical_feature_engineering.html">Time-related feature engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_topics_extraction_with_nmf_lda.html">Topic extraction with Non-negative Matrix Factorization and Latent Dirichlet Allocation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_stock_market.html">Visualizing the stock market structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/index.html">Feature Selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -754,7 +803,6 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Lasso model selection: AIC-BIC / cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_lasso_dense_vs_sparse_data.html">Lasso on dense and sparse data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_lasso_lasso_lars_elasticnet_path.html">Lasso, Lasso-LARS, and Elastic Net paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_logistic.html">Logistic function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_sparse_logistic_regression_mnist.html">MNIST classification using multinomial logistic + L1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_sparse_logistic_regression_20newsgroups.html">Multiclass sparse logistic regression on 20newgroups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_nnls.html">Non-negative least squares</a></li>
@@ -779,6 +827,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../inspection/index.html">Inspection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_linear_model_coefficient_interpretation.html">Common pitfalls in the interpretation of coefficients of linear models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_causal_interpretation.html">Failure of Machine Learning to infer causal effects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence.html">Partial Dependence and Individual Conditional Expectation Plots</a></li>
@@ -800,9 +849,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../miscellaneous/index.html">Miscellaneous</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_anomaly_comparison.html">Comparing anomaly detection algorithms for outlier detection on toy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_kernel_ridge_regression.html">Comparison of kernel ridge regression and SVR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Developing Estimators Compliant with Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_pipeline_display.html">Displaying Pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_estimator_representation.html">Displaying estimators and complex pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_outlier_detection_bench.html">Evaluation of outlier detection estimators</a></li>
@@ -810,7 +859,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multioutput_face_completion.html">Face completion with a multi-output estimators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_set_output.html">Introducing the <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_isotonic_regression.html">Isotonic Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multilabel.html">Multilabel classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_roc_curve_visualization_api.html">ROC Curve with Visualization API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_johnson_lindenstrauss_bound.html">The Johnson-Lindenstrauss bound for embedding with random projections</a></li>
@@ -827,11 +875,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_likelihood_ratios.html">Class Likelihood Ratios to measure classification performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_randomized_search.html">Comparing randomized search and grid search for hyperparameter estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_successive_halving_heatmap.html">Comparison between grid search and successive halving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Confusion matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_grid_search_digits.html">Custom refit strategy of a grid search with cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_multi_metric_evaluation.html">Demonstration of multi-metric evaluation on cross_val_score and GridSearchCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_det.html">Detection error tradeoff (DET) curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_train_error_vs_test_error.html">Effect of model regularization on training and test error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Evaluate the performance of a classifier with Confusion Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_roc.html">Multiclass Receiver Operating Characteristic (ROC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_nested_cross_validation_iris.html">Nested versus non-nested cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_cv_predict.html">Plotting Cross-Validated Predictions</a></li>
@@ -990,7 +1038,7 @@
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#sphx-glr-download-auto-examples-linear-model-plot-lasso-model-selection-py"><span class="std std-ref">Go to the end</span></a>
-to download the full example code. or to run this example in your browser via JupyterLite or Binder</p>
+to download the full example code or to run this example in your browser via JupyterLite or Binder.</p>
 </div>
 <section class="sphx-glr-example-title" id="lasso-model-selection-aic-bic-cross-validation">
 <span id="sphx-glr-auto-examples-linear-model-plot-lasso-model-selection-py"></span><h1>Lasso model selection: AIC-BIC / cross-validation<a class="headerlink" href="#lasso-model-selection-aic-bic-cross-validation" title="Link to this heading">#</a></h1>
@@ -1124,7 +1172,7 @@ better illustrate the feature selection performed by the Lasso model.</p>
 <span class="n">n_random_features</span> <span class="o">=</span> <span class="mi">14</span>
 <span class="n">X_random</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">(</span>
     <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_random_features</span><span class="p">),</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;random_</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_random_features</span><span class="p">)],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"random_</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_random_features</span><span class="p">)],</span>
 <span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html#pandas.concat" title="pandas.concat" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function"><span class="n">pd</span><span class="o">.</span><span class="n">concat</span></a><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">X_random</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># Show only a subset of the columns</span>
@@ -1240,30 +1288,30 @@ compare with the cross-validation strategy.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <a href="../../modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">StandardScaler</span></a>
 
 <span class="n">start_time</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
-<span class="n">lasso_lars_ic</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span><a href="../../modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">StandardScaler</span></a><span class="p">(),</span> <a href="../../modules/generated/sklearn.linear_model.LassoLarsIC.html#sklearn.linear_model.LassoLarsIC" title="sklearn.linear_model.LassoLarsIC" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LassoLarsIC</span></a><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;aic&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">lasso_lars_ic</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline" title="sklearn.pipeline.make_pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-function"><span class="n">make_pipeline</span></a><span class="p">(</span><a href="../../modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="sklearn.preprocessing.StandardScaler" class="sphx-glr-backref-module-sklearn-preprocessing sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">StandardScaler</span></a><span class="p">(),</span> <a href="../../modules/generated/sklearn.linear_model.LassoLarsIC.html#sklearn.linear_model.LassoLarsIC" title="sklearn.linear_model.LassoLarsIC" class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LassoLarsIC</span></a><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s2">"aic"</span><span class="p">))</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">fit_time</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
 </pre></div>
 </div>
 <p>We store the AIC metric for each value of alpha used during <code class="docutils literal notranslate"><span class="pre">fit</span></code>.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">(</span>
     <span class="p">{</span>
-        <span class="s2">&quot;alphas&quot;</span><span class="p">:</span> <span class="n">lasso_lars_ic</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">alphas_</span><span class="p">,</span>
-        <span class="s2">&quot;AIC criterion&quot;</span><span class="p">:</span> <span class="n">lasso_lars_ic</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">criterion_</span><span class="p">,</span>
+        <span class="s2">"alphas"</span><span class="p">:</span> <span class="n">lasso_lars_ic</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">alphas_</span><span class="p">,</span>
+        <span class="s2">"AIC criterion"</span><span class="p">:</span> <span class="n">lasso_lars_ic</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">criterion_</span><span class="p">,</span>
     <span class="p">}</span>
-<span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;alphas&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"alphas"</span><span class="p">)</span>
 <span class="n">alpha_aic</span> <span class="o">=</span> <span class="n">lasso_lars_ic</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">alpha_</span>
 </pre></div>
 </div>
 <p>Now, we perform the same analysis using the BIC criterion.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">lasso_lars_ic</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">lassolarsic__criterion</span><span class="o">=</span><span class="s2">&quot;bic&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">results</span><span class="p">[</span><span class="s2">&quot;BIC criterion&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lasso_lars_ic</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">criterion_</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">lasso_lars_ic</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">lassolarsic__criterion</span><span class="o">=</span><span class="s2">"bic"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s2">"BIC criterion"</span><span class="p">]</span> <span class="o">=</span> <span class="n">lasso_lars_ic</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">criterion_</span>
 <span class="n">alpha_bic</span> <span class="o">=</span> <span class="n">lasso_lars_ic</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">alpha_</span>
 </pre></div>
 </div>
 <p>We can check which value of <code class="docutils literal notranslate"><span class="pre">alpha</span></code> leads to the minimum AIC and BIC.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">highlight_min</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x_min</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-    <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;font-weight: bold&quot;</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="n">x_min</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s2">"font-weight: bold"</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="n">x_min</span> <span class="k">else</span> <span class="s2">""</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
 
 
 <span class="n">results</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_min</span><span class="p">)</span>
@@ -1271,16 +1319,16 @@ compare with the cross-validation strategy.</p>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
 <style type="text/css">
-#T_1a64c_row6_col1, #T_1a64c_row21_col0 {
+#T_4605f_row6_col1, #T_4605f_row21_col0 {
   font-weight: bold;
 }
 </style>
-<table id="T_1a64c">
+<table id="T_4605f">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_1a64c_level0_col0" class="col_heading level0 col0" >AIC criterion</th>
-      <th id="T_1a64c_level0_col1" class="col_heading level0 col1" >BIC criterion</th>
+      <th id="T_4605f_level0_col0" class="col_heading level0 col0" >AIC criterion</th>
+      <th id="T_4605f_level0_col1" class="col_heading level0 col1" >BIC criterion</th>
     </tr>
     <tr>
       <th class="index_name level0" >alphas</th>
@@ -1290,139 +1338,139 @@ compare with the cross-validation strategy.</p>
   </thead>
   <tbody>
     <tr>
-      <th id="T_1a64c_level0_row0" class="row_heading level0 row0" >45.160030</th>
-      <td id="T_1a64c_row0_col0" class="data row0 col0" >5244.764779</td>
-      <td id="T_1a64c_row0_col1" class="data row0 col1" >5244.764779</td>
+      <th id="T_4605f_level0_row0" class="row_heading level0 row0" >45.160030</th>
+      <td id="T_4605f_row0_col0" class="data row0 col0" >5244.764779</td>
+      <td id="T_4605f_row0_col1" class="data row0 col1" >5244.764779</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row1" class="row_heading level0 row1" >42.300343</th>
-      <td id="T_1a64c_row1_col0" class="data row1 col0" >5208.250639</td>
-      <td id="T_1a64c_row1_col1" class="data row1 col1" >5212.341949</td>
+      <th id="T_4605f_level0_row1" class="row_heading level0 row1" >42.300343</th>
+      <td id="T_4605f_row1_col0" class="data row1 col0" >5208.250639</td>
+      <td id="T_4605f_row1_col1" class="data row1 col1" >5212.341949</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row2" class="row_heading level0 row2" >21.542052</th>
-      <td id="T_1a64c_row2_col0" class="data row2 col0" >4928.018900</td>
-      <td id="T_1a64c_row2_col1" class="data row2 col1" >4936.201520</td>
+      <th id="T_4605f_level0_row2" class="row_heading level0 row2" >21.542052</th>
+      <td id="T_4605f_row2_col0" class="data row2 col0" >4928.018900</td>
+      <td id="T_4605f_row2_col1" class="data row2 col1" >4936.201520</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row3" class="row_heading level0 row3" >15.034077</th>
-      <td id="T_1a64c_row3_col0" class="data row3 col0" >4869.678359</td>
-      <td id="T_1a64c_row3_col1" class="data row3 col1" >4881.952289</td>
+      <th id="T_4605f_level0_row3" class="row_heading level0 row3" >15.034077</th>
+      <td id="T_4605f_row3_col0" class="data row3 col0" >4869.678359</td>
+      <td id="T_4605f_row3_col1" class="data row3 col1" >4881.952289</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row4" class="row_heading level0 row4" >6.189631</th>
-      <td id="T_1a64c_row4_col0" class="data row4 col0" >4815.437362</td>
-      <td id="T_1a64c_row4_col1" class="data row4 col1" >4831.802601</td>
+      <th id="T_4605f_level0_row4" class="row_heading level0 row4" >6.189631</th>
+      <td id="T_4605f_row4_col0" class="data row4 col0" >4815.437362</td>
+      <td id="T_4605f_row4_col1" class="data row4 col1" >4831.802601</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row5" class="row_heading level0 row5" >5.329616</th>
-      <td id="T_1a64c_row5_col0" class="data row5 col0" >4810.423641</td>
-      <td id="T_1a64c_row5_col1" class="data row5 col1" >4830.880191</td>
+      <th id="T_4605f_level0_row5" class="row_heading level0 row5" >5.329616</th>
+      <td id="T_4605f_row5_col0" class="data row5 col0" >4810.423641</td>
+      <td id="T_4605f_row5_col1" class="data row5 col1" >4830.880191</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row6" class="row_heading level0 row6" >4.306012</th>
-      <td id="T_1a64c_row6_col0" class="data row6 col0" >4803.573491</td>
-      <td id="T_1a64c_row6_col1" class="data row6 col1" >4828.121351</td>
+      <th id="T_4605f_level0_row6" class="row_heading level0 row6" >4.306012</th>
+      <td id="T_4605f_row6_col0" class="data row6 col0" >4803.573491</td>
+      <td id="T_4605f_row6_col1" class="data row6 col1" >4828.121351</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row7" class="row_heading level0 row7" >4.124225</th>
-      <td id="T_1a64c_row7_col0" class="data row7 col0" >4804.126502</td>
-      <td id="T_1a64c_row7_col1" class="data row7 col1" >4832.765671</td>
+      <th id="T_4605f_level0_row7" class="row_heading level0 row7" >4.124225</th>
+      <td id="T_4605f_row7_col0" class="data row7 col0" >4804.126502</td>
+      <td id="T_4605f_row7_col1" class="data row7 col1" >4832.765671</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row8" class="row_heading level0 row8" >3.820705</th>
-      <td id="T_1a64c_row8_col0" class="data row8 col0" >4803.621645</td>
-      <td id="T_1a64c_row8_col1" class="data row8 col1" >4836.352124</td>
+      <th id="T_4605f_level0_row8" class="row_heading level0 row8" >3.820705</th>
+      <td id="T_4605f_row8_col0" class="data row8 col0" >4803.621645</td>
+      <td id="T_4605f_row8_col1" class="data row8 col1" >4836.352124</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row9" class="row_heading level0 row9" >3.750389</th>
-      <td id="T_1a64c_row9_col0" class="data row9 col0" >4805.012521</td>
-      <td id="T_1a64c_row9_col1" class="data row9 col1" >4841.834310</td>
+      <th id="T_4605f_level0_row9" class="row_heading level0 row9" >3.750389</th>
+      <td id="T_4605f_row9_col0" class="data row9 col0" >4805.012521</td>
+      <td id="T_4605f_row9_col1" class="data row9 col1" >4841.834310</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row10" class="row_heading level0 row10" >3.570655</th>
-      <td id="T_1a64c_row10_col0" class="data row10 col0" >4805.290075</td>
-      <td id="T_1a64c_row10_col1" class="data row10 col1" >4846.203174</td>
+      <th id="T_4605f_level0_row10" class="row_heading level0 row10" >3.570655</th>
+      <td id="T_4605f_row10_col0" class="data row10 col0" >4805.290075</td>
+      <td id="T_4605f_row10_col1" class="data row10 col1" >4846.203174</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row11" class="row_heading level0 row11" >3.550213</th>
-      <td id="T_1a64c_row11_col0" class="data row11 col0" >4807.075887</td>
-      <td id="T_1a64c_row11_col1" class="data row11 col1" >4852.080295</td>
+      <th id="T_4605f_level0_row11" class="row_heading level0 row11" >3.550213</th>
+      <td id="T_4605f_row11_col0" class="data row11 col0" >4807.075887</td>
+      <td id="T_4605f_row11_col1" class="data row11 col1" >4852.080295</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row12" class="row_heading level0 row12" >3.358295</th>
-      <td id="T_1a64c_row12_col0" class="data row12 col0" >4806.878051</td>
-      <td id="T_1a64c_row12_col1" class="data row12 col1" >4855.973770</td>
+      <th id="T_4605f_level0_row12" class="row_heading level0 row12" >3.358295</th>
+      <td id="T_4605f_row12_col0" class="data row12 col0" >4806.878051</td>
+      <td id="T_4605f_row12_col1" class="data row12 col1" >4855.973770</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row13" class="row_heading level0 row13" >3.259297</th>
-      <td id="T_1a64c_row13_col0" class="data row13 col0" >4807.706026</td>
-      <td id="T_1a64c_row13_col1" class="data row13 col1" >4860.893055</td>
+      <th id="T_4605f_level0_row13" class="row_heading level0 row13" >3.259297</th>
+      <td id="T_4605f_row13_col0" class="data row13 col0" >4807.706026</td>
+      <td id="T_4605f_row13_col1" class="data row13 col1" >4860.893055</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row14" class="row_heading level0 row14" >3.237703</th>
-      <td id="T_1a64c_row14_col0" class="data row14 col0" >4809.440409</td>
-      <td id="T_1a64c_row14_col1" class="data row14 col1" >4866.718747</td>
+      <th id="T_4605f_level0_row14" class="row_heading level0 row14" >3.237703</th>
+      <td id="T_4605f_row14_col0" class="data row14 col0" >4809.440409</td>
+      <td id="T_4605f_row14_col1" class="data row14 col1" >4866.718747</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row15" class="row_heading level0 row15" >2.850031</th>
-      <td id="T_1a64c_row15_col0" class="data row15 col0" >4805.989341</td>
-      <td id="T_1a64c_row15_col1" class="data row15 col1" >4867.358990</td>
+      <th id="T_4605f_level0_row15" class="row_heading level0 row15" >2.850031</th>
+      <td id="T_4605f_row15_col0" class="data row15 col0" >4805.989341</td>
+      <td id="T_4605f_row15_col1" class="data row15 col1" >4867.358990</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row16" class="row_heading level0 row16" >2.384338</th>
-      <td id="T_1a64c_row16_col0" class="data row16 col0" >4801.702266</td>
-      <td id="T_1a64c_row16_col1" class="data row16 col1" >4867.163224</td>
+      <th id="T_4605f_level0_row16" class="row_heading level0 row16" >2.384338</th>
+      <td id="T_4605f_row16_col0" class="data row16 col0" >4801.702266</td>
+      <td id="T_4605f_row16_col1" class="data row16 col1" >4867.163224</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row17" class="row_heading level0 row17" >2.296575</th>
-      <td id="T_1a64c_row17_col0" class="data row17 col0" >4802.594754</td>
-      <td id="T_1a64c_row17_col1" class="data row17 col1" >4872.147022</td>
+      <th id="T_4605f_level0_row17" class="row_heading level0 row17" >2.296575</th>
+      <td id="T_4605f_row17_col0" class="data row17 col0" >4802.594754</td>
+      <td id="T_4605f_row17_col1" class="data row17 col1" >4872.147022</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row18" class="row_heading level0 row18" >2.031555</th>
-      <td id="T_1a64c_row18_col0" class="data row18 col0" >4801.236720</td>
-      <td id="T_1a64c_row18_col1" class="data row18 col1" >4874.880298</td>
+      <th id="T_4605f_level0_row18" class="row_heading level0 row18" >2.031555</th>
+      <td id="T_4605f_row18_col0" class="data row18 col0" >4801.236720</td>
+      <td id="T_4605f_row18_col1" class="data row18 col1" >4874.880298</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row19" class="row_heading level0 row19" >1.618263</th>
-      <td id="T_1a64c_row19_col0" class="data row19 col0" >4798.484109</td>
-      <td id="T_1a64c_row19_col1" class="data row19 col1" >4876.218997</td>
+      <th id="T_4605f_level0_row19" class="row_heading level0 row19" >1.618263</th>
+      <td id="T_4605f_row19_col0" class="data row19 col0" >4798.484109</td>
+      <td id="T_4605f_row19_col1" class="data row19 col1" >4876.218997</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row20" class="row_heading level0 row20" >1.526599</th>
-      <td id="T_1a64c_row20_col0" class="data row20 col0" >4799.543841</td>
-      <td id="T_1a64c_row20_col1" class="data row20 col1" >4881.370039</td>
+      <th id="T_4605f_level0_row20" class="row_heading level0 row20" >1.526599</th>
+      <td id="T_4605f_row20_col0" class="data row20 col0" >4799.543841</td>
+      <td id="T_4605f_row20_col1" class="data row20 col1" >4881.370039</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row21" class="row_heading level0 row21" >0.586798</th>
-      <td id="T_1a64c_row21_col0" class="data row21 col0" >4794.238744</td>
-      <td id="T_1a64c_row21_col1" class="data row21 col1" >4880.156252</td>
+      <th id="T_4605f_level0_row21" class="row_heading level0 row21" >0.586798</th>
+      <td id="T_4605f_row21_col0" class="data row21 col0" >4794.238744</td>
+      <td id="T_4605f_row21_col1" class="data row21 col1" >4880.156252</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row22" class="row_heading level0 row22" >0.445978</th>
-      <td id="T_1a64c_row22_col0" class="data row22 col0" >4795.589715</td>
-      <td id="T_1a64c_row22_col1" class="data row22 col1" >4885.598533</td>
+      <th id="T_4605f_level0_row22" class="row_heading level0 row22" >0.445978</th>
+      <td id="T_4605f_row22_col0" class="data row22 col0" >4795.589715</td>
+      <td id="T_4605f_row22_col1" class="data row22 col1" >4885.598533</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row23" class="row_heading level0 row23" >0.259031</th>
-      <td id="T_1a64c_row23_col0" class="data row23 col0" >4796.966981</td>
-      <td id="T_1a64c_row23_col1" class="data row23 col1" >4891.067109</td>
+      <th id="T_4605f_level0_row23" class="row_heading level0 row23" >0.259031</th>
+      <td id="T_4605f_row23_col0" class="data row23 col0" >4796.966981</td>
+      <td id="T_4605f_row23_col1" class="data row23 col1" >4891.067109</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row24" class="row_heading level0 row24" >0.032179</th>
-      <td id="T_1a64c_row24_col0" class="data row24 col0" >4796.662409</td>
-      <td id="T_1a64c_row24_col1" class="data row24 col1" >4894.853846</td>
+      <th id="T_4605f_level0_row24" class="row_heading level0 row24" >0.032179</th>
+      <td id="T_4605f_row24_col0" class="data row24 col0" >4794.662409</td>
+      <td id="T_4605f_row24_col1" class="data row24 col1" >4888.762537</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row25" class="row_heading level0 row25" >0.019069</th>
-      <td id="T_1a64c_row25_col0" class="data row25 col0" >4794.652739</td>
-      <td id="T_1a64c_row25_col1" class="data row25 col1" >4888.752867</td>
+      <th id="T_4605f_level0_row25" class="row_heading level0 row25" >0.019069</th>
+      <td id="T_4605f_row25_col0" class="data row25 col0" >4794.652739</td>
+      <td id="T_4605f_row25_col1" class="data row25 col1" >4888.752867</td>
     </tr>
     <tr>
-      <th id="T_1a64c_level0_row26" class="row_heading level0 row26" >0.000000</th>
-      <td id="T_1a64c_row26_col0" class="data row26 col0" >4796.626286</td>
-      <td id="T_1a64c_row26_col1" class="data row26 col1" >4894.817724</td>
+      <th id="T_4605f_level0_row26" class="row_heading level0 row26" >0.000000</th>
+      <td id="T_4605f_row26_col0" class="data row26 col0" >4796.626286</td>
+      <td id="T_4605f_row26_col1" class="data row26 col1" >4894.817724</td>
     </tr>
   </tbody>
 </table>
@@ -1436,26 +1484,26 @@ criterion.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span>
     <span class="n">alpha_aic</span><span class="p">,</span>
-    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;AIC criterion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
-    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;AIC criterion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha: AIC estimate&quot;</span><span class="p">,</span>
-    <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">"AIC criterion"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">"AIC criterion"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"alpha: AIC estimate"</span><span class="p">,</span>
+    <span class="n">linestyles</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"tab:blue"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span>
     <span class="n">alpha_bic</span><span class="p">,</span>
-    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;BIC criterion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
-    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;BIC criterion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha: BIC estimate&quot;</span><span class="p">,</span>
-    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">"BIC criterion"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">"BIC criterion"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"alpha: BIC estimate"</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"tab:orange"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\alpha$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;criterion&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\alpha$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"criterion"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Information-criterion for model selection (training time </span><span class="si">{</span><span class="n">fit_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)&quot;</span>
+    <span class="sa">f</span><span class="s2">"Information-criterion for model selection (training time </span><span class="si">{</span><span class="n">fit_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1496,26 +1544,26 @@ algorithms, we will use a 20-fold cross-validation strategy.</p>
 
 <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mi">2300</span><span class="p">,</span> <span class="mi">3800</span>
 <span class="n">lasso</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.semilogx.html#matplotlib.pyplot.semilogx" title="matplotlib.pyplot.semilogx" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span></a><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">alphas_</span><span class="p">,</span> <span class="n">lasso</span><span class="o">.</span><span class="n">mse_path_</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.semilogx.html#matplotlib.pyplot.semilogx" title="matplotlib.pyplot.semilogx" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span></a><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">alphas_</span><span class="p">,</span> <span class="n">lasso</span><span class="o">.</span><span class="n">mse_path_</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">)</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot" title="matplotlib.pyplot.plot" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span>
     <span class="n">lasso</span><span class="o">.</span><span class="n">alphas_</span><span class="p">,</span>
     <span class="n">lasso</span><span class="o">.</span><span class="n">mse_path_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Average across the folds&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Average across the folds"</span><span class="p">,</span>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axvline.html#matplotlib.pyplot.axvline" title="matplotlib.pyplot.axvline" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">alpha_</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha: CV estimate&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axvline.html#matplotlib.pyplot.axvline" title="matplotlib.pyplot.axvline" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">alpha_</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"alpha: CV estimate"</span><span class="p">)</span>
 
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylim.html#matplotlib.pyplot.ylim" title="matplotlib.pyplot.ylim" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span></a><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="matplotlib.pyplot.xlabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\alpha$&quot;</span><span class="p">)</span>
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="matplotlib.pyplot.ylabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s2">&quot;Mean square error&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="matplotlib.pyplot.xlabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="sa">r</span><span class="s2">"$\alpha$"</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="matplotlib.pyplot.ylabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s2">"Mean square error"</span><span class="p">)</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html#matplotlib.pyplot.legend" title="matplotlib.pyplot.legend" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span></a><span class="p">()</span>
 <span class="n">_</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.title.html#matplotlib.pyplot.title" title="matplotlib.pyplot.title" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Mean square error on each fold: coordinate descent (train time: </span><span class="si">{</span><span class="n">fit_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)&quot;</span>
+    <span class="sa">f</span><span class="s2">"Mean square error on each fold: coordinate descent (train time: </span><span class="si">{</span><span class="n">fit_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_lasso_model_selection_002.png" srcset="../../_images/sphx_glr_plot_lasso_model_selection_002.png" alt="Mean square error on each fold: coordinate descent (train time: 0.28s)" class = "sphx-glr-single-img"/></section>
+<img src="../../_images/sphx_glr_plot_lasso_model_selection_002.png" srcset="../../_images/sphx_glr_plot_lasso_model_selection_002.png" alt="Mean square error on each fold: coordinate descent (train time: 0.34s)" class = "sphx-glr-single-img"/></section>
 <section id="lasso-via-least-angle-regression">
 <h3>Lasso via least angle regression<a class="headerlink" href="#lasso-via-least-angle-regression" title="Link to this heading">#</a></h3>
 <p>Let’s start by making the hyperparameter tuning using
@@ -1528,24 +1576,24 @@ algorithms, we will use a 20-fold cross-validation strategy.</p>
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">lasso</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.semilogx.html#matplotlib.pyplot.semilogx" title="matplotlib.pyplot.semilogx" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span></a><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">cv_alphas_</span><span class="p">,</span> <span class="n">lasso</span><span class="o">.</span><span class="n">mse_path_</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.semilogx.html#matplotlib.pyplot.semilogx" title="matplotlib.pyplot.semilogx" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span></a><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">cv_alphas_</span><span class="p">,</span> <span class="n">lasso</span><span class="o">.</span><span class="n">mse_path_</span><span class="p">,</span> <span class="s2">":"</span><span class="p">)</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.semilogx.html#matplotlib.pyplot.semilogx" title="matplotlib.pyplot.semilogx" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span></a><span class="p">(</span>
     <span class="n">lasso</span><span class="o">.</span><span class="n">cv_alphas_</span><span class="p">,</span>
     <span class="n">lasso</span><span class="o">.</span><span class="n">mse_path_</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Average across the folds&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Average across the folds"</span><span class="p">,</span>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axvline.html#matplotlib.pyplot.axvline" title="matplotlib.pyplot.axvline" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">alpha_</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;alpha CV&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axvline.html#matplotlib.pyplot.axvline" title="matplotlib.pyplot.axvline" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axvline</span></a><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">alpha_</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"alpha CV"</span><span class="p">)</span>
 
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylim.html#matplotlib.pyplot.ylim" title="matplotlib.pyplot.ylim" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span></a><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="matplotlib.pyplot.xlabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\alpha$&quot;</span><span class="p">)</span>
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="matplotlib.pyplot.ylabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s2">&quot;Mean square error&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html#matplotlib.pyplot.xlabel" title="matplotlib.pyplot.xlabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span></a><span class="p">(</span><span class="sa">r</span><span class="s2">"$\alpha$"</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html#matplotlib.pyplot.ylabel" title="matplotlib.pyplot.ylabel" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span></a><span class="p">(</span><span class="s2">"Mean square error"</span><span class="p">)</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html#matplotlib.pyplot.legend" title="matplotlib.pyplot.legend" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span></a><span class="p">()</span>
-<span class="n">_</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.title.html#matplotlib.pyplot.title" title="matplotlib.pyplot.title" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean square error on each fold: Lars (train time: </span><span class="si">{</span><span class="n">fit_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.title.html#matplotlib.pyplot.title" title="matplotlib.pyplot.title" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="sa">f</span><span class="s2">"Mean square error on each fold: Lars (train time: </span><span class="si">{</span><span class="n">fit_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)"</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_lasso_model_selection_003.png" srcset="../../_images/sphx_glr_plot_lasso_model_selection_003.png" alt="Mean square error on each fold: Lars (train time: 0.07s)" class = "sphx-glr-single-img"/></section>
+<img src="../../_images/sphx_glr_plot_lasso_model_selection_003.png" srcset="../../_images/sphx_glr_plot_lasso_model_selection_003.png" alt="Mean square error on each fold: Lars (train time: 0.09s)" class = "sphx-glr-single-img"/></section>
 <section id="summary-of-cross-validation-approach">
 <h3>Summary of cross-validation approach<a class="headerlink" href="#summary-of-cross-validation-approach" title="Link to this heading">#</a></h3>
 <p>Both algorithms give roughly the same results.</p>
@@ -1579,14 +1627,14 @@ performance. However, it can only be used when the number of samples is large
 enough compared to the number of features.</p>
 <p>That’s why hyperparameter optimization via cross-validation is a safe
 strategy: it works in different settings.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.006 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.984 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-linear-model-plot-lasso-model-selection-py">
 <div class="binder-badge docutils container">
-<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_lasso_model_selection.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo18.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_lasso_model_selection.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo19.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="lite-badge docutils container">
-<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/linear_model/plot_lasso_model_selection.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo18.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/linear_model/plot_lasso_model_selection.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo19.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
@@ -1601,16 +1649,16 @@ strategy: it works in different settings.</p>
 </div>
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example reproduces the example of Fig. 2 of [ZHT2007]_. A LassoLarsIC estimator is fit on a diabetes dataset and the AIC and the BIC criteria are used to select the best model."><img alt="" src="../../_images/sphx_glr_plot_lasso_lars_ic_thumb.png" />
-<p><a class="reference internal" href="plot_lasso_lars_ic.html#sphx-glr-auto-examples-linear-model-plot-lasso-lars-ic-py"><span class="std std-ref">Lasso model selection via information criteria</span></a></p>
+<p><a class="reference internal" href="plot_lasso_lars_ic.html"><span class="doc">Lasso model selection via information criteria</span></a></p>
   <div class="sphx-glr-thumbnail-title">Lasso model selection via information criteria</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to compute the &quot;paths&quot; of coefficients along the Lasso, Lasso-LARS, and Elastic Net regularization paths. In other words, it shows the relationship between the regularization parameter (alpha) and the coefficients."><img alt="" src="../../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_thumb.png" />
-<p><a class="reference internal" href="plot_lasso_lasso_lars_elasticnet_path.html#sphx-glr-auto-examples-linear-model-plot-lasso-lasso-lars-elasticnet-path-py"><span class="std std-ref">Lasso, Lasso-LARS, and Elastic Net paths</span></a></p>
+<p><a class="reference internal" href="plot_lasso_lasso_lars_elasticnet_path.html"><span class="doc">Lasso, Lasso-LARS, and Elastic Net paths</span></a></p>
   <div class="sphx-glr-thumbnail-title">Lasso, Lasso-LARS, and Elastic Net paths</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The present example compares three l1-based regression models on a synthetic signal obtained from sparse and correlated features that are further corrupted with additive gaussian noise:"><img alt="" src="../../_images/sphx_glr_plot_lasso_and_elasticnet_thumb.png" />
-<p><a class="reference internal" href="plot_lasso_and_elasticnet.html#sphx-glr-auto-examples-linear-model-plot-lasso-and-elasticnet-py"><span class="std std-ref">L1-based models for Sparse Signals</span></a></p>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The present example compares three l1-based regression models on a synthetic signal obtained from sparse and correlated features that are further corrupted with additive Gaussian noise:"><img alt="" src="../../_images/sphx_glr_plot_lasso_and_elasticnet_thumb.png" />
+<p><a class="reference internal" href="plot_lasso_and_elasticnet.html"><span class="doc">L1-based models for Sparse Signals</span></a></p>
   <div class="sphx-glr-thumbnail-title">L1-based models for Sparse Signals</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="The multi-task lasso allows to fit multiple regression problems jointly enforcing the selected features to be the same across tasks. This example simulates sequential measurements, each task is a time instant, and the relevant features vary in amplitude over time while being the same. The multi-task lasso imposes that features that are selected at one time point are select for all time point. This makes feature selection by the Lasso more stable."><img alt="" src="../../_images/sphx_glr_plot_multi_task_lasso_support_thumb.png" />
-<p><a class="reference internal" href="plot_multi_task_lasso_support.html#sphx-glr-auto-examples-linear-model-plot-multi-task-lasso-support-py"><span class="std std-ref">Joint feature selection with multi-task Lasso</span></a></p>
+<p><a class="reference internal" href="plot_multi_task_lasso_support.html"><span class="doc">Joint feature selection with multi-task Lasso</span></a></p>
   <div class="sphx-glr-thumbnail-title">Joint feature selection with multi-task Lasso</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
@@ -1665,8 +1713,8 @@ strategy: it works in different settings.</p>
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-lasso-via-an-information-criterion">Selecting Lasso via an information criterion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-lasso-via-cross-validation">Selecting Lasso via cross-validation</a><ul class="nav section-nav flex-column">
@@ -1678,15 +1726,6 @@ strategy: it works in different settings.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/auto_examples/linear_model/plot_lasso_model_selection.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
   <div class="sidebar-secondary-item">
 
@@ -1731,21 +1770,37 @@ strategy: it works in different settings.</p>
       
         <div class="sphx-glr-sidebar-item lite-badge-sidebar">
           <a href="../../lite/lab/index.html?path=auto_examples/linear_model/plot_lasso_model_selection.ipynb">
-            <img src="../../_images/jupyterlite_badge_logo18.svg" alt="Launch JupyterLite">
+            <img src="../../_images/jupyterlite_badge_logo19.svg" alt="Launch JupyterLite">
           </a>
         </div>
       
     
       
         <div class="sphx-glr-sidebar-item binder-badge-sidebar">
-          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_lasso_model_selection.ipynb">
-            <img src="../../_images/binder_badge_logo18.svg" alt="Launch binder">
+          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_lasso_model_selection.ipynb">
+            <img src="../../_images/binder_badge_logo19.svg" alt="Launch binder">
           </a>
         </div>
       
     
   </div>
 </div>
+
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1760,8 +1815,8 @@ strategy: it works in different settings.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1772,7 +1827,7 @@ strategy: it works in different settings.</p>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

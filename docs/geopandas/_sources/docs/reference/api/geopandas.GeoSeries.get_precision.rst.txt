@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.get\_precision
+==================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.get_precision

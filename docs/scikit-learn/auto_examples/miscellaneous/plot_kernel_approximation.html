@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-learn/stable/auto_examples/miscellaneous/plot_kernel_approximation.html" />
 <meta property="og:site_name" content="scikit-learn" />
 <meta property="og:description" content="An example illustrating the approximation of the feature map of an RBF kernel. It shows how to use RBFSampler and Nystroem to approximate the feature map of an RBF kernel for classification with an..." />
-<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-notext.png" />
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="An example illustrating the approximation of the feature map of an RBF kernel. It shows how to use RBFSampler and Nystroem to approximate the feature map of an RBF kernel for classification with an..." />
 
-    <title>Explicit feature map approximation for RBF kernels &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>Explicit feature map approximation for RBF kernels &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,31 +35,32 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -67,15 +68,17 @@
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/miscellaneous/plot_kernel_approximation';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_kernel_approximation.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -84,21 +87,27 @@
     <link rel="prev" title="Evaluation of outlier detection estimators" href="plot_outlier_detection_bench.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -124,7 +133,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -150,8 +159,8 @@
       
     
     
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -272,6 +281,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../about.html">
     About us
   </a>
@@ -299,11 +315,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -316,8 +339,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -484,6 +506,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../about.html">
     About us
   </a>
@@ -501,11 +530,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -518,8 +554,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -548,12 +583,22 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../release_highlights/index.html">Release Highlights</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_9_0.html">Release Highlights for scikit-learn 1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_8_0.html">Release Highlights for scikit-learn 1.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_7_0.html">Release Highlights for scikit-learn 1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_6_0.html">Release Highlights for scikit-learn 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_5_0.html">Release Highlights for scikit-learn 1.5</a></li>
@@ -580,6 +625,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration.html">Probability calibration of classifiers</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../callbacks/index.html">Callbacks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_scoring_monitor.html">Analysis of the convergence of penalized logistic regression models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_callback_support.html">Supporting callbacks in third party estimators</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_comparison.html">Classifier comparison</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_lda_qda.html">Linear and Quadratic Discriminant Analysis with covariance ellipsoid</a></li>
@@ -593,7 +643,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_coin_ward_segmentation.html">A demo of structured Ward hierarchical clustering on an image of coins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_mean_shift.html">A demo of the mean-shift clustering algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_adjusted_for_chance_measures.html">Adjustment for chance in clustering performance evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering.html">Agglomerative clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering_metrics.html">Agglomerative clustering with different metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_plusplus.html">An example of K-Means++ initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_bisect_kmeans.html">Bisecting K-Means and Regular K-Means Performance Comparison</a></li>
@@ -609,7 +658,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_stability_low_dim_dense.html">Empirical evaluation of the impact of k-means initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_digits_agglomeration.html">Feature agglomeration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_feature_agglomeration_vs_univariate_selection.html">Feature agglomeration vs. univariate selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering: structured vs unstructured ward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_inductive_clustering.html">Inductive Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_dict_face_patches.html">Online learning of a dictionary of parts of faces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_dendrogram.html">Plot Hierarchical Clustering Dendrogram</a></li>
@@ -690,7 +739,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../applications/index.html">Examples based on real world datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_tomography_l1_reconstruction.html">Compressive sensing: tomography reconstruction with L1 prior (Lasso)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and SVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and kernel approximation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_digits_denoising.html">Image denoising using kernel PCA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_time_series_lagged_features.html">Lagged features for time series forecasting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_model_complexity_influence.html">Model Complexity Influence</a></li>
@@ -701,7 +750,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_cyclical_feature_engineering.html">Time-related feature engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_topics_extraction_with_nmf_lda.html">Topic extraction with Non-negative Matrix Factorization and Latent Dirichlet Allocation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_stock_market.html">Visualizing the stock market structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/index.html">Feature Selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -754,7 +803,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_model_selection.html">Lasso model selection: AIC-BIC / cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_dense_vs_sparse_data.html">Lasso on dense and sparse data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_lasso_lars_elasticnet_path.html">Lasso, Lasso-LARS, and Elastic Net paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_logistic.html">Logistic function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_mnist.html">MNIST classification using multinomial logistic + L1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_20newsgroups.html">Multiclass sparse logistic regression on 20newgroups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_nnls.html">Non-negative least squares</a></li>
@@ -779,6 +827,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../inspection/index.html">Inspection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_linear_model_coefficient_interpretation.html">Common pitfalls in the interpretation of coefficients of linear models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_causal_interpretation.html">Failure of Machine Learning to infer causal effects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence.html">Partial Dependence and Individual Conditional Expectation Plots</a></li>
@@ -800,9 +849,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Miscellaneous</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_anomaly_comparison.html">Comparing anomaly detection algorithms for outlier detection on toy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_kernel_ridge_regression.html">Comparison of kernel ridge regression and SVR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_metadata_routing.html">Developing Estimators Compliant with Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_pipeline_display.html">Displaying Pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_estimator_representation.html">Displaying estimators and complex pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_outlier_detection_bench.html">Evaluation of outlier detection estimators</a></li>
@@ -810,7 +859,6 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_multioutput_face_completion.html">Face completion with a multi-output estimators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_set_output.html">Introducing the <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_isotonic_regression.html">Isotonic Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_metadata_routing.html">Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_multilabel.html">Multilabel classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_roc_curve_visualization_api.html">ROC Curve with Visualization API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_johnson_lindenstrauss_bound.html">The Johnson-Lindenstrauss bound for embedding with random projections</a></li>
@@ -827,11 +875,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_likelihood_ratios.html">Class Likelihood Ratios to measure classification performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_randomized_search.html">Comparing randomized search and grid search for hyperparameter estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_successive_halving_heatmap.html">Comparison between grid search and successive halving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Confusion matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_grid_search_digits.html">Custom refit strategy of a grid search with cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_multi_metric_evaluation.html">Demonstration of multi-metric evaluation on cross_val_score and GridSearchCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_det.html">Detection error tradeoff (DET) curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_train_error_vs_test_error.html">Effect of model regularization on training and test error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Evaluate the performance of a classifier with Confusion Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_roc.html">Multiclass Receiver Operating Characteristic (ROC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_nested_cross_validation_iris.html">Nested versus non-nested cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_cv_predict.html">Plotting Cross-Validated Predictions</a></li>
@@ -990,7 +1038,7 @@
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#sphx-glr-download-auto-examples-miscellaneous-plot-kernel-approximation-py"><span class="std std-ref">Go to the end</span></a>
-to download the full example code. or to run this example in your browser via JupyterLite or Binder</p>
+to download the full example code or to run this example in your browser via JupyterLite or Binder.</p>
 </div>
 <section class="sphx-glr-example-title" id="explicit-feature-map-approximation-for-rbf-kernels">
 <span id="sphx-glr-auto-examples-miscellaneous-plot-kernel-approximation-py"></span><h1>Explicit feature map approximation for RBF kernels<a class="headerlink" href="#explicit-feature-map-approximation-for-rbf-kernels" title="Link to this heading">#</a></h1>
@@ -1035,7 +1083,7 @@ This is not easily possible for the case of the kernelized SVM.</p>
 </section>
 <section id="timing-and-accuracy-plots">
 <h2>Timing and accuracy plots<a class="headerlink" href="#timing-and-accuracy-plots" title="Link to this heading">#</a></h2>
-<p>To apply an classifier on this data, we need to flatten the image, to
+<p>To apply a classifier on this data, we need to flatten the image, to
 turn the data in a (samples, feature) matrix:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="mf">16.0</span>
@@ -1059,15 +1107,15 @@ turn the data in a (samples, feature) matrix:</p>
 <span class="n">feature_map_nystroem</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.kernel_approximation.Nystroem.html#sklearn.kernel_approximation.Nystroem" title="sklearn.kernel_approximation.Nystroem" class="sphx-glr-backref-module-sklearn-kernel_approximation sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Nystroem</span></a><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">fourier_approx_svm</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipeline</span><span class="o">.</span><span class="n">Pipeline</span></a><span class="p">(</span>
     <span class="p">[</span>
-        <span class="p">(</span><span class="s2">&quot;feature_map&quot;</span><span class="p">,</span> <span class="n">feature_map_fourier</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;svm&quot;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC" class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">svm</span><span class="o">.</span><span class="n">LinearSVC</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">"feature_map"</span><span class="p">,</span> <span class="n">feature_map_fourier</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"svm"</span><span class="p">,</span> <a href="../../modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC" class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">svm</span><span class="o">.</span><span class="n">LinearSVC</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
     <span class="p">]</span>
 <span class="p">)</span>
 
 <span class="n">nystroem_approx_svm</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline" class="sphx-glr-backref-module-sklearn-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipeline</span><span class="o">.</span><span class="n">Pipeline</span></a><span class="p">(</span>
     <span class="p">[</span>
-        <span class="p">(</span><span class="s2">&quot;feature_map&quot;</span><span class="p">,</span> <span class="n">feature_map_nystroem</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;svm&quot;</span><span class="p">,</span> <a href="../../modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC" class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">svm</span><span class="o">.</span><span class="n">LinearSVC</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">"feature_map"</span><span class="p">,</span> <span class="n">feature_map_nystroem</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"svm"</span><span class="p">,</span> <a href="../../modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC" class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">svm</span><span class="o">.</span><span class="n">LinearSVC</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
     <span class="p">]</span>
 <span class="p">)</span>
 
@@ -1111,51 +1159,51 @@ turn the data in a (samples, feature) matrix:</p>
 <span class="c1"># second y axis for timings</span>
 <span class="n">timescale</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplot.html#matplotlib.pyplot.subplot" title="matplotlib.pyplot.subplot" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span></a><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 
-<span class="n">accuracy</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">nystroem_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nystroem approx. kernel&quot;</span><span class="p">)</span>
-<span class="n">timescale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">nystroem_times</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nystroem approx. kernel&quot;</span><span class="p">)</span>
+<span class="n">accuracy</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">nystroem_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Nystroem approx. kernel"</span><span class="p">)</span>
+<span class="n">timescale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">nystroem_times</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Nystroem approx. kernel"</span><span class="p">)</span>
 
-<span class="n">accuracy</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">fourier_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Fourier approx. kernel&quot;</span><span class="p">)</span>
-<span class="n">timescale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">fourier_times</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Fourier approx. kernel&quot;</span><span class="p">)</span>
+<span class="n">accuracy</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">fourier_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Fourier approx. kernel"</span><span class="p">)</span>
+<span class="n">timescale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">fourier_times</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Fourier approx. kernel"</span><span class="p">)</span>
 
 <span class="c1"># horizontal lines for exact rbf and linear kernels:</span>
 <span class="n">accuracy</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="p">[</span><span class="n">sample_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sample_sizes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
     <span class="p">[</span><span class="n">linear_svm_score</span><span class="p">,</span> <span class="n">linear_svm_score</span><span class="p">],</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;linear svm&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"linear svm"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">timescale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="p">[</span><span class="n">sample_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sample_sizes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
     <span class="p">[</span><span class="n">linear_svm_time</span><span class="p">,</span> <span class="n">linear_svm_time</span><span class="p">],</span>
-    <span class="s2">&quot;--&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;linear svm&quot;</span><span class="p">,</span>
+    <span class="s2">"--"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"linear svm"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">accuracy</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="p">[</span><span class="n">sample_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sample_sizes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
     <span class="p">[</span><span class="n">kernel_svm_score</span><span class="p">,</span> <span class="n">kernel_svm_score</span><span class="p">],</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;rbf svm&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"rbf svm"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">timescale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="p">[</span><span class="n">sample_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sample_sizes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
     <span class="p">[</span><span class="n">kernel_svm_time</span><span class="p">,</span> <span class="n">kernel_svm_time</span><span class="p">],</span>
-    <span class="s2">&quot;--&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;rbf svm&quot;</span><span class="p">,</span>
+    <span class="s2">"--"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"rbf svm"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># vertical line for dataset dimensionality = 64</span>
-<span class="n">accuracy</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;n_features&quot;</span><span class="p">)</span>
+<span class="n">accuracy</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"n_features"</span><span class="p">)</span>
 
 <span class="c1"># legends and labels</span>
-<span class="n">accuracy</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Classification accuracy&quot;</span><span class="p">)</span>
-<span class="n">timescale</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Training times&quot;</span><span class="p">)</span>
+<span class="n">accuracy</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Classification accuracy"</span><span class="p">)</span>
+<span class="n">timescale</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Training times"</span><span class="p">)</span>
 <span class="n">accuracy</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sample_sizes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">accuracy</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(())</span>
 <span class="n">accuracy</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.min.html#numpy.min" title="numpy.min" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">min</span></a><span class="p">(</span><span class="n">fourier_scores</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">timescale</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Sampling steps = transformed feature dimension&quot;</span><span class="p">)</span>
-<span class="n">accuracy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Classification accuracy&quot;</span><span class="p">)</span>
-<span class="n">timescale</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Training time in seconds&quot;</span><span class="p">)</span>
-<span class="n">accuracy</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">timescale</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">timescale</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Sampling steps = transformed feature dimension"</span><span class="p">)</span>
+<span class="n">accuracy</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Classification accuracy"</span><span class="p">)</span>
+<span class="n">timescale</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Training time in seconds"</span><span class="p">)</span>
+<span class="n">accuracy</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">timescale</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
@@ -1192,13 +1240,13 @@ in <a class="reference internal" href="../../modules/kernel_approximation.html#k
 
 <span class="c1"># title for the plots</span>
 <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;SVC with rbf kernel&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SVC (linear kernel)</span><span class="se">\n</span><span class="s2"> with Fourier rbf feature map</span><span class="se">\n</span><span class="s2">n_components=100&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SVC (linear kernel)</span><span class="se">\n</span><span class="s2"> with Nystroem rbf feature map</span><span class="se">\n</span><span class="s2">n_components=100&quot;</span><span class="p">,</span>
+    <span class="s2">"SVC with rbf kernel"</span><span class="p">,</span>
+    <span class="s2">"SVC (linear kernel)</span><span class="se">\n</span><span class="s2"> with Fourier rbf feature map</span><span class="se">\n</span><span class="s2">n_components=100"</span><span class="p">,</span>
+    <span class="s2">"SVC (linear kernel)</span><span class="se">\n</span><span class="s2"> with Nystroem rbf feature map</span><span class="se">\n</span><span class="s2">n_components=100"</span><span class="p">,</span>
 <span class="p">]</span>
 
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">"font.size"</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
 <span class="c1"># predict and plot</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">((</span><span class="n">kernel_svm</span><span class="p">,</span> <span class="n">nystroem_approx_svm</span><span class="p">,</span> <span class="n">fourier_approx_svm</span><span class="p">)):</span>
     <span class="c1"># Plot the decision boundary. For that, we will assign a color to each</span>
@@ -1220,7 +1268,7 @@ in <a class="reference internal" href="../../modules/kernel_approximation.html#k
         <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
         <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
     <span class="p">)</span>
-    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
 
     <span class="c1"># Plot also the training points</span>
     <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="matplotlib.pyplot.scatter" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span></a><span class="p">(</span>
@@ -1238,14 +1286,14 @@ in <a class="reference internal" href="../../modules/kernel_approximation.html#k
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_kernel_approximation_002.png" srcset="../../_images/sphx_glr_plot_kernel_approximation_002.png" alt="SVC with rbf kernel, SVC (linear kernel)  with Fourier rbf feature map n_components=100, SVC (linear kernel)  with Nystroem rbf feature map n_components=100" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.765 seconds)</p>
+<img src="../../_images/sphx_glr_plot_kernel_approximation_002.png" srcset="../../_images/sphx_glr_plot_kernel_approximation_002.png" alt="SVC with rbf kernel, SVC (linear kernel)  with Fourier rbf feature map n_components=100, SVC (linear kernel)  with Nystroem rbf feature map n_components=100" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.690 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-miscellaneous-plot-kernel-approximation-py">
 <div class="binder-badge docutils container">
-<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_kernel_approximation.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo20.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_kernel_approximation.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo21.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="lite-badge docutils container">
-<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/miscellaneous/plot_kernel_approximation.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo20.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="../../lite/lab/index.html?path=auto_examples/miscellaneous/plot_kernel_approximation.ipynb"><img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo21.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
@@ -1260,17 +1308,17 @@ in <a class="reference internal" href="../../modules/kernel_approximation.html#k
 </div>
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Comparison of different linear SVM classifiers on a 2D projection of the iris dataset. We only consider the first 2 features of this dataset:"><img alt="" src="../../_images/sphx_glr_plot_iris_svc_thumb.png" />
-<p><a class="reference internal" href="../svm/plot_iris_svc.html#sphx-glr-auto-examples-svm-plot-iris-svc-py"><span class="std std-ref">Plot different SVM classifiers in the iris dataset</span></a></p>
+<p><a class="reference internal" href="../svm/plot_iris_svc.html"><span class="doc">Plot different SVM classifiers in the iris dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Plot different SVM classifiers in the iris dataset</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="A comparison for the decision boundaries generated on the iris dataset by Label Spreading, Self-training and SVM."><img alt="" src="../../_images/sphx_glr_plot_semi_supervised_versus_svm_iris_thumb.png" />
-<p><a class="reference internal" href="../semi_supervised/plot_semi_supervised_versus_svm_iris.html#sphx-glr-auto-examples-semi-supervised-plot-semi-supervised-versus-svm-iris-py"><span class="std std-ref">Decision boundary of semi-supervised classifiers versus SVM on the Iris dataset</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Decision boundary of semi-supervised classifiers versus SVM on the Iris dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of PolynomialCountSketch to efficiently generate polynomial kernel feature-space approximations. This is used to train linear classifiers that approximate the accuracy of kernelized ones."><img alt="" src="../../_images/sphx_glr_plot_scalable_poly_kernels_thumb.png" />
-<p><a class="reference internal" href="../kernel_approximation/plot_scalable_poly_kernels.html#sphx-glr-auto-examples-kernel-approximation-plot-scalable-poly-kernels-py"><span class="std std-ref">Scalable learning with polynomial kernel approximation</span></a></p>
+<p><a class="reference internal" href="../kernel_approximation/plot_scalable_poly_kernels.html"><span class="doc">Scalable learning with polynomial kernel approximation</span></a></p>
   <div class="sphx-glr-thumbnail-title">Scalable learning with polynomial kernel approximation</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the effect of the parameters gamma and C of the Radial Basis Function (RBF) kernel SVM."><img alt="" src="../../_images/sphx_glr_plot_rbf_parameters_thumb.png" />
-<p><a class="reference internal" href="../svm/plot_rbf_parameters.html#sphx-glr-auto-examples-svm-plot-rbf-parameters-py"><span class="std std-ref">RBF SVM parameters</span></a></p>
+<p><a class="reference internal" href="../svm/plot_rbf_parameters.html"><span class="doc">RBF SVM parameters</span></a></p>
   <div class="sphx-glr-thumbnail-title">RBF SVM parameters</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform univariate feature selection before running a SVC (support vector classifier) to improve the classification scores. We use the iris dataset (4 features) and add 36 non-informative features. We can find that our model achieves best performance when we select around 10% of features."><img alt="" src="../../_images/sphx_glr_plot_svm_anova_thumb.png" />
+<p><a class="reference internal" href="../svm/plot_svm_anova.html"><span class="doc">SVM-Anova: SVM with univariate feature selection</span></a></p>
+  <div class="sphx-glr-thumbnail-title">SVM-Anova: SVM with univariate feature selection</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -1324,22 +1372,13 @@ in <a class="reference internal" href="../../modules/kernel_approximation.html#k
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-package-and-dataset-imports-load-dataset">Python package and dataset imports, load dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timing-and-accuracy-plots">Timing and accuracy plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-surfaces-of-rbf-kernel-svm-and-linear-svm">Decision Surfaces of RBF Kernel SVM and Linear SVM</a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/auto_examples/miscellaneous/plot_kernel_approximation.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
   <div class="sidebar-secondary-item">
 
@@ -1384,21 +1423,37 @@ in <a class="reference internal" href="../../modules/kernel_approximation.html#k
       
         <div class="sphx-glr-sidebar-item lite-badge-sidebar">
           <a href="../../lite/lab/index.html?path=auto_examples/miscellaneous/plot_kernel_approximation.ipynb">
-            <img src="../../_images/jupyterlite_badge_logo20.svg" alt="Launch JupyterLite">
+            <img src="../../_images/jupyterlite_badge_logo21.svg" alt="Launch JupyterLite">
           </a>
         </div>
       
     
       
         <div class="sphx-glr-sidebar-item binder-badge-sidebar">
-          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_kernel_approximation.ipynb">
-            <img src="../../_images/binder_badge_logo20.svg" alt="Launch binder">
+          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/miscellaneous/plot_kernel_approximation.ipynb">
+            <img src="../../_images/binder_badge_logo21.svg" alt="Launch binder">
           </a>
         </div>
       
     
   </div>
 </div>
+
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1413,8 +1468,8 @@ in <a class="reference internal" href="../../modules/kernel_approximation.html#k
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1425,7 +1480,7 @@ in <a class="reference internal" href="../../modules/kernel_approximation.html#k
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

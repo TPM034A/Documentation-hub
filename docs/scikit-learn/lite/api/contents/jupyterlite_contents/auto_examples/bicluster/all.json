@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:04.969960Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.826014Z",
+      "mimetype": null,
+      "name": "plot_bicluster_newsgroups.ipynb",
+      "path": "jupyterlite_contents/auto_examples/bicluster/plot_bicluster_newsgroups.ipynb",
+      "size": 7104,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:04.970302Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.826543Z",
+      "mimetype": null,
+      "name": "plot_spectral_biclustering.ipynb",
+      "path": "jupyterlite_contents/auto_examples/bicluster/plot_spectral_biclustering.ipynb",
+      "size": 8026,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:04.970639Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.826892Z",
+      "mimetype": null,
+      "name": "plot_spectral_coclustering.ipynb",
+      "path": "jupyterlite_contents/auto_examples/bicluster/plot_spectral_coclustering.ipynb",
+      "size": 3285,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-09-11T14:01:04.970639Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-09-11T14:01:04.970639Z",
+  "mimetype": null,
+  "name": "bicluster",
+  "path": "jupyterlite_contents/auto_examples/bicluster",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

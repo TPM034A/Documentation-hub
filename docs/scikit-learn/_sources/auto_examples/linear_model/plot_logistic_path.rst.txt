@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_linear_model_plot_logistic_path.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -139,7 +139,7 @@ centered around 0, we don't need to fit an intercept.
     clf = make_pipeline(
         StandardScaler(),
         LogisticRegression(
-            penalty="l1",
+            l1_ratio=1,
             solver="liblinear",
             tol=1e-6,
             max_iter=int(1e6),
@@ -203,7 +203,7 @@ Plot regularization path
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.171 seconds)
+   **Total running time of the script:** (0 minutes 0.177 seconds)
 
 
 .. _sphx_glr_download_auto_examples_linear_model_plot_logistic_path.py:
@@ -215,7 +215,7 @@ Plot regularization path
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_logistic_path.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_logistic_path.ipynb
         :alt: Launch binder
         :width: 150 px
 

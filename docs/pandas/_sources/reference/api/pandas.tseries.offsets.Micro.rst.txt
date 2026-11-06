@@ -17,9 +17,6 @@ pandas.tseries.offsets.Micro
         ~Micro.base
       
       
-        ~Micro.delta
-      
-      
         ~Micro.freqstr
       
       
@@ -51,9 +48,6 @@ pandas.tseries.offsets.Micro
       
       
         ~Micro.copy
-      
-      
-        ~Micro.is_anchored
       
       
         ~Micro.is_month_end

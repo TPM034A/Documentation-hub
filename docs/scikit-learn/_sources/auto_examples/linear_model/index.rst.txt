@@ -10,6 +10,10 @@ Generalized Linear Models
 Examples concerning the :mod:`sklearn.linear_model` module.
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -26,7 +30,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ard_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_ard.py`
+  :doc:`/auto_examples/linear_model/plot_ard`
 
 .. raw:: html
 
@@ -43,7 +47,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_bayesian_ridge_curvefit_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_bayesian_ridge_curvefit.py`
+  :doc:`/auto_examples/linear_model/plot_bayesian_ridge_curvefit`
 
 .. raw:: html
 
@@ -60,7 +64,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_logistic_multinomial_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_logistic_multinomial.py`
+  :doc:`/auto_examples/linear_model/plot_logistic_multinomial`
 
 .. raw:: html
 
@@ -77,7 +81,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sgd_early_stopping_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_early_stopping.py`
+  :doc:`/auto_examples/linear_model/plot_sgd_early_stopping`
 
 .. raw:: html
 
@@ -94,7 +98,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_elastic_net_precomputed_gram_matrix_with_weighted_samples_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_elastic_net_precomputed_gram_matrix_with_weighted_samples.py`
+  :doc:`/auto_examples/linear_model/plot_elastic_net_precomputed_gram_matrix_with_weighted_samples`
 
 .. raw:: html
 
@@ -111,7 +115,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_huber_vs_ridge_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_huber_vs_ridge.py`
+  :doc:`/auto_examples/linear_model/plot_huber_vs_ridge`
 
 .. raw:: html
 
@@ -128,7 +132,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_multi_task_lasso_support_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_multi_task_lasso_support.py`
+  :doc:`/auto_examples/linear_model/plot_multi_task_lasso_support`
 
 .. raw:: html
 
@@ -145,7 +149,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_logistic_l1_l2_sparsity_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_logistic_l1_l2_sparsity.py`
+  :doc:`/auto_examples/linear_model/plot_logistic_l1_l2_sparsity`
 
 .. raw:: html
 
@@ -155,14 +159,14 @@ Examples concerning the :mod:`sklearn.linear_model` module.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The present example compares three l1-based regression models on a synthetic signal obtained from sparse and correlated features that are further corrupted with additive gaussian noise:">
+    <div class="sphx-glr-thumbcontainer" tooltip="The present example compares three l1-based regression models on a synthetic signal obtained from sparse and correlated features that are further corrupted with additive Gaussian noise:">
 
 .. only:: html
 
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_lasso_and_elasticnet_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_and_elasticnet.py`
+  :doc:`/auto_examples/linear_model/plot_lasso_and_elasticnet`
 
 .. raw:: html
 
@@ -179,7 +183,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_lasso_lars_ic_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_lars_ic.py`
+  :doc:`/auto_examples/linear_model/plot_lasso_lars_ic`
 
 .. raw:: html
 
@@ -196,7 +200,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_lasso_model_selection_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_model_selection.py`
+  :doc:`/auto_examples/linear_model/plot_lasso_model_selection`
 
 .. raw:: html
 
@@ -213,7 +217,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_lasso_dense_vs_sparse_data_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_dense_vs_sparse_data.py`
+  :doc:`/auto_examples/linear_model/plot_lasso_dense_vs_sparse_data`
 
 .. raw:: html
 
@@ -230,28 +234,11 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_lasso_lars_elasticnet_path.py`
+  :doc:`/auto_examples/linear_model/plot_lasso_lasso_lars_elasticnet_path`
 
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Lasso, Lasso-LARS, and Elastic Net paths</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Shown in the plot is how the logistic regression would, in this synthetic dataset, classify values as either 0 or 1, i.e. class one or two, using the logistic curve.">
-
-.. only:: html
-
-  .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_logistic_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_linear_model_plot_logistic.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Logistic function</div>
     </div>
 
 
@@ -264,7 +251,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sparse_logistic_regression_mnist_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_sparse_logistic_regression_mnist.py`
+  :doc:`/auto_examples/linear_model/plot_sparse_logistic_regression_mnist`
 
 .. raw:: html
 
@@ -281,7 +268,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sparse_logistic_regression_20newsgroups_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_sparse_logistic_regression_20newsgroups.py`
+  :doc:`/auto_examples/linear_model/plot_sparse_logistic_regression_20newsgroups`
 
 .. raw:: html
 
@@ -298,7 +285,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_nnls_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_nnls.py`
+  :doc:`/auto_examples/linear_model/plot_nnls`
 
 .. raw:: html
 
@@ -315,7 +302,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sgdocsvm_vs_ocsvm_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_sgdocsvm_vs_ocsvm.py`
+  :doc:`/auto_examples/linear_model/plot_sgdocsvm_vs_ocsvm`
 
 .. raw:: html
 
@@ -332,7 +319,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ols_ridge_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_ols_ridge.py`
+  :doc:`/auto_examples/linear_model/plot_ols_ridge`
 
 .. raw:: html
 
@@ -349,7 +336,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_omp_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_omp.py`
+  :doc:`/auto_examples/linear_model/plot_omp`
 
 .. raw:: html
 
@@ -366,7 +353,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ridge_path_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_ridge_path.py`
+  :doc:`/auto_examples/linear_model/plot_ridge_path`
 
 .. raw:: html
 
@@ -383,7 +370,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sgd_iris_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_iris.py`
+  :doc:`/auto_examples/linear_model/plot_sgd_iris`
 
 .. raw:: html
 
@@ -400,7 +387,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_poisson_regression_non_normal_loss_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_poisson_regression_non_normal_loss.py`
+  :doc:`/auto_examples/linear_model/plot_poisson_regression_non_normal_loss`
 
 .. raw:: html
 
@@ -417,7 +404,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_polynomial_interpolation_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_polynomial_interpolation.py`
+  :doc:`/auto_examples/linear_model/plot_polynomial_interpolation`
 
 .. raw:: html
 
@@ -434,7 +421,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_quantile_regression_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_quantile_regression.py`
+  :doc:`/auto_examples/linear_model/plot_quantile_regression`
 
 .. raw:: html
 
@@ -451,7 +438,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_logistic_path_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_logistic_path.py`
+  :doc:`/auto_examples/linear_model/plot_logistic_path`
 
 .. raw:: html
 
@@ -468,7 +455,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ridge_coeffs_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_ridge_coeffs.py`
+  :doc:`/auto_examples/linear_model/plot_ridge_coeffs`
 
 .. raw:: html
 
@@ -485,7 +472,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_robust_fit_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_robust_fit.py`
+  :doc:`/auto_examples/linear_model/plot_robust_fit`
 
 .. raw:: html
 
@@ -502,7 +489,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_ransac_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_ransac.py`
+  :doc:`/auto_examples/linear_model/plot_ransac`
 
 .. raw:: html
 
@@ -519,7 +506,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sgd_separating_hyperplane_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_separating_hyperplane.py`
+  :doc:`/auto_examples/linear_model/plot_sgd_separating_hyperplane`
 
 .. raw:: html
 
@@ -536,7 +523,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sgd_penalties_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_penalties.py`
+  :doc:`/auto_examples/linear_model/plot_sgd_penalties`
 
 .. raw:: html
 
@@ -553,7 +540,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sgd_weighted_samples_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_weighted_samples.py`
+  :doc:`/auto_examples/linear_model/plot_sgd_weighted_samples`
 
 .. raw:: html
 
@@ -570,7 +557,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_sgd_loss_functions_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_loss_functions.py`
+  :doc:`/auto_examples/linear_model/plot_sgd_loss_functions`
 
 .. raw:: html
 
@@ -587,7 +574,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_theilsen_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_theilsen.py`
+  :doc:`/auto_examples/linear_model/plot_theilsen`
 
 .. raw:: html
 
@@ -604,7 +591,7 @@ Examples concerning the :mod:`sklearn.linear_model` module.
   .. image:: /auto_examples/linear_model/images/thumb/sphx_glr_plot_tweedie_regression_insurance_claims_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_linear_model_plot_tweedie_regression_insurance_claims.py`
+  :doc:`/auto_examples/linear_model/plot_tweedie_regression_insurance_claims`
 
 .. raw:: html
 
@@ -635,7 +622,6 @@ Examples concerning the :mod:`sklearn.linear_model` module.
    /auto_examples/linear_model/plot_lasso_model_selection
    /auto_examples/linear_model/plot_lasso_dense_vs_sparse_data
    /auto_examples/linear_model/plot_lasso_lasso_lars_elasticnet_path
-   /auto_examples/linear_model/plot_logistic
    /auto_examples/linear_model/plot_sparse_logistic_regression_mnist
    /auto_examples/linear_model/plot_sparse_logistic_regression_20newsgroups
    /auto_examples/linear_model/plot_nnls

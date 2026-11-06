@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.force\_3d
+=============================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.force_3d

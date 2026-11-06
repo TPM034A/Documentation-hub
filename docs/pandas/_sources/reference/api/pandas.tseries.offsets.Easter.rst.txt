@@ -14,6 +14,9 @@ pandas.tseries.offsets.Easter
    .. autosummary::
    
       
+        ~Easter.EASTER_WESTERN
+      
+      
         ~Easter.base
       
       
@@ -21,6 +24,9 @@ pandas.tseries.offsets.Easter
       
       
         ~Easter.kwds
+      
+      
+        ~Easter.method
       
       
         ~Easter.n
@@ -48,9 +54,6 @@ pandas.tseries.offsets.Easter
       
       
         ~Easter.copy
-      
-      
-        ~Easter.is_anchored
       
       
         ~Easter.is_month_end

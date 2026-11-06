@@ -11,12 +11,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-learn/stable/developers/index.html" />
 <meta property="og:site_name" content="scikit-learn" />
-<meta property="og:description" content="Contributing- Ways to contribute, Automated Contributions Policy, Submitting a bug report or a feature request- How to make a good bug report., Contributing code- Video resources, How to contribute..." />
-<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:description" content="Contributing- Ways to contribute- New Contributors., Automated Contributions Policy, Licensing your contribution, Submitting a bug report or a feature request- How to make a good bug report., Contr..." />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-notext.png" />
 <meta property="og:image:alt" content="scikit-learn" />
-<meta name="description" content="Contributing- Ways to contribute, Automated Contributions Policy, Submitting a bug report or a feature request- How to make a good bug report., Contributing code- Video resources, How to contribute..." />
+<meta name="description" content="Contributing- Ways to contribute- New Contributors., Automated Contributions Policy, Licensing your contribution, Submitting a bug report or a feature request- How to make a good bug report., Contr..." />
 
-    <title>Developer’s Guide &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>Developer’s Guide &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,69 +35,77 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'developers/index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/developers/index.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -123,7 +131,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -149,8 +157,8 @@
       
     
     
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -271,6 +279,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../about.html">
     About us
   </a>
@@ -298,11 +313,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -315,8 +337,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -485,6 +506,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../about.html">
     About us
   </a>
@@ -502,11 +530,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -519,8 +554,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -598,15 +632,18 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#ways-to-contribute">Ways to contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#ways-to-contribute">Ways to contribute</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#new-contributors">New Contributors</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#automated-contributions-policy">Automated Contributions Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#licensing-your-contribution">Licensing your contribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#submitting-a-bug-report-or-a-feature-request">Submitting a bug report or a feature request</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="contributing.html#how-to-make-a-good-bug-report">How to make a good bug report</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html#contributing-code">Contributing code</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="contributing.html#video-resources">Video resources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="contributing.html#how-to-contribute">How to contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#contributing-code-and-documentation">Contributing code and documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#development-workflow">Development workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="contributing.html#pull-request-checklist">Pull request checklist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="contributing.html#continuous-integration-ci">Continuous Integration (CI)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="contributing.html#commit-message-markers">Commit message markers</a></li>
@@ -615,7 +652,8 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="contributing.html#stalled-pull-requests">Stalled pull requests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="contributing.html#stalled-and-unclaimed-issues">Stalled and Unclaimed Issues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="contributing.html#issues-for-new-contributors">Issues for New Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#issues-tagged-needs-triage">Issues tagged “Needs Triage”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#video-resources">Video resources</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#documentation">Documentation</a><ul>
@@ -633,6 +671,37 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#code-review-guidelines">Code Review Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contributing.html#reading-the-existing-code-base">Reading the existing code base</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development_setup.html">Set up your development environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development_setup.html#fork-the-scikit-learn-repository">Fork the scikit-learn repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_setup.html#set-up-a-local-clone-of-your-fork">Set up a local clone of your fork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_setup.html#set-up-a-dedicated-environment-and-install-dependencies">Set up a dedicated environment and install dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_setup.html#install-editable-version-of-scikit-learn">Install editable version of scikit-learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_setup.html#set-up-pre-commit">Set up pre-commit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="global_configuration.html">Global configuration and environment variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="global_configuration.html#performance-and-memory">Performance and memory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-assume-finite"><code class="docutils literal notranslate"><span class="pre">SKLEARN_ASSUME_FINITE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-working-memory"><code class="docutils literal notranslate"><span class="pre">SKLEARN_WORKING_MEMORY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-pairwise-dist-chunk-size"><code class="docutils literal notranslate"><span class="pre">SKLEARN_PAIRWISE_DIST_CHUNK_SIZE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="global_configuration.html#testing-and-ci">Testing and CI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-seed"><code class="docutils literal notranslate"><span class="pre">SKLEARN_SEED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-tests-global-random-seed"><code class="docutils literal notranslate"><span class="pre">SKLEARN_TESTS_GLOBAL_RANDOM_SEED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-skip-network-tests"><code class="docutils literal notranslate"><span class="pre">SKLEARN_SKIP_NETWORK_TESTS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-run-float32-tests"><code class="docutils literal notranslate"><span class="pre">SKLEARN_RUN_FLOAT32_TESTS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-warnings-as-errors"><code class="docutils literal notranslate"><span class="pre">SKLEARN_WARNINGS_AS_ERRORS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="global_configuration.html#build-and-debug">Build and debug</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-enable-debug-cython-directives"><code class="docutils literal notranslate"><span class="pre">SKLEARN_ENABLE_DEBUG_CYTHON_DIRECTIVES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-skip-openmp-test"><code class="docutils literal notranslate"><span class="pre">SKLEARN_SKIP_OPENMP_TEST</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="global_configuration.html#sklearn-test-no-openmp"><code class="docutils literal notranslate"><span class="pre">SKLEARN_TEST_NO_OPENMP</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="minimal_reproducer.html">Crafting a minimal reproducer for scikit-learn</a><ul>
@@ -698,7 +767,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tips.html#debugging-memory-errors-in-cython-with-valgrind">Debugging memory errors in Cython with valgrind</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tips.html#building-and-testing-for-the-arm64-platform-on-a-x86-64-machine">Building and testing for the ARM64 platform on a x86_64 machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#building-and-testing-for-the-arm64-platform-on-an-x86-64-machine">Building and testing for the ARM64 platform on an x86_64 machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tips.html#the-meson-build-backend">The Meson Build Backend</a></li>
 </ul>
 </li>
@@ -718,7 +787,11 @@
 <li class="toctree-l1"><a class="reference internal" href="performance.html">How to optimize for speed</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="performance.html#python-cython-or-c-c">Python, Cython or C/C++?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="performance.html#profiling-python-code">Profiling Python code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance.html#memory-usage-profiling">Memory usage profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#memory-usage-profiling">Memory usage profiling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#peak-memory">Peak memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#memory-leaks">Memory leaks</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="performance.html#using-cython">Using Cython</a></li>
 <li class="toctree-l2"><a class="reference internal" href="performance.html#profiling-compiled-extensions">Profiling compiled extensions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="performance.html#using-yep-and-gperftools">Using yep and gperftools</a></li>
@@ -746,27 +819,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="advanced_installation.html">Installing the development version of scikit-learn</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="advanced_installation.html#installing-nightly-builds">Installing nightly builds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced_installation.html#building-from-source">Building from source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="advanced_installation.html#building-a-specific-version-from-a-tag">Building a specific version from a tag</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="advanced_installation.html#platform-specific-instructions">Platform-specific instructions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="advanced_installation.html#windows">Windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_installation.html#macos">macOS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="advanced_installation.html#macos-compilers-from-conda-forge">macOS compilers from conda-forge</a></li>
-<li class="toctree-l4"><a class="reference internal" href="advanced_installation.html#macos-compilers-from-homebrew">macOS compilers from Homebrew</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_installation.html#linux">Linux</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="advanced_installation.html#linux-compilers-from-the-system">Linux compilers from the system</a></li>
-<li class="toctree-l4"><a class="reference internal" href="advanced_installation.html#linux-compilers-from-conda-forge">Linux compilers from conda-forge</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="advanced_installation.html#freebsd">FreeBSD</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="misc_info.html">Miscellaneous information / Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc_info.html#notes-on-openmp">Notes on OpenMP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc_info.html#notes-on-conda">Notes on Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc_info.html#note-on-dependencies-for-other-linux-distributions">Note on dependencies for other Linux distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc_info.html#notes-on-meson">Notes on Meson</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bug_triaging.html">Bug triaging and issue curation</a><ul>
@@ -791,6 +848,24 @@
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Developing with the Plotting API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="plotting.html#plotting-api-overview">Plotting API Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plotting.html#plotting-with-multiple-axes">Plotting with Multiple Axes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#using-matplotlib">Using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks.html">Developing with the callback API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="callback_support.html">Implementing callback support in estimators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="callback_support.html#the-callbacksupportmixin-class">The CallbackSupportMixin class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="callback_support.html#the-callbackcontext-class">The CallbackContext class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="callback_support.html#the-with-callbacks-decorator">The with_callbacks decorator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="callback_support.html#minimal-example">Minimal example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developing_callbacks.html">Developing callbacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developing_callbacks.html#the-callback-protocol">The callback protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developing_callbacks.html#auto-propagated-callbacks">Auto-propagated callbacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developing_callbacks.html#callback-shared-state">Callback shared state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developing_callbacks.html#minimal-example">Minimal example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -822,14 +897,21 @@
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/developers/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -844,8 +926,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -856,7 +938,7 @@
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

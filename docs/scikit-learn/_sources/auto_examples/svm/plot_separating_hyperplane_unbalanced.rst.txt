@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_svm_plot_separating_hyperplane_unbalanced.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -36,7 +36,7 @@ unbalanced classes.
     This example will also work by replacing ``SVC(kernel="linear")``
     with ``SGDClassifier(loss="hinge")``. Setting the ``loss`` parameter
     of the :class:`SGDClassifier` equal to ``hinge`` will yield behaviour
-    such as that of a SVC with a linear kernel.
+    such as that of an SVC with a linear kernel.
 
     For example try instead of the ``SVC``::
 
@@ -130,7 +130,7 @@ unbalanced classes.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.167 seconds)
+   **Total running time of the script:** (0 minutes 0.182 seconds)
 
 
 .. _sphx_glr_download_auto_examples_svm_plot_separating_hyperplane_unbalanced.py:
@@ -142,7 +142,7 @@ unbalanced classes.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/svm/plot_separating_hyperplane_unbalanced.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/svm/plot_separating_hyperplane_unbalanced.ipynb
         :alt: Launch binder
         :width: 150 px
 

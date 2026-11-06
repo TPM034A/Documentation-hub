@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-learn/stable/auto_examples/applications/plot_stock_market.html" />
 <meta property="og:site_name" content="scikit-learn" />
 <meta property="og:description" content="This example employs several unsupervised learning techniques to extract the stock market structure from variations in historical quotes. The quantity that we use is the daily variation in quote pr..." />
-<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-notext.png" />
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="This example employs several unsupervised learning techniques to extract the stock market structure from variations in historical quotes. The quantity that we use is the daily variation in quote pr..." />
 
-    <title>Visualizing the stock market structure &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>Visualizing the stock market structure &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,31 +35,32 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -67,38 +68,46 @@
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/applications/plot_stock_market';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/auto_examples/applications/plot_stock_market.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Wikipedia principal eigenvector" href="wikipedia_principal_eigenvector.html" />
+    <link rel="next" title="Wikipedia principal eigenvector" href="plot_wikipedia_principal_eigenvector.html" />
     <link rel="prev" title="Topic extraction with Non-negative Matrix Factorization and Latent Dirichlet Allocation" href="plot_topics_extraction_with_nmf_lda.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -124,7 +133,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -150,8 +159,8 @@
       
     
     
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -272,6 +281,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../about.html">
     About us
   </a>
@@ -299,11 +315,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -316,8 +339,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -484,6 +506,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../about.html">
     About us
   </a>
@@ -501,11 +530,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -518,8 +554,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -548,12 +583,22 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../release_highlights/index.html">Release Highlights</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_9_0.html">Release Highlights for scikit-learn 1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_8_0.html">Release Highlights for scikit-learn 1.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_7_0.html">Release Highlights for scikit-learn 1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_6_0.html">Release Highlights for scikit-learn 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_5_0.html">Release Highlights for scikit-learn 1.5</a></li>
@@ -580,6 +625,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration.html">Probability calibration of classifiers</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../callbacks/index.html">Callbacks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_scoring_monitor.html">Analysis of the convergence of penalized logistic regression models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_callback_support.html">Supporting callbacks in third party estimators</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_comparison.html">Classifier comparison</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_lda_qda.html">Linear and Quadratic Discriminant Analysis with covariance ellipsoid</a></li>
@@ -593,7 +643,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_coin_ward_segmentation.html">A demo of structured Ward hierarchical clustering on an image of coins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_mean_shift.html">A demo of the mean-shift clustering algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_adjusted_for_chance_measures.html">Adjustment for chance in clustering performance evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering.html">Agglomerative clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering_metrics.html">Agglomerative clustering with different metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_plusplus.html">An example of K-Means++ initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_bisect_kmeans.html">Bisecting K-Means and Regular K-Means Performance Comparison</a></li>
@@ -609,7 +658,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_stability_low_dim_dense.html">Empirical evaluation of the impact of k-means initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_digits_agglomeration.html">Feature agglomeration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_feature_agglomeration_vs_univariate_selection.html">Feature agglomeration vs. univariate selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering: structured vs unstructured ward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_inductive_clustering.html">Inductive Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_dict_face_patches.html">Online learning of a dictionary of parts of faces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_dendrogram.html">Plot Hierarchical Clustering Dendrogram</a></li>
@@ -690,7 +739,7 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples based on real world datasets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plot_tomography_l1_reconstruction.html">Compressive sensing: tomography reconstruction with L1 prior (Lasso)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_face_recognition.html">Faces recognition example using eigenfaces and SVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_face_recognition.html">Faces recognition example using eigenfaces and kernel approximation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_digits_denoising.html">Image denoising using kernel PCA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_time_series_lagged_features.html">Lagged features for time series forecasting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_model_complexity_influence.html">Model Complexity Influence</a></li>
@@ -701,7 +750,7 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_cyclical_feature_engineering.html">Time-related feature engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_topics_extraction_with_nmf_lda.html">Topic extraction with Non-negative Matrix Factorization and Latent Dirichlet Allocation</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Visualizing the stock market structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/index.html">Feature Selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -754,7 +803,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_model_selection.html">Lasso model selection: AIC-BIC / cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_dense_vs_sparse_data.html">Lasso on dense and sparse data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_lasso_lasso_lars_elasticnet_path.html">Lasso, Lasso-LARS, and Elastic Net paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_logistic.html">Logistic function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_mnist.html">MNIST classification using multinomial logistic + L1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_sparse_logistic_regression_20newsgroups.html">Multiclass sparse logistic regression on 20newgroups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_model/plot_nnls.html">Non-negative least squares</a></li>
@@ -779,6 +827,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../inspection/index.html">Inspection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_linear_model_coefficient_interpretation.html">Common pitfalls in the interpretation of coefficients of linear models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_causal_interpretation.html">Failure of Machine Learning to infer causal effects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence.html">Partial Dependence and Individual Conditional Expectation Plots</a></li>
@@ -800,9 +849,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../miscellaneous/index.html">Miscellaneous</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_anomaly_comparison.html">Comparing anomaly detection algorithms for outlier detection on toy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_kernel_ridge_regression.html">Comparison of kernel ridge regression and SVR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Developing Estimators Compliant with Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_pipeline_display.html">Displaying Pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_estimator_representation.html">Displaying estimators and complex pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_outlier_detection_bench.html">Evaluation of outlier detection estimators</a></li>
@@ -810,7 +859,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multioutput_face_completion.html">Face completion with a multi-output estimators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_set_output.html">Introducing the <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_isotonic_regression.html">Isotonic Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multilabel.html">Multilabel classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_roc_curve_visualization_api.html">ROC Curve with Visualization API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_johnson_lindenstrauss_bound.html">The Johnson-Lindenstrauss bound for embedding with random projections</a></li>
@@ -827,11 +875,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_likelihood_ratios.html">Class Likelihood Ratios to measure classification performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_randomized_search.html">Comparing randomized search and grid search for hyperparameter estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_successive_halving_heatmap.html">Comparison between grid search and successive halving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Confusion matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_grid_search_digits.html">Custom refit strategy of a grid search with cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_multi_metric_evaluation.html">Demonstration of multi-metric evaluation on cross_val_score and GridSearchCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_det.html">Detection error tradeoff (DET) curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_train_error_vs_test_error.html">Effect of model regularization on training and test error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Evaluate the performance of a classifier with Confusion Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_roc.html">Multiclass Receiver Operating Characteristic (ROC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_nested_cross_validation_iris.html">Nested versus non-nested cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_cv_predict.html">Plotting Cross-Validated Predictions</a></li>
@@ -990,7 +1038,7 @@
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-stock-market-py"><span class="std std-ref">Go to the end</span></a>
-to download the full example code. or to run this example in your browser via JupyterLite or Binder</p>
+to download the full example code or to run this example in your browser via JupyterLite or Binder.</p>
 </div>
 <section class="sphx-glr-example-title" id="visualizing-the-stock-market-structure">
 <span id="sphx-glr-auto-examples-applications-plot-stock-market-py"></span><h1>Visualizing the stock market structure<a class="headerlink" href="#visualizing-the-stock-market-structure" title="Link to this heading">#</a></h1>
@@ -1015,62 +1063,62 @@ historical data can be obtained from APIs like the
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">symbol_dict</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;TOT&quot;</span><span class="p">:</span> <span class="s2">&quot;Total&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;XOM&quot;</span><span class="p">:</span> <span class="s2">&quot;Exxon&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CVX&quot;</span><span class="p">:</span> <span class="s2">&quot;Chevron&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;COP&quot;</span><span class="p">:</span> <span class="s2">&quot;ConocoPhillips&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;VLO&quot;</span><span class="p">:</span> <span class="s2">&quot;Valero Energy&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;MSFT&quot;</span><span class="p">:</span> <span class="s2">&quot;Microsoft&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;IBM&quot;</span><span class="p">:</span> <span class="s2">&quot;IBM&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;TWX&quot;</span><span class="p">:</span> <span class="s2">&quot;Time Warner&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CMCSA&quot;</span><span class="p">:</span> <span class="s2">&quot;Comcast&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CVC&quot;</span><span class="p">:</span> <span class="s2">&quot;Cablevision&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;YHOO&quot;</span><span class="p">:</span> <span class="s2">&quot;Yahoo&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;DELL&quot;</span><span class="p">:</span> <span class="s2">&quot;Dell&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;HPQ&quot;</span><span class="p">:</span> <span class="s2">&quot;HP&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;AMZN&quot;</span><span class="p">:</span> <span class="s2">&quot;Amazon&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;TM&quot;</span><span class="p">:</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CAJ&quot;</span><span class="p">:</span> <span class="s2">&quot;Canon&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SNE&quot;</span><span class="p">:</span> <span class="s2">&quot;Sony&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;HMC&quot;</span><span class="p">:</span> <span class="s2">&quot;Honda&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;NAV&quot;</span><span class="p">:</span> <span class="s2">&quot;Navistar&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;NOC&quot;</span><span class="p">:</span> <span class="s2">&quot;Northrop Grumman&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;BA&quot;</span><span class="p">:</span> <span class="s2">&quot;Boeing&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;KO&quot;</span><span class="p">:</span> <span class="s2">&quot;Coca Cola&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;MMM&quot;</span><span class="p">:</span> <span class="s2">&quot;3M&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;MCD&quot;</span><span class="p">:</span> <span class="s2">&quot;McDonald&#39;s&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;PEP&quot;</span><span class="p">:</span> <span class="s2">&quot;Pepsi&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;K&quot;</span><span class="p">:</span> <span class="s2">&quot;Kellogg&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;UN&quot;</span><span class="p">:</span> <span class="s2">&quot;Unilever&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;MAR&quot;</span><span class="p">:</span> <span class="s2">&quot;Marriott&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;PG&quot;</span><span class="p">:</span> <span class="s2">&quot;Procter Gamble&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CL&quot;</span><span class="p">:</span> <span class="s2">&quot;Colgate-Palmolive&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;GE&quot;</span><span class="p">:</span> <span class="s2">&quot;General Electrics&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;WFC&quot;</span><span class="p">:</span> <span class="s2">&quot;Wells Fargo&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;JPM&quot;</span><span class="p">:</span> <span class="s2">&quot;JPMorgan Chase&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;AIG&quot;</span><span class="p">:</span> <span class="s2">&quot;AIG&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;AXP&quot;</span><span class="p">:</span> <span class="s2">&quot;American express&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;BAC&quot;</span><span class="p">:</span> <span class="s2">&quot;Bank of America&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;GS&quot;</span><span class="p">:</span> <span class="s2">&quot;Goldman Sachs&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;AAPL&quot;</span><span class="p">:</span> <span class="s2">&quot;Apple&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SAP&quot;</span><span class="p">:</span> <span class="s2">&quot;SAP&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CSCO&quot;</span><span class="p">:</span> <span class="s2">&quot;Cisco&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;TXN&quot;</span><span class="p">:</span> <span class="s2">&quot;Texas Instruments&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;XRX&quot;</span><span class="p">:</span> <span class="s2">&quot;Xerox&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;WMT&quot;</span><span class="p">:</span> <span class="s2">&quot;Wal-Mart&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;HD&quot;</span><span class="p">:</span> <span class="s2">&quot;Home Depot&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;GSK&quot;</span><span class="p">:</span> <span class="s2">&quot;GlaxoSmithKline&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;PFE&quot;</span><span class="p">:</span> <span class="s2">&quot;Pfizer&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;SNY&quot;</span><span class="p">:</span> <span class="s2">&quot;Sanofi-Aventis&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;NVS&quot;</span><span class="p">:</span> <span class="s2">&quot;Novartis&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;KMB&quot;</span><span class="p">:</span> <span class="s2">&quot;Kimberly-Clark&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="s2">&quot;Ryder&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;GD&quot;</span><span class="p">:</span> <span class="s2">&quot;General Dynamics&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;RTN&quot;</span><span class="p">:</span> <span class="s2">&quot;Raytheon&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CVS&quot;</span><span class="p">:</span> <span class="s2">&quot;CVS&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CAT&quot;</span><span class="p">:</span> <span class="s2">&quot;Caterpillar&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;DD&quot;</span><span class="p">:</span> <span class="s2">&quot;DuPont de Nemours&quot;</span><span class="p">,</span>
+    <span class="s2">"TOT"</span><span class="p">:</span> <span class="s2">"Total"</span><span class="p">,</span>
+    <span class="s2">"XOM"</span><span class="p">:</span> <span class="s2">"Exxon"</span><span class="p">,</span>
+    <span class="s2">"CVX"</span><span class="p">:</span> <span class="s2">"Chevron"</span><span class="p">,</span>
+    <span class="s2">"COP"</span><span class="p">:</span> <span class="s2">"ConocoPhillips"</span><span class="p">,</span>
+    <span class="s2">"VLO"</span><span class="p">:</span> <span class="s2">"Valero Energy"</span><span class="p">,</span>
+    <span class="s2">"MSFT"</span><span class="p">:</span> <span class="s2">"Microsoft"</span><span class="p">,</span>
+    <span class="s2">"IBM"</span><span class="p">:</span> <span class="s2">"IBM"</span><span class="p">,</span>
+    <span class="s2">"TWX"</span><span class="p">:</span> <span class="s2">"Time Warner"</span><span class="p">,</span>
+    <span class="s2">"CMCSA"</span><span class="p">:</span> <span class="s2">"Comcast"</span><span class="p">,</span>
+    <span class="s2">"CVC"</span><span class="p">:</span> <span class="s2">"Cablevision"</span><span class="p">,</span>
+    <span class="s2">"YHOO"</span><span class="p">:</span> <span class="s2">"Yahoo"</span><span class="p">,</span>
+    <span class="s2">"DELL"</span><span class="p">:</span> <span class="s2">"Dell"</span><span class="p">,</span>
+    <span class="s2">"HPQ"</span><span class="p">:</span> <span class="s2">"HP"</span><span class="p">,</span>
+    <span class="s2">"AMZN"</span><span class="p">:</span> <span class="s2">"Amazon"</span><span class="p">,</span>
+    <span class="s2">"TM"</span><span class="p">:</span> <span class="s2">"Toyota"</span><span class="p">,</span>
+    <span class="s2">"CAJ"</span><span class="p">:</span> <span class="s2">"Canon"</span><span class="p">,</span>
+    <span class="s2">"SNE"</span><span class="p">:</span> <span class="s2">"Sony"</span><span class="p">,</span>
+    <span class="s2">"F"</span><span class="p">:</span> <span class="s2">"Ford"</span><span class="p">,</span>
+    <span class="s2">"HMC"</span><span class="p">:</span> <span class="s2">"Honda"</span><span class="p">,</span>
+    <span class="s2">"NAV"</span><span class="p">:</span> <span class="s2">"Navistar"</span><span class="p">,</span>
+    <span class="s2">"NOC"</span><span class="p">:</span> <span class="s2">"Northrop Grumman"</span><span class="p">,</span>
+    <span class="s2">"BA"</span><span class="p">:</span> <span class="s2">"Boeing"</span><span class="p">,</span>
+    <span class="s2">"KO"</span><span class="p">:</span> <span class="s2">"Coca Cola"</span><span class="p">,</span>
+    <span class="s2">"MMM"</span><span class="p">:</span> <span class="s2">"3M"</span><span class="p">,</span>
+    <span class="s2">"MCD"</span><span class="p">:</span> <span class="s2">"McDonald's"</span><span class="p">,</span>
+    <span class="s2">"PEP"</span><span class="p">:</span> <span class="s2">"Pepsi"</span><span class="p">,</span>
+    <span class="s2">"K"</span><span class="p">:</span> <span class="s2">"Kellogg"</span><span class="p">,</span>
+    <span class="s2">"UN"</span><span class="p">:</span> <span class="s2">"Unilever"</span><span class="p">,</span>
+    <span class="s2">"MAR"</span><span class="p">:</span> <span class="s2">"Marriott"</span><span class="p">,</span>
+    <span class="s2">"PG"</span><span class="p">:</span> <span class="s2">"Procter Gamble"</span><span class="p">,</span>
+    <span class="s2">"CL"</span><span class="p">:</span> <span class="s2">"Colgate-Palmolive"</span><span class="p">,</span>
+    <span class="s2">"GE"</span><span class="p">:</span> <span class="s2">"General Electrics"</span><span class="p">,</span>
+    <span class="s2">"WFC"</span><span class="p">:</span> <span class="s2">"Wells Fargo"</span><span class="p">,</span>
+    <span class="s2">"JPM"</span><span class="p">:</span> <span class="s2">"JPMorgan Chase"</span><span class="p">,</span>
+    <span class="s2">"AIG"</span><span class="p">:</span> <span class="s2">"AIG"</span><span class="p">,</span>
+    <span class="s2">"AXP"</span><span class="p">:</span> <span class="s2">"American express"</span><span class="p">,</span>
+    <span class="s2">"BAC"</span><span class="p">:</span> <span class="s2">"Bank of America"</span><span class="p">,</span>
+    <span class="s2">"GS"</span><span class="p">:</span> <span class="s2">"Goldman Sachs"</span><span class="p">,</span>
+    <span class="s2">"AAPL"</span><span class="p">:</span> <span class="s2">"Apple"</span><span class="p">,</span>
+    <span class="s2">"SAP"</span><span class="p">:</span> <span class="s2">"SAP"</span><span class="p">,</span>
+    <span class="s2">"CSCO"</span><span class="p">:</span> <span class="s2">"Cisco"</span><span class="p">,</span>
+    <span class="s2">"TXN"</span><span class="p">:</span> <span class="s2">"Texas Instruments"</span><span class="p">,</span>
+    <span class="s2">"XRX"</span><span class="p">:</span> <span class="s2">"Xerox"</span><span class="p">,</span>
+    <span class="s2">"WMT"</span><span class="p">:</span> <span class="s2">"Wal-Mart"</span><span class="p">,</span>
+    <span class="s2">"HD"</span><span class="p">:</span> <span class="s2">"Home Depot"</span><span class="p">,</span>
+    <span class="s2">"GSK"</span><span class="p">:</span> <span class="s2">"GlaxoSmithKline"</span><span class="p">,</span>
+    <span class="s2">"PFE"</span><span class="p">:</span> <span class="s2">"Pfizer"</span><span class="p">,</span>
+    <span class="s2">"SNY"</span><span class="p">:</span> <span class="s2">"Sanofi-Aventis"</span><span class="p">,</span>
+    <span class="s2">"NVS"</span><span class="p">:</span> <span class="s2">"Novartis"</span><span class="p">,</span>
+    <span class="s2">"KMB"</span><span class="p">:</span> <span class="s2">"Kimberly-Clark"</span><span class="p">,</span>
+    <span class="s2">"R"</span><span class="p">:</span> <span class="s2">"Ryder"</span><span class="p">,</span>
+    <span class="s2">"GD"</span><span class="p">:</span> <span class="s2">"General Dynamics"</span><span class="p">,</span>
+    <span class="s2">"RTN"</span><span class="p">:</span> <span class="s2">"Raytheon"</span><span class="p">,</span>
+    <span class="s2">"CVS"</span><span class="p">:</span> <span class="s2">"CVS"</span><span class="p">,</span>
+    <span class="s2">"CAT"</span><span class="p">:</span> <span class="s2">"Caterpillar"</span><span class="p">,</span>
+    <span class="s2">"DD"</span><span class="p">:</span> <span class="s2">"DuPont de Nemours"</span><span class="p">,</span>
 <span class="p">}</span>
 
 
@@ -1079,76 +1127,76 @@ historical data can be obtained from APIs like the
 <span class="n">quotes</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fetching quote history for </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><a href="https://docs.python.org/3/library/sys.html#sys.stderr" title="sys.stderr" class="sphx-glr-backref-module-sys sphx-glr-backref-type-py-data"><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span></a><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Fetching quote history for </span><span class="si">%r</span><span class="s2">"</span> <span class="o">%</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><a href="https://docs.python.org/3/library/sys.html#sys.stderr" title="sys.stderr" class="sphx-glr-backref-module-sys sphx-glr-backref-type-py-data"><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span></a><span class="p">)</span>
     <span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s2">&quot;https://raw.githubusercontent.com/scikit-learn/examples-data/&quot;</span>
-        <span class="s2">&quot;master/financial-data/</span><span class="si">{}</span><span class="s2">.csv&quot;</span>
+        <span class="s2">"https://raw.githubusercontent.com/scikit-learn/examples-data/"</span>
+        <span class="s2">"master/financial-data/</span><span class="si">{}</span><span class="s2">.csv"</span>
     <span class="p">)</span>
     <span class="n">quotes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">symbol</span><span class="p">)))</span>
 
-<span class="n">close_prices</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.vstack.html#numpy.vstack" title="numpy.vstack" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">vstack</span></a><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])</span>
-<span class="n">open_prices</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.vstack.html#numpy.vstack" title="numpy.vstack" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">vstack</span></a><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="s2">&quot;open&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])</span>
+<span class="n">close_prices</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.vstack.html#numpy.vstack" title="numpy.vstack" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">vstack</span></a><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="s2">"close"</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])</span>
+<span class="n">open_prices</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.vstack.html#numpy.vstack" title="numpy.vstack" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">vstack</span></a><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="s2">"open"</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])</span>
 
 <span class="c1"># The daily variations of the quotes are what carry the most information</span>
 <span class="n">variation</span> <span class="o">=</span> <span class="n">close_prices</span> <span class="o">-</span> <span class="n">open_prices</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fetching quote history for np.str_(&#39;AAPL&#39;)
-Fetching quote history for np.str_(&#39;AIG&#39;)
-Fetching quote history for np.str_(&#39;AMZN&#39;)
-Fetching quote history for np.str_(&#39;AXP&#39;)
-Fetching quote history for np.str_(&#39;BA&#39;)
-Fetching quote history for np.str_(&#39;BAC&#39;)
-Fetching quote history for np.str_(&#39;CAJ&#39;)
-Fetching quote history for np.str_(&#39;CAT&#39;)
-Fetching quote history for np.str_(&#39;CL&#39;)
-Fetching quote history for np.str_(&#39;CMCSA&#39;)
-Fetching quote history for np.str_(&#39;COP&#39;)
-Fetching quote history for np.str_(&#39;CSCO&#39;)
-Fetching quote history for np.str_(&#39;CVC&#39;)
-Fetching quote history for np.str_(&#39;CVS&#39;)
-Fetching quote history for np.str_(&#39;CVX&#39;)
-Fetching quote history for np.str_(&#39;DD&#39;)
-Fetching quote history for np.str_(&#39;DELL&#39;)
-Fetching quote history for np.str_(&#39;F&#39;)
-Fetching quote history for np.str_(&#39;GD&#39;)
-Fetching quote history for np.str_(&#39;GE&#39;)
-Fetching quote history for np.str_(&#39;GS&#39;)
-Fetching quote history for np.str_(&#39;GSK&#39;)
-Fetching quote history for np.str_(&#39;HD&#39;)
-Fetching quote history for np.str_(&#39;HMC&#39;)
-Fetching quote history for np.str_(&#39;HPQ&#39;)
-Fetching quote history for np.str_(&#39;IBM&#39;)
-Fetching quote history for np.str_(&#39;JPM&#39;)
-Fetching quote history for np.str_(&#39;K&#39;)
-Fetching quote history for np.str_(&#39;KMB&#39;)
-Fetching quote history for np.str_(&#39;KO&#39;)
-Fetching quote history for np.str_(&#39;MAR&#39;)
-Fetching quote history for np.str_(&#39;MCD&#39;)
-Fetching quote history for np.str_(&#39;MMM&#39;)
-Fetching quote history for np.str_(&#39;MSFT&#39;)
-Fetching quote history for np.str_(&#39;NAV&#39;)
-Fetching quote history for np.str_(&#39;NOC&#39;)
-Fetching quote history for np.str_(&#39;NVS&#39;)
-Fetching quote history for np.str_(&#39;PEP&#39;)
-Fetching quote history for np.str_(&#39;PFE&#39;)
-Fetching quote history for np.str_(&#39;PG&#39;)
-Fetching quote history for np.str_(&#39;R&#39;)
-Fetching quote history for np.str_(&#39;RTN&#39;)
-Fetching quote history for np.str_(&#39;SAP&#39;)
-Fetching quote history for np.str_(&#39;SNE&#39;)
-Fetching quote history for np.str_(&#39;SNY&#39;)
-Fetching quote history for np.str_(&#39;TM&#39;)
-Fetching quote history for np.str_(&#39;TOT&#39;)
-Fetching quote history for np.str_(&#39;TWX&#39;)
-Fetching quote history for np.str_(&#39;TXN&#39;)
-Fetching quote history for np.str_(&#39;UN&#39;)
-Fetching quote history for np.str_(&#39;VLO&#39;)
-Fetching quote history for np.str_(&#39;WFC&#39;)
-Fetching quote history for np.str_(&#39;WMT&#39;)
-Fetching quote history for np.str_(&#39;XOM&#39;)
-Fetching quote history for np.str_(&#39;XRX&#39;)
-Fetching quote history for np.str_(&#39;YHOO&#39;)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fetching quote history for np.str_('AAPL')
+Fetching quote history for np.str_('AIG')
+Fetching quote history for np.str_('AMZN')
+Fetching quote history for np.str_('AXP')
+Fetching quote history for np.str_('BA')
+Fetching quote history for np.str_('BAC')
+Fetching quote history for np.str_('CAJ')
+Fetching quote history for np.str_('CAT')
+Fetching quote history for np.str_('CL')
+Fetching quote history for np.str_('CMCSA')
+Fetching quote history for np.str_('COP')
+Fetching quote history for np.str_('CSCO')
+Fetching quote history for np.str_('CVC')
+Fetching quote history for np.str_('CVS')
+Fetching quote history for np.str_('CVX')
+Fetching quote history for np.str_('DD')
+Fetching quote history for np.str_('DELL')
+Fetching quote history for np.str_('F')
+Fetching quote history for np.str_('GD')
+Fetching quote history for np.str_('GE')
+Fetching quote history for np.str_('GS')
+Fetching quote history for np.str_('GSK')
+Fetching quote history for np.str_('HD')
+Fetching quote history for np.str_('HMC')
+Fetching quote history for np.str_('HPQ')
+Fetching quote history for np.str_('IBM')
+Fetching quote history for np.str_('JPM')
+Fetching quote history for np.str_('K')
+Fetching quote history for np.str_('KMB')
+Fetching quote history for np.str_('KO')
+Fetching quote history for np.str_('MAR')
+Fetching quote history for np.str_('MCD')
+Fetching quote history for np.str_('MMM')
+Fetching quote history for np.str_('MSFT')
+Fetching quote history for np.str_('NAV')
+Fetching quote history for np.str_('NOC')
+Fetching quote history for np.str_('NVS')
+Fetching quote history for np.str_('PEP')
+Fetching quote history for np.str_('PFE')
+Fetching quote history for np.str_('PG')
+Fetching quote history for np.str_('R')
+Fetching quote history for np.str_('RTN')
+Fetching quote history for np.str_('SAP')
+Fetching quote history for np.str_('SNE')
+Fetching quote history for np.str_('SNY')
+Fetching quote history for np.str_('TM')
+Fetching quote history for np.str_('TOT')
+Fetching quote history for np.str_('TWX')
+Fetching quote history for np.str_('TXN')
+Fetching quote history for np.str_('UN')
+Fetching quote history for np.str_('VLO')
+Fetching quote history for np.str_('WFC')
+Fetching quote history for np.str_('WMT')
+Fetching quote history for np.str_('XOM')
+Fetching quote history for np.str_('XRX')
+Fetching quote history for np.str_('YHOO')
 </pre></div>
 </div>
 </section>
@@ -1172,7 +1220,7 @@ its fluctuations.</p>
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
-<style>#sk-container-id-30 {
+<style>.sk-global {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -1187,34 +1235,34 @@ its fluctuations.</p>
   --sklearn-color-fitted-level-1: #d4ebff;
   --sklearn-color-fitted-level-2: #b3dbfd;
   --sklearn-color-fitted-level-3: cornflowerblue;
-
-  /* Specific color for light theme */
-  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-icon: #696969;
-
-  @media (prefers-color-scheme: dark) {
-    /* Redefinition of color scheme for dark theme */
-    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-icon: #878787;
-  }
 }
 
-#sk-container-id-30 {
+.sk-global.light {
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: black;
+  --sklearn-color-background: white;
+  --sklearn-color-border-box: black;
+  --sklearn-color-icon: #696969;
+}
+
+.sk-global.dark {
+  --sklearn-color-text-on-default-background: white;
+  --sklearn-color-background: #111;
+  --sklearn-color-border-box: white;
+  --sklearn-color-icon: #878787;
+}
+
+.sk-global {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-30 pre {
+.sk-global pre {
   padding: 0;
 }
 
-#sk-container-id-30 input.sk-hidden--visually {
+.sk-global input.sk-hidden--visually {
   border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(100%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -1223,7 +1271,7 @@ its fluctuations.</p>
   width: 1px;
 }
 
-#sk-container-id-30 div.sk-dashed-wrapped {
+.sk-global div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -1231,7 +1279,7 @@ its fluctuations.</p>
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-30 div.sk-container {
+.sk-global div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -1241,7 +1289,7 @@ its fluctuations.</p>
   position: relative;
 }
 
-#sk-container-id-30 div.sk-text-repr-fallback {
+.sk-global div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -1257,14 +1305,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-30 div.sk-parallel-item::after {
+.sk-global div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-30 div.sk-parallel {
+.sk-global div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -1272,28 +1320,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-30 div.sk-parallel-item {
+.sk-global div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-30 div.sk-parallel-item:first-child::after {
+.sk-global div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-30 div.sk-parallel-item:last-child::after {
+.sk-global div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-30 div.sk-parallel-item:only-child::after {
+.sk-global div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-30 div.sk-serial {
+.sk-global div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1311,14 +1359,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-30 div.sk-toggleable {
+.sk-global div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-30 label.sk-toggleable__label {
+.sk-global label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -1326,18 +1374,18 @@ clickable and can be expanded/collapsed.
   padding: 0.5em;
   box-sizing: border-box;
   text-align: center;
-  align-items: start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   gap: 0.5em;
 }
 
-#sk-container-id-30 label.sk-toggleable__label .caption {
+.sk-global label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-30 label.sk-toggleable__label-arrow:before {
+.sk-global label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -1345,25 +1393,25 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-30 label.sk-toggleable__label-arrow:hover:before {
+.sk-global label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-30 div.sk-toggleable__content {
+.sk-global div.sk-toggleable__content {
   display: none;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-30 div.sk-toggleable__content.fitted {
+.sk-global div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-30 div.sk-toggleable__content pre {
+.sk-global div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -1371,79 +1419,78 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-30 div.sk-toggleable__content.fitted pre {
+.sk-global div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-30 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+.sk-global input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
   display: block;
   width: 100%;
   overflow: visible;
 }
 
-#sk-container-id-30 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+.sk-global input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-30 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+.sk-global div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-30 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+.sk-global div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-30 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+.sk-global div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-30 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+.sk-global div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-30 div.sk-label label.sk-toggleable__label,
-#sk-container-id-30 div.sk-label label {
+.sk-global div.sk-label label.sk-toggleable__label,
+.sk-global div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-30 div.sk-label:hover label.sk-toggleable__label {
+.sk-global div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-30 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+.sk-global div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-30 div.sk-label label {
+.sk-global div.sk-label label {
   font-family: monospace;
   font-weight: bold;
-  display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-30 div.sk-label-container {
+.sk-global div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-30 div.sk-estimator {
+.sk-global div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -1453,18 +1500,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-30 div.sk-estimator.fitted {
+.sk-global div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-30 div.sk-estimator:hover {
+.sk-global div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-30 div.sk-estimator.fitted:hover {
+.sk-global div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -1480,7 +1527,7 @@ a:visited.sk-estimator-doc-link {
   font-size: smaller;
   line-height: 1em;
   font-family: monospace;
-  background-color: var(--sklearn-color-background);
+  background-color: var(--sklearn-color-unfitted-level-0);
   border-radius: 1em;
   height: 1em;
   width: 1em;
@@ -1488,16 +1535,17 @@ a:visited.sk-estimator-doc-link {
   margin-left: 0.5em;
   text-align: center;
   /* unfitted */
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-3) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-3);
 }
 
 .sk-estimator-doc-link.fitted,
 a:link.sk-estimator-doc-link.fitted,
 a:visited.sk-estimator-doc-link.fitted {
   /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
+  background-color: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3) 1pt solid;
+  color: var(--sklearn-color-fitted-level-3);
 }
 
 /* On hover */
@@ -1507,7 +1555,8 @@ div.sk-label-container:hover .sk-estimator-doc-link:hover,
 .sk-estimator-doc-link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
+  border: var(--sklearn-color-fitted-level-0) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-0);
   text-decoration: none;
 }
 
@@ -1517,7 +1566,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 .sk-estimator-doc-link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
-  color: var(--sklearn-color-background);
+  border: var(--sklearn-color-fitted-level-0) 1pt solid;
+  color: var(--sklearn-color-fitted-level-0);
   text-decoration: none;
 }
 
@@ -1552,12 +1602,12 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-30 a.estimator_doc_link {
+.sk-global a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
   font-family: monospace;
-  background-color: var(--sklearn-color-background);
+  background-color: var(--sklearn-color-unfitted-level-0);
   border-radius: 1rem;
   height: 1rem;
   width: 1rem;
@@ -1567,29 +1617,45 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-30 a.estimator_doc_link.fitted {
+.sk-global a.estimator_doc_link.fitted {
   /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-30 a.estimator_doc_link:hover {
+.sk-global a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-30 a.estimator_doc_link.fitted:hover {
+.sk-global a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
 
+.sk-top-container.sk-global {
+  /* pydata-sphinx-theme hides overflow, so scrolling is disabled.
+   We need to set it to !important and add tabindex="0" in the HTML
+   to allow keyboard-only users to navigate the display. */
+  overflow-x: scroll !important;
+  max-width: 100%;
+}
+
+.estimator-table {
+    font-family: monospace;
+}
+
 .estimator-table summary {
     padding: .5rem;
-    font-family: monospace;
     cursor: pointer;
+}
+
+.estimator-table summary::marker {
+    font-size: 0.7rem;
 }
 
 .estimator-table details[open] {
@@ -1601,6 +1667,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 .estimator-table .parameters-table {
     margin-left: auto !important;
     margin-right: auto !important;
+    margin-top: 0;
 }
 
 .estimator-table .parameters-table tr:nth-child(odd) {
@@ -1611,32 +1678,113 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
     background-color: #f6f6f6;
 }
 
-.estimator-table .parameters-table tr:hover {
+.estimator-table .parameters-table tr:hover td {
     background-color: #e0e0e0;
 }
 
-.estimator-table table td {
+.estimator-table table :is(td, th) {
     border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+/*
+    `table td`is set in notebook with right text-align.
+    We need to overwrite it.
+*/
+.estimator-table table td.param {
+    text-align: left;
+    position: relative;
+    padding: 0;
 }
 
 .user-set td {
     color:rgb(255, 94, 0);
-    text-align: left;
+    text-align: left !important;
 }
 
-.user-set td.value pre {
-    color:rgb(255, 94, 0) !important;
-    background-color: transparent !important;
+.user-set td.value {
+    color:rgb(255, 94, 0);
+    background-color: transparent;
 }
 
-.default td {
+.default td, .estimator-table th {
     color: black;
-    text-align: left;
+    text-align: left !important;
 }
 
 .user-set td i,
 .default td i {
     color: black;
+}
+
+td.fitted-att-type {
+    white-space: preserve nowrap;
+}
+
+/*
+    Styles for parameter documentation links
+    We need styling for visited so jupyter doesn't overwrite it
+*/
+a.param-doc-link,
+a.param-doc-link:link,
+a.param-doc-link:visited {
+    text-decoration: underline dashed;
+    text-underline-offset: .3em;
+    color: inherit;
+    display: block;
+    padding: .5em;
+}
+
+@supports(anchor-name: --doc-link) {
+    a.param-doc-link,
+    a.param-doc-link:link,
+    a.param-doc-link:visited {
+    anchor-name: --doc-link;
+    }
+}
+
+/* "hack" to make the entire area of the cell containing the link clickable */
+a.param-doc-link::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+}
+
+.param-doc-description {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    left: 0;
+    padding: .5ex;
+    margin-left: 1.5em;
+    color: var(--sklearn-color-text);
+    box-shadow: .3em .3em .4em #999;
+    width: max-content;
+    text-align: left;
+    max-height: 10em;
+    overflow-y: auto;
+
+    /* unfitted */
+    background: var(--sklearn-color-unfitted-level-0);
+    border: thin solid var(--sklearn-color-unfitted-level-3);
+}
+
+@supports(position-area: center right) {
+    .param-doc-description {
+    position-area: center right;
+    position: fixed;
+    margin-left: 0;
+    }
+}
+
+/* Fitted state for parameter tooltips */
+.fitted .param-doc-description {
+    /* fitted */
+    background: var(--sklearn-color-fitted-level-0);
+    border: thin solid var(--sklearn-color-fitted-level-3);
+}
+
+.param-doc-link:hover .param-doc-description {
+    display: block;
 }
 
 .copy-paste-icon {
@@ -1648,9 +1796,137 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
     width: 14px;
     height: 14px;
     cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
 }
-</style><body><div id="sk-container-id-30" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GraphicalLassoCV(alphas=array([ 0.03162278,  0.05994843,  0.11364637,  0.21544347,  0.40842387,
-        0.77426368,  1.46779927,  2.7825594 ,  5.27499706, 10.        ]))</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-123" type="checkbox" checked><label for="sk-estimator-id-123" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GraphicalLassoCV</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.covariance.GraphicalLassoCV.html">?<span>Documentation for GraphicalLassoCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+
+.copy-paste-icon:focus-visible {
+    outline: 1px solid currentColor;
+    outline-offset: 1px;
+}
+
+.features {
+  font-family: monospace;
+  cursor: pointer;
+  background-color: var(--sklearn-color-unfitted-level-0);
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: .20em;
+  margin-bottom: 0.5em;
+  font-size: inherit; /* Needed for jupyter */
+}
+
+.features.fitted {
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+.features summary {
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: .25em;
+}
+
+.features details[open] > summary {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+  border-radius: .20em 0 0 0;
+}
+
+.features.fitted details[open] > summary {
+  background-color: var(--sklearn-color-fitted-level-2);
+  border-radius: .20em 0 0 0;
+}
+
+.features details > summary .arrow::before {
+  content: "▸";
+  color: grey;
+}
+
+.features details[open] > summary .arrow::before {
+  content: "▾";
+}
+
+.features details:hover > summary {
+  margin: 0;
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+.features.fitted details:hover > summary {
+  margin: 0;
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+.features .features-container {
+  max-height: 10em;
+  overflow: auto;
+  scrollbar-width: thin;
+  padding: .25em 0.1rem;
+  background-color: var(--sklearn-color-unfitted-level-0);
+  border-radius: 0 0 .5em .5em;
+}
+
+.features.fitted .features-container {
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+.features .image-container {
+  block-size: 1em;
+  inline-size: 1em;
+  padding: 0;
+  margin: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.features .copy-paste-icon {
+  background-size: 1em 1em;
+  width: 1em;
+  height: 1em;
+  filter: grayscale(100%) opacity(60%);
+}
+
+.features .features-container table {
+  width: 100%;
+  margin: 0.01em;
+}
+
+.features .features-container table tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.features .features-container table tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
+
+.features .features-container table tr:hover {
+  background-color: #e0e0e0;
+}
+
+.features .features-container table {
+  table-layout: inherit;
+}
+
+.features .features-container table td {
+  text-align: left;
+  padding: 0 0.5em;
+  border: 1px solid rgba(106, 105, 104, 0.232);
+  white-space: nowrap;
+  color: var(--sklearn-color-text);
+}
+
+.total_features {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+</style><body><div id="sk-container-id-45" tabindex="0" class="sk-top-container sk-global"><div class="sk-text-repr-fallback"><pre>GraphicalLassoCV(alphas=array([ 0.03162278,  0.05994843,  0.11364637,  0.21544347,  0.40842387,
+        0.77426368,  1.46779927,  2.7825594 ,  5.27499706, 10.        ]))</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually sk-global" id="sk-estimator-id-226" type="checkbox" checked><label for="sk-estimator-id-226" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GraphicalLassoCV</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html">?<span>Documentation for GraphicalLassoCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
         <div class="estimator-table">
             <details>
                 <summary>Parameters</summary>
@@ -1658,111 +1934,221 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                   <tbody>
 
         <tr class="user-set">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy alphas to clipboard"
                  onclick="copyToClipboard('alphas',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">alphas&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-alphas;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=alphas,-int%20or%20array-like%20of%20shape%20%28n_alphas%2C%29%2C%20dtype%3Dfloat%2C%20default%3D4">
+            alphas
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-alphas;">
+            alphas: int or array-like of shape (n_alphas,), dtype=float, default=4<br><br>If an integer is given, it fixes the number of points on the<br>grids of alpha to be used. If a list is given, it gives the<br>grid to be used. See the notes in the class docstring for<br>more details. Range is [1, inf) for an integer.<br>Range is (0, inf] for an array-like of floats.</span>
+        </a>
+    </td>
             <td class="value">array([ 0.031... 10.        ])</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy n_refinements to clipboard"
                  onclick="copyToClipboard('n_refinements',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">n_refinements&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-n_refinements;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=n_refinements,-int%2C%20default%3D4">
+            n_refinements
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-n_refinements;">
+            n_refinements: int, default=4<br><br>The number of times the grid is refined. Not used if explicit<br>values of alphas are passed. Range is [1, inf).</span>
+        </a>
+    </td>
             <td class="value">4</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy cv to clipboard"
                  onclick="copyToClipboard('cv',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">cv&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-cv;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=cv,-int%2C%20cross-validation%20generator%20or%20iterable%2C%20default%3DNone">
+            cv
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-cv;">
+            cv: int, cross-validation generator or iterable, default=None<br><br>Determines the cross-validation splitting strategy.<br>Possible inputs for cv are:<br><br>- None, to use the default 5-fold cross-validation,<br>- integer, to specify the number of folds,<br>- :term:`CV splitter`,<br>- an iterable yielding (train, test) splits as arrays of indices.<br><br>For integer/None inputs :class:`~sklearn.model_selection.KFold` is used.<br><br>Refer :ref:`User Guide &lt;cross_validation&gt;` for the various<br>cross-validation strategies that can be used here.<br><br>.. versionchanged:: 0.20<br>    ``cv`` default value if None changed from 3-fold to 5-fold.</span>
+        </a>
+    </td>
             <td class="value">None</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy tol to clipboard"
                  onclick="copyToClipboard('tol',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">tol&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-tol;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=tol,-float%2C%20default%3D1e-4">
+            tol
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-tol;">
+            tol: float, default=1e-4<br><br>The tolerance to declare convergence: if the dual gap goes below<br>this value, iterations are stopped. Range is (0, inf].</span>
+        </a>
+    </td>
             <td class="value">0.0001</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy enet_tol to clipboard"
                  onclick="copyToClipboard('enet_tol',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">enet_tol&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-enet_tol;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=enet_tol,-float%2C%20default%3D1e-4">
+            enet_tol
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-enet_tol;">
+            enet_tol: float, default=1e-4<br><br>The tolerance for the elastic net solver used to calculate the descent<br>direction. This parameter controls the accuracy of the search direction<br>for a given column update, not of the overall parameter estimate. Only<br>used for mode=&#x27;cd&#x27;. Range is (0, inf].</span>
+        </a>
+    </td>
             <td class="value">0.0001</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy max_iter to clipboard"
                  onclick="copyToClipboard('max_iter',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">max_iter&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-max_iter;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=max_iter,-int%2C%20default%3D100">
+            max_iter
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-max_iter;">
+            max_iter: int, default=100<br><br>Maximum number of iterations.</span>
+        </a>
+    </td>
             <td class="value">100</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy mode to clipboard"
                  onclick="copyToClipboard('mode',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">mode&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-mode;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=mode,-%7B%27cd%27%2C%20%27lars%27%7D%2C%20default%3D%27cd%27">
+            mode
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-mode;">
+            mode: {&#x27;cd&#x27;, &#x27;lars&#x27;}, default=&#x27;cd&#x27;<br><br>The Lasso solver to use: coordinate descent or LARS. Use LARS for<br>very sparse underlying graphs, where number of features is greater<br>than number of samples. Elsewhere prefer cd which is more numerically<br>stable.</span>
+        </a>
+    </td>
             <td class="value">&#x27;cd&#x27;</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy n_jobs to clipboard"
                  onclick="copyToClipboard('n_jobs',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">n_jobs&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-n_jobs;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=n_jobs,-int%2C%20default%3DNone">
+            n_jobs
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-n_jobs;">
+            n_jobs: int, default=None<br><br>Number of jobs to run in parallel.<br>``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.<br>``-1`` means using all processors. See :term:`Glossary &lt;n_jobs&gt;`<br>for more details.<br><br>.. versionchanged:: v0.20<br>   `n_jobs` default changed from 1 to None</span>
+        </a>
+    </td>
             <td class="value">None</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy verbose to clipboard"
                  onclick="copyToClipboard('verbose',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">verbose&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-verbose;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=verbose,-bool%2C%20default%3DFalse">
+            verbose
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-verbose;">
+            verbose: bool, default=False<br><br>If verbose is True, the objective function and duality gap are<br>printed at each iteration.</span>
+        </a>
+    </td>
             <td class="value">False</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy eps to clipboard"
                  onclick="copyToClipboard('eps',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">eps&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-eps;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=eps,-float%2C%20default%3Deps">
+            eps
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-eps;">
+            eps: float, default=eps<br><br>The machine-precision regularization in the computation of the<br>Cholesky diagonal factors. Increase this for very ill-conditioned<br>systems. Default is `np.finfo(np.float64).eps`.<br><br>.. versionadded:: 1.3</span>
+        </a>
+    </td>
             <td class="value">np.float64(2....049250313e-16)</td>
         </tr>
 
 
         <tr class="default">
-            <td><i class="copy-paste-icon"
+            <td><button type="button" class="copy-paste-icon"
+                 aria-label="Copy assume_centered to clipboard"
                  onclick="copyToClipboard('assume_centered',
                           this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">assume_centered&nbsp;</td>
+            ></button></td>
+            <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-assume_centered;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=assume_centered,-bool%2C%20default%3DFalse">
+            assume_centered
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-assume_centered;">
+            assume_centered: bool, default=False<br><br>If True, data are not centered before computation.<br>Useful when working with data whose mean is almost, but not exactly<br>zero.<br>If False, data are centered before computation.</span>
+        </a>
+    </td>
             <td class="value">False</td>
         </tr>
 
@@ -1770,7 +2156,182 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                 </table>
             </details>
         </div>
-    </div></div></div></div></div><script>function copyToClipboard(text, element) {
+
+        <div class="estimator-table">
+            <details>
+                <summary>Fitted attributes</summary>
+                <table class="parameters-table">
+                    <tbody>
+                        <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Value</th>
+                        </tr>
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-alpha_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=alpha_,-float">
+            alpha_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-alpha_;">
+            alpha_: float<br><br>Penalization parameter selected.</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">float64</td>
+           <td>0.05995</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-costs_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=costs_,-list%20of%20%28objective%2C%20dual_gap%29%20pairs">
+            costs_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-costs_;">
+            costs_: list of (objective, dual_gap) pairs<br><br>The list of values of the objective function and the dual gap at<br>each iteration. Returned only if return_costs is True.<br><br>.. versionadded:: 1.3</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">list</td>
+           <td>[(np.float64(inf), np.float64(-2...5374945193858)), (np.float64(242.72241991721066), np.float64(0....7211362260404)), (np.float64(242.72169173955422), np.float64(0....5270814104613)), (np.float64(242.72171542675326), np.float64(0....4492626584087)), ...]</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-covariance_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=covariance_,-ndarray%20of%20shape%20%28n_features%2C%20n_features%29">
+            covariance_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-covariance_;">
+            covariance_: ndarray of shape (n_features, n_features)<br><br>Estimated covariance matrix.</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">ndarray[float64](56, 56)</td>
+           <td>[[1.  ,0.22,0.29,...,0.25,0.17,0.22],
+ [0.22,1.  ,0.23,...,0.27,0.24,0.24],
+ [0.29,0.23,1.  ,...,0.21,0.21,0.43],
+ ...,
+ [0.25,0.27,0.21,...,1.  ,0.2 ,0.21],
+ [0.17,0.24,0.21,...,0.2 ,1.  ,0.23],
+ [0.22,0.24,0.43,...,0.21,0.23,1.  ]]</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-cv_results_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=cv_results_,-dict%20of%20ndarrays">
+            cv_results_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-cv_results_;">
+            cv_results_: dict of ndarrays<br><br>A dict with keys:<br><br>alphas : ndarray of shape (n_alphas,)<br>    All penalization parameters explored.<br><br>split(k)_test_score : ndarray of shape (n_alphas,)<br>    Log-likelihood score on left-out data across (k)th fold.<br><br>    .. versionadded:: 1.0<br><br>mean_test_score : ndarray of shape (n_alphas,)<br>    Mean of scores over the folds.<br><br>    .. versionadded:: 1.0<br><br>std_test_score : ndarray of shape (n_alphas,)<br>    Standard deviation of scores over the folds.<br><br>    .. versionadded:: 1.0</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">dict</td>
+           <td>{&#x27;alphas&#x27;: array([10.   ...  0.        ]), &#x27;me...re&#x27;: array([-81.87...-72.17963604]), &#x27;sp...re&#x27;: array([-85.25...-73.71542769]), &#x27;sp...re&#x27;: array([-76.71...-67.03463241]), ...}</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-location_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=location_,-ndarray%20of%20shape%20%28n_features%2C%29">
+            location_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-location_;">
+            location_: ndarray of shape (n_features,)<br><br>Estimated location, i.e. the estimated mean.</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">ndarray[float64](56,)</td>
+           <td>[-0.02,-0.02, 0.07,..., 0.04, 0.09,-0.  ]</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-n_features_in_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=n_features_in_,-int">
+            n_features_in_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-n_features_in_;">
+            n_features_in_: int<br><br>Number of features seen during :term:`fit`.<br><br>.. versionadded:: 0.24</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">int</td>
+           <td>56</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-n_iter_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=n_iter_,-int">
+            n_iter_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-n_iter_;">
+            n_iter_: int<br><br>Number of iterations run for the optimal alpha.</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">int</td>
+           <td>12</td>
+
+
+       </tr>
+
+
+       <tr class="default">
+           <td class="param">
+        <a class="param-doc-link"
+            style="anchor-name: --doc-link-precision_;"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.9/modules/generated/sklearn.covariance.GraphicalLassoCV.html#:~:text=precision_,-ndarray%20of%20shape%20%28n_features%2C%20n_features%29">
+            precision_
+            <span class="param-doc-description"
+            style="position-anchor: --doc-link-precision_;">
+            precision_: ndarray of shape (n_features, n_features)<br><br>Estimated precision matrix (inverse covariance).</span>
+        </a>
+    </td>
+           <td class="fitted-att-type">ndarray[float64](56, 56)</td>
+           <td>[[ 1.28,-0.  ,-0.17,...,-0.09,-0.  ,-0.  ],
+ [-0.  , 1.58,-0.  ,...,-0.  ,-0.02,-0.  ],
+ [-0.17,-0.  , 1.38,...,-0.  ,-0.04,-0.38],
+ ...,
+ [-0.09,-0.  ,-0.  ,..., 2.44,-0.  , 0.  ],
+ [-0.  ,-0.02,-0.04,...,-0.  , 1.22,-0.06],
+ [-0.  ,-0.  ,-0.38,..., 0.  ,-0.06, 1.42]]</td>
+
+
+       </tr>
+
+                    </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div><script>/*  Authors: The scikit-learn developers
+ SPDX-License-Identifier: BSD-3-Clause
+*/
+
+function copyToClipboard(text, element) {
     // Get the parameter prefix from the closest toggleable content
     const toggleableContent = element.closest('.sk-toggleable__content');
     const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
@@ -1804,15 +2365,139 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
     return false;
 }
 
-document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+document.querySelectorAll('.copy-paste-icon').forEach(function(element) {
     const toggleableContent = element.closest('.sk-toggleable__content');
     const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+
+    const parent = element.parentElement;
+    if (!parent || !parent.nextElementSibling) {
+        console.warn('Expected copy-paste icon is missing from the DOM structure');
+        return;
+    }
+
+    const paramName = element.parentElement.nextElementSibling
+        .textContent.trim().split(' ')[0];
     const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
 
     element.setAttribute('title', fullParamName);
 });
-</script></body>
+
+/**
+ * Copy the list of feature names formatted as a Python list.
+ *
+ * @param {HTMLElement} element - The copy button inside a `.features` block; its siblings
+ *   contain a `details` element and a table containing feature named.
+ * @returns {boolean} Always returns `false` so callers can prevent the default click behavior.
+ */
+function copyFeatureNamesToClipboard(element) {
+    var detailsElem = element.closest('.features').querySelector('details');
+    var wasOpen = detailsElem.open;
+    detailsElem.open = true;
+    var content = element.closest('.features').querySelector('tbody')
+                  .innerText.trim();
+    if (!wasOpen) detailsElem.open = false;
+    const rows = content.split('\n').map(row => `    "${row}"`);
+    const formattedText = `[\n${rows.join(',\n')},\n]`;
+    const originalHTML = element.innerHTML.replace('✔', '');
+    const originalStyle = element.style;
+    const copyMark = document.createElement('span');
+    copyMark.innerHTML = '✔';
+    copyMark.style.color = 'blue';
+    copyMark.style.fontSize = '1em';
+
+    navigator.clipboard.writeText(formattedText)
+        .then(() => {
+            element.style.display = 'none';
+            element.parentElement.appendChild(copyMark);
+
+            setTimeout(() => {
+                copyMark.remove();
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 1000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'orange';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 1000);
+        });
+    return false;
+}
+/**
+ * Adapted from Skrub
+ * https://github.com/skrub-data/skrub/blob/403466d1d5d4dc76a7ef569b3f8228db59a31dc3/skrub/_reporting/_data/templates/report.js#L789
+ * @returns "light" or "dark"
+ */
+function detectTheme(element) {
+    const body = document.querySelector('body');
+
+    // Check VSCode theme
+    const themeKindAttr = body.getAttribute('data-vscode-theme-kind');
+    const themeNameAttr = body.getAttribute('data-vscode-theme-name');
+
+    if (themeKindAttr && themeNameAttr) {
+        const themeKind = themeKindAttr.toLowerCase();
+        const themeName = themeNameAttr.toLowerCase();
+
+        if (themeKind.includes("dark") || themeName.includes("dark")) {
+            return "dark";
+        }
+        if (themeKind.includes("light") || themeName.includes("light")) {
+            return "light";
+        }
+    }
+
+    // Check Jupyter theme
+    if (body.getAttribute('data-jp-theme-light') === 'false') {
+        return 'dark';
+    } else if (body.getAttribute('data-jp-theme-light') === 'true') {
+        return 'light';
+    }
+
+    // Guess based on a parent element's color
+    const color = window.getComputedStyle(element.parentNode, null).getPropertyValue('color');
+    const match = color.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*$/i);
+    if (match) {
+        const [r, g, b] = [
+            parseFloat(match[1]),
+            parseFloat(match[2]),
+            parseFloat(match[3])
+        ];
+
+        // https://en.wikipedia.org/wiki/HSL_and_HSV#Lightness
+        const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+
+        if (luma > 180) {
+            // If the text is very bright we have a dark theme
+            return 'dark';
+        }
+        if (luma < 75) {
+            // If the text is very dark we have a light theme
+            return 'light';
+        }
+        // Otherwise fall back to the next heuristic.
+    }
+
+    // Fallback to system preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+
+function forceTheme(elementId) {
+    const estimatorElement = document.querySelector(`#${elementId}`);
+    if (estimatorElement === null) {
+        console.error(`Element with id ${elementId} not found.`);
+    } else {
+        const theme = detectTheme(estimatorElement);
+        estimatorElement.classList.add(theme);
+    }
+}
+
+forceTheme('sk-container-id-45');</script></body>
 </div>
 <br />
 <br /></section>
@@ -1834,7 +2519,7 @@ market.</p>
 <span class="n">n_labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_labels</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cluster </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">labels</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">i</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cluster </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">labels</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">i</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Cluster 1: Apple, Amazon, Yahoo
@@ -1842,7 +2527,7 @@ Cluster 2: Comcast, Cablevision, Time Warner
 Cluster 3: ConocoPhillips, Chevron, Total, Valero Energy, Exxon
 Cluster 4: Cisco, Dell, HP, IBM, Microsoft, SAP, Texas Instruments
 Cluster 5: Boeing, General Dynamics, Northrop Grumman, Raytheon
-Cluster 6: AIG, American express, Bank of America, Caterpillar, CVS, DuPont de Nemours, Ford, General Electrics, Goldman Sachs, Home Depot, JPMorgan Chase, Marriott, McDonald&#39;s, 3M, Ryder, Wells Fargo, Wal-Mart
+Cluster 6: AIG, American express, Bank of America, Caterpillar, CVS, DuPont de Nemours, Ford, General Electrics, Goldman Sachs, Home Depot, JPMorgan Chase, Marriott, McDonald's, 3M, Ryder, Wells Fargo, Wal-Mart
 Cluster 7: GlaxoSmithKline, Novartis, Pfizer, Sanofi-Aventis, Unilever
 Cluster 8: Kellogg, Coca Cola, Pepsi
 Cluster 9: Colgate-Palmolive, Kimberly-Clark, Procter Gamble
@@ -1864,7 +2549,7 @@ number of neighbors to capture the large-scale structure.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">manifold</span>
 
 <span class="n">node_position_model</span> <span class="o">=</span> <a href="../../modules/generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding" title="sklearn.manifold.LocallyLinearEmbedding" class="sphx-glr-backref-module-sklearn-manifold sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">manifold</span><span class="o">.</span><span class="n">LocallyLinearEmbedding</span></a><span class="p">(</span>
-    <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">eigen_solver</span><span class="o">=</span><span class="s2">&quot;dense&quot;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span>
+    <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">eigen_solver</span><span class="o">=</span><span class="s2">"dense"</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">6</span>
 <span class="p">)</span>
 
 <span class="n">embedding</span> <span class="o">=</span> <span class="n">node_position_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
@@ -1888,10 +2573,10 @@ axis.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.collections</span><span class="w"> </span><span class="kn">import</span> <a href="https://matplotlib.org/stable/api/collections_api.html#matplotlib.collections.LineCollection" title="matplotlib.collections.LineCollection" class="sphx-glr-backref-module-matplotlib-collections sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LineCollection</span></a>
 
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">"w"</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.clf.html#matplotlib.pyplot.clf" title="matplotlib.pyplot.clf" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">clf</span></a><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axes.html#matplotlib.pyplot.axes" title="matplotlib.pyplot.axes" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axes</span></a><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
 
 <span class="c1"># Plot the graph of partial correlations</span>
 <span class="n">partial_correlations</span> <span class="o">=</span> <span class="n">edge_model</span><span class="o">.</span><span class="n">precision_</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1930,16 +2615,16 @@ axis.</p>
     <span class="n">this_dx</span> <span class="o">=</span> <span class="n">dx</span><span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.argmin.html#numpy.argmin" title="numpy.argmin" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">argmin</span></a><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dy</span><span class="p">))]</span>
     <span class="n">this_dy</span> <span class="o">=</span> <span class="n">dy</span><span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.argmin.html#numpy.argmin" title="numpy.argmin" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">argmin</span></a><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dx</span><span class="p">))]</span>
     <span class="k">if</span> <span class="n">this_dx</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">horizontalalignment</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
+        <span class="n">horizontalalignment</span> <span class="o">=</span> <span class="s2">"left"</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.002</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">horizontalalignment</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span>
+        <span class="n">horizontalalignment</span> <span class="o">=</span> <span class="s2">"right"</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.002</span>
     <span class="k">if</span> <span class="n">this_dy</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">verticalalignment</span> <span class="o">=</span> <span class="s2">&quot;bottom&quot;</span>
+        <span class="n">verticalalignment</span> <span class="o">=</span> <span class="s2">"bottom"</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.002</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">verticalalignment</span> <span class="o">=</span> <span class="s2">&quot;top&quot;</span>
+        <span class="n">verticalalignment</span> <span class="o">=</span> <span class="s2">"top"</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.002</span>
     <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html#matplotlib.pyplot.text" title="matplotlib.pyplot.text" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">text</span></a><span class="p">(</span>
         <span class="n">x</span><span class="p">,</span>
@@ -1949,7 +2634,7 @@ axis.</p>
         <span class="n">horizontalalignment</span><span class="o">=</span><span class="n">horizontalalignment</span><span class="p">,</span>
         <span class="n">verticalalignment</span><span class="o">=</span><span class="n">verticalalignment</span><span class="p">,</span>
         <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
-            <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="s2">"w"</span><span class="p">,</span>
             <span class="n">edgecolor</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">nipy_spectral</span><span class="p">(</span><span class="n">label</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_labels</span><span class="p">)),</span>
             <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
         <span class="p">),</span>
@@ -1967,10 +2652,10 @@ axis.</p>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_stock_market_001.png" srcset="../../_images/sphx_glr_plot_stock_market_001.png" alt="plot stock market" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.620 seconds)</p>
+<img src="../../_images/sphx_glr_plot_stock_market_001.png" srcset="../../_images/sphx_glr_plot_stock_market_001.png" alt="plot stock market" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.966 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-stock-market-py">
 <div class="binder-badge docutils container">
-<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/applications/plot_stock_market.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.svg" style="width: 150px;" />
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/applications/plot_stock_market.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.svg" style="width: 150px;" />
 </a>
 </div>
 <div class="lite-badge docutils container">
@@ -1989,16 +2674,16 @@ axis.</p>
 </div>
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="We illustrate various embedding techniques on the digits dataset."><img alt="" src="../../_images/sphx_glr_plot_lle_digits_thumb.png" />
-<p><a class="reference internal" href="../manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py"><span class="std std-ref">Manifold learning on handwritten digits: Locally Linear Embedding, Isomap…</span></a></p>
+<p><a class="reference internal" href="../manifold/plot_lle_digits.html"><span class="doc">Manifold learning on handwritten digits: Locally Linear Embedding, Isomap…</span></a></p>
   <div class="sphx-glr-thumbnail-title">Manifold learning on handwritten digits: Locally Linear Embedding, Isomap...</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An illustration of dimensionality reduction on the S-curve dataset with various manifold learning methods."><img alt="" src="../../_images/sphx_glr_plot_compare_methods_thumb.png" />
-<p><a class="reference internal" href="../manifold/plot_compare_methods.html#sphx-glr-auto-examples-manifold-plot-compare-methods-py"><span class="std std-ref">Comparison of Manifold Learning methods</span></a></p>
+<p><a class="reference internal" href="../manifold/plot_compare_methods.html"><span class="doc">Comparison of Manifold Learning methods</span></a></p>
   <div class="sphx-glr-thumbnail-title">Comparison of Manifold Learning methods</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An illustration of various linkage option for agglomerative clustering on a 2D embedding of the digits dataset."><img alt="" src="../../_images/sphx_glr_plot_digits_linkage_thumb.png" />
-<p><a class="reference internal" href="../cluster/plot_digits_linkage.html#sphx-glr-auto-examples-cluster-plot-digits-linkage-py"><span class="std std-ref">Various Agglomerative Clustering on a 2D embedding of digits</span></a></p>
+<p><a class="reference internal" href="../cluster/plot_digits_linkage.html"><span class="doc">Various Agglomerative Clustering on a 2D embedding of digits</span></a></p>
   <div class="sphx-glr-thumbnail-title">Various Agglomerative Clustering on a 2D embedding of digits</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example uses spectral_clustering on a graph created from voxel-to-voxel difference on an image to break this image into multiple partly-homogeneous regions."><img alt="" src="../../_images/sphx_glr_plot_coin_segmentation_thumb.png" />
-<p><a class="reference internal" href="../cluster/plot_coin_segmentation.html#sphx-glr-auto-examples-cluster-plot-coin-segmentation-py"><span class="std std-ref">Segmenting the picture of greek coins in regions</span></a></p>
+<p><a class="reference internal" href="../cluster/plot_coin_segmentation.html"><span class="doc">Segmenting the picture of greek coins in regions</span></a></p>
   <div class="sphx-glr-thumbnail-title">Segmenting the picture of greek coins in regions</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
@@ -2024,7 +2709,7 @@ axis.</p>
       </div>
     </a>
     <a class="right-next"
-       href="wikipedia_principal_eigenvector.html"
+       href="plot_wikipedia_principal_eigenvector.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -2053,8 +2738,8 @@ axis.</p>
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-the-data-from-internet">Retrieve the data from Internet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-a-graph-structure">Learning a graph structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-using-affinity-propagation">Clustering using affinity propagation</a></li>
@@ -2062,15 +2747,6 @@ axis.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/auto_examples/applications/plot_stock_market.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
   <div class="sidebar-secondary-item">
 
@@ -2122,7 +2798,7 @@ axis.</p>
     
       
         <div class="sphx-glr-sidebar-item binder-badge-sidebar">
-          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/applications/plot_stock_market.ipynb">
+          <a href="https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/applications/plot_stock_market.ipynb">
             <img src="../../_images/binder_badge_logo.svg" alt="Launch binder">
           </a>
         </div>
@@ -2130,6 +2806,22 @@ axis.</p>
     
   </div>
 </div>
+
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -2144,8 +2836,8 @@ axis.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -2156,7 +2848,7 @@ axis.</p>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

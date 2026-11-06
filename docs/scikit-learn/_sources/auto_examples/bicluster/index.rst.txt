@@ -10,6 +10,10 @@ Biclustering
 Examples concerning biclustering techniques.
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -26,7 +30,7 @@ Examples concerning biclustering techniques.
   .. image:: /auto_examples/bicluster/images/thumb/sphx_glr_plot_spectral_biclustering_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_bicluster_plot_spectral_biclustering.py`
+  :doc:`/auto_examples/bicluster/plot_spectral_biclustering`
 
 .. raw:: html
 
@@ -43,7 +47,7 @@ Examples concerning biclustering techniques.
   .. image:: /auto_examples/bicluster/images/thumb/sphx_glr_plot_spectral_coclustering_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_bicluster_plot_spectral_coclustering.py`
+  :doc:`/auto_examples/bicluster/plot_spectral_coclustering`
 
 .. raw:: html
 
@@ -60,7 +64,7 @@ Examples concerning biclustering techniques.
   .. image:: /auto_examples/bicluster/images/thumb/sphx_glr_plot_bicluster_newsgroups_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_bicluster_plot_bicluster_newsgroups.py`
+  :doc:`/auto_examples/bicluster/plot_bicluster_newsgroups`
 
 .. raw:: html
 

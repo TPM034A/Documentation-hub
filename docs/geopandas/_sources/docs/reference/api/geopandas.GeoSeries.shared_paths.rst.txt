@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.shared\_paths
+=================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.shared_paths

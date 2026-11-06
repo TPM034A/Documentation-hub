@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.reverse
+===========================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.reverse

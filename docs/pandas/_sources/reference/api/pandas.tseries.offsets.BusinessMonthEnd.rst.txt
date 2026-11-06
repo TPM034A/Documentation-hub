@@ -50,9 +50,6 @@ pandas.tseries.offsets.BusinessMonthEnd
         ~BusinessMonthEnd.copy
       
       
-        ~BusinessMonthEnd.is_anchored
-      
-      
         ~BusinessMonthEnd.is_month_end
       
       

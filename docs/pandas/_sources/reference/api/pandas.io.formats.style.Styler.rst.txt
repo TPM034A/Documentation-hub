@@ -20,6 +20,9 @@ pandas.io.formats.style.Styler
         ~Styler.loader
       
       
+        ~Styler.template_dir
+      
+      
         ~Styler.template_html
       
       
@@ -33,6 +36,12 @@ pandas.io.formats.style.Styler
       
       
         ~Styler.template_string
+      
+      
+        ~Styler.template_typst
+      
+      
+        ~Styler.this_dir
       
    
    
@@ -48,12 +57,6 @@ pandas.io.formats.style.Styler
       
       
         ~Styler.apply_index
-      
-      
-        ~Styler.applymap
-      
-      
-        ~Styler.applymap_index
       
       
         ~Styler.background_gradient
@@ -75,6 +78,9 @@ pandas.io.formats.style.Styler
       
       
         ~Styler.format_index
+      
+      
+        ~Styler.format_index_names
       
       
         ~Styler.from_custom_template
@@ -147,6 +153,9 @@ pandas.io.formats.style.Styler
       
       
         ~Styler.to_string
+      
+      
+        ~Styler.to_typst
       
       
         ~Styler.use

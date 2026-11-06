@@ -140,9 +140,6 @@ pandas.Index
         ~Index.fillna
       
       
-        ~Index.format
-      
-      
         ~Index.get_indexer
       
       
@@ -164,9 +161,6 @@ pandas.Index
         ~Index.groupby
       
       
-        ~Index.holds_integer
-      
-      
         ~Index.identical
       
       
@@ -180,27 +174,6 @@ pandas.Index
       
       
         ~Index.is_
-      
-      
-        ~Index.is_boolean
-      
-      
-        ~Index.is_categorical
-      
-      
-        ~Index.is_floating
-      
-      
-        ~Index.is_integer
-      
-      
-        ~Index.is_interval
-      
-      
-        ~Index.is_numeric
-      
-      
-        ~Index.is_object
       
       
         ~Index.isin
@@ -270,9 +243,6 @@ pandas.Index
       
       
         ~Index.slice_locs
-      
-      
-        ~Index.sort
       
       
         ~Index.sort_values

@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_neighbors_approximate_nearest_neighbors.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -76,7 +76,7 @@ We define a wrapper class for implementing the scikit-learn API to the
 
     import joblib
     import numpy as np
-    from scipy.sparse import csr_matrix
+    from scipy.sparse import csr_array
 
     from sklearn.base import BaseEstimator, TransformerMixin
     from sklearn.datasets import fetch_openml
@@ -130,7 +130,7 @@ We define a wrapper class for implementing the scikit-learn API to the
             indices, distances = np.vstack(indices), np.vstack(distances)
 
             indptr = np.arange(0, n_samples_transform * n_neighbors + 1, n_neighbors)
-            kneighbors_graph = csr_matrix(
+            kneighbors_graph = csr_array(
                 (distances.ravel(), indices.ravel(), indptr),
                 shape=(n_samples_transform, self.n_samples_fit_),
             )
@@ -165,7 +165,7 @@ We benchmark the different exact/approximate nearest neighbors transformers.
         ("MNIST_20000", load_mnist(n_samples=20_000)),
     ]
 
-    n_iter = 500
+    max_iter = 500
     perplexity = 30
     metric = "euclidean"
     # TSNE requires a certain number of neighbors which depends on the
@@ -174,11 +174,11 @@ We benchmark the different exact/approximate nearest neighbors transformers.
     n_neighbors = int(3.0 * perplexity + 1) + 1
 
     tsne_params = dict(
-        init="random",  # pca not supported for sparse matrices
+        init="random",  # pca cannot be used with precomputed distances
         perplexity=perplexity,
         method="barnes_hut",
         random_state=42,
-        n_iter=n_iter,
+        max_iter=max_iter,
         learning_rate="auto",
     )
 
@@ -374,7 +374,7 @@ factor of 5 for the overall pipeline.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/neighbors/approximate_nearest_neighbors.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/neighbors/approximate_nearest_neighbors.ipynb
         :alt: Launch binder
         :width: 150 px
 

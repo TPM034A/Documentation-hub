@@ -8,41 +8,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pandas.read_table &#8212; pandas 2.3.3 documentation</title>
+    <title>pandas.read_table &#8212; pandas 3.0.6 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=150e0881" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=8d8a0ed4" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/pandas.css?v=b7db95b1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=956a7be408686d7d6a7b"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b" />
 
-    <script src="../../_static/documentation_options.js?v=f4302432"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=c3365b21"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -50,10 +53,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/api/pandas.read_table';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pandas.pydata.org/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.3';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -62,6 +66,7 @@
     <link rel="prev" title="pandas.DataFrame.to_pickle" href="pandas.DataFrame.to_pickle.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.6" />
   </head>
   
   
@@ -69,32 +74,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -102,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -110,20 +98,28 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/_templates/docs-announcement-banner.html"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -137,8 +133,8 @@
       
     
     
-    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 2.3.3 documentation - Home"/>
-    <script>document.write(`<img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark" alt="pandas 2.3.3 documentation - Home"/>`);</script>
+    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 3.0.6 documentation - Home"/>
+    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark pst-js-only" alt="pandas 3.0.6 documentation - Home"/>
   
   
 </a></div>
@@ -150,49 +146,43 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -204,55 +194,43 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -263,7 +241,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -275,8 +253,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -287,7 +265,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -299,31 +277,31 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -332,52 +310,49 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -386,42 +361,34 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -432,7 +399,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -444,8 +411,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -456,7 +423,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -470,7 +437,7 @@ document.write(`
   <div class="bd-toc-item navbar-nav">
     
     <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../io.html">Input/output</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../io.html">Input/output</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pandas.read_pickle.html">pandas.read_pickle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_pickle.html">pandas.DataFrame.to_pickle</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">pandas.read_table</a></li>
@@ -511,6 +478,8 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_feather.html">pandas.DataFrame.to_feather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.read_parquet.html">pandas.read_parquet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_parquet.html">pandas.DataFrame.to_parquet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.read_iceberg.html">pandas.read_iceberg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_iceberg.html">pandas.DataFrame.to_iceberg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.read_orc.html">pandas.read_orc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_orc.html">pandas.DataFrame.to_orc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.read_sas.html">pandas.read_sas</a></li>
@@ -519,7 +488,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.read_sql_query.html">pandas.read_sql_query</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.read_sql.html">pandas.read_sql</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_sql.html">pandas.DataFrame.to_sql</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.read_gbq.html">pandas.read_gbq</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.read_stata.html">pandas.read_stata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_stata.html">pandas.DataFrame.to_stata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.stata.StataReader.data_label.html">pandas.io.stata.StataReader.data_label</a></li>
@@ -527,7 +495,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.stata.StataReader.variable_labels.html">pandas.io.stata.StataReader.variable_labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.io.stata.StataWriter.write_file.html">pandas.io.stata.StataWriter.write_file</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../general_functions.html">General functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../series.html">Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frame.html">DataFrame</a></li>
@@ -544,6 +512,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../extensions.html">Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../missing_value.html">Missing values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aliases.html">pandas typing aliases</a></li>
 </ul>
 
     
@@ -553,29 +522,32 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -589,7 +561,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../io.html" class="nav-link">Input/output</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">pandas.read_table</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pandas.read_table</span></li>
   </ul>
 </nav>
 </div>
@@ -604,13 +576,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="pandas-read-table">
 <h1>pandas.read_table<a class="headerlink" href="#pandas-read-table" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="pandas.read_table">
-<span class="sig-prename descclassname"><span class="pre">pandas.</span></span><span class="sig-name descname"><span class="pre">read_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath_or_buffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep=&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header='infer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_col=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usecols=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converters=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_values=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">false_values=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipinitialspace=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipfooter=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_values=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_default_na=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_filter=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_blank_lines=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_dates=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_datetime_format=&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_date_col=&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_parser=&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dayfirst=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dates=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterator=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunksize=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression='infer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thousands=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal='.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineterminator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quotechar='&quot;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quoting=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doublequote=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escapechar=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding_errors='strict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialect=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_bad_lines='error'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim_whitespace=&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_memory=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_map=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float_precision=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype_backend=&lt;no_default&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.3.3/pandas/io/parsers/readers.py#L1257-L1405"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.read_table" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pandas.</span></span><span class="sig-name descname"><span class="pre">read_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath_or_buffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'infer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usecols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">false_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipinitialspace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skiprows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipfooter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_default_na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_blank_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dayfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'infer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thousands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineterminator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quotechar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'&quot;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quoting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doublequote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escapechar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding_errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'strict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_bad_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;no_default&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v3.0.6/pandas/io/parsers/readers.py#L915-L1434"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.read_table" title="Link to this definition">#</a></dt>
 <dd><p>Read general delimited file into DataFrame.</p>
 <p>Also supports optionally iterating or breaking of the file
 into chunks.</p>
@@ -626,11 +598,10 @@ expected. A local file could be: <a class="reference external" href="file://loca
 <p>By file-like object, we refer to objects with a <code class="docutils literal notranslate"><span class="pre">read()</span></code> method, such as
 a file handle (e.g. via builtin <code class="docutils literal notranslate"><span class="pre">open</span></code> function) or <code class="docutils literal notranslate"><span class="pre">StringIO</span></code>.</p>
 </dd>
-<dt><strong>sep</strong><span class="classifier">str, default ‘\t’ (tab-stop)</span></dt><dd><p>Character or regex pattern to treat as the delimiter. If <code class="docutils literal notranslate"><span class="pre">sep=None</span></code>, the
-C engine cannot automatically detect
-the separator, but the Python parsing engine can, meaning the latter will
-be used and automatically detect the separator from only the first valid
-row of the file by Python’s builtin sniffer tool, <code class="docutils literal notranslate"><span class="pre">csv.Sniffer</span></code>.
+<dt><strong>sep</strong><span class="classifier">str, default ‘t’ (tab-stop)</span></dt><dd><p>Character or regex pattern to treat as the delimiter. <code class="docutils literal notranslate"><span class="pre">sep=None</span></code> detects
+the separator from the first valid row of the file with Python’s builtin
+sniffer tool, <code class="docutils literal notranslate"><span class="pre">csv.Sniffer</span></code>; it is supported only by the Python parsing
+engine, which will be used automatically.
 In addition, separators longer than 1 character and different from
 <code class="docutils literal notranslate"><span class="pre">'\s+'</span></code> will be interpreted as regular expressions and will also force
 the use of the Python parsing engine. Note that regex delimiters are prone
@@ -639,7 +610,8 @@ to ignoring quoted data. Regex example: <code class="docutils literal notranslat
 <dt><strong>delimiter</strong><span class="classifier">str, optional</span></dt><dd><p>Alias for <code class="docutils literal notranslate"><span class="pre">sep</span></code>.</p>
 </dd>
 <dt><strong>header</strong><span class="classifier">int, Sequence of int, ‘infer’ or None, default ‘infer’</span></dt><dd><p>Row number(s) containing column labels and marking the start of the
-data (zero-indexed). Default behavior is to infer the column names: if no <code class="docutils literal notranslate"><span class="pre">names</span></code>
+data (zero-indexed). Default behavior
+is to infer the column names: if no <code class="docutils literal notranslate"><span class="pre">names</span></code>
 are passed the behavior is identical to <code class="docutils literal notranslate"><span class="pre">header=0</span></code> and column
 names are inferred from the first line of the file, if column
 names are passed explicitly to <code class="docutils literal notranslate"><span class="pre">names</span></code> then the behavior is identical to
@@ -651,13 +623,20 @@ skipped (e.g. 2 in this example is skipped). Note that this
 parameter ignores commented lines and empty lines if
 <code class="docutils literal notranslate"><span class="pre">skip_blank_lines=True</span></code>, so <code class="docutils literal notranslate"><span class="pre">header=0</span></code> denotes the first line of
 data rather than the first line of the file.</p>
+<p>When inferred from the file contents, headers are kept distinct from
+each other by renaming duplicate names with a numeric suffix of the form
+<code class="docutils literal notranslate"><span class="pre">&quot;.{count}&quot;</span></code> starting from 1, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;foo&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;foo.1&quot;</span></code>.
+Empty headers are named
+<code class="docutils literal notranslate"><span class="pre">&quot;Unnamed:</span> <span class="pre">{i}&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Unnamed:</span> <span class="pre">{i}_level_{level}&quot;</span></code>
+in the case of MultiIndex columns.</p>
 </dd>
 <dt><strong>names</strong><span class="classifier">Sequence of Hashable, optional</span></dt><dd><p>Sequence of column labels to apply. If the file contains a header row,
 then you should explicitly pass <code class="docutils literal notranslate"><span class="pre">header=0</span></code> to override the column names.
 Duplicates in this list are not allowed.</p>
 </dd>
 <dt><strong>index_col</strong><span class="classifier">Hashable, Sequence of Hashable or False, optional</span></dt><dd><p>Column(s) to use as row label(s), denoted either by column labels or column
-indices.  If a sequence of labels or indices is given, <a class="reference internal" href="pandas.MultiIndex.html#pandas.MultiIndex" title="pandas.MultiIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiIndex</span></code></a>
+indices.  If a sequence of labels or indices is given,
+<a class="reference internal" href="pandas.MultiIndex.html#pandas.MultiIndex" title="pandas.MultiIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiIndex</span></code></a>
 will be formed for the row labels.</p>
 <p>Note: <code class="docutils literal notranslate"><span class="pre">index_col=False</span></code> can be used to force pandas to <em>not</em> use the first
 column as the index, e.g., when you have a malformed file with delimiters at
@@ -687,50 +666,63 @@ E.g., <code class="docutils literal notranslate"><span class="pre">{'a':</span> 
 Use <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">object</span></code> together with suitable <code class="docutils literal notranslate"><span class="pre">na_values</span></code> settings
 to preserve and not interpret <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.
 If <code class="docutils literal notranslate"><span class="pre">converters</span></code> are specified, they will be applied INSTEAD
-of <code class="docutils literal notranslate"><span class="pre">dtype</span></code> conversion.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.5.0: </span>Support for <code class="docutils literal notranslate"><span class="pre">defaultdict</span></code> was added. Specify a <code class="docutils literal notranslate"><span class="pre">defaultdict</span></code> as input where
-the default determines the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> of the columns which are not explicitly
-listed.</p>
-</div>
+of <code class="docutils literal notranslate"><span class="pre">dtype</span></code> conversion. Specify a <code class="docutils literal notranslate"><span class="pre">defaultdict</span></code> as input where
+the default determines the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> of the columns which
+are not explicitly listed.</p>
 </dd>
-<dt><strong>engine</strong><span class="classifier">{‘c’, ‘python’, ‘pyarrow’}, optional</span></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster, while the python engine
-is currently more feature-complete. Multithreading is currently only supported by
-the pyarrow engine.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.4.0: </span>The ‘pyarrow’ engine was added as an <em>experimental</em> engine, and some features
-are unsupported, or may not work correctly, with this engine.</p>
-</div>
+<dt><strong>engine</strong><span class="classifier">{‘c’, ‘python’, ‘pyarrow’}, optional</span></dt><dd><p>Parser engine to use. The C and pyarrow engines are faster,
+while the python engine
+is currently more feature-complete. Multithreading is
+currently only supported by
+the pyarrow engine. The ‘pyarrow’ engine is an <em>experimental</em> engine,
+and some features are unsupported, or may not work correctly, with this engine.</p>
 </dd>
 <dt><strong>converters</strong><span class="classifier">dict of {Hashable</span><span class="classifier">Callable}, optional</span></dt><dd><p>Functions for converting values in specified columns. Keys can either
 be column labels or column indices.</p>
 </dd>
-<dt><strong>true_values</strong><span class="classifier">list, optional</span></dt><dd><p>Values to consider as <code class="docutils literal notranslate"><span class="pre">True</span></code> in addition to case-insensitive variants of ‘True’.</p>
+<dt><strong>true_values</strong><span class="classifier">list, optional</span></dt><dd><p>Values to consider as <code class="docutils literal notranslate"><span class="pre">True</span></code> in addition to
+case-insensitive variants of ‘True’.</p>
 </dd>
-<dt><strong>false_values</strong><span class="classifier">list, optional</span></dt><dd><p>Values to consider as <code class="docutils literal notranslate"><span class="pre">False</span></code> in addition to case-insensitive variants of ‘False’.</p>
+<dt><strong>false_values</strong><span class="classifier">list, optional</span></dt><dd><p>Values to consider as <code class="docutils literal notranslate"><span class="pre">False</span></code> in addition
+to case-insensitive variants of ‘False’.</p>
 </dd>
 <dt><strong>skipinitialspace</strong><span class="classifier">bool, default False</span></dt><dd><p>Skip spaces after delimiter.</p>
 </dd>
 <dt><strong>skiprows</strong><span class="classifier">int, list of int or Callable, optional</span></dt><dd><p>Line numbers to skip (0-indexed) or number of lines to skip (<code class="docutils literal notranslate"><span class="pre">int</span></code>)
 at the start of the file.</p>
 <p>If callable, the callable function will be evaluated against the row
-indices, returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if the row should be skipped and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.
+indices, returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if the row
+should be skipped and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.
 An example of a valid callable argument would be <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">[0,</span> <span class="pre">2]</span></code>.</p>
 </dd>
 <dt><strong>skipfooter</strong><span class="classifier">int, default 0</span></dt><dd><p>Number of lines at bottom of file to skip (Unsupported with <code class="docutils literal notranslate"><span class="pre">engine='c'</span></code>).</p>
 </dd>
-<dt><strong>nrows</strong><span class="classifier">int, optional</span></dt><dd><p>Number of rows of file to read. Useful for reading pieces of large files.</p>
+<dt><strong>nrows</strong><span class="classifier">int, optional</span></dt><dd><p>Number of rows of file to read. Useful for reading pieces of large files.
+Refers to the number of data rows in the returned DataFrame, excluding:</p>
+<ul class="simple">
+<li><p>The header row containing column names.</p></li>
+<li><p>Rows before the header row, if <code class="docutils literal notranslate"><span class="pre">header=1</span></code> or larger.</p></li>
+</ul>
+<p>Example usage:</p>
+<ul class="simple">
+<li><p>To read the first 999,999 (non-header) rows:
+<code class="docutils literal notranslate"><span class="pre">read_csv(...,</span> <span class="pre">nrows=999999)</span></code></p></li>
+<li><p>To read rows 1,000,000 through 1,999,999:
+<code class="docutils literal notranslate"><span class="pre">read_csv(...,</span> <span class="pre">skiprows=1000000,</span> <span class="pre">nrows=999999)</span></code></p></li>
+</ul>
 </dd>
-<dt><strong>na_values</strong><span class="classifier">Hashable, Iterable of Hashable or dict of {Hashable</span><span class="classifier">Iterable}, optional</span></dt><dd><p>Additional strings to recognize as <code class="docutils literal notranslate"><span class="pre">NA</span></code>/<code class="docutils literal notranslate"><span class="pre">NaN</span></code>. If <code class="docutils literal notranslate"><span class="pre">dict</span></code> passed, specific
+<dt><strong>na_values</strong><span class="classifier">Hashable, Iterable of Hashable or dict of {Hashable</span><span class="classifier">Iterable},</span></dt><dd><p>optional
+Additional strings to recognize as <code class="docutils literal notranslate"><span class="pre">NA</span></code>/<code class="docutils literal notranslate"><span class="pre">NaN</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">dict</span></code> passed, specific
 per-column <code class="docutils literal notranslate"><span class="pre">NA</span></code> values.  By default the following values are interpreted as
-<code class="docutils literal notranslate"><span class="pre">NaN</span></code>: “ “, “#N/A”, “#N/A N/A”, “#NA”, “-1.#IND”, “-1.#QNAN”, “-NaN”, “-nan”,
-“1.#IND”, “1.#QNAN”, “&lt;NA&gt;”, “N/A”, “NA”, “NULL”, “NaN”, “None”,
-“n/a”, “nan”, “null “.</p>
+<code class="docutils literal notranslate"><span class="pre">NaN</span></code>: empty string, “NaN”, “N/A”, “NULL”, and other
+common representations of missing data.</p>
 </dd>
 <dt><strong>keep_default_na</strong><span class="classifier">bool, default True</span></dt><dd><p>Whether or not to include the default <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values when parsing the data.
 Depending on whether <code class="docutils literal notranslate"><span class="pre">na_values</span></code> is passed in, the behavior is as follows:</p>
 <ul class="simple">
-<li><p>If <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, and <code class="docutils literal notranslate"><span class="pre">na_values</span></code> are specified, <code class="docutils literal notranslate"><span class="pre">na_values</span></code>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">na_values</span></code> are specified, <code class="docutils literal notranslate"><span class="pre">na_values</span></code>
 is appended to the default <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values used for parsing.</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, and <code class="docutils literal notranslate"><span class="pre">na_values</span></code> are not specified, only
 the default <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values are used for parsing.</p></li>
@@ -739,30 +731,23 @@ the <code class="docutils literal notranslate"><span class="pre">NaN</span></cod
 <li><p>If <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, and <code class="docutils literal notranslate"><span class="pre">na_values</span></code> are not specified, no
 strings will be parsed as <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
 </ul>
-<p>Note that if <code class="docutils literal notranslate"><span class="pre">na_filter</span></code> is passed in as <code class="docutils literal notranslate"><span class="pre">False</span></code>, the <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> and
+<p>Note that if <code class="docutils literal notranslate"><span class="pre">na_filter</span></code> is passed in as
+<code class="docutils literal notranslate"><span class="pre">False</span></code>, the <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> and
 <code class="docutils literal notranslate"><span class="pre">na_values</span></code> parameters will be ignored.</p>
 </dd>
 <dt><strong>na_filter</strong><span class="classifier">bool, default True</span></dt><dd><p>Detect missing value markers (empty strings and the value of <code class="docutils literal notranslate"><span class="pre">na_values</span></code>). In
 data without any <code class="docutils literal notranslate"><span class="pre">NA</span></code> values, passing <code class="docutils literal notranslate"><span class="pre">na_filter=False</span></code> can improve the
 performance of reading a large file.</p>
 </dd>
-<dt><strong>verbose</strong><span class="classifier">bool, default False</span></dt><dd><p>Indicate number of <code class="docutils literal notranslate"><span class="pre">NA</span></code> values placed in non-numeric columns.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 2.2.0.</span></p>
-</div>
-</dd>
 <dt><strong>skip_blank_lines</strong><span class="classifier">bool, default True</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, skip over blank lines rather than interpreting as <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.</p>
 </dd>
-<dt><strong>parse_dates</strong><span class="classifier">bool, list of Hashable, list of lists or dict of {Hashable</span><span class="classifier">list}, default False</span></dt><dd><p>The behavior is as follows:</p>
+<dt><strong>parse_dates</strong><span class="classifier">bool, None, list of Hashable, default None</span></dt><dd><p>The behavior is as follows:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>. If <code class="docutils literal notranslate"><span class="pre">True</span></code> -&gt; try parsing the index. Note: Automatically set to
-<code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">date_format</span></code> or <code class="docutils literal notranslate"><span class="pre">date_parser</span></code> arguments have been passed.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">int</span></code> or names. e.g. If <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> -&gt; try parsing columns 1, 2, 3
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>. If <code class="docutils literal notranslate"><span class="pre">True</span></code> -&gt; try parsing the index.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>. Behaves like <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">date_format</span></code> is specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">int</span></code> or names.
+e.g. If <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> -&gt; try parsing columns 1, 2, 3
 each as a separate date column.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">list</span></code>. e.g.  If <code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">3]]</span></code> -&gt; combine columns 1 and 3 and parse
-as a single date column. Values are joined with a space before parsing.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dict</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">{'foo'</span> <span class="pre">:</span> <span class="pre">[1,</span> <span class="pre">3]}</span></code> -&gt; parse columns 1, 3 as date and call
-result ‘foo’. Values are joined with a space before parsing.</p></li>
 </ul>
 <p>If a column or index cannot be represented as an array of <code class="docutils literal notranslate"><span class="pre">datetime</span></code>,
 say because of an unparsable value or a mixture of timezones, the column
@@ -771,47 +756,17 @@ non-standard <code class="docutils literal notranslate"><span class="pre">dateti
 <a class="reference internal" href="pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_csv()</span></code></a>.</p>
 <p>Note: A fast-path exists for iso8601-formatted dates.</p>
 </dd>
-<dt><strong>infer_datetime_format</strong><span class="classifier">bool, default False</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code> is enabled, pandas will attempt to infer the
-format of the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> strings in the columns, and if it can be inferred,
-switch to a faster method of parsing them. In some cases this can increase
-the parsing speed by 5-10x.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 2.0.0: </span>A strict version of this argument is now the default, passing it has no effect.</p>
-</div>
-</dd>
-<dt><strong>keep_date_col</strong><span class="classifier">bool, default False</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code> specifies combining multiple columns then
-keep the original columns.</p>
-</dd>
-<dt><strong>date_parser</strong><span class="classifier">Callable, optional</span></dt><dd><p>Function to use for converting a sequence of string columns to an array of
-<code class="docutils literal notranslate"><span class="pre">datetime</span></code> instances. The default uses <code class="docutils literal notranslate"><span class="pre">dateutil.parser.parser</span></code> to do the
-conversion. pandas will try to call <code class="docutils literal notranslate"><span class="pre">date_parser</span></code> in three different ways,
-advancing to the next if an exception occurs: 1) Pass one or more arrays
-(as defined by <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code>) as arguments; 2) concatenate (row-wise) the
-string values from the columns defined by <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code> into a single array
-and pass that; and 3) call <code class="docutils literal notranslate"><span class="pre">date_parser</span></code> once for each row using one or
-more strings (corresponding to the columns defined by <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code>) as
-arguments.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 2.0.0: </span>Use <code class="docutils literal notranslate"><span class="pre">date_format</span></code> instead, or read in as <code class="docutils literal notranslate"><span class="pre">object</span></code> and then apply
-<a class="reference internal" href="pandas.to_datetime.html#pandas.to_datetime" title="pandas.to_datetime"><code class="xref py py-func docutils literal notranslate"><span class="pre">to_datetime()</span></code></a> as-needed.</p>
-</div>
-</dd>
-<dt><strong>date_format</strong><span class="classifier">str or dict of column -&gt; format, optional</span></dt><dd><p>Format to use for parsing dates when used in conjunction with <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code>.
+<dt><strong>date_format</strong><span class="classifier">str or dict of column -&gt; format, optional</span></dt><dd><p>Format to use for parsing dates and/or times when used
+in conjunction with <code class="docutils literal notranslate"><span class="pre">parse_dates</span></code>.
 The strftime to parse time, e.g. <code class="xref py py-const docutils literal notranslate"><span class="pre">&quot;%d/%m/%Y&quot;</span></code>. See
 <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">strftime documentation</a> for more information on choices, though
-note that <code class="xref py py-const docutils literal notranslate"><span class="pre">&quot;%f&quot;</span></code> will parse all the way up to nanoseconds.
+note that <code class="xref py py-const docutils literal notranslate"><span class="pre">&quot;%f&quot;`</span></code> will parse all the way up to nanoseconds.
 You can also pass:</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>“ISO8601”, to parse any <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601</a></dt><dd><p>time string (not necessarily in exactly the same format);</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>“mixed”, to infer the format for each element individually. This is risky,</dt><dd><p>and you should probably use it along with <cite>dayfirst</cite>.</p>
-</dd>
-</dl>
-</li>
+<li><p>“ISO8601”, to parse any <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601</a>
+time string (not necessarily in exactly the same format);</p></li>
+<li><p>“mixed”, to infer the format for each element individually. This is risky,
+and you should probably use it along with <cite>dayfirst</cite>.</p></li>
 </ul>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.0.0.</span></p>
@@ -831,27 +786,25 @@ function to return a <code class="docutils literal notranslate"><span class="pre
 See the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/io.html#io-chunking">IO Tools docs</a>
 for more information on <code class="docutils literal notranslate"><span class="pre">iterator</span></code> and <code class="docutils literal notranslate"><span class="pre">chunksize</span></code>.</p>
 </dd>
-<dt><strong>compression</strong><span class="classifier">str or dict, default ‘infer’</span></dt><dd><p>For on-the-fly decompression of on-disk data. If ‘infer’ and ‘filepath_or_buffer’ is
+<dt><strong>compression</strong><span class="classifier">str or dict, default ‘infer’</span></dt><dd><p>For on-the-fly decompression of on-disk data. If ‘infer’
+and ‘filepath_or_buffer’ is
 path-like, then detect compression from the following extensions: ‘.gz’,
 ‘.bz2’, ‘.zip’, ‘.xz’, ‘.zst’, ‘.tar’, ‘.tar.gz’, ‘.tar.xz’ or ‘.tar.bz2’
 (otherwise no compression).
-If using ‘zip’ or ‘tar’, the ZIP file must contain only one data file to be read in.
+If using ‘zip’ or ‘tar’, the ZIP file must contain
+only one data file to be read in.
 Set to <code class="docutils literal notranslate"><span class="pre">None</span></code> for no decompression.
 Can also be a dict with key <code class="docutils literal notranslate"><span class="pre">'method'</span></code> set
-to one of {<code class="docutils literal notranslate"><span class="pre">'zip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bz2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'zstd'</span></code>, <code class="docutils literal notranslate"><span class="pre">'xz'</span></code>, <code class="docutils literal notranslate"><span class="pre">'tar'</span></code>} and
+to one of {<code class="docutils literal notranslate"><span class="pre">'zip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bz2'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'zstd'</span></code>, <code class="docutils literal notranslate"><span class="pre">'xz'</span></code>, <code class="docutils literal notranslate"><span class="pre">'tar'</span></code>} and
 other key-value pairs are forwarded to
 <code class="docutils literal notranslate"><span class="pre">zipfile.ZipFile</span></code>, <code class="docutils literal notranslate"><span class="pre">gzip.GzipFile</span></code>,
 <code class="docutils literal notranslate"><span class="pre">bz2.BZ2File</span></code>, <code class="docutils literal notranslate"><span class="pre">zstandard.ZstdDecompressor</span></code>, <code class="docutils literal notranslate"><span class="pre">lzma.LZMAFile</span></code> or
 <code class="docutils literal notranslate"><span class="pre">tarfile.TarFile</span></code>, respectively.
-As an example, the following could be passed for Zstandard decompression using a
+As an example, the following could be passed for
+Zstandard decompression using a
 custom compression dictionary:
 <code class="docutils literal notranslate"><span class="pre">compression={'method':</span> <span class="pre">'zstd',</span> <span class="pre">'dict_data':</span> <span class="pre">my_compression_dict}</span></code>.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.5.0: </span>Added support for <cite>.tar</cite> files.</p>
-</div>
-<div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 1.4.0: </span>Zstandard support.</p>
-</div>
 </dd>
 <dt><strong>thousands</strong><span class="classifier">str (length 1), optional</span></dt><dd><p>Character acting as the thousands separator in numerical values.</p>
 </dd>
@@ -862,9 +815,12 @@ custom compression dictionary:
 <dt><strong>quotechar</strong><span class="classifier">str (length 1), optional</span></dt><dd><p>Character used to denote the start and end of a quoted item. Quoted
 items can include the <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> and it will be ignored.</p>
 </dd>
-<dt><strong>quoting</strong><span class="classifier">{0 or csv.QUOTE_MINIMAL, 1 or csv.QUOTE_ALL, 2 or csv.QUOTE_NONNUMERIC, 3 or csv.QUOTE_NONE}, default csv.QUOTE_MINIMAL</span></dt><dd><p>Control field quoting behavior per <code class="docutils literal notranslate"><span class="pre">csv.QUOTE_*</span></code> constants. Default is
-<code class="docutils literal notranslate"><span class="pre">csv.QUOTE_MINIMAL</span></code> (i.e., 0) which implies that only fields containing special
-characters are quoted (e.g., characters defined in <code class="docutils literal notranslate"><span class="pre">quotechar</span></code>, <code class="docutils literal notranslate"><span class="pre">delimiter</span></code>,
+<dt><strong>quoting</strong><span class="classifier">{0 or csv.QUOTE_MINIMAL, 1 or csv.QUOTE_ALL, 2 or</span></dt><dd><p>csv.QUOTE_NONNUMERIC, 3 or csv.QUOTE_NONE}, default csv.QUOTE_MINIMAL
+Control field quoting behavior per <code class="docutils literal notranslate"><span class="pre">csv.QUOTE_*</span></code> constants. Default is
+<code class="docutils literal notranslate"><span class="pre">csv.QUOTE_MINIMAL</span></code> (i.e., 0) which
+implies that only fields containing special
+characters are quoted (e.g., characters defined
+in <code class="docutils literal notranslate"><span class="pre">quotechar</span></code>, <code class="docutils literal notranslate"><span class="pre">delimiter</span></code>,
 or <code class="docutils literal notranslate"><span class="pre">lineterminator</span></code>.</p>
 </dd>
 <dt><strong>doublequote</strong><span class="classifier">bool, default True</span></dt><dd><p>When <code class="docutils literal notranslate"><span class="pre">quotechar</span></code> is specified and <code class="docutils literal notranslate"><span class="pre">quoting</span></code> is not <code class="docutils literal notranslate"><span class="pre">QUOTE_NONE</span></code>, indicate
@@ -886,9 +842,6 @@ treated as the header.</p>
 standard encodings</a> .</p>
 </dd>
 <dt><strong>encoding_errors</strong><span class="classifier">str, optional, default ‘strict’</span></dt><dd><p>How encoding errors are treated. <a class="reference external" href="https://docs.python.org/3/library/codecs.html#error-handlers">List of possible values</a> .</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.3.0.</span></p>
-</div>
 </dd>
 <dt><strong>dialect</strong><span class="classifier">str or csv.Dialect, optional</span></dt><dd><p>If provided, this parameter will override values (default or not) for the
 following parameters: <code class="docutils literal notranslate"><span class="pre">delimiter</span></code>, <code class="docutils literal notranslate"><span class="pre">doublequote</span></code>, <code class="docutils literal notranslate"><span class="pre">escapechar</span></code>,
@@ -896,49 +849,41 @@ following parameters: <code class="docutils literal notranslate"><span class="pr
 override values, a <code class="docutils literal notranslate"><span class="pre">ParserWarning</span></code> will be issued. See <code class="docutils literal notranslate"><span class="pre">csv.Dialect</span></code>
 documentation for more details.</p>
 </dd>
-<dt><strong>on_bad_lines</strong><span class="classifier">{‘error’, ‘warn’, ‘skip’} or Callable, default ‘error’</span></dt><dd><p>Specifies what to do upon encountering a bad line (a line with too many fields).
-Allowed values are :</p>
+<dt><strong>on_bad_lines</strong><span class="classifier">{‘error’, ‘warn’, ‘skip’} or Callable, default ‘error’</span></dt><dd><p>Specifies what to do upon encountering a bad
+line (a line with too many fields).
+Allowed values are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">'error'</span></code>, raise an Exception when a bad line is encountered.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'warn'</span></code>, raise a warning when a bad line is encountered and skip that line.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'skip'</span></code>, skip bad lines without raising or warning when they are encountered.</p></li>
-</ul>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.3.0.</span></p>
-</div>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.4.0: </span></p>
-<ul class="simple">
-<li><p>Callable, function with signature
-<code class="docutils literal notranslate"><span class="pre">(bad_line:</span> <span class="pre">list[str])</span> <span class="pre">-&gt;</span> <span class="pre">list[str]</span> <span class="pre">|</span> <span class="pre">None</span></code> that will process a single
-bad line. <code class="docutils literal notranslate"><span class="pre">bad_line</span></code> is a list of strings split by the <code class="docutils literal notranslate"><span class="pre">sep</span></code>.
+<li><p><code class="docutils literal notranslate"><span class="pre">'warn'</span></code>, raise a warning when a bad line is encountered and
+skip that line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'skip'</span></code>, skip bad lines without raising or warning when they
+are encountered.</p></li>
+<li><dl class="simple">
+<dt>Callable, function that will process a single bad line.</dt><dd><ul>
+<li><p>With <code class="docutils literal notranslate"><span class="pre">engine='python'</span></code>, function with signature
+<code class="docutils literal notranslate"><span class="pre">(bad_line:</span> <span class="pre">list[str])</span> <span class="pre">-&gt;</span> <span class="pre">list[str]</span> <span class="pre">|</span> <span class="pre">None</span></code>.
+<code class="docutils literal notranslate"><span class="pre">bad_line</span></code> is a list of strings split by the <code class="docutils literal notranslate"><span class="pre">sep</span></code>.
 If the function returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, the bad line will be ignored.
 If the function returns a new <code class="docutils literal notranslate"><span class="pre">list</span></code> of strings with more elements than
-expected, a <code class="docutils literal notranslate"><span class="pre">ParserWarning</span></code> will be emitted while dropping extra elements.
-Only supported when <code class="docutils literal notranslate"><span class="pre">engine='python'</span></code></p></li>
+expected, a <code class="docutils literal notranslate"><span class="pre">ParserWarning</span></code> will be emitted while
+dropping extra elements.</p></li>
+<li><p>With <code class="docutils literal notranslate"><span class="pre">engine='pyarrow'</span></code>, function with signature
+as described in pyarrow documentation: <a class="reference external" href="https://arrow.apache.org/docs/python/generated/pyarrow.csv.ParseOptions.html#pyarrow.csv.ParseOptions.invalid_row_handler">invalid_row_handler</a>.</p></li>
 </ul>
-</div>
-<div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 2.2.0: </span></p>
-<ul class="simple">
-<li><p>Callable, function with signature
-as described in <a class="reference external" href="https://arrow.apache.org/docs/python/generated/pyarrow.csv.ParseOptions.html#pyarrow.csv.ParseOptions.invalid_row_handler">pyarrow documentation</a> when <code class="docutils literal notranslate"><span class="pre">engine='pyarrow'</span></code></p></li>
-</ul>
-</div>
 </dd>
-<dt><strong>delim_whitespace</strong><span class="classifier">bool, default False</span></dt><dd><p>Specifies whether or not whitespace (e.g. <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> or <code class="docutils literal notranslate"><span class="pre">'\t'</span></code>) will be
-used as the <code class="docutils literal notranslate"><span class="pre">sep</span></code> delimiter. Equivalent to setting <code class="docutils literal notranslate"><span class="pre">sep='\s+'</span></code>. If this option
-is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, nothing should be passed in for the <code class="docutils literal notranslate"><span class="pre">delimiter</span></code>
-parameter.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 2.2.0: </span>Use <code class="docutils literal notranslate"><span class="pre">sep=&quot;\s+&quot;</span></code> instead.</p>
+</dl>
+</li>
+</ul>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.2.0: </span>Callable for <code class="docutils literal notranslate"><span class="pre">engine='pyarrow'</span></code></p>
 </div>
 </dd>
 <dt><strong>low_memory</strong><span class="classifier">bool, default True</span></dt><dd><p>Internally process the file in chunks, resulting in lower memory use
 while parsing, but possibly mixed type inference.  To ensure no mixed
 types either set <code class="docutils literal notranslate"><span class="pre">False</span></code>, or specify the type with the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> parameter.
 Note that the entire file is read into a single <a class="reference internal" href="pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>
-regardless, use the <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> or <code class="docutils literal notranslate"><span class="pre">iterator</span></code> parameter to return the data in
+regardless, use the <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> or <code class="docutils literal notranslate"><span class="pre">iterator</span></code> parameter
+to return the data in
 chunks. (Only valid with C parser).</p>
 </dd>
 <dt><strong>memory_map</strong><span class="classifier">bool, default False</span></dt><dd><p>If a filepath is provided for <code class="docutils literal notranslate"><span class="pre">filepath_or_buffer</span></code>, map the file object
@@ -957,13 +902,14 @@ URLs (e.g. starting with “s3://”, and “gcs://”) the key-value pairs are
 forwarded to <code class="docutils literal notranslate"><span class="pre">fsspec.open</span></code>. Please see <code class="docutils literal notranslate"><span class="pre">fsspec</span></code> and <code class="docutils literal notranslate"><span class="pre">urllib</span></code> for more
 details, and for more examples on storage options refer <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html?highlight=storage_options#reading-writing-remote-files">here</a>.</p>
 </dd>
-<dt><strong>dtype_backend</strong><span class="classifier">{‘numpy_nullable’, ‘pyarrow’}, default ‘numpy_nullable’</span></dt><dd><p>Back-end data type applied to the resultant <a class="reference internal" href="pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>
-(still experimental). Behaviour is as follows:</p>
+<dt><strong>dtype_backend</strong><span class="classifier">{‘numpy_nullable’, ‘pyarrow’}</span></dt><dd><p>Back-end data type applied to the resultant <a class="reference internal" href="pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>
+(still experimental). If not specified, the default behavior
+is to not use nullable data types. If specified, the behavior
+is as follows:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;numpy_nullable&quot;</span></code>: returns nullable-dtype-backed <a class="reference internal" href="pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a>
-(default).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;pyarrow&quot;</span></code>: returns pyarrow-backed nullable <a class="reference internal" href="pandas.ArrowDtype.html#pandas.ArrowDtype" title="pandas.ArrowDtype"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrowDtype</span></code></a>
-DataFrame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;numpy_nullable&quot;</span></code>: returns nullable-dtype-backed <a class="reference internal" href="pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;pyarrow&quot;</span></code>: returns pyarrow-backed nullable
+<a class="reference internal" href="pandas.ArrowDtype.html#pandas.ArrowDtype" title="pandas.ArrowDtype"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrowDtype</span></code></a> <a class="reference internal" href="pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></p></li>
 </ul>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.0.</span></p>
@@ -991,7 +937,86 @@ data structure with labeled axes.</p>
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>  
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">"data.csv"</span><span class="p">)</span>
+<span class="go">   Name  Value</span>
+<span class="go">0   foo      1</span>
+<span class="go">1   bar      2</span>
+<span class="go">2  #baz      3</span>
+</pre></div>
+</div>
+<p>Index and header can be specified via the <cite>index_col</cite> and <cite>header</cite> arguments.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">"data.csv"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">      0      1</span>
+<span class="go">0  Name  Value</span>
+<span class="go">1   foo      1</span>
+<span class="go">2   bar      2</span>
+<span class="go">3  #baz      3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">"data.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">"Value"</span><span class="p">)</span>
+<span class="go">       Name</span>
+<span class="go">Value</span>
+<span class="go">1       foo</span>
+<span class="go">2       bar</span>
+<span class="go">3      #baz</span>
+</pre></div>
+</div>
+<p>Column types are inferred but can be explicitly specified using the dtype argument.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">"data.csv"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s2">"Value"</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
+<span class="go">   Name  Value</span>
+<span class="go">0   foo    1.0</span>
+<span class="go">1   bar    2.0</span>
+<span class="go">2  #baz    3.0</span>
+</pre></div>
+</div>
+<p>True, False, and NA values, and thousands separators have defaults,
+but can be explicitly specified, too. Supply the values you would like
+as strings or lists of strings!</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">"data.csv"</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">])</span>
+<span class="go">   Name  Value</span>
+<span class="go">0   NaN      1</span>
+<span class="go">1   NaN      2</span>
+<span class="go">2  #baz      3</span>
+</pre></div>
+</div>
+<p>Comment lines in the input file can be skipped using the <cite>comment</cite> argument.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">"data.csv"</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s2">"#"</span><span class="p">)</span>
+<span class="go">  Name  Value</span>
+<span class="go">0  foo      1</span>
+<span class="go">1  bar      2</span>
+</pre></div>
+</div>
+<p>By default, columns with dates will be read as <code class="docutils literal notranslate"><span class="pre">object</span></code> rather than  <code class="docutils literal notranslate"><span class="pre">datetime</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">"tmp.csv"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">   col 1       col 2            col 3</span>
+<span class="go">0     10  10/04/2018  Sun 15 Jan 2023</span>
+<span class="go">1     20  15/04/2018  Fri 12 May 2023</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="go">col 1     int64</span>
+<span class="go">col 2    object</span>
+<span class="go">col 3    object</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<p>Specific columns can be parsed as dates by using the <cite>parse_dates</cite> and
+<cite>date_format</cite> arguments.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">"tmp.csv"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">date_format</span><span class="o">=</span><span class="p">{</span><span class="s2">"col 2"</span><span class="p">:</span> <span class="s2">"</span><span class="si">%d</span><span class="s2">/%m/%Y"</span><span class="p">,</span> <span class="s2">"col 3"</span><span class="p">:</span> <span class="s2">"</span><span class="si">%a</span><span class="s2"> </span><span class="si">%d</span><span class="s2"> %b %Y"</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="go">col 1             int64</span>
+<span class="go">col 2    datetime64[ns]</span>
+<span class="go">col 3    datetime64[ns]</span>
+<span class="go">dtype: object</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1005,7 +1030,7 @@ data structure with labeled axes.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1033,27 +1058,21 @@ data structure with labeled axes.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas.read_table"><code class="docutils literal notranslate"><span class="pre">read_table()</span></code></a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/reference/api/pandas.read_table.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               
@@ -1068,8 +1087,8 @@ data structure with labeled axes.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1077,13 +1096,13 @@ data structure with labeled axes.</p>
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="copyright">
-    &copy 2025, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
+    &copy 2026, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
 </p></div>
       
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
     <br/>
   </p>
 </div>
@@ -1096,7 +1115,8 @@ data structure with labeled axes.</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

@@ -8,41 +8,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Comparison with SAS &#8212; pandas 2.3.3 documentation</title>
+    <title>Comparison with SAS &#8212; pandas 3.0.6 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=150e0881" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=8d8a0ed4" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/pandas.css?v=b7db95b1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=956a7be408686d7d6a7b"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b" />
 
-    <script src="../../_static/documentation_options.js?v=f4302432"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=c3365b21"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -50,10 +53,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/comparison/comparison_with_sas';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pandas.pydata.org/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.3';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -62,6 +66,7 @@
     <link rel="prev" title="Comparison with spreadsheets" href="comparison_with_spreadsheets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.6" />
   </head>
   
   
@@ -69,32 +74,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -102,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -110,20 +98,28 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/_templates/docs-announcement-banner.html"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -137,8 +133,8 @@
       
     
     
-    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 2.3.3 documentation - Home"/>
-    <script>document.write(`<img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark" alt="pandas 2.3.3 documentation - Home"/>`);</script>
+    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 3.0.6 documentation - Home"/>
+    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark pst-js-only" alt="pandas 3.0.6 documentation - Home"/>
   
   
 </a></div>
@@ -150,49 +146,43 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -204,55 +194,43 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -263,7 +241,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -275,8 +253,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -287,7 +265,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -299,31 +277,31 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -332,52 +310,49 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -386,42 +361,34 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -432,7 +399,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -444,8 +411,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -456,7 +423,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -472,7 +439,7 @@ document.write(`
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Package overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_tutorials/index.html">Getting started tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_tutorials/index.html">Getting started tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/01_table_oriented.html">What kind of data does pandas handle?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/02_read_write.html">How do I read and write tabular data?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/03_subset_data.html">How do I select a subset of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>?</a></li>
@@ -484,15 +451,16 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/09_timeseries.html">How to handle time series data with ease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/10_text_data.html">How to manipulate textual data</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Comparison with other tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Comparison with other tools</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_r.html">Comparison with R / R libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_sql.html">Comparison with SQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_spreadsheets.html">Comparison with spreadsheets</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Comparison with SAS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_stata.html">Comparison with Stata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparison_with_spss.html">Comparison with SPSS</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Community tutorials</a></li>
 </ul>
 
@@ -503,29 +471,32 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -539,7 +510,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Comparison with other tools</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Comparison with SAS</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Comparison with SAS</span></li>
   </ul>
 </nav>
 </div>
@@ -554,7 +525,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="comparison-with-sas">
 <span id="compare-with-sas"></span><h1>Comparison with SAS<a class="headerlink" href="#comparison-with-sas" title="Link to this heading">#</a></h1>
@@ -573,7 +544,7 @@ to familiarize yourself with the library.</p>
 <h2>Data structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h2>
 <section id="general-terminology-translation">
 <h3>General terminology translation<a class="headerlink" href="#general-terminology-translation" title="Link to this heading">#</a></h3>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
 <col style="width: 50.0%" />
 <col style="width: 50.0%" />
@@ -601,6 +572,7 @@ to familiarize yourself with the library.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="dataframe">
 <h3><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#dataframe" title="Link to this heading">#</a></h3>
@@ -635,13 +607,13 @@ see the <a class="reference internal" href="../../user_guide/indexing.html#index
 <p>Most pandas operations return copies of the <code class="docutils literal notranslate"><span class="pre">Series</span></code>/<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. To make the changes “stick”,
 you’ll need to either assign to a new variable:</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;col1&quot;</span><span class="p">)</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"col1"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <p>or overwrite the original one:</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;col1&quot;</span><span class="p">)</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"col1"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -667,7 +639,7 @@ necessary anymore in the context of Copy-on-Write. The proposal can be found
 <p>A SAS data set can be built from specified values by
 placing the data after a <code class="docutils literal notranslate"><span class="pre">datalines</span></code> statement and
 specifying the column names.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>df;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data df;
     <span class="k">input</span> <span class="k">x</span> y;
 <span class="k">    datalines;</span>
 <span class="x">    1 2</span>
@@ -681,7 +653,7 @@ specifying the column names.</p>
 but for a small number of values, it is often convenient to specify it as
 a Python dictionary, where the keys are the column names
 and the values are the data.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"x"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s2">"y"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
 
 <span class="gp">In [2]: </span><span class="n">df</span>
 <span class="gh">Out[2]: </span>
@@ -699,15 +671,15 @@ many formats.  The <code class="docutils literal notranslate"><span class="pre">
 tests (<a class="reference external" href="https://raw.githubusercontent.com/pandas-dev/pandas/main/pandas/tests/io/data/csv/tips.csv">csv</a>)
 will be used in many of the following examples.</p>
 <p>SAS provides <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">IMPORT</span></code> to read csv data into a data set.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc import </span>datafile=<span class="s">&#39;tips.csv&#39;</span> dbms=csv <span class="k">out</span>=tips <span class="k">replace</span>;
-    getnames=yes<span class="kr">;</span>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>proc import datafile=<span class="s">'tips.csv'</span> dbms=csv <span class="k">out</span>=tips <span class="k">replace</span>;
+    getnames=yes;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>The pandas method is <a class="reference internal" href="../../reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_csv()</span></code></a>, which works similarly.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">   ...: </span>    <span class="s2">&quot;https://raw.githubusercontent.com/pandas-dev/&quot;</span>
-<span class="gp">   ...: </span>    <span class="s2">&quot;pandas/main/pandas/tests/io/data/csv/tips.csv&quot;</span>
+<span class="gp">   ...: </span>    <span class="s2">"https://raw.githubusercontent.com/pandas-dev/"</span>
+<span class="gp">   ...: </span>    <span class="s2">"pandas/main/pandas/tests/io/data/csv/tips.csv"</span>
 <span class="gp">   ...: </span><span class="p">)</span>
 <span class="gp">   ...: </span>
 
@@ -734,10 +706,10 @@ will be used in many of the following examples.</p>
 <p>Like <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">IMPORT</span></code>, <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> can take a number of parameters to specify
 how the data should be parsed.  For example, if the data was instead tab delimited,
 and did not have column names, the pandas command would be:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tips.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"tips.csv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
 <span class="c1"># alternatively, read_table is an alias to read_csv with tab delimiter</span>
-<span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;tips.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">"tips.csv"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In addition to text/csv, pandas supports a variety of other data formats
@@ -760,7 +732,7 @@ This can be overridden by <a class="reference internal" href="../../user_guide/o
 </pre></div>
 </div>
 <p>The equivalent in SAS would be:</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc print </span>data=df(obs=<span class="m">5</span>)<span class="kr">;</span>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>proc print data=df(obs=<span class="m">5</span>);
 <span class="kr">run;</span>
 </pre></div>
 </div>
@@ -768,13 +740,13 @@ This can be overridden by <a class="reference internal" href="../../user_guide/o
 <section id="exporting-data">
 <h3>Exporting data<a class="headerlink" href="#exporting-data" title="Link to this heading">#</a></h3>
 <p>The inverse of <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">IMPORT</span></code> in SAS is <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">EXPORT</span></code></p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc export </span>data=tips outfile=<span class="s">&#39;tips2.csv&#39;</span> dbms=csv<span class="kr">;</span>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>proc export data=tips outfile=<span class="s">'tips2.csv'</span> dbms=csv;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>Similarly in pandas, the opposite of <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> is <a class="reference internal" href="../../reference/api/pandas.DataFrame.to_csv.html#pandas.DataFrame.to_csv" title="pandas.DataFrame.to_csv"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_csv()</span></code></a>,
 and other data formats follow a similar api.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;tips2.csv&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"tips2.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -785,19 +757,19 @@ and other data formats follow a similar api.</p>
 <h3>Operations on columns<a class="headerlink" href="#operations-on-columns" title="Link to this heading">#</a></h3>
 <p>In the <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step, arbitrary math expressions can
 be used on new or existing columns.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>tips;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data tips;
     <span class="k">set</span> tips;
     total_bill = total_bill - <span class="m">2</span>;
-    new_bill = total_bill / <span class="m">2</span><span class="kr">;</span>
+    new_bill = total_bill / <span class="m">2</span>;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>pandas provides vectorized operations by specifying the individual <code class="docutils literal notranslate"><span class="pre">Series</span></code> in the
 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. New columns can be assigned in the same way. The <a class="reference internal" href="../../reference/api/pandas.DataFrame.drop.html#pandas.DataFrame.drop" title="pandas.DataFrame.drop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.drop()</span></code></a> method drops
 a column from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span>
 
-<span class="gp">In [2]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;new_bill&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">In [2]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"new_bill"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
 
 <span class="gp">In [3]: </span><span class="n">tips</span>
 <span class="gh">Out[3]: </span>
@@ -816,7 +788,7 @@ a column from the <code class="docutils literal notranslate"><span class="pre">D
 
 <span class="go">[244 rows x 8 columns]</span>
 
-<span class="gp">In [4]: </span><span class="n">tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;new_bill&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">In [4]: </span><span class="n">tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">"new_bill"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -824,9 +796,9 @@ a column from the <code class="docutils literal notranslate"><span class="pre">D
 <h3>Filtering<a class="headerlink" href="#filtering" title="Link to this heading">#</a></h3>
 <p>Filtering in SAS is done with an <code class="docutils literal notranslate"><span class="pre">if</span></code> or <code class="docutils literal notranslate"><span class="pre">where</span></code> statement, on one
 or more columns.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>tips;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data tips;
     <span class="k">set</span> tips;
-    <span class="k">if</span> total_bill &gt; <span class="m">10</span><span class="kr">;</span>
+    <span class="k">if</span> total_bill &gt; <span class="m">10</span>;
 <span class="kr">run;</span>
 
 <span class="kr">data </span>tips;
@@ -839,7 +811,7 @@ or more columns.</p>
 </div>
 <p>DataFrames can be filtered in multiple ways; the most intuitive of which is using
 <a class="reference internal" href="../../user_guide/indexing.html#indexing-boolean"><span class="std std-ref">boolean indexing</span></a>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
 <span class="gh">Out[1]: </span>
 <span class="go">     total_bill   tip     sex smoker   day    time  size</span>
 <span class="go">0         14.99  1.01  Female     No   Sun  Dinner     2</span>
@@ -859,7 +831,7 @@ or more columns.</p>
 </div>
 <p>The above statement is simply passing a <code class="docutils literal notranslate"><span class="pre">Series</span></code> of <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> objects to the DataFrame,
 returning all rows with <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">is_dinner</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Dinner&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">is_dinner</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Dinner"</span>
 
 <span class="gp">In [3]: </span><span class="n">is_dinner</span>
 <span class="gh">Out[3]: </span>
@@ -905,18 +877,18 @@ returning all rows with <code class="docutils literal notranslate"><span class="
 <section id="if-then-logic">
 <h3>If/then logic<a class="headerlink" href="#if-then-logic" title="Link to this heading">#</a></h3>
 <p>In SAS, if/then logic can be used to create new columns.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>tips;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data tips;
     <span class="k">set</span> tips;
     <span class="k">format</span> bucket $<span class="m">4</span>.;
 
-    <span class="k">if</span> total_bill &lt; <span class="m">10</span> <span class="k">then</span> bucket = <span class="s">&#39;low&#39;</span>;
-    <span class="k">else</span> bucket = <span class="s">&#39;high&#39;</span><span class="kr">;</span>
+    <span class="k">if</span> total_bill &lt; <span class="m">10</span> <span class="k">then</span> bucket = <span class="s">'low'</span>;
+    <span class="k">else</span> bucket = <span class="s">'high'</span>;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>The same operation in pandas can be accomplished using
 the <code class="docutils literal notranslate"><span class="pre">where</span></code> method from <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;bucket&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"bucket"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"low"</span><span class="p">,</span> <span class="s2">"high"</span><span class="p">)</span>
 
 <span class="gp">In [2]: </span><span class="n">tips</span>
 <span class="gh">Out[2]: </span>
@@ -941,7 +913,7 @@ the <code class="docutils literal notranslate"><span class="pre">where</span></c
 <h3>Date functionality<a class="headerlink" href="#date-functionality" title="Link to this heading">#</a></h3>
 <p>SAS provides a variety of functions to do operations on
 date/datetime columns.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>tips;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data tips;
     <span class="k">set</span> tips;
     <span class="k">format</span> date1 date2 date1_plusmonth mmddyy10.;
     date1 = <span class="nb">mdy(</span><span class="m">1</span>, <span class="m">15</span>, <span class="m">2013</span>);
@@ -949,9 +921,9 @@ date/datetime columns.</p>
     date1_year = <span class="nb">year(</span>date1);
     date2_month = <span class="nb">month(</span>date2);
 <span class="c">    * shift date to beginning of next interval;</span>
-    date1_next = <span class="nb">intnx(</span><span class="s">&#39;MONTH&#39;</span>, date1, <span class="m">1</span>);
+    date1_next = <span class="nb">intnx(</span><span class="s">'MONTH'</span>, date1, <span class="m">1</span>);
 <span class="c">    * count intervals between dates;</span>
-    months_between = <span class="nb">intck(</span><span class="s">&#39;MONTH&#39;</span>, date1, date2)<span class="kr">;</span>
+    months_between = <span class="nb">intck(</span><span class="s">'MONTH'</span>, date1, date2);
 <span class="kr">run;</span>
 </pre></div>
 </div>
@@ -959,23 +931,23 @@ date/datetime columns.</p>
 functions pandas supports other Time Series features
 not available in Base SAS (such as resampling and custom offsets) -
 see the <a class="reference internal" href="../../user_guide/timeseries.html#timeseries"><span class="std std-ref">timeseries documentation</span></a> for more details.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2013-01-15&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date1"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2013-01-15"</span><span class="p">)</span>
 
-<span class="gp">In [2]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2015-02-15&quot;</span><span class="p">)</span>
+<span class="gp">In [2]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date2"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2015-02-15"</span><span class="p">)</span>
 
-<span class="gp">In [3]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1_year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="gp">In [3]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date1_year"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"date1"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
 
-<span class="gp">In [4]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date2_month&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="gp">In [4]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date2_month"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"date2"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
 
-<span class="gp">In [5]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1_next&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date1&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">MonthBegin</span><span class="p">()</span>
+<span class="gp">In [5]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"date1_next"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"date1"</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">MonthBegin</span><span class="p">()</span>
 
-<span class="gp">In [6]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;months_between&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;date2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span>
-<span class="gp">   ...: </span>    <span class="s2">&quot;date1&quot;</span>
-<span class="gp">   ...: </span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
+<span class="gp">In [6]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"months_between"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"date2"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">"M"</span><span class="p">)</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span>
+<span class="gp">   ...: </span>    <span class="s2">"date1"</span>
+<span class="gp">   ...: </span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">"M"</span><span class="p">)</span>
 <span class="gp">   ...: </span>
 
 <span class="gp">In [7]: </span><span class="n">tips</span><span class="p">[</span>
-<span class="gp">   ...: </span>    <span class="p">[</span><span class="s2">&quot;date1&quot;</span><span class="p">,</span> <span class="s2">&quot;date2&quot;</span><span class="p">,</span> <span class="s2">&quot;date1_year&quot;</span><span class="p">,</span> <span class="s2">&quot;date2_month&quot;</span><span class="p">,</span> <span class="s2">&quot;date1_next&quot;</span><span class="p">,</span> <span class="s2">&quot;months_between&quot;</span><span class="p">]</span>
+<span class="gp">   ...: </span>    <span class="p">[</span><span class="s2">"date1"</span><span class="p">,</span> <span class="s2">"date2"</span><span class="p">,</span> <span class="s2">"date1_year"</span><span class="p">,</span> <span class="s2">"date2_month"</span><span class="p">,</span> <span class="s2">"date1_next"</span><span class="p">,</span> <span class="s2">"months_between"</span><span class="p">]</span>
 <span class="gp">   ...: </span><span class="p">]</span>
 <span class="gp">   ...: </span>
 <span class="gh">Out[7]: </span>
@@ -1000,26 +972,26 @@ see the <a class="reference internal" href="../../user_guide/timeseries.html#tim
 <h3>Selection of columns<a class="headerlink" href="#selection-of-columns" title="Link to this heading">#</a></h3>
 <p>SAS provides keywords in the <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step to select,
 drop, and rename columns.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>tips;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data tips;
     <span class="k">set</span> tips;
-    <span class="k">keep</span> sex total_bill tip<span class="kr">;</span>
+    <span class="k">keep</span> sex total_bill tip;
 <span class="kr">run;</span>
 
 <span class="kr">data </span>tips;
     <span class="k">set</span> tips;
-    <span class="k">drop</span> sex<span class="kr">;</span>
+    <span class="k">drop</span> sex;
 <span class="kr">run;</span>
 
 <span class="kr">data </span>tips;
     <span class="k">set</span> tips;
-    <span class="k">rename</span> total_bill=total_bill_2<span class="kr">;</span>
+    <span class="k">rename</span> total_bill=total_bill_2;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>The same operations are expressed in pandas below.</p>
 <section id="keep-certain-columns">
 <h4>Keep certain columns<a class="headerlink" href="#keep-certain-columns" title="Link to this heading">#</a></h4>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[[</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="s2">&quot;tip&quot;</span><span class="p">]]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[[</span><span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"total_bill"</span><span class="p">,</span> <span class="s2">"tip"</span><span class="p">]]</span>
 <span class="gh">Out[1]: </span>
 <span class="go">        sex  total_bill   tip</span>
 <span class="go">0    Female       14.99  1.01</span>
@@ -1040,7 +1012,7 @@ drop, and rename columns.</p>
 </section>
 <section id="drop-a-column">
 <h4>Drop a column<a class="headerlink" href="#drop-a-column" title="Link to this heading">#</a></h4>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">tips</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">tips</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">"sex"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gh">Out[2]: </span>
 <span class="go">     total_bill   tip smoker   day    time  size</span>
 <span class="go">0         14.99  1.01     No   Sun  Dinner     2</span>
@@ -1061,7 +1033,7 @@ drop, and rename columns.</p>
 </section>
 <section id="rename-a-column">
 <h4>Rename a column<a class="headerlink" href="#rename-a-column" title="Link to this heading">#</a></h4>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">tips</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;total_bill&quot;</span><span class="p">:</span> <span class="s2">&quot;total_bill_2&quot;</span><span class="p">})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">tips</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"total_bill"</span><span class="p">:</span> <span class="s2">"total_bill_2"</span><span class="p">})</span>
 <span class="gh">Out[3]: </span>
 <span class="go">     total_bill_2   tip     sex smoker   day    time  size</span>
 <span class="go">0           14.99  1.01  Female     No   Sun  Dinner     2</span>
@@ -1084,13 +1056,13 @@ drop, and rename columns.</p>
 <section id="sorting-by-values">
 <h3>Sorting by values<a class="headerlink" href="#sorting-by-values" title="Link to this heading">#</a></h3>
 <p>Sorting in SAS is accomplished via <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SORT</span></code></p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sort </span>data=tips;
-    <span class="k">by</span> sex total_bill<span class="kr">;</span>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>proc sort data=tips;
+    <span class="k">by</span> sex total_bill;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>pandas has a <a class="reference internal" href="../../reference/api/pandas.DataFrame.sort_values.html#pandas.DataFrame.sort_values" title="pandas.DataFrame.sort_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame.sort_values()</span></code></a> method, which takes a list of columns to sort by.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">])</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"total_bill"</span><span class="p">])</span>
 
 <span class="gp">In [2]: </span><span class="n">tips</span>
 <span class="gh">Out[2]: </span>
@@ -1120,17 +1092,17 @@ drop, and rename columns.</p>
 <a class="reference external" href="https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a002284668.htm">LENGTHN</a>
 and <a class="reference external" href="https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a002283942.htm">LENGTHC</a>
 functions. <code class="docutils literal notranslate"><span class="pre">LENGTHN</span></code> excludes trailing blanks and <code class="docutils literal notranslate"><span class="pre">LENGTHC</span></code> includes trailing blanks.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="kc">_null_</span>;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data <span class="kc">_null_</span>;
 <span class="k">set</span> tips;
 <span class="k">put</span>(LENGTHN(time));
-<span class="k">put</span>(LENGTHC(time))<span class="kr">;</span>
+<span class="k">put</span>(LENGTHC(time));
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>You can find the length of a character string with <a class="reference internal" href="../../reference/api/pandas.Series.str.len.html#pandas.Series.str.len" title="pandas.Series.str.len"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.len()</span></code></a>.
 In Python 3, all strings are Unicode strings. <code class="docutils literal notranslate"><span class="pre">len</span></code> includes trailing blanks.
 Use <code class="docutils literal notranslate"><span class="pre">len</span></code> and <code class="docutils literal notranslate"><span class="pre">rstrip</span></code> to exclude trailing blanks.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
 <span class="gh">Out[1]: </span>
 <span class="go">67     6</span>
 <span class="go">92     6</span>
@@ -1145,7 +1117,7 @@ Use <code class="docutils literal notranslate"><span class="pre">len</span></cod
 <span class="go">170    6</span>
 <span class="go">Name: time, Length: 244, dtype: int64</span>
 
-<span class="gp">In [2]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+<span class="gp">In [2]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
 <span class="gh">Out[2]: </span>
 <span class="go">67     6</span>
 <span class="go">92     6</span>
@@ -1168,9 +1140,9 @@ Use <code class="docutils literal notranslate"><span class="pre">len</span></cod
 <a class="reference external" href="https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a002978282.htm">FINDW</a> function.
 <code class="docutils literal notranslate"><span class="pre">FINDW</span></code> takes the string defined by the first argument and searches for the first position of the substring
 you supply as the second argument.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="kc">_null_</span>;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data <span class="kc">_null_</span>;
 <span class="k">set</span> tips;
-<span class="k">put</span>(FINDW(sex,<span class="s">&#39;ale&#39;</span>))<span class="kr">;</span>
+<span class="k">put</span>(FINDW(sex,<span class="s">'ale'</span>));
 <span class="kr">run;</span>
 </pre></div>
 </div>
@@ -1178,7 +1150,7 @@ you supply as the second argument.</p>
 method. <code class="docutils literal notranslate"><span class="pre">find</span></code> searches for the first position of the substring. If the substring is found, the
 method returns its position. If not found, it returns <code class="docutils literal notranslate"><span class="pre">-1</span></code>. Keep in mind that Python indexes are
 zero-based.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;ale&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"ale"</span><span class="p">)</span>
 <span class="gh">Out[1]: </span>
 <span class="go">67     3</span>
 <span class="go">92     3</span>
@@ -1199,16 +1171,16 @@ zero-based.</p>
 <h3>Extracting substring by position<a class="headerlink" href="#extracting-substring-by-position" title="Link to this heading">#</a></h3>
 <p>SAS extracts a substring from a string based on its position with the
 <a class="reference external" href="https://support.sas.com/documentation/cdl/en/imlug/66845/HTML/default/viewer.htm#imlug_langref_sect455.htm">SUBSTR</a> function.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span><span class="kc">_null_</span>;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data <span class="kc">_null_</span>;
 <span class="k">set</span> tips;
-<span class="k">put</span>(<span class="nb">substr(</span>sex,<span class="m">1</span>,<span class="m">1</span>))<span class="kr">;</span>
+<span class="k">put</span>(<span class="nb">substr(</span>sex,<span class="m">1</span>,<span class="m">1</span>));
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>With pandas you can use <code class="docutils literal notranslate"><span class="pre">[]</span></code> notation to extract a substring
 from a string by position locations. Keep in mind that Python
 indexes are zero-based.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
 <span class="gh">Out[1]: </span>
 <span class="go">67     F</span>
 <span class="go">92     F</span>
@@ -1221,7 +1193,7 @@ indexes are zero-based.</p>
 <span class="go">59     M</span>
 <span class="go">212    M</span>
 <span class="go">170    M</span>
-<span class="go">Name: sex, Length: 244, dtype: object</span>
+<span class="go">Name: sex, Length: 244, dtype: str</span>
 </pre></div>
 </div>
 </section>
@@ -1230,24 +1202,24 @@ indexes are zero-based.</p>
 <p>The SAS <a class="reference external" href="https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a000214639.htm">SCAN</a>
 function returns the nth word from a string. The first argument is the string you want to parse and the
 second argument specifies which word you want to extract.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>firstlast;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data firstlast;
 <span class="k">input</span> String $<span class="m">60</span>.;
 First_Name = <span class="nb">scan(</span>string, <span class="m">1</span>);
 Last_Name = <span class="nb">scan(</span>string, -<span class="m">1</span>);
 datalines2;
 John Smith;
 Jane Cook;
-;;<span class="kr">;</span>
+;;;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>The simplest way to extract words in pandas is to split the strings by spaces, then reference the
 word by index. Note there are more powerful approaches should you need them.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">firstlast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;String&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;John Smith&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Cook&quot;</span><span class="p">]})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">firstlast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"String"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"John Smith"</span><span class="p">,</span> <span class="s2">"Jane Cook"</span><span class="p">]})</span>
 
-<span class="gp">In [2]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;First_Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;String&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">In [2]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"First_Name"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"String"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="gp">In [3]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;Last_Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;String&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">In [3]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"Last_Name"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"String"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="gp">In [4]: </span><span class="n">firstlast</span>
 <span class="gh">Out[4]: </span>
@@ -1263,7 +1235,7 @@ word by index. Note there are more powerful approaches should you need them.</p>
 <a class="reference external" href="https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a000245912.htm">LOWCASE</a> and
 <a class="reference external" href="https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/a002598106.htm">PROPCASE</a>
 functions change the case of the argument.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>firstlast;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data firstlast;
 <span class="k">input</span> String $<span class="m">60</span>.;
 string_up = <span class="nb">UPCASE(</span>string);
 string_low = <span class="nb">LOWCASE(</span>string);
@@ -1271,19 +1243,19 @@ string_prop = PROPCASE(string);
 datalines2;
 John Smith;
 Jane Cook;
-;;<span class="kr">;</span>
+;;;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>The equivalent pandas methods are <a class="reference internal" href="../../reference/api/pandas.Series.str.upper.html#pandas.Series.str.upper" title="pandas.Series.str.upper"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.upper()</span></code></a>, <a class="reference internal" href="../../reference/api/pandas.Series.str.lower.html#pandas.Series.str.lower" title="pandas.Series.str.lower"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.lower()</span></code></a>, and
 <a class="reference internal" href="../../reference/api/pandas.Series.str.title.html#pandas.Series.str.title" title="pandas.Series.str.title"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.title()</span></code></a>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">firstlast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;string&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;John Smith&quot;</span><span class="p">,</span> <span class="s2">&quot;Jane Cook&quot;</span><span class="p">]})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">firstlast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"string"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"John Smith"</span><span class="p">,</span> <span class="s2">"Jane Cook"</span><span class="p">]})</span>
 
-<span class="gp">In [2]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;upper&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="gp">In [2]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"upper"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"string"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 
-<span class="gp">In [3]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;lower&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="gp">In [3]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"lower"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"string"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
-<span class="gp">In [4]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="gp">In [4]: </span><span class="n">firstlast</span><span class="p">[</span><span class="s2">"title"</span><span class="p">]</span> <span class="o">=</span> <span class="n">firstlast</span><span class="p">[</span><span class="s2">"string"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
 
 <span class="gp">In [5]: </span><span class="n">firstlast</span>
 <span class="gh">Out[5]: </span>
@@ -1297,7 +1269,7 @@ Jane Cook;
 <section id="merging">
 <h2>Merging<a class="headerlink" href="#merging" title="Link to this heading">#</a></h2>
 <p>The following tables will be used in the merge examples:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"key"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
 
 <span class="gp">In [2]: </span><span class="n">df1</span>
 <span class="gh">Out[2]: </span>
@@ -1307,7 +1279,7 @@ Jane Cook;
 <span class="go">2   C -1.509059</span>
 <span class="go">3   D -1.135632</span>
 
-<span class="gp">In [3]: </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
+<span class="gp">In [3]: </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"key"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"E"</span><span class="p">],</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">)})</span>
 
 <span class="gp">In [4]: </span><span class="n">df2</span>
 <span class="gh">Out[4]: </span>
@@ -1322,12 +1294,12 @@ Jane Cook;
 types of joins are accomplished using the <code class="docutils literal notranslate"><span class="pre">in=</span></code> dummy
 variables to track whether a match was found in one or both
 input frames.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sort </span>data=df1;
-    <span class="k">by</span> <span class="k">key</span><span class="kr">;</span>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>proc sort data=df1;
+    <span class="k">by</span> <span class="k">key</span>;
 <span class="kr">run;</span>
 
 <span class="kr">proc sort </span>data=df2;
-    <span class="k">by</span> <span class="k">key</span><span class="kr">;</span>
+    <span class="k">by</span> <span class="k">key</span>;
 <span class="kr">run;</span>
 
 <span class="kr">data </span>left_join inner_join right_join outer_join;
@@ -1336,14 +1308,14 @@ input frames.</p>
     <span class="k">if</span> a <span class="k">and</span> b <span class="k">then</span> <span class="k">output</span> inner_join;
     <span class="k">if</span> a <span class="k">then</span> <span class="k">output</span> left_join;
     <span class="k">if</span> b <span class="k">then</span> <span class="k">output</span> right_join;
-    <span class="k">if</span> a <span class="k">or</span> b <span class="k">then</span> <span class="k">output</span> outer_join<span class="kr">;</span>
+    <span class="k">if</span> a <span class="k">or</span> b <span class="k">then</span> <span class="k">output</span> outer_join;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>pandas DataFrames have a <a class="reference internal" href="../../reference/api/pandas.DataFrame.merge.html#pandas.DataFrame.merge" title="pandas.DataFrame.merge"><code class="xref py py-meth docutils literal notranslate"><span class="pre">merge()</span></code></a> method, which provides similar functionality. The
 data does not have to be sorted ahead of time, and different join types are accomplished via the
 <code class="docutils literal notranslate"><span class="pre">how</span></code> keyword.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">inner_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">inner_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"key"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span><span class="p">)</span>
 
 <span class="gp">In [2]: </span><span class="n">inner_join</span>
 <span class="gh">Out[2]: </span>
@@ -1352,7 +1324,7 @@ data does not have to be sorted ahead of time, and different join types are acco
 <span class="go">1   D -1.135632 -0.173215</span>
 <span class="go">2   D -1.135632  0.119209</span>
 
-<span class="gp">In [3]: </span><span class="n">left_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="gp">In [3]: </span><span class="n">left_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"key"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
 
 <span class="gp">In [4]: </span><span class="n">left_join</span>
 <span class="gh">Out[4]: </span>
@@ -1363,7 +1335,7 @@ data does not have to be sorted ahead of time, and different join types are acco
 <span class="go">3   D -1.135632 -0.173215</span>
 <span class="go">4   D -1.135632  0.119209</span>
 
-<span class="gp">In [5]: </span><span class="n">right_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="gp">In [5]: </span><span class="n">right_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"key"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span>
 
 <span class="gp">In [6]: </span><span class="n">right_join</span>
 <span class="gh">Out[6]: </span>
@@ -1373,7 +1345,7 @@ data does not have to be sorted ahead of time, and different join types are acco
 <span class="go">2   D -1.135632  0.119209</span>
 <span class="go">3   E       NaN -1.044236</span>
 
-<span class="gp">In [7]: </span><span class="n">outer_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+<span class="gp">In [7]: </span><span class="n">outer_join</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">"key"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">"outer"</span><span class="p">)</span>
 
 <span class="gp">In [8]: </span><span class="n">outer_join</span>
 <span class="gh">Out[8]: </span>
@@ -1403,7 +1375,7 @@ ignored by default for aggregations.</p>
 <span class="go">4   D -1.135632  0.119209</span>
 <span class="go">5   E       NaN -1.044236</span>
 
-<span class="gp">In [2]: </span><span class="n">outer_join</span><span class="p">[</span><span class="s2">&quot;value_x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">outer_join</span><span class="p">[</span><span class="s2">&quot;value_y&quot;</span><span class="p">]</span>
+<span class="gp">In [2]: </span><span class="n">outer_join</span><span class="p">[</span><span class="s2">"value_x"</span><span class="p">]</span> <span class="o">+</span> <span class="n">outer_join</span><span class="p">[</span><span class="s2">"value_y"</span><span class="p">]</span>
 <span class="gh">Out[2]: </span>
 <span class="go">0         NaN</span>
 <span class="go">1    0.929249</span>
@@ -1413,30 +1385,30 @@ ignored by default for aggregations.</p>
 <span class="go">5         NaN</span>
 <span class="go">dtype: float64</span>
 
-<span class="gp">In [3]: </span><span class="n">outer_join</span><span class="p">[</span><span class="s2">&quot;value_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">-3.5940742896293765</span>
+<span class="gp">In [3]: </span><span class="n">outer_join</span><span class="p">[</span><span class="s2">"value_x"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="gh">Out[3]: </span><span class="go">np.float64(-3.5940742896293765)</span>
 </pre></div>
 </div>
 <p>One difference is that missing data cannot be compared to its sentinel value.
 For example, in SAS you could do this to filter missing values.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>outer_join_<span class="kc">null</span>s;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>data outer_join_<span class="kc">null</span>s;
     <span class="k">set</span> outer_join;
-    <span class="k">if</span> value_x = .<span class="kr">;</span>
+    <span class="k">if</span> value_x = .;
 <span class="kr">run;</span>
 
 <span class="kr">data </span>outer_join_no_<span class="kc">null</span>s;
     <span class="k">set</span> outer_join;
-    <span class="k">if</span> value_x ^= .<span class="kr">;</span>
+    <span class="k">if</span> value_x ^= .;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>In pandas, <a class="reference internal" href="../../reference/api/pandas.Series.isna.html#pandas.Series.isna" title="pandas.Series.isna"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.isna()</span></code></a> and <a class="reference internal" href="../../reference/api/pandas.Series.notna.html#pandas.Series.notna" title="pandas.Series.notna"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.notna()</span></code></a> can be used to filter the rows.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">outer_join</span><span class="p">[</span><span class="n">outer_join</span><span class="p">[</span><span class="s2">&quot;value_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">outer_join</span><span class="p">[</span><span class="n">outer_join</span><span class="p">[</span><span class="s2">"value_x"</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
 <span class="gh">Out[1]: </span>
 <span class="go">  key  value_x   value_y</span>
 <span class="go">5   E      NaN -1.044236</span>
 
-<span class="gp">In [2]: </span><span class="n">outer_join</span><span class="p">[</span><span class="n">outer_join</span><span class="p">[</span><span class="s2">&quot;value_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+<span class="gp">In [2]: </span><span class="n">outer_join</span><span class="p">[</span><span class="n">outer_join</span><span class="p">[</span><span class="s2">"value_x"</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
 <span class="gh">Out[2]: </span>
 <span class="go">  key   value_x   value_y</span>
 <span class="go">0   A  0.469112       NaN</span>
@@ -1475,7 +1447,7 @@ For example, in SAS you could do this to filter missing values.</p>
 <section id="replace-missing-values-with-a-specified-value">
 <h3>Replace missing values with a specified value<a class="headerlink" href="#replace-missing-values-with-a-specified-value" title="Link to this heading">#</a></h3>
 <p>Using the mean:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">outer_join</span><span class="p">[</span><span class="s2">&quot;value_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">outer_join</span><span class="p">[</span><span class="s2">&quot;value_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">outer_join</span><span class="p">[</span><span class="s2">"value_x"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">outer_join</span><span class="p">[</span><span class="s2">"value_x"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="gh">Out[5]: </span>
 <span class="go">0    0.469112</span>
 <span class="go">1   -0.282863</span>
@@ -1495,16 +1467,16 @@ For example, in SAS you could do this to filter missing values.</p>
 <p>SAS’s <code class="docutils literal notranslate"><span class="pre">PROC</span> <span class="pre">SUMMARY</span></code> can be used to group by one or
 more key variables and compute aggregations on
 numeric columns.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc summary </span>data=tips nway;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>proc summary data=tips nway;
     class sex smoker;
     var total_bill tip;
-    <span class="k">output</span> <span class="k">out</span>=tips_summed sum=<span class="kr">;</span>
+    <span class="k">output</span> <span class="k">out</span>=tips_summed sum=;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>pandas provides a flexible <code class="docutils literal notranslate"><span class="pre">groupby</span></code> mechanism that allows similar aggregations. See the
 <a class="reference internal" href="../../user_guide/groupby.html#groupby"><span class="std std-ref">groupby documentation</span></a> for more details and examples.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips_summed</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])[[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="s2">&quot;tip&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">tips_summed</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"smoker"</span><span class="p">])[[</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="s2">"tip"</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
 <span class="gp">In [2]: </span><span class="n">tips_summed</span>
 <span class="gh">Out[2]: </span>
@@ -1522,29 +1494,29 @@ numeric columns.</p>
 <p>In SAS, if the group aggregations need to be used with
 the original frame, it must be merged back together.  For
 example, to subtract the mean for each observation by smoker group.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc summary </span>data=tips <span class="k">missing</span> nway;
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>proc summary data=tips <span class="k">missing</span> nway;
     class smoker;
     var total_bill;
-    <span class="k">output</span> <span class="k">out</span>=smoker_means <span class="nb">mean(</span>total_bill)=group_bill<span class="kr">;</span>
+    <span class="k">output</span> <span class="k">out</span>=smoker_means <span class="nb">mean(</span>total_bill)=group_bill;
 <span class="kr">run;</span>
 
 <span class="kr">proc sort </span>data=tips;
-    <span class="k">by</span> smoker<span class="kr">;</span>
+    <span class="k">by</span> smoker;
 <span class="kr">run;</span>
 
 <span class="kr">data </span>tips;
     <span class="k">merge</span> tips(<span class="k">in</span>=a) smoker_means(<span class="k">in</span>=b);
     <span class="k">by</span> smoker;
     adj_total_bill = total_bill - group_bill;
-    <span class="k">if</span> a <span class="k">and</span> b<span class="kr">;</span>
+    <span class="k">if</span> a <span class="k">and</span> b;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>pandas provides a <a class="reference internal" href="../../user_guide/groupby.html#groupby-transform"><span class="std std-ref">Transformation</span></a> mechanism that allows these type of operations to be
 succinctly expressed in one operation.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">gb</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">gb</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"smoker"</span><span class="p">)[</span><span class="s2">"total_bill"</span><span class="p">]</span>
 
-<span class="gp">In [2]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;adj_total_bill&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">gb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="gp">In [2]: </span><span class="n">tips</span><span class="p">[</span><span class="s2">"adj_total_bill"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">]</span> <span class="o">-</span> <span class="n">gb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">tips</span>
 <span class="gh">Out[3]: </span>
@@ -1571,19 +1543,19 @@ succinctly expressed in one operation.</p>
 replicate most other by group processing from SAS. For example,
 this <code class="docutils literal notranslate"><span class="pre">DATA</span></code> step reads the data by sex/smoker group and filters to
 the first entry for each.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="kr">proc sort </span>data=tips;
-   <span class="k">by</span> sex smoker<span class="kr">;</span>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span>proc sort data=tips;
+   <span class="k">by</span> sex smoker;
 <span class="kr">run;</span>
 
 <span class="kr">data </span>tips_first;
     <span class="k">set</span> tips;
     <span class="k">by</span> sex smoker;
-    <span class="k">if</span> FIRST<span class="m">.</span>sex <span class="k">or</span> FIRST<span class="m">.</span>smoker <span class="k">then</span> <span class="k">output</span><span class="kr">;</span>
+    <span class="k">if</span> FIRST<span class="m">.</span>sex <span class="k">or</span> FIRST<span class="m">.</span>smoker <span class="k">then</span> <span class="k">output</span>;
 <span class="kr">run;</span>
 </pre></div>
 </div>
 <p>In pandas this would be written as:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"smoker"</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="gh">Out[4]: </span>
 <span class="go">               total_bill   tip   day    time  size  adj_total_bill</span>
 <span class="go">sex    smoker                                                      </span>
@@ -1611,21 +1583,21 @@ provides a subset of pandas functionality for an on-disk <code class="docutils l
 <h3>Data interop<a class="headerlink" href="#data-interop" title="Link to this heading">#</a></h3>
 <p>pandas provides a <a class="reference internal" href="../../reference/api/pandas.read_sas.html#pandas.read_sas" title="pandas.read_sas"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_sas()</span></code></a> method that can read SAS data saved in
 the XPORT or SAS7BDAT binary format.</p>
-<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="k">libname</span> xportout xport <span class="s">&#39;transport-file.xpt&#39;</span><span class="kr">;</span>
+<div class="highlight-sas notranslate"><div class="highlight"><pre><span></span><span class="k">libname</span> xportout xport <span class="s">'transport-file.xpt'</span>;
 <span class="kr">data </span>xportout<span class="m">.</span>tips;
     <span class="k">set</span> tips(<span class="k">rename</span>=(total_bill=tbill));
 <span class="c">    * xport variable names limited to 6 characters;</span>
 <span class="kr">run;</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">&quot;transport-file.xpt&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">&quot;binary-file.sas7bdat&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">"transport-file.xpt"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">"binary-file.sas7bdat"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can also specify the file format directly. By default, pandas will try
 to infer the file format based on its extension.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">&quot;transport-file.xpt&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;xport&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">&quot;binary-file.sas7bdat&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;sas7bdat&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">"transport-file.xpt"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"xport"</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sas</span><span class="p">(</span><span class="s2">"binary-file.sas7bdat"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"sas7bdat"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>XPORT is a relatively limited format and the parsing of it is not as
@@ -1633,10 +1605,10 @@ optimized as some of the other pandas readers. An alternative way
 to interop data between SAS and pandas is to serialize to csv.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># version 0.17, 10M rows</span>
 
-<span class="gp">In [8]: </span><span class="o">%</span><span class="k">time</span> df = pd.read_sas(&#39;big.xpt&#39;)
+<span class="gp">In [8]: </span><span class="o">%</span><span class="k">time</span> df = pd.read_sas('big.xpt')
 <span class="go">Wall time: 14.6 s</span>
 
-<span class="gp">In [9]: </span><span class="o">%</span><span class="k">time</span> df = pd.read_csv(&#39;big.csv&#39;)
+<span class="gp">In [9]: </span><span class="o">%</span><span class="k">time</span> df = pd.read_csv('big.csv')
 <span class="go">Wall time: 4.86 s</span>
 </pre></div>
 </div>
@@ -1651,7 +1623,7 @@ to interop data between SAS and pandas is to serialize to csv.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1679,14 +1651,17 @@ to interop data between SAS and pandas is to serialize to csv.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">Data structures</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-terminology-translation">General terminology translation</a></li>
@@ -1746,15 +1721,6 @@ to interop data between SAS and pandas is to serialize to csv.</p>
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/getting_started/comparison/comparison_with_sas.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1768,8 +1734,8 @@ to interop data between SAS and pandas is to serialize to csv.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1777,13 +1743,13 @@ to interop data between SAS and pandas is to serialize to csv.</p>
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="copyright">
-    &copy 2025, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
+    &copy 2026, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
 </p></div>
       
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
     <br/>
   </p>
 </div>
@@ -1796,7 +1762,8 @@ to interop data between SAS and pandas is to serialize to csv.</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

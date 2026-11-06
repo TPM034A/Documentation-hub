@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.orient\_polygons
+====================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.orient_polygons

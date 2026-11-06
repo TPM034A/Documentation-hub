@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="7.2. Feature extraction" />
+<meta property="og:title" content="8.2. Feature extraction" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-learn/stable/modules/feature_extraction.html" />
 <meta property="og:site_name" content="scikit-learn" />
@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="The sklearn.feature_extraction module can be used to extract features in a format supported by machine learning algorithms from datasets consisting of formats such as text and image. Loading featur..." />
 
-    <title>7.2. Feature extraction &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>8.2. Feature extraction &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,71 +35,80 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules/feature_extraction';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/modules/feature_extraction.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.3. Preprocessing data" href="preprocessing.html" />
-    <link rel="prev" title="7.1. Pipelines and composite estimators" href="compose.html" />
+    <link rel="next" title="8.3. Preprocessing data" href="preprocessing.html" />
+    <link rel="prev" title="8.1. Pipelines and composite estimators" href="compose.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -125,7 +134,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -151,8 +160,8 @@
       
     
     
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -273,6 +282,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../about.html">
     About us
   </a>
@@ -300,11 +316,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -317,8 +340,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -485,6 +507,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../about.html">
     About us
   </a>
@@ -502,11 +531,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -519,8 +555,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -549,7 +584,15 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
@@ -601,39 +644,41 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualizations.html">6. Visualizations</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../data_transforms.html">7. Dataset transformations</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="compose.html">7.1. Pipelines and composite estimators</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.2. Feature extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">7.3. Preprocessing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="impute.html">7.4. Imputation of missing values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">7.5. Unsupervised dimensionality reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="random_projection.html">7.6. Random Projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">7.7. Kernel Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metrics.html">7.8. Pairwise metrics, Affinities and Kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">7.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks.html">7. Callbacks</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../data_transforms.html">8. Dataset transformations</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="compose.html">8.1. Pipelines and composite estimators</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.2. Feature extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">8.3. Preprocessing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impute.html">8.4. Imputation of missing values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">8.5. Unsupervised dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random_projection.html">8.6. Random Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">8.7. Kernel Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">8.8. Pairwise metrics, Affinities and Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">8.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">8. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">8.1. Toy datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">8.2. Real world datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">8.3. Generated datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">8.4. Loading other datasets</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">9. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">9.1. Toy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">9.2. Real world datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">9.3. Generated datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">9.4. Loading other datasets</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">9. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">9.1. Strategies to scale computationally: bigger data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">9.2. Computational Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">9.3. Parallelism, resource management, and configuration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">10. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">10.1. Strategies to scale computationally: bigger data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">10.2. Computational Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">10.3. Parallelism and resource management</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">10. Model persistence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">11. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dispatching.html">12. Dispatching</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="array_api.html">12.1. Array API support (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">11. Model persistence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">12. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_interoperability.html">13. Data Interoperability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="df_output_transform.html">13.1. Pandas/Polars Output for Transformers with <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_api.html">13.2. Array API support (experimental)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">13. Choosing the right estimator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../presentations.html">14. External Resources, Videos and Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">14. Choosing the right estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../presentations.html">15. External Resources, Videos and Talks</a></li>
 </ul>
 </div>
 </nav></div>
@@ -671,9 +716,9 @@
     <li class="breadcrumb-item"><a href="../user_guide.html" class="nav-link">User Guide</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../data_transforms.html" class="nav-link"><span class="section-number">7. </span>Dataset transformations</a></li>
+    <li class="breadcrumb-item"><a href="../data_transforms.html" class="nav-link"><span class="section-number">8. </span>Dataset transformations</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">7.2. </span>Feature extraction</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">8.2. </span>Feature extraction</span></li>
   </ul>
 </nav>
 </div>
@@ -691,7 +736,7 @@
                 <article class="bd-article">
                   
   <section id="feature-extraction">
-<span id="id1"></span><h1><span class="section-number">7.2. </span>Feature extraction<a class="headerlink" href="#feature-extraction" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">8.2. </span>Feature extraction<a class="headerlink" href="#feature-extraction" title="Link to this heading">#</a></h1>
 <p>The <a class="reference internal" href="../api/sklearn.feature_extraction.html#module-sklearn.feature_extraction" title="sklearn.feature_extraction"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction</span></code></a> module can be used to extract
 features in a format supported by machine learning algorithms from datasets
 consisting of formats such as text and image.</p>
@@ -703,7 +748,7 @@ images, into numerical features usable for machine learning. The latter
 is a machine learning technique applied to these features.</p>
 </div>
 <section id="loading-features-from-dicts">
-<span id="dict-feature-extraction"></span><h2><span class="section-number">7.2.1. </span>Loading features from dicts<a class="headerlink" href="#loading-features-from-dicts" title="Link to this heading">#</a></h2>
+<span id="dict-feature-extraction"></span><h2><span class="section-number">8.2.1. </span>Loading features from dicts<a class="headerlink" href="#loading-features-from-dicts" title="Link to this heading">#</a></h2>
 <p>The class <a class="reference internal" href="generated/sklearn.feature_extraction.DictVectorizer.html#sklearn.feature_extraction.DictVectorizer" title="sklearn.feature_extraction.DictVectorizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DictVectorizer</span></code></a> can be used to convert feature
 arrays represented as lists of standard Python <code class="docutils literal notranslate"><span class="pre">dict</span></code> objects to the
 NumPy/SciPy representation used by scikit-learn estimators.</p>
@@ -718,9 +763,9 @@ identifiers, types of objects, tags, names…).</p>
 <p>In the following, “city” is a categorical attribute while “temperature”
 is a traditional numerical feature:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">measurements</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Dubai&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="mf">33.</span><span class="p">},</span>
-<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="mf">12.</span><span class="p">},</span>
-<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;San Francisco&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="mf">18.</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">'city'</span><span class="p">:</span> <span class="s1">'Dubai'</span><span class="p">,</span> <span class="s1">'temperature'</span><span class="p">:</span> <span class="mf">33.</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">'city'</span><span class="p">:</span> <span class="s1">'London'</span><span class="p">,</span> <span class="s1">'temperature'</span><span class="p">:</span> <span class="mf">12.</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">'city'</span><span class="p">:</span> <span class="s1">'San Francisco'</span><span class="p">,</span> <span class="s1">'temperature'</span><span class="p">:</span> <span class="mf">18.</span><span class="p">},</span>
 <span class="gp">... </span><span class="p">]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictVectorizer</span>
@@ -732,25 +777,25 @@ is a traditional numerical feature:</p>
 <span class="go">       [ 0.,  0.,  1., 18.]])</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
-<span class="go">array([&#39;city=Dubai&#39;, &#39;city=London&#39;, &#39;city=San Francisco&#39;, &#39;temperature&#39;], ...)</span>
+<span class="go">array(['city=Dubai', 'city=London', 'city=San Francisco', 'temperature'], ...)</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="generated/sklearn.feature_extraction.DictVectorizer.html#sklearn.feature_extraction.DictVectorizer" title="sklearn.feature_extraction.DictVectorizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DictVectorizer</span></code></a> accepts multiple string values for one
 feature, like, e.g., multiple categories for a movie.</p>
 <p>Assume a database classifies each movie using some categories (not mandatory)
 and its year of release.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">movie_entry</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;thriller&#39;</span><span class="p">,</span> <span class="s1">&#39;drama&#39;</span><span class="p">],</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">2003</span><span class="p">},</span>
-<span class="gp">... </span>               <span class="p">{</span><span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span> <span class="s1">&#39;family&#39;</span><span class="p">],</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">2011</span><span class="p">},</span>
-<span class="gp">... </span>               <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1974</span><span class="p">}]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">movie_entry</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">'category'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'thriller'</span><span class="p">,</span> <span class="s1">'drama'</span><span class="p">],</span> <span class="s1">'year'</span><span class="p">:</span> <span class="mi">2003</span><span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span><span class="s1">'category'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'animation'</span><span class="p">,</span> <span class="s1">'family'</span><span class="p">],</span> <span class="s1">'year'</span><span class="p">:</span> <span class="mi">2011</span><span class="p">},</span>
+<span class="gp">... </span>               <span class="p">{</span><span class="s1">'year'</span><span class="p">:</span> <span class="mi">1974</span><span class="p">}]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">movie_entry</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="go">array([[0.000e+00, 1.000e+00, 0.000e+00, 1.000e+00, 2.003e+03],</span>
 <span class="go">       [1.000e+00, 0.000e+00, 1.000e+00, 0.000e+00, 2.011e+03],</span>
 <span class="go">       [0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 1.974e+03]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
-<span class="go">array([&#39;category=animation&#39;, &#39;category=drama&#39;, &#39;category=family&#39;,</span>
-<span class="go">       &#39;category=thriller&#39;, &#39;year&#39;], ...)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span><span class="o">.</span><span class="n">transform</span><span class="p">({</span><span class="s1">&#39;category&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;thriller&#39;</span><span class="p">],</span>
-<span class="gp">... </span>               <span class="s1">&#39;unseen_feature&#39;</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="go">array(['category=animation', 'category=drama', 'category=family',</span>
+<span class="go">       'category=thriller', 'year'], ...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span><span class="o">.</span><span class="n">transform</span><span class="p">({</span><span class="s1">'category'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'thriller'</span><span class="p">],</span>
+<span class="gp">... </span>               <span class="s1">'unseen_feature'</span><span class="p">:</span> <span class="s1">'3'</span><span class="p">})</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="go">array([[0., 0., 0., 1., 0.]])</span>
 </pre></div>
 </div>
@@ -765,12 +810,12 @@ such a window of features extracted around the word ‘sat’ in the sentence
 ‘The cat sat on the mat.’:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pos_window</span> <span class="o">=</span> <span class="p">[</span>
 <span class="gp">... </span>    <span class="p">{</span>
-<span class="gp">... </span>        <span class="s1">&#39;word-2&#39;</span><span class="p">:</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s1">&#39;pos-2&#39;</span><span class="p">:</span> <span class="s1">&#39;DT&#39;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s1">&#39;word-1&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s1">&#39;pos-1&#39;</span><span class="p">:</span> <span class="s1">&#39;NN&#39;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s1">&#39;word+1&#39;</span><span class="p">:</span> <span class="s1">&#39;on&#39;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s1">&#39;pos+1&#39;</span><span class="p">:</span> <span class="s1">&#39;PP&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">'word-2'</span><span class="p">:</span> <span class="s1">'the'</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">'pos-2'</span><span class="p">:</span> <span class="s1">'DT'</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">'word-1'</span><span class="p">:</span> <span class="s1">'cat'</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">'pos-1'</span><span class="p">:</span> <span class="s1">'NN'</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">'word+1'</span><span class="p">:</span> <span class="s1">'on'</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">'pos+1'</span><span class="p">:</span> <span class="s1">'PP'</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="p">},</span>
 <span class="gp">... </span>    <span class="c1"># in a real application one would extract many such dictionaries</span>
 <span class="gp">... </span><span class="p">]</span>
@@ -782,13 +827,13 @@ suitable for feeding into a classifier (maybe after being piped into a
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="n">DictVectorizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">pos_window</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span>
-<span class="go">&lt;Compressed Sparse...dtype &#39;float64&#39;</span>
+<span class="go">&lt;Compressed Sparse...dtype 'float64'</span>
 <span class="go">  with 6 stored elements and shape (1, 6)&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos_vectorized</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="go">array([[1., 1., 1., 1., 1., 1.]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
-<span class="go">array([&#39;pos+1=PP&#39;, &#39;pos-1=NN&#39;, &#39;pos-2=DT&#39;, &#39;word+1=on&#39;, &#39;word-1=cat&#39;,</span>
-<span class="go">       &#39;word-2=the&#39;], ...)</span>
+<span class="go">array(['pos+1=PP', 'pos-1=NN', 'pos-2=DT', 'word+1=on', 'word-1=cat',</span>
+<span class="go">       'word-2=the'], ...)</span>
 </pre></div>
 </div>
 <p>As you can imagine, if one extracts such a context around each individual
@@ -799,7 +844,7 @@ memory the <code class="docutils literal notranslate"><span class="pre">DictVect
 default instead of a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>.</p>
 </section>
 <section id="feature-hashing">
-<span id="id2"></span><h2><span class="section-number">7.2.2. </span>Feature hashing<a class="headerlink" href="#feature-hashing" title="Link to this heading">#</a></h2>
+<span id="id2"></span><h2><span class="section-number">8.2.2. </span>Feature hashing<a class="headerlink" href="#feature-hashing" title="Link to this heading">#</a></h2>
 <p>The class <a class="reference internal" href="generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="sklearn.feature_extraction.FeatureHasher"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureHasher</span></code></a> is a high-speed, low-memory vectorizer that
 uses a technique known as
 <a class="reference external" href="https://en.wikipedia.org/wiki/Feature_hashing">feature hashing</a>,
@@ -846,15 +891,15 @@ that needs features extracted from <code class="docutils literal notranslate"><s
 One could use a Python generator function to extract features:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">token_features</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">part_of_speech</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
-        <span class="k">yield</span> <span class="s2">&quot;numeric&quot;</span>
+        <span class="k">yield</span> <span class="s2">"numeric"</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="s2">&quot;token=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-        <span class="k">yield</span> <span class="s2">&quot;token,pos=</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">part_of_speech</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="s2">"token=</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="k">yield</span> <span class="s2">"token,pos=</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">part_of_speech</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">token</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
-        <span class="k">yield</span> <span class="s2">&quot;uppercase_initial&quot;</span>
+        <span class="k">yield</span> <span class="s2">"uppercase_initial"</span>
     <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
-        <span class="k">yield</span> <span class="s2">&quot;all_uppercase&quot;</span>
-    <span class="k">yield</span> <span class="s2">&quot;pos=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">part_of_speech</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="s2">"all_uppercase"</span>
+    <span class="k">yield</span> <span class="s2">"pos=</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">part_of_speech</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then, the <code class="docutils literal notranslate"><span class="pre">raw_X</span></code> to be fed to <code class="docutils literal notranslate"><span class="pre">FeatureHasher.transform</span></code>
@@ -863,7 +908,7 @@ can be constructed using:</p>
 </pre></div>
 </div>
 <p>and fed to a hasher with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hasher</span> <span class="o">=</span> <span class="n">FeatureHasher</span><span class="p">(</span><span class="n">input_type</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hasher</span> <span class="o">=</span> <span class="n">FeatureHasher</span><span class="p">(</span><span class="n">input_type</span><span class="o">=</span><span class="s1">'string'</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">hasher</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">raw_X</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -897,9 +942,9 @@ Josh Attenberg (2009). <a class="reference external" href="https://alex.smola.or
 </ul>
 </section>
 <section id="text-feature-extraction">
-<span id="id4"></span><h2><span class="section-number">7.2.3. </span>Text feature extraction<a class="headerlink" href="#text-feature-extraction" title="Link to this heading">#</a></h2>
+<span id="id4"></span><h2><span class="section-number">8.2.3. </span>Text feature extraction<a class="headerlink" href="#text-feature-extraction" title="Link to this heading">#</a></h2>
 <section id="the-bag-of-words-representation">
-<h3><span class="section-number">7.2.3.1. </span>The Bag of Words representation<a class="headerlink" href="#the-bag-of-words-representation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.1. </span>The Bag of Words representation<a class="headerlink" href="#the-bag-of-words-representation" title="Link to this heading">#</a></h3>
 <p>Text Analysis is a major application field for machine learning
 algorithms. However the raw data, a sequence of symbols, cannot be fed
 directly to the algorithms themselves as most of them expect numerical
@@ -931,7 +976,7 @@ occurrences while completely ignoring the relative position information
 of the words in the document.</p>
 </section>
 <section id="sparsity">
-<h3><span class="section-number">7.2.3.2. </span>Sparsity<a class="headerlink" href="#sparsity" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.2. </span>Sparsity<a class="headerlink" href="#sparsity" title="Link to this heading">#</a></h3>
 <p>As most documents will typically use a very small subset of the words used in
 the corpus, the resulting matrix will have many feature values that are
 zeros (typically more than 99% of them).</p>
@@ -944,7 +989,7 @@ use a sparse representation such as the implementations available in the
 <code class="docutils literal notranslate"><span class="pre">scipy.sparse</span></code> package.</p>
 </section>
 <section id="common-vectorizer-usage">
-<h3><span class="section-number">7.2.3.3. </span>Common Vectorizer usage<a class="headerlink" href="#common-vectorizer-usage" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.3. </span>Common Vectorizer usage<a class="headerlink" href="#common-vectorizer-usage" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">CountVectorizer</span></code></a> implements both tokenization and occurrence
 counting in a single class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">CountVectorizer</span>
@@ -960,14 +1005,14 @@ reasonable (please see  the <a class="reference internal" href="../api/sklearn.f
 <p>Let’s use it to tokenize and count the word occurrences of a minimalistic
 corpus of text documents:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>    <span class="s1">&#39;This is the first document.&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s1">&#39;This is the second second document.&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s1">&#39;And the third one.&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s1">&#39;Is this the first document?&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'This is the first document.'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'This is the second second document.'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'And the third one.'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'Is this the first document?'</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span>
-<span class="go">&lt;Compressed Sparse...dtype &#39;int64&#39;</span>
+<span class="go">&lt;Compressed Sparse...dtype 'int64'</span>
 <span class="go">  with 19 stored elements and shape (4, 9)&gt;</span>
 </pre></div>
 </div>
@@ -975,8 +1020,8 @@ corpus of text documents:</p>
 at least 2 letters. The specific function that does this step can be
 requested explicitly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s2">&quot;This is a text document to analyze.&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;document&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;analyze&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s2">"This is a text document to analyze."</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s1">'this'</span><span class="p">,</span> <span class="s1">'is'</span><span class="p">,</span> <span class="s1">'text'</span><span class="p">,</span> <span class="s1">'document'</span><span class="p">,</span> <span class="s1">'to'</span><span class="p">,</span> <span class="s1">'analyze'</span><span class="p">])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -984,8 +1029,8 @@ requested explicitly:</p>
 integer index corresponding to a column in the resulting matrix. This
 interpretation of the columns can be retrieved as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
-<span class="go">array([&#39;and&#39;, &#39;document&#39;, &#39;first&#39;, &#39;is&#39;, &#39;one&#39;, &#39;second&#39;, &#39;the&#39;,</span>
-<span class="go">       &#39;third&#39;, &#39;this&#39;], ...)</span>
+<span class="go">array(['and', 'document', 'first', 'is', 'one', 'second', 'the',</span>
+<span class="go">       'third', 'this'], ...)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="go">array([[0, 1, 1, 1, 0, 0, 1, 0, 1],</span>
@@ -996,13 +1041,13 @@ interpretation of the columns can be retrieved as follows:</p>
 </div>
 <p>The converse mapping from feature name to column index is stored in the
 <code class="docutils literal notranslate"><span class="pre">vocabulary_</span></code> attribute of the vectorizer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;document&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'document'</span><span class="p">)</span>
 <span class="go">1</span>
 </pre></div>
 </div>
 <p>Hence words that were not seen in the training corpus will be completely
 ignored in future calls to the transform method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="s1">&#39;Something completely new.&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="s1">'Something completely new.'</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="go">array([[0, 0, 0, 0, 0, 0, 0, 0, 0]]...)</span>
 </pre></div>
 </div>
@@ -1012,10 +1057,10 @@ we lose the information that the last document is an interrogative form. To
 preserve some of the local ordering information we can extract 2-grams
 of words in addition to the 1-grams (individual words):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bigram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-<span class="gp">... </span>                                    <span class="n">token_pattern</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>                                    <span class="n">token_pattern</span><span class="o">=</span><span class="sa">r</span><span class="s1">'\b\w+\b'</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s1">&#39;Bi-grams are cool!&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[</span><span class="s1">&#39;bi&#39;</span><span class="p">,</span> <span class="s1">&#39;grams&#39;</span><span class="p">,</span> <span class="s1">&#39;are&#39;</span><span class="p">,</span> <span class="s1">&#39;cool&#39;</span><span class="p">,</span> <span class="s1">&#39;bi grams&#39;</span><span class="p">,</span> <span class="s1">&#39;grams are&#39;</span><span class="p">,</span> <span class="s1">&#39;are cool&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s1">'Bi-grams are cool!'</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s1">'bi'</span><span class="p">,</span> <span class="s1">'grams'</span><span class="p">,</span> <span class="s1">'are'</span><span class="p">,</span> <span class="s1">'cool'</span><span class="p">,</span> <span class="s1">'bi grams'</span><span class="p">,</span> <span class="s1">'grams are'</span><span class="p">,</span> <span class="s1">'are cool'</span><span class="p">])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -1031,14 +1076,14 @@ can now resolve ambiguities encoded in local positioning patterns:</p>
 </div>
 <p>In particular the interrogative form “Is this” is only present in the
 last document:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">feature_index</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is this&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">feature_index</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'is this'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_2</span><span class="p">[:,</span> <span class="n">feature_index</span><span class="p">]</span>
 <span class="go">array([0, 0, 0, 1]...)</span>
 </pre></div>
 </div>
 </section>
 <section id="using-stop-words">
-<span id="stop-words"></span><h3><span class="section-number">7.2.3.4. </span>Using stop words<a class="headerlink" href="#using-stop-words" title="Link to this heading">#</a></h3>
+<span id="stop-words"></span><h3><span class="section-number">8.2.3.4. </span>Using stop words<a class="headerlink" href="#using-stop-words" title="Link to this heading">#</a></h3>
 <p>Stop words are words like “and”, “the”, “him”, which are presumed to be
 uninformative in representing the content of a text, and which may be
 removed to avoid them being construed as informative for prediction. Sometimes,
@@ -1067,7 +1112,7 @@ In <em>Proc. Workshop for NLP Open Source Software</em>.</p>
 </div>
 </section>
 <section id="tfidf-term-weighting">
-<span id="tfidf"></span><h3><span class="section-number">7.2.3.5. </span>Tf–idf term weighting<a class="headerlink" href="#tfidf-term-weighting" title="Link to this heading">#</a></h3>
+<span id="tfidf"></span><h3><span class="section-number">8.2.3.5. </span>Tf–idf term weighting<a class="headerlink" href="#tfidf-term-weighting" title="Link to this heading">#</a></h3>
 <p>In a large text corpus, some words will be very present (e.g. “the”, “a”,
 “is” in English) hence carrying very little meaningful information about
 the actual contents of the document. If we were to feed the direct count
@@ -1128,7 +1173,7 @@ content of the documents:</p>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span>
-<span class="go">&lt;Compressed Sparse...dtype &#39;float64&#39;</span>
+<span class="go">&lt;Compressed Sparse...dtype 'float64'</span>
 <span class="go">  with 9 stored elements and shape (6, 3)&gt;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
@@ -1193,7 +1238,7 @@ class called <a class="reference internal" href="generated/sklearn.feature_extra
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
-<span class="go">&lt;Compressed Sparse...dtype &#39;float64&#39;</span>
+<span class="go">&lt;Compressed Sparse...dtype 'float64'</span>
 <span class="go">  with 19 stored elements and shape (4, 9)&gt;</span>
 </pre></div>
 </div>
@@ -1211,9 +1256,20 @@ feature extractor with a classifier:</p>
 <li><p class="sd-card-text"><a class="reference internal" href="../auto_examples/model_selection/plot_grid_search_text_feature_extraction.html#sphx-glr-auto-examples-model-selection-plot-grid-search-text-feature-extraction-py"><span class="std std-ref">Sample pipeline for text feature extraction and evaluation</span></a></p></li>
 </ul>
 </div>
-</details></section>
+</details><p class="rubric">Examples</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../auto_examples/text/plot_document_classification_20newsgroups.html#sphx-glr-auto-examples-text-plot-document-classification-20newsgroups-py"><span class="std std-ref">Classification of text documents using sparse features</span></a>:
+Feature encoding using a Tf-idf-weighted document-term sparse matrix.</p></li>
+<li><p><a class="reference internal" href="../auto_examples/text/plot_hashing_vs_dict_vectorizer.html#sphx-glr-auto-examples-text-plot-hashing-vs-dict-vectorizer-py"><span class="std std-ref">FeatureHasher and DictVectorizer Comparison</span></a>: Efficiency
+comparison of the different feature extractors.</p></li>
+<li><p><a class="reference internal" href="../auto_examples/text/plot_document_clustering.html#sphx-glr-auto-examples-text-plot-document-clustering-py"><span class="std std-ref">Clustering text documents using k-means</span></a>: Document clustering
+and comparison with <a class="reference internal" href="generated/sklearn.feature_extraction.text.HashingVectorizer.html#sklearn.feature_extraction.text.HashingVectorizer" title="sklearn.feature_extraction.text.HashingVectorizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">HashingVectorizer</span></code></a>.</p></li>
+<li><p><a class="reference internal" href="../auto_examples/model_selection/plot_grid_search_text_feature_extraction.html#sphx-glr-auto-examples-model-selection-plot-grid-search-text-feature-extraction-py"><span class="std std-ref">Sample pipeline for text feature extraction and evaluation</span></a>:
+Tuning hyperparameters of <a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfVectorizer.html#sklearn.feature_extraction.text.TfidfVectorizer" title="sklearn.feature_extraction.text.TfidfVectorizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TfidfVectorizer</span></code></a> as part of a pipeline.</p></li>
+</ul>
+</section>
 <section id="decoding-text-files">
-<h3><span class="section-number">7.2.3.6. </span>Decoding text files<a class="headerlink" href="#decoding-text-files" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.6. </span>Decoding text files<a class="headerlink" href="#decoding-text-files" title="Link to this heading">#</a></h3>
 <p>Text is made of characters, but files are made of bytes. These bytes represent
 characters according to some <em>encoding</em>. To work with text files in Python,
 their bytes must be <em>decoded</em> to a character set called Unicode.
@@ -1272,14 +1328,14 @@ the same feature.</p></li>
 to figure out the encoding of three texts.
 It then vectorizes the texts and prints the learned vocabulary.
 The output is not shown here.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">chardet</span>    
-<span class="gp">&gt;&gt;&gt; </span><span class="n">text1</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;Sei mir gegr</span><span class="se">\xc3\xbc\xc3\x9f</span><span class="s2">t mein Sauerkraut&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">text2</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;holdselig sind deine Ger</span><span class="se">\xfc</span><span class="s2">che&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">text3</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xff\xfe</span><span class="s2">A</span><span class="se">\x00</span><span class="s2">u</span><span class="se">\x00</span><span class="s2">f</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">F</span><span class="se">\x00</span><span class="s2">l</span><span class="se">\x00\xfc\x00</span><span class="s2">g</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">l</span><span class="se">\x00</span><span class="s2">n</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">d</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">s</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">G</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">s</span><span class="se">\x00</span><span class="s2">a</span><span class="se">\x00</span><span class="s2">n</span><span class="se">\x00</span><span class="s2">g</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">s</span><span class="se">\x00</span><span class="s2">,</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">H</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">r</span><span class="se">\x00</span><span class="s2">z</span><span class="se">\x00</span><span class="s2">l</span><span class="se">\x00</span><span class="s2">i</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">b</span><span class="se">\x00</span><span class="s2">c</span><span class="se">\x00</span><span class="s2">h</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">n</span><span class="se">\x00</span><span class="s2">,</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">t</span><span class="se">\x00</span><span class="s2">r</span><span class="se">\x00</span><span class="s2">a</span><span class="se">\x00</span><span class="s2">g</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">i</span><span class="se">\x00</span><span class="s2">c</span><span class="se">\x00</span><span class="s2">h</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">d</span><span class="se">\x00</span><span class="s2">i</span><span class="se">\x00</span><span class="s2">c</span><span class="se">\x00</span><span class="s2">h</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">f</span><span class="se">\x00</span><span class="s2">o</span><span class="se">\x00</span><span class="s2">r</span><span class="se">\x00</span><span class="s2">t</span><span class="se">\x00</span><span class="s2">&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">decoded</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="s1">&#39;encoding&#39;</span><span class="p">])</span>
-<span class="gp">... </span>           <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">,</span> <span class="n">text3</span><span class="p">)]</span>        
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span><span class="o">.</span><span class="n">vocabulary_</span>    
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>                           
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">chardet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text1</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">"Sei mir gegr</span><span class="se">\xc3\xbc\xc3\x9f</span><span class="s2">t mein Sauerkraut"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text2</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">"holdselig sind deine Ger</span><span class="se">\xfc</span><span class="s2">che"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text3</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">"</span><span class="se">\xff\xfe</span><span class="s2">A</span><span class="se">\x00</span><span class="s2">u</span><span class="se">\x00</span><span class="s2">f</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">F</span><span class="se">\x00</span><span class="s2">l</span><span class="se">\x00\xfc\x00</span><span class="s2">g</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">l</span><span class="se">\x00</span><span class="s2">n</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">d</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">s</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">G</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">s</span><span class="se">\x00</span><span class="s2">a</span><span class="se">\x00</span><span class="s2">n</span><span class="se">\x00</span><span class="s2">g</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">s</span><span class="se">\x00</span><span class="s2">,</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">H</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">r</span><span class="se">\x00</span><span class="s2">z</span><span class="se">\x00</span><span class="s2">l</span><span class="se">\x00</span><span class="s2">i</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">b</span><span class="se">\x00</span><span class="s2">c</span><span class="se">\x00</span><span class="s2">h</span><span class="se">\x00</span><span class="s2">e</span><span class="se">\x00</span><span class="s2">n</span><span class="se">\x00</span><span class="s2">,</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">t</span><span class="se">\x00</span><span class="s2">r</span><span class="se">\x00</span><span class="s2">a</span><span class="se">\x00</span><span class="s2">g</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">i</span><span class="se">\x00</span><span class="s2">c</span><span class="se">\x00</span><span class="s2">h</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">d</span><span class="se">\x00</span><span class="s2">i</span><span class="se">\x00</span><span class="s2">c</span><span class="se">\x00</span><span class="s2">h</span><span class="se">\x00</span><span class="s2"> </span><span class="se">\x00</span><span class="s2">f</span><span class="se">\x00</span><span class="s2">o</span><span class="se">\x00</span><span class="s2">r</span><span class="se">\x00</span><span class="s2">t</span><span class="se">\x00</span><span class="s2">"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decoded</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">chardet</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="s1">'encoding'</span><span class="p">])</span>
+<span class="gp">... </span>           <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">,</span> <span class="n">text3</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span><span class="o">.</span><span class="n">vocabulary_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sd-card-text">(Depending on the version of <code class="docutils literal notranslate"><span class="pre">chardet</span></code>, it might get the first one wrong.)</p>
@@ -1289,7 +1345,7 @@ About Unicode</a>.</p>
 </div>
 </details></section>
 <section id="applications-and-examples">
-<h3><span class="section-number">7.2.3.7. </span>Applications and examples<a class="headerlink" href="#applications-and-examples" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.7. </span>Applications and examples<a class="headerlink" href="#applications-and-examples" title="Link to this heading">#</a></h3>
 <p>The bag of words representation is quite simplistic but surprisingly
 useful in practice.</p>
 <p>In particular in a <strong>supervised setting</strong> it can be successfully combined
@@ -1311,7 +1367,7 @@ using <a class="reference internal" href="decomposition.html#nmf"><span class="s
 </ul>
 </section>
 <section id="limitations-of-the-bag-of-words-representation">
-<h3><span class="section-number">7.2.3.8. </span>Limitations of the Bag of Words representation<a class="headerlink" href="#limitations-of-the-bag-of-words-representation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.8. </span>Limitations of the Bag of Words representation<a class="headerlink" href="#limitations-of-the-bag-of-words-representation" title="Link to this heading">#</a></h3>
 <p>A collection of unigrams (what bag of words is) cannot capture phrases
 and multi-word expressions, effectively disregarding any word order
 dependence. Additionally, the bag of words model doesn’t account for potential
@@ -1329,10 +1385,10 @@ very distinct documents, differing in both of the two possible features.
 A character 2-gram representation, however, would find the documents
 matching in 4 out of 8 features, which may help the preferred classifier
 decide better:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s1">&#39;char_wb&#39;</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span> <span class="o">=</span> <span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s1">&#39;words&#39;</span><span class="p">,</span> <span class="s1">&#39;wprds&#39;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s1">'char_wb'</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span> <span class="o">=</span> <span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s1">'words'</span><span class="p">,</span> <span class="s1">'wprds'</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
-<span class="go">array([&#39; w&#39;, &#39;ds&#39;, &#39;or&#39;, &#39;pr&#39;, &#39;rd&#39;, &#39;s &#39;, &#39;wo&#39;, &#39;wp&#39;], ...)</span>
+<span class="go">array([' w', 'ds', 'or', 'pr', 'rd', 's ', 'wo', 'wp'], ...)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="go">array([[1, 1, 1, 0, 1, 1, 1, 0],</span>
 <span class="go">       [1, 1, 0, 1, 1, 1, 0, 1]])</span>
@@ -1342,20 +1398,20 @@ decide better:</p>
 only from characters inside word boundaries (padded with space on each
 side). The <code class="docutils literal notranslate"><span class="pre">char</span></code> analyzer, alternatively, creates n-grams that
 span across words:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s1">&#39;char_wb&#39;</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s1">&#39;jumpy fox&#39;</span><span class="p">])</span>
-<span class="go">&lt;Compressed Sparse...dtype &#39;int64&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s1">'char_wb'</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s1">'jumpy fox'</span><span class="p">])</span>
+<span class="go">&lt;Compressed Sparse...dtype 'int64'</span>
 <span class="go">  with 4 stored elements and shape (1, 4)&gt;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
-<span class="go">array([&#39; fox &#39;, &#39; jump&#39;, &#39;jumpy&#39;, &#39;umpy &#39;], ...)</span>
+<span class="go">array([' fox ', ' jump', 'jumpy', 'umpy '], ...)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s1">&#39;char&#39;</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s1">&#39;jumpy fox&#39;</span><span class="p">])</span>
-<span class="go">&lt;Compressed Sparse...dtype &#39;int64&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">analyzer</span><span class="o">=</span><span class="s1">'char'</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s1">'jumpy fox'</span><span class="p">])</span>
+<span class="go">&lt;Compressed Sparse...dtype 'int64'</span>
 <span class="go">  with 5 stored elements and shape (1, 5)&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ngram_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
-<span class="go">array([&#39;jumpy&#39;, &#39;mpy f&#39;, &#39;py fo&#39;, &#39;umpy &#39;, &#39;y fox&#39;], ...)</span>
+<span class="go">array(['jumpy', 'mpy f', 'py fo', 'umpy ', 'y fox'], ...)</span>
 </pre></div>
 </div>
 <p>The word boundaries-aware variant <code class="docutils literal notranslate"><span class="pre">char_wb</span></code> is especially interesting
@@ -1375,7 +1431,7 @@ into account. Many such models will thus be casted as “Structured output”
 problems which are currently outside of the scope of scikit-learn.</p>
 </section>
 <section id="vectorizing-a-large-text-corpus-with-the-hashing-trick">
-<span id="hashing-vectorizer"></span><h3><span class="section-number">7.2.3.9. </span>Vectorizing a large text corpus with the hashing trick<a class="headerlink" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick" title="Link to this heading">#</a></h3>
+<span id="hashing-vectorizer"></span><h3><span class="section-number">8.2.3.9. </span>Vectorizing a large text corpus with the hashing trick<a class="headerlink" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick" title="Link to this heading">#</a></h3>
 <p>The above vectorization scheme is simple but the fact that it holds an
 <strong>in-memory mapping from the string tokens to the integer feature indices</strong>
 (the <code class="docutils literal notranslate"><span class="pre">vocabulary_</span></code> attribute) causes several <strong>problems when dealing with large
@@ -1408,7 +1464,7 @@ meaning that you don’t have to call <code class="docutils literal notranslate"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">HashingVectorizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
-<span class="go">&lt;Compressed Sparse...dtype &#39;float64&#39;</span>
+<span class="go">&lt;Compressed Sparse...dtype 'float64'</span>
 <span class="go">  with 16 stored elements and shape (4, 10)&gt;</span>
 </pre></div>
 </div>
@@ -1423,13 +1479,13 @@ or downstream models size is an issue selecting a lower value such as <code clas
 text classification tasks.</p>
 <p>Note that the dimensionality does not affect the CPU training time of
 algorithms which operate on CSR matrices (<code class="docutils literal notranslate"><span class="pre">LinearSVC(dual=True)</span></code>,
-<code class="docutils literal notranslate"><span class="pre">Perceptron</span></code>, <code class="docutils literal notranslate"><span class="pre">SGDClassifier</span></code>, <code class="docutils literal notranslate"><span class="pre">PassiveAggressive</span></code>) but it does for
+<code class="docutils literal notranslate"><span class="pre">Perceptron</span></code>, <code class="docutils literal notranslate"><span class="pre">SGDClassifier</span></code>) but it does for
 algorithms that work with CSC matrices (<code class="docutils literal notranslate"><span class="pre">LinearSVC(dual=False)</span></code>, <code class="docutils literal notranslate"><span class="pre">Lasso()</span></code>,
 etc.).</p>
 <p>Let’s try again with the default setting:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">HashingVectorizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
-<span class="go">&lt;Compressed Sparse...dtype &#39;float64&#39;</span>
+<span class="go">&lt;Compressed Sparse...dtype 'float64'</span>
 <span class="go">  with 19 stored elements and shape (4, 1048576)&gt;</span>
 </pre></div>
 </div>
@@ -1464,15 +1520,15 @@ task see <a class="reference internal" href="../auto_examples/applications/plot_
 </div>
 </details></section>
 <section id="customizing-the-vectorizer-classes">
-<h3><span class="section-number">7.2.3.10. </span>Customizing the vectorizer classes<a class="headerlink" href="#customizing-the-vectorizer-classes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3.10. </span>Customizing the vectorizer classes<a class="headerlink" href="#customizing-the-vectorizer-classes" title="Link to this heading">#</a></h3>
 <p>It is possible to customize the behavior by passing a callable
 to the vectorizer constructor:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">my_tokenizer</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">my_tokenizer</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()(</span><span class="sa">u</span><span class="s2">&quot;Some... punctuation!&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[</span><span class="s1">&#39;some...&#39;</span><span class="p">,</span> <span class="s1">&#39;punctuation!&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()(</span><span class="sa">u</span><span class="s2">"Some... punctuation!"</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s1">'some...'</span><span class="p">,</span> <span class="s1">'punctuation!'</span><span class="p">])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -1509,15 +1565,15 @@ scikit-learn codebase, but can be added by customizing either the
 tokenizer or the analyzer.
 Here’s a <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> with a tokenizer and lemmatizer using
 <a class="reference external" href="https://www.nltk.org/">NLTK</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk</span><span class="w"> </span><span class="kn">import</span> <span class="n">word_tokenize</span>          
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.stem</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordNetLemmatizer</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk</span><span class="w"> </span><span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.stem</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">LemmaTokenizer</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">wnl</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">wnl</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">doc</span><span class="p">)]</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">LemmaTokenizer</span><span class="p">())</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">LemmaTokenizer</span><span class="p">())</span>
 </pre></div>
 </div>
 <p class="sd-card-text">(Note that this will not filter out punctuation.)</p>
@@ -1526,10 +1582,10 @@ to American spelling:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">to_british</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
-<span class="gp">... </span>        <span class="n">t</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(...)our$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1or&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-<span class="gp">... </span>        <span class="n">t</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([bt])re$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1er&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-<span class="gp">... </span>        <span class="n">t</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([iy])s(e$|ing|ation)&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1z\2&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-<span class="gp">... </span>        <span class="n">t</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;ogue$&quot;</span><span class="p">,</span> <span class="s2">&quot;og&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">t</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(...)our$"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\1or"</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">t</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"([bt])re$"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\1er"</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">t</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"([iy])s(e$|ing|ation)"</span><span class="p">,</span> <span class="sa">r</span><span class="s2">"\1z\2"</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="n">t</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"ogue$"</span><span class="p">,</span> <span class="s2">"og"</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="gp">... </span>        <span class="k">yield</span> <span class="n">t</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">CustomVectorizer</span><span class="p">(</span><span class="n">CountVectorizer</span><span class="p">):</span>
@@ -1537,8 +1593,8 @@ to American spelling:</p>
 <span class="gp">... </span>        <span class="n">tokenize</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build_tokenizer</span><span class="p">()</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">doc</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">to_british</span><span class="p">(</span><span class="n">tokenize</span><span class="p">(</span><span class="n">doc</span><span class="p">)))</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">CustomVectorizer</span><span class="p">()</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()(</span><span class="sa">u</span><span class="s2">&quot;color colour&quot;</span><span class="p">))</span>
-<span class="go">[...&#39;color&#39;, ...&#39;color&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">CustomVectorizer</span><span class="p">()</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()(</span><span class="sa">u</span><span class="s2">"color colour"</span><span class="p">))</span>
+<span class="go">[...'color', ...'color']</span>
 </pre></div>
 </div>
 <p class="sd-card-text">for other styles of preprocessing; examples include stemming, lemmatization,
@@ -1554,9 +1610,9 @@ that do not use an explicit word separator such as whitespace.</p>
 </details></section>
 </section>
 <section id="image-feature-extraction">
-<span id="id6"></span><h2><span class="section-number">7.2.4. </span>Image feature extraction<a class="headerlink" href="#image-feature-extraction" title="Link to this heading">#</a></h2>
+<span id="id6"></span><h2><span class="section-number">8.2.4. </span>Image feature extraction<a class="headerlink" href="#image-feature-extraction" title="Link to this heading">#</a></h2>
 <section id="patch-extraction">
-<h3><span class="section-number">7.2.4.1. </span>Patch extraction<a class="headerlink" href="#patch-extraction" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.4.1. </span>Patch extraction<a class="headerlink" href="#patch-extraction" title="Link to this heading">#</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.feature_extraction.image.extract_patches_2d.html#sklearn.feature_extraction.image.extract_patches_2d" title="sklearn.feature_extraction.image.extract_patches_2d"><code class="xref py py-func docutils literal notranslate"><span class="pre">extract_patches_2d</span></code></a> function extracts patches from an image stored
 as a two-dimensional array, or three-dimensional with color information along
 the third axis. For rebuilding an image from all its patches, use
@@ -1607,13 +1663,13 @@ implemented as a scikit-learn transformer, so it can be used in pipelines. See:<
 </div>
 </section>
 <section id="connectivity-graph-of-an-image">
-<span id="connectivity-graph-image"></span><h3><span class="section-number">7.2.4.2. </span>Connectivity graph of an image<a class="headerlink" href="#connectivity-graph-of-an-image" title="Link to this heading">#</a></h3>
+<span id="connectivity-graph-image"></span><h3><span class="section-number">8.2.4.2. </span>Connectivity graph of an image<a class="headerlink" href="#connectivity-graph-of-an-image" title="Link to this heading">#</a></h3>
 <p>Several estimators in scikit-learn can use connectivity information between
 features or samples. For instance Ward clustering
 (<a class="reference internal" href="clustering.html#hierarchical-clustering"><span class="std std-ref">Hierarchical clustering</span></a>) can cluster together only neighboring pixels
 of an image, thus forming contiguous patches:</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_coin_ward_segmentation.html"><img alt="../_images/sphx_glr_plot_coin_ward_segmentation_001.png" src="../_images/sphx_glr_plot_coin_ward_segmentation_001.png" style="width: 200.0px; height: 200.0px;" />
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_coin_ward_segmentation.html"><img alt="../_images/sphx_glr_plot_coin_ward_segmentation_001.png" height="200" src="../_images/sphx_glr_plot_coin_ward_segmentation_001.png" width="200" />
 </a>
 </figure>
 <p>For this purpose, the estimators use a ‘connectivity’ matrix, giving
@@ -1654,7 +1710,7 @@ or similarity matrices.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.1. </span>Pipelines and composite estimators</p>
+        <p class="prev-next-title"><span class="section-number">8.1. </span>Pipelines and composite estimators</p>
       </div>
     </a>
     <a class="right-next"
@@ -1662,7 +1718,7 @@ or similarity matrices.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.3. </span>Preprocessing data</p>
+        <p class="prev-next-title"><span class="section-number">8.3. </span>Preprocessing data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1687,39 +1743,46 @@ or similarity matrices.</p>
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-features-from-dicts">7.2.1. Loading features from dicts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-hashing">7.2.2. Feature hashing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-feature-extraction">7.2.3. Text feature extraction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bag-of-words-representation">7.2.3.1. The Bag of Words representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparsity">7.2.3.2. Sparsity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-vectorizer-usage">7.2.3.3. Common Vectorizer usage</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-stop-words">7.2.3.4. Using stop words</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tfidf-term-weighting">7.2.3.5. Tf–idf term weighting</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-text-files">7.2.3.6. Decoding text files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-and-examples">7.2.3.7. Applications and examples</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-the-bag-of-words-representation">7.2.3.8. Limitations of the Bag of Words representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick">7.2.3.9. Vectorizing a large text corpus with the hashing trick</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-vectorizer-classes">7.2.3.10. Customizing the vectorizer classes</a></li>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-features-from-dicts">8.2.1. Loading features from dicts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-hashing">8.2.2. Feature hashing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-feature-extraction">8.2.3. Text feature extraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bag-of-words-representation">8.2.3.1. The Bag of Words representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparsity">8.2.3.2. Sparsity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-vectorizer-usage">8.2.3.3. Common Vectorizer usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-stop-words">8.2.3.4. Using stop words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tfidf-term-weighting">8.2.3.5. Tf–idf term weighting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-text-files">8.2.3.6. Decoding text files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-and-examples">8.2.3.7. Applications and examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-the-bag-of-words-representation">8.2.3.8. Limitations of the Bag of Words representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorizing-a-large-text-corpus-with-the-hashing-trick">8.2.3.9. Vectorizing a large text corpus with the hashing trick</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-vectorizer-classes">8.2.3.10. Customizing the vectorizer classes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-feature-extraction">7.2.4. Image feature extraction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#patch-extraction">7.2.4.1. Patch extraction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-graph-of-an-image">7.2.4.2. Connectivity graph of an image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-feature-extraction">8.2.4. Image feature extraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#patch-extraction">8.2.4.1. Patch extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectivity-graph-of-an-image">8.2.4.2. Connectivity graph of an image</a></li>
 </ul>
 </li>
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/modules/feature_extraction.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1734,8 +1797,8 @@ or similarity matrices.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1746,7 +1809,7 @@ or similarity matrices.</p>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

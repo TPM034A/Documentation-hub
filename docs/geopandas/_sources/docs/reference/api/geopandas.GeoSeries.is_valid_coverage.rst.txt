@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.is\_valid\_coverage
+=======================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.is_valid_coverage

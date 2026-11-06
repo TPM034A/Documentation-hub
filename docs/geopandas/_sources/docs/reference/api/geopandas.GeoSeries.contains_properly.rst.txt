@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.contains\_properly
+======================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.contains_properly

@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-09-11T14:01:04.990045Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-11T14:01:00.854648Z",
+      "mimetype": null,
+      "name": "plot_random_multilabel_dataset.ipynb",
+      "path": "jupyterlite_contents/auto_examples/datasets/plot_random_multilabel_dataset.ipynb",
+      "size": 4860,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-09-11T14:01:04.990045Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-09-11T14:01:04.990045Z",
+  "mimetype": null,
+  "name": "datasets",
+  "path": "jupyterlite_contents/auto_examples/datasets",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

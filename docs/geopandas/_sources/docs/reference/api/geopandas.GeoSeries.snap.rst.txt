@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.snap
+========================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.snap

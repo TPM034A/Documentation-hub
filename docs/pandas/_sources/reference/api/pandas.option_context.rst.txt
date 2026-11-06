@@ -3,19 +3,4 @@ pandas.option\_context
 
 .. currentmodule:: pandas
 
-.. autoclass:: option_context
-
-   
-
-   
-   
-   
-
-   
-   .. rubric:: Methods
-
-   .. autosummary::
-   
-      
-   
-   
+.. autofunction:: option_context

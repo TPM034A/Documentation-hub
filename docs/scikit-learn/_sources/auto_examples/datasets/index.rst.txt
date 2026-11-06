@@ -10,6 +10,10 @@ Dataset examples
 Examples concerning the :mod:`sklearn.datasets` module.
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -26,7 +30,7 @@ Examples concerning the :mod:`sklearn.datasets` module.
   .. image:: /auto_examples/datasets/images/thumb/sphx_glr_plot_random_multilabel_dataset_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_datasets_plot_random_multilabel_dataset.py`
+  :doc:`/auto_examples/datasets/plot_random_multilabel_dataset`
 
 .. raw:: html
 

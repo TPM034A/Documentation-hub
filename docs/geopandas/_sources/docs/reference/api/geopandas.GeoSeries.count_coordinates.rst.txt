@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.count\_coordinates
+======================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.count_coordinates

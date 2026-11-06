@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_linear_model_plot_logistic_l1_l2_sparsity.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -32,7 +32,7 @@ that of L1 and L2.
 We classify 8x8 images of digits into two classes: 0-4 against 5-9.
 The visualization shows coefficients of the models for varying C.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-89
+.. GENERATED FROM PYTHON SOURCE LINES 17-87
 
 
 
@@ -102,11 +102,9 @@ The visualization shows coefficients of the models for varying C.
     # Set regularization parameter
     for i, (C, axes_row) in enumerate(zip((1, 0.1, 0.01), axes)):
         # Increase tolerance for short training time
-        clf_l1_LR = LogisticRegression(C=C, penalty="l1", tol=0.01, solver="saga")
-        clf_l2_LR = LogisticRegression(C=C, penalty="l2", tol=0.01, solver="saga")
-        clf_en_LR = LogisticRegression(
-            C=C, penalty="elasticnet", solver="saga", l1_ratio=l1_ratio, tol=0.01
-        )
+        clf_l1_LR = LogisticRegression(C=C, l1_ratio=1, tol=0.01, solver="saga")
+        clf_l2_LR = LogisticRegression(C=C, l1_ratio=0, tol=0.01, solver="saga")
+        clf_en_LR = LogisticRegression(C=C, l1_ratio=l1_ratio, tol=0.01, solver="saga")
         clf_l1_LR.fit(X, y)
         clf_l2_LR.fit(X, y)
         clf_en_LR.fit(X, y)
@@ -153,7 +151,7 @@ The visualization shows coefficients of the models for varying C.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.423 seconds)
+   **Total running time of the script:** (0 minutes 0.449 seconds)
 
 
 .. _sphx_glr_download_auto_examples_linear_model_plot_logistic_l1_l2_sparsity.py:
@@ -165,7 +163,7 @@ The visualization shows coefficients of the models for varying C.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.ipynb
         :alt: Launch binder
         :width: 150 px
 

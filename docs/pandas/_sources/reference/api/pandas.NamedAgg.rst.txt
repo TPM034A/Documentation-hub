@@ -14,10 +14,10 @@ pandas.NamedAgg
    .. autosummary::
    
       
-        ~NamedAgg.aggfunc
+        ~NamedAgg.args
       
       
-        ~NamedAgg.column
+      
       
    
    
@@ -27,12 +27,6 @@ pandas.NamedAgg
 
    .. autosummary::
    
-      
-      
-        ~NamedAgg.count
-      
-      
-        ~NamedAgg.index
       
    
    

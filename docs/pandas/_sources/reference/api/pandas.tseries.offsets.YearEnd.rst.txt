@@ -53,9 +53,6 @@ pandas.tseries.offsets.YearEnd
         ~YearEnd.copy
       
       
-        ~YearEnd.is_anchored
-      
-      
         ~YearEnd.is_month_end
       
       

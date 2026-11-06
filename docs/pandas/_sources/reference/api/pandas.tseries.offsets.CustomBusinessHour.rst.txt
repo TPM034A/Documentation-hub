@@ -71,9 +71,6 @@ pandas.tseries.offsets.CustomBusinessHour
         ~CustomBusinessHour.copy
       
       
-        ~CustomBusinessHour.is_anchored
-      
-      
         ~CustomBusinessHour.is_month_end
       
       

@@ -8,41 +8,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Comparison with R / R libraries &#8212; pandas 2.3.3 documentation</title>
+    <title>Comparison with R / R libraries &#8212; pandas 3.0.6 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=150e0881" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=8d8a0ed4" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/pandas.css?v=b7db95b1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=956a7be408686d7d6a7b"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b" />
 
-    <script src="../../_static/documentation_options.js?v=f4302432"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=c3365b21"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -50,10 +53,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/comparison/comparison_with_r';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pandas.pydata.org/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.3';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -62,6 +66,7 @@
     <link rel="prev" title="Comparison with other tools" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.6" />
   </head>
   
   
@@ -69,32 +74,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -102,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -110,20 +98,28 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/_templates/docs-announcement-banner.html"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -137,8 +133,8 @@
       
     
     
-    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 2.3.3 documentation - Home"/>
-    <script>document.write(`<img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark" alt="pandas 2.3.3 documentation - Home"/>`);</script>
+    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 3.0.6 documentation - Home"/>
+    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark pst-js-only" alt="pandas 3.0.6 documentation - Home"/>
   
   
 </a></div>
@@ -150,49 +146,43 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -204,55 +194,43 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -263,7 +241,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -275,8 +253,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -287,7 +265,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -299,31 +277,31 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -332,52 +310,49 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../reference/index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../reference/index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -386,42 +361,34 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -432,7 +399,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -444,8 +411,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -456,7 +423,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -472,7 +439,7 @@ document.write(`
     <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Package overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_tutorials/index.html">Getting started tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_tutorials/index.html">Getting started tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/01_table_oriented.html">What kind of data does pandas handle?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/02_read_write.html">How do I read and write tabular data?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/03_subset_data.html">How do I select a subset of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>?</a></li>
@@ -484,15 +451,16 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/09_timeseries.html">How to handle time series data with ease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_tutorials/10_text_data.html">How to manipulate textual data</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Comparison with other tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Comparison with other tools</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Comparison with R / R libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_sql.html">Comparison with SQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_spreadsheets.html">Comparison with spreadsheets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_sas.html">Comparison with SAS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comparison_with_stata.html">Comparison with Stata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparison_with_spss.html">Comparison with SPSS</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Community tutorials</a></li>
 </ul>
 
@@ -503,29 +471,32 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -539,7 +510,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Comparison with other tools</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Comparison...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Comparison with R / R libraries</span></li>
   </ul>
 </nav>
 </div>
@@ -554,7 +525,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="comparison-with-r-r-libraries">
 <span id="compare-with-r"></span><h1>Comparison with R / R libraries<a class="headerlink" href="#comparison-with-r-r-libraries" title="Link to this heading">#</a></h1>
@@ -579,7 +550,7 @@ operations using <a class="reference external" href="https://cran.r-project.org/
 pandas equivalents.</p>
 <section id="querying-filtering-sampling">
 <h3>Querying, filtering, sampling<a class="headerlink" href="#querying-filtering-sampling" title="Link to this heading">#</a></h3>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>R</p></th>
 <th class="head"><p>pandas</p></th>
@@ -624,6 +595,7 @@ pandas equivalents.</p>
 </tr>
 </tbody>
 </table>
+</div>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="select-range" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
@@ -638,7 +610,7 @@ name is a bit messy.</p>
 </section>
 <section id="sorting">
 <h3>Sorting<a class="headerlink" href="#sorting" title="Link to this heading">#</a></h3>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>R</p></th>
 <th class="head"><p>pandas</p></th>
@@ -653,10 +625,11 @@ name is a bit messy.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="transforming">
 <h3>Transforming<a class="headerlink" href="#transforming" title="Link to this heading">#</a></h3>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>R</p></th>
 <th class="head"><p>pandas</p></th>
@@ -674,10 +647,11 @@ name is a bit messy.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="grouping-and-summarizing">
 <h3>Grouping and summarizing<a class="headerlink" href="#grouping-and-summarizing" title="Link to this heading">#</a></h3>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>R</p></th>
 <th class="head"><p>pandas</p></th>
@@ -698,6 +672,7 @@ name is a bit messy.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="base-r">
@@ -706,7 +681,7 @@ name is a bit messy.</p>
 <h3>Slicing with R’s <a class="reference external" href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/c.html"><code class="docutils literal notranslate"><span class="pre">c</span></code></a><a class="headerlink" href="#slicing-with-r-s-c" title="Link to this heading">#</a></h3>
 <p>R makes it easy to access <code class="docutils literal notranslate"><span class="pre">data.frame</span></code> columns by name</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="nf">rnorm</span><span class="p">(</span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="nf">rnorm</span><span class="p">(</span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="nf">rnorm</span><span class="p">(</span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="nf">rnorm</span><span class="p">(</span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="n">e</span><span class="o">=</span><span class="nf">rnorm</span><span class="p">(</span><span class="m">5</span><span class="p">))</span>
-<span class="n">df</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;e&quot;</span><span class="p">)]</span>
+<span class="n">df</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span><span class="w"> </span><span class="s">"c"</span><span class="p">,</span><span class="w"> </span><span class="s">"e"</span><span class="p">)]</span>
 </pre></div>
 </div>
 <p>or by integer location</p>
@@ -715,9 +690,9 @@ name is a bit messy.</p>
 </pre></div>
 </div>
 <p>Selecting multiple columns by name in pandas is straightforward</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">))</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">))</span>
 
-<span class="gp">In [2]: </span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]]</span>
+<span class="gp">In [2]: </span><span class="n">df</span><span class="p">[[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">]]</span>
 <span class="gh">Out[2]: </span>
 <span class="go">          a         c</span>
 <span class="go">0  0.469112 -1.509059</span>
@@ -731,7 +706,7 @@ name is a bit messy.</p>
 <span class="go">8  0.404705 -1.715002</span>
 <span class="go">9 -1.039268 -1.157892</span>
 
-<span class="gp">In [3]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]]</span>
+<span class="gp">In [3]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">]]</span>
 <span class="gh">Out[3]: </span>
 <span class="go">          a         c</span>
 <span class="go">0  0.469112 -1.509059</span>
@@ -748,7 +723,7 @@ name is a bit messy.</p>
 </div>
 <p>Selecting multiple noncontiguous columns by integer location can be achieved
 with a combination of the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> indexer attribute and <code class="docutils literal notranslate"><span class="pre">numpy.r_</span></code>.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">named</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcdefg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">named</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">"abcdefg"</span><span class="p">)</span>
 
 <span class="gp">In [5]: </span><span class="n">n</span> <span class="o">=</span> <span class="mi">30</span>
 
@@ -783,28 +758,28 @@ Using a data.frame called <code class="docutils literal notranslate"><span class
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
 <span class="w">  </span><span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="kc">NA</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">9</span><span class="p">),</span>
 <span class="w">  </span><span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">11</span><span class="p">,</span><span class="m">33</span><span class="p">,</span><span class="m">55</span><span class="p">,</span><span class="m">77</span><span class="p">,</span><span class="m">88</span><span class="p">,</span><span class="m">33</span><span class="p">,</span><span class="m">55</span><span class="p">,</span><span class="kc">NA</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">55</span><span class="p">,</span><span class="m">77</span><span class="p">,</span><span class="m">99</span><span class="p">),</span>
-<span class="w">  </span><span class="n">by1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;big&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">),</span>
-<span class="w">  </span><span class="n">by2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;wet&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dry&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">99</span><span class="p">,</span><span class="w"> </span><span class="m">95</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;damp&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">95</span><span class="p">,</span><span class="w"> </span><span class="m">99</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">99</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">))</span>
-<span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;v1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;v2&quot;</span><span class="p">)],</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">mydf2</span><span class="o">$</span><span class="n">by1</span><span class="p">,</span><span class="w"> </span><span class="n">mydf2</span><span class="o">$</span><span class="n">by2</span><span class="p">),</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span>
+<span class="w">  </span><span class="n">by1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"red"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="s">"big"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="s">"red"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">),</span>
+<span class="w">  </span><span class="n">by2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"wet"</span><span class="p">,</span><span class="w"> </span><span class="s">"dry"</span><span class="p">,</span><span class="w"> </span><span class="m">99</span><span class="p">,</span><span class="w"> </span><span class="m">95</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="s">"damp"</span><span class="p">,</span><span class="w"> </span><span class="m">95</span><span class="p">,</span><span class="w"> </span><span class="m">99</span><span class="p">,</span><span class="w"> </span><span class="s">"red"</span><span class="p">,</span><span class="w"> </span><span class="m">99</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">))</span>
+<span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"v1"</span><span class="p">,</span><span class="w"> </span><span class="s">"v2"</span><span class="p">)],</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">mydf2</span><span class="o">$</span><span class="n">by1</span><span class="p">,</span><span class="w"> </span><span class="n">mydf2</span><span class="o">$</span><span class="n">by2</span><span class="p">),</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <a class="reference internal" href="../../reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby" title="pandas.DataFrame.groupby"><code class="xref py py-meth docutils literal notranslate"><span class="pre">groupby()</span></code></a> method is similar to base R <code class="docutils literal notranslate"><span class="pre">aggregate</span></code>
 function.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
 <span class="gp">   ...: </span>    <span class="p">{</span>
-<span class="gp">   ...: </span>        <span class="s2">&quot;v1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
-<span class="gp">   ...: </span>        <span class="s2">&quot;v2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span>
-<span class="gp">   ...: </span>        <span class="s2">&quot;by1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;big&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
-<span class="gp">   ...: </span>        <span class="s2">&quot;by2&quot;</span><span class="p">:</span> <span class="p">[</span>
-<span class="gp">   ...: </span>            <span class="s2">&quot;wet&quot;</span><span class="p">,</span>
-<span class="gp">   ...: </span>            <span class="s2">&quot;dry&quot;</span><span class="p">,</span>
+<span class="gp">   ...: </span>        <span class="s2">"v1"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+<span class="gp">   ...: </span>        <span class="s2">"v2"</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span>
+<span class="gp">   ...: </span>        <span class="s2">"by1"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">"big"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+<span class="gp">   ...: </span>        <span class="s2">"by2"</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">   ...: </span>            <span class="s2">"wet"</span><span class="p">,</span>
+<span class="gp">   ...: </span>            <span class="s2">"dry"</span><span class="p">,</span>
 <span class="gp">   ...: </span>            <span class="mi">99</span><span class="p">,</span>
 <span class="gp">   ...: </span>            <span class="mi">95</span><span class="p">,</span>
 <span class="gp">   ...: </span>            <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-<span class="gp">   ...: </span>            <span class="s2">&quot;damp&quot;</span><span class="p">,</span>
+<span class="gp">   ...: </span>            <span class="s2">"damp"</span><span class="p">,</span>
 <span class="gp">   ...: </span>            <span class="mi">95</span><span class="p">,</span>
 <span class="gp">   ...: </span>            <span class="mi">99</span><span class="p">,</span>
-<span class="gp">   ...: </span>            <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+<span class="gp">   ...: </span>            <span class="s2">"red"</span><span class="p">,</span>
 <span class="gp">   ...: </span>            <span class="mi">99</span><span class="p">,</span>
 <span class="gp">   ...: </span>            <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
 <span class="gp">   ...: </span>            <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
@@ -813,9 +788,9 @@ function.</p>
 <span class="gp">   ...: </span><span class="p">)</span>
 <span class="gp">   ...: </span>
 
-<span class="gp">In [10]: </span><span class="n">g</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;by1&quot;</span><span class="p">,</span> <span class="s2">&quot;by2&quot;</span><span class="p">])</span>
+<span class="gp">In [10]: </span><span class="n">g</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"by1"</span><span class="p">,</span> <span class="s2">"by2"</span><span class="p">])</span>
 
-<span class="gp">In [11]: </span><span class="n">g</span><span class="p">[[</span><span class="s2">&quot;v1&quot;</span><span class="p">,</span> <span class="s2">&quot;v2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="gp">In [11]: </span><span class="n">g</span><span class="p">[[</span><span class="s2">"v1"</span><span class="p">,</span> <span class="s2">"v2"</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="gh">Out[11]: </span>
 <span class="go">            v1    v2</span>
 <span class="go">by1  by2            </span>
@@ -868,7 +843,7 @@ since the subclass sizes are possibly irregular. Using a data.frame called
 <code class="docutils literal notranslate"><span class="pre">baseball</span></code>, and retrieving information based on the array <code class="docutils literal notranslate"><span class="pre">team</span></code>:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">baseball</span><span class="w"> </span><span class="o">&lt;-</span>
 <span class="w">  </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">team</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">gl</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span>
-<span class="w">             </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Team&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">LETTERS</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">])),</span>
+<span class="w">             </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">"Team"</span><span class="p">,</span><span class="w"> </span><span class="kc">LETTERS</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">])),</span>
 <span class="w">             </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="kc">letters</span><span class="p">,</span><span class="w"> </span><span class="m">25</span><span class="p">),</span>
 <span class="w">             </span><span class="n">batting.average</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="m">400</span><span class="p">))</span>
 
@@ -883,14 +858,14 @@ since the subclass sizes are possibly irregular. Using a data.frame called
 
 <span class="gp">In [16]: </span><span class="n">baseball</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
 <span class="gp">   ....: </span>    <span class="p">{</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;team&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;team </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;player&quot;</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">),</span> <span class="mi">25</span><span class="p">),</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;batting avg&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.200</span><span class="p">,</span> <span class="mf">0.400</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+<span class="gp">   ....: </span>        <span class="s2">"team"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"team </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>
+<span class="gp">   ....: </span>        <span class="s2">"player"</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">),</span> <span class="mi">25</span><span class="p">),</span>
+<span class="gp">   ....: </span>        <span class="s2">"batting avg"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.200</span><span class="p">,</span> <span class="mf">0.400</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
 <span class="gp">   ....: </span>    <span class="p">}</span>
 <span class="gp">   ....: </span><span class="p">)</span>
 <span class="gp">   ....: </span>
 
-<span class="gp">In [17]: </span><span class="n">baseball</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">&quot;batting avg&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;team&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">)</span>
+<span class="gp">In [17]: </span><span class="n">baseball</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">"batting avg"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"team"</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"max"</span><span class="p">)</span>
 <span class="gh">Out[17]: </span>
 <span class="go">team           team 1    team 2    team 3    team 4    team 5</span>
 <span class="go">batting avg  0.352134  0.295327  0.397191  0.394457  0.396194</span>
@@ -911,9 +886,9 @@ column’s values are less than another column’s values:</p>
 <p>In pandas, there are a few ways to perform subsetting. You can use
 <a class="reference internal" href="../../reference/api/pandas.DataFrame.query.html#pandas.DataFrame.query" title="pandas.DataFrame.query"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query()</span></code></a> or pass an expression as if it were an
 index/slice as well as standard boolean indexing:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"a"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s2">"b"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)})</span>
 
-<span class="gp">In [19]: </span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;a &lt;= b&quot;</span><span class="p">)</span>
+<span class="gp">In [19]: </span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"a &lt;= b"</span><span class="p">)</span>
 <span class="gh">Out[19]: </span>
 <span class="go">          a         b</span>
 <span class="go">1  0.174950  0.552887</span>
@@ -924,7 +899,7 @@ index/slice as well as standard boolean indexing:</p>
 <span class="go">7 -0.290098  0.083515</span>
 <span class="go">8  0.238636  0.946550</span>
 
-<span class="gp">In [20]: </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]]</span>
+<span class="gp">In [20]: </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"b"</span><span class="p">]]</span>
 <span class="gh">Out[20]: </span>
 <span class="go">          a         b</span>
 <span class="go">1  0.174950  0.552887</span>
@@ -935,7 +910,7 @@ index/slice as well as standard boolean indexing:</p>
 <span class="go">7 -0.290098  0.083515</span>
 <span class="go">8  0.238636  0.946550</span>
 
-<span class="gp">In [21]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]]</span>
+<span class="gp">In [21]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"b"</span><span class="p">]]</span>
 <span class="gh">Out[21]: </span>
 <span class="go">          a         b</span>
 <span class="go">1  0.174950  0.552887</span>
@@ -960,9 +935,9 @@ index/slice as well as standard boolean indexing:</p>
 </div>
 <p>In pandas the equivalent expression, using the
 <a class="reference internal" href="../../reference/api/pandas.DataFrame.eval.html#pandas.DataFrame.eval" title="pandas.DataFrame.eval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">eval()</span></code></a> method, would be:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)})</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"a"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="s2">"b"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)})</span>
 
-<span class="gp">In [23]: </span><span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;a + b&quot;</span><span class="p">)</span>
+<span class="gp">In [23]: </span><span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">"a + b"</span><span class="p">)</span>
 <span class="gh">Out[23]: </span>
 <span class="go">0   -0.091430</span>
 <span class="go">1   -2.483890</span>
@@ -976,7 +951,7 @@ index/slice as well as standard boolean indexing:</p>
 <span class="go">9    2.104677</span>
 <span class="go">dtype: float64</span>
 
-<span class="gp">In [24]: </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span>  <span class="c1"># same as the previous expression</span>
+<span class="gp">In [24]: </span><span class="n">df</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">"b"</span><span class="p">]</span>  <span class="c1"># same as the previous expression</span>
 <span class="gh">Out[24]: </span>
 <span class="go">0   -0.091430</span>
 <span class="go">1   -2.483890</span>
@@ -1002,7 +977,7 @@ documentation</span></a>.</p>
 analysis. The functions revolve around three data structures in R, <code class="docutils literal notranslate"><span class="pre">a</span></code>
 for <code class="docutils literal notranslate"><span class="pre">arrays</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code> for <code class="docutils literal notranslate"><span class="pre">lists</span></code>, and <code class="docutils literal notranslate"><span class="pre">d</span></code> for <code class="docutils literal notranslate"><span class="pre">data.frame</span></code>. The
 table below shows how these data structures could be mapped in Python.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>R</p></th>
 <th class="head"><p>Python</p></th>
@@ -1020,6 +995,7 @@ table below shows how these data structures could be mapped in Python.</p>
 </tr>
 </tbody>
 </table>
+</div>
 <section id="ddply">
 <h3>ddply<a class="headerlink" href="#ddply" title="Link to this heading">#</a></h3>
 <p>An expression using a data.frame called <code class="docutils literal notranslate"><span class="pre">df</span></code> in R where you want to
@@ -1042,18 +1018,18 @@ summarize <code class="docutils literal notranslate"><span class="pre">x</span><
 <a class="reference internal" href="../../reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby" title="pandas.DataFrame.groupby"><code class="xref py py-meth docutils literal notranslate"><span class="pre">groupby()</span></code></a> method, would be:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
 <span class="gp">   ....: </span>    <span class="p">{</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">168.0</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">334.0</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="mf">20.7</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span> <span class="o">*</span> <span class="mi">30</span><span class="p">,</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;week&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+<span class="gp">   ....: </span>        <span class="s2">"x"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">168.0</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+<span class="gp">   ....: </span>        <span class="s2">"y"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">334.0</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+<span class="gp">   ....: </span>        <span class="s2">"z"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="mf">20.7</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+<span class="gp">   ....: </span>        <span class="s2">"month"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span> <span class="o">*</span> <span class="mi">30</span><span class="p">,</span>
+<span class="gp">   ....: </span>        <span class="s2">"week"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
 <span class="gp">   ....: </span>    <span class="p">}</span>
 <span class="gp">   ....: </span><span class="p">)</span>
 <span class="gp">   ....: </span>
 
-<span class="gp">In [26]: </span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;month&quot;</span><span class="p">,</span> <span class="s2">&quot;week&quot;</span><span class="p">])</span>
+<span class="gp">In [26]: </span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"month"</span><span class="p">,</span> <span class="s2">"week"</span><span class="p">])</span>
 
-<span class="gp">In [27]: </span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">])</span>
+<span class="gp">In [27]: </span><span class="n">grouped</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"mean"</span><span class="p">,</span> <span class="s2">"std"</span><span class="p">])</span>
 <span class="gh">Out[27]: </span>
 <span class="go">                  mean        std</span>
 <span class="go">month week                       </span>
@@ -1085,7 +1061,7 @@ melt it into a data.frame:</p>
 </pre></div>
 </div>
 <p>In Python, since <code class="docutils literal notranslate"><span class="pre">a</span></code> is a list, you can simply use list comprehension.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">NAN</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
 <span class="gp">In [29]: </span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">val</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">a</span><span class="p">)])</span>
 <span class="gh">Out[29]: </span>
@@ -1116,7 +1092,7 @@ into a data.frame:</p>
 </div>
 <p>In Python, this list would be a list of tuples, so
 <a class="reference internal" href="../../reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataFrame()</span></code></a> method would convert it to a dataframe as required.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">NAN</span><span class="p">]))</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]))</span>
 
 <span class="gp">In [31]: </span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="gh">Out[31]: </span>
@@ -1128,7 +1104,7 @@ into a data.frame:</p>
 <span class="go">4  4  NaN</span>
 </pre></div>
 </div>
-<p>For more details and examples see <a class="reference internal" href="../../user_guide/dsintro.html#dsintro"><span class="std std-ref">the Into to Data Structures
+<p>For more details and examples see <a class="reference internal" href="../../user_guide/dsintro.html#dsintro"><span class="std std-ref">the Intro to Data Structures
 documentation</span></a>.</p>
 </section>
 <section id="meltdf">
@@ -1136,26 +1112,26 @@ documentation</span></a>.</p>
 <p>An expression using a data.frame called <code class="docutils literal notranslate"><span class="pre">cheese</span></code> in R where you want to
 reshape the data.frame:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cheese</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
-<span class="w">  </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;John&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Mary&#39;</span><span class="p">),</span>
-<span class="w">  </span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Doe&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Bo&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">'John'</span><span class="p">,</span><span class="w"> </span><span class="s">'Mary'</span><span class="p">),</span>
+<span class="w">  </span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">'Doe'</span><span class="p">,</span><span class="w"> </span><span class="s">'Bo'</span><span class="p">),</span>
 <span class="w">  </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5.5</span><span class="p">,</span><span class="w"> </span><span class="m">6.0</span><span class="p">),</span>
 <span class="w">  </span><span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">130</span><span class="p">,</span><span class="w"> </span><span class="m">150</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="nf">melt</span><span class="p">(</span><span class="n">cheese</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;first&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;last&quot;</span><span class="p">))</span>
+<span class="nf">melt</span><span class="p">(</span><span class="n">cheese</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"first"</span><span class="p">,</span><span class="w"> </span><span class="s">"last"</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>In Python, the <a class="reference internal" href="../../reference/api/pandas.melt.html#pandas.melt" title="pandas.melt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">melt()</span></code></a> method is the R equivalent:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="n">cheese</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
 <span class="gp">   ....: </span>    <span class="p">{</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;first&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Mary&quot;</span><span class="p">],</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;last&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;Bo&quot;</span><span class="p">],</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">],</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">130</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>
+<span class="gp">   ....: </span>        <span class="s2">"first"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"John"</span><span class="p">,</span> <span class="s2">"Mary"</span><span class="p">],</span>
+<span class="gp">   ....: </span>        <span class="s2">"last"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Doe"</span><span class="p">,</span> <span class="s2">"Bo"</span><span class="p">],</span>
+<span class="gp">   ....: </span>        <span class="s2">"height"</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">],</span>
+<span class="gp">   ....: </span>        <span class="s2">"weight"</span><span class="p">:</span> <span class="p">[</span><span class="mi">130</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>
 <span class="gp">   ....: </span>    <span class="p">}</span>
 <span class="gp">   ....: </span><span class="p">)</span>
 <span class="gp">   ....: </span>
 
-<span class="gp">In [33]: </span><span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">cheese</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;last&quot;</span><span class="p">])</span>
+<span class="gp">In [33]: </span><span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">cheese</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"first"</span><span class="p">,</span> <span class="s2">"last"</span><span class="p">])</span>
 <span class="gh">Out[33]: </span>
 <span class="go">  first last variable  value</span>
 <span class="go">0  John  Doe   height    5.5</span>
@@ -1163,7 +1139,7 @@ reshape the data.frame:</p>
 <span class="go">2  John  Doe   weight  130.0</span>
 <span class="go">3  Mary   Bo   weight  150.0</span>
 
-<span class="gp">In [34]: </span><span class="n">cheese</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;last&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">future_stack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># alternative way</span>
+<span class="gp">In [34]: </span><span class="n">cheese</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">"first"</span><span class="p">,</span> <span class="s2">"last"</span><span class="p">])</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>  <span class="c1"># alternative way</span>
 <span class="gh">Out[34]: </span>
 <span class="go">first  last        </span>
 <span class="go">John   Doe   height      5.5</span>
@@ -1187,30 +1163,30 @@ into a higher dimensional array:</p>
 <span class="w">  </span><span class="n">week</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="m">6</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">mdf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;month&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;week&quot;</span><span class="p">))</span>
+<span class="n">mdf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"month"</span><span class="p">,</span><span class="w"> </span><span class="s">"week"</span><span class="p">))</span>
 <span class="nf">acast</span><span class="p">(</span><span class="n">mdf</span><span class="p">,</span><span class="w"> </span><span class="n">week</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">variable</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In Python the best way is to make use of <a class="reference internal" href="../../reference/api/pandas.pivot_table.html#pandas.pivot_table" title="pandas.pivot_table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pivot_table()</span></code></a>:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [35]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
 <span class="gp">   ....: </span>    <span class="p">{</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">168.0</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">334.0</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="mf">20.7</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;week&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">6</span><span class="p">,</span>
+<span class="gp">   ....: </span>        <span class="s2">"x"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">168.0</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="gp">   ....: </span>        <span class="s2">"y"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">334.0</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="gp">   ....: </span>        <span class="s2">"z"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="mf">20.7</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="gp">   ....: </span>        <span class="s2">"month"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
+<span class="gp">   ....: </span>        <span class="s2">"week"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">6</span><span class="p">,</span>
 <span class="gp">   ....: </span>    <span class="p">}</span>
 <span class="gp">   ....: </span><span class="p">)</span>
 <span class="gp">   ....: </span>
 
-<span class="gp">In [36]: </span><span class="n">mdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">,</span> <span class="s2">&quot;week&quot;</span><span class="p">])</span>
+<span class="gp">In [36]: </span><span class="n">mdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"month"</span><span class="p">,</span> <span class="s2">"week"</span><span class="p">])</span>
 
 <span class="gp">In [37]: </span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
 <span class="gp">   ....: </span>    <span class="n">mdf</span><span class="p">,</span>
-<span class="gp">   ....: </span>    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
-<span class="gp">   ....: </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">,</span> <span class="s2">&quot;week&quot;</span><span class="p">],</span>
-<span class="gp">   ....: </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">],</span>
-<span class="gp">   ....: </span>    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="n">values</span><span class="o">=</span><span class="s2">"value"</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"variable"</span><span class="p">,</span> <span class="s2">"week"</span><span class="p">],</span>
+<span class="gp">   ....: </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"month"</span><span class="p">],</span>
+<span class="gp">   ....: </span>    <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"mean"</span><span class="p">,</span>
 <span class="gp">   ....: </span><span class="p">)</span>
 <span class="gp">   ....: </span>
 <span class="gh">Out[37]: </span>
@@ -1227,9 +1203,9 @@ into a higher dimensional array:</p>
 <p>Similarly for <code class="docutils literal notranslate"><span class="pre">dcast</span></code> which uses a data.frame called <code class="docutils literal notranslate"><span class="pre">df</span></code> in R to
 aggregate information based on <code class="docutils literal notranslate"><span class="pre">Animal</span></code> and <code class="docutils literal notranslate"><span class="pre">FeedType</span></code>:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
-<span class="w">  </span><span class="n">Animal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Animal1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Animal2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Animal3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Animal2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Animal1&#39;</span><span class="p">,</span>
-<span class="w">             </span><span class="s">&#39;Animal2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Animal3&#39;</span><span class="p">),</span>
-<span class="w">  </span><span class="n">FeedType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;A&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="n">Animal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">'Animal1'</span><span class="p">,</span><span class="w"> </span><span class="s">'Animal2'</span><span class="p">,</span><span class="w"> </span><span class="s">'Animal3'</span><span class="p">,</span><span class="w"> </span><span class="s">'Animal2'</span><span class="p">,</span><span class="w"> </span><span class="s">'Animal1'</span><span class="p">,</span>
+<span class="w">             </span><span class="s">'Animal2'</span><span class="p">,</span><span class="w"> </span><span class="s">'Animal3'</span><span class="p">),</span>
+<span class="w">  </span><span class="n">FeedType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">'A'</span><span class="p">,</span><span class="w"> </span><span class="s">'B'</span><span class="p">,</span><span class="w"> </span><span class="s">'A'</span><span class="p">,</span><span class="w"> </span><span class="s">'A'</span><span class="p">,</span><span class="w"> </span><span class="s">'B'</span><span class="p">,</span><span class="w"> </span><span class="s">'B'</span><span class="p">,</span><span class="w"> </span><span class="s">'A'</span><span class="p">),</span>
 <span class="w">  </span><span class="n">Amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
 <span class="p">)</span>
 
@@ -1242,22 +1218,22 @@ aggregate information based on <code class="docutils literal notranslate"><span 
 using <a class="reference internal" href="../../reference/api/pandas.pivot_table.html#pandas.pivot_table" title="pandas.pivot_table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pivot_table()</span></code></a>:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
 <span class="gp">   ....: </span>    <span class="p">{</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;Animal&quot;</span><span class="p">:</span> <span class="p">[</span>
-<span class="gp">   ....: </span>            <span class="s2">&quot;Animal1&quot;</span><span class="p">,</span>
-<span class="gp">   ....: </span>            <span class="s2">&quot;Animal2&quot;</span><span class="p">,</span>
-<span class="gp">   ....: </span>            <span class="s2">&quot;Animal3&quot;</span><span class="p">,</span>
-<span class="gp">   ....: </span>            <span class="s2">&quot;Animal2&quot;</span><span class="p">,</span>
-<span class="gp">   ....: </span>            <span class="s2">&quot;Animal1&quot;</span><span class="p">,</span>
-<span class="gp">   ....: </span>            <span class="s2">&quot;Animal2&quot;</span><span class="p">,</span>
-<span class="gp">   ....: </span>            <span class="s2">&quot;Animal3&quot;</span><span class="p">,</span>
+<span class="gp">   ....: </span>        <span class="s2">"Animal"</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">   ....: </span>            <span class="s2">"Animal1"</span><span class="p">,</span>
+<span class="gp">   ....: </span>            <span class="s2">"Animal2"</span><span class="p">,</span>
+<span class="gp">   ....: </span>            <span class="s2">"Animal3"</span><span class="p">,</span>
+<span class="gp">   ....: </span>            <span class="s2">"Animal2"</span><span class="p">,</span>
+<span class="gp">   ....: </span>            <span class="s2">"Animal1"</span><span class="p">,</span>
+<span class="gp">   ....: </span>            <span class="s2">"Animal2"</span><span class="p">,</span>
+<span class="gp">   ....: </span>            <span class="s2">"Animal3"</span><span class="p">,</span>
 <span class="gp">   ....: </span>        <span class="p">],</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;FeedType&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span>
-<span class="gp">   ....: </span>        <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">   ....: </span>        <span class="s2">"FeedType"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">],</span>
+<span class="gp">   ....: </span>        <span class="s2">"Amount"</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
 <span class="gp">   ....: </span>    <span class="p">}</span>
 <span class="gp">   ....: </span><span class="p">)</span>
 <span class="gp">   ....: </span>
 
-<span class="gp">In [39]: </span><span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">&quot;Amount&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;Animal&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;FeedType&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
+<span class="gp">In [39]: </span><span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">"Amount"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">"Animal"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"FeedType"</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"sum"</span><span class="p">)</span>
 <span class="gh">Out[39]: </span>
 <span class="go">FeedType     A     B</span>
 <span class="go">Animal              </span>
@@ -1267,7 +1243,7 @@ using <a class="reference internal" href="../../reference/api/pandas.pivot_table
 </pre></div>
 </div>
 <p>The second approach is to use the <a class="reference internal" href="../../reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby" title="pandas.DataFrame.groupby"><code class="xref py py-meth docutils literal notranslate"><span class="pre">groupby()</span></code></a> method:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [40]: </span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Animal&quot;</span><span class="p">,</span> <span class="s2">&quot;FeedType&quot;</span><span class="p">])[</span><span class="s2">&quot;Amount&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [40]: </span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"Animal"</span><span class="p">,</span> <span class="s2">"FeedType"</span><span class="p">])[</span><span class="s2">"Amount"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="gh">Out[40]: </span>
 <span class="go">Animal   FeedType</span>
 <span class="go">Animal1  A           10</span>
@@ -1299,7 +1275,7 @@ using <a class="reference internal" href="../../reference/api/pandas.pivot_table
 <span class="go">dtype: category</span>
 <span class="go">Categories (3, interval[float64, right]): [(0.995, 2.667] &lt; (2.667, 4.333] &lt; (4.333, 6.0]]</span>
 
-<span class="gp">In [42]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="gp">In [42]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span>
 <span class="gh">Out[42]: </span>
 <span class="go">0    1</span>
 <span class="go">1    2</span>
@@ -1325,7 +1301,7 @@ using <a class="reference internal" href="../../reference/api/pandas.pivot_table
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1353,14 +1329,17 @@ using <a class="reference internal" href="../../reference/api/pandas.pivot_table
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">Quick reference</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-filtering-sampling">Querying, filtering, sampling</a></li>
@@ -1393,15 +1372,6 @@ using <a class="reference internal" href="../../reference/api/pandas.pivot_table
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/getting_started/comparison/comparison_with_r.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1415,8 +1385,8 @@ using <a class="reference internal" href="../../reference/api/pandas.pivot_table
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1424,13 +1394,13 @@ using <a class="reference internal" href="../../reference/api/pandas.pivot_table
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="copyright">
-    &copy 2025, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
+    &copy 2026, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
 </p></div>
       
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
     <br/>
   </p>
 </div>
@@ -1443,7 +1413,8 @@ using <a class="reference internal" href="../../reference/api/pandas.pivot_table
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

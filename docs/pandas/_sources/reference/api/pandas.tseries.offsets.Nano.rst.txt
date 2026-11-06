@@ -17,9 +17,6 @@ pandas.tseries.offsets.Nano
         ~Nano.base
       
       
-        ~Nano.delta
-      
-      
         ~Nano.freqstr
       
       
@@ -51,9 +48,6 @@ pandas.tseries.offsets.Nano
       
       
         ~Nano.copy
-      
-      
-        ~Nano.is_anchored
       
       
         ~Nano.is_month_end

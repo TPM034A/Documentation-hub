@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="" />
 <meta name="description" content="Examples concerning the sklearn.linear_model module. Comparing Linear Bayesian Regressors Curve Fitting with Bayesian Ridge Regression Decision Boundaries of Multinomial and One-vs-Rest Logistic Re..." />
 
-    <title>Generalized Linear Models &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>Generalized Linear Models &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,48 +35,50 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/linear_model/index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/auto_examples/linear_model/index.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -85,21 +87,27 @@
     <link rel="prev" title="Probabilistic predictions with Gaussian process classification (GPC)" href="../gaussian_process/plot_gpc.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -125,7 +133,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -151,8 +159,8 @@
       
     
     
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -273,6 +281,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../about.html">
     About us
   </a>
@@ -300,11 +315,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -317,8 +339,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -481,6 +502,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../about.html">
     About us
   </a>
@@ -498,11 +526,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -515,8 +550,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -545,12 +579,22 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../release_highlights/index.html">Release Highlights</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_9_0.html">Release Highlights for scikit-learn 1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_8_0.html">Release Highlights for scikit-learn 1.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_7_0.html">Release Highlights for scikit-learn 1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_6_0.html">Release Highlights for scikit-learn 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_highlights/plot_release_highlights_1_5_0.html">Release Highlights for scikit-learn 1.5</a></li>
@@ -577,6 +621,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration.html">Probability calibration of classifiers</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../callbacks/index.html">Callbacks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_scoring_monitor.html">Analysis of the convergence of penalized logistic regression models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/plot_callback_support.html">Supporting callbacks in third party estimators</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_comparison.html">Classifier comparison</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classification/plot_lda_qda.html">Linear and Quadratic Discriminant Analysis with covariance ellipsoid</a></li>
@@ -590,7 +639,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_coin_ward_segmentation.html">A demo of structured Ward hierarchical clustering on an image of coins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_mean_shift.html">A demo of the mean-shift clustering algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_adjusted_for_chance_measures.html">Adjustment for chance in clustering performance evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering.html">Agglomerative clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_clustering_metrics.html">Agglomerative clustering with different metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_plusplus.html">An example of K-Means++ initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_bisect_kmeans.html">Bisecting K-Means and Regular K-Means Performance Comparison</a></li>
@@ -606,7 +654,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_kmeans_stability_low_dim_dense.html">Empirical evaluation of the impact of k-means initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_digits_agglomeration.html">Feature agglomeration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_feature_agglomeration_vs_univariate_selection.html">Feature agglomeration vs. univariate selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering: structured vs unstructured ward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering with and without structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_inductive_clustering.html">Inductive Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_dict_face_patches.html">Online learning of a dictionary of parts of faces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster/plot_agglomerative_dendrogram.html">Plot Hierarchical Clustering Dendrogram</a></li>
@@ -687,7 +735,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../applications/index.html">Examples based on real world datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_tomography_l1_reconstruction.html">Compressive sensing: tomography reconstruction with L1 prior (Lasso)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and SVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_face_recognition.html">Faces recognition example using eigenfaces and kernel approximation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_digits_denoising.html">Image denoising using kernel PCA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_time_series_lagged_features.html">Lagged features for time series forecasting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_model_complexity_influence.html">Model Complexity Influence</a></li>
@@ -698,7 +746,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_cyclical_feature_engineering.html">Time-related feature engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_topics_extraction_with_nmf_lda.html">Topic extraction with Non-negative Matrix Factorization and Latent Dirichlet Allocation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/plot_stock_market.html">Visualizing the stock market structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications/wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/plot_wikipedia_principal_eigenvector.html">Wikipedia principal eigenvector</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/index.html">Feature Selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -751,7 +799,6 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_lasso_model_selection.html">Lasso model selection: AIC-BIC / cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_lasso_dense_vs_sparse_data.html">Lasso on dense and sparse data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_lasso_lasso_lars_elasticnet_path.html">Lasso, Lasso-LARS, and Elastic Net paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_logistic.html">Logistic function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_sparse_logistic_regression_mnist.html">MNIST classification using multinomial logistic + L1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_sparse_logistic_regression_20newsgroups.html">Multiclass sparse logistic regression on 20newgroups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_nnls.html">Non-negative least squares</a></li>
@@ -776,6 +823,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../inspection/index.html">Inspection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_linear_model_coefficient_interpretation.html">Common pitfalls in the interpretation of coefficients of linear models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_causal_interpretation.html">Failure of Machine Learning to infer causal effects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inspection/plot_partial_dependence.html">Partial Dependence and Individual Conditional Expectation Plots</a></li>
@@ -797,9 +845,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../miscellaneous/index.html">Miscellaneous</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_partial_dependence_visualization_api.html">Advanced Plotting With Partial Dependence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_anomaly_comparison.html">Comparing anomaly detection algorithms for outlier detection on toy datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_kernel_ridge_regression.html">Comparison of kernel ridge regression and SVR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Developing Estimators Compliant with Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_pipeline_display.html">Displaying Pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_estimator_representation.html">Displaying estimators and complex pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_outlier_detection_bench.html">Evaluation of outlier detection estimators</a></li>
@@ -807,7 +855,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multioutput_face_completion.html">Face completion with a multi-output estimators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_set_output.html">Introducing the <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_isotonic_regression.html">Isotonic Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_metadata_routing.html">Metadata Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_multilabel.html">Multilabel classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_roc_curve_visualization_api.html">ROC Curve with Visualization API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../miscellaneous/plot_johnson_lindenstrauss_bound.html">The Johnson-Lindenstrauss bound for embedding with random projections</a></li>
@@ -824,11 +871,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_likelihood_ratios.html">Class Likelihood Ratios to measure classification performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_randomized_search.html">Comparing randomized search and grid search for hyperparameter estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_successive_halving_heatmap.html">Comparison between grid search and successive halving</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Confusion matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_grid_search_digits.html">Custom refit strategy of a grid search with cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_multi_metric_evaluation.html">Demonstration of multi-metric evaluation on cross_val_score and GridSearchCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_det.html">Detection error tradeoff (DET) curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_train_error_vs_test_error.html">Effect of model regularization on training and test error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_confusion_matrix.html">Evaluate the performance of a classifier with Confusion Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_roc.html">Multiclass Receiver Operating Characteristic (ROC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_nested_cross_validation_iris.html">Nested versus non-nested cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../model_selection/plot_cv_predict.html">Plotting Cross-Validated Predictions</a></li>
@@ -984,110 +1031,107 @@
   <section id="generalized-linear-models">
 <span id="linear-examples"></span><span id="sphx-glr-auto-examples-linear-model"></span><h1>Generalized Linear Models<a class="headerlink" href="#generalized-linear-models" title="Link to this heading">#</a></h1>
 <p>Examples concerning the <a class="reference internal" href="../../api/sklearn.linear_model.html#module-sklearn.linear_model" title="sklearn.linear_model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code></a> module.</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example compares two different bayesian regressors:"><img alt="" src="../../_images/sphx_glr_plot_ard_thumb.png" />
-<p><a class="reference internal" href="plot_ard.html#sphx-glr-auto-examples-linear-model-plot-ard-py"><span class="std std-ref">Comparing Linear Bayesian Regressors</span></a></p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example compares two different bayesian regressors:"><img alt="" src="../../_images/sphx_glr_plot_ard_thumb.png" />
+<p><a class="reference internal" href="plot_ard.html"><span class="doc">Comparing Linear Bayesian Regressors</span></a></p>
   <div class="sphx-glr-thumbnail-title">Comparing Linear Bayesian Regressors</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Computes a Bayesian Ridge Regression of Sinusoids."><img alt="" src="../../_images/sphx_glr_plot_bayesian_ridge_curvefit_thumb.png" />
-<p><a class="reference internal" href="plot_bayesian_ridge_curvefit.html#sphx-glr-auto-examples-linear-model-plot-bayesian-ridge-curvefit-py"><span class="std std-ref">Curve Fitting with Bayesian Ridge Regression</span></a></p>
+<p><a class="reference internal" href="plot_bayesian_ridge_curvefit.html"><span class="doc">Curve Fitting with Bayesian Ridge Regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Curve Fitting with Bayesian Ridge Regression</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example compares decision boundaries of multinomial and one-vs-rest logistic regression on a 2D dataset with three classes."><img alt="" src="../../_images/sphx_glr_plot_logistic_multinomial_thumb.png" />
-<p><a class="reference internal" href="plot_logistic_multinomial.html#sphx-glr-auto-examples-linear-model-plot-logistic-multinomial-py"><span class="std std-ref">Decision Boundaries of Multinomial and One-vs-Rest Logistic Regression</span></a></p>
+<p><a class="reference internal" href="plot_logistic_multinomial.html"><span class="doc">Decision Boundaries of Multinomial and One-vs-Rest Logistic Regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Decision Boundaries of Multinomial and One-vs-Rest Logistic Regression</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Stochastic Gradient Descent is an optimization technique which minimizes a loss function in a stochastic fashion, performing a gradient descent step sample by sample. In particular, it is a very efficient method to fit linear models."><img alt="" src="../../_images/sphx_glr_plot_sgd_early_stopping_thumb.png" />
-<p><a class="reference internal" href="plot_sgd_early_stopping.html#sphx-glr-auto-examples-linear-model-plot-sgd-early-stopping-py"><span class="std std-ref">Early stopping of Stochastic Gradient Descent</span></a></p>
+<p><a class="reference internal" href="plot_sgd_early_stopping.html"><span class="doc">Early stopping of Stochastic Gradient Descent</span></a></p>
   <div class="sphx-glr-thumbnail-title">Early stopping of Stochastic Gradient Descent</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="The following example shows how to precompute the gram matrix while using weighted samples with an ElasticNet."><img alt="" src="../../_images/sphx_glr_plot_elastic_net_precomputed_gram_matrix_with_weighted_samples_thumb.png" />
-<p><a class="reference internal" href="plot_elastic_net_precomputed_gram_matrix_with_weighted_samples.html#sphx-glr-auto-examples-linear-model-plot-elastic-net-precomputed-gram-matrix-with-weighted-samples-py"><span class="std std-ref">Fitting an Elastic Net with a precomputed Gram Matrix and Weighted Samples</span></a></p>
+<p><a class="reference internal" href="plot_elastic_net_precomputed_gram_matrix_with_weighted_samples.html"><span class="doc">Fitting an Elastic Net with a precomputed Gram Matrix and Weighted Samples</span></a></p>
   <div class="sphx-glr-thumbnail-title">Fitting an Elastic Net with a precomputed Gram Matrix and Weighted Samples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Fit Ridge and HuberRegressor on a dataset with outliers."><img alt="" src="../../_images/sphx_glr_plot_huber_vs_ridge_thumb.png" />
-<p><a class="reference internal" href="plot_huber_vs_ridge.html#sphx-glr-auto-examples-linear-model-plot-huber-vs-ridge-py"><span class="std std-ref">HuberRegressor vs Ridge on dataset with strong outliers</span></a></p>
+<p><a class="reference internal" href="plot_huber_vs_ridge.html"><span class="doc">HuberRegressor vs Ridge on dataset with strong outliers</span></a></p>
   <div class="sphx-glr-thumbnail-title">HuberRegressor vs Ridge on dataset with strong outliers</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="The multi-task lasso allows to fit multiple regression problems jointly enforcing the selected features to be the same across tasks. This example simulates sequential measurements, each task is a time instant, and the relevant features vary in amplitude over time while being the same. The multi-task lasso imposes that features that are selected at one time point are select for all time point. This makes feature selection by the Lasso more stable."><img alt="" src="../../_images/sphx_glr_plot_multi_task_lasso_support_thumb.png" />
-<p><a class="reference internal" href="plot_multi_task_lasso_support.html#sphx-glr-auto-examples-linear-model-plot-multi-task-lasso-support-py"><span class="std std-ref">Joint feature selection with multi-task Lasso</span></a></p>
+<p><a class="reference internal" href="plot_multi_task_lasso_support.html"><span class="doc">Joint feature selection with multi-task Lasso</span></a></p>
   <div class="sphx-glr-thumbnail-title">Joint feature selection with multi-task Lasso</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Comparison of the sparsity (percentage of zero coefficients) of solutions when L1, L2 and Elastic-Net penalty are used for different values of C. We can see that large values of C give more freedom to the model.  Conversely, smaller values of C constrain the model more. In the L1 penalty case, this leads to sparser solutions. As expected, the Elastic-Net penalty sparsity is between that of L1 and L2."><img alt="" src="../../_images/sphx_glr_plot_logistic_l1_l2_sparsity_thumb.png" />
-<p><a class="reference internal" href="plot_logistic_l1_l2_sparsity.html#sphx-glr-auto-examples-linear-model-plot-logistic-l1-l2-sparsity-py"><span class="std std-ref">L1 Penalty and Sparsity in Logistic Regression</span></a></p>
+<p><a class="reference internal" href="plot_logistic_l1_l2_sparsity.html"><span class="doc">L1 Penalty and Sparsity in Logistic Regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">L1 Penalty and Sparsity in Logistic Regression</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The present example compares three l1-based regression models on a synthetic signal obtained from sparse and correlated features that are further corrupted with additive gaussian noise:"><img alt="" src="../../_images/sphx_glr_plot_lasso_and_elasticnet_thumb.png" />
-<p><a class="reference internal" href="plot_lasso_and_elasticnet.html#sphx-glr-auto-examples-linear-model-plot-lasso-and-elasticnet-py"><span class="std std-ref">L1-based models for Sparse Signals</span></a></p>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The present example compares three l1-based regression models on a synthetic signal obtained from sparse and correlated features that are further corrupted with additive Gaussian noise:"><img alt="" src="../../_images/sphx_glr_plot_lasso_and_elasticnet_thumb.png" />
+<p><a class="reference internal" href="plot_lasso_and_elasticnet.html"><span class="doc">L1-based models for Sparse Signals</span></a></p>
   <div class="sphx-glr-thumbnail-title">L1-based models for Sparse Signals</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example reproduces the example of Fig. 2 of [ZHT2007]_. A LassoLarsIC estimator is fit on a diabetes dataset and the AIC and the BIC criteria are used to select the best model."><img alt="" src="../../_images/sphx_glr_plot_lasso_lars_ic_thumb.png" />
-<p><a class="reference internal" href="plot_lasso_lars_ic.html#sphx-glr-auto-examples-linear-model-plot-lasso-lars-ic-py"><span class="std std-ref">Lasso model selection via information criteria</span></a></p>
+<p><a class="reference internal" href="plot_lasso_lars_ic.html"><span class="doc">Lasso model selection via information criteria</span></a></p>
   <div class="sphx-glr-thumbnail-title">Lasso model selection via information criteria</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example focuses on model selection for Lasso models that are linear models with an L1 penalty for regression problems."><img alt="" src="../../_images/sphx_glr_plot_lasso_model_selection_thumb.png" />
-<p><a class="reference internal" href="plot_lasso_model_selection.html#sphx-glr-auto-examples-linear-model-plot-lasso-model-selection-py"><span class="std std-ref">Lasso model selection: AIC-BIC / cross-validation</span></a></p>
+<p><a class="reference internal" href="plot_lasso_model_selection.html"><span class="doc">Lasso model selection: AIC-BIC / cross-validation</span></a></p>
   <div class="sphx-glr-thumbnail-title">Lasso model selection: AIC-BIC / cross-validation</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="We show that linear_model.Lasso provides the same results for dense and sparse data and that in the case of sparse data the speed is improved."><img alt="" src="../../_images/sphx_glr_plot_lasso_dense_vs_sparse_data_thumb.png" />
-<p><a class="reference internal" href="plot_lasso_dense_vs_sparse_data.html#sphx-glr-auto-examples-linear-model-plot-lasso-dense-vs-sparse-data-py"><span class="std std-ref">Lasso on dense and sparse data</span></a></p>
+<p><a class="reference internal" href="plot_lasso_dense_vs_sparse_data.html"><span class="doc">Lasso on dense and sparse data</span></a></p>
   <div class="sphx-glr-thumbnail-title">Lasso on dense and sparse data</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to compute the &quot;paths&quot; of coefficients along the Lasso, Lasso-LARS, and Elastic Net regularization paths. In other words, it shows the relationship between the regularization parameter (alpha) and the coefficients."><img alt="" src="../../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_thumb.png" />
-<p><a class="reference internal" href="plot_lasso_lasso_lars_elasticnet_path.html#sphx-glr-auto-examples-linear-model-plot-lasso-lasso-lars-elasticnet-path-py"><span class="std std-ref">Lasso, Lasso-LARS, and Elastic Net paths</span></a></p>
+<p><a class="reference internal" href="plot_lasso_lasso_lars_elasticnet_path.html"><span class="doc">Lasso, Lasso-LARS, and Elastic Net paths</span></a></p>
   <div class="sphx-glr-thumbnail-title">Lasso, Lasso-LARS, and Elastic Net paths</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Shown in the plot is how the logistic regression would, in this synthetic dataset, classify values as either 0 or 1, i.e. class one or two, using the logistic curve."><img alt="" src="../../_images/sphx_glr_plot_logistic_thumb.png" />
-<p><a class="reference internal" href="plot_logistic.html#sphx-glr-auto-examples-linear-model-plot-logistic-py"><span class="std std-ref">Logistic function</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Logistic function</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Here we fit a multinomial logistic regression with L1 penalty on a subset of the MNIST digits classification task. We use the SAGA algorithm for this purpose: this a solver that is fast when the number of samples is significantly larger than the number of features and is able to finely optimize non-smooth objective functions which is the case with the l1-penalty. Test accuracy reaches &gt; 0.8, while weight vectors remains sparse and therefore more easily interpretable."><img alt="" src="../../_images/sphx_glr_plot_sparse_logistic_regression_mnist_thumb.png" />
-<p><a class="reference internal" href="plot_sparse_logistic_regression_mnist.html#sphx-glr-auto-examples-linear-model-plot-sparse-logistic-regression-mnist-py"><span class="std std-ref">MNIST classification using multinomial logistic + L1</span></a></p>
+<p><a class="reference internal" href="plot_sparse_logistic_regression_mnist.html"><span class="doc">MNIST classification using multinomial logistic + L1</span></a></p>
   <div class="sphx-glr-thumbnail-title">MNIST classification using multinomial logistic + L1</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Comparison of multinomial logistic L1 vs one-versus-rest L1 logistic regression to classify documents from the newgroups20 dataset. Multinomial logistic regression yields more accurate results and is faster to train on the larger scale dataset."><img alt="" src="../../_images/sphx_glr_plot_sparse_logistic_regression_20newsgroups_thumb.png" />
-<p><a class="reference internal" href="plot_sparse_logistic_regression_20newsgroups.html#sphx-glr-auto-examples-linear-model-plot-sparse-logistic-regression-20newsgroups-py"><span class="std std-ref">Multiclass sparse logistic regression on 20newgroups</span></a></p>
+<p><a class="reference internal" href="plot_sparse_logistic_regression_20newsgroups.html"><span class="doc">Multiclass sparse logistic regression on 20newgroups</span></a></p>
   <div class="sphx-glr-thumbnail-title">Multiclass sparse logistic regression on 20newgroups</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we fit a linear model with positive constraints on the regression coefficients and compare the estimated coefficients to a classic linear regression."><img alt="" src="../../_images/sphx_glr_plot_nnls_thumb.png" />
-<p><a class="reference internal" href="plot_nnls.html#sphx-glr-auto-examples-linear-model-plot-nnls-py"><span class="std std-ref">Non-negative least squares</span></a></p>
+<p><a class="reference internal" href="plot_nnls.html"><span class="doc">Non-negative least squares</span></a></p>
   <div class="sphx-glr-thumbnail-title">Non-negative least squares</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to approximate the solution of sklearn.svm.OneClassSVM in the case of an RBF kernel with sklearn.linear_model.SGDOneClassSVM, a Stochastic Gradient Descent (SGD) version of the One-Class SVM. A kernel approximation is first used in order to apply sklearn.linear_model.SGDOneClassSVM which implements a linear One-Class SVM using SGD."><img alt="" src="../../_images/sphx_glr_plot_sgdocsvm_vs_ocsvm_thumb.png" />
-<p><a class="reference internal" href="plot_sgdocsvm_vs_ocsvm.html#sphx-glr-auto-examples-linear-model-plot-sgdocsvm-vs-ocsvm-py"><span class="std std-ref">One-Class SVM versus One-Class SVM using Stochastic Gradient Descent</span></a></p>
+<p><a class="reference internal" href="plot_sgdocsvm_vs_ocsvm.html"><span class="doc">One-Class SVM versus One-Class SVM using Stochastic Gradient Descent</span></a></p>
   <div class="sphx-glr-thumbnail-title">One-Class SVM versus One-Class SVM using Stochastic Gradient Descent</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="1. Ordinary Least Squares:    We illustrate how to use the ordinary least squares (OLS) model,    LinearRegression, on a single feature of    the diabetes dataset. We train on a subset of the data, evaluate on a    test set, and visualize the predictions."><img alt="" src="../../_images/sphx_glr_plot_ols_ridge_thumb.png" />
-<p><a class="reference internal" href="plot_ols_ridge.html#sphx-glr-auto-examples-linear-model-plot-ols-ridge-py"><span class="std std-ref">Ordinary Least Squares and Ridge Regression</span></a></p>
+<p><a class="reference internal" href="plot_ols_ridge.html"><span class="doc">Ordinary Least Squares and Ridge Regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Ordinary Least Squares and Ridge Regression</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Using orthogonal matching pursuit for recovering a sparse signal from a noisy measurement encoded with a dictionary"><img alt="" src="../../_images/sphx_glr_plot_omp_thumb.png" />
-<p><a class="reference internal" href="plot_omp.html#sphx-glr-auto-examples-linear-model-plot-omp-py"><span class="std std-ref">Orthogonal Matching Pursuit</span></a></p>
+<p><a class="reference internal" href="plot_omp.html"><span class="doc">Orthogonal Matching Pursuit</span></a></p>
   <div class="sphx-glr-thumbnail-title">Orthogonal Matching Pursuit</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Shows the effect of collinearity in the coefficients of an estimator."><img alt="" src="../../_images/sphx_glr_plot_ridge_path_thumb.png" />
-<p><a class="reference internal" href="plot_ridge_path.html#sphx-glr-auto-examples-linear-model-plot-ridge-path-py"><span class="std std-ref">Plot Ridge coefficients as a function of the regularization</span></a></p>
+<p><a class="reference internal" href="plot_ridge_path.html"><span class="doc">Plot Ridge coefficients as a function of the regularization</span></a></p>
   <div class="sphx-glr-thumbnail-title">Plot Ridge coefficients as a function of the regularization</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Plot decision surface of multi-class SGD on iris dataset. The hyperplanes corresponding to the three one-versus-all (OVA) classifiers are represented by the dashed lines."><img alt="" src="../../_images/sphx_glr_plot_sgd_iris_thumb.png" />
-<p><a class="reference internal" href="plot_sgd_iris.html#sphx-glr-auto-examples-linear-model-plot-sgd-iris-py"><span class="std std-ref">Plot multi-class SGD on the iris dataset</span></a></p>
+<p><a class="reference internal" href="plot_sgd_iris.html"><span class="doc">Plot multi-class SGD on the iris dataset</span></a></p>
   <div class="sphx-glr-thumbnail-title">Plot multi-class SGD on the iris dataset</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of log-linear Poisson regression on the French Motor Third-Party Liability Claims dataset from [1]_ and compares it with a linear model fitted with the usual least squared error and a non-linear GBRT model fitted with the Poisson loss (and a log-link)."><img alt="" src="../../_images/sphx_glr_plot_poisson_regression_non_normal_loss_thumb.png" />
-<p><a class="reference internal" href="plot_poisson_regression_non_normal_loss.html#sphx-glr-auto-examples-linear-model-plot-poisson-regression-non-normal-loss-py"><span class="std std-ref">Poisson regression and non-normal loss</span></a></p>
+<p><a class="reference internal" href="plot_poisson_regression_non_normal_loss.html"><span class="doc">Poisson regression and non-normal loss</span></a></p>
   <div class="sphx-glr-thumbnail-title">Poisson regression and non-normal loss</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to approximate a function with polynomials up to degree degree by using ridge regression. We show two different ways given n_samples of 1d points x_i:"><img alt="" src="../../_images/sphx_glr_plot_polynomial_interpolation_thumb.png" />
-<p><a class="reference internal" href="plot_polynomial_interpolation.html#sphx-glr-auto-examples-linear-model-plot-polynomial-interpolation-py"><span class="std std-ref">Polynomial and Spline interpolation</span></a></p>
+<p><a class="reference internal" href="plot_polynomial_interpolation.html"><span class="doc">Polynomial and Spline interpolation</span></a></p>
   <div class="sphx-glr-thumbnail-title">Polynomial and Spline interpolation</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how quantile regression can predict non-trivial conditional quantiles."><img alt="" src="../../_images/sphx_glr_plot_quantile_regression_thumb.png" />
-<p><a class="reference internal" href="plot_quantile_regression.html#sphx-glr-auto-examples-linear-model-plot-quantile-regression-py"><span class="std std-ref">Quantile regression</span></a></p>
+<p><a class="reference internal" href="plot_quantile_regression.html"><span class="doc">Quantile regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Quantile regression</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip=" Train l1-penalized logistic regression models on a binary classification problem derived from the Iris dataset."><img alt="" src="../../_images/sphx_glr_plot_logistic_path_thumb.png" />
-<p><a class="reference internal" href="plot_logistic_path.html#sphx-glr-auto-examples-linear-model-plot-logistic-path-py"><span class="std std-ref">Regularization path of L1- Logistic Regression</span></a></p>
+<p><a class="reference internal" href="plot_logistic_path.html"><span class="doc">Regularization path of L1- Logistic Regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Regularization path of L1- Logistic Regression</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="A model that overfits learns the training data too well, capturing both the underlying patterns and the noise in the data. However, when applied to unseen data, the learned associations may not hold. We normally detect this when we apply our trained predictions to the test data and see the statistical performance drop significantly compared to the training data."><img alt="" src="../../_images/sphx_glr_plot_ridge_coeffs_thumb.png" />
-<p><a class="reference internal" href="plot_ridge_coeffs.html#sphx-glr-auto-examples-linear-model-plot-ridge-coeffs-py"><span class="std std-ref">Ridge coefficients as a function of the L2 Regularization</span></a></p>
+<p><a class="reference internal" href="plot_ridge_coeffs.html"><span class="doc">Ridge coefficients as a function of the L2 Regularization</span></a></p>
   <div class="sphx-glr-thumbnail-title">Ridge coefficients as a function of the L2 Regularization</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Here a sine function is fit with a polynomial of order 3, for values close to zero."><img alt="" src="../../_images/sphx_glr_plot_robust_fit_thumb.png" />
-<p><a class="reference internal" href="plot_robust_fit.html#sphx-glr-auto-examples-linear-model-plot-robust-fit-py"><span class="std std-ref">Robust linear estimator fitting</span></a></p>
+<p><a class="reference internal" href="plot_robust_fit.html"><span class="doc">Robust linear estimator fitting</span></a></p>
   <div class="sphx-glr-thumbnail-title">Robust linear estimator fitting</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we see how to robustly fit a linear model to faulty data using the ransac_regression algorithm."><img alt="" src="../../_images/sphx_glr_plot_ransac_thumb.png" />
-<p><a class="reference internal" href="plot_ransac.html#sphx-glr-auto-examples-linear-model-plot-ransac-py"><span class="std std-ref">Robust linear model estimation using RANSAC</span></a></p>
+<p><a class="reference internal" href="plot_ransac.html"><span class="doc">Robust linear model estimation using RANSAC</span></a></p>
   <div class="sphx-glr-thumbnail-title">Robust linear model estimation using RANSAC</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Plot the maximum margin separating hyperplane within a two-class separable dataset using a linear Support Vector Machines classifier trained using SGD."><img alt="" src="../../_images/sphx_glr_plot_sgd_separating_hyperplane_thumb.png" />
-<p><a class="reference internal" href="plot_sgd_separating_hyperplane.html#sphx-glr-auto-examples-linear-model-plot-sgd-separating-hyperplane-py"><span class="std std-ref">SGD: Maximum margin separating hyperplane</span></a></p>
+<p><a class="reference internal" href="plot_sgd_separating_hyperplane.html"><span class="doc">SGD: Maximum margin separating hyperplane</span></a></p>
   <div class="sphx-glr-thumbnail-title">SGD: Maximum margin separating hyperplane</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Contours of where the penalty is equal to 1 for the three penalties L1, L2 and elastic-net."><img alt="" src="../../_images/sphx_glr_plot_sgd_penalties_thumb.png" />
-<p><a class="reference internal" href="plot_sgd_penalties.html#sphx-glr-auto-examples-linear-model-plot-sgd-penalties-py"><span class="std std-ref">SGD: Penalties</span></a></p>
+<p><a class="reference internal" href="plot_sgd_penalties.html"><span class="doc">SGD: Penalties</span></a></p>
   <div class="sphx-glr-thumbnail-title">SGD: Penalties</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Plot decision function of a weighted dataset, where the size of points is proportional to its weight."><img alt="" src="../../_images/sphx_glr_plot_sgd_weighted_samples_thumb.png" />
-<p><a class="reference internal" href="plot_sgd_weighted_samples.html#sphx-glr-auto-examples-linear-model-plot-sgd-weighted-samples-py"><span class="std std-ref">SGD: Weighted samples</span></a></p>
+<p><a class="reference internal" href="plot_sgd_weighted_samples.html"><span class="doc">SGD: Weighted samples</span></a></p>
   <div class="sphx-glr-thumbnail-title">SGD: Weighted samples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="A plot that compares the various convex loss functions supported by SGDClassifier ."><img alt="" src="../../_images/sphx_glr_plot_sgd_loss_functions_thumb.png" />
-<p><a class="reference internal" href="plot_sgd_loss_functions.html#sphx-glr-auto-examples-linear-model-plot-sgd-loss-functions-py"><span class="std std-ref">SGD: convex loss functions</span></a></p>
+<p><a class="reference internal" href="plot_sgd_loss_functions.html"><span class="doc">SGD: convex loss functions</span></a></p>
   <div class="sphx-glr-thumbnail-title">SGD: convex loss functions</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Computes a Theil-Sen Regression on a synthetic dataset."><img alt="" src="../../_images/sphx_glr_plot_theilsen_thumb.png" />
-<p><a class="reference internal" href="plot_theilsen.html#sphx-glr-auto-examples-linear-model-plot-theilsen-py"><span class="std std-ref">Theil-Sen Regression</span></a></p>
+<p><a class="reference internal" href="plot_theilsen.html"><span class="doc">Theil-Sen Regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Theil-Sen Regression</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of Poisson, Gamma and Tweedie regression on the French Motor Third-Party Liability Claims dataset, and is inspired by an R tutorial [1]_."><img alt="" src="../../_images/sphx_glr_plot_tweedie_regression_insurance_claims_thumb.png" />
-<p><a class="reference internal" href="plot_tweedie_regression_insurance_claims.html#sphx-glr-auto-examples-linear-model-plot-tweedie-regression-insurance-claims-py"><span class="std std-ref">Tweedie regression on insurance claims</span></a></p>
+<p><a class="reference internal" href="plot_tweedie_regression_insurance_claims.html"><span class="doc">Tweedie regression on insurance claims</span></a></p>
   <div class="sphx-glr-thumbnail-title">Tweedie regression on insurance claims</div>
 </div></div><div class="toctree-wrapper compound">
 </div>
@@ -1143,8 +1187,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1155,7 +1199,7 @@
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

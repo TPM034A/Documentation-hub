@@ -11,12 +11,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-learn/stable/modules/linear_model.html" />
 <meta property="og:site_name" content="scikit-learn" />
-<meta property="og:description" content="The following are a set of methods intended for regression in which the target value is expected to be a linear combination of the features. In mathematical notation, if\hat{y} is the predicted val..." />
+<meta property="og:description" content="The following are a set of methods intended for regression in which the target value is expected to be a linear combination of the features. In mathematical notation, the predicted value\hat{y} can..." />
 <meta property="og:image" content="https://scikit-learn/stable/_images/sphx_glr_plot_ols_ridge_001.png" />
 <meta property="og:image:alt" content="scikit-learn" />
-<meta name="description" content="The following are a set of methods intended for regression in which the target value is expected to be a linear combination of the features. In mathematical notation, if\hat{y} is the predicted val..." />
+<meta name="description" content="The following are a set of methods intended for regression in which the target value is expected to be a linear combination of the features. In mathematical notation, the predicted value\hat{y} can..." />
 
-    <title>1.1. Linear Models &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>1.1. Linear Models &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,48 +35,51 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules/linear_model';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/modules/linear_model.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -85,21 +88,27 @@
     <link rel="prev" title="1. Supervised learning" href="../supervised_learning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -125,7 +134,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -151,8 +160,8 @@
       
     
     
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -273,6 +282,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../about.html">
     About us
   </a>
@@ -300,11 +316,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -317,8 +340,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -485,6 +507,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../about.html">
     About us
   </a>
@@ -502,11 +531,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -519,8 +555,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -549,7 +584,15 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
@@ -601,39 +644,41 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualizations.html">6. Visualizations</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">7. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="compose.html">7.1. Pipelines and composite estimators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_extraction.html">7.2. Feature extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">7.3. Preprocessing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="impute.html">7.4. Imputation of missing values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">7.5. Unsupervised dimensionality reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="random_projection.html">7.6. Random Projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">7.7. Kernel Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metrics.html">7.8. Pairwise metrics, Affinities and Kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">7.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks.html">7. Callbacks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">8. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="compose.html">8.1. Pipelines and composite estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction.html">8.2. Feature extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">8.3. Preprocessing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impute.html">8.4. Imputation of missing values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">8.5. Unsupervised dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random_projection.html">8.6. Random Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">8.7. Kernel Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">8.8. Pairwise metrics, Affinities and Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">8.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">8. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">8.1. Toy datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">8.2. Real world datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">8.3. Generated datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">8.4. Loading other datasets</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">9. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">9.1. Toy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">9.2. Real world datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">9.3. Generated datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">9.4. Loading other datasets</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">9. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">9.1. Strategies to scale computationally: bigger data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">9.2. Computational Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">9.3. Parallelism, resource management, and configuration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">10. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">10.1. Strategies to scale computationally: bigger data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">10.2. Computational Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">10.3. Parallelism and resource management</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">10. Model persistence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">11. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dispatching.html">12. Dispatching</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="array_api.html">12.1. Array API support (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">11. Model persistence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">12. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_interoperability.html">13. Data Interoperability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="df_output_transform.html">13.1. Pandas/Polars Output for Transformers with <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_api.html">13.2. Array API support (experimental)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">13. Choosing the right estimator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../presentations.html">14. External Resources, Videos and Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">14. Choosing the right estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../presentations.html">15. External Resources, Videos and Talks</a></li>
 </ul>
 </div>
 </nav></div>
@@ -694,8 +739,8 @@
 <span id="linear-model"></span><h1><span class="section-number">1.1. </span>Linear Models<a class="headerlink" href="#linear-models" title="Link to this heading">#</a></h1>
 <p>The following are a set of methods intended for regression in which
 the target value is expected to be a linear combination of the features.
-In mathematical notation, if <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted
-value.</p>
+In mathematical notation, the predicted value <span class="math notranslate nohighlight">\(\hat{y}\)</span> can be
+written as:</p>
 <div class="math notranslate nohighlight">
 \[\hat{y}(w, x) = w_0 + w_1 x_1 + ... + w_p x_p\]</div>
 <p>Across the module, we designate the vector <span class="math notranslate nohighlight">\(w = (w_1,
@@ -712,7 +757,7 @@ solves a problem of the form:</p>
 <div class="math notranslate nohighlight">
 \[\min_{w} || X w - y||_2^2\]</div>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_ols_ridge.html"><img alt="../_images/sphx_glr_plot_ols_ridge_001.png" src="../_images/sphx_glr_plot_ols_ridge_001.png" style="width: 500.0px; height: 250.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_ols_ridge.html"><img alt="../_images/sphx_glr_plot_ols_ridge_001.png" height="250" src="../_images/sphx_glr_plot_ols_ridge_001.png" width="500" />
 </a>
 </figure>
 <p><a class="reference internal" href="generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a> takes in its <code class="docutils literal notranslate"><span class="pre">fit</span></code> method arguments <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>,
@@ -775,7 +820,7 @@ of squares:</p>
 of shrinkage: the larger the value of <span class="math notranslate nohighlight">\(\alpha\)</span>, the greater the amount
 of shrinkage and thus the coefficients become more robust to collinearity.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_ridge_path.html"><img alt="../_images/sphx_glr_plot_ridge_path_001.png" src="../_images/sphx_glr_plot_ridge_path_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_ridge_path.html"><img alt="../_images/sphx_glr_plot_ridge_path_001.png" height="240" src="../_images/sphx_glr_plot_ridge_path_001.png" width="320" />
 </a>
 </figure>
 <p>As with other linear models, <a class="reference internal" href="generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ridge</span></code></a> will take in its <code class="docutils literal notranslate"><span class="pre">fit</span></code> method
@@ -819,6 +864,7 @@ the corresponding solver is chosen.</p>
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_ols_ridge.html#sphx-glr-auto-examples-linear-model-plot-ols-ridge-py"><span class="std std-ref">Ordinary Least Squares and Ridge Regression</span></a></p></li>
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_ridge_path.html#sphx-glr-auto-examples-linear-model-plot-ridge-path-py"><span class="std std-ref">Plot Ridge coefficients as a function of the regularization</span></a></p></li>
 <li><p><a class="reference internal" href="../auto_examples/inspection/plot_linear_model_coefficient_interpretation.html#sphx-glr-auto-examples-inspection-plot-linear-model-coefficient-interpretation-py"><span class="std std-ref">Common pitfalls in the interpretation of coefficients of linear models</span></a></p></li>
+<li><p><a class="reference internal" href="../auto_examples/linear_model/plot_ridge_coeffs.html#sphx-glr-auto-examples-linear-model-plot-ridge-coeffs-py"><span class="std std-ref">Ridge coefficients as a function of the L2 Regularization</span></a></p></li>
 </ul>
 </section>
 <section id="classification">
@@ -865,11 +911,11 @@ formulation used to calculate Leave-One-Out error. See <a class="reference inter
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">linear_model</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="go">RidgeCV(alphas=array([1.e-06, 1.e-05, 1.e-04, 1.e-03, 1.e-02, 1.e-01, 1.e+00, 1.e+01,</span>
 <span class="go">      1.e+02, 1.e+03, 1.e+04, 1.e+05, 1.e+06]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">alpha_</span>
-<span class="go">np.float64(0.01)</span>
+<span class="go">np.float64(0.1)</span>
 </pre></div>
 </div>
 <p>Specifying the value of the <a class="reference internal" href="../glossary.html#term-cv"><span class="xref std std-term">cv</span></a> attribute will trigger the use of
@@ -891,22 +937,21 @@ Cross-Validation.</p>
 </section>
 <section id="lasso">
 <span id="id4"></span><h2><span class="section-number">1.1.3. </span>Lasso<a class="headerlink" href="#lasso" title="Link to this heading">#</a></h2>
-<p>The <a class="reference internal" href="generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lasso</span></code></a> is a linear model that estimates sparse coefficients.
+<p>The <a class="reference internal" href="generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lasso</span></code></a> is a linear model that estimates sparse coefficients, i.e., it is
+able to set coefficients exactly to zero.
 It is useful in some contexts due to its tendency to prefer solutions
 with fewer non-zero coefficients, effectively reducing the number of
 features upon which the given solution is dependent. For this reason,
 Lasso and its variants are fundamental to the field of compressed sensing.
-Under certain conditions, it can recover the exact set of non-zero
-coefficients (see
+Under certain conditions, it can recover the exact set of non-zero coefficients (see
 <a class="reference internal" href="../auto_examples/applications/plot_tomography_l1_reconstruction.html#sphx-glr-auto-examples-applications-plot-tomography-l1-reconstruction-py"><span class="std std-ref">Compressive sensing: tomography reconstruction with L1 prior (Lasso)</span></a>).</p>
 <p>Mathematically, it consists of a linear model with an added regularization term.
 The objective function to minimize is:</p>
 <div class="math notranslate nohighlight">
-\[\min_{w} { \frac{1}{2n_{\text{samples}}} ||X w - y||_2 ^ 2 + \alpha ||w||_1}\]</div>
-<p>The lasso estimate thus solves the minimization of the
-least-squares penalty with <span class="math notranslate nohighlight">\(\alpha ||w||_1\)</span> added, where
-<span class="math notranslate nohighlight">\(\alpha\)</span> is a constant and <span class="math notranslate nohighlight">\(||w||_1\)</span> is the <span class="math notranslate nohighlight">\(\ell_1\)</span>-norm of
-the coefficient vector.</p>
+\[\min_{w} P(w) = {\frac{1}{2n_{\text{samples}}} ||X w - y||_2 ^ 2 + \alpha ||w||_1}\]</div>
+<p>The lasso estimate thus solves the least-squares with added penalty
+<span class="math notranslate nohighlight">\(\alpha ||w||_1\)</span>, where <span class="math notranslate nohighlight">\(\alpha\)</span> is a constant and <span class="math notranslate nohighlight">\(||w||_1\)</span> is the
+<span class="math notranslate nohighlight">\(\ell_1\)</span>-norm of the coefficient vector.</p>
 <p>The implementation in the class <a class="reference internal" href="generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lasso</span></code></a> uses coordinate descent as
 the algorithm to fit the coefficients. See <a class="reference internal" href="#least-angle-regression"><span class="std std-ref">Least Angle Regression</span></a>
 for another implementation:</p>
@@ -925,6 +970,7 @@ computes the coefficients along the full path of possible values.</p>
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_lasso_and_elasticnet.html#sphx-glr-auto-examples-linear-model-plot-lasso-and-elasticnet-py"><span class="std std-ref">L1-based models for Sparse Signals</span></a></p></li>
 <li><p><a class="reference internal" href="../auto_examples/applications/plot_tomography_l1_reconstruction.html#sphx-glr-auto-examples-applications-plot-tomography-l1-reconstruction-py"><span class="std std-ref">Compressive sensing: tomography reconstruction with L1 prior (Lasso)</span></a></p></li>
 <li><p><a class="reference internal" href="../auto_examples/inspection/plot_linear_model_coefficient_interpretation.html#sphx-glr-auto-examples-inspection-plot-linear-model-coefficient-interpretation-py"><span class="std std-ref">Common pitfalls in the interpretation of coefficients of linear models</span></a></p></li>
+<li><p><a class="reference internal" href="../auto_examples/linear_model/plot_lasso_model_selection.html#sphx-glr-auto-examples-linear-model-plot-lasso-model-selection-py"><span class="std std-ref">Lasso model selection: AIC-BIC / cross-validation</span></a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -936,24 +982,86 @@ thus be used to perform feature selection, as detailed in
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-2">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">References<a class="headerlink" href="#references-2" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">The following two references explain the iterations
-used in the coordinate descent solver of scikit-learn, as well as
-the duality gap computation used for convergence control.</p>
+<p class="sd-card-text">The following references explain the origin of the Lasso as well as properties
+of the Lasso problem and the duality gap computation used for convergence control.</p>
 <ul class="simple">
-<li><p class="sd-card-text">“Regularization Path For Generalized linear Models by Coordinate Descent”,
-Friedman, Hastie &amp; Tibshirani, J Stat Softw, 2010 (<a class="reference external" href="https://www.jstatsoft.org/article/view/v033i01/v33i01.pdf">Paper</a>).</p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://doi.org/10.1111/j.2517-6161.1996.tb02080.x">Robert Tibshirani. (1996) Regression Shrinkage and Selection Via the Lasso.
+J. R. Stat. Soc. Ser. B Stat. Methodol., 58(1):267-288</a></p></li>
 <li><p class="sd-card-text">“An Interior-Point Method for Large-Scale L1-Regularized Least Squares,”
 S. J. Kim, K. Koh, M. Lustig, S. Boyd and D. Gorinevsky,
 in IEEE Journal of Selected Topics in Signal Processing, 2007
 (<a class="reference external" href="https://web.stanford.edu/~boyd/papers/pdf/l1_ls.pdf">Paper</a>)</p></li>
 </ul>
 </div>
-</details><section id="setting-regularization-parameter">
-<h3><span class="section-number">1.1.3.1. </span>Setting regularization parameter<a class="headerlink" href="#setting-regularization-parameter" title="Link to this heading">#</a></h3>
+</details><section id="coordinate-descent-with-gap-safe-screening-rules">
+<span id="coordinate-descent"></span><h3><span class="section-number">1.1.3.1. </span>Coordinate Descent with Gap Safe Screening Rules<a class="headerlink" href="#coordinate-descent-with-gap-safe-screening-rules" title="Link to this heading">#</a></h3>
+<p>Coordinate descent (CD) is a strategy to solve a minimization problem that considers a
+single feature <span class="math notranslate nohighlight">\(j\)</span> at a time. This way, the optimization problem is reduced to a
+1-dimensional problem which is easier to solve:</p>
+<div class="math notranslate nohighlight">
+\[\min_{w_j} {\frac{1}{2n_{\text{samples}}} ||x_j w_j + X_{-j}w_{-j} - y||_2 ^ 2 + \alpha |w_j|}\]</div>
+<p>with index <span class="math notranslate nohighlight">\(-j\)</span> meaning all features but <span class="math notranslate nohighlight">\(j\)</span>. The solution is</p>
+<div class="math notranslate nohighlight">
+\[w_j = \frac{S(x_j^T (y - X_{-j}w_{-j}), \alpha)}{||x_j||_2^2}\]</div>
+<p>with the soft-thresholding function
+<span class="math notranslate nohighlight">\(S(z, \alpha) = \operatorname{sign}(z) \max(0, |z|-\alpha)\)</span>.
+Note that the soft-thresholding function is exactly zero whenever
+<span class="math notranslate nohighlight">\(\alpha \geq |z|\)</span>.
+The CD solver then loops over the features either in a cycle, picking one feature after
+the other in the order given by <code class="docutils literal notranslate"><span class="pre">X</span></code> (<code class="docutils literal notranslate"><span class="pre">selection=&quot;cyclic&quot;</span></code>), or by randomly picking
+features (<code class="docutils literal notranslate"><span class="pre">selection=&quot;random&quot;</span></code>).
+It stops if the duality gap is smaller than the provided tolerance <code class="docutils literal notranslate"><span class="pre">tol</span></code>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The duality gap <span class="math notranslate nohighlight">\(G(w, v)\)</span> is an upper bound of the difference between the
+current primal objective function of the Lasso, <span class="math notranslate nohighlight">\(P(w)\)</span>, and its minimum
+<span class="math notranslate nohighlight">\(P(w^\star)\)</span>, i.e. <span class="math notranslate nohighlight">\(G(w, v) \geq P(w) - P(w^\star)\)</span>. It is given by
+<span class="math notranslate nohighlight">\(G(w, v) = P(w) - D(v)\)</span> with dual objective function</p>
+<div class="math notranslate nohighlight">
+\[D(v) = \frac{1}{2n_{\text{samples}}}(y^Tv - ||v||_2^2)\]</div>
+<p class="sd-card-text">subject to <span class="math notranslate nohighlight">\(v \in ||X^Tv||_{\infty} \leq n_{\text{samples}}\alpha\)</span>.
+At optimum, the duality gap is zero, <span class="math notranslate nohighlight">\(G(w^\star, v^\star) = 0\)</span> (a property
+called strong duality).
+With (scaled) dual variable <span class="math notranslate nohighlight">\(v = c r\)</span>, current residual <span class="math notranslate nohighlight">\(r = y - Xw\)</span> and
+dual scaling</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}c = \begin{cases}
+  1, &amp; ||X^Tr||_{\infty} \leq n_{\text{samples}}\alpha, \\
+  \frac{n_{\text{samples}}\alpha}{||X^Tr||_{\infty}}, &amp; \text{otherwise}
+\end{cases}\end{split}\]</div>
+<p class="sd-card-text">the stopping criterion is</p>
+<div class="math notranslate nohighlight">
+\[\text{tol} \frac{||y||_2^2}{n_{\text{samples}}} &lt; G(w, cr)\,.\]</div>
+</div>
+</details><p>A clever method to speedup the coordinate descent algorithm is to screen features such
+that at optimum <span class="math notranslate nohighlight">\(w_j = 0\)</span>. Gap safe screening rules are such a
+tool. Anywhere during the optimization algorithm, they can tell which feature we can
+safely exclude, i.e., set to zero with certainty.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">References<a class="headerlink" href="#references-3" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The first reference explains the coordinate descent solver used in scikit-learn, the
+others treat gap safe screening rules.</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://doi.org/10.18637/jss.v033.i01">Friedman, Hastie &amp; Tibshirani. (2010).
+Regularization Path For Generalized linear Models by Coordinate Descent.
+J Stat Softw 33(1), 1-22</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://arxiv.org/abs/1505.03410">O. Fercoq, A. Gramfort, J. Salmon. (2015).
+Mind the duality gap: safer rules for the Lasso.
+Proceedings of Machine Learning Research 37:333-342, 2015.</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://arxiv.org/abs/1611.05780">E. Ndiaye, O. Fercoq, A. Gramfort, J. Salmon. (2017).
+Gap Safe Screening Rules for Sparsity Enforcing Penalties.
+Journal of Machine Learning Research 18(128):1-33, 2017.</a></p></li>
+</ul>
+</div>
+</details></section>
+<section id="setting-regularization-parameter">
+<h3><span class="section-number">1.1.3.2. </span>Setting regularization parameter<a class="headerlink" href="#setting-regularization-parameter" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter controls the degree of sparsity of the estimated
 coefficients.</p>
 <section id="using-cross-validation">
-<h4><span class="section-number">1.1.3.1.1. </span>Using cross-validation<a class="headerlink" href="#using-cross-validation" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">1.1.3.2.1. </span>Using cross-validation<a class="headerlink" href="#using-cross-validation" title="Link to this heading">#</a></h4>
 <p>scikit-learn exposes objects that set the Lasso <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter by
 cross-validation: <a class="reference internal" href="generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><code class="xref py py-class docutils literal notranslate"><span class="pre">LassoCV</span></code></a> and <a class="reference internal" href="generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><code class="xref py py-class docutils literal notranslate"><span class="pre">LassoLarsCV</span></code></a>.
 <a class="reference internal" href="generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><code class="xref py py-class docutils literal notranslate"><span class="pre">LassoLarsCV</span></code></a> is based on the <a class="reference internal" href="#least-angle-regression"><span class="std std-ref">Least Angle Regression</span></a> algorithm
@@ -964,9 +1072,9 @@ the advantage of exploring more relevant values of <code class="docutils literal
 if the number of samples is very small compared to the number of
 features, it is often faster than <a class="reference internal" href="generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><code class="xref py py-class docutils literal notranslate"><span class="pre">LassoCV</span></code></a>.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/linear_model/plot_lasso_model_selection.html"><img alt="lasso_cv_1" src="../_images/sphx_glr_plot_lasso_model_selection_002.png" style="width: 307.2px; height: 230.39999999999998px;" /></a> <a class="reference external" href="../auto_examples/linear_model/plot_lasso_model_selection.html"><img alt="lasso_cv_2" src="../_images/sphx_glr_plot_lasso_model_selection_003.png" style="width: 307.2px; height: 230.39999999999998px;" /></a></strong></p></section>
+<strong><a class="reference external" href="../auto_examples/linear_model/plot_lasso_model_selection.html"><img alt="lasso_cv_1" height="230" src="../_images/sphx_glr_plot_lasso_model_selection_002.png" width="307" /></a> <a class="reference external" href="../auto_examples/linear_model/plot_lasso_model_selection.html"><img alt="lasso_cv_2" height="230" src="../_images/sphx_glr_plot_lasso_model_selection_003.png" width="307" /></a></strong></p></section>
 <section id="information-criteria-based-model-selection">
-<span id="lasso-lars-ic"></span><h4><span class="section-number">1.1.3.1.2. </span>Information-criteria based model selection<a class="headerlink" href="#information-criteria-based-model-selection" title="Link to this heading">#</a></h4>
+<span id="lasso-lars-ic"></span><h4><span class="section-number">1.1.3.2.2. </span>Information-criteria based model selection<a class="headerlink" href="#information-criteria-based-model-selection" title="Link to this heading">#</a></h4>
 <p>Alternatively, the estimator <a class="reference internal" href="generated/sklearn.linear_model.LassoLarsIC.html#sklearn.linear_model.LassoLarsIC" title="sklearn.linear_model.LassoLarsIC"><code class="xref py py-class docutils literal notranslate"><span class="pre">LassoLarsIC</span></code></a> proposes to use the
 Akaike information criterion (AIC) and the Bayes Information criterion (BIC).
 It is a computationally cheaper alternative to find the optimal value of alpha
@@ -980,7 +1088,7 @@ the solution, are derived for large samples (asymptotic results) and assume the
 correct model is candidates under investigation. They also tend to break when
 the problem is badly conditioned (e.g. more features than samples).</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_lasso_lars_ic.html"><img alt="../_images/sphx_glr_plot_lasso_lars_ic_001.png" src="../_images/sphx_glr_plot_lasso_lars_ic_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_lasso_lars_ic.html"><img alt="../_images/sphx_glr_plot_lasso_lars_ic_001.png" height="240" src="../_images/sphx_glr_plot_lasso_lars_ic_001.png" width="320" />
 </a>
 </figure>
 <p class="rubric">Examples</p>
@@ -990,13 +1098,13 @@ the problem is badly conditioned (e.g. more features than samples).</p>
 </ul>
 </section>
 <section id="aic-and-bic-criteria">
-<span id="aic-bic"></span><h4><span class="section-number">1.1.3.1.3. </span>AIC and BIC criteria<a class="headerlink" href="#aic-and-bic-criteria" title="Link to this heading">#</a></h4>
+<span id="aic-bic"></span><h4><span class="section-number">1.1.3.2.3. </span>AIC and BIC criteria<a class="headerlink" href="#aic-and-bic-criteria" title="Link to this heading">#</a></h4>
 <p>The definition of AIC (and thus BIC) might differ in the literature. In this
 section, we give more information regarding the criterion computed in
 scikit-learn.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-2">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-2" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">The AIC criterion is defined as:</p>
 <div class="math notranslate nohighlight">
 \[AIC = -2 \log(\hat{L}) + 2 d\]</div>
@@ -1048,7 +1156,7 @@ Neural computation 15.7 (2003): 1691-1714.</a></p>
 </div>
 </details></section>
 <section id="comparison-with-the-regularization-parameter-of-svm">
-<h4><span class="section-number">1.1.3.1.4. </span>Comparison with the regularization parameter of SVM<a class="headerlink" href="#comparison-with-the-regularization-parameter-of-svm" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">1.1.3.2.4. </span>Comparison with the regularization parameter of SVM<a class="headerlink" href="#comparison-with-the-regularization-parameter-of-svm" title="Link to this heading">#</a></h4>
 <p>The equivalence between <code class="docutils literal notranslate"><span class="pre">alpha</span></code> and the regularization parameter of SVM,
 <code class="docutils literal notranslate"><span class="pre">C</span></code> is given by <code class="docutils literal notranslate"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">(n_samples</span> <span class="pre">*</span> <span class="pre">C)</span></code>,
 depending on the estimator and the exact objective function optimized by the
@@ -1067,14 +1175,14 @@ coefficient matrix W obtained with a simple Lasso or a MultiTaskLasso.
 The Lasso estimates yield scattered non-zeros while the non-zeros of
 the MultiTaskLasso are full columns.</p>
 <p class="centered">
-<strong><a class="reference external" href="../auto_examples/linear_model/plot_multi_task_lasso_support.html"><img alt="multi_task_lasso_1" src="../_images/sphx_glr_plot_multi_task_lasso_support_001.png" style="width: 384.0px; height: 240.0px;" /></a> <a class="reference external" href="../auto_examples/linear_model/plot_multi_task_lasso_support.html"><img alt="multi_task_lasso_2" src="../_images/sphx_glr_plot_multi_task_lasso_support_002.png" style="width: 307.2px; height: 230.39999999999998px;" /></a></strong></p><p class="centered">
+<strong><a class="reference external" href="../auto_examples/linear_model/plot_multi_task_lasso_support.html"><img alt="multi_task_lasso_1" height="240" src="../_images/sphx_glr_plot_multi_task_lasso_support_001.png" width="384" /></a> <a class="reference external" href="../auto_examples/linear_model/plot_multi_task_lasso_support.html"><img alt="multi_task_lasso_2" height="230" src="../_images/sphx_glr_plot_multi_task_lasso_support_002.png" width="307" /></a></strong></p><p class="centered">
 <strong>Fitting a time-series model, imposing that any active feature be active at all times.</strong></p><p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_multi_task_lasso_support.html#sphx-glr-auto-examples-linear-model-plot-multi-task-lasso-support-py"><span class="std std-ref">Joint feature selection with multi-task Lasso</span></a></p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-2">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-2" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-3" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Mathematically, it consists of a linear model trained with a mixed
 <span class="math notranslate nohighlight">\(\ell_1\)</span> <span class="math notranslate nohighlight">\(\ell_2\)</span>-norm for regularization.
 The objective function to minimize is:</p>
@@ -1109,7 +1217,7 @@ allows Elastic-Net to inherit some of Ridge’s stability under rotation.</p>
 \[\min_{w} { \frac{1}{2n_{\text{samples}}} ||X w - y||_2 ^ 2 + \alpha \rho ||w||_1 +
 \frac{\alpha(1-\rho)}{2} ||w||_2 ^ 2}\]</div>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_lasso_lasso_lars_elasticnet_path.html"><img alt="../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_002.png" src="../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_002.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_lasso_lasso_lars_elasticnet_path.html"><img alt="../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_002.png" height="240" src="../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_002.png" width="320" />
 </a>
 </figure>
 <p>The class <a class="reference internal" href="generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV" title="sklearn.linear_model.ElasticNetCV"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticNetCV</span></code></a> can be used to set the parameters
@@ -1120,9 +1228,9 @@ allows Elastic-Net to inherit some of Ridge’s stability under rotation.</p>
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_lasso_lasso_lars_elasticnet_path.html#sphx-glr-auto-examples-linear-model-plot-lasso-lasso-lars-elasticnet-path-py"><span class="std std-ref">Lasso, Lasso-LARS, and Elastic Net paths</span></a></p></li>
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_elastic_net_precomputed_gram_matrix_with_weighted_samples.html#sphx-glr-auto-examples-linear-model-plot-elastic-net-precomputed-gram-matrix-with-weighted-samples-py"><span class="std std-ref">Fitting an Elastic Net with a precomputed Gram Matrix and Weighted Samples</span></a></p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-3">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-4">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">References<a class="headerlink" href="#references-3" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">References<a class="headerlink" href="#references-4" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">The following two references explain the iterations
 used in the coordinate descent solver of scikit-learn, as well as
 the duality gap computation used for convergence control.</p>
@@ -1195,7 +1303,7 @@ algorithm, and unlike the implementation based on coordinate descent,
 this yields the exact solution, which is piecewise linear as a
 function of the norm of its coefficients.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_lasso_lasso_lars_elasticnet_path.html"><img alt="../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_001.png" src="../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_lasso_lasso_lars_elasticnet_path.html"><img alt="../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_001.png" height="240" src="../_images/sphx_glr_plot_lasso_lasso_lars_elasticnet_path_001.png" width="320" />
 </a>
 </figure>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">linear_model</span>
@@ -1256,13 +1364,13 @@ previously chosen dictionary elements.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_omp.html#sphx-glr-auto-examples-linear-model-plot-omp-py"><span class="std std-ref">Orthogonal Matching Pursuit</span></a></p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-4">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-5">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">References<a class="headerlink" href="#references-4" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">References<a class="headerlink" href="#references-5" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://www.cs.technion.ac.il/~ronrubin/Publications/KSVD-OMP-v2.pdf">https://www.cs.technion.ac.il/~ronrubin/Publications/KSVD-OMP-v2.pdf</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://www.di.ens.fr/~mallat/papiers/MallatPursuit93.pdf">Matching pursuits with time-frequency dictionaries</a>,
-S. G. Mallat, Z. Zhang,</p></li>
+S. G. Mallat, Z. Zhang, 1993.</p></li>
 </ul>
 </div>
 </details></section>
@@ -1294,14 +1402,15 @@ estimation procedure.</p></li>
 <ul class="simple">
 <li><p>Inference of the model can be time consuming.</p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-5">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-6">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">References<a class="headerlink" href="#references-5" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">References<a class="headerlink" href="#references-6" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
-<li><p class="sd-card-text">A good introduction to Bayesian methods is given in C. Bishop: Pattern
-Recognition and Machine learning</p></li>
-<li><p class="sd-card-text">Original Algorithm is detailed in the  book <code class="docutils literal notranslate"><span class="pre">Bayesian</span> <span class="pre">learning</span> <span class="pre">for</span> <span class="pre">neural</span>
-<span class="pre">networks</span></code> by Radford M. Neal</p></li>
+<li><p class="sd-card-text">A good introduction to Bayesian methods is given in <a class="reference external" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf">C. Bishop: Pattern
+Recognition and Machine Learning</a>.</p></li>
+<li><p class="sd-card-text">Original Algorithm is detailed in the book <a class="reference external" href="https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=db869fa192a3222ae4f2d766674a378e47013b1b">Bayesian learning for neural
+networks</a>
+by Radford M. Neal.</p></li>
 </ul>
 </div>
 </details><section id="bayesian-ridge-regression">
@@ -1355,9 +1464,9 @@ is more robust to ill-posed problems.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_bayesian_ridge_curvefit.html#sphx-glr-auto-examples-linear-model-plot-bayesian-ridge-curvefit-py"><span class="std std-ref">Curve Fitting with Bayesian Ridge Regression</span></a></p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-6">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-7">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">References<a class="headerlink" href="#references-6" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">References<a class="headerlink" href="#references-7" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
 <li><p class="sd-card-text">Section 3.3 in Christopher M. Bishop: Pattern Recognition and Machine Learning, 2006</p></li>
 <li><p class="sd-card-text">David J. C. MacKay, <a class="reference external" href="https://citeseerx.ist.psu.edu/doc_view/pid/b14c7cc3686e82ba40653c6dff178356a33e5e2c">Bayesian Interpolation</a>, 1992.</p></li>
@@ -1469,8 +1578,8 @@ following cost function:</p>
 specific training sample (the vector <span class="math notranslate nohighlight">\(s\)</span> is formed by element-wise
 multiplication of the class weights and sample weights),
 and the sum <span class="math notranslate nohighlight">\(S = \sum_{i=1}^n s_i\)</span>.</p>
-<p>We currently provide four choices for the regularization term  <span class="math notranslate nohighlight">\(r(w)\)</span> via
-the <code class="docutils literal notranslate"><span class="pre">penalty</span></code> argument:</p>
+<p>We currently provide four choices for the regularization or penalty term <span class="math notranslate nohighlight">\(r(w)\)</span>
+via the arguments <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">l1_ratio</span></code>:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>penalty</p></th>
@@ -1478,16 +1587,16 @@ the <code class="docutils literal notranslate"><span class="pre">penalty</span><
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<tr class="row-even"><td><p>none (<code class="docutils literal notranslate"><span class="pre">C=np.inf</span></code>)</p></td>
 <td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\ell_1\)</span></p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\ell_1\)</span> (<code class="docutils literal notranslate"><span class="pre">l1_ratio=1</span></code>)</p></td>
 <td><p><span class="math notranslate nohighlight">\(\|w\|_1\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\ell_2\)</span></p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\ell_2\)</span> (<code class="docutils literal notranslate"><span class="pre">l1_ratio=0</span></code>)</p></td>
 <td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\|w\|_2^2 = \frac{1}{2}w^T w\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ElasticNet</span></code></p></td>
+<tr class="row-odd"><td><p>ElasticNet (<code class="docutils literal notranslate"><span class="pre">0&lt;l1_ratio&lt;1</span></code>)</p></td>
 <td><p><span class="math notranslate nohighlight">\(\frac{1 - \rho}{2}w^T w + \rho \|w\|_1\)</span></p></td>
 </tr>
 </tbody>
@@ -1517,9 +1626,9 @@ symmetrical inductive bias regarding ordering of classes, see <a class="footnote
 especially important when using regularization. The choice of overparameterization can be
 detrimental for unpenalized models since then the solution may not be unique, as shown in <a class="footnote-reference brackets" href="#id38" id="id27" role="doc-noteref"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></a>.</p>
 </div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-3">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-4">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-3" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-4" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Let <span class="math notranslate nohighlight">\(y_i \in \{1, \ldots, K\}\)</span> be the label (ordinal) encoded target variable for observation <span class="math notranslate nohighlight">\(i\)</span>.
 Instead of a single coefficient vector, we now have
 a matrix of coefficients <span class="math notranslate nohighlight">\(W\)</span> where each row vector <span class="math notranslate nohighlight">\(W_k\)</span> corresponds to class
@@ -1535,9 +1644,8 @@ a matrix of coefficients <span class="math notranslate nohighlight">\(W\)</span>
 if <span class="math notranslate nohighlight">\(P\)</span> is false, otherwise it evaluates to <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <p class="sd-card-text">Again, <span class="math notranslate nohighlight">\(s_{ik}\)</span> are the weights assigned by the user (multiplication of sample
 weights and class weights) with their sum <span class="math notranslate nohighlight">\(S = \sum_{i=1}^n \sum_{k=0}^{K-1} s_{ik}\)</span>.</p>
-<p class="sd-card-text">We currently provide four choices
-for the regularization term <span class="math notranslate nohighlight">\(r(W)\)</span> via the <code class="docutils literal notranslate"><span class="pre">penalty</span></code> argument, where <span class="math notranslate nohighlight">\(m\)</span>
-is the number of features:</p>
+<p class="sd-card-text">We currently provide four choices for the regularization or penalty term <span class="math notranslate nohighlight">\(r(W)\)</span>
+via the arguments <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">l1_ratio</span></code>, where <span class="math notranslate nohighlight">\(m\)</span> is the number of features:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p class="sd-card-text">penalty</p></th>
@@ -1545,16 +1653,16 @@ is the number of features:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text">none (<code class="docutils literal notranslate"><span class="pre">C=np.inf</span></code>)</p></td>
 <td><p class="sd-card-text"><span class="math notranslate nohighlight">\(0\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p class="sd-card-text"><span class="math notranslate nohighlight">\(\ell_1\)</span></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><span class="math notranslate nohighlight">\(\ell_1\)</span> (<code class="docutils literal notranslate"><span class="pre">l1_ratio=1</span></code>)</p></td>
 <td><p class="sd-card-text"><span class="math notranslate nohighlight">\(\|W\|_{1,1} = \sum_{i=1}^m\sum_{j=1}^{K}|W_{i,j}|\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p class="sd-card-text"><span class="math notranslate nohighlight">\(\ell_2\)</span></p></td>
+<tr class="row-even"><td><p class="sd-card-text"><span class="math notranslate nohighlight">\(\ell_2\)</span> (<code class="docutils literal notranslate"><span class="pre">l1_ratio=0</span></code>)</p></td>
 <td><p class="sd-card-text"><span class="math notranslate nohighlight">\(\frac{1}{2}\|W\|_F^2 = \frac{1}{2}\sum_{i=1}^m\sum_{j=1}^{K} W_{i,j}^2\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">ElasticNet</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text">ElasticNet (<code class="docutils literal notranslate"><span class="pre">0&lt;l1_ratio&lt;1</span></code>)</p></td>
 <td><p class="sd-card-text"><span class="math notranslate nohighlight">\(\frac{1 - \rho}{2}\|W\|_F^2 + \rho \|W\|_{1,1}\)</span></p></td>
 </tr>
 </tbody>
@@ -1604,7 +1712,7 @@ are “lbfgs”, “liblinear”, “newton-cg”, “newton-cholesky”, “sag
 <td><p>no</p></td>
 <td><p>yes</p></td>
 </tr>
-<tr class="row-even"><td><p>No penalty (‘none’)</p></td>
+<tr class="row-even"><td><p>No penalty</p></td>
 <td><p>yes</p></td>
 <td colspan="2"><p>no</p></td>
 <td><p>yes</p></td>
@@ -1660,7 +1768,33 @@ the “saga” solver is usually faster (than “lbfgs”), in particular for lo
 (high <code class="docutils literal notranslate"><span class="pre">tol</span></code>).
 For large dataset, you may also consider using <a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">SGDClassifier</span></code></a>
 with <code class="docutils literal notranslate"><span class="pre">loss=&quot;log_loss&quot;</span></code>, which might be even faster but requires more tuning.</p>
-<section id="differences-between-solvers">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-8">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">References<a class="headerlink" href="#references-8" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The following references explain some of the solvers.</p>
+<ul class="simple">
+<li><p class="sd-card-text">For “lbfgs”, see documentation of
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">SciPy</span> <span class="pre">minimize</span></code></a></p></li>
+<li><p class="sd-card-text">“liblinear”</p>
+<ul>
+<li><p class="sd-card-text">Fan, R. E., Chang, K. W., Hsieh, C. J., Wang, X. R., &amp; Lin, C. J. (2008).
+LIBLINEAR: A library for large linear classification.
+the Journal of machine Learning research, 9, 1871-1874.
+<a class="reference external" href="https://www.jmlr.org/papers/volume9/fan08a/fan08a.pdf">https://www.jmlr.org/papers/volume9/fan08a/fan08a.pdf</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://doi.org/10.1007/s10994-010-5221-8">Yu, H. F., Huang, F. L., &amp; Lin, C. J. (2011).
+Dual coordinate descent methods for logistic regression and maximum entropy
+models. Machine Learning, 85(1), 41-75.</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text">SAG – <a class="reference external" href="https://arxiv.org/abs/1309.2388">Schmidt, M., Le Roux, N., &amp; Bach, F. (2017).
+Minimizing finite sums with the stochastic average gradient.
+Mathematical Programming, 162(1), 83-112.</a></p></li>
+<li><p class="sd-card-text">SAGA – <a class="reference external" href="https://arxiv.org/abs/1407.0202">Defazio, A., Bach, F., &amp; Lacoste-Julien, S. (2014).
+SAGA: A fast incremental gradient method with support for non-strongly convex
+composite objectives. Advances in neural information processing systems, 27.</a></p></li>
+</ul>
+</div>
+</details><section id="differences-between-solvers">
 <span id="liblinear-differences"></span><h4><span class="section-number">1.1.11.3.1. </span>Differences between solvers<a class="headerlink" href="#differences-between-solvers" title="Link to this heading">#</a></h4>
 <p>There might be a difference in the scores obtained between
 <a class="reference internal" href="generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> with <code class="docutils literal notranslate"><span class="pre">solver=liblinear</span></code> or
@@ -1678,27 +1812,27 @@ zero, is likely to be an underfit, bad model and you are advised to set
 <ul class="simple">
 <li><p class="sd-card-text">The solver “liblinear” uses a coordinate descent (CD) algorithm, and relies
 on the excellent C++ <a class="reference external" href="https://www.csie.ntu.edu.tw/~cjlin/liblinear/">LIBLINEAR library</a>, which is shipped with
-scikit-learn. However, the CD algorithm implemented in liblinear cannot learn
-a true multinomial (multiclass) model; instead, the optimization problem is
-decomposed in a “one-vs-rest” fashion so separate binary classifiers are
-trained for all classes. This happens under the hood, so
-<a class="reference internal" href="generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> instances using this solver behave as multiclass
-classifiers. For <span class="math notranslate nohighlight">\(\ell_1\)</span> regularization <a class="reference internal" href="generated/sklearn.svm.l1_min_c.html#sklearn.svm.l1_min_c" title="sklearn.svm.l1_min_c"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.svm.l1_min_c</span></code></a> allows to
+scikit-learn. However, the CD algorithm implemented in liblinear cannot learn a
+true multinomial (multiclass) model. If you still want to use “liblinear” on
+multiclass problems, you can use a “one-vs-rest” scheme
+<code class="docutils literal notranslate"><span class="pre">OneVsRestClassifier(LogisticRegression(solver=&quot;liblinear&quot;))</span></code>, see
+<code class="docutils literal notranslate"><span class="pre">:class:`~sklearn.multiclass.OneVsRestClassifier</span></code>. Note that minimizing the
+multinomial loss is expected to give better calibrated results as compared to
+a “one-vs-rest” scheme.
+For <span class="math notranslate nohighlight">\(\ell_1\)</span> regularization <a class="reference internal" href="generated/sklearn.svm.l1_min_c.html#sklearn.svm.l1_min_c" title="sklearn.svm.l1_min_c"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.svm.l1_min_c</span></code></a> allows to
 calculate the lower bound for C in order to get a non “null” (all feature
 weights to zero) model.</p></li>
-<li><p class="sd-card-text">The “lbfgs”, “newton-cg” and “sag” solvers only support <span class="math notranslate nohighlight">\(\ell_2\)</span>
-regularization or no regularization, and are found to converge faster for some
-high-dimensional data. Setting <code class="docutils literal notranslate"><span class="pre">multi_class</span></code> to “multinomial” with these solvers
-learns a true multinomial logistic regression model <a class="footnote-reference brackets" href="#id33" id="id28" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, which means that its
-probability estimates should be better calibrated than the default “one-vs-rest”
-setting.</p></li>
+<li><p class="sd-card-text">The “lbfgs”, “newton-cg”, “newton-cholesky” and “sag” solvers only support
+<span class="math notranslate nohighlight">\(\ell_2\)</span> regularization or no regularization, and are found to converge
+faster for some high-dimensional data. These solvers (and “saga”)
+learn a true multinomial logistic regression model <a class="footnote-reference brackets" href="#id33" id="id28" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p></li>
 <li><p class="sd-card-text">The “sag” solver uses Stochastic Average Gradient descent <a class="footnote-reference brackets" href="#id34" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>. It is faster
 than other solvers for large datasets, when both the number of samples and the
 number of features are large.</p></li>
-<li><p class="sd-card-text">The “saga” solver <a class="footnote-reference brackets" href="#id35" id="id30" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> is a variant of “sag” that also supports the
-non-smooth <code class="docutils literal notranslate"><span class="pre">penalty=&quot;l1&quot;</span></code>. This is therefore the solver of choice for sparse
-multinomial logistic regression. It is also the only solver that supports
-<code class="docutils literal notranslate"><span class="pre">penalty=&quot;elasticnet&quot;</span></code>.</p></li>
+<li><p class="sd-card-text">The “saga” solver <a class="footnote-reference brackets" href="#id35" id="id30" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> is a variant of “sag” that also supports the non-smooth
+<span class="math notranslate nohighlight">\(\ell_1\)</span> penalty (<code class="docutils literal notranslate"><span class="pre">l1_ratio=1</span></code>). This is therefore the solver of choice for
+sparse multinomial logistic regression. It is also the only solver that supports
+Elastic-Net (<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;</span> <span class="pre">l1_ratio</span> <span class="pre">&lt;</span> <span class="pre">1</span></code>).</p></li>
 <li><p class="sd-card-text">The “lbfgs” is an optimization algorithm that approximates the
 Broyden–Fletcher–Goldfarb–Shanno algorithm <a class="footnote-reference brackets" href="#id36" id="id31" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>, which belongs to
 quasi-Newton methods. As such, it can deal with a wide range of different training
@@ -1824,7 +1958,7 @@ provided, the average becomes a weighted average.</p>
 <p>The Probability Density Functions (PDF) of these distributions are illustrated
 in the following figure,</p>
 <figure class="align-center" id="id49">
-<a class="reference internal image-reference" href="../_images/poisson_gamma_tweedie_distributions.png"><img alt="../_images/poisson_gamma_tweedie_distributions.png" src="../_images/poisson_gamma_tweedie_distributions.png" style="width: 1200.0px; height: 350.0px;" />
+<a class="reference internal image-reference" href="../_images/poisson_gamma_tweedie_distributions.png"><img alt="../_images/poisson_gamma_tweedie_distributions.png" height="350" src="../_images/poisson_gamma_tweedie_distributions.png" width="1200" />
 </a>
 <figcaption>
 <p><span class="caption-text">PDF of a random variable Y following Poisson, Tweedie (power=1.5) and Gamma
@@ -1912,9 +2046,9 @@ convenience. However, it is strictly equivalent to
 <p>The link function is determined by the <code class="docutils literal notranslate"><span class="pre">link</span></code> parameter.</p>
 <p>Usage example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">TweedieRegressor</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span> <span class="o">=</span> <span class="n">TweedieRegressor</span><span class="p">(</span><span class="n">power</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span> <span class="o">=</span> <span class="n">TweedieRegressor</span><span class="p">(</span><span class="n">power</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="s1">'log'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="go">TweedieRegressor(alpha=0.5, link=&#39;log&#39;, power=1)</span>
+<span class="go">TweedieRegressor(alpha=0.5, link='log', power=1)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span>
 <span class="go">array([0.2463, 0.4337])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span>
@@ -1962,11 +2096,10 @@ E.g., with <code class="docutils literal notranslate"><span class="pre">loss=&qu
 fits a logistic regression model,
 while with <code class="docutils literal notranslate"><span class="pre">loss=&quot;hinge&quot;</span></code> it fits a linear support vector machine (SVM).</p>
 <p>You can refer to the dedicated <a class="reference internal" href="sgd.html#sgd"><span class="std std-ref">Stochastic Gradient Descent</span></a> documentation section for more details.</p>
-</section>
 <section id="perceptron">
-<span id="id44"></span><h2><span class="section-number">1.1.14. </span>Perceptron<a class="headerlink" href="#perceptron" title="Link to this heading">#</a></h2>
+<span id="id44"></span><h3><span class="section-number">1.1.13.1. </span>Perceptron<a class="headerlink" href="#perceptron" title="Link to this heading">#</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.linear_model.Perceptron.html#sklearn.linear_model.Perceptron" title="sklearn.linear_model.Perceptron"><code class="xref py py-class docutils literal notranslate"><span class="pre">Perceptron</span></code></a> is another simple classification algorithm suitable for
-large scale learning. By default:</p>
+large scale learning and derives from SGD. By default:</p>
 <ul class="simple">
 <li><p>It does not require a learning rate.</p></li>
 <li><p>It is not regularized (penalized).</p></li>
@@ -1981,35 +2114,37 @@ class using a perceptron loss and a constant learning rate. Refer to
 for more details.</p>
 </section>
 <section id="passive-aggressive-algorithms">
-<span id="passive-aggressive"></span><h2><span class="section-number">1.1.15. </span>Passive Aggressive Algorithms<a class="headerlink" href="#passive-aggressive-algorithms" title="Link to this heading">#</a></h2>
-<p>The passive-aggressive algorithms are a family of algorithms for large-scale
-learning. They are similar to the Perceptron in that they do not require a
-learning rate. However, contrary to the Perceptron, they include a
-regularization parameter <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
-<p>For classification, <a class="reference internal" href="generated/sklearn.linear_model.PassiveAggressiveClassifier.html#sklearn.linear_model.PassiveAggressiveClassifier" title="sklearn.linear_model.PassiveAggressiveClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassiveAggressiveClassifier</span></code></a> can be used with
-<code class="docutils literal notranslate"><span class="pre">loss='hinge'</span></code> (PA-I) or <code class="docutils literal notranslate"><span class="pre">loss='squared_hinge'</span></code> (PA-II).  For regression,
-<a class="reference internal" href="generated/sklearn.linear_model.PassiveAggressiveRegressor.html#sklearn.linear_model.PassiveAggressiveRegressor" title="sklearn.linear_model.PassiveAggressiveRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassiveAggressiveRegressor</span></code></a> can be used with
-<code class="docutils literal notranslate"><span class="pre">loss='epsilon_insensitive'</span></code> (PA-I) or
-<code class="docutils literal notranslate"><span class="pre">loss='squared_epsilon_insensitive'</span></code> (PA-II).</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-7">
+<span id="passive-aggressive"></span><h3><span class="section-number">1.1.13.2. </span>Passive Aggressive Algorithms<a class="headerlink" href="#passive-aggressive-algorithms" title="Link to this heading">#</a></h3>
+<p>The passive-aggressive (PA) algorithms are another family of 2 algorithms (PA-I and
+PA-II) for large-scale online learning that derive from SGD. They are similar to the
+Perceptron in that they do not require a learning rate. However, contrary to the
+Perceptron, they include a regularization parameter <code class="docutils literal notranslate"><span class="pre">eta0</span></code> (<span class="math notranslate nohighlight">\(C\)</span> in the
+reference paper).</p>
+<p>For classification,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">SGDClassifier(loss=&quot;hinge&quot;,</span> <span class="pre">penalty=None,</span> <span class="pre">learning_rate=&quot;pa1&quot;,</span> <span class="pre">eta0=1.0)</span></code> can
+be used for PA-I or with <code class="docutils literal notranslate"><span class="pre">learning_rate=&quot;pa2&quot;</span></code> for PA-II. For regression,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">SGDRegressor(loss=&quot;epsilon_insensitive&quot;,</span> <span class="pre">penalty=None,</span> <span class="pre">learning_rate=&quot;pa1&quot;,</span>
+<span class="pre">eta0=1.0)</span></code> can be used for PA-I or with <code class="docutils literal notranslate"><span class="pre">learning_rate=&quot;pa2&quot;</span></code> for PA-II.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-9">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">References<a class="headerlink" href="#references-7" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">References<a class="headerlink" href="#references-9" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
-<li><p class="sd-card-text"><a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume7/crammer06a/crammer06a.pdf">“Online Passive-Aggressive Algorithms”</a>
+<li><p class="sd-card-text"><a class="reference external" href="https://jmlr.csail.mit.edu/papers/volume7/crammer06a/crammer06a.pdf">“Online Passive-Aggressive Algorithms”</a>
 K. Crammer, O. Dekel, J. Keshat, S. Shalev-Shwartz, Y. Singer - JMLR 7 (2006)</p></li>
 </ul>
 </div>
 </details></section>
+</section>
 <section id="robustness-regression-outliers-and-modeling-errors">
-<h2><span class="section-number">1.1.16. </span>Robustness regression: outliers and modeling errors<a class="headerlink" href="#robustness-regression-outliers-and-modeling-errors" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.1.14. </span>Robustness regression: outliers and modeling errors<a class="headerlink" href="#robustness-regression-outliers-and-modeling-errors" title="Link to this heading">#</a></h2>
 <p>Robust regression aims to fit a regression model in the
 presence of corrupt data: either outliers, or error in the model.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_theilsen.html"><img alt="../_images/sphx_glr_plot_theilsen_001.png" src="../_images/sphx_glr_plot_theilsen_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_theilsen.html"><img alt="../_images/sphx_glr_plot_theilsen_001.png" height="240" src="../_images/sphx_glr_plot_theilsen_001.png" width="320" />
 </a>
 </figure>
 <section id="different-scenario-and-useful-concepts">
-<h3><span class="section-number">1.1.16.1. </span>Different scenario and useful concepts<a class="headerlink" href="#different-scenario-and-useful-concepts" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.1.14.1. </span>Different scenario and useful concepts<a class="headerlink" href="#different-scenario-and-useful-concepts" title="Link to this heading">#</a></h3>
 <p>There are different things to keep in mind when dealing with data
 corrupted by outliers:</p>
 <ul>
@@ -2021,8 +2156,8 @@ corrupted by outliers:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="../auto_examples/linear_model/plot_robust_fit.html"><img alt="y_outliers" src="../_images/sphx_glr_plot_robust_fit_003.png" style="width: 300.0px; height: 240.0px;" /></a></p></td>
-<td><p><a class="reference external" href="../auto_examples/linear_model/plot_robust_fit.html"><img alt="X_outliers" src="../_images/sphx_glr_plot_robust_fit_002.png" style="width: 300.0px; height: 240.0px;" /></a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="../auto_examples/linear_model/plot_robust_fit.html"><img alt="y_outliers" height="240" src="../_images/sphx_glr_plot_robust_fit_003.png" width="300" /></a></p></td>
+<td><p><a class="reference external" href="../auto_examples/linear_model/plot_robust_fit.html"><img alt="X_outliers" height="240" src="../_images/sphx_glr_plot_robust_fit_002.png" width="300" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -2038,8 +2173,8 @@ outliers.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="../auto_examples/linear_model/plot_robust_fit.html"><img alt="y_outliers" src="../_images/sphx_glr_plot_robust_fit_003.png" style="width: 300.0px; height: 240.0px;" /></a></p></td>
-<td><p><a class="reference external" href="../auto_examples/linear_model/plot_robust_fit.html"><img alt="large_y_outliers" src="../_images/sphx_glr_plot_robust_fit_005.png" style="width: 300.0px; height: 240.0px;" /></a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="../auto_examples/linear_model/plot_robust_fit.html"><img alt="y_outliers" height="240" src="../_images/sphx_glr_plot_robust_fit_003.png" width="300" /></a></p></td>
+<td><p><a class="reference external" href="../auto_examples/linear_model/plot_robust_fit.html"><img alt="large_y_outliers" height="240" src="../_images/sphx_glr_plot_robust_fit_005.png" width="300" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -2078,7 +2213,7 @@ disappear in high-dimensional settings.</p></li>
 </aside>
 </section>
 <section id="ransac-random-sample-consensus">
-<span id="ransac-regression"></span><h3><span class="section-number">1.1.16.2. </span>RANSAC: RANdom SAmple Consensus<a class="headerlink" href="#ransac-random-sample-consensus" title="Link to this heading">#</a></h3>
+<span id="ransac-regression"></span><h3><span class="section-number">1.1.14.2. </span>RANSAC: RANdom SAmple Consensus<a class="headerlink" href="#ransac-random-sample-consensus" title="Link to this heading">#</a></h3>
 <p>RANSAC (RANdom SAmple Consensus) fits a model from random subsets of
 inliers from the complete data set.</p>
 <p>RANSAC is a non-deterministic algorithm producing only a reasonable result with
@@ -2091,7 +2226,7 @@ which may be subject to noise, and outliers, which are e.g. caused by erroneous
 measurements or invalid hypotheses about the data. The resulting model is then
 estimated only from the determined inliers.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_ransac.html"><img alt="../_images/sphx_glr_plot_ransac_001.png" src="../_images/sphx_glr_plot_ransac_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_ransac.html"><img alt="../_images/sphx_glr_plot_ransac_001.png" height="240" src="../_images/sphx_glr_plot_ransac_001.png" width="320" />
 </a>
 </figure>
 <p class="rubric">Examples</p>
@@ -2126,21 +2261,21 @@ needed for identifying degenerate cases, <code class="docutils literal notransla
 is called prior to fitting the model and thus leading to better computational
 performance.</p>
 </div>
-</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-8">
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-10">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">References<a class="headerlink" href="#references-8" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">References<a class="headerlink" href="#references-10" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://en.wikipedia.org/wiki/RANSAC">https://en.wikipedia.org/wiki/RANSAC</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://www.cs.ait.ac.th/~mdailey/cvreadings/Fischler-RANSAC.pdf">“Random Sample Consensus: A Paradigm for Model Fitting with Applications to
 Image Analysis and Automated Cartography”</a>
 Martin A. Fischler and Robert C. Bolles - SRI International (1981)</p></li>
-<li><p class="sd-card-text"><a class="reference external" href="http://www.bmva.org/bmvc/2009/Papers/Paper355/Paper355.pdf">“Performance Evaluation of RANSAC Family”</a>
+<li><p class="sd-card-text"><a class="reference external" href="https://bmva-archive.org.uk/bmvc/2009/Papers/Paper355/Paper355.pdf">“Performance Evaluation of RANSAC Family”</a>
 Sunglok Choi, Taemin Kim and Wonpil Yu - BMVC (2009)</p></li>
 </ul>
 </div>
 </details></section>
 <section id="theil-sen-estimator-generalized-median-based-estimator">
-<span id="theil-sen-regression"></span><h3><span class="section-number">1.1.16.3. </span>Theil-Sen estimator: generalized-median-based estimator<a class="headerlink" href="#theil-sen-estimator-generalized-median-based-estimator" title="Link to this heading">#</a></h3>
+<span id="theil-sen-regression"></span><h3><span class="section-number">1.1.14.3. </span>Theil-Sen estimator: generalized-median-based estimator<a class="headerlink" href="#theil-sen-estimator-generalized-median-based-estimator" title="Link to this heading">#</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.linear_model.TheilSenRegressor.html#sklearn.linear_model.TheilSenRegressor" title="sklearn.linear_model.TheilSenRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TheilSenRegressor</span></code></a> estimator uses a generalization of the median in
 multiple dimensions. It is thus robust to multivariate outliers. Note however
 that the robustness of the estimator decreases quickly with the dimensionality
@@ -2164,7 +2299,7 @@ setting, Theil-Sen has a breakdown point of about 29.3% in case of a
 simple linear regression which means that it can tolerate arbitrary
 corrupted data of up to 29.3%.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_theilsen.html"><img alt="../_images/sphx_glr_plot_theilsen_001.png" src="../_images/sphx_glr_plot_theilsen_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_theilsen.html"><img alt="../_images/sphx_glr_plot_theilsen_001.png" height="240" src="../_images/sphx_glr_plot_theilsen_001.png" width="320" />
 </a>
 </figure>
 <p class="sd-card-text">The implementation of <a class="reference internal" href="generated/sklearn.linear_model.TheilSenRegressor.html#sklearn.linear_model.TheilSenRegressor" title="sklearn.linear_model.TheilSenRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TheilSenRegressor</span></code></a> in scikit-learn follows a
@@ -2187,7 +2322,7 @@ considering only a random subset of all possible combinations.</p>
 <aside class="footnote brackets" id="f2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id46">15</a><span class="fn-bracket">]</span></span>
 <ol class="upperalpha simple" start="20">
-<li><p class="sd-card-text">Kärkkäinen and S. Äyrämö: <a class="reference external" href="http://users.jyu.fi/~samiayr/pdf/ayramo_eurogen05.pdf">On Computation of Spatial Median for Robust Data Mining.</a></p></li>
+<li><p class="sd-card-text">Kärkkäinen and S. Äyrämö: <a class="reference external" href="https://users.jyu.fi/~samiayr/pdf/ayramo_eurogen05.pdf">On Computation of Spatial Median for Robust Data Mining.</a></p></li>
 </ol>
 </aside>
 </aside>
@@ -2195,7 +2330,7 @@ considering only a random subset of all possible combinations.</p>
 </div>
 </details></section>
 <section id="huber-regression">
-<span id="id47"></span><h3><span class="section-number">1.1.16.4. </span>Huber Regression<a class="headerlink" href="#huber-regression" title="Link to this heading">#</a></h3>
+<span id="id47"></span><h3><span class="section-number">1.1.14.4. </span>Huber Regression<a class="headerlink" href="#huber-regression" title="Link to this heading">#</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.linear_model.HuberRegressor.html#sklearn.linear_model.HuberRegressor" title="sklearn.linear_model.HuberRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HuberRegressor</span></code></a> is different from <a class="reference internal" href="generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ridge</span></code></a> because it applies a
 linear loss to samples that are defined as outliers by the <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> parameter.
 A sample is classified as an inlier if the absolute error of that sample is
@@ -2203,16 +2338,16 @@ less than the threshold <code class="docutils literal notranslate"><span class="
 and <a class="reference internal" href="generated/sklearn.linear_model.RANSACRegressor.html#sklearn.linear_model.RANSACRegressor" title="sklearn.linear_model.RANSACRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">RANSACRegressor</span></code></a> because it does not ignore the effect of the outliers
 but gives a lesser weight to them.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_huber_vs_ridge.html"><img alt="../_images/sphx_glr_plot_huber_vs_ridge_001.png" src="../_images/sphx_glr_plot_huber_vs_ridge_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_huber_vs_ridge.html"><img alt="../_images/sphx_glr_plot_huber_vs_ridge_001.png" height="240" src="../_images/sphx_glr_plot_huber_vs_ridge_001.png" width="320" />
 </a>
 </figure>
 <p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_huber_vs_ridge.html#sphx-glr-auto-examples-linear-model-plot-huber-vs-ridge-py"><span class="std std-ref">HuberRegressor vs Ridge on dataset with strong outliers</span></a></p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-4">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-5">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-4" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-5" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text"><a class="reference internal" href="generated/sklearn.linear_model.HuberRegressor.html#sklearn.linear_model.HuberRegressor" title="sklearn.linear_model.HuberRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HuberRegressor</span></code></a> minimizes</p>
 <div class="math notranslate nohighlight">
 \[\min_{w, \sigma} {\sum_{i=1}^n\left(\sigma + H_{\epsilon}\left(\frac{X_{i}w - y_{i}}{\sigma}\right)\sigma\right) + \alpha {||w||_2}^2}\]</div>
@@ -2248,7 +2383,7 @@ sample on the basis of how much the residual is greater than a certain threshold
 </section>
 </section>
 <section id="quantile-regression">
-<span id="id48"></span><h2><span class="section-number">1.1.17. </span>Quantile Regression<a class="headerlink" href="#quantile-regression" title="Link to this heading">#</a></h2>
+<span id="id48"></span><h2><span class="section-number">1.1.15. </span>Quantile Regression<a class="headerlink" href="#quantile-regression" title="Link to this heading">#</a></h2>
 <p>Quantile regression estimates the median or other quantiles of <span class="math notranslate nohighlight">\(y\)</span>
 conditional on <span class="math notranslate nohighlight">\(X\)</span>, while ordinary least squares (OLS) estimates the
 conditional mean.</p>
@@ -2259,7 +2394,7 @@ normally with zero mean and constant variance. Quantile regression provides
 sensible prediction intervals even for errors with non-constant (but
 predictable) variance or non-normal distribution.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_quantile_regression.html"><img alt="../_images/sphx_glr_plot_quantile_regression_002.png" src="../_images/sphx_glr_plot_quantile_regression_002.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_quantile_regression.html"><img alt="../_images/sphx_glr_plot_quantile_regression_002.png" height="240" src="../_images/sphx_glr_plot_quantile_regression_002.png" width="320" />
 </a>
 </figure>
 <p>Based on minimizing the pinball loss, conditional quantiles can also be
@@ -2270,14 +2405,14 @@ quantiles if its parameter <code class="docutils literal notranslate"><span clas
 <a class="reference internal" href="../auto_examples/ensemble/plot_gradient_boosting_quantile.html#sphx-glr-auto-examples-ensemble-plot-gradient-boosting-quantile-py"><span class="std std-ref">Prediction Intervals for Gradient Boosting Regression</span></a>.</p>
 <p>Most implementations of quantile regression are based on linear programming
 problem. The current implementation is based on
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html#scipy.optimize.linprog" title="(in SciPy v1.16.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.linprog</span></code></a>.</p>
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html#scipy.optimize.linprog" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.linprog</span></code></a>.</p>
 <p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../auto_examples/linear_model/plot_quantile_regression.html#sphx-glr-auto-examples-linear-model-plot-quantile-regression-py"><span class="std std-ref">Quantile regression</span></a></p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-5">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-6">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-5" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-6" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">As a linear model, the <a class="reference internal" href="generated/sklearn.linear_model.QuantileRegressor.html#sklearn.linear_model.QuantileRegressor" title="sklearn.linear_model.QuantileRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantileRegressor</span></code></a> gives linear predictions
 <span class="math notranslate nohighlight">\(\hat{y}(w, X) = Xw\)</span> for the <span class="math notranslate nohighlight">\(q\)</span>-th quantile, <span class="math notranslate nohighlight">\(q \in (0, 1)\)</span>.
 The weights or coefficients <span class="math notranslate nohighlight">\(w\)</span> are then found by the following
@@ -2300,9 +2435,9 @@ see also <a class="reference internal" href="generated/sklearn.metrics.mean_pinb
 much more robust to outliers than squared error based estimation of the mean.
 Somewhat in between is the <a class="reference internal" href="generated/sklearn.linear_model.HuberRegressor.html#sklearn.linear_model.HuberRegressor" title="sklearn.linear_model.HuberRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HuberRegressor</span></code></a>.</p>
 </div>
-</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-9">
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-11">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">References<a class="headerlink" href="#references-9" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">References<a class="headerlink" href="#references-11" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
 <li><p class="sd-card-text">Koenker, R., &amp; Bassett Jr, G. (1978). <a class="reference external" href="https://gib.people.uic.edu/RQ.pdf">Regression quantiles.</a>
 Econometrica: journal of the Econometric Society, 33-50.</p></li>
@@ -2315,14 +2450,14 @@ Cambridge University Press.</p></li>
 </div>
 </details></section>
 <section id="polynomial-regression-extending-linear-models-with-basis-functions">
-<span id="polynomial-regression"></span><h2><span class="section-number">1.1.18. </span>Polynomial regression: extending linear models with basis functions<a class="headerlink" href="#polynomial-regression-extending-linear-models-with-basis-functions" title="Link to this heading">#</a></h2>
+<span id="polynomial-regression"></span><h2><span class="section-number">1.1.16. </span>Polynomial regression: extending linear models with basis functions<a class="headerlink" href="#polynomial-regression-extending-linear-models-with-basis-functions" title="Link to this heading">#</a></h2>
 <p>One common pattern within machine learning is to use linear models trained
 on nonlinear functions of the data.  This approach maintains the generally
 fast performance of linear methods, while allowing them to fit a much wider
 range of data.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-6">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="mathematical-details-7">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-6" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Mathematical details<a class="headerlink" href="#mathematical-details-7" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">For example, a simple linear regression can be extended by constructing
 <strong>polynomial features</strong> from the coefficients.  In the standard linear
 regression case, you might have a model that looks like this for
@@ -2349,7 +2484,7 @@ flexibility to fit a much broader range of data.</p>
 </details><p>Here is an example of applying this idea to one-dimensional data, using
 polynomial features of varying degrees:</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/linear_model/plot_polynomial_interpolation.html"><img alt="../_images/sphx_glr_plot_polynomial_interpolation_001.png" src="../_images/sphx_glr_plot_polynomial_interpolation_001.png" style="width: 320.0px; height: 240.0px;" />
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_polynomial_interpolation.html"><img alt="../_images/sphx_glr_plot_polynomial_interpolation_001.png" height="240" src="../_images/sphx_glr_plot_polynomial_interpolation_001.png" width="320" />
 </a>
 </figure>
 <p>This figure is created using the <a class="reference internal" href="generated/sklearn.preprocessing.PolynomialFeatures.html#sklearn.preprocessing.PolynomialFeatures" title="sklearn.preprocessing.PolynomialFeatures"><code class="xref py py-class docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code></a> transformer, which
@@ -2379,13 +2514,13 @@ polynomial regression can be created and used as follows:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)),</span>
-<span class="gp">... </span>                  <span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">))])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">'poly'</span><span class="p">,</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)),</span>
+<span class="gp">... </span>                  <span class="p">(</span><span class="s1">'linear'</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">))])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># fit to an order-3 polynomial data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">'linear'</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span>
 <span class="go">array([ 3., -2.,  1., -1.])</span>
 </pre></div>
 </div>
@@ -2476,8 +2611,8 @@ This way, we can solve the XOR problem with a linear classifier:</p>
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-least-squares">1.1.1. Ordinary Least Squares</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-negative-least-squares">1.1.1.1. Non-Negative Least Squares</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-least-squares-complexity">1.1.1.2. Ordinary Least Squares Complexity</a></li>
@@ -2491,11 +2626,12 @@ This way, we can solve the XOR problem with a linear classifier:</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">1.1.3. Lasso</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-regularization-parameter">1.1.3.1. Setting regularization parameter</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-cross-validation">1.1.3.1.1. Using cross-validation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#information-criteria-based-model-selection">1.1.3.1.2. Information-criteria based model selection</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aic-and-bic-criteria">1.1.3.1.3. AIC and BIC criteria</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-the-regularization-parameter-of-svm">1.1.3.1.4. Comparison with the regularization parameter of SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-descent-with-gap-safe-screening-rules">1.1.3.1. Coordinate Descent with Gap Safe Screening Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-regularization-parameter">1.1.3.2. Setting regularization parameter</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-cross-validation">1.1.3.2.1. Using cross-validation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#information-criteria-based-model-selection">1.1.3.2.2. Information-criteria based model selection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aic-and-bic-criteria">1.1.3.2.3. AIC and BIC criteria</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-the-regularization-parameter-of-svm">1.1.3.2.4. Comparison with the regularization parameter of SVM</a></li>
 </ul>
 </li>
 </ul>
@@ -2524,29 +2660,38 @@ This way, we can solve the XOR problem with a linear classifier:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">1.1.12.1. Usage</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-gradient-descent-sgd">1.1.13. Stochastic Gradient Descent - SGD</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perceptron">1.1.14. Perceptron</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passive-aggressive-algorithms">1.1.15. Passive Aggressive Algorithms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness-regression-outliers-and-modeling-errors">1.1.16. Robustness regression: outliers and modeling errors</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-scenario-and-useful-concepts">1.1.16.1. Different scenario and useful concepts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ransac-random-sample-consensus">1.1.16.2. RANSAC: RANdom SAmple Consensus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theil-sen-estimator-generalized-median-based-estimator">1.1.16.3. Theil-Sen estimator: generalized-median-based estimator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huber-regression">1.1.16.4. Huber Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-gradient-descent-sgd">1.1.13. Stochastic Gradient Descent - SGD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perceptron">1.1.13.1. Perceptron</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passive-aggressive-algorithms">1.1.13.2. Passive Aggressive Algorithms</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantile-regression">1.1.17. Quantile Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression-extending-linear-models-with-basis-functions">1.1.18. Polynomial regression: extending linear models with basis functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness-regression-outliers-and-modeling-errors">1.1.14. Robustness regression: outliers and modeling errors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-scenario-and-useful-concepts">1.1.14.1. Different scenario and useful concepts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ransac-random-sample-consensus">1.1.14.2. RANSAC: RANdom SAmple Consensus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theil-sen-estimator-generalized-median-based-estimator">1.1.14.3. Theil-Sen estimator: generalized-median-based estimator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huber-regression">1.1.14.4. Huber Regression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantile-regression">1.1.15. Quantile Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression-extending-linear-models-with-basis-functions">1.1.16. Polynomial regression: extending linear models with basis functions</a></li>
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/modules/linear_model.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -2561,8 +2706,8 @@ This way, we can solve the XOR problem with a linear classifier:</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -2573,7 +2718,7 @@ This way, we can solve the XOR problem with a linear classifier:</p>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

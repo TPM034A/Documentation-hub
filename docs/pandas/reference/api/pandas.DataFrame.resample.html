@@ -8,41 +8,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pandas.DataFrame.resample &#8212; pandas 2.3.3 documentation</title>
+    <title>pandas.DataFrame.resample &#8212; pandas 3.0.6 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=956a7be408686d7d6a7b" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=150e0881" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css?v=8d8a0ed4" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/pandas.css?v=b7db95b1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=956a7be408686d7d6a7b"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b" />
 
-    <script src="../../_static/documentation_options.js?v=f4302432"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=c3365b21"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -50,10 +53,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/api/pandas.DataFrame.resample';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://pandas.pydata.org/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.3';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -62,6 +66,7 @@
     <link rel="prev" title="pandas.DataFrame.last_valid_index" href="pandas.DataFrame.last_valid_index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.6" />
   </head>
   
   
@@ -69,32 +74,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -102,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -110,20 +98,28 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/_templates/docs-announcement-banner.html"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -137,8 +133,8 @@
       
     
     
-    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 2.3.3 documentation - Home"/>
-    <script>document.write(`<img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark" alt="pandas 2.3.3 documentation - Home"/>`);</script>
+    <img src="../../_static/pandas.svg" class="logo__image only-light" alt="pandas 3.0.6 documentation - Home"/>
+    <img src="https://pandas.pydata.org/static/img/pandas_white.svg" class="logo__image only-dark pst-js-only" alt="pandas 3.0.6 documentation - Home"/>
   
   
 </a></div>
@@ -150,49 +146,43 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -204,55 +194,43 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -263,7 +241,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -275,8 +253,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -287,7 +265,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -299,31 +277,31 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -332,52 +310,49 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../user_guide/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        API reference
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../development/index.html">
-                        Development
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../whatsnew/index.html">
-                        Release notes
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../development/index.html">
+    Development
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whatsnew/index.html">
+    Release notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -386,42 +361,34 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -432,7 +399,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/pandas-dev/pandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
@@ -444,8 +411,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/pandas_dev" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
-            <span class="sr-only">Twitter</span></a>
+          <a href="https://x.com/pandas_dev" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
         </li>
         <li class="nav-item">
           
@@ -456,7 +423,7 @@ document.write(`
           
           
           
-          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+          <a href="https://fosstodon.org/@pandas_dev" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
 </ul></div>
@@ -473,7 +440,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../io.html">Input/output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../general_functions.html">General functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../series.html">Series</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frame.html">DataFrame</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../frame.html">DataFrame</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.html">pandas.DataFrame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.index.html">pandas.DataFrame.index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.columns.html">pandas.DataFrame.columns</a></li>
@@ -492,7 +459,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.convert_dtypes.html">pandas.DataFrame.convert_dtypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.infer_objects.html">pandas.DataFrame.infer_objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.copy.html">pandas.DataFrame.copy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.bool.html">pandas.DataFrame.bool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_numpy.html">pandas.DataFrame.to_numpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.head.html">pandas.DataFrame.head</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.at.html">pandas.DataFrame.at</a></li>
@@ -513,6 +479,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.where.html">pandas.DataFrame.where</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.mask.html">pandas.DataFrame.mask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.query.html">pandas.DataFrame.query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.isetitem.html">pandas.DataFrame.isetitem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.__add__.html">pandas.DataFrame.__add__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.add.html">pandas.DataFrame.add</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.sub.html">pandas.DataFrame.sub</a></li>
@@ -541,7 +508,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.combine_first.html">pandas.DataFrame.combine_first</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.apply.html">pandas.DataFrame.apply</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.map.html">pandas.DataFrame.map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.applymap.html">pandas.DataFrame.applymap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.pipe.html">pandas.DataFrame.pipe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.agg.html">pandas.DataFrame.agg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.aggregate.html">pandas.DataFrame.aggregate</a></li>
@@ -595,11 +561,8 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.duplicated.html">pandas.DataFrame.duplicated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.equals.html">pandas.DataFrame.equals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.filter.html">pandas.DataFrame.filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.first.html">pandas.DataFrame.first</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.head.html">pandas.DataFrame.head</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.idxmax.html">pandas.DataFrame.idxmax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.idxmin.html">pandas.DataFrame.idxmin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.last.html">pandas.DataFrame.last</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.reindex.html">pandas.DataFrame.reindex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.reindex_like.html">pandas.DataFrame.reindex_like</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.rename.html">pandas.DataFrame.rename</a></li>
@@ -608,10 +571,8 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.sample.html">pandas.DataFrame.sample</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.set_axis.html">pandas.DataFrame.set_axis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.set_index.html">pandas.DataFrame.set_index</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.tail.html">pandas.DataFrame.tail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.take.html">pandas.DataFrame.take</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.truncate.html">pandas.DataFrame.truncate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.backfill.html">pandas.DataFrame.backfill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.bfill.html">pandas.DataFrame.bfill</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.dropna.html">pandas.DataFrame.dropna</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.ffill.html">pandas.DataFrame.ffill</a></li>
@@ -621,7 +582,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.isnull.html">pandas.DataFrame.isnull</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.notna.html">pandas.DataFrame.notna</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.notnull.html">pandas.DataFrame.notnull</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.pad.html">pandas.DataFrame.pad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.replace.html">pandas.DataFrame.replace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.droplevel.html">pandas.DataFrame.droplevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.pivot.html">pandas.DataFrame.pivot</a></li>
@@ -634,7 +594,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.swaplevel.html">pandas.DataFrame.swaplevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.stack.html">pandas.DataFrame.stack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.unstack.html">pandas.DataFrame.unstack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.swapaxes.html">pandas.DataFrame.swapaxes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.melt.html">pandas.DataFrame.melt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.explode.html">pandas.DataFrame.explode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.squeeze.html">pandas.DataFrame.squeeze</a></li>
@@ -676,6 +635,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.sparse.from_spmatrix.html">pandas.DataFrame.sparse.from_spmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.sparse.to_coo.html">pandas.DataFrame.sparse.to_coo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.sparse.to_dense.html">pandas.DataFrame.sparse.to_dense</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.from_arrow.html">pandas.DataFrame.from_arrow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.from_dict.html">pandas.DataFrame.from_dict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.from_records.html">pandas.DataFrame.from_records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_orc.html">pandas.DataFrame.to_orc</a></li>
@@ -691,7 +651,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_feather.html">pandas.DataFrame.to_feather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_latex.html">pandas.DataFrame.to_latex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_stata.html">pandas.DataFrame.to_stata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_gbq.html">pandas.DataFrame.to_gbq</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_records.html">pandas.DataFrame.to_records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_string.html">pandas.DataFrame.to_string</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.to_clipboard.html">pandas.DataFrame.to_clipboard</a></li>
@@ -699,7 +658,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.style.html">pandas.DataFrame.style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas.DataFrame.__dataframe__.html">pandas.DataFrame.__dataframe__</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../arrays.html">pandas arrays, scalars, and data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../indexing.html">Index objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../offset_frequency.html">Date offsets</a></li>
@@ -713,6 +672,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../extensions.html">Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../missing_value.html">Missing values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aliases.html">pandas typing aliases</a></li>
 </ul>
 
     
@@ -722,29 +682,32 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
         <div class="header-article-item">
 
-
-
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -758,7 +721,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../frame.html" class="nav-link">DataFrame</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">pandas.DataF...</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pandas.DataFrame.resample</span></li>
   </ul>
 </nav>
 </div>
@@ -773,13 +736,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="pandas-dataframe-resample">
 <h1>pandas.DataFrame.resample<a class="headerlink" href="#pandas-dataframe-resample" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pandas.DataFrame.resample">
-<span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis=&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closed=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convention='start'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind=&lt;no_default&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin='start_day'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_keys=False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.3.3/pandas/core/generic.py#L9410-L9847"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.DataFrame.resample" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convention</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'start'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'start_day'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v3.0.6/pandas/core/generic.py#L9043-L9422"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.DataFrame.resample" title="Link to this definition">#</a></dt>
 <dd><p>Resample time-series data.</p>
 <p>Convenience method for frequency conversion and resampling of time series.
 The object must have a datetime-like index (<cite>DatetimeIndex</cite>, <cite>PeriodIndex</cite>,
@@ -789,13 +752,6 @@ series/index to the <code class="docutils literal notranslate"><span class="pre"
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>rule</strong><span class="classifier">DateOffset, Timedelta or str</span></dt><dd><p>The offset string or object representing target conversion.</p>
-</dd>
-<dt><strong>axis</strong><span class="classifier">{0 or ‘index’, 1 or ‘columns’}, default 0</span></dt><dd><p>Which axis to use for up- or down-sampling. For <cite>Series</cite> this parameter
-is unused and defaults to 0. Must be
-<cite>DatetimeIndex</cite>, <cite>TimedeltaIndex</cite> or <cite>PeriodIndex</cite>.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 2.0.0: </span>Use frame.T.resample(…) instead.</p>
-</div>
 </dd>
 <dt><strong>closed</strong><span class="classifier">{‘right’, ‘left’}, default None</span></dt><dd><p>Which side of bin interval is closed. The default is ‘left’
 for all frequency offsets except for ‘ME’, ‘YE’, ‘QE’, ‘BME’,
@@ -808,13 +764,6 @@ for all frequency offsets except for ‘ME’, ‘YE’, ‘QE’, ‘BME’,
 <dt><strong>convention</strong><span class="classifier">{‘start’, ‘end’, ‘s’, ‘e’}, default ‘start’</span></dt><dd><p>For <cite>PeriodIndex</cite> only, controls whether to use the start or
 end of <cite>rule</cite>.</p>
 </dd>
-<dt><strong>kind</strong><span class="classifier">{‘timestamp’, ‘period’}, optional, default None</span></dt><dd><p>Pass ‘timestamp’ to convert the resulting index to a
-<cite>DateTimeIndex</cite> or ‘period’ to convert it to a <cite>PeriodIndex</cite>.
-By default the input representation is retained.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 2.2.0: </span>Convert index to desired type explicitly instead.</p>
-</div>
-</dd>
 <dt><strong>on</strong><span class="classifier">str, optional</span></dt><dd><p>For a DataFrame, column to use instead of index for resampling.
 Column must be datetime-like.</p>
 </dd>
@@ -823,7 +772,7 @@ resampling. <cite>level</cite> must be datetime-like.</p>
 </dd>
 <dt><strong>origin</strong><span class="classifier">Timestamp or str, default ‘start_day’</span></dt><dd><p>The timestamp on which to adjust the grouping. The timezone of origin
 must match the timezone of the index.
-If string, must be one of the following:</p>
+If string, must be Timestamp convertible or one of the following:</p>
 <ul class="simple">
 <li><p>‘epoch’: <cite>origin</cite> is 1970-01-01</p></li>
 <li><p>‘start’: <cite>origin</cite> is the first value of the timeseries</p></li>
@@ -831,9 +780,6 @@ If string, must be one of the following:</p>
 <li><p>‘end’: <cite>origin</cite> is the last value of the timeseries</p></li>
 <li><p>‘end_day’: <cite>origin</cite> is the ceiling midnight of the last day</p></li>
 </ul>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.3.0.</span></p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Only takes effect for Tick-frequencies (i.e. fixed frequencies like
@@ -844,10 +790,6 @@ days, hours, and minutes, rather than months or quarters).</p>
 </dd>
 <dt><strong>group_keys</strong><span class="classifier">bool, default False</span></dt><dd><p>Whether to include the group keys in the result index when using
 <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> on the resampled object.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.5.0: </span>Not specifying <code class="docutils literal notranslate"><span class="pre">group_keys</span></code> will retain values-dependent behavior
-from pandas 1.4 and earlier (see <a class="reference internal" href="../../whatsnew/v1.5.0.html#whatsnew-150-enhancements-resample-group-keys"><span class="std std-ref">pandas 1.5.0 Release notes</span></a> for examples).</p>
-</div>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 2.0.0: </span><code class="docutils literal notranslate"><span class="pre">group_keys</span></code> now defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </div>
@@ -880,7 +822,7 @@ for more.</p>
 <p>To learn more about the offset strings, please see <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects">this link</a>.</p>
 <p class="rubric">Examples</p>
 <p>Start by creating a series with 9 one minute timestamps.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2000&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"1/1/2000"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"min"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">series</span>
 <span class="go">2000-01-01 00:00:00    0</span>
@@ -897,7 +839,7 @@ for more.</p>
 </div>
 <p>Downsample the series into 3 minute bins and sum the values
 of the timestamps falling into a bin.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"3min"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-01-01 00:00:00     3</span>
 <span class="go">2000-01-01 00:03:00    12</span>
 <span class="go">2000-01-01 00:06:00    21</span>
@@ -911,7 +853,7 @@ which it labels. For example, in the original series the
 bucket <code class="docutils literal notranslate"><span class="pre">2000-01-01</span> <span class="pre">00:03:00</span></code> contains the value 3, but the summed
 value in the resampled bucket with the label <code class="docutils literal notranslate"><span class="pre">2000-01-01</span> <span class="pre">00:03:00</span></code>
 does not include 3 (if it did, the summed value would be 6, not 3).</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3min&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"3min"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-01-01 00:03:00     3</span>
 <span class="go">2000-01-01 00:06:00    12</span>
 <span class="go">2000-01-01 00:09:00    21</span>
@@ -920,7 +862,7 @@ does not include 3 (if it did, the summed value would be 6, not 3).</p>
 </div>
 <p>To include this value close the right side of the bin interval,
 as shown below.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3min&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"3min"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-01-01 00:00:00     0</span>
 <span class="go">2000-01-01 00:03:00     6</span>
 <span class="go">2000-01-01 00:06:00    15</span>
@@ -929,7 +871,7 @@ as shown below.</p>
 </pre></div>
 </div>
 <p>Upsample the series into 30 second bins.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;30s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">asfreq</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>   <span class="c1"># Select first 5 rows</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"30s"</span><span class="p">)</span><span class="o">.</span><span class="n">asfreq</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>  <span class="c1"># Select first 5 rows</span>
 <span class="go">2000-01-01 00:00:00   0.0</span>
 <span class="go">2000-01-01 00:00:30   NaN</span>
 <span class="go">2000-01-01 00:01:00   1.0</span>
@@ -940,7 +882,7 @@ as shown below.</p>
 </div>
 <p>Upsample the series into 30 second bins and fill the <code class="docutils literal notranslate"><span class="pre">NaN</span></code>
 values using the <code class="docutils literal notranslate"><span class="pre">ffill</span></code> method.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;30s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">ffill</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"30s"</span><span class="p">)</span><span class="o">.</span><span class="n">ffill</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="go">2000-01-01 00:00:00    0</span>
 <span class="go">2000-01-01 00:00:30    0</span>
 <span class="go">2000-01-01 00:01:00    1</span>
@@ -951,7 +893,7 @@ values using the <code class="docutils literal notranslate"><span class="pre">ff
 </div>
 <p>Upsample the series into 30 second bins and fill the
 <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values using the <code class="docutils literal notranslate"><span class="pre">bfill</span></code> method.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;30s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bfill</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"30s"</span><span class="p">)</span><span class="o">.</span><span class="n">bfill</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="go">2000-01-01 00:00:00    0</span>
 <span class="go">2000-01-01 00:00:30    1</span>
 <span class="go">2000-01-01 00:01:00    1</span>
@@ -963,8 +905,7 @@ values using the <code class="docutils literal notranslate"><span class="pre">ff
 <p>Pass a custom function via <code class="docutils literal notranslate"><span class="pre">apply</span></code></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">custom_resampler</span><span class="p">(</span><span class="n">arraylike</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arraylike</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">custom_resampler</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"3min"</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">custom_resampler</span><span class="p">)</span>
 <span class="go">2000-01-01 00:00:00     8</span>
 <span class="go">2000-01-01 00:03:00    17</span>
 <span class="go">2000-01-01 00:06:00    26</span>
@@ -976,13 +917,13 @@ used to control whether to use the start or end of <cite>rule</cite>.</p>
 <p>Resample a year by quarter using ‘start’ <cite>convention</cite>. Values are
 assigned to the first quarter of the period.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">&quot;2012-01-01&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">"2012-01-01"</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
 <span class="go">2012    1</span>
 <span class="go">2013    2</span>
 <span class="go">Freq: Y-DEC, dtype: int64</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="n">convention</span><span class="o">=</span><span class="s2">&quot;start&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">asfreq</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"Q"</span><span class="p">,</span> <span class="n">convention</span><span class="o">=</span><span class="s2">"start"</span><span class="p">)</span><span class="o">.</span><span class="n">asfreq</span><span class="p">()</span>
 <span class="go">2012Q1    1.0</span>
 <span class="go">2012Q2    NaN</span>
 <span class="go">2012Q3    NaN</span>
@@ -997,7 +938,7 @@ assigned to the first quarter of the period.</p>
 <p>Resample quarters by month using ‘end’ <cite>convention</cite>. Values are
 assigned to the last month of the period.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">&quot;2018-01-01&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">"2018-01-01"</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"Q"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">q</span>
 <span class="go">2018Q1    1</span>
@@ -1005,7 +946,7 @@ assigned to the last month of the period.</p>
 <span class="go">2018Q3    3</span>
 <span class="go">2018Q4    4</span>
 <span class="go">Freq: Q-DEC, dtype: int64</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="n">convention</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">asfreq</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"M"</span><span class="p">,</span> <span class="n">convention</span><span class="o">=</span><span class="s2">"end"</span><span class="p">)</span><span class="o">.</span><span class="n">asfreq</span><span class="p">()</span>
 <span class="go">2018-03    1.0</span>
 <span class="go">2018-04    NaN</span>
 <span class="go">2018-05    NaN</span>
@@ -1021,12 +962,9 @@ assigned to the last month of the period.</p>
 </div>
 <p>For DataFrame objects, the keyword <cite>on</cite> can be used to specify the
 column instead of the index for resampling.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
-<span class="gp">... </span>     <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;week_starting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;01/01/2018&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                                    <span class="n">periods</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-<span class="gp">... </span>                                    <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"price"</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s2">"volume"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s2">"week_starting"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"01/01/2018"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"W"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
 <span class="go">   price  volume week_starting</span>
 <span class="go">0     10      50    2018-01-07</span>
@@ -1037,7 +975,7 @@ column instead of the index for resampling.</p>
 <span class="go">5     18     100    2018-02-11</span>
 <span class="go">6     17      40    2018-02-18</span>
 <span class="go">7     19      50    2018-02-25</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;week_starting&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"ME"</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"week_starting"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="go">               price  volume</span>
 <span class="go">week_starting</span>
 <span class="go">2018-01-31     10.75    62.5</span>
@@ -1046,14 +984,20 @@ column instead of the index for resampling.</p>
 </div>
 <p>For a DataFrame with MultiIndex, the keyword <cite>level</cite> can be used to
 specify on which level the resampling needs to take place.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">days</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2000&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
-<span class="gp">... </span>      <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">days</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">"1/1/2000"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"D"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">d2</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span>
-<span class="gp">... </span>        <span class="p">[</span><span class="n">days</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;morning&#39;</span><span class="p">,</span> <span class="s1">&#39;afternoon&#39;</span><span class="p">]]</span>
-<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">19</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"price"</span><span class="p">,</span> <span class="s2">"volume"</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span><span class="n">days</span><span class="p">,</span> <span class="p">[</span><span class="s2">"morning"</span><span class="p">,</span> <span class="s2">"afternoon"</span><span class="p">]]),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span>
 <span class="go">                      price  volume</span>
@@ -1065,7 +1009,7 @@ specify on which level the resampling needs to take place.</p>
 <span class="go">           afternoon     18     100</span>
 <span class="go">2000-01-04 morning       17      40</span>
 <span class="go">           afternoon     19      50</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"D"</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">            price  volume</span>
 <span class="go">2000-01-01     21     110</span>
 <span class="go">2000-01-02     22     140</span>
@@ -1074,8 +1018,8 @@ specify on which level the resampling needs to take place.</p>
 </pre></div>
 </div>
 <p>If you want to adjust the start of the bins based on a fixed timestamp:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2000-10-01 23:30:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2000-10-02 00:30:00&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;7min&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">"2000-10-01 23:30:00"</span><span class="p">,</span> <span class="s2">"2000-10-02 00:30:00"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"7min"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">))</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span>
 <span class="go">2000-10-01 23:30:00     0</span>
@@ -1090,7 +1034,7 @@ specify on which level the resampling needs to take place.</p>
 <span class="go">Freq: 7min, dtype: int64</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;17min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"17min"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-10-01 23:14:00     0</span>
 <span class="go">2000-10-01 23:31:00     9</span>
 <span class="go">2000-10-01 23:48:00    21</span>
@@ -1099,7 +1043,7 @@ specify on which level the resampling needs to take place.</p>
 <span class="go">Freq: 17min, dtype: int64</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"17min"</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"epoch"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-10-01 23:18:00     0</span>
 <span class="go">2000-10-01 23:35:00    18</span>
 <span class="go">2000-10-01 23:52:00    27</span>
@@ -1108,7 +1052,7 @@ specify on which level the resampling needs to take place.</p>
 <span class="go">Freq: 17min, dtype: int64</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;2000-01-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"17min"</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"2000-01-01"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-10-01 23:24:00     3</span>
 <span class="go">2000-10-01 23:41:00    15</span>
 <span class="go">2000-10-01 23:58:00    45</span>
@@ -1118,7 +1062,7 @@ specify on which level the resampling needs to take place.</p>
 </div>
 <p>If you want to adjust the start of the bins with an <cite>offset</cite> Timedelta, the two
 following lines are equivalent:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"17min"</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"start"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-10-01 23:30:00     9</span>
 <span class="go">2000-10-01 23:47:00    21</span>
 <span class="go">2000-10-02 00:04:00    54</span>
@@ -1126,7 +1070,7 @@ following lines are equivalent:</p>
 <span class="go">Freq: 17min, dtype: int64</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="s1">&#39;23h30min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"17min"</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="s2">"23h30min"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-10-01 23:30:00     9</span>
 <span class="go">2000-10-01 23:47:00    21</span>
 <span class="go">2000-10-02 00:04:00    54</span>
@@ -1135,7 +1079,7 @@ following lines are equivalent:</p>
 </pre></div>
 </div>
 <p>If you want to take the largest Timestamp as the end of the bins:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;end&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"17min"</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"end"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-10-01 23:35:00     0</span>
 <span class="go">2000-10-01 23:52:00    18</span>
 <span class="go">2000-10-02 00:09:00    27</span>
@@ -1146,7 +1090,7 @@ following lines are equivalent:</p>
 <p>In contrast with the <cite>start_day</cite>, you can use <cite>end_day</cite> to take the ceiling
 midnight of the largest Timestamp as the end of the bins and drop the bins
 not containing data:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;end_day&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"17min"</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"end_day"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">2000-10-01 23:38:00     3</span>
 <span class="go">2000-10-01 23:55:00    15</span>
 <span class="go">2000-10-02 00:12:00    45</span>
@@ -1165,7 +1109,7 @@ not containing data:</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1193,27 +1137,21 @@ not containing data:</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
-
-  <div class="page-toc tocsection onthispage">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas.DataFrame.resample"><code class="docutils literal notranslate"><span class="pre">DataFrame.resample()</span></code></a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/reference/api/pandas.DataFrame.resample.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               
@@ -1228,8 +1166,8 @@ not containing data:</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=956a7be408686d7d6a7b"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=956a7be408686d7d6a7b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1237,13 +1175,13 @@ not containing data:</p>
     <div class="footer-items__start">
       
         <div class="footer-item"><p class="copyright">
-    &copy 2025, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
+    &copy 2026, pandas via <a href="https://numfocus.org">NumFOCUS, Inc.</a> Hosted by <a href="https://www.ovhcloud.com">OVHcloud</a>.
 </p></div>
       
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
     <br/>
   </p>
 </div>
@@ -1256,7 +1194,8 @@ not containing data:</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

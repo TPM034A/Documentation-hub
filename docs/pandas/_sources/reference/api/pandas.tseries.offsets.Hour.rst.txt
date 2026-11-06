@@ -17,9 +17,6 @@ pandas.tseries.offsets.Hour
         ~Hour.base
       
       
-        ~Hour.delta
-      
-      
         ~Hour.freqstr
       
       
@@ -51,9 +48,6 @@ pandas.tseries.offsets.Hour
       
       
         ~Hour.copy
-      
-      
-        ~Hour.is_anchored
       
       
         ~Hour.is_month_end

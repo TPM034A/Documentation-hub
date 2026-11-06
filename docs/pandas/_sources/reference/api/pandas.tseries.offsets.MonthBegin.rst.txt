@@ -50,9 +50,6 @@ pandas.tseries.offsets.MonthBegin
         ~MonthBegin.copy
       
       
-        ~MonthBegin.is_anchored
-      
-      
         ~MonthBegin.is_month_end
       
       

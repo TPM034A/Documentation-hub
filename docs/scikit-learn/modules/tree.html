@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-learn" />
 <meta name="description" content="Decision Trees (DTs) are a non-parametric supervised learning method used for classification and regression. The goal is to create a model that predicts the value of a target variable by learning s..." />
 
-    <title>1.10. Decision Trees &#8212; scikit-learn 1.7.2 documentation</title>
+    <title>1.10. Decision Trees &#8212; scikit-learn 1.9.1 documentation</title>
   
   
   
@@ -35,48 +35,51 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=cc94ab7d" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=b0ea68f0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=66adee68" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=48ff45b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
-    <script src="../_static/documentation_options.js?v=908dc885"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=60b3a732"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=97f0b27d"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules/tree';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.21.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-learn.org/dev/_static/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.7.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=d6825577"></script>
     <script src="../_static/scripts/version-switcher.js?v=a6dd8357"></script>
     <script src="../_static/scripts/sg_plotly_resize.js?v=2167d4db"></script>
+    <script src="../_static/scripts/theme-observer.js?v=bf5fb916"></script>
     <link rel="canonical" href="https://scikit-learn.org/stable/modules/tree.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -85,21 +88,27 @@
     <link rel="prev" title="1.9. Naive Bayes" href="naive_bayes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.7" />
+  <meta name="docsearch:version" content="1.9" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -125,7 +134,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -151,8 +160,8 @@
       
     
     
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
-    <img src="../_static/scikit-learn-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <img src="../_static/scikit-learn-logo-without-subtitle.svg" class="logo__image only-dark pst-js-only" alt="scikit-learn homepage"/>
   
   
 </a></div>
@@ -273,6 +282,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../about.html">
     About us
   </a>
@@ -300,11 +316,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -317,8 +340,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -485,6 +507,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../institutional_support.html">
+    Institutional support
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../about.html">
     About us
   </a>
@@ -502,11 +531,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -519,8 +555,7 @@
           
           
           
-          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -549,7 +584,15 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
@@ -601,39 +644,41 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualizations.html">6. Visualizations</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">7. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="compose.html">7.1. Pipelines and composite estimators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_extraction.html">7.2. Feature extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">7.3. Preprocessing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="impute.html">7.4. Imputation of missing values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">7.5. Unsupervised dimensionality reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="random_projection.html">7.6. Random Projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">7.7. Kernel Approximation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metrics.html">7.8. Pairwise metrics, Affinities and Kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">7.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks.html">7. Callbacks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_transforms.html">8. Dataset transformations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="compose.html">8.1. Pipelines and composite estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_extraction.html">8.2. Feature extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html">8.3. Preprocessing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impute.html">8.4. Imputation of missing values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised_reduction.html">8.5. Unsupervised dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="random_projection.html">8.6. Random Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel_approximation.html">8.7. Kernel Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">8.8. Pairwise metrics, Affinities and Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing_targets.html">8.9. Transforming the prediction target (<code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">8. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">8.1. Toy datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">8.2. Real world datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">8.3. Generated datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">8.4. Loading other datasets</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datasets.html">9. Dataset loading utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/toy_dataset.html">9.1. Toy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/real_world.html">9.2. Real world datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/sample_generators.html">9.3. Generated datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/loading_other_datasets.html">9.4. Loading other datasets</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">9. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">9.1. Strategies to scale computationally: bigger data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">9.2. Computational Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">9.3. Parallelism, resource management, and configuration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">10. Computing with scikit-learn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../computing/scaling_strategies.html">10.1. Strategies to scale computationally: bigger data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/computational_performance.html">10.2. Computational Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computing/parallelism.html">10.3. Parallelism and resource management</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">10. Model persistence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">11. Common pitfalls and recommended practices</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../dispatching.html">12. Dispatching</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="array_api.html">12.1. Array API support (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_persistence.html">11. Model persistence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_pitfalls.html">12. Common pitfalls and recommended practices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_interoperability.html">13. Data Interoperability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="df_output_transform.html">13.1. Pandas/Polars Output for Transformers with <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array_api.html">13.2. Array API support (experimental)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">13. Choosing the right estimator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../presentations.html">14. External Resources, Videos and Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning_map.html">14. Choosing the right estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../presentations.html">15. External Resources, Videos and Talks</a></li>
 </ul>
 </div>
 </nav></div>
@@ -700,7 +745,7 @@ features. A tree can be seen as a piecewise constant approximation.</p>
 approximate a sine curve with a set of if-then-else decision rules. The deeper
 the tree, the more complex the decision rules and the fitter the model.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/tree/plot_tree_regression.html"><img alt="../_images/sphx_glr_plot_tree_regression_001.png" src="../_images/sphx_glr_plot_tree_regression_001.png" style="width: 480.0px; height: 360.0px;" />
+<a class="reference external image-reference" href="../auto_examples/tree/plot_tree_regression.html"><img alt="../_images/sphx_glr_plot_tree_regression_001.png" height="360" src="../_images/sphx_glr_plot_tree_regression_001.png" width="480" />
 </a>
 </figure>
 <p>Some advantages of decision trees are:</p>
@@ -803,7 +848,7 @@ labels are [-1, 1]) classification and multiclass (where the labels are
 </pre></div>
 </div>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/tree/plot_iris_dtc.html"><img alt="../_images/sphx_glr_plot_iris_dtc_002.png" src="../_images/sphx_glr_plot_iris_dtc_002.png" style="width: 480.0px; height: 360.0px;" />
+<a class="reference external image-reference" href="../auto_examples/tree/plot_iris_dtc.html"><img alt="../_images/sphx_glr_plot_iris_dtc_002.png" height="360" src="../_images/sphx_glr_plot_iris_dtc_002.png" width="480" />
 </a>
 </figure>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="alternative-ways-to-export-trees">
@@ -816,30 +861,30 @@ and the python package can be installed with <code class="docutils literal notra
 and the Python wrapper installed from pypi with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">graphviz</span></code>.</p>
 <p class="sd-card-text">Below is an example graphviz export of the above tree trained on the entire
 iris dataset; the results are saved in an output file <code class="docutils literal notranslate"><span class="pre">iris.pdf</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">graphviz</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">)</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="p">)</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">graphviz</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">"iris"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sd-card-text">The <a class="reference internal" href="generated/sklearn.tree.export_graphviz.html#sklearn.tree.export_graphviz" title="sklearn.tree.export_graphviz"><code class="xref py py-func docutils literal notranslate"><span class="pre">export_graphviz</span></code></a> exporter also supports a variety of aesthetic
 options, including coloring nodes by their class (or value for regression) and
 using explicit variable and class names if desired. Jupyter notebooks also
 render these plots inline automatically:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-<span class="gp">... </span>                     <span class="n">feature_names</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>  
-<span class="gp">... </span>                     <span class="n">class_names</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">,</span>  
-<span class="gp">... </span>                     <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  
-<span class="gp">... </span>                     <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">)</span>  
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="n">feature_names</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="n">class_names</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span>
 </pre></div>
 </div>
 <figure class="align-center">
 <img alt="../_images/iris.svg" src="../_images/iris.svg" />
 </figure>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/tree/plot_iris_dtc.html"><img alt="../_images/sphx_glr_plot_iris_dtc_001.png" src="../_images/sphx_glr_plot_iris_dtc_001.png" style="width: 480.0px; height: 360.0px;" />
+<a class="reference external image-reference" href="../auto_examples/tree/plot_iris_dtc.html"><img alt="../_images/sphx_glr_plot_iris_dtc_001.png" height="360" src="../_images/sphx_glr_plot_iris_dtc_001.png" width="480" />
 </a>
 </figure>
 <p class="sd-card-text">Alternatively, the tree can also be exported in textual format with the
@@ -851,7 +896,7 @@ of external libraries and is more compact:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">decision_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">decision_tree</span> <span class="o">=</span> <span class="n">decision_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">export_text</span><span class="p">(</span><span class="n">decision_tree</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">export_text</span><span class="p">(</span><span class="n">decision_tree</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">iris</span><span class="p">[</span><span class="s1">'feature_names'</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 <span class="go">|--- petal width (cm) &lt;= 0.80</span>
 <span class="go">|   |--- class: 0</span>
@@ -872,7 +917,7 @@ of external libraries and is more compact:</p>
 <section id="regression">
 <span id="tree-regression"></span><h2><span class="section-number">1.10.2. </span>Regression<a class="headerlink" href="#regression" title="Link to this heading">#</a></h2>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/tree/plot_tree_regression.html"><img alt="../_images/sphx_glr_plot_tree_regression_001.png" src="../_images/sphx_glr_plot_tree_regression_001.png" style="width: 480.0px; height: 360.0px;" />
+<a class="reference external image-reference" href="../auto_examples/tree/plot_tree_regression.html"><img alt="../_images/sphx_glr_plot_tree_regression_001.png" height="360" src="../_images/sphx_glr_plot_tree_regression_001.png" width="480" />
 </a>
 </figure>
 <p>Decision trees can also be applied to regression problems, using the
@@ -926,7 +971,7 @@ of shape <code class="docutils literal notranslate"><span class="pre">(n_samples
 <a class="reference internal" href="../auto_examples/tree/plot_tree_regression.html#sphx-glr-auto-examples-tree-plot-tree-regression-py"><span class="std std-ref">Decision Tree Regression</span></a>. In this example, the input
 X is a single real value and the outputs Y are the sine and cosine of X.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/tree/plot_tree_regression.html"><img alt="../_images/sphx_glr_plot_tree_regression_002.png" src="../_images/sphx_glr_plot_tree_regression_002.png" style="width: 480.0px; height: 360.0px;" />
+<a class="reference external image-reference" href="../auto_examples/tree/plot_tree_regression.html"><img alt="../_images/sphx_glr_plot_tree_regression_002.png" height="360" src="../_images/sphx_glr_plot_tree_regression_002.png" width="480" />
 </a>
 </figure>
 <p>The use of multi-output trees for classification is demonstrated in
@@ -934,7 +979,7 @@ X is a single real value and the outputs Y are the sine and cosine of X.</p>
 X are the pixels of the upper half of faces and the outputs Y are the pixels of
 the lower half of those faces.</p>
 <figure class="align-center">
-<a class="reference external image-reference" href="../auto_examples/miscellaneous/plot_multioutput_face_completion.html"><img alt="../_images/sphx_glr_plot_multioutput_face_completion_001.png" src="../_images/sphx_glr_plot_multioutput_face_completion_001.png" style="width: 750.0px; height: 847.5px;" />
+<a class="reference external image-reference" href="../auto_examples/miscellaneous/plot_multioutput_face_completion.html"><img alt="../_images/sphx_glr_plot_multioutput_face_completion_001.png" height="848" src="../_images/sphx_glr_plot_multioutput_face_completion_001.png" width="750" />
 </a>
 </figure>
 <p class="rubric">Examples</p>
@@ -943,24 +988,67 @@ the lower half of those faces.</p>
 </ul>
 <p class="rubric">References</p>
 <ul class="simple">
-<li><p>M. Dumont et al,  <a class="reference external" href="http://www.montefiore.ulg.ac.be/services/stochastic/pubs/2009/DMWG09/dumont-visapp09-shortpaper.pdf">Fast multi-class image annotation with random subwindows
+<li><p>M. Dumont et al,  <a class="reference external" href="https://www.montefiore.ulg.ac.be/services/stochastic/pubs/2009/DMWG09/dumont-visapp09-shortpaper.pdf">Fast multi-class image annotation with random subwindows
 and multiple output randomized trees</a>,
 International Conference on Computer Vision Theory and Applications 2009</p></li>
 </ul>
 </section>
 <section id="complexity">
 <span id="tree-complexity"></span><h2><span class="section-number">1.10.4. </span>Complexity<a class="headerlink" href="#complexity" title="Link to this heading">#</a></h2>
-<p>In general, the run time cost to construct a balanced binary tree is
-<span class="math notranslate nohighlight">\(O(n_{samples}n_{features}\log(n_{samples}))\)</span> and query time
-<span class="math notranslate nohighlight">\(O(\log(n_{samples}))\)</span>.  Although the tree construction algorithm attempts
-to generate balanced trees, they will not always be balanced.  Assuming that the
-subtrees remain approximately balanced, the cost at each node consists of
-searching through <span class="math notranslate nohighlight">\(O(n_{features})\)</span> to find the feature that offers the
-largest reduction in the impurity criterion, e.g. log loss (which is equivalent to an
-information gain). This has a cost of
-<span class="math notranslate nohighlight">\(O(n_{features}n_{samples}\log(n_{samples}))\)</span> at each node, leading to a
-total cost over the entire trees (by summing the cost at each node) of
-<span class="math notranslate nohighlight">\(O(n_{features}n_{samples}^{2}\log(n_{samples}))\)</span>.</p>
+<p>The following table shows the worst-case complexity estimates for a balanced
+binary tree:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Splitter</p></th>
+<th class="head"><p>Total training cost</p></th>
+<th class="head"><p>Total inference cost</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“best”</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathcal{O}(n_{features} \, n^2_{samples} \log(n_{samples}))\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathcal{O}(\log(n_{samples}))\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>“random”</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathcal{O}(n_{features} \, n^2_{samples})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathcal{O}(\log(n_{samples}))\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In general, the training cost to construct a balanced binary tree <strong>at each
+node</strong> is</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{O}(n_{features}n_{samples}\log (n_{samples})) + \mathcal{O}(n_{features}n_{samples})\]</div>
+<p>The first term is the cost of sorting <span class="math notranslate nohighlight">\(n_{samples}\)</span> repeated for
+<span class="math notranslate nohighlight">\(n_{features}\)</span>. The second term is the linear scan over candidate split
+points to find the feature that offers the largest reduction in the impurity
+criterion. The latter is sub-leading for the greedy splitter strategy “best”,
+and is therefore typically discarded.</p>
+<p>Regardless of the splitting strategy, after summing the cost over <strong>all internal
+nodes</strong>, the total complexity scales linearly with
+<span class="math notranslate nohighlight">\(n_{nodes}=n_{leaves}-1\)</span>, which is <span class="math notranslate nohighlight">\(\mathcal{O}(n_{samples})\)</span> in the
+worst-case complexity, that is, when the tree is grown until each sample ends up
+in its own leaf.</p>
+<p>Many implementations such as scikit-learn use efficient caching tricks to keep
+track of the general order of indices at each node such that the features do not
+need to be re-sorted at each node; hence, the time complexity of these
+implementations is just
+<span class="math notranslate nohighlight">\(\mathcal{O}(n_{features}n_{samples}\log(n_{samples}))\)</span> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>Inference cost is independent of the splitter strategy. It depends only on the
+tree depth, <span class="math notranslate nohighlight">\(\mathcal{O}(\text{depth})\)</span>. In an approximately balanced
+binary tree, each split halves the data, and then the number of such halvings
+grows with the depth as powers of two. If this process continues until each
+sample is isolated in its own leaf, the resulting depth is
+<span class="math notranslate nohighlight">\(\mathcal{O}(\log(n_{samples}))\)</span>.</p>
+<p class="rubric">References</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>S. Raschka,  <a class="reference external" href="https://sebastianraschka.com/pdf/lecture-notes/stat451fs20/06-trees__notes.pdf">Stat 451: Machine learning lecture notes.</a>
+University of Wisconsin-Madison (2020).</p>
+</aside>
+</aside>
 </section>
 <section id="tips-on-practical-use">
 <h2><span class="section-number">1.10.5. </span>Tips on practical use<a class="headerlink" href="#tips-on-practical-use" title="Link to this heading">#</a></h2>
@@ -1070,9 +1158,32 @@ the task being solved (classification or regression)</p>
 <p>Select the parameters that minimises the impurity</p>
 <div class="math notranslate nohighlight">
 \[\theta^* = \operatorname{argmin}_\theta  G(Q_m, \theta)\]</div>
-<p>Recurse for subsets <span class="math notranslate nohighlight">\(Q_m^{left}(\theta^*)\)</span> and
-<span class="math notranslate nohighlight">\(Q_m^{right}(\theta^*)\)</span> until the maximum allowable depth is reached,
-<span class="math notranslate nohighlight">\(n_m &lt; \min_{samples}\)</span> or <span class="math notranslate nohighlight">\(n_m = 1\)</span>.</p>
+<p>The strategy to choose the split at each node is controlled by the <code class="docutils literal notranslate"><span class="pre">splitter</span></code>
+parameter:</p>
+<ul class="simple">
+<li><p>With the <strong>best splitter</strong> (default, <code class="docutils literal notranslate"><span class="pre">splitter='best'</span></code>), <span class="math notranslate nohighlight">\(\theta^*\)</span> is
+found by performing a <strong>greedy exhaustive search</strong> over all available features
+and all possible thresholds <span class="math notranslate nohighlight">\(t_m\)</span> (i.e. midpoints between sorted,
+distinct feature values), selecting the pair that exactly minimizes
+<span class="math notranslate nohighlight">\(G(Q_m, \theta)\)</span>.</p></li>
+<li><p>With the <strong>random splitter</strong> (<code class="docutils literal notranslate"><span class="pre">splitter='random'</span></code>), <span class="math notranslate nohighlight">\(\theta^*\)</span> is
+found by sampling a <strong>single random candidate threshold</strong> for each available
+feature. This performs a stochastic approximation of the greedy search,
+effectively reducing computation time (see <a class="reference internal" href="#tree-complexity"><span class="std std-ref">Complexity</span></a>).</p></li>
+</ul>
+<p><a class="reference internal" href="generated/sklearn.tree.ExtraTreeClassifier.html#sklearn.tree.ExtraTreeClassifier" title="sklearn.tree.ExtraTreeClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtraTreeClassifier</span></code></a> and <a class="reference internal" href="generated/sklearn.tree.ExtraTreeRegressor.html#sklearn.tree.ExtraTreeRegressor" title="sklearn.tree.ExtraTreeRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtraTreeRegressor</span></code></a> use
+<code class="docutils literal notranslate"><span class="pre">splitter='random'</span></code> by default and share the same implementation as their
+corresponding decision tree estimators, apart from default parameter values.</p>
+<p>After choosing the optimal split <span class="math notranslate nohighlight">\(\theta^*\)</span> at node <span class="math notranslate nohighlight">\(m\)</span>, the same
+splitting procedure is then applied recursively to each partition
+<span class="math notranslate nohighlight">\(Q_m^{left}(\theta^*)\)</span> and <span class="math notranslate nohighlight">\(Q_m^{right}(\theta^*)\)</span> until a stopping
+condition is reached, such as:</p>
+<ul class="simple">
+<li><p>the maximum allowable depth is reached (<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>);</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_m\)</span> is smaller than <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code>;</p></li>
+<li><p>the impurity decrease for this split is smaller than <code class="docutils literal notranslate"><span class="pre">min_impurity_decrease</span></code>.</p></li>
+</ul>
+<p>See the respective estimator docstring for other stopping conditions.</p>
 <section id="classification-criteria">
 <h3><span class="section-number">1.10.7.1. </span>Classification criteria<a class="headerlink" href="#classification-criteria" title="Link to this heading">#</a></h3>
 <p>If a target is a classification outcome taking on values 0,1,…,K-1,
@@ -1130,13 +1241,13 @@ whereas the MAE sets the predicted value of terminal nodes to the median
 - y + \bar{y}_m)\]</div>
 <p>Setting <code class="docutils literal notranslate"><span class="pre">criterion=&quot;poisson&quot;</span></code> might be a good choice if your target is a count
 or a frequency (count per some unit). In any case, <span class="math notranslate nohighlight">\(y &gt;= 0\)</span> is a
-necessary condition to use this criterion. Note that it fits much slower than
-the MSE criterion. For performance reasons the actual implementation minimizes
-the half mean poisson deviance, i.e. the mean poisson deviance divided by 2.</p>
+necessary condition to use this criterion. For performance reasons the actual
+implementation minimizes the half mean poisson deviance, i.e. the mean poisson
+deviance divided by 2.</p>
 <p>Mean Absolute Error:</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}median(y)_m = \underset{y \in Q_m}{\mathrm{median}}(y)\\H(Q_m) = \frac{1}{n_m} \sum_{y \in Q_m} |y - median(y)_m|\end{aligned}\end{align} \]</div>
-<p>Note that it fits much slower than the MSE criterion.</p>
+<p>Note that it is 3–6× slower to fit than the MSE criterion as of version 1.8.</p>
 </section>
 </section>
 <section id="missing-values-support">
@@ -1148,9 +1259,6 @@ the splits are determined in a greedy fashion.
 support for missing values for <code class="docutils literal notranslate"><span class="pre">splitter='random'</span></code>, where the splits
 are determined randomly. For more details on how the splitter differs on
 non-missing values, see the <a class="reference internal" href="ensemble.html#forest"><span class="std std-ref">Forest section</span></a>.</p>
-<p>The criterion supported when there are missing values are
-<code class="docutils literal notranslate"><span class="pre">'gini'</span></code>, <code class="docutils literal notranslate"><span class="pre">'entropy'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'log_loss'</span></code>, for classification or
-<code class="docutils literal notranslate"><span class="pre">'squared_error'</span></code>, <code class="docutils literal notranslate"><span class="pre">'friedman_mse'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'poisson'</span></code> for regression.</p>
 <p>First we will describe how <a class="reference internal" href="generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="sklearn.tree.DecisionTreeClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code></a>, <a class="reference internal" href="generated/sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor" title="sklearn.tree.DecisionTreeRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code></a>
 handle missing-values in the data.</p>
 <p>For each potential threshold on the non-missing data, the splitter will evaluate
@@ -1181,7 +1289,7 @@ values go to one child and non-missing values go to the other:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -1222,9 +1330,9 @@ prediction missing values are mapped to the child with the most samples.</p></li
 </ul>
 </section>
 <section id="minimal-cost-complexity-pruning">
-<span id="id1"></span><h2><span class="section-number">1.10.9. </span>Minimal Cost-Complexity Pruning<a class="headerlink" href="#minimal-cost-complexity-pruning" title="Link to this heading">#</a></h2>
+<span id="id4"></span><h2><span class="section-number">1.10.9. </span>Minimal Cost-Complexity Pruning<a class="headerlink" href="#minimal-cost-complexity-pruning" title="Link to this heading">#</a></h2>
 <p>Minimal cost-complexity pruning is an algorithm used to prune a tree to avoid
-over-fitting, described in Chapter 3 of <a class="reference internal" href="#bre" id="id2"><span>[BRE]</span></a>. This algorithm is parameterized
+over-fitting, described in Chapter 3 of <a class="reference internal" href="#bre" id="id5"><span>[BRE]</span></a>. This algorithm is parameterized
 by <span class="math notranslate nohighlight">\(\alpha\ge0\)</span> known as the complexity parameter. The complexity
 parameter is used to define the cost-complexity measure, <span class="math notranslate nohighlight">\(R_\alpha(T)\)</span> of
 a given tree <span class="math notranslate nohighlight">\(T\)</span>:</p>
@@ -1255,7 +1363,7 @@ be pruned. This process stops when the pruned tree’s minimal
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="bre" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">BRE</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">BRE</a><span class="fn-bracket">]</span></span>
 <p>L. Breiman, J. Friedman, R. Olshen, and C. Stone. Classification
 and Regression Trees. Wadsworth, Belmont, CA, 1984.</p>
 </div>
@@ -1320,8 +1428,8 @@ Learning, Springer, 2009.</p></li>
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">1.10.1. Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">1.10.2. Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-output-problems">1.10.3. Multi-output problems</a></li>
@@ -1338,14 +1446,21 @@ Learning, Springer, 2009.</p></li>
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/modules/tree.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
+  <div class="sidebar-secondary-item"><div class="sk-funding-sidepanel">
+    <hr/>
+    <p>scikit-learn is <a href="../institutional_support.html#funding">financially supported</a> by Probabl and other
+        institutions.</p>
+    <div>
+        <div class="text-center">
+            <a href="https://probabl.ai/lp/scikit-learn">
+                <div class="sk-funding-logos">
+                    <img src="../_static/probabl.png" title="Probabl">
+                </div>
+                <p>Enterprise-grade solutions and services</p>
+            </a>
+        </div>
+    </div>
+</div></div>
 
 </div></div>
               
@@ -1360,8 +1475,8 @@ Learning, Springer, 2009.</p></li>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1372,7 +1487,7 @@ Learning, Springer, 2009.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2007 - 2025, scikit-learn developers (BSD License).
+      © Copyright 2007 - 2026, scikit-learn developers (BSD License).
       <br/>
     
   </p>

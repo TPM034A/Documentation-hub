@@ -53,9 +53,6 @@ pandas.tseries.offsets.SemiMonthEnd
         ~SemiMonthEnd.copy
       
       
-        ~SemiMonthEnd.is_anchored
-      
-      
         ~SemiMonthEnd.is_month_end
       
       

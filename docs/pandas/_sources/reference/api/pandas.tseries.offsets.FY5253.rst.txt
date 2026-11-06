@@ -65,9 +65,6 @@ pandas.tseries.offsets.FY5253
         ~FY5253.get_year_end
       
       
-        ~FY5253.is_anchored
-      
-      
         ~FY5253.is_month_end
       
       

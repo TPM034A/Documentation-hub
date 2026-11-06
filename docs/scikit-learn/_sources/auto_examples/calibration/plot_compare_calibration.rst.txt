@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_calibration_plot_compare_calibration.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -33,31 +33,42 @@ models: :ref:`Logistic_regression`, :ref:`gaussian_naive_bayes`,
 :ref:`Random Forest Classifier <forest>` and :ref:`Linear SVM
 <svm_classification>`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-22
-
-Authors: The scikit-learn developers
-SPDX-License-Identifier: BSD-3-Clause
-
-.. GENERATED FROM PYTHON SOURCE LINES 22-54
+.. GENERATED FROM PYTHON SOURCE LINES 18-22
 
 .. code-block:: Python
 
 
-    #
-    # Dataset
-    # -------
-    #
-    # We will use a synthetic binary classification dataset with 100,000 samples
-    # and 20 features. Of the 20 features, only 2 are informative, 2 are
-    # redundant (random combinations of the informative features) and the
-    # remaining 16 are uninformative (random numbers).
-    #
-    # Of the 100,000 samples, 100 will be used for model fitting and the remaining
-    # for testing. Note that this split is quite unusual: the goal is to obtain
-    # stable calibration curve estimates for models that are potentially prone to
-    # overfitting. In practice, one should rather use cross-validation with more
-    # balanced splits but this would make the code of this example more complicated
-    # to follow.
+    # Authors: The scikit-learn developers
+    # SPDX-License-Identifier: BSD-3-Clause
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 23-37
+
+Dataset
+-------
+
+We will use a synthetic binary classification dataset with 100,000 samples
+and 20 features. Of the 20 features, only 2 are informative, 2 are
+redundant (random combinations of the informative features) and the
+remaining 16 are uninformative (random numbers).
+
+Of the 100,000 samples, 100 will be used for model fitting and the remaining
+for testing. Note that this split is quite unusual: the goal is to obtain
+stable calibration curve estimates for models that are potentially prone to
+overfitting. In practice, one should rather use cross-validation with more
+balanced splits but this would make the code of this example more complicated
+to follow.
+
+.. GENERATED FROM PYTHON SOURCE LINES 37-53
+
+.. code-block:: Python
+
 
     from sklearn.datasets import make_classification
     from sklearn.model_selection import train_test_split
@@ -81,7 +92,7 @@ SPDX-License-Identifier: BSD-3-Clause
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-66
+.. GENERATED FROM PYTHON SOURCE LINES 54-65
 
 Calibration curves
 ------------------
@@ -95,7 +106,7 @@ positives'). Below the calibration curve, we plot a histogram showing
 the distribution of the predicted probabilities or more specifically,
 the number of samples in each predicted probability bin.
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-92
+.. GENERATED FROM PYTHON SOURCE LINES 65-91
 
 .. code-block:: Python
 
@@ -132,7 +143,7 @@ the number of samples in each predicted probability bin.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-121
+.. GENERATED FROM PYTHON SOURCE LINES 92-125
 
 .. code-block:: Python
 
@@ -151,7 +162,12 @@ the number of samples in each predicted probability bin.
     # classifiers but we don't do it here for the sake of keeping the example code
     # concise and fast to execute.
     lr = LogisticRegressionCV(
-        Cs=np.logspace(-6, 6, 101), cv=10, scoring="neg_log_loss", max_iter=1_000
+        Cs=np.logspace(-6, 6, 101),
+        cv=10,
+        l1_ratios=(0,),
+        scoring="neg_log_loss",
+        max_iter=1_000,
+        use_legacy_attributes=False,
     )
     gnb = GaussianNB()
     svc = NaivelyCalibratedLinearSVC(C=1.0)
@@ -171,7 +187,7 @@ the number of samples in each predicted probability bin.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-168
+.. GENERATED FROM PYTHON SOURCE LINES 126-172
 
 .. code-block:: Python
 
@@ -233,7 +249,7 @@ the number of samples in each predicted probability bin.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-282
+.. GENERATED FROM PYTHON SOURCE LINES 173-286
 
 Analysis of the results
 -----------------------
@@ -250,7 +266,7 @@ calibrated. However, using a proper scoring rule as training objective is not
 sufficient to guarantee a well-calibrated model by itself: even with a very
 large training set, logistic regression could still be poorly calibrated, if
 it was too strongly regularized or if the choice and preprocessing of input
-features made this model mis-specified (e.g. if the true decision boundary of
+features made this model misspecified (e.g. if the true decision boundary of
 the dataset is a highly non-linear function of the input features).
 
 In this example the training set was intentionally kept very small. In this
@@ -352,7 +368,7 @@ References
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.943 seconds)
+   **Total running time of the script:** (0 minutes 3.763 seconds)
 
 
 .. _sphx_glr_download_auto_examples_calibration_plot_compare_calibration.py:
@@ -364,7 +380,7 @@ References
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/calibration/plot_compare_calibration.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/calibration/plot_compare_calibration.ipynb
         :alt: Launch binder
         :width: 150 px
 

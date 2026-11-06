@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_covariance_plot_mahalanobis_distances.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -71,8 +71,8 @@ observation ranking and clustering.
 
 .. rubric:: References
 
-.. [1] P. J. Rousseeuw. `Least median of squares regression
-    <http://web.ipac.caltech.edu/staff/fmasci/home/astro_refs/LeastMedianOfSquares.pdf>`_. J. Am
+.. [1] P. J. Rousseeuw. :doi:`Least median of squares regression
+    <10.1080/01621459.1984.10477105>`. J. Am
     Stat Ass, 79:871, 1984.
 .. [2] Wilson, E. B., & Hilferty, M. M. (1931). `The distribution of chi-square.
     <https://water.usgs.gov/osw/bulletin17b/Wilson_Hilferty_1931.pdf>`_
@@ -157,9 +157,9 @@ designed to have a much larger variance in feature 2.
 
     from sklearn.covariance import EmpiricalCovariance, MinCovDet
 
-    # fit a MCD robust estimator to data
+    # fit an MCD robust estimator to data
     robust_cov = MinCovDet().fit(X)
-    # fit a MLE estimator to data
+    # fit an MLE estimator to data
     emp_cov = EmpiricalCovariance().fit(X)
     print(
         "Estimated covariance matrix:\nMCD (Robust):\n{}\nMLE:\n{}".format(
@@ -177,8 +177,8 @@ designed to have a much larger variance in feature 2.
 
     Estimated covariance matrix:
     MCD (Robust):
-    [[ 3.26253567e+00 -3.06695631e-03]
-     [-3.06695631e-03  1.22747343e+00]]
+    [[ 3.60075119 -0.07640781]
+     [-0.07640781  1.51855963]]
     MLE:
     [[ 3.23773583 -0.24640578]
      [-0.24640578  7.51963999]]
@@ -320,7 +320,7 @@ distribution of inlier samples for robust MCD based Mahalanobis distances.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.278 seconds)
+   **Total running time of the script:** (0 minutes 0.300 seconds)
 
 
 .. _sphx_glr_download_auto_examples_covariance_plot_mahalanobis_distances.py:
@@ -332,7 +332,7 @@ distribution of inlier samples for robust MCD based Mahalanobis distances.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/covariance/plot_mahalanobis_distances.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/covariance/plot_mahalanobis_distances.ipynb
         :alt: Launch binder
         :width: 150 px
 

@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.intersection\_all
+=====================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.intersection_all

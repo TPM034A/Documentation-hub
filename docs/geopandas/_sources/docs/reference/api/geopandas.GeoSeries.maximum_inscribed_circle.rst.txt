@@ -1,0 +1,6 @@
+﻿geopandas.GeoSeries.maximum\_inscribed\_circle
+==============================================
+
+.. currentmodule:: geopandas
+
+.. automethod:: GeoSeries.maximum_inscribed_circle

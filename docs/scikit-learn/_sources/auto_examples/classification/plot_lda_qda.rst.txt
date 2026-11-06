@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_classification_plot_lda_qda.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -258,7 +258,7 @@ We compare the two estimators LDA and QDA on all three datasets.
     fig, axs = plt.subplots(nrows=3, ncols=2, sharex="row", sharey="row", figsize=(8, 12))
 
     lda = LinearDiscriminantAnalysis(solver="svd", store_covariance=True)
-    qda = QuadraticDiscriminantAnalysis(store_covariance=True)
+    qda = QuadraticDiscriminantAnalysis(solver="svd", store_covariance=True)
 
     for ax_row, X, y in zip(
         axs,
@@ -318,7 +318,7 @@ single covariance matrix.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.408 seconds)
+   **Total running time of the script:** (0 minutes 0.376 seconds)
 
 
 .. _sphx_glr_download_auto_examples_classification_plot_lda_qda.py:
@@ -330,7 +330,7 @@ single covariance matrix.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/classification/plot_lda_qda.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/classification/plot_lda_qda.ipynb
         :alt: Launch binder
         :width: 150 px
 

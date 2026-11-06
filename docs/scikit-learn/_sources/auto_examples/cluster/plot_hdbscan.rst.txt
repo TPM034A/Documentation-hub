@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_cluster_plot_hdbscan.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -207,7 +207,7 @@ One immediate advantage is that HDBSCAN is scale-invariant.
 .. code-block:: Python
 
     fig, axes = plt.subplots(3, 1, figsize=(10, 12))
-    hdb = HDBSCAN()
+    hdb = HDBSCAN(copy=True)
     for idx, scale in enumerate([1, 0.5, 3]):
         hdb.fit(X * scale)
         plot(
@@ -312,7 +312,7 @@ HDBSCAN.
 
 .. code-block:: Python
 
-    hdb = HDBSCAN().fit(X)
+    hdb = HDBSCAN(copy=True).fit(X)
     plot(X, hdb.labels_, hdb.probabilities_)
 
 
@@ -368,7 +368,7 @@ significant overlap.
     PARAM = ({"min_cluster_size": 5}, {"min_cluster_size": 3}, {"min_cluster_size": 25})
     fig, axes = plt.subplots(3, 1, figsize=(10, 12))
     for i, param in enumerate(PARAM):
-        hdb = HDBSCAN(**param).fit(X)
+        hdb = HDBSCAN(copy=True, **param).fit(X)
         labels = hdb.labels_
 
         plot(X, labels, hdb.probabilities_, param, ax=axes[i])
@@ -409,7 +409,7 @@ potentially valid but small clusters.
     )
     fig, axes = plt.subplots(3, 1, figsize=(10, 12))
     for i, param in enumerate(PARAM):
-        hdb = HDBSCAN(**param).fit(X)
+        hdb = HDBSCAN(copy=True, **param).fit(X)
         labels = hdb.labels_
 
         plot(X, labels, hdb.probabilities_, param, ax=axes[i])
@@ -448,7 +448,7 @@ and the minimum spanning tree. All we need to do is specify the `cut_distance`
         {"cut_distance": 0.5},
         {"cut_distance": 1.0},
     )
-    hdb = HDBSCAN()
+    hdb = HDBSCAN(copy=True)
     hdb.fit(X)
     fig, axes = plt.subplots(len(PARAM), 1, figsize=(10, 12))
     for i, param in enumerate(PARAM):
@@ -470,7 +470,7 @@ and the minimum spanning tree. All we need to do is specify the `cut_distance`
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 15.953 seconds)
+   **Total running time of the script:** (0 minutes 12.603 seconds)
 
 
 .. _sphx_glr_download_auto_examples_cluster_plot_hdbscan.py:
@@ -482,7 +482,7 @@ and the minimum spanning tree. All we need to do is specify the `cut_distance`
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/cluster/plot_hdbscan.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/cluster/plot_hdbscan.ipynb
         :alt: Launch binder
         :width: 150 px
 

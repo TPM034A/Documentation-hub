@@ -1,0 +1,3716 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Plotting with Folium &#8212; GeoPandas 1.1.3+0.gf5fe3ff.dirty documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=165729ea" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=83cc7163"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/toggleprompt.js?v=5801b3bb"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/plotting_with_folium';</script>
+    <link rel="canonical" href="https://geopandas.org/en/v1.1.3/gallery/plotting_with_folium.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Plotting polygons with Folium" href="polygon_plotting_with_folium.html" />
+    <link rel="prev" title="Adding a background map to plots" href="plotting_basemap_background.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.1.3" />
+  <script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="geopandas" /><meta name="readthedocs-version-slug" content="v1.1.3" /><meta name="readthedocs-resolver-filename" content="/gallery/plotting_with_folium.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/geopandas_logo_web.svg" class="logo__image only-light" alt="GeoPandas 1.1.3+0.gf5fe3ff.dirty documentation - Home"/>
+    <img src="../_static/geopandas_logo_web.svg" class="logo__image only-dark pst-js-only" alt="GeoPandas 1.1.3+0.gf5fe3ff.dirty documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../community.html">
+    Community
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/geopandas/geopandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-xl fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Home
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about.html">
+    About
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../community.html">
+    Community
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/geopandas/geopandas" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-xl fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction to GeoPandas</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples Gallery</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cartopy_convert.html">Plotting with CartoPy and GeoPandas</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="choro_legends.html">Choro legends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choropleths.html">Choropleth classification schemes from PySAL for use with GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_geopandas_from_pandas.html">Creating a GeoDataFrame from a DataFrame with coordinates</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="geopandas_rasterio_sample.html">Using GeoPandas with Rasterio to sample point data</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="inset_map.html">Adding Inset Maps to a Matplotlib Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matplotlib_scalebar.html">Adding Scale Bars and North Arrows to a Matplotlib Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overlays.html">Overlays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas_accessor.html">Using GeoPandas via the pandas “geo” accessor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_clip.html">Clip Vector Data with GeoPandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_basemap_background.html">Adding a background map to plots</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Plotting with Folium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polygon_plotting_with_folium.html">Plotting polygons with Folium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_joins.html">Spatial Joins</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../getting_started.html" class="nav-link">Getting Started</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Examples Gallery</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Plotting with Folium</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">This page was generated from <a class="reference external" href="https://github.com/geopandas/geopandas/blob/main/doc/source/gallery/plotting_with_folium.ipynb">gallery/plotting_with_folium.ipynb</a>.</div>
+<div class="line">Interactive online version: <span class="raw-html"><a href="https://mybinder.org/v2/gh/geopandas/geopandas/main?urlpath=lab/tree/doc/source/gallery/plotting_with_folium.ipynb"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a></span></div>
+</div>
+</div>
+<section id="Plotting-with-Folium">
+<h1>Plotting with Folium<a class="headerlink" href="#Plotting-with-Folium" title="Link to this heading">#</a></h1>
+<p><strong>What is Folium?</strong></p>
+<p><a class="reference external" href="https://python-visualization.github.io/folium/">Folium</a> builds on the data wrangling strengths of the Python ecosystem and the mapping strengths of the leaflet.js library. This allows you to manipulate your data in Geopandas and visualize it on a Leaflet map via Folium.</p>
+<p>In this example, we will first use Geopandas to load the geometries (volcano point data), and then create the Folium map with markers representing the different types of volcanoes.</p>
+<section id="Load-geometries">
+<h2>Load geometries<a class="headerlink" href="#Load-geometries" title="Link to this heading">#</a></h2>
+<p>This example uses a freely available <a class="reference external" href="https://www.kaggle.com/texasdave/volcano-eruptions">volcano dataset</a>. We will be reading the csv file using pandas, and then convert the pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to a Geopandas <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geodatasets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;volcano_data_2010.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Keep only relevant columns</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">)]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.DataFrame&#39;&gt;
+RangeIndex: 63 entries, 0 to 62
+Data columns (total 6 columns):
+ #   Column     Non-Null Count  Dtype
+---  ------     --------------  -----
+ 0   Year       63 non-null     int64
+ 1   Name       63 non-null     str
+ 2   Country    63 non-null     str
+ 3   Latitude   63 non-null     float64
+ 4   Longitude  63 non-null     float64
+ 5   Type       63 non-null     str
+dtypes: float64(2), int64(1), str(3)
+memory usage: 3.1 KB
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create point geometries</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Latitude</span><span class="p">)</span>
+<span class="n">geo_df</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]],</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span>
+<span class="p">)</span>
+
+<span class="n">geo_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Type</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2010</td>
+      <td>Tungurahua</td>
+      <td>Ecuador</td>
+      <td>-1.467</td>
+      <td>-78.442</td>
+      <td>Stratovolcano</td>
+      <td>POINT (-78.442 -1.467)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2010</td>
+      <td>Eyjafjallajokull</td>
+      <td>Iceland</td>
+      <td>63.630</td>
+      <td>-19.620</td>
+      <td>Stratovolcano</td>
+      <td>POINT (-19.62 63.63)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2010</td>
+      <td>Pacaya</td>
+      <td>Guatemala</td>
+      <td>14.381</td>
+      <td>-90.601</td>
+      <td>Complex volcano</td>
+      <td>POINT (-90.601 14.381)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010</td>
+      <td>Sarigan</td>
+      <td>United States</td>
+      <td>16.708</td>
+      <td>145.780</td>
+      <td>Stratovolcano</td>
+      <td>POINT (145.78 16.708)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2010</td>
+      <td>Karangetang [Api Siau]</td>
+      <td>Indonesia</td>
+      <td>2.780</td>
+      <td>125.480</td>
+      <td>Stratovolcano</td>
+      <td>POINT (125.48 2.78)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">world</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">geodatasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;naturalearth.land&quot;</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;StringArray&gt;
+[     &#39;Stratovolcano&#39;,    &#39;Complex volcano&#39;,     &#39;Shield volcano&#39;,
+ &#39;Subglacial volcano&#39;,          &#39;Lava dome&#39;,            &#39;Caldera&#39;]
+Length: 6, dtype: str
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+<span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">geo_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;Type&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Volcanoes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0.5, 1.0, &#39;Volcanoes&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/gallery_plotting_with_folium_6_1.png" src="../_images/gallery_plotting_with_folium_6_1.png" />
+</div>
+</div>
+</section>
+<section id="Create-Folium-map">
+<h2>Create Folium map<a class="headerlink" href="#Create-Folium-map" title="Link to this heading">#</a></h2>
+<p>Folium has a number of built-in tilesets from OpenStreetMap, Mapbox, and CartoDB. For example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CartoDB Positron</span>
+<span class="nb">map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">13.406</span><span class="p">,</span> <span class="mf">80.110</span><span class="p">],</span> <span class="n">tiles</span><span class="o">=</span><span class="s2">&quot;CartoDB Positron&quot;</span><span class="p">,</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="nb">map</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_249665798acc71176447838080662642 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+            &lt;style&gt;html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            &lt;/style&gt;
+
+            &lt;style&gt;#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            &lt;/style&gt;
+
+            &lt;script&gt;
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            &lt;/script&gt;
+
+
+&lt;/head&gt;
+&lt;body&gt;
+
+
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_249665798acc71176447838080662642&quot; &gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+
+
+            var map_249665798acc71176447838080662642 = L.map(
+                &quot;map_249665798acc71176447838080662642&quot;,
+                {
+                    center: [13.406, 80.11],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  &quot;zoom&quot;: 9,
+  &quot;zoomControl&quot;: true,
+  &quot;preferCanvas&quot;: false,
+}
+
+                }
+            );
+
+
+
+
+
+            var tile_layer_fab35bc44dea66758b588b82bfa62c85 = L.tileLayer(
+                &quot;https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 20,
+  &quot;maxNativeZoom&quot;: 20,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\&quot;https://carto.com/attributions\&quot;\u003eCARTO\u003c/a\u003e&quot;,
+  &quot;subdomains&quot;: &quot;abcd&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+
+
+            tile_layer_fab35bc44dea66758b588b82bfa62c85.addTo(map_249665798acc71176447838080662642);
+
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OpenStreetMap</span>
+<span class="nb">map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">13.406</span><span class="p">,</span> <span class="mf">80.110</span><span class="p">],</span> <span class="n">tiles</span><span class="o">=</span><span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">,</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="nb">map</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_8caff0d567167ce39d8a7f34d53fa0ef {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+            &lt;style&gt;html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            &lt;/style&gt;
+
+            &lt;style&gt;#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            &lt;/style&gt;
+
+            &lt;script&gt;
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            &lt;/script&gt;
+
+
+&lt;/head&gt;
+&lt;body&gt;
+
+
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_8caff0d567167ce39d8a7f34d53fa0ef&quot; &gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+
+
+            var map_8caff0d567167ce39d8a7f34d53fa0ef = L.map(
+                &quot;map_8caff0d567167ce39d8a7f34d53fa0ef&quot;,
+                {
+                    center: [13.406, 80.11],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  &quot;zoom&quot;: 9,
+  &quot;zoomControl&quot;: true,
+  &quot;preferCanvas&quot;: false,
+}
+
+                }
+            );
+
+
+
+
+
+            var tile_layer_19cac450bdb287a362d504328e630862 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 19,
+  &quot;maxNativeZoom&quot;: 19,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;,
+  &quot;subdomains&quot;: &quot;abc&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+
+
+            tile_layer_19cac450bdb287a362d504328e630862.addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+</div>
+<section id="Add-markers">
+<h3>Add markers<a class="headerlink" href="#Add-markers" title="Link to this heading">#</a></h3>
+<p>To represent the different types of volcanoes, you can create Folium markers and add them to your map.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a geometry list from the GeoDataFrame</span>
+<span class="n">geo_df_list</span> <span class="o">=</span> <span class="p">[[</span><span class="n">point</span><span class="o">.</span><span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">point</span><span class="o">.</span><span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">geometry</span><span class="p">]</span>
+
+<span class="c1"># Iterate through list and add a marker for each volcano, color-coded by its type.</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">coordinates</span> <span class="ow">in</span> <span class="n">geo_df_list</span><span class="p">:</span>
+    <span class="c1"># assign a color marker for the type of volcano, Strato being the most common</span>
+    <span class="k">if</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Stratovolcano&quot;</span><span class="p">:</span>
+        <span class="n">type_color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span>
+    <span class="k">elif</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Complex volcano&quot;</span><span class="p">:</span>
+        <span class="n">type_color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span>
+    <span class="k">elif</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Shield volcano&quot;</span><span class="p">:</span>
+        <span class="n">type_color</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span>
+    <span class="k">elif</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Lava dome&quot;</span><span class="p">:</span>
+        <span class="n">type_color</span> <span class="o">=</span> <span class="s2">&quot;pink&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">type_color</span> <span class="o">=</span> <span class="s2">&quot;purple&quot;</span>
+
+    <span class="c1"># Place the markers with the popup labels and data</span>
+    <span class="nb">map</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span>
+        <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+            <span class="n">location</span><span class="o">=</span><span class="n">coordinates</span><span class="p">,</span>
+            <span class="n">popup</span><span class="o">=</span><span class="s2">&quot;Year: &quot;</span>
+            <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geo_df</span><span class="o">.</span><span class="n">Year</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="o">+</span> <span class="s2">&quot;&lt;br&gt;&quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;Name: &quot;</span>
+            <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geo_df</span><span class="o">.</span><span class="n">Name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="o">+</span> <span class="s2">&quot;&lt;br&gt;&quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;Country: &quot;</span>
+            <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geo_df</span><span class="o">.</span><span class="n">Country</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="o">+</span> <span class="s2">&quot;&lt;br&gt;&quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;Type: &quot;</span>
+            <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geo_df</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="o">+</span> <span class="s2">&quot;&lt;br&gt;&quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;Coordinates: &quot;</span>
+            <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geo_df_list</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+            <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">type_color</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_8caff0d567167ce39d8a7f34d53fa0ef {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+            &lt;style&gt;html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            &lt;/style&gt;
+
+            &lt;style&gt;#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            &lt;/style&gt;
+
+            &lt;script&gt;
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            &lt;/script&gt;
+
+
+&lt;/head&gt;
+&lt;body&gt;
+
+
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_8caff0d567167ce39d8a7f34d53fa0ef&quot; &gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+
+
+            var map_8caff0d567167ce39d8a7f34d53fa0ef = L.map(
+                &quot;map_8caff0d567167ce39d8a7f34d53fa0ef&quot;,
+                {
+                    center: [13.406, 80.11],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  &quot;zoom&quot;: 9,
+  &quot;zoomControl&quot;: true,
+  &quot;preferCanvas&quot;: false,
+}
+
+                }
+            );
+
+
+
+
+
+            var tile_layer_19cac450bdb287a362d504328e630862 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 19,
+  &quot;maxNativeZoom&quot;: 19,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;,
+  &quot;subdomains&quot;: &quot;abc&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+
+
+            tile_layer_19cac450bdb287a362d504328e630862.addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            tile_layer_19cac450bdb287a362d504328e630862.addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var marker_ee35581fef9c953e9542d146558b2084 = L.marker(
+                [-1.467, -78.442],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_0b1bb84a70a1581154f70c4144b85558 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_b01aa5af8f22592d1777c156f44b21bc = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_c17a63e45920f550816baf4bd970eef5 = $(`&lt;div id=&quot;html_c17a63e45920f550816baf4bd970eef5&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2010&lt;br&gt;Name: Tungurahua&lt;br&gt;Country: Ecuador&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-1.467, -78.442]&lt;/div&gt;`)[0];
+                popup_b01aa5af8f22592d1777c156f44b21bc.setContent(html_c17a63e45920f550816baf4bd970eef5);
+
+
+
+        marker_ee35581fef9c953e9542d146558b2084.bindPopup(popup_b01aa5af8f22592d1777c156f44b21bc)
+        ;
+
+
+
+
+                marker_ee35581fef9c953e9542d146558b2084.setIcon(icon_0b1bb84a70a1581154f70c4144b85558);
+
+
+            var marker_48210889ed5247d08f61657d3f56c87b = L.marker(
+                [63.63, -19.62],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_18d5f40718cb57fcdf58fef059789941 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_326621f053215975fa5c7f99a923da02 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_ea3b0b414c1edfdf99f5c001101540a7 = $(`&lt;div id=&quot;html_ea3b0b414c1edfdf99f5c001101540a7&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2010&lt;br&gt;Name: Eyjafjallajokull&lt;br&gt;Country: Iceland&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [63.63, -19.62]&lt;/div&gt;`)[0];
+                popup_326621f053215975fa5c7f99a923da02.setContent(html_ea3b0b414c1edfdf99f5c001101540a7);
+
+
+
+        marker_48210889ed5247d08f61657d3f56c87b.bindPopup(popup_326621f053215975fa5c7f99a923da02)
+        ;
+
+
+
+
+                marker_48210889ed5247d08f61657d3f56c87b.setIcon(icon_18d5f40718cb57fcdf58fef059789941);
+
+
+            var marker_9b9e9249d39074477f8b7814babcb6b1 = L.marker(
+                [14.381, -90.601],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_4cbde344a714a1d74008ea5d3752c979 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;blue&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_69dc2d41194e77dbe6610d59745b9775 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_b4eb400bc161208a36a093971567110d = $(`&lt;div id=&quot;html_b4eb400bc161208a36a093971567110d&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2010&lt;br&gt;Name: Pacaya&lt;br&gt;Country: Guatemala&lt;br&gt;Type: Complex volcano&lt;br&gt;Coordinates: [14.381, -90.601]&lt;/div&gt;`)[0];
+                popup_69dc2d41194e77dbe6610d59745b9775.setContent(html_b4eb400bc161208a36a093971567110d);
+
+
+
+        marker_9b9e9249d39074477f8b7814babcb6b1.bindPopup(popup_69dc2d41194e77dbe6610d59745b9775)
+        ;
+
+
+
+
+                marker_9b9e9249d39074477f8b7814babcb6b1.setIcon(icon_4cbde344a714a1d74008ea5d3752c979);
+
+
+            var marker_eb1be1f528d6e8c0cb746d3b5031a7e1 = L.marker(
+                [16.708, 145.78],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_5c2a64c5a79126bd36537d481724ff9b = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_83db0d0c18a573a96539dfa1553185ed = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_172eda1e660a57738b941d19d87c2410 = $(`&lt;div id=&quot;html_172eda1e660a57738b941d19d87c2410&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2010&lt;br&gt;Name: Sarigan&lt;br&gt;Country: United States&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [16.708, 145.78]&lt;/div&gt;`)[0];
+                popup_83db0d0c18a573a96539dfa1553185ed.setContent(html_172eda1e660a57738b941d19d87c2410);
+
+
+
+        marker_eb1be1f528d6e8c0cb746d3b5031a7e1.bindPopup(popup_83db0d0c18a573a96539dfa1553185ed)
+        ;
+
+
+
+
+                marker_eb1be1f528d6e8c0cb746d3b5031a7e1.setIcon(icon_5c2a64c5a79126bd36537d481724ff9b);
+
+
+            var marker_1b4c4cbfd06619803d35fe107995fc9a = L.marker(
+                [2.78, 125.48],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_3e746d50619ad08423093bd21c1e3b52 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_03978721e58b64d74fb8ed6f670c5b8a = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_95b6d2350307797c5af33e007ef6e792 = $(`&lt;div id=&quot;html_95b6d2350307797c5af33e007ef6e792&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2010&lt;br&gt;Name: Karangetang [Api Siau]&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [2.78, 125.48]&lt;/div&gt;`)[0];
+                popup_03978721e58b64d74fb8ed6f670c5b8a.setContent(html_95b6d2350307797c5af33e007ef6e792);
+
+
+
+        marker_1b4c4cbfd06619803d35fe107995fc9a.bindPopup(popup_03978721e58b64d74fb8ed6f670c5b8a)
+        ;
+
+
+
+
+                marker_1b4c4cbfd06619803d35fe107995fc9a.setIcon(icon_3e746d50619ad08423093bd21c1e3b52);
+
+
+            var marker_933f8e1ff23031756e71bc85687764c8 = L.marker(
+                [3.17, 98.392],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_8f013e2f96322393ba28847eb22d258a = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_b583855e1e5188935845452875ef0c4b = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_f84d1db3ba6c31d733e1be7b13c7f2a2 = $(`&lt;div id=&quot;html_f84d1db3ba6c31d733e1be7b13c7f2a2&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2010&lt;br&gt;Name: Sinabung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [3.17, 98.392]&lt;/div&gt;`)[0];
+                popup_b583855e1e5188935845452875ef0c4b.setContent(html_f84d1db3ba6c31d733e1be7b13c7f2a2);
+
+
+
+        marker_933f8e1ff23031756e71bc85687764c8.bindPopup(popup_b583855e1e5188935845452875ef0c4b)
+        ;
+
+
+
+
+                marker_933f8e1ff23031756e71bc85687764c8.setIcon(icon_8f013e2f96322393ba28847eb22d258a);
+
+
+            var marker_0839485ef94d5b77cf2383e882bd6ce3 = L.marker(
+                [-7.542, 110.442],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_9d7c03393991d3e7b46bfe584b25e194 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_56d145f3ce18353a1e9396867a788a4a = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_bd4b34a38d71cf64a092dfbbd3a34012 = $(`&lt;div id=&quot;html_bd4b34a38d71cf64a092dfbbd3a34012&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2010&lt;br&gt;Name: Merapi&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-7.542, 110.442]&lt;/div&gt;`)[0];
+                popup_56d145f3ce18353a1e9396867a788a4a.setContent(html_bd4b34a38d71cf64a092dfbbd3a34012);
+
+
+
+        marker_0839485ef94d5b77cf2383e882bd6ce3.bindPopup(popup_56d145f3ce18353a1e9396867a788a4a)
+        ;
+
+
+
+
+                marker_0839485ef94d5b77cf2383e882bd6ce3.setIcon(icon_9d7c03393991d3e7b46bfe584b25e194);
+
+
+            var marker_0ad21860f992294bb17742a39f52b744 = L.marker(
+                [-1.467, -78.442],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_ef68ec14ae9f17438374506b2521f40e = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_f6e37a831497952609efc24d548fb2c4 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_31efef854a51dcd3bfa4ae1afd9e33ce = $(`&lt;div id=&quot;html_31efef854a51dcd3bfa4ae1afd9e33ce&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2010&lt;br&gt;Name: Tungurahua&lt;br&gt;Country: Ecuador&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-1.467, -78.442]&lt;/div&gt;`)[0];
+                popup_f6e37a831497952609efc24d548fb2c4.setContent(html_31efef854a51dcd3bfa4ae1afd9e33ce);
+
+
+
+        marker_0ad21860f992294bb17742a39f52b744.bindPopup(popup_f6e37a831497952609efc24d548fb2c4)
+        ;
+
+
+
+
+                marker_0ad21860f992294bb17742a39f52b744.setIcon(icon_ef68ec14ae9f17438374506b2521f40e);
+
+
+            var marker_6763efd441f06250d34a46ea8e237f65 = L.marker(
+                [-7.942, 112.95],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_21baaba3f3b31fcbeefab5f6de0f9477 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_99571362cb6adbc5f8745b7fe6eb1925 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_0622be7587cb559facbee1714f60a39c = $(`&lt;div id=&quot;html_0622be7587cb559facbee1714f60a39c&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2010&lt;br&gt;Name: Tengger Caldera&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-7.942, 112.95]&lt;/div&gt;`)[0];
+                popup_99571362cb6adbc5f8745b7fe6eb1925.setContent(html_0622be7587cb559facbee1714f60a39c);
+
+
+
+        marker_6763efd441f06250d34a46ea8e237f65.bindPopup(popup_99571362cb6adbc5f8745b7fe6eb1925)
+        ;
+
+
+
+
+                marker_6763efd441f06250d34a46ea8e237f65.setIcon(icon_21baaba3f3b31fcbeefab5f6de0f9477);
+
+
+            var marker_767accafbf9a67c2a069d9689feacc92 = L.marker(
+                [-7.542, 110.442],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_cf0991789c1165b2a1b4327feb113de5 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_c49b995b59221dee3fc4a57d078b39b2 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_0a5c424a855aca39899d2ce47876ae78 = $(`&lt;div id=&quot;html_0a5c424a855aca39899d2ce47876ae78&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Merapi&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-7.542, 110.442]&lt;/div&gt;`)[0];
+                popup_c49b995b59221dee3fc4a57d078b39b2.setContent(html_0a5c424a855aca39899d2ce47876ae78);
+
+
+
+        marker_767accafbf9a67c2a069d9689feacc92.bindPopup(popup_c49b995b59221dee3fc4a57d078b39b2)
+        ;
+
+
+
+
+                marker_767accafbf9a67c2a069d9689feacc92.setIcon(icon_cf0991789c1165b2a1b4327feb113de5);
+
+
+            var marker_ccc166c39ec0cabbf4608dd4f077b6a2 = L.marker(
+                [31.93, 130.87],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_a06669a2c97e39e8aed5dab9478110b4 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;orange&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_a5bd060e3c16c82b4dac625c1e2393af = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_6e71b1df8c960aa9322b160d19db0c30 = $(`&lt;div id=&quot;html_6e71b1df8c960aa9322b160d19db0c30&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Kirishima&lt;br&gt;Country: Japan&lt;br&gt;Type: Shield volcano&lt;br&gt;Coordinates: [31.93, 130.87]&lt;/div&gt;`)[0];
+                popup_a5bd060e3c16c82b4dac625c1e2393af.setContent(html_6e71b1df8c960aa9322b160d19db0c30);
+
+
+
+        marker_ccc166c39ec0cabbf4608dd4f077b6a2.bindPopup(popup_a5bd060e3c16c82b4dac625c1e2393af)
+        ;
+
+
+
+
+                marker_ccc166c39ec0cabbf4608dd4f077b6a2.setIcon(icon_a06669a2c97e39e8aed5dab9478110b4);
+
+
+            var marker_d64373f56b83f32a0803fd70b1f57c62 = L.marker(
+                [12.77, 124.05],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_60e051da4bcf73dfea596daac46c6647 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_1e529a2ce1003ee9323bf0f86fb2c5f9 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_4ccdb63817b25f4f5ab93808f19ca12e = $(`&lt;div id=&quot;html_4ccdb63817b25f4f5ab93808f19ca12e&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Bulusan&lt;br&gt;Country: Philippines&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [12.77, 124.05]&lt;/div&gt;`)[0];
+                popup_1e529a2ce1003ee9323bf0f86fb2c5f9.setContent(html_4ccdb63817b25f4f5ab93808f19ca12e);
+
+
+
+        marker_d64373f56b83f32a0803fd70b1f57c62.bindPopup(popup_1e529a2ce1003ee9323bf0f86fb2c5f9)
+        ;
+
+
+
+
+                marker_d64373f56b83f32a0803fd70b1f57c62.setIcon(icon_60e051da4bcf73dfea596daac46c6647);
+
+
+            var marker_555fd4f5d120d445e1f878fed9367dc7 = L.marker(
+                [2.78, 125.48],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_abf7f5153f821d7ab974482b5b869951 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_a13692aa5b559a83131878b78550780a = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_09e463a00fb8937927c888083cd53a07 = $(`&lt;div id=&quot;html_09e463a00fb8937927c888083cd53a07&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Karangetang [Api Siau]&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [2.78, 125.48]&lt;/div&gt;`)[0];
+                popup_a13692aa5b559a83131878b78550780a.setContent(html_09e463a00fb8937927c888083cd53a07);
+
+
+
+        marker_555fd4f5d120d445e1f878fed9367dc7.bindPopup(popup_a13692aa5b559a83131878b78550780a)
+        ;
+
+
+
+
+                marker_555fd4f5d120d445e1f878fed9367dc7.setIcon(icon_abf7f5153f821d7ab974482b5b869951);
+
+
+            var marker_53e10ac46ef6c9ae87abdaf9aec23ce7 = L.marker(
+                [-1.467, -78.442],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_2b37f720073e46339550c96177e5b9b1 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_240efc1773db91f11016c30ae4d6bc8f = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_793c686664d2683d601d1742031fe719 = $(`&lt;div id=&quot;html_793c686664d2683d601d1742031fe719&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Tungurahua&lt;br&gt;Country: Ecuador&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-1.467, -78.442]&lt;/div&gt;`)[0];
+                popup_240efc1773db91f11016c30ae4d6bc8f.setContent(html_793c686664d2683d601d1742031fe719);
+
+
+
+        marker_53e10ac46ef6c9ae87abdaf9aec23ce7.bindPopup(popup_240efc1773db91f11016c30ae4d6bc8f)
+        ;
+
+
+
+
+                marker_53e10ac46ef6c9ae87abdaf9aec23ce7.setIcon(icon_2b37f720073e46339550c96177e5b9b1);
+
+
+            var marker_3a4826a8852e13db90af1e2d5e10a874 = L.marker(
+                [-40.59, -72.117],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_dc6d02fb5e992e3869cd709f0fb8eebc = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_9b55af18f3d16eb76fe057ba8e3ba94c = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_197c017133fb7bc0f0623f3c323bcf04 = $(`&lt;div id=&quot;html_197c017133fb7bc0f0623f3c323bcf04&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Puyehue&lt;br&gt;Country: Chile&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-40.59, -72.117]&lt;/div&gt;`)[0];
+                popup_9b55af18f3d16eb76fe057ba8e3ba94c.setContent(html_197c017133fb7bc0f0623f3c323bcf04);
+
+
+
+        marker_3a4826a8852e13db90af1e2d5e10a874.bindPopup(popup_9b55af18f3d16eb76fe057ba8e3ba94c)
+        ;
+
+
+
+
+                marker_3a4826a8852e13db90af1e2d5e10a874.setIcon(icon_dc6d02fb5e992e3869cd709f0fb8eebc);
+
+
+            var marker_5dc36420d9ead3701cc9dcc32f51e3fd = L.marker(
+                [13.37, 41.7],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_de9b077d662c127a9ca4b993d6e84cd2 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_1125dbf7e5bce154e601c1b0928ab225 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_309486d9ec59056de22c3480e0c4df0c = $(`&lt;div id=&quot;html_309486d9ec59056de22c3480e0c4df0c&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Nabro&lt;br&gt;Country: Eritrea&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [13.37, 41.7]&lt;/div&gt;`)[0];
+                popup_1125dbf7e5bce154e601c1b0928ab225.setContent(html_309486d9ec59056de22c3480e0c4df0c);
+
+
+
+        marker_5dc36420d9ead3701cc9dcc32f51e3fd.bindPopup(popup_1125dbf7e5bce154e601c1b0928ab225)
+        ;
+
+
+
+
+                marker_5dc36420d9ead3701cc9dcc32f51e3fd.setIcon(icon_de9b077d662c127a9ca4b993d6e84cd2);
+
+
+            var marker_7a9f65e03f2a6ac407641f03580ce0fb = L.marker(
+                [63.63, -19.05],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_40392de630ca4d0540c00f44b1379830 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;purple&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_49e9c05f4ff0df436459d8d73bd12755 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_984c750d692543223a5072fe8a7e04d5 = $(`&lt;div id=&quot;html_984c750d692543223a5072fe8a7e04d5&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Katla&lt;br&gt;Country: Iceland&lt;br&gt;Type: Subglacial volcano&lt;br&gt;Coordinates: [63.63, -19.05]&lt;/div&gt;`)[0];
+                popup_49e9c05f4ff0df436459d8d73bd12755.setContent(html_984c750d692543223a5072fe8a7e04d5);
+
+
+
+        marker_7a9f65e03f2a6ac407641f03580ce0fb.bindPopup(popup_49e9c05f4ff0df436459d8d73bd12755)
+        ;
+
+
+
+
+                marker_7a9f65e03f2a6ac407641f03580ce0fb.setIcon(icon_40392de630ca4d0540c00f44b1379830);
+
+
+            var marker_4f9d0d205a246998fdaaf4f8585ecdd7 = L.marker(
+                [1.358, 124.792],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_416ecc02656242e8a52400881cda33a1 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_c31e3e19c7be7fdbb1ca2a2d62ebe257 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_3ebe35e2558dc279863143abcbfde95e = $(`&lt;div id=&quot;html_3ebe35e2558dc279863143abcbfde95e&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Lokon-Empung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [1.358, 124.792]&lt;/div&gt;`)[0];
+                popup_c31e3e19c7be7fdbb1ca2a2d62ebe257.setContent(html_3ebe35e2558dc279863143abcbfde95e);
+
+
+
+        marker_4f9d0d205a246998fdaaf4f8585ecdd7.bindPopup(popup_c31e3e19c7be7fdbb1ca2a2d62ebe257)
+        ;
+
+
+
+
+                marker_4f9d0d205a246998fdaaf4f8585ecdd7.setIcon(icon_416ecc02656242e8a52400881cda33a1);
+
+
+            var marker_b6adb3aa7234432468941f7368ac3fa3 = L.marker(
+                [0.8, 127.325],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_8fa1ee4cc36208158e34a8f21565e0e4 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_7ca841a4207135007ee20b3ff0bf36fc = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_e6dc70f9b06bdd419e0878b7175cc0a0 = $(`&lt;div id=&quot;html_e6dc70f9b06bdd419e0878b7175cc0a0&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2011&lt;br&gt;Name: Gamalama&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [0.8, 127.325]&lt;/div&gt;`)[0];
+                popup_7ca841a4207135007ee20b3ff0bf36fc.setContent(html_e6dc70f9b06bdd419e0878b7175cc0a0);
+
+
+
+        marker_b6adb3aa7234432468941f7368ac3fa3.bindPopup(popup_7ca841a4207135007ee20b3ff0bf36fc)
+        ;
+
+
+
+
+                marker_b6adb3aa7234432468941f7368ac3fa3.setIcon(icon_8fa1ee4cc36208158e34a8f21565e0e4);
+
+
+            var marker_0955f3f81e452588ee88126b75ef935b = L.marker(
+                [19.425, -155.292],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_2a84e38057df4e332cfa54f2fddd64b4 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;orange&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_584e359ce3e6a734e1420f557978143b = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_b1fb81ebf6d1b4a4bd0eafa911921ee9 = $(`&lt;div id=&quot;html_b1fb81ebf6d1b4a4bd0eafa911921ee9&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2012&lt;br&gt;Name: Kilauea&lt;br&gt;Country: United States&lt;br&gt;Type: Shield volcano&lt;br&gt;Coordinates: [19.425, -155.292]&lt;/div&gt;`)[0];
+                popup_584e359ce3e6a734e1420f557978143b.setContent(html_b1fb81ebf6d1b4a4bd0eafa911921ee9);
+
+
+
+        marker_0955f3f81e452588ee88126b75ef935b.bindPopup(popup_584e359ce3e6a734e1420f557978143b)
+        ;
+
+
+
+
+                marker_0955f3f81e452588ee88126b75ef935b.setIcon(icon_2a84e38057df4e332cfa54f2fddd64b4);
+
+
+            var marker_a0f2accf21348b02ba81341b7b9a41d0 = L.marker(
+                [19.425, -155.292],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_cede52bc9cc0f06f96b630459640a51d = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;orange&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_ad27cfb013d4e8036b0f190f4b13b2d1 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_36c4d0c52ddb8fc5f1da18f57569af72 = $(`&lt;div id=&quot;html_36c4d0c52ddb8fc5f1da18f57569af72&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2012&lt;br&gt;Name: Kilauea&lt;br&gt;Country: United States&lt;br&gt;Type: Shield volcano&lt;br&gt;Coordinates: [19.425, -155.292]&lt;/div&gt;`)[0];
+                popup_ad27cfb013d4e8036b0f190f4b13b2d1.setContent(html_36c4d0c52ddb8fc5f1da18f57569af72);
+
+
+
+        marker_a0f2accf21348b02ba81341b7b9a41d0.bindPopup(popup_ad27cfb013d4e8036b0f190f4b13b2d1)
+        ;
+
+
+
+
+                marker_a0f2accf21348b02ba81341b7b9a41d0.setIcon(icon_cede52bc9cc0f06f96b630459640a51d);
+
+
+            var marker_3baf6466800bf46ffa49a232141286c3 = L.marker(
+                [55.83, 160.33],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_136c616cdc161d30548d5689f2050254 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;orange&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_cddc06fb92e73b0bc22ecda3ac10ba95 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_675f37eeb32b68fb676145a2fc9ccc09 = $(`&lt;div id=&quot;html_675f37eeb32b68fb676145a2fc9ccc09&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2012&lt;br&gt;Name: Tolbachik&lt;br&gt;Country: Russia&lt;br&gt;Type: Shield volcano&lt;br&gt;Coordinates: [55.83, 160.33]&lt;/div&gt;`)[0];
+                popup_cddc06fb92e73b0bc22ecda3ac10ba95.setContent(html_675f37eeb32b68fb676145a2fc9ccc09);
+
+
+
+        marker_3baf6466800bf46ffa49a232141286c3.bindPopup(popup_cddc06fb92e73b0bc22ecda3ac10ba95)
+        ;
+
+
+
+
+                marker_3baf6466800bf46ffa49a232141286c3.setIcon(icon_136c616cdc161d30548d5689f2050254);
+
+
+            var marker_801d4030e80cc3e5f2d5ed4d0799e08b = L.marker(
+                [-7.542, 110.442],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_300ddf713589b0d4a7650a931bf30a4e = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_717a0329f68a89065917981783215033 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_6216e5828d9dc96a69ed14086dbda652 = $(`&lt;div id=&quot;html_6216e5828d9dc96a69ed14086dbda652&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2013&lt;br&gt;Name: Merapi&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-7.542, 110.442]&lt;/div&gt;`)[0];
+                popup_717a0329f68a89065917981783215033.setContent(html_6216e5828d9dc96a69ed14086dbda652);
+
+
+
+        marker_801d4030e80cc3e5f2d5ed4d0799e08b.bindPopup(popup_717a0329f68a89065917981783215033)
+        ;
+
+
+
+
+                marker_801d4030e80cc3e5f2d5ed4d0799e08b.setIcon(icon_300ddf713589b0d4a7650a931bf30a4e);
+
+
+            var marker_26607a417cd313f8be5bb9f90af5a794 = L.marker(
+                [-8.32, 121.708],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_927b53d7e5492086f69de37b57f1c287 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_30a4c617599df3a6187139b8c49973ad = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_4f753bd26a4a2fb8d93d5267a4db6fc9 = $(`&lt;div id=&quot;html_4f753bd26a4a2fb8d93d5267a4db6fc9&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2013&lt;br&gt;Name: Paluweh&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-8.32, 121.708]&lt;/div&gt;`)[0];
+                popup_30a4c617599df3a6187139b8c49973ad.setContent(html_4f753bd26a4a2fb8d93d5267a4db6fc9);
+
+
+
+        marker_26607a417cd313f8be5bb9f90af5a794.bindPopup(popup_30a4c617599df3a6187139b8c49973ad)
+        ;
+
+
+
+
+                marker_26607a417cd313f8be5bb9f90af5a794.setIcon(icon_927b53d7e5492086f69de37b57f1c287);
+
+
+            var marker_84025ebae9a640c3acd5ba3734a372e0 = L.marker(
+                [13.257, 123.685],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_33eaebb7e0b051a3b8e2eb88207421df = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_49e7d6973bf0b40f490d80e12f71a8a5 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_90bf4feee3f7dc0f6dc521f2c8aecdd9 = $(`&lt;div id=&quot;html_90bf4feee3f7dc0f6dc521f2c8aecdd9&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2013&lt;br&gt;Name: Mayon&lt;br&gt;Country: Philippines&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [13.257, 123.685]&lt;/div&gt;`)[0];
+                popup_49e7d6973bf0b40f490d80e12f71a8a5.setContent(html_90bf4feee3f7dc0f6dc521f2c8aecdd9);
+
+
+
+        marker_84025ebae9a640c3acd5ba3734a372e0.bindPopup(popup_49e7d6973bf0b40f490d80e12f71a8a5)
+        ;
+
+
+
+
+                marker_84025ebae9a640c3acd5ba3734a372e0.setIcon(icon_33eaebb7e0b051a3b8e2eb88207421df);
+
+
+            var marker_a13a911f79bc372114fa009d7ae31506 = L.marker(
+                [-8.32, 121.708],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_594413ff83174d25a42fb89caaeb537d = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_52df734f5473233c3cca1d0c2f55b2c1 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_27827d1ff56c647e3617da9b1d330247 = $(`&lt;div id=&quot;html_27827d1ff56c647e3617da9b1d330247&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2013&lt;br&gt;Name: Paluweh&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-8.32, 121.708]&lt;/div&gt;`)[0];
+                popup_52df734f5473233c3cca1d0c2f55b2c1.setContent(html_27827d1ff56c647e3617da9b1d330247);
+
+
+
+        marker_a13a911f79bc372114fa009d7ae31506.bindPopup(popup_52df734f5473233c3cca1d0c2f55b2c1)
+        ;
+
+
+
+
+                marker_a13a911f79bc372114fa009d7ae31506.setIcon(icon_594413ff83174d25a42fb89caaeb537d);
+
+
+            var marker_37e376a710cad9263ab85802c982edcd = L.marker(
+                [-16.355, -70.903],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_f00d0e68fa7cca9cebb0af13faaa3ca2 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_29656c85d7e9d44f71c652a9ede0342c = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_ebcbabf19353a35f6698aa945a8b5057 = $(`&lt;div id=&quot;html_ebcbabf19353a35f6698aa945a8b5057&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2013&lt;br&gt;Name: Ubinas&lt;br&gt;Country: Peru&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-16.355, -70.903]&lt;/div&gt;`)[0];
+                popup_29656c85d7e9d44f71c652a9ede0342c.setContent(html_ebcbabf19353a35f6698aa945a8b5057);
+
+
+
+        marker_37e376a710cad9263ab85802c982edcd.bindPopup(popup_29656c85d7e9d44f71c652a9ede0342c)
+        ;
+
+
+
+
+                marker_37e376a710cad9263ab85802c982edcd.setIcon(icon_f00d0e68fa7cca9cebb0af13faaa3ca2);
+
+
+            var marker_92b4433b51c04e2b042d7a9b84ca9695 = L.marker(
+                [31.58, 130.67],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_fc73ea04a88fec21002e73b1f551ef65 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_c6889876916c478a0ca5bcdd889cf503 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_0c64686a963f018b6dd40ab89d7ea8cf = $(`&lt;div id=&quot;html_0c64686a963f018b6dd40ab89d7ea8cf&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2013&lt;br&gt;Name: Sakura-jima&lt;br&gt;Country: Japan&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [31.58, 130.67]&lt;/div&gt;`)[0];
+                popup_c6889876916c478a0ca5bcdd889cf503.setContent(html_0c64686a963f018b6dd40ab89d7ea8cf);
+
+
+
+        marker_92b4433b51c04e2b042d7a9b84ca9695.bindPopup(popup_c6889876916c478a0ca5bcdd889cf503)
+        ;
+
+
+
+
+                marker_92b4433b51c04e2b042d7a9b84ca9695.setIcon(icon_fc73ea04a88fec21002e73b1f551ef65);
+
+
+            var marker_c83c4a5b0579a430109b20a058034619 = L.marker(
+                [3.17, 98.392],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_3444cb3bf9a42bc4347967f78a61b3b4 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_1fbf5a6874d8a6aefb0b99b47ca57570 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_4935abe1ebbd897671a21cc9ce98e967 = $(`&lt;div id=&quot;html_4935abe1ebbd897671a21cc9ce98e967&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2013&lt;br&gt;Name: Sinabung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [3.17, 98.392]&lt;/div&gt;`)[0];
+                popup_1fbf5a6874d8a6aefb0b99b47ca57570.setContent(html_4935abe1ebbd897671a21cc9ce98e967);
+
+
+
+        marker_c83c4a5b0579a430109b20a058034619.bindPopup(popup_1fbf5a6874d8a6aefb0b99b47ca57570)
+        ;
+
+
+
+
+                marker_c83c4a5b0579a430109b20a058034619.setIcon(icon_3444cb3bf9a42bc4347967f78a61b3b4);
+
+
+            var marker_14b3ba464f5d45e84648f614b0e85a54 = L.marker(
+                [-38.12, 176.5],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_f8802df03cc5a00f72043b60e351be5c = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;pink&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_b55e08977b0c2e6afab1e6b2f21fe9b8 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_69c23aabd9e06853279cbd4a9b0a295d = $(`&lt;div id=&quot;html_69c23aabd9e06853279cbd4a9b0a295d&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2013&lt;br&gt;Name: Okataina&lt;br&gt;Country: New Zealand&lt;br&gt;Type: Lava dome&lt;br&gt;Coordinates: [-38.12, 176.5]&lt;/div&gt;`)[0];
+                popup_b55e08977b0c2e6afab1e6b2f21fe9b8.setContent(html_69c23aabd9e06853279cbd4a9b0a295d);
+
+
+
+        marker_14b3ba464f5d45e84648f614b0e85a54.bindPopup(popup_b55e08977b0c2e6afab1e6b2f21fe9b8)
+        ;
+
+
+
+
+                marker_14b3ba464f5d45e84648f614b0e85a54.setIcon(icon_f8802df03cc5a00f72043b60e351be5c);
+
+
+            var marker_5f89be5d9104389fdc131d7c04479fb4 = L.marker(
+                [3.17, 98.392],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_bc761a67ef8d2e1ab4ebc8d578f1b018 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_8eca8e2967cae6765647fbe9b2c0d259 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_3e7459e5348c1969b93e8846b4c7881a = $(`&lt;div id=&quot;html_3e7459e5348c1969b93e8846b4c7881a&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2014&lt;br&gt;Name: Sinabung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [3.17, 98.392]&lt;/div&gt;`)[0];
+                popup_8eca8e2967cae6765647fbe9b2c0d259.setContent(html_3e7459e5348c1969b93e8846b4c7881a);
+
+
+
+        marker_5f89be5d9104389fdc131d7c04479fb4.bindPopup(popup_8eca8e2967cae6765647fbe9b2c0d259)
+        ;
+
+
+
+
+                marker_5f89be5d9104389fdc131d7c04479fb4.setIcon(icon_bc761a67ef8d2e1ab4ebc8d578f1b018);
+
+
+            var marker_9ed9a64804e2863d69094a47f53be385 = L.marker(
+                [-7.93, 112.308],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_eda5a9c2ee8a4ba1beaf22dc34ec11f0 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_64710b6d41c4f426bc81da1637e81d2b = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_99b72aa7e669abb91df33630b0e65884 = $(`&lt;div id=&quot;html_99b72aa7e669abb91df33630b0e65884&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2014&lt;br&gt;Name: Kelut&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-7.93, 112.308]&lt;/div&gt;`)[0];
+                popup_64710b6d41c4f426bc81da1637e81d2b.setContent(html_99b72aa7e669abb91df33630b0e65884);
+
+
+
+        marker_9ed9a64804e2863d69094a47f53be385.bindPopup(popup_64710b6d41c4f426bc81da1637e81d2b)
+        ;
+
+
+
+
+                marker_9ed9a64804e2863d69094a47f53be385.setIcon(icon_eda5a9c2ee8a4ba1beaf22dc34ec11f0);
+
+
+            var marker_df8322700f5e0e7d122f77fa7119516e = L.marker(
+                [35.9, 137.48],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_44d86407567e1bf0c07ec18e50ab19e6 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;blue&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_576a21ddba41e2d04848860c5e4c5168 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_d43ffa58fb963d60f95d3c0c7fcc006c = $(`&lt;div id=&quot;html_d43ffa58fb963d60f95d3c0c7fcc006c&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2014&lt;br&gt;Name: On-take&lt;br&gt;Country: Japan&lt;br&gt;Type: Complex volcano&lt;br&gt;Coordinates: [35.9, 137.48]&lt;/div&gt;`)[0];
+                popup_576a21ddba41e2d04848860c5e4c5168.setContent(html_d43ffa58fb963d60f95d3c0c7fcc006c);
+
+
+
+        marker_df8322700f5e0e7d122f77fa7119516e.bindPopup(popup_576a21ddba41e2d04848860c5e4c5168)
+        ;
+
+
+
+
+                marker_df8322700f5e0e7d122f77fa7119516e.setIcon(icon_44d86407567e1bf0c07ec18e50ab19e6);
+
+
+            var marker_63194f6bc288689c2166d0de0277126a = L.marker(
+                [19.425, -155.292],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_56f5abc0782286866d08b6b2f5a19f71 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;orange&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_dbccb6949293d1970042051ed16960a3 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_bfe3f198d44a8e8adc697c1a0fb9e29d = $(`&lt;div id=&quot;html_bfe3f198d44a8e8adc697c1a0fb9e29d&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2014&lt;br&gt;Name: Kilauea&lt;br&gt;Country: United States&lt;br&gt;Type: Shield volcano&lt;br&gt;Coordinates: [19.425, -155.292]&lt;/div&gt;`)[0];
+                popup_dbccb6949293d1970042051ed16960a3.setContent(html_bfe3f198d44a8e8adc697c1a0fb9e29d);
+
+
+
+        marker_63194f6bc288689c2166d0de0277126a.bindPopup(popup_dbccb6949293d1970042051ed16960a3)
+        ;
+
+
+
+
+                marker_63194f6bc288689c2166d0de0277126a.setIcon(icon_56f5abc0782286866d08b6b2f5a19f71);
+
+
+            var marker_6addfa30e3df55fb16d70a817ed0d597 = L.marker(
+                [14.95, -24.35],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_9c6c3ca3175c01f2b3210e3aace7f213 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_e42494b14a46544ecba788e9b20d11a1 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_a4ecaebba1f1c7320da32617b6f5722f = $(`&lt;div id=&quot;html_a4ecaebba1f1c7320da32617b6f5722f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2014&lt;br&gt;Name: Fogo&lt;br&gt;Country: Cape Verde&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [14.95, -24.35]&lt;/div&gt;`)[0];
+                popup_e42494b14a46544ecba788e9b20d11a1.setContent(html_a4ecaebba1f1c7320da32617b6f5722f);
+
+
+
+        marker_6addfa30e3df55fb16d70a817ed0d597.bindPopup(popup_e42494b14a46544ecba788e9b20d11a1)
+        ;
+
+
+
+
+                marker_6addfa30e3df55fb16d70a817ed0d597.setIcon(icon_9c6c3ca3175c01f2b3210e3aace7f213);
+
+
+            var marker_f068ea6aaed9fd069e5c3e554f4b7469 = L.marker(
+                [0.8, 127.325],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_80669914a35e5c3a90a4df48dcd2eb71 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_f67c11e9cc074fc227b1d22d97fe608c = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_a35028ee3c9a519fddc68657eb05b6e8 = $(`&lt;div id=&quot;html_a35028ee3c9a519fddc68657eb05b6e8&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2014&lt;br&gt;Name: Gamalama&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [0.8, 127.325]&lt;/div&gt;`)[0];
+                popup_f67c11e9cc074fc227b1d22d97fe608c.setContent(html_a35028ee3c9a519fddc68657eb05b6e8);
+
+
+
+        marker_f068ea6aaed9fd069e5c3e554f4b7469.bindPopup(popup_f67c11e9cc074fc227b1d22d97fe608c)
+        ;
+
+
+
+
+                marker_f068ea6aaed9fd069e5c3e554f4b7469.setIcon(icon_80669914a35e5c3a90a4df48dcd2eb71);
+
+
+            var marker_b6ad0e51460a6b9d490d11fa6f3199df = L.marker(
+                [3.17, 98.392],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_770f05b39570a11db8ae9c45bd1a2614 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_a6b6a1a082a162367ca98b2caf0b25a7 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_9a45ab219a149dbab614650490f9abf1 = $(`&lt;div id=&quot;html_9a45ab219a149dbab614650490f9abf1&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2015&lt;br&gt;Name: Sinabung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [3.17, 98.392]&lt;/div&gt;`)[0];
+                popup_a6b6a1a082a162367ca98b2caf0b25a7.setContent(html_9a45ab219a149dbab614650490f9abf1);
+
+
+
+        marker_b6ad0e51460a6b9d490d11fa6f3199df.bindPopup(popup_a6b6a1a082a162367ca98b2caf0b25a7)
+        ;
+
+
+
+
+                marker_b6ad0e51460a6b9d490d11fa6f3199df.setIcon(icon_770f05b39570a11db8ae9c45bd1a2614);
+
+
+            var marker_258cca3e052f9d49aed77bc1b8667226 = L.marker(
+                [-41.326, -72.614],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_0a104cf84e63f2b1db0ee5ab2827178f = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_b8f85384c00c52526f060e907d686224 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_3d160291c0921a5849e061a0dcb14bb5 = $(`&lt;div id=&quot;html_3d160291c0921a5849e061a0dcb14bb5&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2015&lt;br&gt;Name: Calbuco&lt;br&gt;Country: Chile&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-41.326, -72.614]&lt;/div&gt;`)[0];
+                popup_b8f85384c00c52526f060e907d686224.setContent(html_3d160291c0921a5849e061a0dcb14bb5);
+
+
+
+        marker_258cca3e052f9d49aed77bc1b8667226.bindPopup(popup_b8f85384c00c52526f060e907d686224)
+        ;
+
+
+
+
+                marker_258cca3e052f9d49aed77bc1b8667226.setIcon(icon_0a104cf84e63f2b1db0ee5ab2827178f);
+
+
+            var marker_03f3e2d1fd4e6bcf85c484e4c91ac9a7 = L.marker(
+                [2.78, 125.48],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_b8e4a42da5fcda0e8e57ee39d7a215d6 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_f9bb67e4673d0c1da89f0bc2e98b92dd = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_a96766372fe737db6d154be5bd842dc6 = $(`&lt;div id=&quot;html_a96766372fe737db6d154be5bd842dc6&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2015&lt;br&gt;Name: Karangetang [Api Siau]&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [2.78, 125.48]&lt;/div&gt;`)[0];
+                popup_f9bb67e4673d0c1da89f0bc2e98b92dd.setContent(html_a96766372fe737db6d154be5bd842dc6);
+
+
+
+        marker_03f3e2d1fd4e6bcf85c484e4c91ac9a7.bindPopup(popup_f9bb67e4673d0c1da89f0bc2e98b92dd)
+        ;
+
+
+
+
+                marker_03f3e2d1fd4e6bcf85c484e4c91ac9a7.setIcon(icon_b8e4a42da5fcda0e8e57ee39d7a215d6);
+
+
+            var marker_6a0748db2354f23f9a577fd1bc878842 = L.marker(
+                [-4.1, 145.061],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_d057ca39f4c042761fda15f7e09f148e = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_d338f5d138bde68281ba36308cc9137e = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_243e44677355f789ca00495dcfe0d080 = $(`&lt;div id=&quot;html_243e44677355f789ca00495dcfe0d080&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2015&lt;br&gt;Name: Manam&lt;br&gt;Country: Papua New Guinea&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-4.1, 145.061]&lt;/div&gt;`)[0];
+                popup_d338f5d138bde68281ba36308cc9137e.setContent(html_243e44677355f789ca00495dcfe0d080);
+
+
+
+        marker_6a0748db2354f23f9a577fd1bc878842.bindPopup(popup_d338f5d138bde68281ba36308cc9137e)
+        ;
+
+
+
+
+                marker_6a0748db2354f23f9a577fd1bc878842.setIcon(icon_d057ca39f4c042761fda15f7e09f148e);
+
+
+            var marker_c0cdc8e3800507f7d27d73ff6173697b = L.marker(
+                [3.17, 98.392],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_f2af5c954e9a09b321b62d17a45538bc = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_faf71abafef7e1753b356263427f2e55 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_62137a83798090f580c7bfa13c483ecb = $(`&lt;div id=&quot;html_62137a83798090f580c7bfa13c483ecb&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2015&lt;br&gt;Name: Sinabung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [3.17, 98.392]&lt;/div&gt;`)[0];
+                popup_faf71abafef7e1753b356263427f2e55.setContent(html_62137a83798090f580c7bfa13c483ecb);
+
+
+
+        marker_c0cdc8e3800507f7d27d73ff6173697b.bindPopup(popup_faf71abafef7e1753b356263427f2e55)
+        ;
+
+
+
+
+                marker_c0cdc8e3800507f7d27d73ff6173697b.setIcon(icon_f2af5c954e9a09b321b62d17a45538bc);
+
+
+            var marker_f0a9681aaff7be6b14911862a3b4ef17 = L.marker(
+                [-38.12, 176.5],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_0e2264eebec847a274104f0a5cb9faed = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;pink&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_25a061ad416eb4f5cefeb9d82b31eee7 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_4c6d4b2c45c237108745e13e3d5703c0 = $(`&lt;div id=&quot;html_4c6d4b2c45c237108745e13e3d5703c0&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2015&lt;br&gt;Name: Okataina&lt;br&gt;Country: New Zealand&lt;br&gt;Type: Lava dome&lt;br&gt;Coordinates: [-38.12, 176.5]&lt;/div&gt;`)[0];
+                popup_25a061ad416eb4f5cefeb9d82b31eee7.setContent(html_4c6d4b2c45c237108745e13e3d5703c0);
+
+
+
+        marker_f0a9681aaff7be6b14911862a3b4ef17.bindPopup(popup_25a061ad416eb4f5cefeb9d82b31eee7)
+        ;
+
+
+
+
+                marker_f0a9681aaff7be6b14911862a3b4ef17.setIcon(icon_0e2264eebec847a274104f0a5cb9faed);
+
+
+            var marker_1642072f449175bb7180f5e9e39f8954 = L.marker(
+                [3.17, 98.392],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_7f4dca1311643e3c12ab73c3ddac1075 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_ee0233157e2455282fa6fb431b122667 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_11e1286bc2f78c5e421b0d4b693f0ebc = $(`&lt;div id=&quot;html_11e1286bc2f78c5e421b0d4b693f0ebc&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2016&lt;br&gt;Name: Sinabung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [3.17, 98.392]&lt;/div&gt;`)[0];
+                popup_ee0233157e2455282fa6fb431b122667.setContent(html_11e1286bc2f78c5e421b0d4b693f0ebc);
+
+
+
+        marker_1642072f449175bb7180f5e9e39f8954.bindPopup(popup_ee0233157e2455282fa6fb431b122667)
+        ;
+
+
+
+
+                marker_1642072f449175bb7180f5e9e39f8954.setIcon(icon_7f4dca1311643e3c12ab73c3ddac1075);
+
+
+            var marker_a383c67825b9a59917bd1600e9951ff6 = L.marker(
+                [3.17, 98.392],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_c40a54596198ecc0ee0f8534a301aaaf = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_5a073ae6f9e255db45af4ccf5e736406 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_53321a65c51469c7b5339300861a0d3a = $(`&lt;div id=&quot;html_53321a65c51469c7b5339300861a0d3a&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2016&lt;br&gt;Name: Sinabung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [3.17, 98.392]&lt;/div&gt;`)[0];
+                popup_5a073ae6f9e255db45af4ccf5e736406.setContent(html_53321a65c51469c7b5339300861a0d3a);
+
+
+
+        marker_a383c67825b9a59917bd1600e9951ff6.bindPopup(popup_5a073ae6f9e255db45af4ccf5e736406)
+        ;
+
+
+
+
+                marker_a383c67825b9a59917bd1600e9951ff6.setIcon(icon_c40a54596198ecc0ee0f8534a301aaaf);
+
+
+            var marker_f0e658e172a27be6990a342b86acbd79 = L.marker(
+                [44.43, -110.67],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_d9e411250dd86bfd3bbad4f6d4a9720d = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;purple&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_d806f7045c57b879b8f2c90a61bb4f85 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_2446476ffa2149407b18fa76fe09b92b = $(`&lt;div id=&quot;html_2446476ffa2149407b18fa76fe09b92b&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2016&lt;br&gt;Name: Yellowstone&lt;br&gt;Country: United States&lt;br&gt;Type: Caldera&lt;br&gt;Coordinates: [44.43, -110.67]&lt;/div&gt;`)[0];
+                popup_d806f7045c57b879b8f2c90a61bb4f85.setContent(html_2446476ffa2149407b18fa76fe09b92b);
+
+
+
+        marker_f0e658e172a27be6990a342b86acbd79.bindPopup(popup_d806f7045c57b879b8f2c90a61bb4f85)
+        ;
+
+
+
+
+                marker_f0e658e172a27be6990a342b86acbd79.setIcon(icon_d9e411250dd86bfd3bbad4f6d4a9720d);
+
+
+            var marker_50741e81949e7431233de22826845e6f = L.marker(
+                [-8.42, 116.47],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_58d8e3a854b9457b822c53b94d77b609 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_4361814a0b4d65676c72013d9f3fa995 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_05c5c1251861b7a9c2bc63664fbe74c8 = $(`&lt;div id=&quot;html_05c5c1251861b7a9c2bc63664fbe74c8&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2016&lt;br&gt;Name: Rinjani&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-8.42, 116.47]&lt;/div&gt;`)[0];
+                popup_4361814a0b4d65676c72013d9f3fa995.setContent(html_05c5c1251861b7a9c2bc63664fbe74c8);
+
+
+
+        marker_50741e81949e7431233de22826845e6f.bindPopup(popup_4361814a0b4d65676c72013d9f3fa995)
+        ;
+
+
+
+
+                marker_50741e81949e7431233de22826845e6f.setIcon(icon_58d8e3a854b9457b822c53b94d77b609);
+
+
+            var marker_6f0e51708f163f0a38ef315ef6de1c91 = L.marker(
+                [32.88, 131.1],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_81bfeecddcde824826165cf2c8cedada = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;purple&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_045a3cfdcaf1fdd6d58fa59aaf7b9327 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_34b03df0f002b4e5cf94d462d9eabf0f = $(`&lt;div id=&quot;html_34b03df0f002b4e5cf94d462d9eabf0f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2016&lt;br&gt;Name: Aso&lt;br&gt;Country: Japan&lt;br&gt;Type: Caldera&lt;br&gt;Coordinates: [32.88, 131.1]&lt;/div&gt;`)[0];
+                popup_045a3cfdcaf1fdd6d58fa59aaf7b9327.setContent(html_34b03df0f002b4e5cf94d462d9eabf0f);
+
+
+
+        marker_6f0e51708f163f0a38ef315ef6de1c91.bindPopup(popup_045a3cfdcaf1fdd6d58fa59aaf7b9327)
+        ;
+
+
+
+
+                marker_6f0e51708f163f0a38ef315ef6de1c91.setIcon(icon_81bfeecddcde824826165cf2c8cedada);
+
+
+            var marker_7d1a4aefd2d25cad36384cf503da8968 = L.marker(
+                [37.734, 15.004],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_4b2738afa15dac80a63f6356f6002365 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_492f01574d55fa7b2fcb1a6781f54572 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_721f5fb9d9ba7d1d27ed16e8cc313e0b = $(`&lt;div id=&quot;html_721f5fb9d9ba7d1d27ed16e8cc313e0b&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2017&lt;br&gt;Name: Etna&lt;br&gt;Country: Italy&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [37.734, 15.004]&lt;/div&gt;`)[0];
+                popup_492f01574d55fa7b2fcb1a6781f54572.setContent(html_721f5fb9d9ba7d1d27ed16e8cc313e0b);
+
+
+
+        marker_7d1a4aefd2d25cad36384cf503da8968.bindPopup(popup_492f01574d55fa7b2fcb1a6781f54572)
+        ;
+
+
+
+
+                marker_7d1a4aefd2d25cad36384cf503da8968.setIcon(icon_4b2738afa15dac80a63f6356f6002365);
+
+
+            var marker_80f038755f0a58a85dc2c890a835a737 = L.marker(
+                [3.17, 98.392],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_3bf03ff23494d788c36c7f116ce72501 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_e3818bcbe121e834a0761aba6c42b9be = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_5743ff862331fb8c555a48b20d60dd64 = $(`&lt;div id=&quot;html_5743ff862331fb8c555a48b20d60dd64&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2017&lt;br&gt;Name: Sinabung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [3.17, 98.392]&lt;/div&gt;`)[0];
+                popup_e3818bcbe121e834a0761aba6c42b9be.setContent(html_5743ff862331fb8c555a48b20d60dd64);
+
+
+
+        marker_80f038755f0a58a85dc2c890a835a737.bindPopup(popup_e3818bcbe121e834a0761aba6c42b9be)
+        ;
+
+
+
+
+                marker_80f038755f0a58a85dc2c890a835a737.setIcon(icon_3bf03ff23494d788c36c7f116ce72501);
+
+
+            var marker_35287427f2223aa7427c74f640846b9e = L.marker(
+                [14.473, -90.88],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_9d79797a44b1f3683d77edebc402ffdd = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_160115c287dea53d8c500fefdc6eb365 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_79c22325aa5648502f5c77c7cc133ea9 = $(`&lt;div id=&quot;html_79c22325aa5648502f5c77c7cc133ea9&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2017&lt;br&gt;Name: Fuego&lt;br&gt;Country: Guatemala&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [14.473, -90.88]&lt;/div&gt;`)[0];
+                popup_160115c287dea53d8c500fefdc6eb365.setContent(html_79c22325aa5648502f5c77c7cc133ea9);
+
+
+
+        marker_35287427f2223aa7427c74f640846b9e.bindPopup(popup_160115c287dea53d8c500fefdc6eb365)
+        ;
+
+
+
+
+                marker_35287427f2223aa7427c74f640846b9e.setIcon(icon_9d79797a44b1f3683d77edebc402ffdd);
+
+
+            var marker_463eeb528f276e6f951d1b84d4b959f4 = L.marker(
+                [-7.2, 109.92],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_45722e62a874655039509dac431534e9 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;blue&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_d455101862e695033c0c973e254ff40f = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_cb84c13eb50790f37a0a4f8bdb8922fc = $(`&lt;div id=&quot;html_cb84c13eb50790f37a0a4f8bdb8922fc&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2017&lt;br&gt;Name: Dieng Volc Complex&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Complex volcano&lt;br&gt;Coordinates: [-7.2, 109.92]&lt;/div&gt;`)[0];
+                popup_d455101862e695033c0c973e254ff40f.setContent(html_cb84c13eb50790f37a0a4f8bdb8922fc);
+
+
+
+        marker_463eeb528f276e6f951d1b84d4b959f4.bindPopup(popup_d455101862e695033c0c973e254ff40f)
+        ;
+
+
+
+
+                marker_463eeb528f276e6f951d1b84d4b959f4.setIcon(icon_45722e62a874655039509dac431534e9);
+
+
+            var marker_bd880b316a3d8b3d4ea40c7f34f45df3 = L.marker(
+                [40.827, 14.139],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_b659cb3aa8851ade9fd6526acd9df021 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;purple&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_1abf34e900d97cfffa096a109b41e325 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_dbf66419026413cf2cbf65280c022683 = $(`&lt;div id=&quot;html_dbf66419026413cf2cbf65280c022683&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2017&lt;br&gt;Name: Campi Flegrei&lt;br&gt;Country: Italy&lt;br&gt;Type: Caldera&lt;br&gt;Coordinates: [40.827, 14.139]&lt;/div&gt;`)[0];
+                popup_1abf34e900d97cfffa096a109b41e325.setContent(html_dbf66419026413cf2cbf65280c022683);
+
+
+
+        marker_bd880b316a3d8b3d4ea40c7f34f45df3.bindPopup(popup_1abf34e900d97cfffa096a109b41e325)
+        ;
+
+
+
+
+                marker_bd880b316a3d8b3d4ea40c7f34f45df3.setIcon(icon_b659cb3aa8851ade9fd6526acd9df021);
+
+
+            var marker_aca81007ad65625b8bce7c3c5f160a64 = L.marker(
+                [-15.4, 167.83],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_667c87241fb492b06e55d7d53d04d107 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;orange&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_2535994ff0dfe1ae5d0c6f1105ea443d = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_bfb7a35205908087fe62f2248a1341f6 = $(`&lt;div id=&quot;html_bfb7a35205908087fe62f2248a1341f6&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2017&lt;br&gt;Name: Aoba&lt;br&gt;Country: Vanuatu&lt;br&gt;Type: Shield volcano&lt;br&gt;Coordinates: [-15.4, 167.83]&lt;/div&gt;`)[0];
+                popup_2535994ff0dfe1ae5d0c6f1105ea443d.setContent(html_bfb7a35205908087fe62f2248a1341f6);
+
+
+
+        marker_aca81007ad65625b8bce7c3c5f160a64.bindPopup(popup_2535994ff0dfe1ae5d0c6f1105ea443d)
+        ;
+
+
+
+
+                marker_aca81007ad65625b8bce7c3c5f160a64.setIcon(icon_667c87241fb492b06e55d7d53d04d107);
+
+
+            var marker_fdc263ee5937aea39b3aa450540bbc1b = L.marker(
+                [-7.542, 110.442],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_4ea71afd6796bea5388369341196f441 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_e4ccaeca97575c7f93485094d9686c23 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_adeb98ed48f237273196160fcd91ecc9 = $(`&lt;div id=&quot;html_adeb98ed48f237273196160fcd91ecc9&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2017&lt;br&gt;Name: Merapi&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-7.542, 110.442]&lt;/div&gt;`)[0];
+                popup_e4ccaeca97575c7f93485094d9686c23.setContent(html_adeb98ed48f237273196160fcd91ecc9);
+
+
+
+        marker_fdc263ee5937aea39b3aa450540bbc1b.bindPopup(popup_e4ccaeca97575c7f93485094d9686c23)
+        ;
+
+
+
+
+                marker_fdc263ee5937aea39b3aa450540bbc1b.setIcon(icon_4ea71afd6796bea5388369341196f441);
+
+
+            var marker_bb79a57966665691287931712183e111 = L.marker(
+                [3.17, 98.392],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_579fc01bb0290b1a739c64d1ff912a14 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_992e100f2f91f24b662854612bc47044 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_6aed1f473be0e9e4d5928d9a553b3651 = $(`&lt;div id=&quot;html_6aed1f473be0e9e4d5928d9a553b3651&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2017&lt;br&gt;Name: Sinabung&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [3.17, 98.392]&lt;/div&gt;`)[0];
+                popup_992e100f2f91f24b662854612bc47044.setContent(html_6aed1f473be0e9e4d5928d9a553b3651);
+
+
+
+        marker_bb79a57966665691287931712183e111.bindPopup(popup_992e100f2f91f24b662854612bc47044)
+        ;
+
+
+
+
+                marker_bb79a57966665691287931712183e111.setIcon(icon_579fc01bb0290b1a739c64d1ff912a14);
+
+
+            var marker_f7c627e9ba11c24220292b509fc8e92b = L.marker(
+                [-3.62, 144.62],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_046ad21782faad38f143abb16b16920d = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_07c5c65fed9a77bc5026452c3f5633f5 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_f1766240a1ffedd990d3f0aa4b42c357 = $(`&lt;div id=&quot;html_f1766240a1ffedd990d3f0aa4b42c357&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2018&lt;br&gt;Name: Kadovar&lt;br&gt;Country: Papua New Guinea&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-3.62, 144.62]&lt;/div&gt;`)[0];
+                popup_07c5c65fed9a77bc5026452c3f5633f5.setContent(html_f1766240a1ffedd990d3f0aa4b42c357);
+
+
+
+        marker_f7c627e9ba11c24220292b509fc8e92b.bindPopup(popup_07c5c65fed9a77bc5026452c3f5633f5)
+        ;
+
+
+
+
+                marker_f7c627e9ba11c24220292b509fc8e92b.setIcon(icon_046ad21782faad38f143abb16b16920d);
+
+
+            var marker_a112380cb06e9151bd77dec924109db6 = L.marker(
+                [13.257, 123.685],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_5c2d62b51f7fb52a941178d065e72c70 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_eb2ed559f6cdec78951bf03ddaef4b52 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_6b8338fb1350f9e9febc663086dc5843 = $(`&lt;div id=&quot;html_6b8338fb1350f9e9febc663086dc5843&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2018&lt;br&gt;Name: Mayon&lt;br&gt;Country: Philippines&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [13.257, 123.685]&lt;/div&gt;`)[0];
+                popup_eb2ed559f6cdec78951bf03ddaef4b52.setContent(html_6b8338fb1350f9e9febc663086dc5843);
+
+
+
+        marker_a112380cb06e9151bd77dec924109db6.bindPopup(popup_eb2ed559f6cdec78951bf03ddaef4b52)
+        ;
+
+
+
+
+                marker_a112380cb06e9151bd77dec924109db6.setIcon(icon_5c2d62b51f7fb52a941178d065e72c70);
+
+
+            var marker_313fc615eb25316aac37345103e49219 = L.marker(
+                [36.62, 138.55],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_715befa40daf004d48aa423a325a9174 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_824010040d9c3a6487930d2690f1140d = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_43e05584639fe680a26e2822d3d8a5bd = $(`&lt;div id=&quot;html_43e05584639fe680a26e2822d3d8a5bd&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2018&lt;br&gt;Name: Kusatsu-Shirane&lt;br&gt;Country: Japan&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [36.62, 138.55]&lt;/div&gt;`)[0];
+                popup_824010040d9c3a6487930d2690f1140d.setContent(html_43e05584639fe680a26e2822d3d8a5bd);
+
+
+
+        marker_313fc615eb25316aac37345103e49219.bindPopup(popup_824010040d9c3a6487930d2690f1140d)
+        ;
+
+
+
+
+                marker_313fc615eb25316aac37345103e49219.setIcon(icon_715befa40daf004d48aa423a325a9174);
+
+
+            var marker_3e96637b2374081bee9b37bd7cb3a49b = L.marker(
+                [19.425, -155.292],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_0e8bed1c342bd4b37c5f235d96c2e926 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;orange&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_2623db671ff19071def06fc3519dd64a = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_2f8f84cb46fe163fff67d48a6ae17c4e = $(`&lt;div id=&quot;html_2f8f84cb46fe163fff67d48a6ae17c4e&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2018&lt;br&gt;Name: Kilauea&lt;br&gt;Country: United States&lt;br&gt;Type: Shield volcano&lt;br&gt;Coordinates: [19.425, -155.292]&lt;/div&gt;`)[0];
+                popup_2623db671ff19071def06fc3519dd64a.setContent(html_2f8f84cb46fe163fff67d48a6ae17c4e);
+
+
+
+        marker_3e96637b2374081bee9b37bd7cb3a49b.bindPopup(popup_2623db671ff19071def06fc3519dd64a)
+        ;
+
+
+
+
+                marker_3e96637b2374081bee9b37bd7cb3a49b.setIcon(icon_0e8bed1c342bd4b37c5f235d96c2e926);
+
+
+            var marker_97734fe1a7b838074eecd29a2d516796 = L.marker(
+                [-3.62, 144.62],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_9da06b5f0686d91be62218efd2a2bf2f = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_503183fbed76e7a1c22efb9a5e9d026d = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_37f7472aadb06e10ee873e20ae973e7b = $(`&lt;div id=&quot;html_37f7472aadb06e10ee873e20ae973e7b&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2018&lt;br&gt;Name: Kadovar&lt;br&gt;Country: Papua New Guinea&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-3.62, 144.62]&lt;/div&gt;`)[0];
+                popup_503183fbed76e7a1c22efb9a5e9d026d.setContent(html_37f7472aadb06e10ee873e20ae973e7b);
+
+
+
+        marker_97734fe1a7b838074eecd29a2d516796.bindPopup(popup_503183fbed76e7a1c22efb9a5e9d026d)
+        ;
+
+
+
+
+                marker_97734fe1a7b838074eecd29a2d516796.setIcon(icon_9da06b5f0686d91be62218efd2a2bf2f);
+
+
+            var marker_3044b91ca23731a0bb032e56392f9bce = L.marker(
+                [-8.058, 114.242],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_09a069128724212031d41e67c37dfc3d = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;green&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_09de4407c15c006ad7dbcbe7f6d1a9c4 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_17df2156d79b3e40a04b68ca5f1871d9 = $(`&lt;div id=&quot;html_17df2156d79b3e40a04b68ca5f1871d9&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2018&lt;br&gt;Name: Ijen&lt;br&gt;Country: Indonesia&lt;br&gt;Type: Stratovolcano&lt;br&gt;Coordinates: [-8.058, 114.242]&lt;/div&gt;`)[0];
+                popup_09de4407c15c006ad7dbcbe7f6d1a9c4.setContent(html_17df2156d79b3e40a04b68ca5f1871d9);
+
+
+
+        marker_3044b91ca23731a0bb032e56392f9bce.bindPopup(popup_09de4407c15c006ad7dbcbe7f6d1a9c4)
+        ;
+
+
+
+
+                marker_3044b91ca23731a0bb032e56392f9bce.setIcon(icon_09a069128724212031d41e67c37dfc3d);
+
+
+            var marker_b367eb21232bd80f1834faad72422b0c = L.marker(
+                [19.425, -155.292],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_44b9e2ca94163e50bdccb7f47820c2d9 = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;orange&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_4a7c586012781f685c8b89ec6d853ce4 = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_03b1e51b8bfdb0ffe18f2a14685c5d8e = $(`&lt;div id=&quot;html_03b1e51b8bfdb0ffe18f2a14685c5d8e&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2018&lt;br&gt;Name: Kilauea&lt;br&gt;Country: United States&lt;br&gt;Type: Shield volcano&lt;br&gt;Coordinates: [19.425, -155.292]&lt;/div&gt;`)[0];
+                popup_4a7c586012781f685c8b89ec6d853ce4.setContent(html_03b1e51b8bfdb0ffe18f2a14685c5d8e);
+
+
+
+        marker_b367eb21232bd80f1834faad72422b0c.bindPopup(popup_4a7c586012781f685c8b89ec6d853ce4)
+        ;
+
+
+
+
+                marker_b367eb21232bd80f1834faad72422b0c.setIcon(icon_44b9e2ca94163e50bdccb7f47820c2d9);
+
+
+            var marker_06f5ba6bb16ecd5f7385373a8f1b784a = L.marker(
+                [-15.4, 167.83],
+                {
+}
+            ).addTo(map_8caff0d567167ce39d8a7f34d53fa0ef);
+
+
+            var icon_5d2b07351b2c64c9cc7fd29fe73e004b = L.AwesomeMarkers.icon(
+                {
+  &quot;markerColor&quot;: &quot;orange&quot;,
+  &quot;iconColor&quot;: &quot;white&quot;,
+  &quot;icon&quot;: &quot;info-sign&quot;,
+  &quot;prefix&quot;: &quot;glyphicon&quot;,
+  &quot;extraClasses&quot;: &quot;fa-rotate-0&quot;,
+}
+            );
+
+
+        var popup_423d0b3554619cc04d1057e33edd6d4e = L.popup({
+  &quot;maxWidth&quot;: &quot;100%&quot;,
+});
+
+
+
+                var html_9df3def01e6b688e379e3015edf61cb3 = $(`&lt;div id=&quot;html_9df3def01e6b688e379e3015edf61cb3&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Year: 2018&lt;br&gt;Name: Aoba&lt;br&gt;Country: Vanuatu&lt;br&gt;Type: Shield volcano&lt;br&gt;Coordinates: [-15.4, 167.83]&lt;/div&gt;`)[0];
+                popup_423d0b3554619cc04d1057e33edd6d4e.setContent(html_9df3def01e6b688e379e3015edf61cb3);
+
+
+
+        marker_06f5ba6bb16ecd5f7385373a8f1b784a.bindPopup(popup_423d0b3554619cc04d1057e33edd6d4e)
+        ;
+
+
+
+
+                marker_06f5ba6bb16ecd5f7385373a8f1b784a.setIcon(icon_5d2b07351b2c64c9cc7fd29fe73e004b);
+
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+</div>
+</section>
+</section>
+<section id="Folium-Heatmaps">
+<h2>Folium Heatmaps<a class="headerlink" href="#Folium-Heatmaps" title="Link to this heading">#</a></h2>
+<p>Folium is well known for its heatmaps, which create a heatmap layer. To plot a heatmap in Folium, you need a list of latitudes and longitudes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This example uses heatmaps to visualize the density of volcanoes</span>
+<span class="c1"># which is more in some parts of the world compared to others.</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">folium</span><span class="w"> </span><span class="kn">import</span> <span class="n">plugins</span>
+
+<span class="nb">map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">tiles</span><span class="o">=</span><span class="s2">&quot;Cartodb dark_matter&quot;</span><span class="p">,</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">heat_data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">point</span><span class="o">.</span><span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">point</span><span class="o">.</span><span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">geometry</span><span class="p">]</span>
+
+<span class="n">heat_data</span>
+<span class="n">plugins</span><span class="o">.</span><span class="n">HeatMap</span><span class="p">(</span><span class="n">heat_data</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+
+<span class="nb">map</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_bc5606ecb90b0442c8a41cb7438388e5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+            &lt;style&gt;html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            &lt;/style&gt;
+
+            &lt;style&gt;#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            &lt;/style&gt;
+
+            &lt;script&gt;
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            &lt;/script&gt;
+
+
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_bc5606ecb90b0442c8a41cb7438388e5&quot; &gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+
+
+            var map_bc5606ecb90b0442c8a41cb7438388e5 = L.map(
+                &quot;map_bc5606ecb90b0442c8a41cb7438388e5&quot;,
+                {
+                    center: [15.0, 30.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  &quot;zoom&quot;: 2,
+  &quot;zoomControl&quot;: true,
+  &quot;preferCanvas&quot;: false,
+}
+
+                }
+            );
+
+
+
+
+
+            var tile_layer_b602da767f238a973cc82695a130d8bb = L.tileLayer(
+                &quot;https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 20,
+  &quot;maxNativeZoom&quot;: 20,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\&quot;https://carto.com/attributions\&quot;\u003eCARTO\u003c/a\u003e&quot;,
+  &quot;subdomains&quot;: &quot;abcd&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+
+
+            tile_layer_b602da767f238a973cc82695a130d8bb.addTo(map_bc5606ecb90b0442c8a41cb7438388e5);
+
+
+            var heat_map_7dae55a15d773289048ca2601f861298 = L.heatLayer(
+                [[-1.467, -78.442], [63.63, -19.62], [14.381, -90.601], [16.708, 145.78], [2.78, 125.48], [3.17, 98.392], [-7.542, 110.442], [-1.467, -78.442], [-7.942, 112.95], [-7.542, 110.442], [31.93, 130.87], [12.77, 124.05], [2.78, 125.48], [-1.467, -78.442], [-40.59, -72.117], [13.37, 41.7], [63.63, -19.05], [1.358, 124.792], [0.8, 127.325], [19.425, -155.292], [19.425, -155.292], [55.83, 160.33], [-7.542, 110.442], [-8.32, 121.708], [13.257, 123.685], [-8.32, 121.708], [-16.355, -70.903], [31.58, 130.67], [3.17, 98.392], [-38.12, 176.5], [3.17, 98.392], [-7.93, 112.308], [35.9, 137.48], [19.425, -155.292], [14.95, -24.35], [0.8, 127.325], [3.17, 98.392], [-41.326, -72.614], [2.78, 125.48], [-4.1, 145.061], [3.17, 98.392], [-38.12, 176.5], [3.17, 98.392], [3.17, 98.392], [44.43, -110.67], [-8.42, 116.47], [32.88, 131.1], [37.734, 15.004], [3.17, 98.392], [14.473, -90.88], [-7.2, 109.92], [40.827, 14.139], [-15.4, 167.83], [-7.542, 110.442], [3.17, 98.392], [-3.62, 144.62], [13.257, 123.685], [36.62, 138.55], [19.425, -155.292], [-3.62, 144.62], [-8.058, 114.242], [19.425, -155.292], [-15.4, 167.83]],
+                {
+  &quot;minOpacity&quot;: 0.5,
+  &quot;maxZoom&quot;: 18,
+  &quot;radius&quot;: 25,
+  &quot;blur&quot;: 15,
+}
+            );
+
+
+            heat_map_7dae55a15d773289048ca2601f861298.addTo(map_bc5606ecb90b0442c8a41cb7438388e5);
+
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plotting_basemap_background.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Adding a background map to plots</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="polygon_plotting_with_folium.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plotting polygons with Folium</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Load-geometries">Load geometries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Create-Folium-map">Create Folium map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Add-markers">Add markers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Folium-Heatmaps">Folium Heatmaps</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/gallery/plotting_with_folium.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2013–, GeoPandas developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

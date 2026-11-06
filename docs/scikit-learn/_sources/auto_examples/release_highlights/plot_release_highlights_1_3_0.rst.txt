@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_release_highlights_plot_release_highlights_1_3_0.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -81,7 +81,7 @@ More details in the :ref:`User Guide <hdbscan>`.
     X, true_labels = load_digits(return_X_y=True)
     print(f"number of digits: {len(np.unique(true_labels))}")
 
-    hdbscan = HDBSCAN(min_cluster_size=15).fit(X)
+    hdbscan = HDBSCAN(min_cluster_size=15, copy=True).fit(X)
     non_noisy_labels = hdbscan.labels_[hdbscan.labels_ != -1]
     print(f"number of clusters found: {len(np.unique(non_noisy_labels))}")
 
@@ -111,18 +111,19 @@ Well suited for categorical features with high cardinality,
 estimate of the average target values for observations belonging to that category.
 More details in the :ref:`User Guide <target_encoder>`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-86
+.. GENERATED FROM PYTHON SOURCE LINES 74-87
 
 .. code-block:: Python
 
     import numpy as np
 
+    from sklearn.model_selection import KFold
     from sklearn.preprocessing import TargetEncoder
 
     X = np.array([["cat"] * 30 + ["dog"] * 20 + ["snake"] * 38], dtype=object).T
     y = [90.3] * 30 + [20.4] * 20 + [21.2] * 38
 
-    enc = TargetEncoder(random_state=0)
+    enc = TargetEncoder(cv=KFold(shuffle=True, random_state=0))
     X_trans = enc.fit_transform(X, y)
 
     enc.encodings_
@@ -140,7 +141,7 @@ More details in the :ref:`User Guide <target_encoder>`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-96
+.. GENERATED FROM PYTHON SOURCE LINES 88-97
 
 Missing values support in decision trees
 ----------------------------------------
@@ -152,7 +153,7 @@ See more details in the :ref:`User Guide <tree_missing_value_support>` or see
 :ref:`sphx_glr_auto_examples_ensemble_plot_hgbt_regression.py` for a usecase
 example of this feature in :class:`~ensemble.HistGradientBoostingRegressor`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 96-106
+.. GENERATED FROM PYTHON SOURCE LINES 97-107
 
 .. code-block:: Python
 
@@ -179,14 +180,14 @@ example of this feature in :class:`~ensemble.HistGradientBoostingRegressor`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-111
+.. GENERATED FROM PYTHON SOURCE LINES 108-112
 
 New display :class:`~model_selection.ValidationCurveDisplay`
 ------------------------------------------------------------
 :class:`model_selection.ValidationCurveDisplay` is now available to plot results
 from :func:`model_selection.validation_curve`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-127
+.. GENERATED FROM PYTHON SOURCE LINES 112-128
 
 .. code-block:: Python
 
@@ -218,7 +219,7 @@ from :func:`model_selection.validation_curve`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-133
+.. GENERATED FROM PYTHON SOURCE LINES 129-134
 
 Gamma loss for gradient boosting
 --------------------------------
@@ -226,7 +227,7 @@ The class :class:`ensemble.HistGradientBoostingRegressor` supports the
 Gamma deviance loss function via `loss="gamma"`. This loss function is useful for
 modeling strictly positive targets with a right-skewed distribution.
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-147
+.. GENERATED FROM PYTHON SOURCE LINES 134-148
 
 .. code-block:: Python
 
@@ -253,11 +254,11 @@ modeling strictly positive targets with a right-skewed distribution.
  .. code-block:: none
 
 
-    np.float64(0.46858513287221654)
+    np.float64(0.44587161562873445)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-155
+.. GENERATED FROM PYTHON SOURCE LINES 149-156
 
 Grouping infrequent categories in :class:`~preprocessing.OrdinalEncoder`
 ------------------------------------------------------------------------
@@ -267,7 +268,7 @@ into a single output for each feature. The parameters to enable the gathering of
 infrequent categories are `min_frequency` and `max_categories`.
 See the :ref:`User Guide <encoder_infrequent_categories>` for more details.
 
-.. GENERATED FROM PYTHON SOURCE LINES 155-164
+.. GENERATED FROM PYTHON SOURCE LINES 156-165
 
 .. code-block:: Python
 
@@ -296,7 +297,7 @@ See the :ref:`User Guide <encoder_infrequent_categories>` for more details.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.501 seconds)
+   **Total running time of the script:** (0 minutes 1.284 seconds)
 
 
 .. _sphx_glr_download_auto_examples_release_highlights_plot_release_highlights_1_3_0.py:
@@ -308,7 +309,7 @@ See the :ref:`User Guide <encoder_infrequent_categories>` for more details.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.7.X?urlpath=lab/tree/notebooks/auto_examples/release_highlights/plot_release_highlights_1_3_0.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-learn/scikit-learn/1.9.X?urlpath=lab/tree/notebooks/auto_examples/release_highlights/plot_release_highlights_1_3_0.ipynb
         :alt: Launch binder
         :width: 150 px
 
